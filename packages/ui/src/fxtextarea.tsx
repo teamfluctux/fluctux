@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { ROUNDED_VARIANTS } from './constant'
 import { SizeType } from './type'

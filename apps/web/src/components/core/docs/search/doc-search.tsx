@@ -9,8 +9,7 @@ import NoResultsBoundary from './no-results-boundary';
 import NoResults from './no-results';
 import { usePathname } from 'next/navigation';
 import { InfiniteHits } from './infinite-hit';
-import { FxButton, FxCommandBox } from '@/components/ui';
-import { CommandKeyIcon, SearchIcon } from '@/components/ui/icons';
+import { FxButton, FxCommandBox, CommandKeyIcon, SearchIcon } from '@fluctux/ui';
 import { useToggleOpen } from '@/app/hooks';
 
 

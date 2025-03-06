@@ -1,4 +1,4 @@
-import { GlobeIcon, LockIcon, ProjectGreenIcon, SettingsIcon, TwoPeopleIcon, ProjectPurpleIcon, ProjectPinkIcon, ProjectYellowIcon, ProjectBlueIcon, ProjectRedIcon, ProjectOrangeIcon } from "@/components/ui/icons"
+import { GlobeIcon, LockIcon, ProjectGreenIcon, SettingsIcon, TwoPeopleIcon, ProjectPurpleIcon, ProjectPinkIcon, ProjectYellowIcon, ProjectBlueIcon, ProjectRedIcon, ProjectOrangeIcon } from "@fluctux/ui"
 
 export const PROJECT_VISIBILITY_OPTIONS = [
   {

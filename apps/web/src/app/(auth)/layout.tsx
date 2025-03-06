@@ -1,5 +1,6 @@
 "use client"
-import { FxButton, FxLogo } from "@/components/ui";
+import { FxButton } from "@fluctux/ui"
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -8,14 +9,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const path_name = usePathname()
   const current_path = path_name.split("/")[1]
 
-  const h1Title = current_path.charAt(0).toUpperCase() + current_path.slice(1);
+  const h1Title = current_path?.charAt(0).toUpperCase() + current_path!.slice(1);
 
   return (
     <section className="flex justify-center items-center w-full h-screen overflow-y-auto hide-scrollbar">
 
       <div className="max-w-[420px] my-auto w-full p-3 pt-16 pb-24">
         <div className="fixed top-0 left-0 bg-gradient-to-t from-transparent to-[var(--background)] w-full h-[50px] fx-flex-cl p-3 backdrop-blur-xl">
-          <FxLogo size="sm" />
+          <Image src={"/fluctux-logos/fluctux-white.png"} width={500} height={500} alt='logo' priority={true} className='w-[90px] dark:block hidden' />
+                      <Image src={"/fluctux-logos/fluctux-black.png"} width={500} height={500} alt='logo' priority={true} className='w-[90px] dark:hidden block' />
 
         </div>
         <h1 className="text-[25px] font-medium">{h1Title} to Fluctux</h1>

@@ -1,7 +1,6 @@
 "use client";
 
-import { FxButton, FxInput, FxSeparator } from "@/components/ui";
-import { DiscordIcon, GithubIcon, GoogleIcon } from "@/components/ui/icons";
+import { DiscordIcon, GithubIcon, GoogleIcon, FxButton, FxInput, FxSeparator  } from "@fluctux/ui";
 import Link from "next/link";
 import React from "react";
 

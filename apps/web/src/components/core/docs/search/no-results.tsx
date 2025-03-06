@@ -1,6 +1,6 @@
 "use client"
 
-import { CodeIcon, RightArrowIcon, SadIcon, UserIcon } from "@/components/ui/icons";
+import { CodeIcon, RightArrowIcon, SadIcon, UserIcon } from '@fluctux/ui';
 import Link from "next/link";
 import { useInstantSearch } from "react-instantsearch";
 

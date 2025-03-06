@@ -1,4 +1,4 @@
-import { FxButton, FxSeparator } from '@/components/ui'
+import { FxButton, FxSeparator } from '@fluctux/ui'
 import React from 'react'
 
 export default function OrgSetupPage() {

@@ -1,5 +1,4 @@
-import { FxButton, FxFavIcon } from '@/components/ui'
-import { ActivityIcon, NotificationIcon } from '@/components/ui/icons'
+import { ActivityIcon, NotificationIcon, FxButton, FxFavIcon } from '@fluctux/ui'
 import { ChevronsUpDown } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
@@ -9,7 +8,7 @@ export const OrgHeader = () => {
         <div className='fx-org-layout-width border-r border-l fx-border-color fx-flex-between-ic'>
             <div className='fx-flex-cl gap-3'>
                 <div className='w-[64px] h-[64px] select-none border-r border-b fx-border-color fx-flex-center fx-third-bg hover:fx-primary-purple-bg cursor-pointer'>
-                    <FxFavIcon variant='dark' className='invert-fav' />
+                    <FxFavIcon variant='theme' />
                 </div>
                 <div className='fx-flex-center gap-2'>
                     <div className='fx-flex-center cursor-pointer flex-shrink-0 w-[160px] gap-2 border fx-border-color fx-secondary-hover-bg rounded-[8px] p-1 pl-2 pr-2 fx-third-bg'>

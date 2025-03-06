@@ -1,7 +1,6 @@
 "use client"
 
-import { FxButton } from "@/components/ui";
-import { SettingsErrorIcon } from "@/components/ui/icons/settings-error-icon";
+import { FxButton, SettingsErrorIcon } from "@fluctux/ui";
 
 export default function Error({
     error,

@@ -2,8 +2,7 @@
 import React from 'react'
 import Link from 'next/link';
 import { FOOTER_MAIN_ITEMS, LEGAL_ITEMS, PLAN_ITEMS, RESOURCES_ITEMS, WORK_MANAGEMENT_ITEMS } from '@/constants/footer';
-import { DiscordIcon, GithubCircleIcon, XLogoIcon } from '../ui/icons';
-import { FxFavIcon } from '../ui';
+import { DiscordIcon, GithubCircleIcon, XLogoIcon, FxFavIcon } from '@fluctux/ui';
 import { useThemeSwitcher } from '@/app/hooks';
 
 export const Footer = () => {

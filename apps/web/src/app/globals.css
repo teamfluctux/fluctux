@@ -414,7 +414,7 @@ body {
   left: -100%;
   width: 80%;
   top: 0;
-  animation: topLoader 1.5s ease-in-out infinite;
+  animation: topLoader 1.8s ease-in-out infinite;
 }
 
 @keyframes topLoader {

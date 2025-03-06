@@ -1,5 +1,5 @@
-import { CodeIcon } from '@/components/ui/icons/code-icon';
-import { UserIcon } from '@/components/ui/icons/user-icon';
+
+import { UserIcon, CodeIcon } from '@fluctux/ui';
 import React, { useEffect } from 'react';
 import { useRefinementList, UseRefinementListProps } from 'react-instantsearch';
 
@@ -12,7 +12,7 @@ export default function DocCustomRefinementList(props: UseRefinementListProps) {
 
     useEffect(() => {
         if (items.length > 0 && !items.some(item => item.isRefined)) {
-            refine(items[0].value); // Set the first item as the default refinement
+            refine(items[0]!.value); // Set the first item as the default refinement
         }
     }, [items, refine]);
 

@@ -1,4 +1,4 @@
-import { CodeIcon, UserIcon } from "@/components/ui/icons";
+import { CodeIcon, UserIcon } from '@fluctux/ui';
 
 export const DOC_TYPE = [
   {

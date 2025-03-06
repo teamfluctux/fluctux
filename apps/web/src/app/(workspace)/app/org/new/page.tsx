@@ -1,7 +1,5 @@
 "use client"
-
-import { FxButton, FxInput, FxPopupRadio } from '@/components/ui'
-import { ArrowRightStrokeIcon } from '@/components/ui/icons'
+import { ArrowRightStrokeIcon, FxButton, FxInput, FxPopupRadio  } from '@fluctux/ui'
 import React, { useEffect } from 'react'
 import { createOrgZodSchema } from '@/zod/organization'
 import { OrgVisibilityType } from '@/mongo/types'
@@ -21,7 +19,7 @@ export default function CreateNewOrgPage() {
   }
 
   useEffect(() => {
-    setValue("org_visibility", ORG_VISIBILITY_OPTIONS[0].value as OrgVisibilityType)
+    setValue("org_visibility", ORG_VISIBILITY_OPTIONS[0]?.value as OrgVisibilityType)
   }, [setValue])
 
   const onSubmit = async (data: z.infer<typeof createOrgZodSchema>) => {

@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
     Popover,
     PopoverContent,
@@ -74,7 +74,7 @@ export function FxPopupRadio({
         layout: "",
     }
 }: FxPopupRadioProps) {
-    const [selectedValue, setSelectedValue] = useState<string>(`${initialValue}`);
+    const [selectedValue, setSelectedValue] = React.useState<string>(`${initialValue}`);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value;
         setSelectedValue(newValue);
@@ -84,9 +84,9 @@ export function FxPopupRadio({
     const uiButton = buttonType ? radioButton[buttonType] : radioButton.none;
     const alignItemVariant = alignItems ? alignItemsVariant[alignItems] : alignItemsVariant.vertical
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = React.useState(false)
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (closeMenuOnSelect) {
             setIsOpen(false)
             return

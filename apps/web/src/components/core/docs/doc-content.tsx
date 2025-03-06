@@ -7,9 +7,8 @@ import { RootState } from '@/redux/store'
 import { usePathname } from 'next/navigation'
 import { useProcessMDX } from '@/app/hooks/useProcessMDX'
 import { lessonKey } from './constant'
-import { AngryIcon, ArrowLeftSolidIcon, GithubCircleIcon, RightArrowIcon, SadIcon, SmileIcon, SolidLineIcon, StarFaceIcon, TextAlignLeftIcon } from '@/components/ui/icons'
+import { AngryIcon,  FxButton, ArrowLeftSolidIcon, GithubCircleIcon, RightArrowIcon, SadIcon, SmileIcon, SolidLineIcon, StarFaceIcon, TextAlignLeftIcon } from '@fluctux/ui'
 import { useGetAnchors, useToggleOpen } from '@/app/hooks'
-import { FxButton } from "@fluctux/ui"
 
 interface DocContentPropsType {
     data: string

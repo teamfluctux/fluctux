@@ -1,6 +1,6 @@
 "use client"
 
-import { GridIcon, RightArrowIcon } from '@/components/ui/icons';
+import { GridIcon, RightArrowIcon } from '@fluctux/ui';
 import Link from 'next/link';
 import { Highlight } from 'react-instantsearch';
 
@@ -28,7 +28,7 @@ export default function Hit({ hit }: HitProps) {
                         </div>
                         <div>
 
-                            <p className='text-[13px] pb-1 fx-sec-label-color group-hover:fx-label-color'>{hit.slug.split("/")[0].replace(/^\w/, c => c.toUpperCase())} / {hit.slug.split("/")[1].replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}</p>
+                            <p className='text-[13px] pb-1 fx-sec-label-color group-hover:fx-label-color'>{hit.slug.split("/")[0]?.replace(/^\w/, c => c.toUpperCase())} / {hit.slug.split("/")[1]?.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}</p>
                             <div className='fx-label-color group-hover:text-[var(--foreground)] text-[15px]'>
 
                                 <Highlight classNames={

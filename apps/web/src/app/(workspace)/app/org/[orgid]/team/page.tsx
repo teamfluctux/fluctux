@@ -1,7 +1,5 @@
 "use client"
-
-import { FxButton, FxInput, FxOverlayImages, TopLoading } from '@/components/ui'
-import { AddIcon, GroupIcon, LockIcon } from '@/components/ui/icons'
+import { AddIcon, GroupIcon, LockIcon, FxButton, FxInput, FxOverlayImages, TopLoading } from '@fluctux/ui'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -67,10 +65,10 @@ export default function TeamPage() {
                   <div>
                     <div >
 
-                      <Image src={""} width={500} height={500} className='w-full h-[100px] object-cover object-top border fx-border-color' alt='cover-image' />
+                      <Image src={"/foo"} width={500} height={500} className='w-full h-[100px] object-cover object-top border fx-border-color' alt='cover-image' />
 
                       <div className='fx-flex-cl gap-3 p-5 pb-0 pt-0 relative'>
-                        <Image src={""} width={100} height={100} alt='team-image' className='w-[60px] absolute bottom-[0px] h-[60px] object-cover object-center border fx-border-color rounded-[8px]' />
+                        <Image src={"/foo"} width={100} height={100} alt='team-image' className='w-[60px] absolute bottom-[0px] h-[60px] object-cover object-center border fx-border-color rounded-[8px]' />
                         <h2 className='text-[20px] font-medium one-line-ellipsis translate-x-[70px] translate-y-[3px]'>Ni Mahins Team</h2>
                       </div>
                     </div>

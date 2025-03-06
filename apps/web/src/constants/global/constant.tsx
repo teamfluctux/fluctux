@@ -1,4 +1,4 @@
-import { ComputerIcon, MoonIcon, SunIcon } from "@/components/ui/icons";
+import { ComputerIcon, MoonIcon, SunIcon } from "@fluctux/ui";
 
 export const THEME_ICONS = [
   {

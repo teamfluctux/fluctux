@@ -3,9 +3,9 @@ import React, { useEffect } from 'react'
 import DocSearchComponent from './search/doc-search'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { FxButton, FxLogo, FxSeparator } from '@/components/ui'
-import { CancelIcon, GithubCircleIcon, MenuTwoBarIcon } from '@/components/ui/icons'
+import { FxButton, FxSeparator,  CancelIcon, GithubCircleIcon, MenuTwoBarIcon } from '@fluctux/ui'
 import { useToggleOpen } from '@/app/hooks'
+import Image from 'next/image'
 
 export default function DocHeader() {
     const path_name = usePathname()
@@ -19,7 +19,8 @@ export default function DocHeader() {
 
     return <header className='fixed w-full h-[64px] fx-secondary-bg border-b fx-border-color fx-flex-between-ic pl-3 pr-3 z-50 docs-header'>
         <div className='fx-flex-cl gap-3 doc-header-logo'>
-            <FxLogo className='w-[90px]' variant="default" />
+            <Image src={"/fluctux-logos/fluctux-logo-default-dark.png"} width={500} height={500} alt='logo' priority={true} className='w-[90px] dark:block hidden' />
+            <Image src={"/fluctux-logos/fluctux-logo-default-light.png"} width={500} height={500} alt='logo' priority={true} className='w-[90px] dark:hidden block' />
             <FxSeparator orientation='vertical' size='30px' />
             <span className='fx-label-color text-[20px] font-medium'>Docs</span>
         </div>

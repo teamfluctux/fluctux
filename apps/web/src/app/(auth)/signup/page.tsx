@@ -1,8 +1,7 @@
 "use client"
 
 import { useReactForm } from "@/app/hooks";
-import { FxButton, FxInput, FxSeparator } from "@/components/ui";
-import { DiscordIcon, GithubIcon, GoogleIcon } from "@/components/ui/icons";
+import { DiscordIcon, GithubIcon, GoogleIcon,  FxButton, FxInput, FxSeparator } from "@fluctux/ui";
 import { userZodSchema } from "@/zod/user/user.zod";
 import Link from "next/link";
 import React from "react";
