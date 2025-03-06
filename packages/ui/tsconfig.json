@@ -7,6 +7,6 @@
     },
     "outDir": "dist"
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src", "../../apps/web/src/components/core/fxlogo.tsx"],
+  "exclude": ["dist"]
 }

@@ -8,8 +8,8 @@ import { usePathname } from 'next/navigation'
 import { useProcessMDX } from '@/app/hooks/useProcessMDX'
 import { lessonKey } from './constant'
 import { AngryIcon, ArrowLeftSolidIcon, GithubCircleIcon, RightArrowIcon, SadIcon, SmileIcon, SolidLineIcon, StarFaceIcon, TextAlignLeftIcon } from '@/components/ui/icons'
-import { FxButton } from '@/components/ui'
 import { useGetAnchors, useToggleOpen } from '@/app/hooks'
+import { FxButton } from "@fluctux/ui"
 
 interface DocContentPropsType {
     data: string
@@ -45,8 +45,6 @@ export default function DocContent({ data }: DocContentPropsType) {
             </div>
 
             <article dangerouslySetInnerHTML={{ __html: content }} className="prose prose-gray dark:prose-invert w-full "></article>
-
-
             <div className='border-t mt-10 fx-border-color'>
                 <div className='w-full fx-flex-center gap-2 mt-5 doc-pagination'>
 
@@ -140,7 +138,7 @@ export default function DocContent({ data }: DocContentPropsType) {
 
                 <ul className='fx-label-color leading-7'>
                     {
-                        anchors.map((item, i) => {
+                        anchors.map((item: string, i: number) => {
                             return <Link href={`#${item.toLowerCase().replace(/\s+/g, "-")}`} key={i} className='dark:hover:text-white hover:text-black'>
                                 <li onClick={() => setDocOnPageOpen(false)} className='one-line-ellipsis'>{item}</li>
                             </Link>

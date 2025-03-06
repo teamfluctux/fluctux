@@ -3,9 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/*.tsx"
+    ".": "./src/index.ts"
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react --minify",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
@@ -22,7 +30,6 @@
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "^15.2.1"
+    "react-dom": "^19.0.0"
   }
 }

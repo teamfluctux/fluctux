@@ -7,7 +7,6 @@ import {
 } from "./popover"
 import { ROUNDED_VARIANTS } from './constant';
 import { FxButton } from './fxbutton';
-import { useToggleOpen } from '@/app/hooks';
 
 interface ItemType {
     label?: string,
@@ -85,27 +84,25 @@ export function FxPopupRadio({
     const uiButton = buttonType ? radioButton[buttonType] : radioButton.none;
     const alignItemVariant = alignItems ? alignItemsVariant[alignItems] : alignItemsVariant.vertical
 
-    const { isOpen, setOpen } = useToggleOpen({
-        id: 'fx-radio',
-    })
+    const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
         if (closeMenuOnSelect) {
-            setOpen(false)
+            setIsOpen(false)
             return
         }
         return
     }, [selectedValue, closeMenuOnSelect])
 
     return (
-        <Popover open={isOpen} onOpenChange={setOpen} >
+        <Popover open={isOpen} onOpenChange={setIsOpen} >
             <PopoverTrigger asChild>
                 {
                     uiButton === 'none' ?
-                        <div onClick={() => setOpen(true)}>
+                        <div onClick={() => setIsOpen(true)}>
                             {children}
                         </div> : items ?
-                            <FxButton onClick={() => setOpen(true)} variant='secondary' className={`${classNames.button}`} radius={radius}>
+                            <FxButton onClick={() => setIsOpen(true)} variant='secondary' className={`${classNames.button}`} radius={radius}>
                                 <div className={`${classNames.buttonSvgContainer}`}>
 
                                     {
