@@ -184,7 +184,7 @@ body {
   }
 
   .fx-primary-purple-text {
-    @apply text-[var(--primary-color)];
+    @apply text-[var(--primary-color)] ;
   }
 
   /* hover */

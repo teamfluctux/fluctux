@@ -122,8 +122,8 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     classNames={{
                         button: 'fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium',
                         activeLabel: 'hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]',
-                        label: 'w-full rounded-[5px] hover:fx-third-bg',
-                        layout: 'w-[230px]',
+                        label: 'w-full hover:fx-third-bg p-2',
+                        layout: 'w-[230px] p-[0px_!important] overflow-hidden',
                         labelIconContainer: "fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg",
                         buttonSvgContainer: 'fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg'
                     }}
@@ -134,44 +134,50 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     closeMenuOnSelect={true}
                     showDescInButton={true}
                 />
+                <div className='flex flex-col gap-2 w-full'>
 
-                {
-                    data.docNavList.map((navItem, i) => {
-                        return <React.Fragment key={i}>
-                            {
-                                navItem.type === "dir" ?
-                                    <button className={`font-medium mb-2 hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important]"}`} onClick={() => handleOpenChapter(i)}>
-                                        <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}</span>
-                                        <RightArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-150`} />
-                                    </button>
-                                    : <Link key={i} href={`/docs/${navItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
 
-                                        <button className={`font-medium mb-2 hover:fx-primary-purple-transparent-bg hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-primary-purple-transparent-bg text-[var(--primary-color)_!important]"}`} onClick={() => handleOpenArray(`${i}`)}>
-                                            <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
-
-                                        </button>
-                                    </Link>
-                            }
-
-                            <div className={`ml-2 flex flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-200 ${isOpenFromArray(`${i}`) ? "max-h-fit mt-3 mb-3 translate-y-0" : "max-h-0 opacity-0 translate-y-[-20px]"} overflow-hidden origin-top`}>
+                    {
+                        data.docNavList.map((navItem, i) => {
+                            return <div key={i}>
                                 {
-                                    navItem.docNavTreeList?.map((navTreeItem, j) => {
-                                        const slug = `/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`
-                                        return <Link key={j} ref={el => { lessons.current[slug] = el }} href={slug} className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-[var(--foreground)]"}`} onClick={() => {
-                                            localStorage.setItem(lessonKey, slug)
-                                        }}>
-                                            <span>{navTreeItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
-                                            {
-                                                path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) &&
-                                                <span className='absolute left-0 top-0 h-full w-[4px] fx-primary-purple-bg rounded-tr-[50px] rounded-br-[50px]'></span>
-                                            }
+                                    navItem.type === "dir" ?
+                                        <button className={`font-medium relative z-[2] hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important]"}`} onClick={() => handleOpenChapter(i)}>
+                                            <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}</span>
+                                            <RightArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-150`} />
+                                        </button>
+                                        : <Link key={i} href={`/docs/${navItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`}>
+
+                                            <button className={`font-medium hover:fx-primary-purple-transparent-bg hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-primary-purple-transparent-bg text-[var(--primary-color)_!important]"}`}>
+                                                <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
+
+                                            </button>
                                         </Link>
-                                    })
                                 }
+
+                                <div className={`ml-2 flex relative flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}>
+                                    <div className={`absolute z-[5] w-full  bg-gradient-to-t from-[var(--background)] to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}>
+
+                                    </div>
+                                    {
+                                        navItem.docNavTreeList?.map((navTreeItem, j) => {
+                                            const slug = `/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`
+                                            return <Link key={j} ref={el => { lessons.current[slug] = el }} href={slug} className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text hover:text-[var(--primary-color)_!important]"}`} onClick={() => {
+                                                localStorage.setItem(lessonKey, slug)
+                                            }}>
+                                                <span>{navTreeItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).replace(".mdx", "")}</span>
+                                                {
+                                                    path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) &&
+                                                    <span className='absolute left-[-0px] top-0 h-full w-[2px] fx-primary-purple-bg z-10 rounded-[50px] '></span>
+                                                }
+                                            </Link>
+                                        })
+                                    }
+                                </div>
                             </div>
-                        </React.Fragment>
-                    })
-                }
+                        })
+                    }
+                </div>
             </nav>
         </aside>
     </>
