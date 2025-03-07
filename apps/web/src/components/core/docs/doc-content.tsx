@@ -88,7 +88,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                             <h4 className='fx-label-color text-[16px] font-medium'>Edit this page on Github?</h4>
                             <p className='fx-sec-label-color text-[14px] font-medium pt-2'>If you find any mistakes or areas that need updating, feel free to edit and contribute improvements to the documentation!</p>
                         </div>
-                        <Link href={`https://github.com/gitmahin/fluctux/tree/main/src/content${path_name}.mdx`} target='_blank' className='edit-page-github-btn'>
+                        <Link href={`https://github.com/teamfluctux/docs/blob/main/${path_name.replace(/^\/docs\//, "")}.mdx`} target='_blank' className='edit-page-github-btn'>
                             <FxButton variant='secondary' radius='primary' size='md' className='fx-flex-center gap-2 edit-page-github-btn'>
 
                                 <span className='font-medium'>Edit</span>
