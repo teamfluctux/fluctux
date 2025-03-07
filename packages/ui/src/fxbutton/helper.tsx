@@ -3,6 +3,7 @@ import { SizeType } from "../type";
 export type ButtonVariant =
     | "primary"
     | "secondary"
+    | "silent"
 
 
 export interface ButtonStylingType {
@@ -30,6 +31,11 @@ export const buttonStyling: ButtonStylingType = {
         default: "border fx-border-color fx-secondary-bg  cursor-pointer ",
         hover: "fx-secondary-hover-bg",
         disabled: "fx-sec-label-color cursor-not-allowed fx-secondary-bg border fx-border-color"
+    },
+    silent: {
+        default: "cursor-pointer",
+        hover: "hover:fx-secondary-bg",
+        disabled: "fx-sec-label-color cursor-not-allowed opacity-60"
     }
 }
 

@@ -15,6 +15,7 @@ export * from './toploading'
 export * from './fxsuggestion-input'
 export * from './type'
 export * from './fxbutton/button'
+export * from './tooltip'
 export * from './lib/utils'
 
 

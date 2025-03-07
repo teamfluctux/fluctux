@@ -3,6 +3,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { ROUNDED_VARIANTS } from "../constant";
 import { buttonSizes, ButtonVariant, getButtonStyling } from "./helper";
+import "../styles/global.css"
 
 interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
@@ -31,7 +32,7 @@ export function FxButton({
   return (
     <button
       disabled={disabled || loading}
-      className={cn(buttonStyling, roundedVariant, className)}
+      className={cn(buttonStyling, roundedVariant, className, "test")}
       {...props}
     >
       {children}

@@ -1,5 +1,5 @@
 "use client"
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
@@ -7,10 +7,15 @@ import { setPagination } from '@/redux/pagination/docPaginateSlice'
 import { FLUCTUX_VERSION } from '@/constants/fluctux-version'
 import { lessonKey } from './constant'
 import { DocNavListType } from './type'
-import { FxButton, FxFavIcon, FxPopupRadio, ArrowLeftSolidIcon, RightArrowIcon, SolidLineIcon } from '@fluctux/ui'
+import {
+    FxButton, FxFavIcon, FxPopupRadio, ArrowLeftSolidIcon, RightArrowIcon, SolidLineIcon, Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger
+} from '@fluctux/ui'
 import { DOC_TYPE } from '@/constants/docs'
 import { useToggleOpen } from '@/app/hooks'
-
+import { FoldVertical, LocateFixed, UnfoldVertical } from 'lucide-react'
 
 interface DocSidebarPropsType {
     docType: string,
@@ -21,7 +26,7 @@ interface DocSidebarPropsType {
 
 export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     const path_name = usePathname()
-    const { handleOpenArray, isOpenFromArray } = useToggleOpen({})
+    const { handleOpenArray, isOpenFromArray, setOpenArray } = useToggleOpen({})
     const { isOpen: isDocAsideOpen, setOpen: setDocAsideOpen, toggle: docAsideToggleOpen } = useToggleOpen({
         id: "doc-aside"
     })
@@ -29,6 +34,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     const dispatch = useDispatch()
     const chapterKey = "chapter";
     const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
+    const [focus, setFocus] = useState(false)
 
     const handleDocTypeChange = useCallback((value: string) => {
         localStorage.removeItem(lessonKey);
@@ -95,7 +101,35 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 lessons.current[lesson]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 500);
         }
-    }, [])
+    }, [focus])
+
+    const goToReading = () => {
+        setFocus(!focus)
+    }
+
+    const handleExpandChapters = () => {
+        data.docNavList.map((navItem, i: number) => {
+            if (navItem?.type === "dir") {
+                setOpenArray((prevStates) => (
+                    {
+                        ...prevStates,
+                        [`${i}`]: true
+                    }
+                ))
+            }
+        })
+    }
+
+    const handleCollapseChapters = () => {
+        data.docNavList.map((navItem, i: number) => {
+            if (navItem?.type === "dir") {
+                setOpenArray(prevState => ({
+                    ...prevState,
+                    [`${i}`]: false
+                }));
+            }
+        })
+    }
 
     return <>
         <aside className={`w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}>
@@ -134,8 +168,53 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     closeMenuOnSelect={true}
                     showDescInButton={true}
                 />
-                <div className='flex flex-col gap-2 w-full'>
 
+                <div className='w-full p-1 mb-3 fx-border-color rounded-[5px] backdrop-blur-md z-20 sticky top-[70px] fx-flex-cl gap-2' >
+
+
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <FxButton variant='silent' className='p-1' radius='tiny' onClick={handleExpandChapters}>
+                                    <UnfoldVertical color='var(--label-text-color)' size={18} />
+                                </FxButton>
+                            </TooltipTrigger>
+                            <TooltipContent align='start'>
+                                <p>Expand</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <FxButton variant='silent' className='p-1' radius='tiny' onClick={handleCollapseChapters}>
+                                    <FoldVertical color='var(--label-text-color)' size={18} />
+                                </FxButton>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>Collapse</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <FxButton variant='silent' className='p-1' radius='tiny' onClick={() => goToReading()}>
+                                    <LocateFixed color='var(--label-text-color)' size={18} />
+                                </FxButton>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>Focus</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+
+
+                </div>
+
+                <div className='flex flex-col gap-2 w-full'>
 
                     {
                         data.docNavList.map((navItem, i) => {
