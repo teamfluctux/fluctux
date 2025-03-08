@@ -3,8 +3,7 @@ import React from 'react'
 import { DocNavListType } from '@/components/core/docs';
 import DocContent from '@/components/core/docs/doc-content';
 import { gql } from '@apollo/client';
-import algolia from '@/services/algolia.service';
-import { notFound } from 'next/navigation';
+import { algolia, IndexDocNavListsType } from '@/services/algolia';
 
 const GET_DOC_NAV_LIST = gql`
   query GetDocNavList($docType: String) {
@@ -61,7 +60,7 @@ export async function generateStaticParams() {
       if (process.env.NEXT_PUBLIC_BRANCH === "main") {
         // algolia indexing objects algorithm
         try {
-          const arrayOfData = params.flat().map((item) => ({
+          const arrayOfData: IndexDocNavListsType[] = params.flat().map((item) => ({
 
             label: item.slug.at(-1)?.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase()).toString() || "",
             slug: `${item.docType}/${item.slug.join("/").toString()}` || "",

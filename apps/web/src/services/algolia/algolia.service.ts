@@ -1,11 +1,6 @@
 import { writeAlgolia } from "@/helpers/algolia/write.helper";
-import { DOC_INDEX_NAME } from "./constant";
-
-interface IndexDocNavListsType extends Record<string, string> {
-  label: string;
-  slug: string;
-  type: string;
-}
+import { DOC_INDEX_NAME } from "../constant";
+import { IndexDocNavListsType } from "./type";
 
 class Algolia {
   async indexDocNavLists(data: IndexDocNavListsType[]) {
@@ -34,5 +29,4 @@ class Algolia {
   }
 }
 
-const algolia = new Algolia();
-export default algolia;
+export const algolia = new Algolia();
