@@ -81,12 +81,21 @@
   
   /* buttons */
   --button-primary-disabled: #14183a;
+
+  /* others */
+
+  /* border color */
+  --secondary-border-color: #e2e2e2;
+
+
 }
 
 .dark {
   --background: #000000;
   --secondary-bg: #0a0a0a;
   --third-bg: #141414;
+
+  --secondary-border-color: #252525;
 
   /* border */
   --primary-border-color: #2a2a2a;

@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
-import "./styles/global.css"
 
 import { cn } from "@/lib/utils"
 

@@ -154,7 +154,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     onValueChange={handleDocTypeChange}
                     align='start'
                     classNames={{
-                        button: 'fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-10 font-medium',
+                        button: 'fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-20 font-medium',
                         activeLabel: 'hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]',
                         label: 'w-full hover:fx-third-bg p-2',
                         layout: 'w-[230px] p-[0px_!important] overflow-hidden',
