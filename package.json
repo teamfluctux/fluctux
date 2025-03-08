@@ -20,6 +20,7 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@algolia/client-common": "^5.20.4",
     "@apollo/client": "3.12.8",
     "@arcjet/next": "1.0.0-alpha.34",
     "@blocknote/core": "0.22.0",
