@@ -17,7 +17,7 @@ export * from './type'
 export * from './fxbutton/button'
 export * from './tooltip'
 export * from './lib/utils'
-
+export * from './styles/globals';
 
 export * from './icons/activity-icon'
 export * from './icons/add-icon'
