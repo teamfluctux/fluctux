@@ -275,7 +275,7 @@ importers:
         specifier: ^5
         version: 5.8.2
 
-  apps/web:
+  apps/main:
     dependencies:
       '@fluctux/ui':
         specifier: workspace:*
@@ -322,6 +322,55 @@ importers:
         version: 3.4.17(ts-node@10.9.2(@types/node@22.13.9)(typescript@5.8.2))
       typescript:
         specifier: 5.8.2
+        version: 5.8.2
+
+  apps/web:
+    dependencies:
+      '@fluctux/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      next:
+        specifier: ^15.2.1
+        version: 15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+    devDependencies:
+      '@fluctux/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@fluctux/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@types/node':
+        specifier: ^20
+        version: 20.17.23
+      '@types/react':
+        specifier: ^19
+        version: 19.0.10
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.0.4(@types/react@19.0.10)
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.20(postcss@8.5.3)
+      eslint:
+        specifier: ^9
+        version: 9.21.0(jiti@2.4.2)
+      postcss:
+        specifier: ^8.5.3
+        version: 8.5.3
+      tailwind-config:
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
+      tailwindcss:
+        specifier: ^3.4.17
+        version: 3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.8.2))
+      typescript:
+        specifier: ^5
         version: 5.8.2
 
   packages/eslint-config:
