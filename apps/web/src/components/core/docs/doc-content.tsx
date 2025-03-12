@@ -30,8 +30,8 @@ export default function DocContent({ data }: DocContentPropsType) {
         setDocOnPageOpen(false)
     }, [path_name])
 
-    return <section className='fx-flex-ct gap-5 relative w-full h-full'>
-        <div className='mt-[64px] pt-10 w-full'>
+    return <section className='fx-flex-ct gap-5 relative w-full h-full '>
+        <div className='mt-[64px] pt-10 w-full overflow-hidden'>
             <div className='w-fit mb-8'>
                 <span className='fx-label-color font-medium'>
                     {path_name && path_name.split("/").slice(-3).map((segment, index, arr) =>
@@ -43,7 +43,7 @@ export default function DocContent({ data }: DocContentPropsType) {
             </div>
 
             <article dangerouslySetInnerHTML={{ __html: content }} className="prose prose-gray dark:prose-invert w-full "></article>
-            <div className='border-t mt-10 fx-border-color'>
+            <div className='border-t mt-10 fx-border-color mb-32'>
                 <div className='w-full fx-flex-center gap-2 mt-5 doc-pagination'>
 
                     {

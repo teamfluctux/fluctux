@@ -32,13 +32,11 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     })
     const router = useRouter()
     const dispatch = useDispatch()
-    const chapterKey = "chapter";
     const lessons = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
     const [focus, setFocus] = useState(false)
 
     const handleDocTypeChange = useCallback((value: string) => {
         localStorage.removeItem(lessonKey);
-        localStorage.removeItem(chapterKey);
         router.push(`/docs/${value}/01-get-started/01-introduction`)
     }, [router])
 
@@ -50,62 +48,6 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 : [item]
         );
     }, [])
-
-
-    useEffect(() => {
-
-        setDocAsideOpen(false)
-
-        const flatDocList = flattenDocs(data.docNavList);
-
-        // Find current document index
-        const currentIndex = flatDocList.findIndex((navItem) =>
-            path_name.endsWith(navItem.path.replace("src/content/docs/", "").replace(".mdx", ""))
-        );
-        if (currentIndex !== -1) {
-            dispatch(setPagination({ currentIndex, flatDocList }));
-        } else {
-            // If the document is not found, reset pagination state
-            dispatch(setPagination({ currentIndex: -1, flatDocList: [] }));
-        }
-
-    }, [dispatch, flattenDocs, data.docNavList, path_name, handleDocTypeChange]);
-
-
-
-    const handleOpenChapter = (index: number) => {
-        handleOpenArray(`${index}`)
-        const storedChapters = JSON.parse(localStorage.getItem(chapterKey) || '[]');
-        if (!isOpenFromArray(`${index}`)) {
-            // Add the index if it's not present
-            const updatedChapters = [...storedChapters, index];
-            localStorage.setItem(chapterKey, JSON.stringify(updatedChapters));
-        } else {
-            // Remove the index if it's already present
-            const updatedChapters = storedChapters.filter((ch: number) => ch !== index);
-            localStorage.setItem(chapterKey, JSON.stringify(updatedChapters));
-        }
-    }
-
-    useEffect(() => {
-        const storedChapters = JSON.parse(localStorage.getItem(chapterKey) || '[]');
-        if (!Array.isArray(storedChapters)) return
-        storedChapters.map((item: number) => handleOpenArray(`${item}`))
-    }, [])
-
-
-    useEffect(() => {
-        const lesson = localStorage.getItem(lessonKey);
-        if (lesson && lessons.current[lesson]) {
-            setTimeout(() => {
-                lessons.current[lesson]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 500);
-        }
-    }, [focus])
-
-    const goToReading = () => {
-        setFocus(!focus)
-    }
 
     const handleExpandChapters = () => {
         data.docNavList.map((navItem, i: number) => {
@@ -129,6 +71,51 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 }));
             }
         })
+    }
+
+
+    useEffect(() => {
+
+        setDocAsideOpen(false)
+
+        const flatDocList = flattenDocs(data.docNavList);
+
+        // Find current document index
+        const currentIndex = flatDocList.findIndex((navItem) =>
+            path_name.endsWith(navItem.path.replace("src/content/docs/", "").replace(".mdx", ""))
+        );
+        if (currentIndex !== -1) {
+            dispatch(setPagination({ currentIndex, flatDocList }));
+        } else {
+            // If the document is not found, reset pagination state
+            dispatch(setPagination({ currentIndex: -1, flatDocList: [] }));
+        }
+
+    }, [dispatch, flattenDocs, data.docNavList, path_name, handleDocTypeChange]);
+
+
+    useEffect(() => {
+        const chapter_index = path_name.split("/")[3].replace(/\D/g, "").replace(/^0+/, "");
+        if (chapter_index) {
+            setOpenArray( state => ({
+                ...state,
+                [parseInt(chapter_index )- 1]: true
+            }) )
+        }
+    }, [path_name])
+    
+    
+    useEffect(() => {
+        const lesson = localStorage.getItem(lessonKey);
+        if (lesson && lessons.current[lesson]) {
+            setTimeout(() => {
+                lessons.current[lesson]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 500);
+        }
+    }, [focus])
+
+    const goToReading = () => {
+        setFocus(!focus)
     }
 
     return <>
@@ -169,8 +156,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     showDescInButton={true}
                 />
 
-                <div className='w-full p-1 mb-3 fx-border-color rounded-[5px] backdrop-blur-md z-20 sticky top-[70px] fx-flex-cl gap-2' >
-
+                <div className='w-full p-1 mb-3 fx-border-color rounded-[5px] backdrop-blur-md z-[15] sticky top-[60px] fx-flex-cl gap-2' >
 
                     <TooltipProvider>
                         <Tooltip>
@@ -221,7 +207,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                             return <div key={i}>
                                 {
                                     navItem.type === "dir" ?
-                                        <button className={`font-medium relative z-[2] hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important]"}`} onClick={() => handleOpenChapter(i)}>
+                                        <button className={`font-medium relative z-[2] hover:fx-secondary-bg w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important]"}`} onClick={() => handleOpenArray(`${i}`)}>
                                             <span>{navItem.name.replace(/^\d+-/, '').replace(/-/g, ' ').replace(/^\w/, c => c.toUpperCase())}</span>
                                             <RightArrowIcon className={`${isOpenFromArray(`${i}`) ? "rotate-90" : "rotate-0"} transition-all duration-150`} />
                                         </button>
