@@ -24,7 +24,7 @@ export const useShowSuggestions = ({
             setActiveIndex((prev) => (prev > 0 ? prev - 1 : filteredSuggestions.length - 1));
         } else if (e.key === "Enter" && activeIndex >= 0) {
             // Select active item on Enter
-            handleSelectSuggestion(filteredSuggestions[activeIndex]);
+            handleSelectSuggestion(filteredSuggestions[activeIndex]!)
         } else if (e.key === "Escape") {
             // Close dropdown on Escape
             setShowSuggestions(false);

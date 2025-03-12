@@ -1,8 +1,11 @@
-import { THEME_ICONS } from '@/constants/global';
 import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react'
 
-export const useThemeSwitcher = () => {
+export type ThemeModeIconsType = {
+    svg: React.ReactElement
+}
+
+export const useThemeSwitcher = ( THEME_ICONS: ThemeModeIconsType[] ) => {
     const { theme, setTheme, resolvedTheme } = useTheme();
     const [activeIndex, setActiveIndex] = useState(0);
     useEffect(() => {
@@ -35,7 +38,7 @@ export const useThemeSwitcher = () => {
                 {
                     THEME_ICONS.map((item, i) => {
                         return <li onClick={() => handleChangeAppearanceMode(i)} key={i} className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px] fx-flex-center fx-secondary-hover-bg ${activeIndex === i && "fx-third-bg"}`}>
-                            {item.svg}
+                            {item?.svg}
                         </li>
                     })
                 }

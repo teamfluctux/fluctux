@@ -14,7 +14,7 @@ import {
     TooltipTrigger
 } from '@fluctux/ui'
 import { DOC_TYPE } from '@/constants/docs'
-import { useToggleOpen } from '@/app/hooks'
+import { useToggleOpen } from '@fluctux/hooks'
 import { FoldVertical, LocateFixed, UnfoldVertical } from 'lucide-react'
 
 interface DocSidebarPropsType {

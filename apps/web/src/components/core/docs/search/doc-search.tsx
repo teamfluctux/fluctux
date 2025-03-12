@@ -10,7 +10,7 @@ import NoResults from './no-results';
 import { usePathname } from 'next/navigation';
 import { InfiniteHits } from './infinite-hit';
 import { FxButton, FxCommandBox, CommandKeyIcon, SearchIcon } from '@fluctux/ui';
-import { useToggleOpen } from '@/app/hooks';
+import { useToggleOpen } from '@fluctux/hooks';
 
 
 export default function DocSearchComponent() {

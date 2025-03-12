@@ -4,7 +4,7 @@ import DocSearchComponent from './search/doc-search'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { FxButton, FxSeparator,  CancelIcon, GithubCircleIcon, MenuTwoBarIcon } from '@fluctux/ui'
-import { useToggleOpen } from '@/app/hooks'
+import { useToggleOpen } from '@fluctux/hooks'
 import Image from 'next/image'
 
 export default function DocHeader() {

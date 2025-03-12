@@ -277,6 +277,9 @@ importers:
 
   apps/main:
     dependencies:
+      '@fluctux/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
       '@fluctux/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -326,6 +329,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@fluctux/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
       '@fluctux/ui':
         specifier: workspace:*
         version: link:../../packages/ui

@@ -1,6 +1,7 @@
+import { ThemeModeIconsType } from "@fluctux/hooks";
 import { ComputerIcon, MoonIcon, SunIcon } from "@fluctux/ui";
 
-export const THEME_ICONS = [
+export const THEME_ICONS: ThemeModeIconsType[] = [
   {
     svg: <SunIcon />
   },

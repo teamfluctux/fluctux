@@ -3,11 +3,12 @@ import React from 'react'
 import Link from 'next/link';
 import { FOOTER_MAIN_ITEMS, LEGAL_ITEMS, PLAN_ITEMS, RESOURCES_ITEMS, WORK_MANAGEMENT_ITEMS } from '@/constants/footer';
 import { DiscordIcon, GithubCircleIcon, XLogoIcon, FxFavIcon } from '@fluctux/ui';
-import { useThemeSwitcher } from '@/app/hooks';
+import { useThemeSwitcher } from '@fluctux/hooks';
+import { THEME_ICONS } from '@/constants/global';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { ThemeSwitcher } = useThemeSwitcher()
+  const { ThemeSwitcher } = useThemeSwitcher(THEME_ICONS)
   return (
     <footer className='w-full mt-auto'>
       <div className='mt-24 border-t fx-border-color w-full fx-flex-center pl-3 pr-3 pt-10 pb-10 fx-primary-bg'>

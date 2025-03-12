@@ -5,10 +5,9 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { usePathname } from 'next/navigation'
-import { useProcessMDX } from '@/app/hooks/useProcessMDX'
 import { lessonKey } from './constant'
 import { AngryIcon,  FxButton, ArrowLeftSolidIcon, GithubCircleIcon, RightArrowIcon, SadIcon, SmileIcon, SolidLineIcon, StarFaceIcon, TextAlignLeftIcon } from '@fluctux/ui'
-import { useGetAnchors, useToggleOpen } from '@/app/hooks'
+import { useGetAnchors, useToggleOpen, useProcessMDX  } from '@fluctux/hooks'
 
 interface DocContentPropsType {
     data: string

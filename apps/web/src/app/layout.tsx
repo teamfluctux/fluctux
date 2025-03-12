@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@fluctux/ui/globals"
 import "./styles/docs.style.css";
 import "./styles/alert.style.css";
-import GlobalWrappers from "@/components/providers/global-wrappers";
+import GlobalClientProvider from "@/components/providers/global-client-providers";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -34,14 +34,14 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProvider attribute="class">
           <Suspense>
-            <GlobalWrappers>
+            <GlobalClientProvider>
               <SkeletonTheme
                 baseColor="var(--skeleton-base-color)"
                 highlightColor="var(--skeleton-highlightColor)"
               >
                 {children}
               </SkeletonTheme>
-            </GlobalWrappers>
+            </GlobalClientProvider>
           </Suspense>
         </ThemeProvider>
       </body>
