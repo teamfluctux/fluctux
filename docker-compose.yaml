@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE_URI: ${NEXT_PUBLIC_API_BASE_URI}
+        MONGO_URI: ${MONGO_URI}
+        GITHUB_ID: ${GITHUB_ID}
+        GITHUB_SECRET: ${GITHUB_SECRET}
+        GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+        GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+        DISCORD_CLIENT_ID: ${DISCORD_CLIENT_ID}
+        DISCORD_CLIENT_SECRET: ${DISCORD_CLIENT_SECRET}
+        AUTHJS_SECRET: ${AUTHJS_SECRET}
+        RESEND_API_KEY: ${RESEND_API_KEY}
+        ARCJET_KEY: ${ARCJET_KEY}
+        NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID}
+        NEXT_PUBLIC_ALGOLIA_SEARCH_API: ${NEXT_PUBLIC_ALGOLIA_SEARCH_API}
+        ALGOLIA_WRITE_API: ${ALGOLIA_WRITE_API}
+        GH_TOKEN: ${GH_TOKEN}
+        GH_RAW_CONTENT_API: ${GH_RAW_CONTENT_API}
+        GH_AUTH_DOC_API: ${GH_AUTH_DOC_API}
+        JWT_SECRET_GRAPHQL: ${JWT_SECRET_GRAPHQL}
+        NEXT_PUBLIC_BRANCH: local
+    
+    container_name: fluctux-web
+    env_file:
+      - ./apps/web/.env
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - mongoDb
+
+  mongoDb:
+    image: mongo
+    container_name: fluctux-database
+    ports:
+      - "27017:27017"
+    volumes:
+      - fluctux_database:/data/db
+    restart: always
+
+volumes:
+  fluctux_database:
