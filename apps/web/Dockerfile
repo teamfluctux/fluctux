@@ -9,8 +9,18 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 # Set working directory
 WORKDIR /app
-RUN npm install -g turbo
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Copy relevant files to resolve workspaces
+COPY pnpm-workspace.yaml package.json turbo.json ./
+COPY apps/web ./apps/web
+
+# Install dependencies and Turbo globally
+RUN pnpm install -g turbo
+
 COPY . .
+
 RUN turbo prune --scope=web --docker
 
 # Add lockfile and package.json's of isolated subworkspace
