@@ -44,18 +44,6 @@ ARG NEXT_PUBLIC_API_BASE_URI
 # database uri
 ARG MONGO_URI
 
-# github credentials
-ARG GITHUB_ID
-ARG GITHUB_SECRET
-
-# google credentials
-ARG GOOGLE_CLIENT_ID
-ARG GOOGLE_CLIENT_SECRET
-
-# discord credentials
-ARG DISCORD_CLIENT_ID
-ARG DISCORD_CLIENT_SECRET
-
 # nextAuth secret
 ARG AUTHJS_SECRET
 
@@ -70,10 +58,6 @@ ARG NEXT_PUBLIC_ALGOLIA_APPLICATION_ID
 ARG NEXT_PUBLIC_ALGOLIA_SEARCH_API
 ARG ALGOLIA_WRITE_API
 
-RUN echo "ALGOLIA_APPLICATION_ID=$NEXT_PUBLIC_ALGOLIA_APPLICATION_ID"
-RUN echo "ALGOLIA_SEARCH_API=$NEXT_PUBLIC_ALGOLIA_SEARCH_API"
-RUN echo "ALGOLIA_WRITE_API=$ALGOLIA_WRITE_API"
-
 # Github Token
 ARG GH_TOKEN
 ARG GH_RAW_CONTENT_API
@@ -85,25 +69,24 @@ ARG JWT_SECRET_GRAPHQL
 # Branch
 ARG NEXT_PUBLIC_BRANCH
 
-ENV NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=$NEXT_PUBLIC_ALGOLIA_APPLICATION_ID
-ENV NEXT_PUBLIC_ALGOLIA_SEARCH_API=$NEXT_PUBLIC_ALGOLIA_SEARCH_API
-ENV ALGOLIA_WRITE_API=$ALGOLIA_WRITE_API
-
 RUN pnpm dlx turbo run build --filter=web
 
 FROM base AS runner
 WORKDIR /app
 
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
 # Don't run production as root
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
-USER nextjs
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
 COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
 COPY --from=installer --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
+USER nextjs
 
 EXPOSE 3000
 ENV PORT=3000
