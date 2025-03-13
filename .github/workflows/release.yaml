@@ -58,7 +58,7 @@ jobs:
             --build-arg GH_TOKEN=${GH_TOKEN} \
             --build-arg GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
             --build-arg GH_AUTH_DOC_API=${GH_AUTH_DOC_API} \
-            --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH} .
+            --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH} ./apps/web
 
       - name: Push Image
         run: |
