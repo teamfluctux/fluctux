@@ -2,24 +2,20 @@
 import TextareaAutosize from "react-textarea-autosize";
 import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
-import { ForwardIcon } from "@/components/ui/icons/forward-icon";
-import { LockIcon } from "@/components/ui/icons/lock-icon";
-import { UnlockIcon } from "@/components/ui/icons/unlock-icon";
-import { NavigationIcon } from "@/components/ui/icons/navigation-icon";
 import AddToFavourite from "@/components/core/workspace/AddToFavourite";
-import { FxButton } from "@/components/ui";
+import { FxButton, UnlockIcon , NavigationIcon ,LockIcon, ForwardIcon} from "@fluctux/ui";
 
 export default function ManagePage() {
   const [locked, setLocked] = useState(false);
   const [isPublished, setIsPublished] = useState(false);
 
-  const Editor = useMemo(
-    () =>
-      dynamic(() => import("@/components/core/text-editor/BlockNote"), {
-        ssr: false,
-      }),
-    []
-  );
+  // const Editor = useMemo(
+  //   () =>
+  //     dynamic(() => import("@/components/core/text-editor/BlockNote"), {
+  //       ssr: false,
+  //     }),
+  //   []
+  // );
 
   return (
     <section className="pb-14 w-full">
@@ -70,7 +66,7 @@ export default function ManagePage() {
             className="resize-none w-full ml-[53px] appearance-none overflow-hidden outline-none bg-transparent text-[30px] text-white font-medium"
           />
           <div className="mt-3">
-            <Editor onChange={() => console.log('Editor content changed')} />
+            {/* <Editor onChange={() => console.log('Editor content changed')} /> */}
           </div>
         </div>
       </div>

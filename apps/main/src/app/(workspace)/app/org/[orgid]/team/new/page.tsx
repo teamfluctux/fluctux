@@ -1,5 +1,5 @@
 "use client"
-import { useImagePreview, useShowSuggestions } from '@/app/hooks';
+import { useImagePreview, useShowSuggestions } from '@fluctux/hooks';
 import { ArrowLeftSolidIcon, DeleteIcon, ImageIcon,  FxButton, FxInput, FxPopupRadio, FxSuggestionInput } from '@fluctux/ui';
 import { TEAM_CATEGORIES, TEAM_VISIBILITY_OPTIONS } from '@/constants/workspace';
 import Image from 'next/image';

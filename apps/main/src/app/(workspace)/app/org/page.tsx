@@ -1,5 +1,4 @@
-import { FxButton, FxOverlayImages } from '@/components/ui'
-import { HouseTwoIcon, LockIcon, ThreeDotIcon } from '@/components/ui/icons'
+import { FxButton, FxOverlayImages, HouseTwoIcon, LockIcon, ThreeDotIcon } from '@fluctux/ui'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'

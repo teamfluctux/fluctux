@@ -5,7 +5,7 @@ import { Menu } from "@mantine/core";
 import { alertTypes } from "./constant";
  
 // The Alert block.
-export const Alert = createReactBlockSpec(
+export const Alert: any = createReactBlockSpec(
   {
     type: "alert",
     propSchema: {

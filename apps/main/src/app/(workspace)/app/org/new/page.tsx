@@ -7,7 +7,7 @@ import { z } from 'zod'
 import { createOrganization } from '@/actions/org.server'
 import { ORG_VISIBILITY_OPTIONS } from '@/constants/workspace'
 import { toast } from "sonner"
-import { useReactForm } from '@/app/hooks'
+import { useReactForm } from '@fluctux/hooks'
 
 export default function CreateNewOrgPage() {
 

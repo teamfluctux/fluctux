@@ -13,7 +13,7 @@ interface NextContext {
   params: Promise<Record<string, string>>;
 }
 
-const { handleRequest } = createYoga<NextContext>({
+const { handleRequest }: { handleRequest: any} = createYoga<NextContext>({
   schema,
 
   plugins: [

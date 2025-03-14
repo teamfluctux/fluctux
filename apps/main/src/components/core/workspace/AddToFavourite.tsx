@@ -1,5 +1,5 @@
 "use client"
-import { StarIcon } from '@/components/ui/icons/star-icon';
+import { StarIcon } from '@fluctux/ui';
 import React, { useState } from 'react'
 
 export default function AddToFavourite() {

@@ -4,29 +4,27 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
+  PageIcon,
+  ThumbsUpIcon,
+  StarIcon,
+  ThreeDotIcon,
+  LockIcon,
+  FileImportIcon,
+  DeleteIcon,
+  GlobeIcon,
+  TwoPeopleIcon,
+  CircleUserIcon,
+  FxButton, FxInput, cn
+} from "@fluctux/ui";
 import { Check } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { PageIcon } from "@/components/ui/icons/page-icon";
-import { ThumbsUpIcon } from "@/components/ui/icons/thumbs-up-icon";
-import { StarIcon } from "@/components/ui/icons/star-icon";
-import { ThreeDotIcon } from "@/components/ui/icons/three-dot-icon";
-import { LockIcon } from "@/components/ui/icons/lock-icon";
-import { FileImportIcon } from "@/components/ui/icons/file-import-icon";
-import { DeleteIcon } from "@/components/ui/icons/delete-icon";
-import { GlobeIcon } from "@/components/ui/icons/globe-icon";
-import { TwoPeopleIcon } from "@/components/ui/icons/two-people-icon";
-import { CircleUserIcon } from "@/components/ui/icons/circle-user-icon";
 import SelectAssignees from "./SelectAssignees";
-import { FxButton, FxInput } from "@/components/ui";
+
 
 interface Assign {
   value: string;
@@ -197,7 +195,7 @@ export default function PageList({ data }: { data: Project[] }) {
           </div>
           <p className="text-[30px] text-white">132</p>
         </div>
-        
+
         <div className="p-3 min-w-[200px] shborder fx-hover-primary-bg cursor-pointer w-full max-w-[200px] h-full flex flex-col justify-between items-start">
           <div className="flex justify-start items-center gap-1">
             <p className="fx-label-color font-medium">Assignees</p>
@@ -228,14 +226,14 @@ export default function PageList({ data }: { data: Project[] }) {
             >
               {/* experimental */}
               <Popover
-     
+
               >
-               
-                  <PopoverTrigger asChild>
-                    <FxButton variant="secondary" size="sm">
-                      select assignees
-                    </FxButton>
-               
+
+                <PopoverTrigger asChild>
+                  <FxButton variant="secondary" size="sm">
+                    select assignees
+                  </FxButton>
+
                 </PopoverTrigger>
                 <PopoverContent className="p-0 org-combo fx-border-color fx-secondary-bg w-[220px]">
                   <div>

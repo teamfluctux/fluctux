@@ -2,7 +2,7 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 import SECONDARY_LOGO from "../../../public/fluctux-white.png";
-import { SizeType } from "@/components/ui/type";
+import { SizeType } from "@fluctux/ui";
 import PRIMARY_DARK_LOGO from '../../../public/fluctux-logo-transparent.png'
 import PRIMARY_LIGHT_LOGO from '../../../public/fluctux-logo-transparent-light.png'
 
