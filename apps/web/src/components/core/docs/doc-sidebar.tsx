@@ -95,7 +95,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
 
     useEffect(() => {
-        const chapter_index = path_name.split("/")[3].replace(/\D/g, "").replace(/^0+/, "");
+        const chapter_index = path_name.split("/")[3]?.replace(/\D/g, "").replace(/^0+/, "");
         if (chapter_index) {
             setOpenArray( state => ({
                 ...state,

@@ -23,7 +23,7 @@ export function InfiniteHits({ hitComponent: HitComponent, ...props }: { hitComp
     }
   }, [isLastPage, showMore]);
 
-  const groupedHits = Object.groupBy(hits, hit => hit.slug.split("/")[1])
+  const groupedHits = Object.groupBy(hits, hit => hit.slug.split("/")[1])!
 
   return (
     <div className="ais-InfiniteHits">

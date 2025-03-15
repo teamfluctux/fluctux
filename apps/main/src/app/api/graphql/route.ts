@@ -8,12 +8,20 @@ import { maxAliasesPlugin } from "@escape.tech/graphql-armor-max-aliases";
 import { maxDirectivesPlugin } from "@escape.tech/graphql-armor-max-directives";
 import { characterLimitPlugin } from "@escape.tech/graphql-armor-character-limit";
 import { maxTokensPlugin } from "@escape.tech/graphql-armor-max-tokens";
+import { MaybePromise } from "nexus/dist/core";
 
 interface NextContext {
   params: Promise<Record<string, string>>;
 }
 
-const { handleRequest }: { handleRequest: any} = createYoga<NextContext>({
+type ServerAdapterInitialContext = any;
+
+type HandleRequest = (
+  request: Request,
+  ctx: NextContext & Partial<ServerAdapterInitialContext>
+) => MaybePromise<Response>;
+
+const { handleRequest } = createYoga<NextContext>({
   schema,
 
   plugins: [
@@ -65,8 +73,11 @@ const { handleRequest }: { handleRequest: any} = createYoga<NextContext>({
   },
 });
 
+// Explicitly annotate handleRequest to avoid type inference issues
+const typedHandleRequest: HandleRequest = handleRequest;
+
 export {
-  handleRequest as GET,
-  handleRequest as POST,
-  handleRequest as OPTIONS,
+  typedHandleRequest as GET,
+  typedHandleRequest as POST,
+  typedHandleRequest as OPTIONS,
 };
