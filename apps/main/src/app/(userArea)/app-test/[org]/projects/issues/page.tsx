@@ -1,11 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function IssuesPage() {
-  return (
-    <div>
-      issues
-    </div>
-  )
+  return <div>issues</div>;
 }
-
-

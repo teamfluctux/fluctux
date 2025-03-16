@@ -1,2 +1,2 @@
-export * from "./algolia.service"
-export * from "./type"
+export * from "./algolia.service";
+export * from "./type";

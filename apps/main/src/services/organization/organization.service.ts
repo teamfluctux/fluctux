@@ -11,8 +11,6 @@ import { User as UserSessionType } from "next-auth";
 import { HTTPSuccessCodes } from "@/constants/success";
 import { internalServerError, unauthorizedError } from "@/helpers/errorHandler";
 
-
-
 export class Organization {
   protected session: UserSessionType | null = null;
 

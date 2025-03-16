@@ -20,11 +20,12 @@ import {
   GlobeIcon,
   TwoPeopleIcon,
   CircleUserIcon,
-  FxButton, FxInput, cn
+  FxButton,
+  FxInput,
+  cn,
 } from "@fluctux/ui";
 import { Check } from "lucide-react";
 import SelectAssignees from "./SelectAssignees";
-
 
 interface Assign {
   value: string;
@@ -225,15 +226,11 @@ export default function PageList({ data }: { data: Project[] }) {
               className="app-page-list-box shborder w-full h-[70px] flex justify-between items-center"
             >
               {/* experimental */}
-              <Popover
-
-              >
-
+              <Popover>
                 <PopoverTrigger asChild>
                   <FxButton variant="secondary" size="sm">
                     select assignees
                   </FxButton>
-
                 </PopoverTrigger>
                 <PopoverContent className="p-0 org-combo fx-border-color fx-secondary-bg w-[220px]">
                   <div>

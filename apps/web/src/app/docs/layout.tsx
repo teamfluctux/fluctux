@@ -1,9 +1,9 @@
-import { Footer } from '@/components/core'
-import DocHeader from '@/components/core/docs/doc-header'
-import React from 'react'
+import { Footer } from "@/components/core";
+import DocHeader from "@/components/core/docs/doc-header";
+import React from "react";
 
 interface DocParentLayoutPropsType {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function Layout({ children }: DocParentLayoutPropsType) {
@@ -13,7 +13,5 @@ export default function Layout({ children }: DocParentLayoutPropsType) {
       {children}
       <Footer />
     </>
-  )
+  );
 }
-
-

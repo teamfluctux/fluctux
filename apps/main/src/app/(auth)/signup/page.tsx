@@ -1,21 +1,29 @@
-"use client"
+"use client";
 
 import { useReactForm } from "@fluctux/hooks";
-import { DiscordIcon, GithubIcon, GoogleIcon,  FxButton, FxInput, FxSeparator } from "@fluctux/ui";
+import {
+  DiscordIcon,
+  GithubIcon,
+  GoogleIcon,
+  FxButton,
+  FxInput,
+  FxSeparator,
+} from "@fluctux/ui";
 import { userZodSchema } from "@/zod/user/user.zod";
 import Link from "next/link";
 import React from "react";
 import { z } from "zod";
 
 export default function SignUpPage() {
-
-  const { register, handleSubmit, errors } = useReactForm({ ZOD_SCHEMA: userZodSchema })
+  const { register, handleSubmit, errors } = useReactForm({
+    ZOD_SCHEMA: userZodSchema,
+  });
 
   const onSubmit = (data: z.infer<typeof userZodSchema>) => {
     console.log(data.fname);
     console.log(data.lname);
     console.log(data.email);
-  }
+  };
 
   return (
     <div className="w-full mt-5 ">
@@ -47,7 +55,6 @@ export default function SignUpPage() {
 
             {errors.lname && <p>{errors.lname.message}</p>}
           </div>
-
         </div>
         <p className="text-[var(--label-text-color)] mt-3">Email</p>
         <FxInput

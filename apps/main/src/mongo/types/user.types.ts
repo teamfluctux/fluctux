@@ -46,18 +46,16 @@ export enum UserRoleType {
   USER = "USER",
 }
 
-
 export enum SocialMediaType {
-    FACEBOOK = "FACEBOOK",
-    TWITTER = "TWITTER",
-    LINKEDIN = "LINKEDIN",
-    GITHUB = "GITHUB",
-    INSTAGRAM = "INSTAGRAM",
-} 
-
+  FACEBOOK = "FACEBOOK",
+  TWITTER = "TWITTER",
+  LINKEDIN = "LINKEDIN",
+  GITHUB = "GITHUB",
+  INSTAGRAM = "INSTAGRAM",
+}
 
 export enum RequestStatusType {
-    PENDING = "PENDING",
-    ACCEPTED = "ACCEPTED",
-    REJECTED = "REJECTED",
+  PENDING = "PENDING",
+  ACCEPTED = "ACCEPTED",
+  REJECTED = "REJECTED",
 }

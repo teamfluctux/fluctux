@@ -1,1 +1,1 @@
-export * from './organization/organization.service'
+export * from "./organization/organization.service";

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { SizeType } from "./type";
 import React from "react";
 
@@ -9,7 +9,7 @@ interface FxSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
   orientation: keyof typeof sepOrnAttributes;
   color?: string;
   gap?: keyof typeof GapAttributes;
-  size?: string
+  size?: string;
 }
 
 const sepOrnAttributes: { [key in OrientationType]: string } = {
@@ -49,7 +49,7 @@ export function FxSeparator({
         className={`${selectedOrientation} absolute`}
         style={{
           borderColor: color || "var(--primary-border-color)",
-          width: size && `${size}`
+          width: size && `${size}`,
         }}
       />
       <div className="absolute bg-transparent z-[1]">{children}</div>

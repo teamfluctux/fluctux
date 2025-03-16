@@ -8,14 +8,17 @@ import User from "@/mongo/user/user.model";
 import { OrgMemberRoleType } from "@/mongo/types/org.types";
 import { RequestStatusType } from "@/mongo/types/user.types";
 import { serverSession } from "@/helpers";
-import { CreateOrganizationDataType, Organization } from "@/services/organization";
+import {
+  CreateOrganizationDataType,
+  Organization,
+} from "@/services/organization";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 
 export async function createOrganization(data: CreateOrganizationDataType) {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions);
   const organization = new Organization(session && session.user);
-  return organization.createNewOrg(data)
+  return organization.createNewOrg(data);
 }
 
 export async function sendOrgMemberRequest(data: {
@@ -35,7 +38,7 @@ export async function sendOrgMemberRequest(data: {
 
     await newMemberRequest.save();
     return { message: REQUEST_SENT };
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return { error: ERROR.INTERNAL_SERVER_ERROR };
   }
@@ -77,7 +80,7 @@ export async function acceptOrgMemberRequest(org_id: string) {
 
     await newOrgMember.save();
     return { message: MEMBER_ADDED };
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return { error: ERROR.INTERNAL_SERVER_ERROR };
   }

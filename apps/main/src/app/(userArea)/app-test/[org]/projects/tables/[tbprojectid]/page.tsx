@@ -1,11 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function TablesPage() {
-    return (
-        <div>
-            Tables
-        </div>
-    )
+  return <div>Tables</div>;
 }
-
-

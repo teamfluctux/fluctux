@@ -1,5 +1,5 @@
-import PageList from '@/components/core/workspace/PageList'
-import React from 'react'
+import PageList from "@/components/core/workspace/PageList";
+import React from "react";
 const initialData = [
   {
     title: "Project Alpha",
@@ -24,6 +24,5 @@ const initialData = [
 ];
 
 export default function PageProject() {
-  return <PageList data={initialData} />
+  return <PageList data={initialData} />;
 }
-

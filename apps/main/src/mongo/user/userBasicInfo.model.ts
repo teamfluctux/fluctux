@@ -1,6 +1,13 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { UserType } from "./user.model";
-import { DateOfBirthType, GenderType, NumberType, SocialLinkType, SocialMediaType, VisibilityType } from "@/mongo/types";
+import {
+  DateOfBirthType,
+  GenderType,
+  NumberType,
+  SocialLinkType,
+  SocialMediaType,
+  VisibilityType,
+} from "@/mongo/types";
 
 export interface UserBasicInfoType extends Document {
   user: UserType;
@@ -56,7 +63,7 @@ const dateOfBirthSchema: Schema<DateOfBirthType> = new Schema({
     default: VisibilityType.PUBLIC,
     required: true,
   },
-})
+});
 
 const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
   user: {
@@ -88,7 +95,7 @@ const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
     required: true,
   },
   date_of_birth: {
-    type: dateOfBirthSchema
+    type: dateOfBirthSchema,
   },
 });
 
@@ -96,4 +103,3 @@ const UserBasicInfo =
   (mongoose.models.UserBasicInfo as mongoose.Model<UserBasicInfoType>) ||
   mongoose.model<UserBasicInfoType>("UserBasicInfo", UserBasicInfoSchema);
 export default UserBasicInfo;
- 

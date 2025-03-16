@@ -1,11 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function ChangeLogs() {
-  return (
-    <div>
-      ChangeLogs
-    </div>
-  )
+  return <div>ChangeLogs</div>;
 }
-
-

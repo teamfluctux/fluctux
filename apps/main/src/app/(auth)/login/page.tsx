@@ -1,6 +1,13 @@
 "use client";
 
-import { DiscordIcon, GithubIcon, GoogleIcon, FxButton, FxInput, FxSeparator  } from "@fluctux/ui";
+import {
+  DiscordIcon,
+  GithubIcon,
+  GoogleIcon,
+  FxButton,
+  FxInput,
+  FxSeparator,
+} from "@fluctux/ui";
 import Link from "next/link";
 import React from "react";
 
@@ -26,8 +33,9 @@ export default function LoginPage() {
           radius="primary"
         />
         <div className="mt-1">
-          <Link href={""} className="fx-link-color hover:underline text-[14px]">Forget Password?</Link>
-
+          <Link href={""} className="fx-link-color hover:underline text-[14px]">
+            Forget Password?
+          </Link>
         </div>
 
         <FxButton
@@ -41,9 +49,7 @@ export default function LoginPage() {
       </>
 
       <FxSeparator orientation="horizontal" gap="xl">
-        <p className="fx-label-color fx-primary-bg pl-2 pr-2">
-          Or
-        </p>
+        <p className="fx-label-color fx-primary-bg pl-2 pr-2">Or</p>
       </FxSeparator>
 
       <>

@@ -15,11 +15,7 @@ export const searchAlgolia: LiteClient = algoliasearch(
       key: "algolia-search-cache",
     }),
     responsesCache: createFallbackableCache({
-      caches: [
-       
-        createMemoryCache(),
-        createNullCache(), 
-      ],
+      caches: [createMemoryCache(), createNullCache()],
     }),
     hostsCache: createMemoryCache(),
   }

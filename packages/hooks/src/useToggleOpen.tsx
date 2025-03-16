@@ -14,7 +14,7 @@ export const useToggleOpen = ({ id, shortcutKey }: ToggleOpenProps) => {
       ...prev,
       [openArrayId]: !prev[openArrayId],
     }));
-  }
+  };
 
   useEffect(() => {
     if (!shortcutKey || !id) return;
@@ -41,26 +41,26 @@ export const useToggleOpen = ({ id, shortcutKey }: ToggleOpenProps) => {
   }, [shortcutKey, id]);
 
   return {
-    isOpen: id && !!openStates[id] || false, // Get the state for the specific ID & convert to strict boolean
+    isOpen: (id && !!openStates[id]) || false, // Get the state for the specific ID & convert to strict boolean
     toggle: () => {
-      if (!id) return
+      if (!id) return;
       setOpenStates((prev) => ({
         ...prev,
         [id]: !prev[id],
-      }))
+      }));
     }, // toggle function
     setOpen: (state: boolean) => {
-      if (!id) return
+      if (!id) return;
       setOpenStates((prev) => ({
         ...prev,
         [id]: state,
-      }))
+      }));
     }, // state setter
     isOpenFromArray: (openArrayId: string) => {
-      return openArray[openArrayId]
+      return openArray[openArrayId];
     },
     openArray,
     setOpenArray,
-    handleOpenArray
+    handleOpenArray,
   };
-}
+};

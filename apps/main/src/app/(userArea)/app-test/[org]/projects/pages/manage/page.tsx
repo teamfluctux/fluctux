@@ -3,7 +3,13 @@ import TextareaAutosize from "react-textarea-autosize";
 import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import AddToFavourite from "@/components/core/workspace/AddToFavourite";
-import { FxButton, UnlockIcon , NavigationIcon ,LockIcon, ForwardIcon} from "@fluctux/ui";
+import {
+  FxButton,
+  UnlockIcon,
+  NavigationIcon,
+  LockIcon,
+  ForwardIcon,
+} from "@fluctux/ui";
 
 export default function ManagePage() {
   const [locked, setLocked] = useState(false);
@@ -20,7 +26,7 @@ export default function ManagePage() {
   return (
     <section className="pb-14 w-full">
       <div className="w-full shborder p-3 flex justify-between items-center sticky top-0 backdrop-blur-xl z-[300]">
-        <AddToFavourite/>
+        <AddToFavourite />
         <div className="fx-flex-cr gap-2">
           <FxButton
             variant="secondary"

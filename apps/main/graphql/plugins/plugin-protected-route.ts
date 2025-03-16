@@ -6,17 +6,16 @@ export default function useProtectedRoute(): Plugin {
       const route = request.url;
       console.log("path is", route);
 
-
-    //   if (!request.headers.get("authorization")) {
-    //     endResponse(
-    //       new fetchAPI.Response(null, {
-    //         status: 401,
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //       })
-    //     );
-    //   }
+      //   if (!request.headers.get("authorization")) {
+      //     endResponse(
+      //       new fetchAPI.Response(null, {
+      //         status: 401,
+      //         headers: {
+      //           "Content-Type": "application/json",
+      //         },
+      //       })
+      //     );
+      //   }
     },
   };
 }

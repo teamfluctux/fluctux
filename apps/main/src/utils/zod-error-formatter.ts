@@ -7,6 +7,6 @@ export const getFormattedZodErrors = <T>(error: ZodFormattedError<T>) => {
       Array.isArray(err) ? err.join(", ") : err?._errors.join(", ")
     )
     .join(", ");
-  
+
   return errors;
 };

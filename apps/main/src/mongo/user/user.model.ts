@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
 import UserBasicInfo from "./userBasicInfo.model";
 import UserAddress from "./userAddress.model";
 import { AuthProviderType, UserRoleType, UserStatusType } from "@/mongo/types";

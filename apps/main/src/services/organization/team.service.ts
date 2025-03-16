@@ -7,8 +7,8 @@ export class OrgTeam extends Organization {
   }
 
   async createNewTeam() {
-    if(!this.session){
-      return
+    if (!this.session) {
+      return;
     }
     // TODO: create new team
   }

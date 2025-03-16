@@ -1,11 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function WorkSpaceHomePage(){
-  return (
-    <div>
-      workspace home
-    </div>
-  )
+export default function WorkSpaceHomePage() {
+  return <div>workspace home</div>;
 }
-
-

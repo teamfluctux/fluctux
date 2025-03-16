@@ -12,18 +12,18 @@ type RouteContext = {
 const arcjetHandler = new ArcjetHandler({
   SLIDING_WINDOW: {
     enable: true,
-    mode: "LIVE"
+    mode: "LIVE",
   },
   DETECT_BOT: {
     enable: true,
     mode: "LIVE",
   },
-})
+});
 
 const ajProtectedPOST = async (req: Request, context: RouteContext) => {
   // Protect with Arcjet
-  const decision = await arcjetHandler.protect(req)
-  
+  const decision = await arcjetHandler.protect(req);
+
   console.log("Arcjet decision", decision);
 
   if (decision.ip.isVpn() || decision.ip.isProxy()) {

@@ -2,10 +2,10 @@ import React from "react";
 import { SvgSizeInSQR, SvgType } from "./type";
 
 export const UploadIcon: React.FC<SvgType> = ({
-      width = SvgSizeInSQR.PRIMARY,
-      height = SvgSizeInSQR.PRIMARY,
-      className,
-      ...props
+  width = SvgSizeInSQR.PRIMARY,
+  height = SvgSizeInSQR.PRIMARY,
+  className,
+  ...props
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

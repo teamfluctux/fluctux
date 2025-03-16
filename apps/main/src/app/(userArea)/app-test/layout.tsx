@@ -4,14 +4,11 @@ import React from "react";
 interface AppLayoutProps {
   children: React.ReactNode;
   params: Promise<{
-    org: string
-    
-  }>
-
+    org: string;
+  }>;
 }
 
 export default async function Layout({ children }: AppLayoutProps) {
-
   return (
     <section className="flex justify-end items-center">
       <main className="app-main pl-3 pr-3">

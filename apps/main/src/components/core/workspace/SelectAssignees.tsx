@@ -41,7 +41,7 @@ export default function SelectAssignees() {
           <>
             <label
               htmlFor={`assignees-${assign.value}`}
-              className={`fx-flex-center border fx-border-color rounded-[50px] ${checkedUser.some((user) => user.value === assign.value) ? 'bg-white' : ''}`}
+              className={`fx-flex-center border fx-border-color rounded-[50px] ${checkedUser.some((user) => user.value === assign.value) ? "bg-white" : ""}`}
               key={i}
             >
               <img

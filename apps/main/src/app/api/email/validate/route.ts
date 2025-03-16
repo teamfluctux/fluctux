@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 const arcjectHandler = new ArcjetHandler({
   VALIDATE_EMAIL: {
     enable: true,
-    mode: "LIVE"
+    mode: "LIVE",
   },
 });
 
@@ -19,9 +19,9 @@ export async function POST(request: NextRequest) {
 
   if (decision.isDenied()) {
     console.log(decision);
-    
+
     return NextResponse.json(
-      new ApiError(403, "Error in email", false, undefined , [decision.reason])
+      new ApiError(403, "Error in email", false, undefined, [decision.reason])
     );
   }
 

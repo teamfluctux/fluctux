@@ -1,5 +1,5 @@
-"use client"
-import React from "react"
+"use client";
+import React from "react";
 import {
   Select,
   SelectContent,
@@ -8,7 +8,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "./select"
+} from "./select";
 
 export default function FxSelect() {
   return (
@@ -27,7 +27,5 @@ export default function FxSelect() {
         </SelectGroup>
       </SelectContent>
     </Select>
-  )
+  );
 }
-
-

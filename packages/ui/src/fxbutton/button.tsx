@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { ROUNDED_VARIANTS } from "../constant";
@@ -10,8 +10,8 @@ interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   radius?: keyof typeof ROUNDED_VARIANTS;
   size?: keyof typeof buttonSizes;
-  disabled?: boolean,
-  loading?: boolean
+  disabled?: boolean;
+  loading?: boolean;
 }
 
 export function FxButton({
@@ -24,9 +24,8 @@ export function FxButton({
   loading = false,
   ...props
 }: FxButtonProps) {
-
-  const buttonStyling = getButtonStyling(variant, size, disabled || loading)
-  const roundedVariant = radius ? ROUNDED_VARIANTS[radius]: ""
+  const buttonStyling = getButtonStyling(variant, size, disabled || loading);
+  const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
 
   return (
     <button

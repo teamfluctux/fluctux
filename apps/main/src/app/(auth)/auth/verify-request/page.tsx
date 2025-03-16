@@ -1,11 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function VerifyPage() {
-  return (
-    <div>
-      verify page
-    </div>
-  )
+  return <div>verify page</div>;
 }
-
-

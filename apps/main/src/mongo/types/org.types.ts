@@ -8,19 +8,19 @@ export enum OrgVisibilityType {
   PUBLIC = "PUBLIC",
   PRIVATE = "PRIVATE",
   FRIENDS = "FRIENDS",
-  CUSTOM = "CUSTOM"
+  CUSTOM = "CUSTOM",
 }
 
 export enum OrgMemberRoleType {
-    MANAGER = "MANAGER",
-    TEAM = "TEAM",
-    FOLLOWER = "FOLLOWER",
+  MANAGER = "MANAGER",
+  TEAM = "TEAM",
+  FOLLOWER = "FOLLOWER",
 }
 
 export enum OrgMemberStatusType {
-    NORMAL = "NORMAL",
-    RESTRICTED = "RESTRICTED",
-    BLOCKED = "BLOCKED",
-    PENDING = "PENDING",
-    REJECTED = "REJECTED",
+  NORMAL = "NORMAL",
+  RESTRICTED = "RESTRICTED",
+  BLOCKED = "BLOCKED",
+  PENDING = "PENDING",
+  REJECTED = "REJECTED",
 }

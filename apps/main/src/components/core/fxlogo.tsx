@@ -1,26 +1,25 @@
-"use client"
+"use client";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 import SECONDARY_LOGO from "../../../public/fluctux-white.png";
 import { SizeType } from "@fluctux/ui";
-import PRIMARY_DARK_LOGO from '../../../public/fluctux-logo-transparent.png'
-import PRIMARY_LIGHT_LOGO from '../../../public/fluctux-logo-transparent-light.png'
+import PRIMARY_DARK_LOGO from "../../../public/fluctux-logo-transparent.png";
+import PRIMARY_LIGHT_LOGO from "../../../public/fluctux-logo-transparent-light.png";
 
-type LogoType = "default" | "primaryDark" | "primaryLight" | "secondary"
-
+type LogoType = "default" | "primaryDark" | "primaryLight" | "secondary";
 
 interface LogoPropsType extends React.ImgHTMLAttributes<HTMLImageElement> {
   size?: keyof typeof logoSize;
-  variant?: keyof typeof logoType
-  className?: string
+  variant?: keyof typeof logoType;
+  className?: string;
 }
 
 const logoType: { [key in LogoType]: StaticImageData } = {
   default: PRIMARY_DARK_LOGO,
   primaryDark: PRIMARY_DARK_LOGO,
   primaryLight: PRIMARY_LIGHT_LOGO,
-  secondary: SECONDARY_LOGO
-}
+  secondary: SECONDARY_LOGO,
+};
 
 const logoSize: { [key in SizeType]: string } = {
   sm: "w-[80px]",
@@ -30,14 +29,13 @@ const logoSize: { [key in SizeType]: string } = {
 };
 
 export function FxLogo({ size, variant, className }: LogoPropsType) {
-
   const imageSize = size ? logoSize[size] : "";
-  const logoVariant = variant ? logoType[variant] : logoType.secondary
+  const logoVariant = variant ? logoType[variant] : logoType.secondary;
 
   return (
     <>
-      {
-        variant && variant === "default" ? <>
+      {variant && variant === "default" ? (
+        <>
           <Image
             src={logoType.primaryLight}
             width={500}
@@ -54,7 +52,9 @@ export function FxLogo({ size, variant, className }: LogoPropsType) {
             alt="Fluctux"
             priority
           />
-        </> : <Image
+        </>
+      ) : (
+        <Image
           src={logoVariant}
           width={500}
           height={500}
@@ -62,8 +62,7 @@ export function FxLogo({ size, variant, className }: LogoPropsType) {
           alt="Fluctux"
           priority
         />
-      }
-
+      )}
     </>
   );
 }

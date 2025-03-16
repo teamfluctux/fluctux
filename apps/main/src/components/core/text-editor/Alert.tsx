@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import { defaultProps } from "@blocknote/core";
 import { createReactBlockSpec } from "@blocknote/react";
 import { Menu } from "@mantine/core";
 import { alertTypes } from "./constant";
- 
+
 // The Alert block.
 export const Alert: any = createReactBlockSpec(
   {
@@ -43,7 +43,7 @@ export const Alert: any = createReactBlockSpec(
               <Menu.Divider />
               {alertTypes.map((type) => {
                 const ItemIcon = type.icon;
- 
+
                 return (
                   <Menu.Item
                     key={type.value}
@@ -58,7 +58,8 @@ export const Alert: any = createReactBlockSpec(
                         type: "alert",
                         props: { type: type.value },
                       })
-                    }>
+                    }
+                  >
                     {type.title}
                   </Menu.Item>
                 );
@@ -72,4 +73,3 @@ export const Alert: any = createReactBlockSpec(
     },
   }
 );
- 

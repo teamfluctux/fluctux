@@ -3,6 +3,6 @@ export type AlgoliaIndexType = {
   slug: string;
 };
 
-export type IndexDocNavListsType = AlgoliaIndexType &  {
-  type: string
-}
+export type IndexDocNavListsType = AlgoliaIndexType & {
+  type: string;
+};

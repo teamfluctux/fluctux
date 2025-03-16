@@ -1,17 +1,17 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/options"
-import { getServerSession } from "next-auth"
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import { getServerSession } from "next-auth";
 
 export async function serverSession() {
-    "use server"; 
-    
-    const session = await getServerSession(authOptions)
+  "use server";
 
-    if(!session) return false
+  const session = await getServerSession(authOptions);
 
-    const user = {
-        _id: session.user._id,
-        email: session.user.email
-    }
+  if (!session) return false;
 
-    return user
+  const user = {
+    _id: session.user._id,
+    email: session.user.email,
+  };
+
+  return user;
 }
