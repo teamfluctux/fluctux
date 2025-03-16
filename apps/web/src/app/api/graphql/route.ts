@@ -13,9 +13,9 @@ interface NextContext {
   params: Promise<Record<string, string>>;
 }
 
-const { handleRequest } = createYoga<NextContext>({
+// Create the yoga instance without explicit typing for handleRequest
+const yoga = createYoga<NextContext>({
   schema,
-
   plugins: [
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useDisableIntrospection({
@@ -65,8 +65,11 @@ const { handleRequest } = createYoga<NextContext>({
   },
 });
 
-export {
-  handleRequest as GET,
-  handleRequest as POST,
-  handleRequest as OPTIONS,
-};
+// Create adapter functions with the correct return type for Next.js route handlers
+async function handler(request: Request, ctx: NextContext): Promise<Response> {
+  return yoga.handleRequest(request, ctx) as Promise<Response>;
+}
+
+export const GET = handler;
+export const POST = handler;
+export const OPTIONS = handler;

@@ -226,7 +226,7 @@ importers:
         specifier: ^3.5.3
         version: 3.5.3
       tailwindcss:
-        specifier: 3.4.17
+        specifier: ^3.4.17
         version: 3.4.17(ts-node@10.9.2(@types/node@22.13.9)(typescript@5.8.2))
       tsup:
         specifier: ^8.4.0

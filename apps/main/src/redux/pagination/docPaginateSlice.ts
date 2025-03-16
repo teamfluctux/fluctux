@@ -1,10 +1,10 @@
-import { DocNavListType } from "@/components/core/docs";
+
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import type { PayloadAction, Slice } from "@reduxjs/toolkit";
 
 export interface docPaginateStateType {
-  next: DocNavListType | null;
-  prev: DocNavListType | null;
+  next: null;
+  prev: null;
 }
 
 const initialState: docPaginateStateType = {
@@ -12,7 +12,7 @@ const initialState: docPaginateStateType = {
   prev: null,
 };
 
-export const docPaginateSlice = createSlice({
+export const docPaginateSlice: Slice<docPaginateStateType> = createSlice({
   name: "docPaginate",
   initialState,
   reducers: {
@@ -20,7 +20,7 @@ export const docPaginateSlice = createSlice({
       state,
       action: PayloadAction<{
         currentIndex: number;
-        flatDocList: DocNavListType[];
+        flatDocList: [];
       }>
     ) => {
       const { currentIndex, flatDocList } = action.payload;
