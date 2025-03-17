@@ -55,8 +55,8 @@ jobs:
             --build-arg GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
             --build-arg GH_AUTH_DOC_API=${GH_AUTH_DOC_API} \
             --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH}\
-            --build-arg TURBO_TEAM=${TURBO_TEAM}\
-            --build-arg TURBO_TOKEN=${TURBO_TOKEN}\
+            --build-arg TURBO_TEAM=${TURBO_TEAM} \
+            --build-arg TURBO_TOKEN=${TURBO_TOKEN} \
             -f apps/web/Dockerfile .
 
       - name: Push Fluctux Web Image
@@ -74,8 +74,10 @@ jobs:
       - name: Build Fluctux Main Image
         run: |
           docker build -t ${DOCKER_USERNAME}/fluctux-main:latest \
-          --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH} \
-          -f apps/main/Dockerfile .
+            --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH} \
+            --build-arg TURBO_TEAM=${TURBO_TEAM} \
+            --build-arg TURBO_TOKEN=${TURBO_TOKEN} \
+            -f apps/main/Dockerfile .
       - name: Push Fluctux Main Image
         run: |
           docker login -u ${DOCKER_USERNAME} -p ${DOCKER_ACCESS_TOKEN}
@@ -91,9 +93,11 @@ jobs:
       - name: Build Fluctux Admin Image
         run: |
           docker build -t ${DOCKER_USERNAME}/fluctux-admin:latest \
-          --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH} \
-          -f apps/admin/Dockerfile .
-      - name: Push Fluctux Main Image
+            --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH} \
+            --build-arg TURBO_TEAM=${TURBO_TEAM} \
+            --build-arg TURBO_TOKEN=${TURBO_TOKEN} \
+            -f apps/admin/Dockerfile .
+      - name: Push Fluctux Admin Image
         run: |
           docker login -u ${DOCKER_USERNAME} -p ${DOCKER_ACCESS_TOKEN}
           docker push ${DOCKER_USERNAME}/fluctux-admin:latest
@@ -103,6 +107,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      - name: Build Fluctux Backend Image
+        run: |
 
   nginx:
     runs-on: ubuntu-latest
