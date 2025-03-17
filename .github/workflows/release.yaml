@@ -71,64 +71,12 @@ jobs:
 
   fluctux-main:
     runs-on: ubuntu-latest
-    needs: fluctux-web
-    env:
-      # Database
-      MONGO_URI: ${{ secrets.MONGO_URI }}
 
-      # Base URI
-      NEXT_PUBLIC_API_BASE_URI: ${{ vars.NEXT_PUBLIC_API_BASE_URI }}
+  fluctux-admin:
+    runs-on: ubuntu-latest
 
-      # NextAuth
-      AUTHJS_SECRET: ${{ secrets.AUTHJS_SECRET }}
+  fluctux-backend:
+    runs-on: ubuntu-latest
 
-      # Github
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      GH_RAW_CONTENT_API: ${{ vars.GH_RAW_CONTENT_API }}
-      GH_AUTH_DOC_API: ${{ vars.GH_AUTH_DOC_API }}
-
-      # Algolia
-      NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${{ vars.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
-      NEXT_PUBLIC_ALGOLIA_SEARCH_API: ${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_API }}
-      NEXT_ALGOLIA_WRITE_API: ${{ secrets.NEXT_ALGOLIA_WRITE_API }}
-
-      # Arcjet
-      ARCJET_KEY: ${{ secrets.ARCJET_KEY }}
-
-      # Docker
-      DOCKER_ACCESS_TOKEN: ${{secrets.DOCKER_ACCESS_TOKEN}}
-      DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-
-      # Branch
-      NEXT_PUBLIC_BRANCH: ${{ vars.NEXT_PUBLIC_BRANCH }}
-
-      # Turbo
-      TURBO_TEAM: ${{secrets.TURBO_TEAM}}
-      TURBO_TOKEN: ${{secrets.TURBO_TOKEN}}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Build Image
-        run: |
-          docker build --no-cache -t dockermahin/fluctux:latest \
-            --build-arg MONGO_URI=${MONGO_URI} \
-            --build-arg NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
-            --build-arg AUTHJS_SECRET=${AUTHJS_SECRET} \
-            --build-arg NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID} \
-            --build-arg NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API} \
-            --build-arg NEXT_ALGOLIA_WRITE_API=${NEXT_ALGOLIA_WRITE_API} \
-            --build-arg ARCJET_KEY=${ARCJET_KEY} \
-            --build-arg GH_TOKEN=${GH_TOKEN} \
-            --build-arg GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
-            --build-arg GH_AUTH_DOC_API=${GH_AUTH_DOC_API} \
-            --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH}\
-            --build-arg TURBO_TEAM=${TURBO_TEAM}\
-            --build-arg TURBO_TOKEN=${TURBO_TOKEN}\
-            -f apps/web/Dockerfile .
-
-      - name: Push Image
-        run: |
-          docker login -u ${DOCKER_USERNAME} -p ${DOCKER_ACCESS_TOKEN}
-          docker push ${DOCKER_USERNAME}/fluctux:latest
+  nginx:
+    runs-on: ubuntu-latest
