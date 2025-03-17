@@ -11,7 +11,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 RUN npm install -g turbo
 COPY . .
-RUN turbo prune main --docker
+RUN turbo prune admin --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
@@ -65,13 +65,13 @@ RUN adduser --system --uid 1001 nextjs
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/apps/main/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/apps/main/.next/static ./apps/main/.next/static
-COPY --from=builder --chown=nextjs:nodejs /app/apps/main/public ./apps/main/public
+COPY --from=builder --chown=nextjs:nodejs /app/apps/admin/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/apps/admin/.next/static ./apps/admin/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/apps/admin/public ./apps/admin/public
 USER nextjs
 
 EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD node apps/main/server.js
+CMD node apps/admin/server.js

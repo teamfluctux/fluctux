@@ -5,50 +5,45 @@ on:
     branches:
       - main
 
+env:
+  # Branch
+  NEXT_PUBLIC_BRANCH: ${{ vars.NEXT_PUBLIC_BRANCH }}
+  # Docker
+  DOCKER_ACCESS_TOKEN: ${{secrets.DOCKER_ACCESS_TOKEN}}
+  DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+  # Turbo
+  TURBO_TEAM: ${{secrets.TURBO_TEAM}}
+  TURBO_TOKEN: ${{secrets.TURBO_TOKEN}}
+  # Algolia
+  NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${{ vars.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
+  NEXT_PUBLIC_ALGOLIA_SEARCH_API: ${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_API }}
+  NEXT_ALGOLIA_WRITE_API: ${{ secrets.NEXT_ALGOLIA_WRITE_API }}
+  # Github
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  # Database
+  MONGO_URI: ${{ secrets.MONGO_URI }}
+
 jobs:
   fluctux-web:
     runs-on: ubuntu-latest
     env:
-      # Database
-      MONGO_URI: ${{ secrets.MONGO_URI }}
-
       # Base URI
       NEXT_PUBLIC_API_BASE_URI: ${{ vars.NEXT_PUBLIC_API_BASE_URI }}
-
       # NextAuth
       AUTHJS_SECRET: ${{ secrets.AUTHJS_SECRET }}
-
       # Github
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
       GH_RAW_CONTENT_API: ${{ vars.GH_RAW_CONTENT_API }}
       GH_AUTH_DOC_API: ${{ vars.GH_AUTH_DOC_API }}
-
-      # Algolia
-      NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${{ vars.NEXT_PUBLIC_ALGOLIA_APPLICATION_ID }}
-      NEXT_PUBLIC_ALGOLIA_SEARCH_API: ${{ vars.NEXT_PUBLIC_ALGOLIA_SEARCH_API }}
-      NEXT_ALGOLIA_WRITE_API: ${{ secrets.NEXT_ALGOLIA_WRITE_API }}
-
       # Arcjet
       ARCJET_KEY: ${{ secrets.ARCJET_KEY }}
 
-      # Docker
-      DOCKER_ACCESS_TOKEN: ${{secrets.DOCKER_ACCESS_TOKEN}}
-      DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-
-      # Branch
-      NEXT_PUBLIC_BRANCH: ${{ vars.NEXT_PUBLIC_BRANCH }}
-
-      # Turbo
-      TURBO_TEAM: ${{secrets.TURBO_TEAM}}
-      TURBO_TOKEN: ${{secrets.TURBO_TOKEN}}
-
     steps:
-      - name: Checkout
+      - name: Checkout fluctux repository
         uses: actions/checkout@v4
 
-      - name: Build Image
+      - name: Build Fluctux Web Image
         run: |
-          docker build --no-cache -t dockermahin/fluctux:latest \
+          docker build --no-cache -t ${DOCKER_USERNAME}/fluctux-web:latest \
             --build-arg MONGO_URI=${MONGO_URI} \
             --build-arg NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
             --build-arg AUTHJS_SECRET=${AUTHJS_SECRET} \
@@ -64,25 +59,47 @@ jobs:
             --build-arg TURBO_TOKEN=${TURBO_TOKEN}\
             -f apps/web/Dockerfile .
 
-      - name: Push Image
+      - name: Push Fluctux Web Image
         run: |
           docker login -u ${DOCKER_USERNAME} -p ${DOCKER_ACCESS_TOKEN}
-          docker push ${DOCKER_USERNAME}/fluctux:latest
+          docker push ${DOCKER_USERNAME}/fluctux-web:latest
 
   fluctux-main:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout fluctux repository
         uses: actions/checkout@v4
+
+      - name: Build Fluctux Main Image
+        run: |
+          docker build -t ${DOCKER_USERNAME}/fluctux-main:latest \
+          --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH} \
+          -f apps/main/Dockerfile .
+      - name: Push Fluctux Main Image
+        run: |
+          docker login -u ${DOCKER_USERNAME} -p ${DOCKER_ACCESS_TOKEN}
+          docker push ${DOCKER_USERNAME}/fluctux-main:latest
 
   fluctux-admin:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout fluctux repository
         uses: actions/checkout@v4
 
+      - name: Build Fluctux Admin Image
+        run: |
+          docker build -t ${DOCKER_USERNAME}/fluctux-admin:latest \
+          --build-arg NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH} \
+          -f apps/admin/Dockerfile .
+      - name: Push Fluctux Main Image
+        run: |
+          docker login -u ${DOCKER_USERNAME} -p ${DOCKER_ACCESS_TOKEN}
+          docker push ${DOCKER_USERNAME}/fluctux-admin:latest
+
   fluctux-backend:
-    runs-on: ubuntu-latest
+    runs-on: Checkout fluctux repository
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -90,5 +107,5 @@ jobs:
   nginx:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout fluctux repository
         uses: actions/checkout@v4
