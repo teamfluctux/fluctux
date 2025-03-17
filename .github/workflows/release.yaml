@@ -71,6 +71,7 @@ jobs:
 
   fluctux-main:
     runs-on: ubuntu-latest
+    needs: fluctux-web
     env:
       # Database
       MONGO_URI: ${{ secrets.MONGO_URI }}
