@@ -43,7 +43,7 @@ jobs:
 
       - name: Build Fluctux Web Image
         run: |
-          docker build --no-cache -t ${DOCKER_USERNAME}/fluctux-web:latest \
+          docker build -t ${DOCKER_USERNAME}/fluctux-web:latest \
             --build-arg MONGO_URI=${MONGO_URI} \
             --build-arg NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
             --build-arg AUTHJS_SECRET=${AUTHJS_SECRET} \
