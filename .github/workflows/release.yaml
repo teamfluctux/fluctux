@@ -50,7 +50,7 @@ jobs:
             --build-arg AUTHJS_SECRET=${AUTHJS_SECRET} \
             --build-arg NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID} \
             --build-arg NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API} \
-            --build-arg NEXT_ALGOLIA_WRITE_API=${NEXT_ALGOLIA_WRITE_API} \
+            --build-arg ALGOLIA_WRITE_API=${ALGOLIA_WRITE_API} \
             --build-arg ARCJET_KEY=${ARCJET_KEY} \
             --build-arg GH_TOKEN=${GH_TOKEN} \
             --build-arg GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
