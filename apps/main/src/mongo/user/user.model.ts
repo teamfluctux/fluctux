@@ -90,13 +90,13 @@ user_schema.pre("save", async function (next) {
   next();
 });
 
-user_schema.post("save", async function (user: UserType, next) {
-  const userBasicInfo = await UserBasicInfo.findOne({ user: user._id });
-  const userAddress = await UserAddress.findOne({ user: user._id });
+user_schema.post("save", async function (_, next) {
+  const userBasicInfo = await UserBasicInfo.findOne({ user: this._id });
+  const userAddress = await UserAddress.findOne({ user: this._id });
 
   if (!userBasicInfo) {
     const newUserInfo = await new UserBasicInfo({
-      user: user._id,
+      user: this._id,
     });
 
     await newUserInfo.save({
@@ -106,7 +106,7 @@ user_schema.post("save", async function (user: UserType, next) {
 
   if (!userAddress) {
     const newUserAddress = await new UserAddress({
-      user: user._id,
+      user: this._id,
     });
 
     await newUserAddress.save({

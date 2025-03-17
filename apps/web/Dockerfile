@@ -10,8 +10,12 @@ RUN apk add --no-cache libc6-compat
 # Set working directory
 WORKDIR /app
 
-RUN corepack enable pnpm
-RUN pnpm add -g turbo
+RUN corepack enable \
+    && pnpm setup \
+    && export PNPM_HOME=$(pnpm config get global-bin-dir) \
+    && export PATH="$PNPM_HOME:$PATH" \
+    && pnpm add -g turbo
+    
 COPY . .
 RUN turbo prune --scope=web --docker
 
