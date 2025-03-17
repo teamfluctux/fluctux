@@ -9,15 +9,9 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 # Set working directory
 WORKDIR /app
-
-RUN corepack enable \
-    && pnpm setup \
-    && export PNPM_HOME=$(pnpm config get global-bin-dir) \
-    && export PATH="$PNPM_HOME:$PATH" \
-    && pnpm add -g turbo
-    
+RUN corepack enable
 COPY . .
-RUN turbo prune --scope=web --docker
+RUN pnpm dlx turbo prune --scope=web --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
@@ -29,7 +23,7 @@ WORKDIR /app
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
-RUN corepack enable pnpm
+RUN corepack enable
 RUN pnpm install --frozen-lockfile
 
 # Build the project
