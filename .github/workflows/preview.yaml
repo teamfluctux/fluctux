@@ -1,9 +1,6 @@
 name: PR - Preview Web Docker Image
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches-ignore:
       - main
