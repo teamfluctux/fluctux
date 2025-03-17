@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Home() {
-  return <div>home {process.env.NEXT_TEST}</div>;
+  return <div className="bg-primary_color">home {process.env.NEXT_TEST}</div>;
 }
