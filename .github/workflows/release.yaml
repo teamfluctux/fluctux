@@ -103,13 +103,10 @@ jobs:
           docker push ${DOCKER_USERNAME}/fluctux-admin:latest
 
   fluctux-backend:
-    runs-on: Checkout fluctux repository
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout fluctux repository
         uses: actions/checkout@v4
-      
-      - name: Build Fluctux Backend Image
-        run: |
 
   nginx:
     runs-on: ubuntu-latest
