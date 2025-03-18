@@ -1,7 +1,8 @@
 FROM node:18-alpine AS base
 
-# This Dockerfile is copy-pasted into our main docs at /docs/handbook/deploying-with-docker.
-# Make sure you update both files!
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 
 FROM base AS pruner
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
@@ -9,7 +10,7 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 # Set working directory
 WORKDIR /app
-RUN npm install -g turbo
+RUN pnpm install -g turbo
 COPY . .
 RUN turbo prune web --docker
 
@@ -24,7 +25,6 @@ COPY --from=pruner /app/out/json/ .
 COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=pruner /app/turbo.json ./turbo.json
 
-RUN corepack enable pnpm
 RUN pnpm install --frozen-lockfile
 
 FROM base AS builder
@@ -73,8 +73,7 @@ ARG GH_AUTH_DOC_API
 # Branch
 ARG NEXT_PUBLIC_BRANCH
 
-RUN corepack enable pnpm
-RUN pnpm run build
+RUN pnpm turbo run build
 
 FROM base AS runner
 WORKDIR /app
