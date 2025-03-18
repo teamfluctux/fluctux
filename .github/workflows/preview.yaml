@@ -1,4 +1,4 @@
-name: PR - Preview Web Docker Image
+name: PR - Preview Fluctux Images
 
 on:
   pull_request:

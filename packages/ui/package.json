@@ -4,7 +4,7 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-  "./globals": "./src/styles/globals.tsx"
+    "./globals": "./src/styles/globals.tsx"
   },
   "scripts": {
     "dev": "tsc --watch",
