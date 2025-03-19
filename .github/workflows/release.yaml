@@ -37,6 +37,7 @@ jobs:
       # Arcjet
       ARCJET_KEY: ${{ secrets.ARCJET_KEY }}
 
+      
     steps:
       - name: Checkout fluctux repository
         uses: actions/checkout@v4
