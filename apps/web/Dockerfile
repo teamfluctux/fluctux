@@ -1,22 +1,23 @@
 FROM node:18-alpine AS base
 
+# ******************************SETUP PNPM*********************************
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
+# ******************************PRUNE THE PROJECT*********************************
 FROM base AS pruner
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk update
+
 RUN apk add --no-cache libc6-compat
-# Set working directory
 WORKDIR /app
+
 RUN pnpm install -g turbo
 COPY . .
 RUN turbo prune web --docker
 
-# Add lockfile and package.json's of isolated subworkspace
+# ******************************INSTALLATION**************************************
 FROM base AS installer
-RUN apk update
+
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -27,40 +28,43 @@ COPY --from=pruner /app/turbo.json ./turbo.json
 
 RUN pnpm install --frozen-lockfile
 
+# ******************************BUILD THE APP*************************************
 FROM base AS builder
+
 WORKDIR /app
-# Build the project
+
 COPY --from=installer /app/ .
 COPY --from=pruner /app/out/full/ .
 
-# Uncomment and use build args to enable remote caching
+# enable remote caching
 ARG TURBO_TEAM
 ENV TURBO_TEAM=$TURBO_TEAM
 
 ARG TURBO_TOKEN
 ENV TURBO_TOKEN=$TURBO_TOKEN
 
+# telemetry disabled
 ENV TURBO_TELEMETRY_DISABLED=1
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
-# ARGUMENTS
-# app url
+# BUILD ARGUMENTS
+# Web-app Base url
 ARG NEXT_PUBLIC_API_BASE_URI
 
-# database uri
+# Database uri
 ARG MONGO_URI
 
-# nextAuth secret
+# NextAuth secret
 ARG AUTHJS_SECRET
 
-# resend api key for email
+# Resend api key for email
 ARG RESEND_API_KEY
 
-# arcjet validation
+# Arcjet validation
 ARG ARCJET_KEY
 
-# algolia apis
+# Algolia apis
 ARG NEXT_PUBLIC_ALGOLIA_APPLICATION_ID
 ARG NEXT_PUBLIC_ALGOLIA_SEARCH_API
 ARG NEXT_ALGOLIA_WRITE_API
@@ -75,6 +79,7 @@ ARG NEXT_PUBLIC_BRANCH
 
 RUN pnpm turbo run build
 
+# ******************************RUN THE APP***********************************
 FROM base AS runner
 WORKDIR /app
 
@@ -86,8 +91,6 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public

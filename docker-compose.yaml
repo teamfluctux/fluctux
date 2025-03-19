@@ -2,28 +2,26 @@ services:
   web:
     build:
       context: .
-      dockerfile: ./apps/web/Dockerfile
-      args:
-        DOCKER_BUILDKIT: 1
-        NEXT_PUBLIC_API_BASE_URI: ${NEXT_PUBLIC_API_BASE_URI}
-        MONGO_URI: ${MONGO_URI}
-        AUTHJS_SECRET: ${AUTHJS_SECRET}
-        ARCJET_KEY: ${ARCJET_KEY}
-        NEXT_PUBLIC_ALGOLIA_APPLICATION_ID: ${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID}
-        NEXT_PUBLIC_ALGOLIA_SEARCH_API: ${NEXT_PUBLIC_ALGOLIA_SEARCH_API}
-        NEXT_ALGOLIA_WRITE_API: ${NEXT_ALGOLIA_WRITE_API}
-        GH_TOKEN: ${GH_TOKEN}
-        GH_RAW_CONTENT_API: ${GH_RAW_CONTENT_API}
-        GH_AUTH_DOC_API: ${GH_AUTH_DOC_API}
-        NEXT_PUBLIC_BRANCH: local
+      dockerfile: ./apps/web/Dockerfile.dev
     container_name: fluctux-web
     env_file:
       - ./apps/web/.env
     ports:
-      - "3002:3000"
-    restart: always
-    depends_on:
-      - mongoDb
+      - "3002:3002"
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/web
+          target: /app/apps/web
+          
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: ./apps/web/package.json
+        - action: rebuild
+          path: ./apps/web/Dockerfile.dev
+        - action: rebuild
+          path: ./packages
 
   mongoDb:
     image: mongo
