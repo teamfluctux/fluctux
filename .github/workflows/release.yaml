@@ -28,6 +28,7 @@ env:
 
 jobs:
   fluctux-web:
+    name: "Build & Push Web Docker Image"
     runs-on: ubuntu-latest
     env:
       # Base URI
@@ -83,6 +84,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   fluctux-main:
+    name: "Build & Push Main Docker Image"
     runs-on: ubuntu-latest
 
     steps:
@@ -102,6 +104,7 @@ jobs:
           docker push ${DOCKER_USERNAME}/fluctux-main:latest
 
   fluctux-admin:
+    name: "Build & Push Admin Docker Image"
     runs-on: ubuntu-latest
 
     steps:
@@ -121,12 +124,14 @@ jobs:
           docker push ${DOCKER_USERNAME}/fluctux-admin:latest
 
   fluctux-backend:
+    name: "Build & Push Backend Docker Image"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout fluctux repository
         uses: actions/checkout@v4
 
   nginx:
+    name: "Build & Push Nginx Docker Image"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout fluctux repository
