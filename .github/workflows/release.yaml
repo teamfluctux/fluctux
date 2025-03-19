@@ -61,11 +61,9 @@ jobs:
         with:
           context: .
           file: ./apps/web/Dockerfile
+          platforms: ${{env.BUILDX_PLATFORMS}}
           push: true
           tags: ${{ env.DOCKER_USERNAME }}/fluctux-web:latest
-          platforms: ${{env.BUILDX_PLATFORMS}}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           build-args: |
             MONGO_URI=${MONGO_URI} \
             NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
@@ -80,6 +78,9 @@ jobs:
             NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH}\
             TURBO_TEAM=${TURBO_TEAM} \
             TURBO_TOKEN=${TURBO_TOKEN} \
+
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   fluctux-main:
     runs-on: ubuntu-latest
