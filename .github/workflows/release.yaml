@@ -66,19 +66,19 @@ jobs:
           push: true
           tags: ${{ env.DOCKER_USERNAME }}/fluctux-web:latest
           build-args: |
-            - MONGO_URI=${MONGO_URI}
-            - NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI}
-            - AUTHJS_SECRET=${AUTHJS_SECRET}
-            - NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID}
-            - NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API}
-            - NEXT_ALGOLIA_WRITE_API=${NEXT_ALGOLIA_WRITE_API}
-            - ARCJET_KEY=${ARCJET_KEY}
-            - GH_TOKEN=${GH_TOKEN}
-            - GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API}
-            - GH_AUTH_DOC_API=${GH_AUTH_DOC_API}
-            - NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH
-            - TURBO_TEAM=${TURBO_TEAM}
-            - TURBO_TOKEN=${TURBO_TOKEN}
+            MONGO_URI=${MONGO_URI} \
+            NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
+            AUTHJS_SECRET=${AUTHJS_SECRET} \
+            NEXT_PUBLIC_ALGOLIA_APPLICATION_ID=${NEXT_PUBLIC_ALGOLIA_APPLICATION_ID} \
+            NEXT_PUBLIC_ALGOLIA_SEARCH_API=${NEXT_PUBLIC_ALGOLIA_SEARCH_API} \
+            NEXT_ALGOLIA_WRITE_API=${NEXT_ALGOLIA_WRITE_API} \
+            ARCJET_KEY=${ARCJET_KEY} \
+            GH_TOKEN=${GH_TOKEN} \
+            GH_RAW_CONTENT_API=${GH_RAW_CONTENT_API} \
+            GH_AUTH_DOC_API=${GH_AUTH_DOC_API} \
+            NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH}\
+            TURBO_TEAM=${TURBO_TEAM} \
+            TURBO_TOKEN=${TURBO_TOKEN}
 
           cache-from: type=gha
           cache-to: type=gha,mode=max
