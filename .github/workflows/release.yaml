@@ -6,6 +6,7 @@ on:
       - main
       - test
 
+      
 env:
   # Branch
   NEXT_PUBLIC_BRANCH: ${{ vars.NEXT_PUBLIC_BRANCH }}
