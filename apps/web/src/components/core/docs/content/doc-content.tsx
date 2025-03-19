@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { usePathname } from "next/navigation";
-import { lessonKey } from "./constant";
+import { lessonKey } from "../constant";
 import {
   AngryIcon,
   FxButton,
@@ -20,7 +20,7 @@ import {
 } from "@fluctux/ui";
 import { useGetAnchors, useToggleOpen, useProcessMDX } from "@fluctux/hooks";
 
-interface DocContentPropsType {
+export interface DocContentPropsType {
   data: string;
 }
 export default function DocContent({ data }: DocContentPropsType) {

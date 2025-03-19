@@ -1,7 +1,7 @@
 import { apolloClient } from "@/lib/apollo-client";
 import React from "react";
 import { DocNavListType } from "@/components/core/docs";
-import DocContent from "@/components/core/docs/doc-content";
+import {DocOnDemandContent} from "@/components/core/docs/content";
 import { gql } from "@apollo/client";
 import { algolia, IndexDocNavListsType } from "@/services/algolia";
 
@@ -122,7 +122,7 @@ export default async function DocContentPage({
     );
 
     const textData = await response.text(); // Use .text() for plain text like README
-    return <DocContent data={textData} />;
+    return <DocOnDemandContent data={textData} />;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     throw new Error("Something went wrong");

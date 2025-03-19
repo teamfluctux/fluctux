@@ -18,7 +18,7 @@ export function FxCommandBox({
   return (
     <CommandDialog
       open={open}
-      className={`bg-transparent border-none p-[0px] ${className}`}
+      className={`bg-transparent border-none p-[0px] z-[70] ${className}`}
     >
       <div
         className={`border fx-border-color rounded-[10px] fx-secondary-bg h-full w-full relative overflow-hidden ${containerClasses}`}

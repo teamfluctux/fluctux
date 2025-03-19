@@ -28,7 +28,7 @@ export default function DocHeader() {
   }, [path_name]);
 
   return (
-    <header className="fixed w-full h-[64px] fx-secondary-bg border-b fx-border-color fx-flex-between-ic pl-3 pr-3 z-50 docs-header">
+    <header className="fixed w-full h-[64px] backdrop-blur-lg border-b fx-border-color fx-flex-between-ic pl-3 pr-3 z-[52] docs-header">
       <div className="fx-flex-cl gap-3 doc-header-logo">
         <Image
           src={"/fluctux-logos/fluctux-logo-default-dark.png"}

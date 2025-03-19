@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { setPagination } from "@/redux/pagination/docPaginateSlice";
 import { FLUCTUX_VERSION } from "@/constants/fluctux-version";
-import { lessonKey } from "./constant";
-import { DocNavListType } from "./type";
+import { lessonKey } from "../constant";
+import { DocNavListType } from "../type";
 import {
   FxButton,
   FxFavIcon,
@@ -23,7 +23,7 @@ import { DOC_TYPE } from "@/constants/docs";
 import { useToggleOpen } from "@fluctux/hooks";
 import { FoldVertical, LocateFixed, UnfoldVertical } from "lucide-react";
 
-interface DocSidebarPropsType {
+export interface DocSidebarPropsType {
   docType: string;
   data: {
     docNavList: DocNavListType[];
@@ -52,6 +52,20 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     },
     [router]
   );
+
+  const openChapterOnDemand = () => {
+    const chapter_index = path_name
+    .split("/")[3]
+    ?.replace(/\D/g, "")
+    .replace(/^0+/, "");
+
+    if (chapter_index) {
+      return setOpenArray((state) => ({
+        ...state,
+        [parseInt(chapter_index) - 1]: true,
+      }));
+    }
+  }
 
   // Flatten the docNavList into a single list (excluding directories)
   const flattenDocs = useCallback(
@@ -104,17 +118,9 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     }
   }, [dispatch, flattenDocs, data.docNavList, path_name, handleDocTypeChange]);
 
+
   useEffect(() => {
-    const chapter_index = path_name
-      .split("/")[3]
-      ?.replace(/\D/g, "")
-      .replace(/^0+/, "");
-    if (chapter_index) {
-      setOpenArray((state) => ({
-        ...state,
-        [parseInt(chapter_index) - 1]: true,
-      }));
-    }
+    openChapterOnDemand()
   }, [path_name]);
 
   useEffect(() => {
@@ -130,6 +136,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
   }, [focus]);
 
   const goToReading = () => {
+    openChapterOnDemand()
     setFocus(!focus);
   };
 
@@ -173,7 +180,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             align="start"
             classNames={{
               button:
-                "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-20 font-medium",
+                "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-[20] font-medium",
               activeLabel:
                 "hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]",
               label: "w-full hover:fx-third-bg p-2",
@@ -270,6 +277,9 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     <Link
                       key={i}
                       href={`/docs/${navItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`}
+                      onClick={() => {
+                        localStorage.setItem(lessonKey, path_name);
+                      }}
                     >
                       <button
                         className={`font-medium hover:fx-primary-purple-transparent-bg hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-primary-purple-transparent-bg text-[var(--primary-color)_!important]"}`}
@@ -285,42 +295,46 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     </Link>
                   )}
 
-                  <div
-                    className={`ml-2 flex relative flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
-                  >
+                  {
+                    navItem.type === "dir" &&
                     <div
-                      className={`absolute z-[5] w-full  bg-gradient-to-t from-[var(--background)] to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}
-                    ></div>
-                    {navItem.docNavTreeList?.map((navTreeItem, j) => {
-                      const slug = `/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`;
-                      return (
-                        <Link
-                          key={j}
-                          ref={(el) => {
-                            lessons.current[slug] = el;
-                          }}
-                          href={slug}
-                          className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text hover:text-[var(--primary-color)_!important]"}`}
-                          onClick={() => {
-                            localStorage.setItem(lessonKey, slug);
-                          }}
-                        >
-                          <span>
-                            {navTreeItem.name
-                              .replace(/^\d+-/, "")
-                              .replace(/-/g, " ")
-                              .replace(/^\w/, (c) => c.toUpperCase())
-                              .replace(".mdx", "")}
-                          </span>
-                          {path_name.endsWith(
-                            `${navTreeItem.name.replace(".mdx", "")}`
-                          ) && (
-                            <span className="absolute left-[-0px] top-0 h-full w-[2px] fx-primary-purple-bg z-10 rounded-[50px] "></span>
-                          )}
-                        </Link>
-                      );
-                    })}
-                  </div>
+                      className={`ml-2 flex relative flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
+                    >
+                      <div
+                        className={`absolute z-[5] w-full  bg-gradient-to-t from-[var(--background)] to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}
+                      ></div>
+                      {navItem.docNavTreeList?.map((navTreeItem, j) => {
+                        const slug = `/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`;
+                        return (
+                          <Link
+                            key={j}
+                            ref={(el) => {
+                              lessons.current[slug] = el;
+                            }}
+                            href={slug}
+                            className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text hover:text-[var(--primary-color)_!important]"}`}
+                            onClick={() => {
+                              localStorage.setItem(lessonKey, slug);
+                            }}
+                          >
+                            <span>
+                              {navTreeItem.name
+                                .replace(/^\d+-/, "")
+                                .replace(/-/g, " ")
+                                .replace(/^\w/, (c) => c.toUpperCase())
+                                .replace(".mdx", "")}
+                            </span>
+                            {path_name.endsWith(
+                              `${navTreeItem.name.replace(".mdx", "")}`
+                            ) && (
+                                <span className="absolute left-[-0px] top-0 h-full w-[1.5px] fx-primary-purple-bg z-10 rounded-tr-[50px] rounded-br-[50px] "></span>
+                              )}
+                          </Link>
+                        );
+                      })}
+                    </div>
+
+                  }
                 </div>
               );
             })}
