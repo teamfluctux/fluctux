@@ -15,21 +15,27 @@
 }
 
 @media screen and (max-width: 1080px) {
-  .doc-aside-toggle-btn{
+  .doc-aside-toggle-btn {
     display: flex;
   }
+
+
+
   .doc-aside-nav {
-    width: 260px ;
+    width: 260px;
     position: fixed !important;
     top: 0;
-  
     border-right: 1px solid var(--primary-border-color);
     z-index: 9;
     padding-left: 8px;
     padding-right: 10px;
   }
 
-  .doc-aside-nav-off{
+  .doc-aside-nav-loader {
+    display: none;
+  }
+
+  .doc-aside-nav-off {
     left: -244px;
   }
 
@@ -37,23 +43,22 @@
     height: calc(100% - 75px) !important;
   }
 
-  .doc-main-layout-wrapper{
+  .doc-main-layout-wrapper {
     padding-left: 20px;
     padding-right: 20px;
   }
 
-  .doc-search-button{
+  .doc-search-button {
     gap: 30px;
-
   }
 }
 
 @media screen and (max-width: 900px) {
-  .desktop-doc-search{
+  .desktop-doc-search {
     display: none;
   }
 
-  .doc-search-button{
+  .doc-search-button {
     padding: 0px;
     border-radius: 50%;
     width: 35px;
@@ -63,59 +68,52 @@
     align-items: center;
   }
 
-
-  .mobile-doc-search{
+  .mobile-doc-search {
     display: flex;
   }
 
-  .doc-search-button{
+  .doc-search-button {
     gap: 30px;
     background-color: transparent;
     border: none;
   }
 
-
-  .docs-header{
+  .docs-header {
     justify-content: right;
     padding-right: 80px;
   }
 
-  .doc-header-logo{
+  .doc-header-logo {
     width: 100%;
   }
 
-  .doc-header-menu-btn{
+  .doc-header-menu-btn {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .doc-header-menu{
+  .doc-header-menu {
     position: absolute;
     height: 100%;
     top: 0;
-    padding: 0px 15px ;
+    padding: 0px 15px;
     width: 220px;
     justify-content: center;
     background-color: var(--third-bg);
     border-left: 1px solid var(--primary-border-color);
   }
-
-  
-
 }
 
-
 @media screen and (max-width: 800px) {
-
-  .doc-aside-onpage-toggle-btn{
+  .doc-aside-onpage-toggle-btn {
     display: flex;
   }
 
-  .doc-aside-loading{
+  .doc-aside-loading {
     display: none;
   }
-  .doc-on-this-page-aside{
+  .doc-on-this-page-aside {
     width: 230px;
     position: fixed !important;
     right: -215px;
@@ -123,34 +121,34 @@
     padding-left: 20px;
     padding-right: 10px;
     border-left: 1px solid var(--primary-border-color);
-    transition: .15s ease-out;
+    transition: 0.15s ease-out;
   }
 
-  .doc-onthispage-aside-open{
+  .doc-onthispage-aside-open {
     right: 0;
   }
 
-  .doc-on-this-page-aside-container{
+  .doc-on-this-page-aside-container {
     height: calc(100% - 75px) !important;
   }
 }
 
 @media screen and (max-width: 580px) {
-  .doc-pagination{
+  .doc-pagination {
     flex-wrap: wrap;
   }
 
-  .doc-paginate-btn{
+  .doc-paginate-btn {
     height: 50px;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .edit-page-github{
+  .edit-page-github {
     flex-wrap: wrap;
   }
 
-  .edit-page-github-btn{
+  .edit-page-github-btn {
     width: 100%;
   }
 }
