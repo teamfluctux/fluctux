@@ -64,7 +64,7 @@ jobs:
           platforms: ${{env.BUILDX_PLATFORMS}}
           push: true
           tags: ${{ env.DOCKER_USERNAME }}/fluctux-web:latest
-          secrets: |
+          build-args: |
             MONGO_URI=${MONGO_URI} \
             NEXT_PUBLIC_API_BASE_URI=${NEXT_PUBLIC_API_BASE_URI} \
             AUTHJS_SECRET=${AUTHJS_SECRET} \
