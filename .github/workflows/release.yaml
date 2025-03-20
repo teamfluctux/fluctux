@@ -50,6 +50,7 @@ jobs:
               echo "SKIP_PUSH=true" >> $GITHUB_ENV
           else
               echo "SKIP_PUSH=true" >> $GITHUB_ENV
+          fi
 
   fluctux-web:
     name: "Build & Push Web Docker Image"
