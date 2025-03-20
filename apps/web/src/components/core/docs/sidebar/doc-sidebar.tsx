@@ -296,6 +296,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                   )}
 
                   {
+                    // if there are type=file don't show this else show
                     navItem.type === "dir" &&
                     <div
                       className={`ml-2 flex relative flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
@@ -313,7 +314,8 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                             }}
                             href={slug}
                             className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text hover:text-[var(--primary-color)_!important]"}`}
-                            onClick={() => {
+                            onClick={(e) => {
+                              path_name === slug && e.preventDefault();
                               localStorage.setItem(lessonKey, slug);
                             }}
                           >
