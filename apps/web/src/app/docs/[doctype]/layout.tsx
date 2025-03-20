@@ -2,8 +2,7 @@ import React from "react";
 import { gql } from "@apollo/client";
 import { apolloClient } from "@/lib/apollo-client";
 import { notFound } from "next/navigation";
-import { DocNavListType } from "@/components/core/docs";
-import { DocOnDemandSidebar } from "@/components/core/docs/sidebar";
+import { DocNavListType, DocOnDemandSidebar } from "@/components/core/docs";
 
 interface DocLayoutPropsType {
   children: React.ReactNode;

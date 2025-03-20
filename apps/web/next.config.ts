@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-
+  swcMinify: true,
+  
   // TODO: for docker image. otherwise comment this
   output: "standalone",
 
