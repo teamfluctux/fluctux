@@ -110,7 +110,6 @@ jobs:
           context: .
           file: ./apps/web/Dockerfile
           platforms: ${{ matrix.platform }}
-          push: ${{ env.SKIP_PUSH == 'false' }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ env.DOCKER_USERNAME }}/fluctux-web
           outputs: type=image,push-by-digest=true,name-canonical=true,push=true
