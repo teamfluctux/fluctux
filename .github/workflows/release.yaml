@@ -2,7 +2,11 @@ name: Build & Push - Docker Images
 
 on:
   workflow_dispatch: 
-
+  
+  push:
+    branches:
+      - dev
+      - preview
 
 env:
   # Branch
@@ -44,8 +48,6 @@ jobs:
           elif [[ "${{ env.TARGET_BRANCH }}" == "dev" ]]; then
               echo "IMAGE_TAG=dev" >> $GITHUB_OUTPUT
               echo "SKIP_PUSH=false" >> $GITHUB_OUTPUT
-          elif [[ "${{ env.TARGET_BRANCH }}" == "preview" ]]; then
-              echo "SKIP_PUSH=true" >> $GITHUB_OUTPUT
           else
               echo "SKIP_PUSH=true" >> $GITHUB_OUTPUT
           fi
