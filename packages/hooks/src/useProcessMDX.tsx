@@ -8,9 +8,13 @@ import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import remarkGfm from "remark-gfm";
+import matter from "gray-matter";
 
 export const useProcessMDX = (data: string) => {
   const [content, setContent] = useState("");
+
+  const {data: metaData, content: mdxContent} = matter(data)
+
   const processContent = useCallback(async () => {
     const processedData = await unified()
       .use(remarkParse)
@@ -28,7 +32,7 @@ export const useProcessMDX = (data: string) => {
           }),
         ],
       })
-      .process(data);
+      .process(mdxContent);
 
     const htmlContent = processedData.toString();
     setContent(htmlContent);
@@ -40,5 +44,6 @@ export const useProcessMDX = (data: string) => {
 
   return {
     content,
+    metaData
   };
 };

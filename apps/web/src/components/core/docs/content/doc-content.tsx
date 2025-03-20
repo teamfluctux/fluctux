@@ -19,12 +19,13 @@ import {
   TextAlignLeftIcon,
 } from "@fluctux/ui";
 import { useGetAnchors, useToggleOpen, useProcessMDX } from "@fluctux/hooks";
+import Head from "next/head";
 
 export interface DocContentPropsType {
   data: string;
 }
 export default function DocContent({ data }: DocContentPropsType) {
-  const { content } = useProcessMDX(data);
+  const { content, metaData } = useProcessMDX(data);
   const { anchors } = useGetAnchors(content);
   const path_name = usePathname();
   const { prev, next } = useSelector((state: RootState) => state.docPaginate);
@@ -37,6 +38,7 @@ export default function DocContent({ data }: DocContentPropsType) {
   });
 
   useEffect(() => {
+
     window.scrollTo({
       top: 0,
     });
@@ -44,7 +46,9 @@ export default function DocContent({ data }: DocContentPropsType) {
     setDocOnPageOpen(false);
   }, [path_name]);
 
-  return (
+  return <>
+    <title>{metaData.title || "Untitled"}</title>
+    <meta name="description" content={metaData.description || "No Description"} />
     <section className="fx-flex-ct gap-5 relative w-full h-full ">
       <div className="mt-[64px] pt-10 w-full overflow-hidden">
         <div className="w-fit mb-8">
@@ -223,5 +227,5 @@ export default function DocContent({ data }: DocContentPropsType) {
         </nav>
       </aside>
     </section>
-  );
+    </>
 }
