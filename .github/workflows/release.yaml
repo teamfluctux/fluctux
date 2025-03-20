@@ -1,13 +1,8 @@
 name: Build & Push - Docker Images
 
 on:
-  push:
-    branches:
-      - main
-      - preview
   workflow_dispatch: 
-    branches:
-      - dev
+
 
 env:
   # Branch
