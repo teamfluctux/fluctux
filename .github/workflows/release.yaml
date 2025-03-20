@@ -6,8 +6,6 @@ on:
       - main
       - dev
       - preview
-      
-  workflow_dispatch:
 
 env:
   # Branch
