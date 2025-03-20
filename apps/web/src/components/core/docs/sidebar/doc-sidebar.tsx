@@ -211,7 +211,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     <UnfoldVertical color="var(--label-text-color)" size={18} />
                   </FxButton>
                 </TooltipTrigger>
-                <TooltipContent align="start">
+                <TooltipContent align="start" side="bottom">
                   <p>Expand</p>
                 </TooltipContent>
               </Tooltip>
@@ -229,7 +229,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     <FoldVertical color="var(--label-text-color)" size={18} />
                   </FxButton>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent side="bottom">
                   <p>Collapse</p>
                 </TooltipContent>
               </Tooltip>
@@ -247,7 +247,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     <LocateFixed color="var(--label-text-color)" size={18} />
                   </FxButton>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent side="bottom">
                   <p>Focus</p>
                 </TooltipContent>
               </Tooltip>
