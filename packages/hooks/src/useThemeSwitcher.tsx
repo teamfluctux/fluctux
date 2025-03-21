@@ -38,7 +38,7 @@ export const useThemeSwitcher = (THEME_ICONS: ThemeModeIconsType[]) => {
             <li
               onClick={() => handleChangeAppearanceMode(i)}
               key={i}
-              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px] fx-flex-center fx-secondary-hover-bg ${activeIndex === i && "fx-primary-bg fx-border-color border"}`}
+              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px] fx-flex-center fx-secondary-hover-bg ${activeIndex === i && "fx-primary-bg fx-border-color border theme-color-mode-active"} `}
             >
               {item?.svg}
             </li>

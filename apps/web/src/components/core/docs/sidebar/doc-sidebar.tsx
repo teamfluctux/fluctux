@@ -163,7 +163,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             className="w-full fx-flex-cl gap-2 p-2 mb-3 "
             radius="primary"
           >
-            <div className="p-2 rounded-[5px] border fx-primary-purple-border-50">
+            <div className="p-2 rounded-[5px]">
               <FxFavIcon size="sm" variant="default" />
             </div>
             <div className="text-left">
@@ -181,13 +181,13 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
               button:
                 "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-[20] font-medium",
               activeLabel:
-                "hover:bg-[var(--primary-purple-transparent)_!important] bg-[var(--primary-purple-transparent)]",
-              label: "w-full fx-secondary-hover-bg p-2",
+                "hover:bg-[var(--third-bg)_!important] bg-[var(--third-bg)]",
+              label: "w-full fx-secondary-hover-bg p-2 hover:bg-[transparent] group",
               layout: "w-[230px] p-[0px_!important] overflow-hidden",
               labelIconContainer:
-                "fx-primary-purple-border-50 p-2 rounded-[5px] fx-primary-purple-transparent-bg",
+                " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] group-hover:border group-hover:fx-primary-purple-border",
               buttonSvgContainer:
-                "fx-primary-purple-border-50 border p-2 rounded-[5px] fx-primary-purple-transparent-bg",
+                " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] ",
             }}
             alignItems="vertical"
             buttonType="modern"
@@ -281,7 +281,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                       }}
                     >
                       <button
-                        className={`font-medium hover:fx-primary-purple-transparent-bg transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-primary-purple-transparent-bg text-[var(--primary-color)_!important]"}`}
+                        className={`font-medium hover:fx-secondary-bg transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-secondary-bg text-[var(--primary-color)_!important]"}`}
                       >
                         <span>
                           {navItem.name
@@ -312,7 +312,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                                 lessons.current[slug] = el;
                               }}
                               href={slug}
-                              className={`p-1 pl-3 pr-0 dark:hover:text-white hover:text-black relative hover:fx-secondary-bg transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text fx-secondary-bg hover:text-[var(--primary-color)_!important]"}`}
+                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50 hover:text-fx_zinc-950 relative hover:fx-secondary-bg transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text fx-secondary-bg hover:text-[var(--primary-color)_!important]"}`}
                               onClick={(e) => {
                                 path_name === slug && e.preventDefault();
                                 localStorage.setItem(lessonKey, slug);

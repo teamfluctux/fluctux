@@ -11,7 +11,32 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary_color: "var(--primary-color)",
+        fx_zinc: {
+          950: "var(--color-zinc-950)",
+          900: "var(--color-zinc-900)",
+          800: "var(--color-zinc-800)",
+          700: "var(--color-zinc-700)",
+          600: "var(--color-zinc-600)",
+          500: "var(--color-zinc-500)",
+          400: "var(--color-zinc-400)",
+          300: "var(--color-zinc-300)",
+          200: "var(--color-zinc-200)",
+          100: "var(--color-zinc-100)",
+          50: "var(--color-zinc-50)",
+        },
+        fx_indigo: {
+          950: "var(--color-indigo-950)",
+          900: "var(--color-indigo-900)",
+          800: "var(--color-indigo-800)",
+          700: "var(--color-indigo-700)",
+          600: "var(--color-indigo-600)",
+          500: "var(--color-indigo-500)",
+          400: "var(--color-indigo-400)",
+          300: "var(--color-indigo-300)",
+          200: "var(--color-indigo-200)",
+          100: "var(--color-indigo-100)",
+          50: "var(--color-indigo-50)",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

@@ -3,18 +3,45 @@
 @tailwind utilities;
 
 :root {
-  /* primary ui colors */
-  --primary-color: #5865f2;
+  /* fx default colors */
+  /* ZINC */
+  --color-zinc-950: #09090b;
+  --color-zinc-900: #18181b;
+  --color-zinc-800: #27272a;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-600: #52525b;
+  --color-zinc-500: #71717a;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-50: #fafafa;
+
+  /* INDIGO */
+  --color-indigo-950: #1e1b4b;
+  --color-indigo-900: #312e81;
+  --color-indigo-800: #3730a3;
+  --color-indigo-700: #4338ca;
+  --color-indigo-600: #4f46e5;
+  --color-indigo-500: #6366f1;
+  --color-indigo-400: #818cf8;
+  --color-indigo-300: #a5b4fc;
+  --color-indigo-200: #c7d2fe;
+  --color-indigo-100: #e0e7ff;
+  --color-indigo-50: #eef2ff;
+
+  /* primary color */
+  --primary-color: var(--color-indigo-500);
 
   /* backgrounds */
-  --background: #ffffff;
-  --secondary-bg: #f3f3f3;
-  --third-bg: #e9e9e9;
+  --background: var(--color-zinc-50);
+  --secondary-bg: var(--color-zinc-100);
+  --third-bg: var(--color-zinc-200);
 
   /* text & labels */
-  --foreground: #000000;
-  --label-text-color: #747474;
-  --secondary-label-text-color: #979797;
+  --foreground: var(--color-zinc-950);
+  --label-text-color: var(--color-zinc-500);
+  --secondary-label-text-color: var(--color-zinc-400);
 
   /* radius */
   --primary-radius: 8px;
@@ -39,46 +66,26 @@
   --badge-primary-purple-bg: #5865f223;
   --badge-primary-purple-fg: #5865f2;
 
-  /* org projects colors */
-  --project-green: #6aeeae3b;
-  --project-purple: #5865f275;
-  --project-pink: #ff00b336;
-  --project-yellow: #eeff002f;
-  --project-blue: #0091ff2f;
-  --project-red: #ff00002f;
-  --project-orange: #ff6f002f;
-
   /* border color */
   --primary-border-color: #d8d8d8;
-  --primary-purple-border-color-50: #4c58d6;
   --secondary-border-color: #e2e2e2;
 
   /* hover */
-  --primary-purple-hover-bg: #4e5add;
-  --secondary-hover-bg: #ebebeb;
-  --primary-hover-bg: #eaeaea;
-
-  /* content color */
-  --content-color: #eaeaea;
+  --primary-purple-hover-bg: var(--color-indigo-600);
+  --secondary-hover-bg: var(--color-zinc-200);
 
   /* overlay */
-  --overlay-bg-dialog: #0000008e;
-
-  /* separator color */
-  --secondary-separator-color: white;
+  --overlay-bg-dialog: #09090ba6;
 
   /* scrollbar color */
-  --scrollbar-color: #c0c0c0;
-
-  /* transparents */
-  --primary-purple-transparent: #5865f22b;
+  --scrollbar-color: var(--color-zinc-200);
 
   /* loader */
   --skeleton-base-color: #0a0a0a;
   --skeleton-highlightColor: #2d2d2d;
 
   /* svg */
-  --svg-default-color: #b1b1b1;
+  --svg-default-color: var(--color-zinc-500);
 
   /* buttons */
   --button-primary-disabled: #14183a;
@@ -88,53 +95,50 @@
   --text-color-gradient-t: #4a4a4a;
 
   /* outline border */
-  --outline-offset-color: #d2d2d2;
-  --outline-border-color: #474747;
+  --outline-offset-color: var(--color-zinc-300);
+  --outline-border-color: var(--color-zinc-600);
+
+  /* others */
+  --indigo-transparent-1st: #4e46e53c;
 }
 
 .dark {
-  --background: #000000;
-  --secondary-bg: #0a0a0a;
-  --third-bg: #141414;
+  --background: var(--color-zinc-950);
+  --secondary-bg: var(--color-zinc-900);
+  --third-bg: var(--color-zinc-800);
 
   /* border */
-  --primary-border-color: #2a2a2a;
-  --secondary-border-color: #252525;
+  --primary-border-color: var(--color-zinc-800);
+  --secondary-border-color: var(--color-zinc-700);
 
   /* hover */
-  --primary-purple-hover-bg: #4651ca;
-  --secondary-hover-bg: #191919;
-  --primary-hover-bg: #121212;
+  --primary-purple-hover-bg: var(--color-indigo-700);
+  --secondary-hover-bg: var(--color-zinc-800);
 
   /* overlay */
-  --overlay-bg-dialog: #000000b6;
-
-  /* separator color */
-  --secondary-separator-color: #2a2a2a;
-
-  /* gradient colors */
-  --gradient-team-header: #5865f232;
-  --gradient-grid-team-header: #5865f232;
-  --gradient-grid-main-header: #ffffff15;
-
-  /* content color */
-  --content-color: #eaeaea;
+  --overlay-bg-dialog: #09090bc3;
 
   /* text & labels */
-  --foreground: #ffffff;
-  --label-text-color: #b1b1b1;
-  --secondary-label-text-color: #717171;
+  --foreground: var(--color-zinc-50);
+  --label-text-color: var(--color-zinc-400);
+  --secondary-label-text-color: var(--color-zinc-500);
+
+  /* svg */
+  --svg-default-color: var(--color-zinc-400);
 
   /* scrollbar color */
-  --scrollbar-color: #2f2f2f;
+  --scrollbar-color: var(--color-zinc-800);
 
   /* gradients text */
-  --text-color-gradient-b: #707070;
-  --text-color-gradient-t: #ffffff;
+  --text-color-gradient-b: var(--color-zinc-600);
+  --text-color-gradient-t: var(--color-zinc-50);
 
   /* outline border */
-  --outline-offset-color: #454545;
-  --outline-border-color: #c8c8c8;
+  --outline-offset-color: var(--color-zinc-600);
+  --outline-border-color: var(--color-zinc-300);
+
+  /* others */
+  --indigo-transparent-1st: #4e46e53b;
 }
 
 html {
@@ -184,10 +188,6 @@ body {
     @apply bg-[var(--primary-color)];
   }
 
-  .fx-primary-purple-transparent-bg {
-    @apply bg-[var(--primary-purple-transparent)];
-  }
-
   /* text & labels */
 
   .fx-label-color {
@@ -196,10 +196,6 @@ body {
 
   .fx-sec-label-color {
     @apply text-[var(--secondary-label-text-color)];
-  }
-
-  .fx-text-red {
-    @apply text-[#ff1919];
   }
 
   .fx-primary-purple-text {
@@ -260,13 +256,9 @@ body {
     @apply border-[var(--primary-color)];
   }
 
-  .fx-primary-purple-border-50 {
-    @apply border-[var(--primary-purple-border-color-50)];
-  }
-
   /* separator color */
   .fx-sec-separator-text-color {
-    @apply text-[var(--secondary-separator-color)];
+    @apply text-[red];
   }
 
   /* flex */
@@ -371,7 +363,7 @@ body {
     scrollbar-color: var(--scrollbar-color) transparent;
     scrollbar-gutter: stable;
   }
-  
+
   .workspace-exclude-header {
     @apply pt-[64px];
   }
@@ -540,4 +532,8 @@ pre code {
   100% {
     transform: translateX(200%);
   }
+}
+
+.theme-color-mode-active svg {
+  fill: var(--svg-default-color) !important;
 }
