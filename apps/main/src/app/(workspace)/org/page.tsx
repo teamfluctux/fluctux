@@ -14,7 +14,7 @@ export default function OrgMainPage() {
     <div className="workspace-exclude-header">
       <div className="w-full fx-flex-between-ic p-3 border-b fx-border-color ">
         <h1 className="text-[25px] font-medium">Organizations</h1>
-        <Link href={"/app/org/new"}>
+        <Link href={"/org/new"}>
           <FxButton
             variant="primary"
             size="md"

@@ -54,7 +54,7 @@
   --secondary-border-color: #e2e2e2;
 
   /* hover */
-  --primary-purple-hover-bg: #4651ca;
+  --primary-purple-hover-bg: #4e5add;
   --secondary-hover-bg: #ebebeb;
   --primary-hover-bg: #eaeaea;
 
@@ -103,6 +103,7 @@
   --secondary-border-color: #252525;
 
   /* hover */
+  --primary-purple-hover-bg: #4651ca;
   --secondary-hover-bg: #191919;
   --primary-hover-bg: #121212;
 
@@ -208,15 +209,15 @@ body {
 
   /* hover */
   .fx-secondary-hover-bg {
-    @apply hover:bg-[var(--secondary-hover-bg)];
+    @apply hover:bg-[var(--secondary-hover-bg)] transition;
   }
 
   .fx-hover-primary-fg {
-    @apply hover:text-[var(--primary-color)];
+    @apply hover:text-[var(--primary-color)] transition;
   }
 
   .fx-hover-primary-purple-bg {
-    @apply hover:bg-[var(--primary-purple-hover-bg)];
+    @apply hover:bg-[var(--primary-purple-hover-bg)] transition;
   }
 
   .fx-primary-hover-bg {
@@ -238,6 +239,7 @@ body {
   .fx-input-outline {
     outline: 3px solid var(--outline-offset-color);
     border: 1px solid var(--outline-border-color);
+    transition: border-color .15s
   }
 
   .outline-fxInput {
