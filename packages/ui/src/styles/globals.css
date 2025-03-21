@@ -88,8 +88,8 @@
   --text-color-gradient-t: #4a4a4a;
 
   /* outline border */
-  --outline-offset-color: #D2D2D2 ;
-  --outline-border-color: #474747 ;
+  --outline-offset-color: #d2d2d2;
+  --outline-border-color: #474747;
 }
 
 .dark {
@@ -97,7 +97,6 @@
   --secondary-bg: #0a0a0a;
   --third-bg: #141414;
 
-  
   /* border */
   --primary-border-color: #2a2a2a;
   --secondary-border-color: #252525;
@@ -127,15 +126,15 @@
   --secondary-label-text-color: #717171;
 
   /* scrollbar color */
-  --scrollbar-color: #474747;
+  --scrollbar-color: #2f2f2f;
 
-/* gradients text */
+  /* gradients text */
   --text-color-gradient-b: #707070;
   --text-color-gradient-t: #ffffff;
 
   /* outline border */
-  --outline-offset-color: #454545 ;
-  --outline-border-color: #c8c8c8 ;
+  --outline-offset-color: #454545;
+  --outline-border-color: #c8c8c8;
 }
 
 html {
@@ -239,7 +238,7 @@ body {
   .fx-input-outline {
     outline: 3px solid var(--outline-offset-color);
     border: 1px solid var(--outline-border-color);
-    transition: border-color .15s
+    transition: border-color 0.15s;
   }
 
   .outline-fxInput {
@@ -312,7 +311,11 @@ body {
   }
 
   .black-white-gradient-bt {
-    background-image: linear-gradient(to top, var(--text-color-gradient-b) 10%, var(--text-color-gradient-t) 60% );
+    background-image: linear-gradient(
+      to top,
+      var(--text-color-gradient-b) 10%,
+      var(--text-color-gradient-t) 60%
+    );
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -368,7 +371,7 @@ body {
     scrollbar-color: var(--scrollbar-color) transparent;
     scrollbar-gutter: stable;
   }
-
+  
   .workspace-exclude-header {
     @apply pt-[64px];
   }

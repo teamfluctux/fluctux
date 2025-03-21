@@ -157,7 +157,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             className={`absolute ${!isDocAsideOpen && "hidden"} `}
           />
         </div>
-        <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar pr-2 pb-16 doc-aside-nav-container">
+        <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar doc-hide-scrollbar pr-2 pb-16 doc-aside-nav-container">
           <FxButton
             variant="secondary"
             className="w-full fx-flex-cl gap-2 p-2 mb-3 "
@@ -259,7 +259,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 <div key={i}>
                   {navItem.type === "dir" ? (
                     <button
-                      className={`font-medium relative z-[2] hover:fx-secondary-bg transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${isOpenFromArray(`${i}`) && "fx-secondary-bg text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important]"}`}
+                      className={`font-medium relative z-[2] hover:fx-secondary-bg transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${isOpenFromArray(`${i}`) && "text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important] "}`}
                       onClick={() => handleOpenArray(`${i}`)}
                     >
                       <span>
@@ -298,7 +298,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     // if there are type=file don't show this else show
                     navItem.type === "dir" && (
                       <div
-                        className={`ml-2 flex relative flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
+                        className={`ml-2 pl-2 flex relative flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
                       >
                         <div
                           className={`absolute z-[5] w-full  bg-gradient-to-t from-[var(--background)] to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}
@@ -312,7 +312,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                                 lessons.current[slug] = el;
                               }}
                               href={slug}
-                              className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text hover:text-[var(--primary-color)_!important]"}`}
+                              className={`p-1 pl-3 pr-0 dark:hover:text-white hover:text-black relative hover:fx-secondary-bg transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text fx-secondary-bg hover:text-[var(--primary-color)_!important]"}`}
                               onClick={(e) => {
                                 path_name === slug && e.preventDefault();
                                 localStorage.setItem(lessonKey, slug);
@@ -328,7 +328,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                               {path_name.endsWith(
                                 `${navTreeItem.name.replace(".mdx", "")}`
                               ) && (
-                                <span className="absolute left-[-0px] top-0 h-full w-[1.5px] fx-primary-purple-bg z-10 rounded-tr-[50px] rounded-br-[50px] "></span>
+                                <span className="absolute transition left-[-0px] top-[50%] translate-y-[-50%] h-[18px] w-[3px] fx-primary-purple-bg z-10 rounded-[50px] "></span>
                               )}
                             </Link>
                           );

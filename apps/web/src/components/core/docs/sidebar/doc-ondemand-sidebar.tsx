@@ -20,7 +20,7 @@ const DynamicDocSidebar = dynamic<DocSidebarPropsType>(
             return (
               <div key={i} className="mb-2">
                 <Skeleton height={32} borderRadius={"5px"} className="mb-1" />
-                <div className="flex flex-col justify-end items-end border-l fx-border-color">
+                <div className="flex flex-col justify-end items-end">
                   <Skeleton width={200} height={32} borderRadius={"5px"} />
                   <Skeleton width={200} height={32} borderRadius={"5px"} />
                   <Skeleton width={200} height={32} borderRadius={"5px"} />

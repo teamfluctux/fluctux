@@ -94,7 +94,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                         Previous
                       </p>
                     </div>
-                    <p className="text-[var(--primary-color)] font-medium text-[16px] one-line-ellipsis">
+                    <p className=" font-medium text-[16px] one-line-ellipsis">
                       {prev?.name
                         .replace(/^\d+-/, "")
                         .replace(/-/g, " ")
@@ -120,7 +120,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                       </p>
                       <RightArrowIcon />
                     </div>
-                    <p className="text-[var(--primary-color)] font-medium text-[16px] one-line-ellipsis">
+                    <p className=" font-medium text-[16px] one-line-ellipsis">
                       {next?.name
                         .replace(/^\d+-/, "")
                         .replace(/-/g, " ")
@@ -204,7 +204,7 @@ export default function DocContent({ data }: DocContentPropsType) {
               className={`absolute rotate-180 ${!isDocOnPageOpen && "hidden"} `}
             />
           </div>
-          <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar hover:doc-hide-scrollbar-show pb-16 doc-on-this-page-aside-container">
+          <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar pb-16 doc-on-this-page-aside-container">
             <div className="fx-flex-cl gap-2 sticky top-0 fx-primary-bg pb-1">
               <TextAlignLeftIcon width={15} height={15} />
               <h3 className="font-medium">On this page</h3>
