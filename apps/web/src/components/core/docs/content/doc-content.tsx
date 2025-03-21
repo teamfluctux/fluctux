@@ -216,7 +216,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                   <Link
                     href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
                     key={i}
-                    className="dark:hover:text-white hover:text-black"
+                    className="dark:hover:text-fx_zinc-50 hover:text-fx_zinc-950"
                   >
                     <li
                       onClick={() => setDocOnPageOpen(false)}

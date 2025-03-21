@@ -81,8 +81,8 @@
   --scrollbar-color: var(--color-zinc-200);
 
   /* loader */
-  --skeleton-base-color: #0a0a0a;
-  --skeleton-highlightColor: #2d2d2d;
+  --skeleton-base-color: var(--color-zinc-200);
+  --skeleton-highlightColor: var(--color-zinc-50);
 
   /* svg */
   --svg-default-color: var(--color-zinc-500);
@@ -122,6 +122,10 @@
   --foreground: var(--color-zinc-50);
   --label-text-color: var(--color-zinc-400);
   --secondary-label-text-color: var(--color-zinc-500);
+
+  /* loader */
+  --skeleton-base-color: var(--color-zinc-900);
+  --skeleton-highlightColor: var(--color-zinc-700);
 
   /* svg */
   --svg-default-color: var(--color-zinc-400);
