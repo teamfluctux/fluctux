@@ -26,7 +26,8 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="w-full mt-5 ">
+    <div className="w-full">
+      <h1 className="text-[25px] font-medium mb-5">Signup to Fluctux</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="fx-flex-between-ic gap-3">
           <div>
@@ -75,7 +76,7 @@ export default function SignUpPage() {
           radius="primary"
           type="submit"
         >
-          <p className="font-medium">Continue</p>
+          <p className="font-medium text-white">Continue</p>
         </FxButton>
       </form>
 

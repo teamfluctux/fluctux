@@ -1,5 +1,7 @@
 "use client";
-import { FxButton } from "@fluctux/ui";
+import { THEME_ICONS } from "@/constants/global";
+import { useThemeSwitcher } from "@fluctux/hooks";
+import { FxButton, FxFavIcon } from "@fluctux/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,36 +10,22 @@ import React from "react";
 export default function Layout({ children }: { children: React.ReactNode }) {
   const path_name = usePathname();
   const current_path = path_name.split("/")[1];
-
-  const h1Title =
-    current_path?.charAt(0).toUpperCase() + current_path!.slice(1);
+  const { ThemeSwitcher } = useThemeSwitcher(THEME_ICONS)
 
   return (
     <section className="flex justify-center items-center w-full h-screen overflow-y-auto hide-scrollbar">
       <div className="max-w-[420px] my-auto w-full p-3 pt-16 pb-24">
-        <div className="fixed top-0 left-0 bg-gradient-to-t from-transparent to-[var(--background)] w-full h-[50px] fx-flex-cl p-3 backdrop-blur-xl">
-          <Image
-            src={"/fluctux-logos/fluctux-white.png"}
-            width={500}
-            height={500}
-            alt="logo"
-            priority={true}
-            className="w-[90px] dark:block hidden"
-          />
-          <Image
-            src={"/fluctux-logos/fluctux-black.png"}
-            width={500}
-            height={500}
-            alt="logo"
-            priority={true}
-            className="w-[90px] dark:hidden block"
-          />
+        <div className="w-fit fixed top-2 right-2">
+          <ThemeSwitcher/>
         </div>
-        <h1 className="text-[25px] font-medium">{h1Title} to Fluctux</h1>
+
+        <div className=" w-fit rounded-[8px] p-2 mb-2 bg-gradient-to-tr dark:from-[var(--background)] from-[#b7b7b7] dark:to-[#232323] to-[#ffffff] relative login-fx-logo-box">
+          <FxFavIcon size="sm" variant="theme" />
+        </div>
         {children}
       </div>
       <div className="fixed bottom-0 left-0 w-full h-[60px] fx-secondary-bg fx-flex-center z-10">
-        {current_path === "login" ? (
+        {current_path === "login" || path_name === "/" ? (
           <div className="flex justify-center items-center gap-2">
             <p className="fx-label-color font-medium">New to Fluctux?</p>
             <Link href={"/signup"}>
@@ -61,7 +49,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 variant="primary"
                 radius="tablet"
                 size="sm"
-                className="font-medium pl-[20px] pr-[20px]"
+                className="font-medium pl-[20px] pr-[20px] text-white"
               >
                 Login
               </FxButton>

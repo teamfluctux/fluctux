@@ -51,10 +51,11 @@
   /* border color */
   --primary-border-color: #d8d8d8;
   --primary-purple-border-color-50: #4c58d6;
+  --secondary-border-color: #e2e2e2;
 
   /* hover */
   --primary-purple-hover-bg: #4651ca;
-  --secondary-hover-bg: #e4e4e4;
+  --secondary-hover-bg: #ebebeb;
   --primary-hover-bg: #eaeaea;
 
   /* content color */
@@ -82,10 +83,13 @@
   /* buttons */
   --button-primary-disabled: #14183a;
 
-  /* others */
+  /* gradients text */
+  --text-color-gradient-b: #000000;
+  --text-color-gradient-t: #4a4a4a;
 
-  /* border color */
-  --secondary-border-color: #e2e2e2;
+  /* outline border */
+  --outline-offset-color: #D2D2D2 ;
+  --outline-border-color: #474747 ;
 }
 
 .dark {
@@ -93,10 +97,10 @@
   --secondary-bg: #0a0a0a;
   --third-bg: #141414;
 
-  --secondary-border-color: #252525;
-
+  
   /* border */
   --primary-border-color: #2a2a2a;
+  --secondary-border-color: #252525;
 
   /* hover */
   --secondary-hover-bg: #191919;
@@ -123,6 +127,14 @@
 
   /* scrollbar color */
   --scrollbar-color: #474747;
+
+/* gradients text */
+  --text-color-gradient-b: #707070;
+  --text-color-gradient-t: #ffffff;
+
+  /* outline border */
+  --outline-offset-color: #454545 ;
+  --outline-border-color: #c8c8c8 ;
 }
 
 html {
@@ -224,7 +236,8 @@ body {
   }
 
   .fx-input-outline {
-    outline: 2px solid var(--primary-border-color);
+    outline: 3px solid var(--outline-offset-color);
+    border: 1px solid var(--outline-border-color);
   }
 
   .outline-fxInput {
@@ -294,6 +307,16 @@ body {
 
   .fx-flex-between-it {
     @apply flex justify-between items-start;
+  }
+
+  .black-white-gradient-bt {
+    background-image: linear-gradient(to top, var(--text-color-gradient-b) 10%, var(--text-color-gradient-t) 60% );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    width: 100%;
   }
 
   .three-line-ellipsis {
@@ -501,7 +524,6 @@ pre code {
   font-weight: inherit;
 }
 
-
 .short-loader {
   animation: shortLoader 1s infinite ease-in-out;
 }
@@ -514,4 +536,3 @@ pre code {
     transform: translateX(200%);
   }
 }
-

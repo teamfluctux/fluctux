@@ -13,7 +13,8 @@ import React from "react";
 
 export default function LoginPage() {
   return (
-    <div className=" w-full mt-5">
+    <div className=" w-full">
+      <h1 className="text-[25px] font-medium mb-5 black-white-gradient-bt">Login to Fluctux</h1>
       <>
         <p className="fx-label-color">Email</p>
         <FxInput
@@ -44,7 +45,7 @@ export default function LoginPage() {
           size="md"
           radius="primary"
         >
-          <p className="font-medium">Continue</p>
+          <p className="font-medium text-white">Continue</p>
         </FxButton>
       </>
 

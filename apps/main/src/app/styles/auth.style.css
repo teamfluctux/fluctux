@@ -28,3 +28,22 @@
         --angle: 360deg
     }
 }
+
+.login-fx-logo-box::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top right, #000000, #525252);
+    border-radius: 9px ;
+    padding: 1px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: content-box;
+    z-index: -1;
+}
+
+.light .login-fx-logo-box::before{
+    background: linear-gradient(to top right, #949494, #f4f4f4);
+}

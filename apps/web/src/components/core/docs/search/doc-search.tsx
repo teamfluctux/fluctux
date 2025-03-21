@@ -34,7 +34,7 @@ export default function DocSearchComponent() {
       <FxButton
         onClick={() => setSearchBoxOpen(true)}
         variant="secondary"
-        className="pl-2 pr-2 h-[35px] fx-flex-between-ic gap-36 fx-third-bg doc-search-button"
+        className="pl-2 pr-2 h-[35px] fx-flex-between-ic gap-36 doc-search-button"
         radius="tablet"
       >
         <div className="fx-flex-cl gap-3 desktop-doc-search">

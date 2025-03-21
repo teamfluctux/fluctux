@@ -6,10 +6,6 @@ export async function middleware(req: NextRequest) {
   const token = await getToken({ req });
   const { pathname } = req.nextUrl;
 
-  if (!token) {
-    return NextResponse.redirect(new URL("/", req.url));
-  }
-
   // If user is NOT logged in and trying to access "/", show the login page instead
   if (!token && pathname === "/") {
     return NextResponse.rewrite(new URL("/login", req.url));
