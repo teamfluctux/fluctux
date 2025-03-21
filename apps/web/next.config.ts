@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  
+
   // TODO: for docker image. otherwise comment this
   output: "standalone",
 

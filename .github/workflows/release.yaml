@@ -125,6 +125,8 @@ jobs:
             NEXT_PUBLIC_BRANCH=${NEXT_PUBLIC_BRANCH}
             TURBO_TEAM=${TURBO_TEAM} 
             TURBO_TOKEN=${TURBO_TOKEN}
+        env:
+          DOCKER_BUILDKIT: 1
 
       - name: Export digest
         run: |

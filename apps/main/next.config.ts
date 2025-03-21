@@ -18,6 +18,41 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  async headers() {
+    return [
+      {
+        source: "/(.*)?",
+        headers: [
+          {
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
+          },
+        ],
+      },
+    ];
+  },
+
+  // async redirects() {
+  //     return [
+  //       {
+  //         source: "/login",
+  //         destination: "/",
+  //         permanent: true,
+  //       }
+  //     ]
+  // },
+
+  // async rewrites() {
+  //     const rewrites = [
+  //         {
+  //           source: "/",
+  //           destination: "/login"
+  //         },
+  //     ]
+
+  //     return rewrites;
+  // },
 };
 
 export default nextConfig;

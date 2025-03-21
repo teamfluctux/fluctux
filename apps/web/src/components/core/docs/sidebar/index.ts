@@ -1,1 +1,1 @@
-export * from "./doc-ondemand-sidebar"
+export * from "./doc-ondemand-sidebar";

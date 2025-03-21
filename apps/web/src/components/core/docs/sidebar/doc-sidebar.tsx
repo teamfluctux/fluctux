@@ -55,9 +55,9 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
   const openChapterOnDemand = () => {
     const chapter_index = path_name
-    .split("/")[3]
-    ?.replace(/\D/g, "")
-    .replace(/^0+/, "");
+      .split("/")[3]
+      ?.replace(/\D/g, "")
+      .replace(/^0+/, "");
 
     if (chapter_index) {
       return setOpenArray((state) => ({
@@ -65,7 +65,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
         [parseInt(chapter_index) - 1]: true,
       }));
     }
-  }
+  };
 
   // Flatten the docNavList into a single list (excluding directories)
   const flattenDocs = useCallback(
@@ -118,9 +118,8 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
     }
   }, [dispatch, flattenDocs, data.docNavList, path_name, handleDocTypeChange]);
 
-
   useEffect(() => {
-    openChapterOnDemand()
+    openChapterOnDemand();
   }, [path_name]);
 
   useEffect(() => {
@@ -136,7 +135,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
   }, [focus]);
 
   const goToReading = () => {
-    openChapterOnDemand()
+    openChapterOnDemand();
     setFocus(!focus);
   };
 
@@ -297,45 +296,45 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
 
                   {
                     // if there are type=file don't show this else show
-                    navItem.type === "dir" &&
-                    <div
-                      className={`ml-2 flex relative flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
-                    >
+                    navItem.type === "dir" && (
                       <div
-                        className={`absolute z-[5] w-full  bg-gradient-to-t from-[var(--background)] to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}
-                      ></div>
-                      {navItem.docNavTreeList?.map((navTreeItem, j) => {
-                        const slug = `/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`;
-                        return (
-                          <Link
-                            key={j}
-                            ref={(el) => {
-                              lessons.current[slug] = el;
-                            }}
-                            href={slug}
-                            className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text hover:text-[var(--primary-color)_!important]"}`}
-                            onClick={(e) => {
-                              path_name === slug && e.preventDefault();
-                              localStorage.setItem(lessonKey, slug);
-                            }}
-                          >
-                            <span>
-                              {navTreeItem.name
-                                .replace(/^\d+-/, "")
-                                .replace(/-/g, " ")
-                                .replace(/^\w/, (c) => c.toUpperCase())
-                                .replace(".mdx", "")}
-                            </span>
-                            {path_name.endsWith(
-                              `${navTreeItem.name.replace(".mdx", "")}`
-                            ) && (
+                        className={`ml-2 flex relative flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
+                      >
+                        <div
+                          className={`absolute z-[5] w-full  bg-gradient-to-t from-[var(--background)] to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}
+                        ></div>
+                        {navItem.docNavTreeList?.map((navTreeItem, j) => {
+                          const slug = `/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`;
+                          return (
+                            <Link
+                              key={j}
+                              ref={(el) => {
+                                lessons.current[slug] = el;
+                              }}
+                              href={slug}
+                              className={`p-1 pl-5 pr-0 dark:hover:text-white hover:text-black relative ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text hover:text-[var(--primary-color)_!important]"}`}
+                              onClick={(e) => {
+                                path_name === slug && e.preventDefault();
+                                localStorage.setItem(lessonKey, slug);
+                              }}
+                            >
+                              <span>
+                                {navTreeItem.name
+                                  .replace(/^\d+-/, "")
+                                  .replace(/-/g, " ")
+                                  .replace(/^\w/, (c) => c.toUpperCase())
+                                  .replace(".mdx", "")}
+                              </span>
+                              {path_name.endsWith(
+                                `${navTreeItem.name.replace(".mdx", "")}`
+                              ) && (
                                 <span className="absolute left-[-0px] top-0 h-full w-[1.5px] fx-primary-purple-bg z-10 rounded-tr-[50px] rounded-br-[50px] "></span>
                               )}
-                          </Link>
-                        );
-                      })}
-                    </div>
-
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )
                   }
                 </div>
               );

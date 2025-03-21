@@ -13,7 +13,7 @@ import matter from "gray-matter";
 export const useProcessMDX = (data: string) => {
   const [content, setContent] = useState("");
 
-  const {data: metaData, content: mdxContent} = matter(data)
+  const { data: metaData, content: mdxContent } = matter(data);
 
   const processContent = useCallback(async () => {
     const processedData = await unified()
@@ -44,6 +44,6 @@ export const useProcessMDX = (data: string) => {
 
   return {
     content,
-    metaData
+    metaData,
   };
 };
