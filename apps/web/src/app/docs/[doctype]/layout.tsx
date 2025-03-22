@@ -55,7 +55,7 @@ export default async function Layout({ children, params }: DocLayoutPropsType) {
   return (
     <>
       <div className="fx-flex-ct pl-2 pr-2 doc-main-layout-wrapper">
-        <div className="fx-flex-between-it fx-layout-max-1200 gap-5 doc-main-layout-container">
+        <div className="fx-flex-between-it fx-layout-max-1200 gap-6 doc-main-layout-container">
           <DocOnDemandSidebar docType={doctype} data={data} />
           <main className="w-full h-fit">{children}</main>
         </div>

@@ -52,7 +52,7 @@ export default function DocContent({ data }: DocContentPropsType) {
         name="description"
         content={metaData.description || "No Description"}
       />
-      <section className="fx-flex-ct gap-5 relative w-full h-full ">
+      <section className="fx-flex-ct gap-6 relative w-full h-full ">
         <div className="mt-[64px] pt-10 w-full overflow-hidden">
           <div className="w-fit mb-8">
             <span className="text-text-color_2 font-medium">
