@@ -1,0 +1,33 @@
+.right-handler-box::before{
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 100%;
+    right: 0;
+    transition: .3s ease;
+}
+
+.right-handler-box:hover::before{
+    transition-delay: .1s;
+    background-color: var(--primary-color);
+}
+
+.right-handler-box:active::before{
+    background-color: var(--primary-color);
+}
+
+
+@media screen and (max-width: 1000px) {
+    .rnd-workspace-sidebar{
+        width: 250px !important;
+        position: fixed !important;
+        z-index: 50;
+        transform: translate(0px, 0px) !important;
+    }
+
+    .right-handler-box{
+        display: none;
+    }
+
+}
+

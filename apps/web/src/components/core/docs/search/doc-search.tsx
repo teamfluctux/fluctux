@@ -39,13 +39,13 @@ export default function DocSearchComponent() {
       >
         <div className="fx-flex-cl gap-3 desktop-doc-search">
           <SearchIcon />
-          <span className="fx-sec-label-color">Search documentation...</span>
+          <span className="text-text-color_3">Search documentation...</span>
         </div>
         <div className="fx-flex-cr pr-2 gap-1 desktop-doc-search">
           <CommandKeyIcon width={15} height={15} />
-          <span className="text-[13px] fx-label-color">Ctrl+k</span>
+          <span className="text-[13px] text-text-color_2">Ctrl+k</span>
         </div>
-        <div className="hidden mobile-doc-search">
+        <div className="hidden mobile-doc-search ">
           <SearchIcon />
         </div>
       </FxButton>
@@ -56,7 +56,7 @@ export default function DocSearchComponent() {
       >
         <FxButton
           onClick={() => setSearchBoxOpen(false)}
-          className="absolute right-[10px] top-[10px] z-10 fx-label-color font-medium text-[14px]"
+          className="absolute right-[10px] top-[10px] z-10 text-text-color_2 font-medium text-[14px]"
           variant="secondary"
           size="sm"
           radius="primary"
@@ -64,7 +64,7 @@ export default function DocSearchComponent() {
           esc
         </FxButton>
         <InstantSearch searchClient={searchAlgolia} indexName={DOC_INDEX_NAME}>
-          <div className="w-full h-[50px] border-b fx-border-color sticky top-0 left-0 fx-flex-center flex-shrink-0">
+          <div className="w-full h-[50px] border-b border-border-color_1 sticky top-0 left-0 fx-flex-center flex-shrink-0">
             <SearchBox
               placeholder="Search documentation..."
               autoFocus={true}
@@ -82,7 +82,7 @@ export default function DocSearchComponent() {
           </div>
 
           <NoResultsBoundary fallback={<NoResults />}>
-            <div className="w-full border-b fx-border-color sticky top-[50px] left-0 h-[70px] fx-flex-cl flex-shrink-0 z-10">
+            <div className="w-full border-b border-border-color_1 sticky top-[50px] left-0 h-[70px] fx-flex-cl flex-shrink-0 z-10">
               <DocCustomRefinementList sortBy={["name"]} attribute="type" />
             </div>
             <div className="h-full">

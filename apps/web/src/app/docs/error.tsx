@@ -19,7 +19,7 @@ export default function Error({
           <h1 className="text-center w-full font-medium text-[25px]">
             This page isn&apos;t available at the moment
           </h1>
-          <p className="fx-label-color text-center w-full mt-2">
+          <p className="text-text-color_2 text-center w-full mt-2">
             This may be because of a technical error that we&apos;re working to
             fix. Please try reloading the page
           </p>
@@ -29,7 +29,7 @@ export default function Error({
             onClick={reset}
             variant="primary"
             radius="primary"
-            className="font-medium text-white max-w-[200px] w-full p-2 mt-5"
+            className="font-medium text-text-color_1 max-w-[200px] w-full p-2 mt-5"
           >
             Reload
           </FxButton>

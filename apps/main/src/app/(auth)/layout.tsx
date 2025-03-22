@@ -24,10 +24,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
         {children}
       </div>
-      <div className="fixed bottom-0 left-0 w-full h-[60px] fx-secondary-bg fx-flex-center z-10">
+      <div className="fixed bottom-0 left-0 w-full h-[60px] bg-background-color_2 fx-flex-center z-10">
         {current_path === "login" || path_name === "/" ? (
           <div className="flex justify-center items-center gap-2">
-            <p className="fx-label-color font-medium">New to Fluctux?</p>
+            <p className="text-text-color_2 font-medium">New to Fluctux?</p>
             <Link href={"/signup"}>
               <FxButton
                 variant="secondary"
@@ -41,7 +41,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         ) : (
           <div className="flex justify-center items-center gap-2">
-            <p className="fx-label-color font-medium">
+            <p className="text-text-color_2 font-medium">
               Already have an account?
             </p>
             <Link href={"/login"}>

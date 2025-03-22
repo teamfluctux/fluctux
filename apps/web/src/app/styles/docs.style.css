@@ -16,7 +16,7 @@
     width: 260px;
     position: fixed !important;
     top: 0;
-    border-right: 1px solid var(--primary-border-color);
+    border-right: 1px solid var(--border-color-1);
     z-index: 9;
     padding-left: 8px;
     padding-right: 10px;
@@ -57,17 +57,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 30px;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    right: 60px;
   }
 
   .mobile-doc-search {
     display: flex;
   }
 
-  .doc-search-button {
-    gap: 30px;
-    background-color: transparent;
-    border: none;
-  }
+
 
   .docs-header {
     justify-content: right;
@@ -91,8 +92,8 @@
     padding: 0px 15px;
     width: 220px;
     justify-content: center;
-    background-color: var(--third-bg);
-    border-left: 1px solid var(--primary-border-color);
+    background-color: var(--background-color-2);
+    border-left: 1px solid var(--border-color-1);
   }
 }
 
@@ -111,7 +112,7 @@
     background-color: var(--background);
     padding-left: 20px;
     padding-right: 10px;
-    border-left: 1px solid var(--primary-border-color);
+    border-left: 1px solid var(--border-color-1);
     transition: 0.15s ease-out;
   }
 

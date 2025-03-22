@@ -28,8 +28,8 @@ export default function DocHeader() {
   }, [path_name]);
 
   return (
-    <header className="fixed w-full h-[64px] backdrop-blur-lg border-b fx-border-color fx-flex-between-ic pl-3 pr-3 z-[52] docs-header">
-      <div className="fx-flex-cl gap-3 doc-header-logo">
+    <header className="fixed w-full h-[64px] backdrop-blur-lg border-b border-border-color_1 fx-flex-between-ic pl-3 pr-3 z-[52]">
+      <div className="fx-flex-cl gap-3 doc-header- backdrop-blur-lg">
         <Image
           src={"/fluctux-logos/fluctux-logo-default-dark.png"}
           width={500}
@@ -47,7 +47,7 @@ export default function DocHeader() {
           className="w-[90px] dark:hidden block"
         />
         <FxSeparator orientation="vertical" size="30px" />
-        <span className="fx-label-color text-[20px] font-medium">Docs</span>
+        <span className="text-text-color_2 text-[20px] font-medium">Docs</span>
       </div>
       <DocSearchComponent />
       <div
@@ -55,7 +55,7 @@ export default function DocHeader() {
       >
         <FxButton
           onClick={toggleDocHeaderMenu}
-          className="w-[35px] h-[35px] rounded-[50%] flex-shrink-0 border-none bg-transparent hidden hover:fx-secondary-bg doc-header-menu-btn"
+          className="w-[35px] h-[35px] rounded-[50%] flex-shrink-0 border-none bg-transparent hidden hover:bg-background-color_3 doc-header-menu-btn"
         >
           <MenuTwoBarIcon className={`${isDocHeaderMenuOpen && "hidden"}`} />
           <CancelIcon className={`${!isDocHeaderMenuOpen && "hidden"}`} />
@@ -75,7 +75,7 @@ export default function DocHeader() {
         {/* auth by session */}
         {/* <div className='group hover:outline outline-[3px] cursor-pointer outline-[var(--secondary-hover-bg)]  w-[35px] h-[35px] overflow-hidden rounded-[50%] flex-shrink-0'>
 
-          <Image src={""} width={250} height={250} alt='Profile' className='object-cover object-center w-full h-full  border fx-border-color  ' />
+          <Image src={""} width={250} height={250} alt='Profile' className='object-cover object-center w-full h-full  border border-border-color_1  ' />
       </div> */}
       </div>
     </header>

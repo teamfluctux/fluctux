@@ -6,7 +6,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "../../packages/**/*.{js,ts,jsx,tsx,mdx}",
-    "!../../packages/**/node_modules/**"
+    "!../../packages/**/node_modules/**",
   ],
   theme: {
     extend: {
@@ -37,48 +37,49 @@ module.exports = {
           100: "var(--color-indigo-100)",
           50: "var(--color-indigo-50)",
         },
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+        background: {
+          indigo_primary: "var(--primary-color)",
+          color_1: "var(--background)",
+          color_2: "var(--background-color-2)",
+          color_3: "var(--background-color-3)",
+          color_4: "var(--background-color-4)",
+          color_5: "var(--background-color-5)",
+          hover: {
+            indigo_primary: "var(--primary-purple-hover-bg)",
+          }
         },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+        border: {
+          color_1: "var(--border-color-1)",
+          color_2: "var(--border-color-2)",
         },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+        text: {
+          indigo: {
+            color_1: "var(--primary-color)"
+          },
+          color_1: "var(--foreground)",
+          color_2: "var(--foreground-color-2)",
+          color_3: "var(--foreground-color-3)",
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
+          1: "hsl(var(--chart-1))",
+          2: "hsl(var(--chart-2))",
+          3: "hsl(var(--chart-3))",
+          4: "hsl(var(--chart-4))",
+          5: "hsl(var(--chart-5))",
         },
       },
+      fontSize: {
+        workspace_1: "15px",
+        workspace_2: "14px",
+        workspace_3: "13px",
+      },
       borderRadius: {
+        DEFAULT: "8px",
+        tiny: "5px",
+        circle: "50%",
+        tablet: "50px",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
@@ -86,4 +87,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
-}
+};

@@ -19,21 +19,21 @@ export const buttonSizes: { [key in SizeType]: string } = {
 
 export const buttonStyling: ButtonStylingType = {
   primary: {
-    default: "fx-primary-purple-bg cursor-pointer border-none",
-    hover: "fx-hover-primary-purple-bg",
+    default: "bg-background-indigo_primary cursor-pointer border-none",
+    hover: "hover:bg-background-hover-indigo_primary",
     disabled:
-      "fx-sec-label-color cursor-not-allowed !bg-[var(--button-primary-disabled)] border fx-border-color",
+      "text-text-color_3 cursor-not-allowed !bg-[var(--button-primary-disabled)] border border-border-color_1",
   },
   secondary: {
-    default: "border fx-border-color fx-secondary-bg  cursor-pointer ",
-    hover: "fx-secondary-hover-bg",
+    default: "border border-border-color_1 bg-background-color_2  cursor-pointer ",
+    hover: "hover:bg-background-color_3",
     disabled:
-      "fx-sec-label-color cursor-not-allowed fx-secondary-bg border fx-border-color",
+      "text-text-color_3 cursor-not-allowed bg-background-color_2 border border-border-color_1",
   },
   silent: {
     default: "cursor-pointer",
-    hover: "hover:fx-secondary-bg",
-    disabled: "fx-sec-label-color cursor-not-allowed opacity-60",
+    hover: "hover:bg-background-color_2",
+    disabled: "text-text-color_3 cursor-not-allowed opacity-60",
   },
 };
 

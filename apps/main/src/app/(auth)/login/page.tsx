@@ -16,7 +16,7 @@ export default function LoginPage() {
     <div className=" w-full">
       <h1 className="text-[25px] font-medium mb-5 black-white-gradient-bt">Login to Fluctux</h1>
       <>
-        <p className="fx-label-color">Email</p>
+        <p className="text-text-color_2 font-medium">Email</p>
         <FxInput
           className="w-full"
           variant="primary"
@@ -24,7 +24,7 @@ export default function LoginPage() {
           placeholder="youremail@gmail.com"
           radius="primary"
         />
-        <p className="fx-label-color mt-3">Password</p>
+        <p className="text-text-color_2 mt-3 font-medium">Password</p>
         <FxInput
           className="w-full"
           type="password"
@@ -50,7 +50,7 @@ export default function LoginPage() {
       </>
 
       <FxSeparator orientation="horizontal" gap="xl">
-        <p className="fx-label-color fx-primary-bg pl-2 pr-2">Or</p>
+        <p className="text-text-color_2 bg-background-color_1 pl-2 pr-2 font-medium">Or</p>
       </FxSeparator>
 
       <>
@@ -60,7 +60,7 @@ export default function LoginPage() {
           size="md"
           radius="primary"
         >
-          <p className="font-medium fx-label-color">Google</p>
+          <p className="font-medium text-text-color_2">Google</p>
           <GoogleIcon />
         </FxButton>
         <div className="flex justify-center items-center gap-3 mt-3">
@@ -70,7 +70,7 @@ export default function LoginPage() {
             size="md"
             radius="primary"
           >
-            <p className="font-medium fx-label-color">Github</p>
+            <p className="font-medium text-text-color_2">Github</p>
             <GithubIcon />
           </FxButton>
           <FxButton
@@ -79,13 +79,13 @@ export default function LoginPage() {
             size="md"
             radius="primary"
           >
-            <p className="font-medium fx-label-color">Discord</p>
+            <p className="font-medium text-text-color_2">Discord</p>
             <DiscordIcon width={25} height={25} color="var(--primary-color)" />
           </FxButton>
         </div>
       </>
 
-      <p className="fx-label-color text-[14px] mt-8">
+      <p className="text-text-color_2 text-[14px] mt-8">
         By signing in, you agree to our{" "}
         <Link href={""} className="fx-link-color hover:underline">
           Terms of Service

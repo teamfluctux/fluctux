@@ -55,7 +55,7 @@ export default function DocContent({ data }: DocContentPropsType) {
       <section className="fx-flex-ct gap-5 relative w-full h-full ">
         <div className="mt-[64px] pt-10 w-full overflow-hidden">
           <div className="w-fit mb-8">
-            <span className="fx-label-color font-medium">
+            <span className="text-text-color_2 font-medium">
               {path_name &&
                 path_name
                   .split("/")
@@ -77,7 +77,7 @@ export default function DocContent({ data }: DocContentPropsType) {
             dangerouslySetInnerHTML={{ __html: content }}
             className="prose prose-gray dark:prose-invert w-full "
           ></article>
-          <div className="border-t mt-10 fx-border-color mb-32">
+          <div className="border-t mt-10 border-border-color_1 mb-24">
             <div className="w-full fx-flex-center gap-2 mt-5 doc-pagination">
               {prev && (
                 <Link
@@ -87,10 +87,10 @@ export default function DocContent({ data }: DocContentPropsType) {
                     localStorage.setItem(lessonKey, path_name);
                   }}
                 >
-                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2">
+                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_2 fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2">
                     <div className="fx-flex-cl">
                       <RightArrowIcon className="rotate-180" />
-                      <p className="fx-label-color font-medium text-[15px]">
+                      <p className="text-text-color_2 font-medium text-[15px]">
                         Previous
                       </p>
                     </div>
@@ -113,9 +113,9 @@ export default function DocContent({ data }: DocContentPropsType) {
                     localStorage.setItem(lessonKey, path_name);
                   }}
                 >
-                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:fx-secondary-bg fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2">
+                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_2 fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2">
                     <div className="fx-flex-cr">
-                      <p className="fx-label-color font-medium text-[15px]">
+                      <p className="text-text-color_2 font-medium text-[15px]">
                         Next
                       </p>
                       <RightArrowIcon />
@@ -133,12 +133,12 @@ export default function DocContent({ data }: DocContentPropsType) {
             </div>
 
             {data !== "404: Not Found" && (
-              <div className="w-full mt-5 border fx-rounded fx-border-color p-3 fx-flex-between-ic gap-3 edit-page-github">
+              <div className="w-full mt-5 border fx-rounded border-border-color_1 p-3 fx-flex-between-ic gap-3 edit-page-github">
                 <div className="max-w-[500px] w-full">
-                  <h4 className="fx-label-color text-[16px] font-medium">
+                  <h4 className="text-text-color_1 text-[16px] font-medium">
                     Edit this page on Github?
                   </h4>
-                  <p className="fx-sec-label-color text-[14px] font-medium pt-2">
+                  <p className="text-text-color_2 text-[14px] font-medium pt-2">
                     If you find any mistakes or areas that need updating, feel
                     free to edit and contribute improvements to the
                     documentation!
@@ -164,21 +164,21 @@ export default function DocContent({ data }: DocContentPropsType) {
 
             {data !== "404: Not Found" && (
               <div className="w-full fx-flex-center mt-5">
-                <div className="border fx-border-color rounded-[50px] p-1 gap-2 fx-flex-center w-fit fx-secondary-bg">
-                  <span className="fx-sec-label-color text-[14px] font-medium ml-2">
+                <div className="border border-border-color_1 rounded-[50px] p-1 gap-2 fx-flex-center w-fit bg-background-color_2">
+                  <span className="text-text-color_2 text-[14px] font-medium ml-2">
                     Was this helpful?
                   </span>
                   <div className="fx-flex-center w-fit">
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer fx-secondary-hover-bg hover:border fx-border-color">
+                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_3">
                       <StarFaceIcon />
                     </span>
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer fx-secondary-hover-bg hover:border fx-border-color">
+                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_3">
                       <SmileIcon />
                     </span>
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer fx-secondary-hover-bg hover:border fx-border-color">
+                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_3">
                       <SadIcon />
                     </span>
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer fx-secondary-hover-bg hover:border fx-border-color">
+                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_3">
                       <AngryIcon />
                     </span>
                   </div>
@@ -204,13 +204,13 @@ export default function DocContent({ data }: DocContentPropsType) {
               className={`absolute rotate-180 ${!isDocOnPageOpen && "hidden"} `}
             />
           </div>
-          <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar pb-16 doc-on-this-page-aside-container">
-            <div className="fx-flex-cl gap-2 sticky top-0 fx-primary-bg pb-1">
+          <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar pb-24 doc-on-this-page-aside-container">
+            <div className="fx-flex-cl gap-2 sticky top-0 bg-background-color_1 pb-1">
               <TextAlignLeftIcon width={15} height={15} />
               <h3 className="font-medium">On this page</h3>
             </div>
 
-            <ul className="fx-label-color leading-7">
+            <ul className="text-text-color_2 leading-7">
               {anchors.map((item: string, i: number) => {
                 return (
                   <Link

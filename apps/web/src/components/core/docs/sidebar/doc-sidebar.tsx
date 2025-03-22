@@ -135,14 +135,19 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
   }, [focus]);
 
   const goToReading = () => {
+    handleCollapseChapters()
     openChapterOnDemand();
     setFocus(!focus);
   };
 
+  useEffect(() => {
+    handleExpandChapters()
+  }, [])
+
   return (
     <>
       <aside
-        className={`w-[250px] h-screen sticky top-0 fx-primary-bg flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}
+        className={`w-[250px] h-screen sticky top-0 bg-background-color_1 flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}
       >
         <div
           onClick={docAsideToggleOpen}
@@ -157,7 +162,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             className={`absolute ${!isDocAsideOpen && "hidden"} `}
           />
         </div>
-        <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar doc-hide-scrollbar pr-2 pb-16 doc-aside-nav-container">
+        <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-scroll custom-scrollbar doc-hide-scrollbar pr-2 pb-24 doc-aside-nav-container">
           <FxButton
             variant="secondary"
             className="w-full fx-flex-cl gap-2 p-2 mb-3 "
@@ -168,7 +173,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             </div>
             <div className="text-left">
               <p className="font-medium">Fluctux</p>
-              <p className="fx-sec-label-color text-[13px]">
+              <p className="text-text-color_2 text-[13px]">
                 v{FLUCTUX_VERSION}
               </p>
             </div>
@@ -179,9 +184,9 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             align="start"
             classNames={{
               button:
-                "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full fx-secondary-bg sticky top-[0px] z-[20] font-medium",
+                "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full bg-background-color_2 sticky top-[0px] z-[20] font-medium",
               activeLabel:
-                "hover:bg-[var(--third-bg)_!important] bg-[var(--third-bg)]",
+                "hover:bg-[var(--background-color-3)_!important] bg-[var(--background-color-3)]",
               label: "w-full fx-secondary-hover-bg p-2 hover:bg-[transparent] group",
               layout: "w-[230px] p-[0px_!important] overflow-hidden",
               labelIconContainer:
@@ -197,57 +202,23 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             showDescInButton={true}
           />
 
-          <div className="w-full p-1 mb-3 fx-border-color rounded-[5px] backdrop-blur-md z-[15] sticky top-[60px] fx-flex-cl gap-2">
+          <div className="w-full p-1 mb-3 border-border-color_1 rounded-[5px] backdrop-blur-md z-[15] sticky top-[60px] fx-flex-cl gap-2">
+            
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
                   <FxButton
                     variant="silent"
-                    className="p-1"
-                    radius="tiny"
-                    onClick={handleExpandChapters}
-                  >
-                    <UnfoldVertical color="var(--label-text-color)" size={18} />
-                  </FxButton>
-                </TooltipTrigger>
-                <TooltipContent align="start" side="bottom">
-                  <p>Expand</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <FxButton
-                    variant="silent"
-                    className="p-1"
-                    radius="tiny"
-                    onClick={handleCollapseChapters}
-                  >
-                    <FoldVertical color="var(--label-text-color)" size={18} />
-                  </FxButton>
-                </TooltipTrigger>
-                <TooltipContent side="bottom">
-                  <p>Collapse</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <FxButton
-                    variant="silent"
-                    className="p-1"
+                    className="px-2 py-[2px] text-[15px] fx-flex-cl gap-2"
                     radius="tiny"
                     onClick={() => goToReading()}
                   >
-                    <LocateFixed color="var(--label-text-color)" size={18} />
+                    <LocateFixed color="var(--foreground-color-2)" size={18} />
+                    Focus
                   </FxButton>
                 </TooltipTrigger>
-                <TooltipContent side="bottom">
-                  <p>Focus</p>
+                <TooltipContent side="bottom" align="start">
+                  <p className="text-text-color_2" >Distraction-free mode</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -259,7 +230,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 <div key={i}>
                   {navItem.type === "dir" ? (
                     <button
-                      className={`font-medium relative z-[2] hover:fx-secondary-bg transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${isOpenFromArray(`${i}`) && "text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important] "}`}
+                      className={`font-medium text-[15px] relative z-[2] hover:bg-background-color_2 transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${isOpenFromArray(`${i}`) && "text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important] "}`}
                       onClick={() => handleOpenArray(`${i}`)}
                     >
                       <span>
@@ -281,7 +252,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                       }}
                     >
                       <button
-                        className={`font-medium hover:fx-secondary-bg transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] fx-label-color ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "fx-secondary-bg text-[var(--primary-color)_!important]"}`}
+                        className={`font-medium text-[15px] hover:bg-background-color_2 transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "bg-background-color_2 text-[var(--primary-color)_!important]"}`}
                       >
                         <span>
                           {navItem.name
@@ -298,7 +269,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     // if there are type=file don't show this else show
                     navItem.type === "dir" && (
                       <div
-                        className={`ml-2 pl-2 flex relative flex-col border-l fx-border-color fx-label-color font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
+                        className={`ml-2 text-[15px] pl-2 flex relative flex-col border-l border-border-color_1 text-text-color_2 font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
                       >
                         <div
                           className={`absolute z-[5] w-full  bg-gradient-to-t from-[var(--background)] to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}
@@ -312,7 +283,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                                 lessons.current[slug] = el;
                               }}
                               href={slug}
-                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50 hover:text-fx_zinc-950 relative hover:fx-secondary-bg transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "fx-primary-purple-text fx-secondary-bg hover:text-[var(--primary-color)_!important]"}`}
+                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50 hover:text-fx_zinc-950 relative hover:bg-background-color_2 transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-text-indigo-color_1 bg-background-color_2 hover:text-[var(--primary-color)_!important]"}`}
                               onClick={(e) => {
                                 path_name === slug && e.preventDefault();
                                 localStorage.setItem(lessonKey, slug);
@@ -328,8 +299,8 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                               {path_name.endsWith(
                                 `${navTreeItem.name.replace(".mdx", "")}`
                               ) && (
-                                <span className="absolute transition left-[-0px] top-[50%] translate-y-[-50%] h-[18px] w-[3px] fx-primary-purple-bg z-10 rounded-[50px] "></span>
-                              )}
+                                  <span className="absolute transition left-[-0px] top-[50%] translate-y-[-50%] h-[17px] w-[3px] bg-background-indigo_primary z-10 rounded-[50px] "></span>
+                                )}
                             </Link>
                           );
                         })}

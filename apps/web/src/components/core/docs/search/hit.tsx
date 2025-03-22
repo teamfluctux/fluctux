@@ -18,7 +18,7 @@ export default function Hit({ hit }: HitProps) {
   return (
     <div className="pl-3 pr-3  w-full pt-2">
       <Link href={`/docs/${hit.slug}`} className="w-full">
-        <li className="w-full p-4 pt-3 pb-3 fx-third-bg fx-rounded fx-flex-between-ic gap-2  font-medium fx-secondary-hover-bg group">
+        <li className="w-full p-4 pt-3 pb-3 fx-third-bg fx-rounded fx-flex-between-ic gap-2  font-medium hover:bg-background-color_3 group">
           <div className="fx-flex-cl gap-4">
             <div className="flex-shrink-0 w-[30px] h-[30px] border rounded-[5px] fx-flex-center fx-border-color">
               <GridIcon width={15} height={15} />

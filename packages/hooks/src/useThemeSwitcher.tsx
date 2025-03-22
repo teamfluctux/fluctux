@@ -31,14 +31,14 @@ export const useThemeSwitcher = (THEME_ICONS: ThemeModeIconsType[]) => {
   };
 
   const ThemeSwitcher: React.FC = () => (
-    <div className="fx-flex-center w-fit rounded-[50px] border fx-border-color p-[2px]">
+    <div className="fx-flex-center w-fit rounded-[50px] border border-border-color_1 p-[2px]">
       <ul className="fx-flex-center w-fit relative">
         {THEME_ICONS.map((item, i) => {
           return (
             <li
               onClick={() => handleChangeAppearanceMode(i)}
               key={i}
-              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px] fx-flex-center fx-secondary-hover-bg ${activeIndex === i && "fx-primary-bg fx-border-color border theme-color-mode-active"} `}
+              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px] fx-flex-center hover:bg-background-color_2 ${activeIndex === i && "bg-background-color_1 border-border-color_1 border theme-color-mode-active"} `}
             >
               {item?.svg}
             </li>

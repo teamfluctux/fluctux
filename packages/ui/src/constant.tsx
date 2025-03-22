@@ -6,3 +6,6 @@ export const ROUNDED_VARIANTS: { [key in RadiusType]: string } = {
   circle: "rounded-[50%]",
   tiny: "rounded-[5px]",
 };
+
+
+export const LUCIDE_WORKSPACE_ICON_SIZE = 18

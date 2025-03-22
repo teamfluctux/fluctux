@@ -21,7 +21,7 @@ export function FxSuggestionInput({
     <div>
       {showSuggestions && filteredSuggestions?.length > 0 && (
         <div className="pb-10 absolute w-[250px]">
-          <ul className="  border fx-border-color fx-secondary-bg shadow-lg mt-1 rounded-md z-10 max-h-[300px] overflow-y-auto">
+          <ul className="  border border-border-color_1 bg-background-color_2 shadow-lg mt-1 rounded-md z-10 max-h-[300px] overflow-y-auto">
             {filteredSuggestions?.map((Suggestion: string, index: number) => (
               <li
                 key={Suggestion}

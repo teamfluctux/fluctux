@@ -63,7 +63,7 @@ export function FxPopupRadio({
   radius = "tiny",
   showDescInButton = false,
   classNames = {
-    activeLabel: "fx-third-bg",
+    activeLabel: "bg-background-color_3",
     buttonSvgContainer: "",
     labelIconContainer: "",
     button: "",
@@ -113,7 +113,7 @@ export function FxPopupRadio({
             <div className="text-left">
               <p>{items.find((item) => item.value === selectedValue)?.label}</p>
               {showDescInButton && (
-                <span className="fx-sec-label-color one-line-ellipsis text-[13px]">
+                <span className="text-text-color_2 one-line-ellipsis text-[13px]">
                   {items.find((item) => item.value === selectedValue)?.desc}
                 </span>
               )}
@@ -122,13 +122,13 @@ export function FxPopupRadio({
         ) : (
           <div className="leading-5">
             <p className="text-red-600 font-medium">No items to display</p>
-            <span className="fx-sec-label-color text-[14px]">FxPopupRadio</span>
+            <span className="text-text-color_2 text-[14px]">FxPopupRadio</span>
           </div>
         )}
       </PopoverTrigger>
       <PopoverContent align={align}>
         <div
-          className={`flex ${alignItemVariant} w-[200px] border fx-border-color rounded-[8px] p-1 fx-secondary-bg ${classNames.layout}`}
+          className={`flex ${alignItemVariant} w-[200px] border border-border-color_1 rounded-[8px] p-1 bg-background-color_2 ${classNames.layout}`}
         >
           {items
             ? items.map((item, i) => {
@@ -140,7 +140,7 @@ export function FxPopupRadio({
                     >
                       {item.svg && (
                         <div
-                          className={`w-[40px] h-[40px] rounded-[50%] border fx-border-color fx-flex-center flex-shrink-0 ${classNames.labelIconContainer}`}
+                          className={`w-[40px] h-[40px] rounded-[50%] border border-border-color_1 fx-flex-center flex-shrink-0 ${classNames.labelIconContainer}`}
                         >
                           {item.svg}
                         </div>
@@ -156,7 +156,7 @@ export function FxPopupRadio({
                           )}
 
                           {item.desc && (
-                            <span className="text-[14px] fx-sec-label-color radio-description leading-[1.2rem]">
+                            <span className="text-[14px] text-text-color_2 radio-description leading-[1.2rem]">
                               {item.desc}
                             </span>
                           )}

@@ -21,7 +21,7 @@ export function FxCommandBox({
       className={`bg-transparent border-none p-[0px] z-[70] ${className}`}
     >
       <div
-        className={`border fx-border-color rounded-[10px] fx-secondary-bg h-full w-full relative overflow-hidden ${containerClasses}`}
+        className={`border border-border-color_1 rounded-[10px] bg-background-color_2 h-full w-full relative overflow-hidden ${containerClasses}`}
       >
         {children}
       </div>

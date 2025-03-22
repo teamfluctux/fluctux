@@ -48,7 +48,7 @@ export function FxSeparator({
       <hr
         className={`${selectedOrientation} absolute`}
         style={{
-          borderColor: color || "var(--primary-border-color)",
+          borderColor: color || "var(--border-color-1)",
           width: size && `${size}`,
         }}
       />
