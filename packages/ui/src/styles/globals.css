@@ -450,6 +450,7 @@ body {
   font-weight: inherit;
   font-size: inherit;
   color: inherit;
+  font-family: var(--font-jetbrains-mono) ;
 }
 
 .light

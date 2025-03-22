@@ -173,7 +173,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             </div>
             <div className="text-left">
               <p className="font-medium">Fluctux</p>
-              <p className="text-text-color_2 text-[13px]">
+              <p className="text-text-color_2 text-[13px] font-medium">
                 v{FLUCTUX_VERSION}
               </p>
             </div>
@@ -214,7 +214,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     onClick={() => goToReading()}
                   >
                     <LocateFixed color="var(--foreground-color-2)" size={18} />
-                    Focus
+                    <span className="font-medium">Focus</span>
                   </FxButton>
                 </TooltipTrigger>
                 <TooltipContent side="bottom" align="start">
@@ -252,7 +252,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                       }}
                     >
                       <button
-                        className={`font-medium text-[15px] hover:bg-background-color_2 transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "bg-background-color_2 text-[var(--primary-color)_!important]"}`}
+                        className={` text-[15px] hover:bg-background-color_2 transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "bg-background-color_2 font-medium text-[var(--primary-color)_!important]"}`}
                       >
                         <span>
                           {navItem.name
@@ -269,7 +269,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     // if there are type=file don't show this else show
                     navItem.type === "dir" && (
                       <div
-                        className={`ml-2 text-[15px] pl-2 flex relative flex-col border-l border-border-color_1 text-text-color_2 font-medium transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
+                        className={`ml-2 text-[15px] pl-2 flex relative flex-col border-l border-border-color_1 text-text-color_2  transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
                       >
                         <div
                           className={`absolute z-[5] w-full  bg-gradient-to-t from-[var(--background)] to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}
@@ -283,7 +283,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                                 lessons.current[slug] = el;
                               }}
                               href={slug}
-                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50 hover:text-fx_zinc-950 relative hover:bg-background-color_2 transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-text-indigo-color_1 bg-background-color_2 hover:text-[var(--primary-color)_!important]"}`}
+                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50  hover:text-fx_zinc-950 relative hover:bg-background-color_2 transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-text-indigo-color_1 bg-background-color_2 font-medium hover:text-[var(--primary-color)_!important]"}`}
                               onClick={(e) => {
                                 path_name === slug && e.preventDefault();
                                 localStorage.setItem(lessonKey, slug);
