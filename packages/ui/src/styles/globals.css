@@ -48,6 +48,7 @@
   --foreground: var(--color-zinc-950);
   --foreground-color-2: var(--color-zinc-600);
   --foreground-color-3: var(--color-zinc-500);
+  --foreground-color-4: var(--color-zinc-700);
 
   /* radius */
   --primary-radius: 8px;
@@ -129,6 +130,7 @@
   --foreground: var(--color-zinc-50);
   --foreground-color-2: var(--color-zinc-400);
   --foreground-color-3: var(--color-zinc-500);
+  --foreground-color-4: var(--color-zinc-300);
 
   /* loader */
   --skeleton-base-color: var(--color-zinc-900);

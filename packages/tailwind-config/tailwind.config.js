@@ -59,7 +59,9 @@ module.exports = {
           color_1: "var(--foreground)",
           color_2: "var(--foreground-color-2)",
           color_3: "var(--foreground-color-3)",
-          svg_default: "var(--svg-default-color)"
+          color_4: "var(--foreground-color-4)",
+          svg_default: "var(--svg-default-color)",
+          color_default_white: "var(--color-zinc-50)"
         },
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
