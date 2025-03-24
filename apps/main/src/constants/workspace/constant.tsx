@@ -160,17 +160,17 @@ export const ACCOUNT_MENU_ITEMS = [
   {
     label: "Account",
     slug: "#",
-    icon: <CircleUserRound color={ICON_DEFAULT_COLOR} size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <CircleUserRound size={LUCIDE_WORKSPACE_ICON_SIZE} />
   },
   {
     label: "Billing",
     slug: "#",
-    icon: <CreditCard color={ICON_DEFAULT_COLOR} size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <CreditCard size={LUCIDE_WORKSPACE_ICON_SIZE} />
   },
   {
     label: "Settings",
     slug: "#",
-    icon: <Settings color={ICON_DEFAULT_COLOR} size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <Settings size={LUCIDE_WORKSPACE_ICON_SIZE} />
   }
 ]
 
@@ -178,17 +178,17 @@ export const FIND_HELP_ITEMS = [
   {
     label: "Docs",
     slug: "#",
-    icon: <BookOpen color={ICON_DEFAULT_COLOR} size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <BookOpen size={LUCIDE_WORKSPACE_ICON_SIZE} />
   },
   {
     label: "Shortcuts",
     slug: "#",
-    icon: <SquareSlash color={ICON_DEFAULT_COLOR} size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <SquareSlash size={LUCIDE_WORKSPACE_ICON_SIZE} />
   },
   {
     label: "Support",
     slug: "#",
-    icon: <HeartHandshake color={ICON_DEFAULT_COLOR} size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <HeartHandshake size={LUCIDE_WORKSPACE_ICON_SIZE} />
   }
 ]
 
@@ -196,6 +196,6 @@ export const WHATS_NEW_ITEMS = [
   {
     label: "Changelog",
     slug: "#",
-    icon: <Logs color={ICON_DEFAULT_COLOR} size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <Logs size={LUCIDE_WORKSPACE_ICON_SIZE} />
   }
 ]
