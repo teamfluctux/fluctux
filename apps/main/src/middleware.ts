@@ -14,9 +14,10 @@ export async function middleware(req: NextRequest) {
   // if(!token && pathname === "/"){
   //   return NextResponse.rewrite(new URL("/login", req.url));
   // }
-
 }
 
 export const config = {
-  matcher: ["/((?!^$|_next/static|_next/image|favicon.ico|login|signup|register|signin|sign-in|sign-up|log-in).*)"],
+  matcher: [
+    "/((?!^$|_next/static|_next/image|favicon.ico|login|signup|register|signin|sign-in|sign-up|log-in).*)",
+  ],
 };

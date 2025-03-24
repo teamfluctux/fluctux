@@ -11,10 +11,18 @@ import {
   ProjectRedIcon,
   ProjectOrangeIcon,
 } from "@fluctux/ui";
-import { BookOpen, CircleUserRound, CreditCard, HeartHandshake, Logs, Settings, SquareSlash } from "lucide-react";
-import {LUCIDE_WORKSPACE_ICON_SIZE} from "@fluctux/ui"
+import {
+  BookOpen,
+  CircleUserRound,
+  CreditCard,
+  HeartHandshake,
+  Logs,
+  Settings,
+  SquareSlash,
+} from "lucide-react";
+import { LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 
-export const ICON_DEFAULT_COLOR = "var(--svg-default-color)"
+export const ICON_DEFAULT_COLOR = "var(--svg-default-color)";
 
 export const PROJECT_VISIBILITY_OPTIONS = [
   {
@@ -160,42 +168,42 @@ export const ACCOUNT_MENU_ITEMS = [
   {
     label: "Account",
     slug: "#",
-    icon: <CircleUserRound size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <CircleUserRound size={LUCIDE_WORKSPACE_ICON_SIZE} />,
   },
   {
     label: "Billing",
     slug: "#",
-    icon: <CreditCard size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <CreditCard size={LUCIDE_WORKSPACE_ICON_SIZE} />,
   },
   {
     label: "Settings",
     slug: "#",
-    icon: <Settings size={LUCIDE_WORKSPACE_ICON_SIZE} />
-  }
-]
+    icon: <Settings size={LUCIDE_WORKSPACE_ICON_SIZE} />,
+  },
+];
 
 export const FIND_HELP_ITEMS = [
   {
     label: "Docs",
     slug: "#",
-    icon: <BookOpen size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <BookOpen size={LUCIDE_WORKSPACE_ICON_SIZE} />,
   },
   {
     label: "Shortcuts",
     slug: "#",
-    icon: <SquareSlash size={LUCIDE_WORKSPACE_ICON_SIZE} />
+    icon: <SquareSlash size={LUCIDE_WORKSPACE_ICON_SIZE} />,
   },
   {
     label: "Support",
     slug: "#",
-    icon: <HeartHandshake size={LUCIDE_WORKSPACE_ICON_SIZE} />
-  }
-]
+    icon: <HeartHandshake size={LUCIDE_WORKSPACE_ICON_SIZE} />,
+  },
+];
 
 export const WHATS_NEW_ITEMS = [
   {
     label: "Changelog",
     slug: "#",
-    icon: <Logs size={LUCIDE_WORKSPACE_ICON_SIZE} />
-  }
-]
+    icon: <Logs size={LUCIDE_WORKSPACE_ICON_SIZE} />,
+  },
+];

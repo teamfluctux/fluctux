@@ -25,7 +25,8 @@ export const buttonStyling: ButtonStylingType = {
       "text-text-color_3 cursor-not-allowed !bg-[var(--button-primary-disabled)] border border-border-color_1",
   },
   secondary: {
-    default: "border border-border-color_1 bg-background-color_2  cursor-pointer ",
+    default:
+      "border border-border-color_1 bg-background-color_2  cursor-pointer ",
     hover: "hover:bg-background-color_3",
     disabled:
       "text-text-color_3 cursor-not-allowed bg-background-color_2 border border-border-color_1",

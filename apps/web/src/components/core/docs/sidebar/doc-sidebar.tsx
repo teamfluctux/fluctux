@@ -135,14 +135,14 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
   }, [focus]);
 
   const goToReading = () => {
-    handleCollapseChapters()
+    handleCollapseChapters();
     openChapterOnDemand();
     setFocus(!focus);
   };
 
   useEffect(() => {
-    handleExpandChapters()
-  }, [])
+    handleExpandChapters();
+  }, []);
 
   return (
     <>
@@ -187,7 +187,8 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full bg-background-color_2 sticky top-[0px] z-[20] font-medium",
               activeLabel:
                 "hover:bg-[var(--background-color-3)_!important] bg-[var(--background-color-3)]",
-              label: "w-full fx-secondary-hover-bg p-2 hover:bg-[transparent] group",
+              label:
+                "w-full fx-secondary-hover-bg p-2 hover:bg-[transparent] group",
               layout: "w-[230px] p-[0px_!important] overflow-hidden",
               labelIconContainer:
                 " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] group-hover:border group-hover:fx-primary-purple-border",
@@ -203,7 +204,6 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
           />
 
           <div className="w-full p-1 mb-3 border-border-color_1 rounded-[5px] backdrop-blur-md z-[15] sticky top-[60px] fx-flex-cl gap-2">
-            
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -218,7 +218,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                   </FxButton>
                 </TooltipTrigger>
                 <TooltipContent side="bottom" align="start">
-                  <p className="text-text-color_2" >Distraction-free mode</p>
+                  <p className="text-text-color_2">Distraction-free mode</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -299,8 +299,8 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                               {path_name.endsWith(
                                 `${navTreeItem.name.replace(".mdx", "")}`
                               ) && (
-                                  <span className="absolute transition left-[-0px] top-[50%] translate-y-[-50%] h-[17px] w-[3px] bg-background-indigo_primary z-10 rounded-[50px] "></span>
-                                )}
+                                <span className="absolute transition left-[-0px] top-[50%] translate-y-[-50%] h-[17px] w-[3px] bg-background-indigo_primary z-10 rounded-[50px] "></span>
+                              )}
                             </Link>
                           );
                         })}

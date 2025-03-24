@@ -14,7 +14,9 @@ import React from "react";
 export default function LoginPage() {
   return (
     <div className=" w-full">
-      <h1 className="text-[25px] font-medium mb-5 black-white-gradient-bt">Login to Fluctux</h1>
+      <h1 className="text-[25px] font-medium mb-5 black-white-gradient-bt">
+        Login to Fluctux
+      </h1>
       <>
         <p className="text-text-color_2 font-medium">Email</p>
         <FxInput
@@ -50,7 +52,9 @@ export default function LoginPage() {
       </>
 
       <FxSeparator orientation="horizontal" gap="xl">
-        <p className="text-text-color_2 bg-background-color_1 pl-2 pr-2 font-medium">Or</p>
+        <p className="text-text-color_2 bg-background-color_1 pl-2 pr-2 font-medium">
+          Or
+        </p>
       </FxSeparator>
 
       <>

@@ -35,7 +35,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable}`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable}`}
+      >
         <ThemeProvider attribute="class">
           <Suspense>
             <GlobalClientProvider>

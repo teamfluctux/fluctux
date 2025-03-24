@@ -7,5 +7,4 @@ export const ROUNDED_VARIANTS: { [key in RadiusType]: string } = {
   tiny: "rounded-[5px]",
 };
 
-
-export const LUCIDE_WORKSPACE_ICON_SIZE = 18
+export const LUCIDE_WORKSPACE_ICON_SIZE = 18;

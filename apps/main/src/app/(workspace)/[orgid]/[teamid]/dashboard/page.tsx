@@ -1,11 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function TeamDashboard(){
-  return (
-    <div>
-      Dashboard
-    </div>
-  )
+export default function TeamDashboard() {
+  return <div>Dashboard</div>;
 }
-
-
