@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 import { ROUNDED_VARIANTS } from "../constant";
 import { buttonSizes, ButtonVariant, getButtonStyling } from "./helper";
 
