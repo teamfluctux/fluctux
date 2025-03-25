@@ -2,7 +2,7 @@ import { apolloClient } from "@/lib/apollo-client";
 import React from "react";
 import { DocNavListType, DocOnDemandContent } from "@/components/core/docs";
 import { gql } from "@apollo/client";
-import { algolia, IndexDocNavListsType } from "@/services/algolia";
+import { algolia, IndexDocNavListsType } from "@fluctux/shared/services";
 
 const GET_DOC_NAV_LIST = gql`
   query GetDocNavList($docType: String) {

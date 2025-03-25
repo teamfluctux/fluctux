@@ -1,6 +1,7 @@
 "use client";
 import { cn, FxSeparator, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { ArrowLeftRight, CirclePlus, Telescope } from "lucide-react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 export const CommandMenu = () => {
@@ -36,12 +37,14 @@ export const CommandMenu = () => {
           </ul>
           <FxSeparator orientation="horizontal" />
           <ul className="p-2">
+            <Link href={"/create/org"}>
             <li className="text-workspace_2  group text-text-color_4 hover:bg-background-indigo_primary dark:hover:text-text-color_1 hover:text-text-color_default_white px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
               <div className="text-text-color_2 dark:group-hover:text-text-color_1 group-hover:text-text-color_default_white">
                 <CirclePlus size={LUCIDE_WORKSPACE_ICON_SIZE} />
               </div>
               <span>Create new org</span>
             </li>
+            </Link>
             <li className="text-workspace_2 group text-text-color_4 hover:bg-background-color_5 hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
               <div className="text-text-color_2 group-hover:text-text-indigo-color_1">
                 <Telescope size={LUCIDE_WORKSPACE_ICON_SIZE} />
