@@ -1,15 +1,15 @@
-import { ERROR, ErrorCodes, HTTPErrorCodes } from "@/constants/error";
-import { ORG_CREATED } from "@/constants/events";
-import connDb from "@/lib/db.conn";
-import Org from "@/mongo/org/org.model";
-import ApiResponse from "@/utils/ApiResponse";
+import { ERROR, ErrorCodes, HTTPErrorCodes } from "../../constants/error";
+import { ORG_CREATED } from "../../constants/events";
+import connDb from "../../lib/db.conn";
+import {Org} from "../../mongo/org/org.model";
+import ApiResponse from "../../utils/ApiResponse";
 import { CreateOrganizationDataType, OrgResponseType } from "./type";
-import ApiError from "@/utils/ApiError";
-import { createOrgZodSchema } from "@/zod/organization";
-import { getFormattedZodErrors } from "@/utils/zod-error-formatter";
+import ApiError from "../../utils/ApiError";
+import { createOrgZodSchema } from "../../zod/organization";
+import { getFormattedZodErrors } from "../../utils/zod-error-formatter";
 import { User as UserSessionType } from "next-auth";
-import { HTTPSuccessCodes } from "@/constants/success";
-import { internalServerError, unauthorizedError } from "@/helpers/errorHandler";
+import { HTTPSuccessCodes } from "../../constants/success";
+import { internalServerError, unauthorizedError } from "../../helpers/errorHandler";
 
 export class Organization {
   protected session: UserSessionType | null = null;

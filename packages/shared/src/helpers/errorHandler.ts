@@ -1,5 +1,5 @@
-import { ERROR, ErrorCodes, HTTPErrorCodes } from "@/constants/error";
-import ApiError from "@/utils/ApiError";
+import { ERROR, ErrorCodes, HTTPErrorCodes } from "../constants/error";
+import ApiError from "../utils/ApiError";
 
 export const unauthorizedError = () => {
   return {

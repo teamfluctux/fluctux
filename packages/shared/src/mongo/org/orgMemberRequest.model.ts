@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { OrgType } from "./org.model";
 import { UserType } from "../user/user.model";
-import { RequestStatusType, OrgMemberRoleType } from "@/mongo/types";
+import { RequestStatusType, OrgMemberRoleType } from "../../mongo/types";
 
 export interface OrgMemberRequestType extends Document {
   requested_to: OrgType;

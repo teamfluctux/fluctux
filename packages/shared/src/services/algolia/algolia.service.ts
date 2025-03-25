@@ -1,7 +1,7 @@
-import { writeAlgolia } from "@/helpers/algolia/write.helper";
+import { writeAlgolia } from "../../helpers/algolia/write.helper";
 
 import { IndexDocNavListsType } from "./type";
-import { DOC_INDEX_NAME } from "@/services/constant";
+import { DOC_INDEX_NAME } from "../../services/constant";
 
 class Algolia {
   async indexDocNavLists(data: IndexDocNavListsType[]) {

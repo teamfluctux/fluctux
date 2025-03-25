@@ -1,10 +1,6 @@
 {
   "extends": "@fluctux/typescript-config/react-library.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "outDir": "dist"
   },
   "include": ["."],

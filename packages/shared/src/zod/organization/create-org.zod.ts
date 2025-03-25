@@ -1,4 +1,4 @@
-import { OrgVisibilityType } from "@/mongo/types";
+import { OrgVisibilityType } from "../../mongo/types";
 import { z } from "zod";
 
 export const ORG_VISIBILITY_ZOD_ENUMS = z.nativeEnum(OrgVisibilityType);

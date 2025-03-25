@@ -7,7 +7,7 @@ import {
   SocialLinkType,
   SocialMediaType,
   VisibilityType,
-} from "@/mongo/types";
+} from "../../mongo/types";
 
 export interface UserBasicInfoType extends Document {
   user: UserType;
