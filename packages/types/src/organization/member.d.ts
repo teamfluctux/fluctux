@@ -18,13 +18,12 @@ export interface CreateNewTeamDataType {
   team_visibility: string; //TODO: it should be enum
 }
 
-export enum OrgMemberStatusType {
-  NORMAL = "NORMAL",
-  RESTRICTED = "RESTRICTED",
-  BLOCKED = "BLOCKED",
-  PENDING = "PENDING",
-  REJECTED = "REJECTED",
-}
+export type OrgMemberStatusType =
+  | "NORMAL"
+  | "RESTRICTED"
+  | "BLOCKED"
+  | "PENDING"
+  | "REJECTED";
 
 export interface OrgMemberRequestType extends Document {
   requested_to: OrgType;

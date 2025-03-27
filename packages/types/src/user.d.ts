@@ -15,18 +15,18 @@ export interface UserType {
   isPasswordCorrect(password: string): Promise<boolean>;
 }
 
-export enum VisibilityType {
-  PUBLIC = "PUBLIC",
-  PRIVATE = "PRIVATE",
-  FRIEND = "FRIEND",
-  ORG = "ORG",
-}
+export type VisibilityType =
+  | "PUBLIC"
+  | "PRIVATE"
+  | "FRIEND"
+  | "ORG"
 
-export enum GenderType {
-  MALE = "MALE",
-  FEMALE = "FEMALE",
-  CUSTOM = "CUSTOM",
-}
+
+export type GenderType =
+  | "MALE"
+  | "FEMALE"
+  | "CUSTOM"
+
 
 export type NumberType = {
   number: string;
@@ -45,37 +45,37 @@ export type DateOfBirthType = {
   visibility: VisibilityType;
 };
 
-export enum AuthProviderType {
-  GOOGLE = "GOOGLE",
-  GITHUB = "GITHUB",
-  DISCORD = "DISCORD",
-  CUSTOM = "CUSTOM",
-}
+export type AuthProviderType =
+  | "GOOGLE"
+  | "GITHUB"
+  | "DISCORD"
+  | "CUSTOM"
 
-export enum UserStatusType {
-  SUSPENDED = "SUSPENDED",
-  RESTRICTED = "RESTRICTED",
-  NORMAL = "NORMAL",
-}
 
-export enum UserRoleType {
-  ADMIN = "ADMIN",
-  USER = "USER",
-}
+export type UserStatusType =
+  | "SUSPENDED"
+  | "RESTRICTED"
+  | "NORMAL"
 
-export enum SocialMediaType {
-  FACEBOOK = "FACEBOOK",
-  TWITTER = "TWITTER",
-  LINKEDIN = "LINKEDIN",
-  GITHUB = "GITHUB",
-  INSTAGRAM = "INSTAGRAM",
-}
 
-export enum RequestStatusType {
-  PENDING = "PENDING",
-  ACCEPTED = "ACCEPTED",
-  REJECTED = "REJECTED",
-}
+export type UserRoleType =
+  | "ADMIN"
+  | "USER"
+
+
+export type SocialMediaType =
+  | "FACEBOOK"
+  | "TWITTER"
+  | "LINKEDIN"
+  | "GITHUB"
+  | "INSTAGRAM"
+
+
+export type RequestStatusType =
+  | "PENDING"
+  | "ACCEPTED"
+  | "REJECTED"
+
 
 export interface FriendType extends Document {
   sender_id: UserType;

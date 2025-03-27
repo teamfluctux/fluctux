@@ -6,7 +6,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { JWT } from "next-auth/jwt";
 import mongoose from "mongoose";
 import { connDb, User } from "@fluctux/database";
-import "@fluctux/types"
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers

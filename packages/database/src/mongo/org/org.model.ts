@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { OrgStatusType, OrgType, OrgVisibilityType } from "@fluctux/types";
+import { OrgType } from "@fluctux/types";
+import { OrgVisibilityEnum, OrgStatusEnum } from "@fluctux/constants";
 
 const org_schema: Schema<OrgType> = new Schema(
   {
@@ -20,8 +21,8 @@ const org_schema: Schema<OrgType> = new Schema(
     },
     org_visibility: {
       type: String,
-      enum: OrgVisibilityType,
-      default: OrgVisibilityType.PUBLIC,
+      enum: OrgVisibilityEnum,
+      default: OrgVisibilityEnum.PUBLIC,
       required: true,
     },
     admin: {
@@ -43,8 +44,8 @@ const org_schema: Schema<OrgType> = new Schema(
     },
     status: {
       type: String,
-      enum: OrgStatusType,
-      default: OrgStatusType.NORMAL,
+      enum: OrgStatusEnum,
+      default: OrgStatusEnum.NORMAL,
     },
     isVerified: {
       type: Boolean,

@@ -1,9 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 import {
-  OrgMemberRoleType,
-  OrgMemberStatusType,
   OrgMemberType,
 } from "@fluctux/types";
+import { OrgMemberRoleEnum, OrgMemberStatusEnum } from "@fluctux/constants"
 
 const orgMemberSchema: Schema<OrgMemberType> = new Schema(
   {
@@ -19,13 +18,13 @@ const orgMemberSchema: Schema<OrgMemberType> = new Schema(
     },
     role: {
       type: String,
-      enum: OrgMemberRoleType,
-      default: OrgMemberRoleType.FOLLOWER,
+      enum: OrgMemberRoleEnum,
+      default: OrgMemberRoleEnum.FOLLOWER,
     },
     status: {
       type: String,
-      enum: OrgMemberStatusType,
-      default: OrgMemberStatusType.NORMAL,
+      enum: OrgMemberStatusEnum,
+      default: OrgMemberStatusEnum.NORMAL,
     },
   },
   {

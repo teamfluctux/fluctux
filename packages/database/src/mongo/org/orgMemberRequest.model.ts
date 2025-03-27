@@ -1,9 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 import {
   OrgMemberRequestType,
-  OrgMemberRoleType,
-  RequestStatusType,
 } from "@fluctux/types";
+
+import { RequestStatusEnum, OrgMemberRoleEnum } from "@fluctux/constants"
 
 const orgMemberRequestSchema: Schema<OrgMemberRequestType> = new Schema(
   {
@@ -24,13 +24,13 @@ const orgMemberRequestSchema: Schema<OrgMemberRequestType> = new Schema(
     },
     status: {
       type: String,
-      enum: RequestStatusType,
-      default: RequestStatusType.PENDING,
+      enum: RequestStatusEnum,
+      default: RequestStatusEnum.PENDING,
     },
     requested_role: {
       type: String,
-      enum: OrgMemberRoleType,
-      default: OrgMemberRoleType.FOLLOWER,
+      enum: OrgMemberRoleEnum,
+      default: OrgMemberRoleEnum.FOLLOWER,
     },
   },
   {

@@ -1,12 +1,13 @@
 import {
   DateOfBirthType,
-  GenderType,
+
   NumberType,
   SocialLinkType,
-  SocialMediaType,
+
   UserBasicInfoType,
-  VisibilityType,
+
 } from "@fluctux/types";
+import { GenderEnum, SocialMediaEnum, VisibilityEnum } from "@fluctux/constants"
 import mongoose, { Schema } from "mongoose";
 
 const numberSchema: Schema<NumberType> = new Schema({
@@ -16,8 +17,8 @@ const numberSchema: Schema<NumberType> = new Schema({
   },
   visibility: {
     type: String,
-    enum: VisibilityType,
-    default: VisibilityType.PUBLIC,
+    enum: VisibilityEnum,
+    default: VisibilityEnum.PUBLIC,
     required: true,
   },
 });
@@ -29,13 +30,13 @@ const socialLinkSchema: Schema<SocialLinkType> = new Schema({
   },
   social_media: {
     type: String,
-    enum: SocialMediaType,
+    enum: SocialMediaEnum,
     required: true,
   },
   visibility: {
     type: String,
-    enum: VisibilityType,
-    default: VisibilityType.PUBLIC,
+    enum: VisibilityEnum,
+    default: VisibilityEnum.PUBLIC,
     required: true,
   },
 });
@@ -51,8 +52,8 @@ const dateOfBirthSchema: Schema<DateOfBirthType> = new Schema({
   },
   visibility: {
     type: String,
-    enum: VisibilityType,
-    default: VisibilityType.PUBLIC,
+    enum: VisibilityEnum,
+    default: VisibilityEnum.PUBLIC,
     required: true,
   },
 });
@@ -83,7 +84,7 @@ const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
   },
   gender: {
     type: String,
-    enum: GenderType,
+    enum: GenderEnum,
     required: true,
   },
   date_of_birth: {

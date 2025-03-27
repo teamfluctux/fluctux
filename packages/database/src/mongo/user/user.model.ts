@@ -1,11 +1,9 @@
 import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcrypt";
 import {
-  AuthProviderType,
-  UserRoleType,
-  UserStatusType,
   UserType,
 } from "@fluctux/types";
+import { UserRoleEnum, UserStatusEnum, AuthProviderEnum } from "@fluctux/constants"
 import { UserBasicInfo } from "./userBasicInfo.model";
 import { UserAddress } from "./userAddress.model";
 
@@ -40,13 +38,13 @@ const user_schema: Schema<UserType> = new Schema(
     },
     role: {
       type: String,
-      enum: UserRoleType,
-      default: UserRoleType.USER,
+      enum: UserRoleEnum,
+      default: UserRoleEnum.USER,
     },
     status: {
       type: String,
-      enum: UserStatusType,
-      default: UserStatusType.NORMAL,
+      enum: UserStatusEnum,
+      default: UserStatusEnum.NORMAL,
     },
     isVerified: {
       type: Boolean,
@@ -55,8 +53,8 @@ const user_schema: Schema<UserType> = new Schema(
     },
     provider: {
       type: String,
-      enum: AuthProviderType,
-      default: AuthProviderType.CUSTOM,
+      enum: AuthProviderEnum,
+      default: AuthProviderEnum.CUSTOM,
     },
     verify_code: {
       type: String,

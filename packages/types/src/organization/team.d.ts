@@ -1,11 +1,10 @@
-export enum TeamCategoryType {
-  SOFTWARE = "SOFTWARE",
-  DESIGN = "DESIGN",
-  MARKETING = "MARKETING",
-  EDCUATION = "EDCUATION",
-  BUSINESS = "BUSINESS",
-  SRPOTS = "SRPOTS",
-}
+export type TeamCategoryType =
+  | "SOFTWARE"
+  | "DESIGN"
+  | "MARKETING"
+  | "EDCUATION"
+  | "BUSINESS"
+  | "SRPOTS"
 
 export interface TeamType {
   team_name: string;

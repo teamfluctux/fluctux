@@ -6,10 +6,10 @@ import {
   HTTPSuccessCodes,
   internalServerError,
   unauthorizedError,
-} from "@fluctux/httpCodesAnEvents";
+} from "@fluctux/httpcodesanevents";
 
 import { Org } from "../../mongo/org/org.model";
-import { ApiResponse, ApiError } from "@fluctux/httpCodesAnEvents";
+import { ApiResponse, ApiError } from "@fluctux/httpcodesanevents";
 import { createOrgZodSchema, getFormattedZodErrors } from "@fluctux/zod";
 import { User as UserSessionType } from "next-auth";
 import { CreateOrganizationDataType, OrgResponseType } from "@fluctux/types";

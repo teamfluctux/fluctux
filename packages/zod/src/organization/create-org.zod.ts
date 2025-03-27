@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { OrgVisibilityType } from "@fluctux/types";
+import { OrgVisibilityEnum } from "@fluctux/constants";
 
-export const ORG_VISIBILITY_ZOD_ENUMS = z.nativeEnum(OrgVisibilityType);
+export const ORG_VISIBILITY_ZOD_ENUMS = z.nativeEnum(OrgVisibilityEnum);
 
 export const createOrgZodSchema = z.object({
   org_name: z

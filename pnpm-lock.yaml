@@ -50,6 +50,9 @@ importers:
       '@firecms/neat':
         specifier: ^0.3.0
         version: 0.3.0(three@0.137.0)
+      '@fluctux/constants':
+        specifier: workspace:*
+        version: link:packages/constants
       '@fluctux/database':
         specifier: workspace:*
         version: link:packages/database
@@ -350,6 +353,27 @@ importers:
         version: link:../../packages/tailwind-config
       typescript:
         specifier: ^5
+        version: 5.8.2
+
+  packages/constants:
+    devDependencies:
+      '@fluctux/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@fluctux/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@turbo/gen':
+        specifier: ^2.4.4
+        version: 2.4.4(@types/node@22.13.9)(typescript@5.8.2)
+      '@types/node':
+        specifier: ^22.13.9
+        version: 22.13.9
+      eslint:
+        specifier: ^9.21.0
+        version: 9.21.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
         version: 5.8.2
 
   packages/database:

@@ -17,24 +17,23 @@ export interface OrgType extends Document {
   isVerified: boolean;
 }
 
-export enum OrgStatusType {
-  NORMAL = "NORMAL",
-  SUSPENDED = "SUSPENDED",
-  RESTRICTED = "RESTRICTED",
-}
+export type OrgStatusType = 
+  | "NORMAL"
+  | "SUSPENDED"
+  | "RESTRICTED"
 
-export enum OrgVisibilityType {
-  PUBLIC = "PUBLIC",
-  PRIVATE = "PRIVATE",
-  FRIENDS = "FRIENDS",
-  CUSTOM = "CUSTOM",
-}
 
-export enum OrgMemberRoleType {
-  MANAGER = "MANAGER",
-  TEAM = "TEAM",
-  FOLLOWER = "FOLLOWER",
-}
+export type OrgVisibilityType =
+  | "PUBLIC"
+  | "PRIVATE"
+  | "FRIENDS"
+  | "CUSTOM"
+
+
+export type OrgMemberRoleType =
+  | "MANAGER"
+  | "TEAM"
+  | "FOLLOWER"
 
 export type OrgResponseType =
   | { message: ApiResponseType; error?: undefined }

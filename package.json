@@ -27,10 +27,11 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@fluctux/types": "workspace:*",
     "@fluctux/database": "workspace:*",
     "@fluctux/httpcodesanevents": "workspace:*",
     "@fluctux/zod": "workspace:*",
+    "@fluctux/types": "workspace:*",
+    "@fluctux/constants": "workspace:*",
     "@algolia/client-common": "^5.20.4",
     "@apollo/client": "^3.12.8",
     "@arcjet/next": "^1.0.0-alpha.34",

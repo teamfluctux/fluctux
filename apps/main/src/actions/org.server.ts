@@ -6,8 +6,8 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import {
   CreateOrganizationDataType,
   OrgMemberRoleType,
-  RequestStatusType,
 } from "@fluctux/types";
+import { RequestStatusEnum } from "@fluctux/constants"
 import {
   Organization,
   OrgMember,
@@ -68,7 +68,7 @@ export async function acceptOrgMemberRequest(org_id: string) {
 
     if (
       findRequest?.status ===
-      (RequestStatusType.ACCEPTED || RequestStatusType.REJECTED)
+      (RequestStatusEnum.ACCEPTED || RequestStatusEnum.REJECTED)
     ) {
       return { error: ERROR.INVALID_REQUEST };
     }

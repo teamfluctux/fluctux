@@ -1,4 +1,5 @@
-import { AddressType, VisibilityType } from "@fluctux/types";
+import { AddressType } from "@fluctux/types";
+import { VisibilityEnum } from "@fluctux/constants";
 import mongoose, { Schema } from "mongoose";
 
 const address_schema: Schema<AddressType> = new Schema(
@@ -50,8 +51,8 @@ const address_schema: Schema<AddressType> = new Schema(
 
     visibility: {
       type: String,
-      enum: VisibilityType,
-      default: VisibilityType.PUBLIC,
+      enum: VisibilityEnum,
+      default: VisibilityEnum.PUBLIC,
       required: true,
     },
   },
