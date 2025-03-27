@@ -3,9 +3,15 @@
 import { serverSession } from "@/helpers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { CreateOrganizationDataType, Organization } from "@fluctux/shared/services";
-import { OrgMemberRoleType, OrgMemberRequest, RequestStatusType, OrgMember, User } from "@fluctux/shared/mongo";
-import { ERROR, MEMBER_ADDED, REQUEST_SENT } from "@fluctux/shared/constants";
+import { OrgMemberRoleType, RequestStatusType } from "@/mongo/types";
+import { Organization } from "@/services";
+import OrgMemberRequest from "@/mongo/org/orgMemberRequest.model";
+import { MEMBER_ADDED, REQUEST_SENT } from "@/constants/events";
+import { ERROR } from "@/constants/error";
+import OrgMember from "@/mongo/org/orgMember.model";
+import { CreateOrganizationDataType } from "@/services/organization";
+import User from "@/mongo/user/user.model";
+
 
 export async function createOrganization(data: CreateOrganizationDataType) {
   const session = await getServerSession(authOptions);

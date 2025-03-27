@@ -259,9 +259,6 @@ importers:
       '@fluctux/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
-      '@fluctux/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@fluctux/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -305,9 +302,6 @@ importers:
       '@fluctux/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
-      '@fluctux/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@fluctux/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -452,37 +446,6 @@ importers:
         specifier: ^5.8.2
         version: 5.8.2
 
-  packages/shared:
-    dependencies:
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.0.0(react@19.0.0)
-    devDependencies:
-      '@fluctux/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@fluctux/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@turbo/gen':
-        specifier: ^2.4.4
-        version: 2.4.4(@types/node@22.13.9)(typescript@5.8.2)
-      '@types/node':
-        specifier: ^22.13.9
-        version: 22.13.9
-      '@types/react':
-        specifier: ^19.0.10
-        version: 19.0.10
-      eslint:
-        specifier: ^9.21.0
-        version: 9.21.0(jiti@2.4.2)
-      typescript:
-        specifier: ^5.8.2
-        version: 5.8.2
-
   packages/tailwind-config: {}
 
   packages/typescript-config: {}
@@ -502,6 +465,9 @@ importers:
       '@fluctux/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@fluctux/hooks':
+        specifier: workspace:*
+        version: link:../hooks
       '@fluctux/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
