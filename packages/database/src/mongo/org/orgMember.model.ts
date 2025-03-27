@@ -1,14 +1,5 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { OrgType } from "./org.model";
-import { UserType } from "../user/user.model";
-import { OrgMemberRoleType, OrgMemberStatusType } from "../../mongo/types";
-
-export interface OrgMemberType extends Document {
-  org: OrgType;
-  user: UserType;
-  role: OrgMemberRoleType;
-  status: OrgMemberStatusType;
-}
+import mongoose, { Schema } from "mongoose";
+import { OrgMemberRoleType, OrgMemberStatusType, OrgMemberType } from "@fluctux/types";
 
 const orgMemberSchema: Schema<OrgMemberType> = new Schema(
   {
@@ -38,7 +29,6 @@ const orgMemberSchema: Schema<OrgMemberType> = new Schema(
   }
 );
 
-const OrgMember =
+export const OrgMember =
   (mongoose.models.OrgMember as mongoose.Model<OrgMemberType>) ||
   mongoose.model<OrgMemberType>("OrgMember", orgMemberSchema);
-export default OrgMember;

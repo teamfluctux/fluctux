@@ -1,10 +1,6 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { UserType } from "./user.model";
+import { FriendType } from "@fluctux/types";
+import mongoose, { Schema } from "mongoose";
 
-export interface FriendType extends Document {
-  sender_id: UserType;
-  receiver_id: UserType;
-}
 
 const friend_schema: Schema<FriendType> = new Schema(
   {
@@ -27,7 +23,6 @@ const friend_schema: Schema<FriendType> = new Schema(
   }
 );
 
-const Friend =
+export const Friend =
   (mongoose.models.Friend as mongoose.Model<FriendType>) ||
   mongoose.model<FriendType>("Friend", friend_schema);
-export default Friend;

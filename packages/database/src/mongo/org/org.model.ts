@@ -1,21 +1,5 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { UserType } from "../user/user.model";
-import { OrgStatusType, OrgVisibilityType } from "../../mongo/types";
-
-export interface OrgType extends Document {
-  org_thumbnail: string;
-  org_name: string;
-  org_description: string;
-  org_slug: string;
-  org_visibility: OrgVisibilityType;
-  admin: UserType;
-  tags: string[];
-  category: string;
-  country: string;
-  city: string;
-  status: OrgStatusType;
-  isVerified: boolean;
-}
+import mongoose, { Schema } from "mongoose";
+import { OrgStatusType, OrgType, OrgVisibilityType } from "@fluctux/types"
 
 const org_schema: Schema<OrgType> = new Schema(
   {
@@ -68,11 +52,10 @@ const org_schema: Schema<OrgType> = new Schema(
     },
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
-const Org =
+export const Org =
   (mongoose.models.Org as mongoose.Model<OrgType>) ||
   mongoose.model<OrgType>("Org", org_schema);
-export default Org;

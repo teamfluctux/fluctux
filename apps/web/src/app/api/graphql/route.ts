@@ -1,6 +1,6 @@
 // Next.js Custom Route Handler: https://nextjs.org/docs/app/building-your-application/routing/router-handlers
 import { createYoga } from "graphql-yoga";
-import { schema } from "../../../../graphql/schema";
+import { schema } from "@/graphql/schema";
 import { useDisableIntrospection } from "@graphql-yoga/plugin-disable-introspection";
 import { maxDepthPlugin } from "@escape.tech/graphql-armor-max-depth";
 import { costLimitPlugin } from "@escape.tech/graphql-armor-cost-limit";

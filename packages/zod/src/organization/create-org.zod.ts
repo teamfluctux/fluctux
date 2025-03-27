@@ -1,5 +1,6 @@
-import { OrgVisibilityType } from "@fluctux/database/types";
 import { z } from "zod";
+import { OrgVisibilityType } from "@fluctux/types";
+
 
 export const ORG_VISIBILITY_ZOD_ENUMS = z.nativeEnum(OrgVisibilityType);
 

@@ -1,23 +1,8 @@
 import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcrypt";
-import UserBasicInfo from "./userBasicInfo.model";
-import UserAddress from "./userAddress.model";
-import { AuthProviderType, UserRoleType, UserStatusType } from "../../mongo/types";
-
-export interface UserType extends Document {
-  avatar: string;
-  name: string;
-  email: string;
-  username: string;
-  password: string;
-  role: UserRoleType;
-  status: UserStatusType;
-  isVerified: boolean;
-  provider: AuthProviderType;
-  verify_code: string;
-  verify_expiry: Date;
-  isPasswordCorrect(password: string): Promise<boolean>;
-}
+import { AuthProviderType, UserRoleType, UserStatusType, UserType } from "@fluctux/types";
+import { UserBasicInfo } from "./userBasicInfo.model";
+import { UserAddress } from "./userAddress.model";
 
 const user_schema: Schema<UserType> = new Schema(
   {
@@ -122,7 +107,6 @@ user_schema.methods.isPasswordCorrect = async function (password: string) {
   return await bcrypt.compare(password, this.password);
 };
 
-const User =
+export const User =
   (mongoose.models.User as mongoose.Model<UserType>) ||
   mongoose.model<UserType>("User", user_schema);
-export default User;

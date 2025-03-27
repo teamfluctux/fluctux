@@ -1,21 +1,6 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { UserType } from "./user.model";
-import {
-  DateOfBirthType,
-  GenderType,
-  NumberType,
-  SocialLinkType,
-  SocialMediaType,
-  VisibilityType,
-} from "../../mongo/types";
+import { DateOfBirthType, GenderType, NumberType, SocialLinkType, SocialMediaType, UserBasicInfoType, VisibilityType } from "@fluctux/types";
+import mongoose, { Schema } from "mongoose";
 
-export interface UserBasicInfoType extends Document {
-  user: UserType;
-  numbers: NumberType[];
-  socialLinks: SocialLinkType[];
-  gender: GenderType;
-  date_of_birth: DateOfBirthType;
-}
 
 const numberSchema: Schema<NumberType> = new Schema({
   number: {
@@ -99,7 +84,6 @@ const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
   },
 });
 
-const UserBasicInfo =
+export const UserBasicInfo =
   (mongoose.models.UserBasicInfo as mongoose.Model<UserBasicInfoType>) ||
   mongoose.model<UserBasicInfoType>("UserBasicInfo", UserBasicInfoSchema);
-export default UserBasicInfo;

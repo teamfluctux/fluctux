@@ -1,15 +1,5 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { OrgType } from "./org.model";
-import { UserType } from "../user/user.model";
-import { OrgPageType } from "./orgPage.model";
-
-export interface OrgCommentType extends Document {
-  org: OrgType;
-  user: UserType;
-  context: OrgPageType;
-  comment: string;
-  isHidden: boolean;
-}
+import mongoose, { Schema } from "mongoose";
+import { OrgCommentType } from "@fluctux/types";
 
 const orgCommentSchema: Schema<OrgCommentType> = new Schema(
   {
@@ -43,7 +33,6 @@ const orgCommentSchema: Schema<OrgCommentType> = new Schema(
   }
 );
 
-const OrgComment =
+export const OrgComment =
   (mongoose.models.OrgComment as mongoose.Model<OrgCommentType>) ||
   mongoose.model<OrgCommentType>("OrgComment", orgCommentSchema);
-export default OrgComment;

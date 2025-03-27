@@ -1,10 +1,4 @@
-export interface ApiErrorType {
-  status: number;
-  success: boolean;
-  message: string;
-  stack?: string; // Optional
-  errors: unknown[]; // Replace `any` with the specific type if known
-}
+import { ApiErrorType } from "@fluctux/types"
 
 export class ApiError extends Error implements ApiErrorType {
   status: number;

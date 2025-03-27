@@ -1,9 +1,4 @@
-export interface ApiResponseType {
-  status: number;
-  message: string;
-  data: unknown;
-  success: boolean;
-}
+import { ApiResponseType } from "@fluctux/types";
 
 export class ApiResponse implements ApiResponseType {
   status: number;

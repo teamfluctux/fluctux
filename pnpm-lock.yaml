@@ -56,6 +56,9 @@ importers:
       '@fluctux/httpCodesAnEvents':
         specifier: workspace:*
         version: link:packages/httpCodesAnEvents
+      '@fluctux/types':
+        specifier: workspace:*
+        version: link:packages/types
       '@fluctux/zod':
         specifier: workspace:*
         version: link:packages/zod

@@ -1,12 +1,7 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { UserType } from "./user.model";
-import { RequestStatusType } from "../../mongo/types";
+import mongoose, { Schema } from "mongoose";
+import { FriendRequestType, RequestStatusType } from "@fluctux/types";
 
-export interface FriendRequestType extends Document {
-  sender_id: UserType;
-  receiver_id: UserType;
-  status: RequestStatusType;
-}
+
 
 const friendRequestSchema: Schema<FriendRequestType> = new Schema(
   {
@@ -31,7 +26,6 @@ const friendRequestSchema: Schema<FriendRequestType> = new Schema(
   }
 );
 
-const FriendRequest =
+export const FriendRequest =
   (mongoose.models.FriendRequest as mongoose.Model<FriendRequestType>) ||
   mongoose.model<FriendRequestType>("FriendRequest", friendRequestSchema);
-export default FriendRequest;

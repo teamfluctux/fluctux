@@ -1,17 +1,5 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { OrgType } from "./org.model";
-import { UserType } from "../user/user.model";
-
-export interface OrgPageType extends Document {
-  org: OrgType;
-  user: UserType;
-  thumbnail: string;
-  title: string;
-  desc: string;
-  slug: string;
-  content: string;
-  isPublished: boolean;
-}
+import { OrgPageType } from "@fluctux/types";
+import mongoose, { Schema } from "mongoose";
 
 const orgPageSchema: Schema<OrgPageType> = new Schema(
   {
@@ -55,7 +43,6 @@ const orgPageSchema: Schema<OrgPageType> = new Schema(
   }
 );
 
-const OrgPage =
+export const OrgPage =
   (mongoose.models.OrgPage as mongoose.Model<OrgPageType>) ||
   mongoose.model<OrgPageType>("OrgPage", orgPageSchema);
-export default OrgPage;

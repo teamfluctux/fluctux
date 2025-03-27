@@ -3,14 +3,9 @@
 import { serverSession } from "@/helpers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { OrgMemberRoleType, RequestStatusType } from "@/mongo/types";
-import { Organization } from "@/services";
-import OrgMemberRequest from "@/mongo/org/orgMemberRequest.model";
-import { MEMBER_ADDED, REQUEST_SENT } from "@/constants/events";
-import { ERROR } from "@/constants/error";
-import OrgMember from "@/mongo/org/orgMember.model";
-import { CreateOrganizationDataType } from "@/services/organization";
-import User from "@/mongo/user/user.model";
+import { CreateOrganizationDataType, OrgMemberRoleType, RequestStatusType } from "@fluctux/types"
+import {Organization, OrgMember, OrgMemberRequest, User} from "@fluctux/database"
+import { ERROR, MEMBER_ADDED, REQUEST_SENT } from "@fluctux/httpCodesAnEvents";
 
 
 export async function createOrganization(data: CreateOrganizationDataType) {

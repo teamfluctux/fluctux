@@ -1,19 +1,7 @@
-import mongoose, { Schema, Document } from "mongoose";
-import { UserType } from "./user.model";
-import { VisibilityType } from "../../mongo/types";
+import { AddressType, VisibilityType } from "@fluctux/types";
+import mongoose, { Schema } from "mongoose";
 
-export interface AddressType extends Document {
-  user: UserType;
-  city: string;
-  country: string;
-  country_code: string;
-  latitude: number;
-  longitude: number;
-  postal_code: string;
-  state: string;
-  street: string;
-  visibility: VisibilityType;
-}
+
 
 const address_schema: Schema<AddressType> = new Schema(
   {
@@ -72,7 +60,6 @@ const address_schema: Schema<AddressType> = new Schema(
   { timestamps: true }
 );
 
-const UserAddress =
+export const UserAddress =
   (mongoose.models.UserAddress as mongoose.Model<AddressType>) ||
   mongoose.model<AddressType>("UserAddress", address_schema);
-export default UserAddress;
