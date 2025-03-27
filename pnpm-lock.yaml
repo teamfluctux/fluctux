@@ -50,6 +50,15 @@ importers:
       '@firecms/neat':
         specifier: ^0.3.0
         version: 0.3.0(three@0.137.0)
+      '@fluctux/database':
+        specifier: workspace:*
+        version: link:packages/database
+      '@fluctux/httpCodesAnEvents':
+        specifier: workspace:*
+        version: link:packages/httpCodesAnEvents
+      '@fluctux/zod':
+        specifier: workspace:*
+        version: link:packages/zod
       '@graphiql/toolkit':
         specifier: ^0.11.1
         version: 0.11.1(@types/node@22.13.9)(graphql@16.10.0)
@@ -340,6 +349,27 @@ importers:
         specifier: ^5
         version: 5.8.2
 
+  packages/database:
+    devDependencies:
+      '@fluctux/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@fluctux/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@turbo/gen':
+        specifier: ^2.4.4
+        version: 2.4.4(@types/node@22.13.9)(typescript@5.8.2)
+      '@types/node':
+        specifier: ^22.13.9
+        version: 22.13.9
+      eslint:
+        specifier: ^9.21.0
+        version: 9.21.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
   packages/eslint-config:
     devDependencies:
       '@eslint/js':
@@ -446,7 +476,30 @@ importers:
         specifier: ^5.8.2
         version: 5.8.2
 
+  packages/httpCodesAnEvents:
+    devDependencies:
+      '@fluctux/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@fluctux/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@turbo/gen':
+        specifier: ^2.4.4
+        version: 2.4.4(@types/node@22.13.9)(typescript@5.8.2)
+      '@types/node':
+        specifier: ^22.13.9
+        version: 22.13.9
+      eslint:
+        specifier: ^9.21.0
+        version: 9.21.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
   packages/tailwind-config: {}
+
+  packages/types: {}
 
   packages/typescript-config: {}
 
@@ -483,6 +536,27 @@ importers:
       '@types/react-dom':
         specifier: 19.0.4
         version: 19.0.4(@types/react@19.0.10)
+      eslint:
+        specifier: ^9.21.0
+        version: 9.21.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/zod:
+    devDependencies:
+      '@fluctux/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@fluctux/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@turbo/gen':
+        specifier: ^2.4.4
+        version: 2.4.4(@types/node@22.13.9)(typescript@5.8.2)
+      '@types/node':
+        specifier: ^22.13.9
+        version: 22.13.9
       eslint:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
@@ -5811,6 +5885,7 @@ packages:
   uglify-js@3.19.3:
     resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
     engines: {node: '>=0.8.0'}
+    hasBin: true
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}

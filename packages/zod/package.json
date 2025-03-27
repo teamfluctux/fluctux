@@ -1,0 +1,22 @@
+{
+  "name": "@fluctux/zod",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "lint": "eslint . --max-warnings 0",
+    "generate:component": "turbo gen react-component",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@fluctux/eslint-config": "workspace:*",
+    "@fluctux/typescript-config": "workspace:*",
+    "@turbo/gen": "^2.4.4",
+    "@types/node": "^22.13.9",
+    "eslint": "^9.21.0",
+    "typescript": "5.8.2"
+  }
+}
