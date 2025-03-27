@@ -1,5 +1,4 @@
-import ApiError from "@/utils/ApiError";
-import ApiResponse from "@/utils/ApiResponse";
+import {ApiResponse, ApiError} from "@fluctux/httpcodesanevents"
 import ArcjetHandler from "@/utils/ArcjetHandler";
 import { NextRequest, NextResponse } from "next/server";
 

@@ -8,7 +8,6 @@ import { maxAliasesPlugin } from "@escape.tech/graphql-armor-max-aliases";
 import { maxDirectivesPlugin } from "@escape.tech/graphql-armor-max-directives";
 import { characterLimitPlugin } from "@escape.tech/graphql-armor-character-limit";
 import { maxTokensPlugin } from "@escape.tech/graphql-armor-max-tokens";
-import { MaybePromise } from "nexus/dist/core";
 
 interface NextContext {
   params: Promise<Record<string, string>>;
