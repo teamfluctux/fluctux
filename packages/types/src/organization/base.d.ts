@@ -17,23 +17,11 @@ export interface OrgType extends Document {
   isVerified: boolean;
 }
 
-export type OrgStatusType = 
-  | "NORMAL"
-  | "SUSPENDED"
-  | "RESTRICTED"
+export type OrgStatusType = "NORMAL" | "SUSPENDED" | "RESTRICTED";
 
+export type OrgVisibilityType = "PUBLIC" | "PRIVATE" | "FRIENDS" | "CUSTOM";
 
-export type OrgVisibilityType =
-  | "PUBLIC"
-  | "PRIVATE"
-  | "FRIENDS"
-  | "CUSTOM"
-
-
-export type OrgMemberRoleType =
-  | "MANAGER"
-  | "TEAM"
-  | "FOLLOWER"
+export type OrgMemberRoleType = "MANAGER" | "TEAM" | "FOLLOWER";
 
 export type OrgResponseType =
   | { message: ApiResponseType; error?: undefined }

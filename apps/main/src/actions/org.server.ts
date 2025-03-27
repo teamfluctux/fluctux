@@ -3,11 +3,8 @@
 import { serverSession } from "@/helpers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import {
-  CreateOrganizationDataType,
-  OrgMemberRoleType,
-} from "@fluctux/types";
-import { RequestStatusEnum } from "@fluctux/constants"
+import { CreateOrganizationDataType, OrgMemberRoleType } from "@fluctux/types";
+import { RequestStatusEnum } from "@fluctux/constants";
 import {
   Organization,
   OrgMember,

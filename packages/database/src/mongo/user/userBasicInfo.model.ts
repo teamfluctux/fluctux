@@ -1,13 +1,14 @@
 import {
   DateOfBirthType,
-
   NumberType,
   SocialLinkType,
-
   UserBasicInfoType,
-
 } from "@fluctux/types";
-import { GenderEnum, SocialMediaEnum, VisibilityEnum } from "@fluctux/constants"
+import {
+  GenderEnum,
+  SocialMediaEnum,
+  VisibilityEnum,
+} from "@fluctux/constants";
 import mongoose, { Schema } from "mongoose";
 
 const numberSchema: Schema<NumberType> = new Schema({

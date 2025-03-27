@@ -1,8 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import {
-  OrgMemberType,
-} from "@fluctux/types";
-import { OrgMemberRoleEnum, OrgMemberStatusEnum } from "@fluctux/constants"
+import { OrgMemberType } from "@fluctux/types";
+import { OrgMemberRoleEnum, OrgMemberStatusEnum } from "@fluctux/constants";
 
 const orgMemberSchema: Schema<OrgMemberType> = new Schema(
   {

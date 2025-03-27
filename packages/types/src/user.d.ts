@@ -15,18 +15,9 @@ export interface UserType {
   isPasswordCorrect(password: string): Promise<boolean>;
 }
 
-export type VisibilityType =
-  | "PUBLIC"
-  | "PRIVATE"
-  | "FRIEND"
-  | "ORG"
+export type VisibilityType = "PUBLIC" | "PRIVATE" | "FRIEND" | "ORG";
 
-
-export type GenderType =
-  | "MALE"
-  | "FEMALE"
-  | "CUSTOM"
-
+export type GenderType = "MALE" | "FEMALE" | "CUSTOM";
 
 export type NumberType = {
   number: string;
@@ -45,37 +36,20 @@ export type DateOfBirthType = {
   visibility: VisibilityType;
 };
 
-export type AuthProviderType =
-  | "GOOGLE"
-  | "GITHUB"
-  | "DISCORD"
-  | "CUSTOM"
+export type AuthProviderType = "GOOGLE" | "GITHUB" | "DISCORD" | "CUSTOM";
 
+export type UserStatusType = "SUSPENDED" | "RESTRICTED" | "NORMAL";
 
-export type UserStatusType =
-  | "SUSPENDED"
-  | "RESTRICTED"
-  | "NORMAL"
-
-
-export type UserRoleType =
-  | "ADMIN"
-  | "USER"
-
+export type UserRoleType = "ADMIN" | "USER";
 
 export type SocialMediaType =
   | "FACEBOOK"
   | "TWITTER"
   | "LINKEDIN"
   | "GITHUB"
-  | "INSTAGRAM"
+  | "INSTAGRAM";
 
-
-export type RequestStatusType =
-  | "PENDING"
-  | "ACCEPTED"
-  | "REJECTED"
-
+export type RequestStatusType = "PENDING" | "ACCEPTED" | "REJECTED";
 
 export interface FriendType extends Document {
   sender_id: UserType;

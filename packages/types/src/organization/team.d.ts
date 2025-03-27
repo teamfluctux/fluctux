@@ -4,7 +4,7 @@ export type TeamCategoryType =
   | "MARKETING"
   | "EDCUATION"
   | "BUSINESS"
-  | "SRPOTS"
+  | "SRPOTS";
 
 export interface TeamType {
   team_name: string;

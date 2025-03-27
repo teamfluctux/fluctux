@@ -1,9 +1,7 @@
 import mongoose, { Schema } from "mongoose";
-import {
-  OrgMemberRequestType,
-} from "@fluctux/types";
+import { OrgMemberRequestType } from "@fluctux/types";
 
-import { RequestStatusEnum, OrgMemberRoleEnum } from "@fluctux/constants"
+import { RequestStatusEnum, OrgMemberRoleEnum } from "@fluctux/constants";
 
 const orgMemberRequestSchema: Schema<OrgMemberRequestType> = new Schema(
   {

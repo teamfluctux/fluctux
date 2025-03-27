@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { FriendRequestType } from "@fluctux/types";
-import { RequestStatusEnum } from "@fluctux/constants"
+import { RequestStatusEnum } from "@fluctux/constants";
 
 const friendRequestSchema: Schema<FriendRequestType> = new Schema(
   {
