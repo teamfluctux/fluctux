@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useThemeSwitcher, useToggleOpen } from "@fluctux/hooks";
 import {
   cn,
+  FadeFavLoading,
   FxButton,
   FxFavIcon,
+  InlineLoading,
   LUCIDE_WORKSPACE_ICON_SIZE,
+  TopLoading,
 } from "@fluctux/ui";
 import { Rnd } from "react-rnd";
 import {
@@ -92,26 +95,29 @@ const DynamicSidebarCommandMenu = dynamic(
 
 export default function Layout({ children }: WorkspaceLayoutProps) {
   const [mounted, setMounted] = useState<boolean>(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   // ==========================================================================
   //                                 Sidebar
   // ==========================================================================
-  const [sidebarSize, setSidebarSize] = useState<Number>();
+  const [sidebarSize, setSidebarSize] = useState<Number | null>(null);
   const { isOpen: isSidebarOpen, toggle: toggleSidebarOpen } = useToggleOpen({
     id: "workspace-sidebar-rnd",
   });
+
   const saveWidth = (width: string) => {
     localStorage.setItem("workspaceSidebarWidth", width);
   };
+
   useEffect(() => {
-    const savedWidth = localStorage.getItem("workspaceSidebarWidth");
-    if (savedWidth) {
-      setSidebarSize(parseInt(savedWidth.replace("px", "")));
+    // Load saved width from storage
+    const savedSize = localStorage.getItem("workspaceSidebarWidth");
+    if (savedSize) {
+      setSidebarSize(parseInt(savedSize, 10));
+      setMounted(true);
+    } else {
+      setSidebarSize(250); // Default value
     }
   }, []);
+
 
   // ==========================================================================
   //                               Menu States
@@ -126,9 +132,15 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
 
   const { ThemeSwitcher } = useThemeSwitcher(THEME_ICONS);
 
+  if (!mounted) return <>
+  <div className="w-full h-screen fx-flex-center bg-background-color_1">
+    <FadeFavLoading/>
+  </div>
+  </>
+
   return (
     <>
-      <div className="flex justify-center items-center w-full">
+      <div className={cn("flex justify-center items-center w-full", mounted && "animate-scaleUp" )}>
         <Rnd
           minWidth={250}
           maxWidth={350}

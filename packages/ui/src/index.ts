@@ -18,6 +18,7 @@ export * from "./fxbutton/button";
 export * from "./tooltip";
 export * from "./alert-dialog";
 export * from "./inline-loading";
+export * from "./fade-fav-loading";
 export * from "./lib/utils";
 export * from "./styles/globals";
 

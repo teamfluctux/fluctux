@@ -73,6 +73,20 @@ module.exports = {
           5: "hsl(var(--chart-5))",
         },
       },
+      animation: {
+        fadeLogoLoading: "fadeLogoLoading 2s infinite",
+        scaleUp: "scaleUp 0.3s ease-out forwards",
+      },
+      keyframes: {
+        fadeLogoLoading: {
+          "0%, 100%": { opacity: "100%" },
+          "50%": { opacity: "30%" },
+        },
+        scaleUp: {
+          "0%": { transform: "scale(0.9)", opacity: "0%" },
+          "100%": { transform: "scale(1)", opacity: "100%" }
+        },
+      },
       fontSize: {
         workspace_1: "15px",
         workspace_2: "14px",

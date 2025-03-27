@@ -13,13 +13,34 @@ services:
         - action: sync
           path: ./apps/web
           target: /app/apps/web
-          
+
         - action: rebuild
           path: package.json
         - action: rebuild
           path: ./apps/web/package.json
         - action: rebuild
           path: ./apps/web/Dockerfile.dev
+        - action: rebuild
+          path: ./packages
+
+  workspace:
+    build:
+      context: .
+      dockerfile: ./apps/main/Dockerfile.dev
+    ports:
+      - "3000:3000"
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/main
+          target: /app/apps/main
+
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: ./apps/main/package.json
+        - action: rebuild
+          path: ./apps/main/Dockerfile.dev
         - action: rebuild
           path: ./packages
 
