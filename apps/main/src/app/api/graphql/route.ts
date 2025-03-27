@@ -13,6 +13,7 @@ interface NextContext {
   params: Promise<Record<string, string>>;
 }
 
+
 // Create the yoga instance without explicit typing for handleRequest
 const yoga = createYoga<NextContext>({
   schema,
