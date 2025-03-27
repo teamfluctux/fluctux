@@ -26,7 +26,6 @@ export enum OrgMemberStatusType {
   REJECTED = "REJECTED",
 }
 
-
 export interface OrgMemberRequestType extends Document {
   requested_to: OrgType;
   sender_id: UserType;

@@ -3,10 +3,18 @@
 import { serverSession } from "@/helpers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { CreateOrganizationDataType, OrgMemberRoleType, RequestStatusType } from "@fluctux/types"
-import {Organization, OrgMember, OrgMemberRequest, User} from "@fluctux/database"
+import {
+  CreateOrganizationDataType,
+  OrgMemberRoleType,
+  RequestStatusType,
+} from "@fluctux/types";
+import {
+  Organization,
+  OrgMember,
+  OrgMemberRequest,
+  User,
+} from "@fluctux/database";
 import { ERROR, MEMBER_ADDED, REQUEST_SENT } from "@fluctux/httpCodesAnEvents";
-
 
 export async function createOrganization(data: CreateOrganizationDataType) {
   const session = await getServerSession(authOptions);

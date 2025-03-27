@@ -1,5 +1,5 @@
 import { ERROR, ErrorCodes, HTTPErrorCodes } from "./error";
-import {ApiError} from "./ApiError";
+import { ApiError } from "./ApiError";
 
 export const unauthorizedError = () => {
   return {

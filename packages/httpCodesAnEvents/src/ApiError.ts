@@ -1,4 +1,4 @@
-import { ApiErrorType } from "@fluctux/types"
+import { ApiErrorType } from "@fluctux/types";
 
 export class ApiError extends Error implements ApiErrorType {
   status: number;

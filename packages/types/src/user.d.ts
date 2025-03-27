@@ -77,7 +77,6 @@ export enum RequestStatusType {
   REJECTED = "REJECTED",
 }
 
-
 export interface FriendType extends Document {
   sender_id: UserType;
   receiver_id: UserType;

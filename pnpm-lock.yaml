@@ -53,7 +53,7 @@ importers:
       '@fluctux/database':
         specifier: workspace:*
         version: link:packages/database
-      '@fluctux/httpCodesAnEvents':
+      '@fluctux/httpcodesanevents':
         specifier: workspace:*
         version: link:packages/httpCodesAnEvents
       '@fluctux/types':

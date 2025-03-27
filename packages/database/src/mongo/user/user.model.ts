@@ -1,6 +1,11 @@
 import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcrypt";
-import { AuthProviderType, UserRoleType, UserStatusType, UserType } from "@fluctux/types";
+import {
+  AuthProviderType,
+  UserRoleType,
+  UserStatusType,
+  UserType,
+} from "@fluctux/types";
 import { UserBasicInfo } from "./userBasicInfo.model";
 import { UserAddress } from "./userAddress.model";
 

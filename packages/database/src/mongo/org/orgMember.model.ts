@@ -1,5 +1,9 @@
 import mongoose, { Schema } from "mongoose";
-import { OrgMemberRoleType, OrgMemberStatusType, OrgMemberType } from "@fluctux/types";
+import {
+  OrgMemberRoleType,
+  OrgMemberStatusType,
+  OrgMemberType,
+} from "@fluctux/types";
 
 const orgMemberSchema: Schema<OrgMemberType> = new Schema(
   {

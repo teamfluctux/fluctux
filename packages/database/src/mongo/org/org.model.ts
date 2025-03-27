@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { OrgStatusType, OrgType, OrgVisibilityType } from "@fluctux/types"
+import { OrgStatusType, OrgType, OrgVisibilityType } from "@fluctux/types";
 
 const org_schema: Schema<OrgType> = new Schema(
   {
@@ -52,7 +52,7 @@ const org_schema: Schema<OrgType> = new Schema(
     },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

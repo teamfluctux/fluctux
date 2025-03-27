@@ -1,6 +1,13 @@
-import { DateOfBirthType, GenderType, NumberType, SocialLinkType, SocialMediaType, UserBasicInfoType, VisibilityType } from "@fluctux/types";
+import {
+  DateOfBirthType,
+  GenderType,
+  NumberType,
+  SocialLinkType,
+  SocialMediaType,
+  UserBasicInfoType,
+  VisibilityType,
+} from "@fluctux/types";
 import mongoose, { Schema } from "mongoose";
-
 
 const numberSchema: Schema<NumberType> = new Schema({
   number: {

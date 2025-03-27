@@ -1,8 +1,6 @@
 import { AddressType, VisibilityType } from "@fluctux/types";
 import mongoose, { Schema } from "mongoose";
 
-
-
 const address_schema: Schema<AddressType> = new Schema(
   {
     user: {

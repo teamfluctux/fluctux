@@ -3,10 +3,10 @@ import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import DiscordProvider from "next-auth/providers/discord";
 import CredentialsProvider from "next-auth/providers/credentials";
-import connDb from "@/lib/db.conn";
-import User from "@/mongo/user/user.model";
 import { JWT } from "next-auth/jwt";
 import mongoose from "mongoose";
+import { connDb, User } from "@fluctux/database";
+import "@fluctux/types"
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers

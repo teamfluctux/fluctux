@@ -1,8 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { FriendRequestType, RequestStatusType } from "@fluctux/types";
 
-
-
 const friendRequestSchema: Schema<FriendRequestType> = new Schema(
   {
     sender_id: {

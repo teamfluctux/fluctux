@@ -1,10 +1,19 @@
-import { ERROR, ErrorCodes, HTTPErrorCodes, ORG_CREATED, HTTPSuccessCodes,  internalServerError, unauthorizedError} from "@fluctux/httpCodesAnEvents";
-import connDb from "../../lib/db.conn";
-import {Org} from "../../mongo/org/org.model";
-import {ApiResponse, ApiError} from "@fluctux/httpCodesAnEvents";
+import {
+  ERROR,
+  ErrorCodes,
+  HTTPErrorCodes,
+  ORG_CREATED,
+  HTTPSuccessCodes,
+  internalServerError,
+  unauthorizedError,
+} from "@fluctux/httpCodesAnEvents";
+
+import { Org } from "../../mongo/org/org.model";
+import { ApiResponse, ApiError } from "@fluctux/httpCodesAnEvents";
 import { createOrgZodSchema, getFormattedZodErrors } from "@fluctux/zod";
 import { User as UserSessionType } from "next-auth";
 import { CreateOrganizationDataType, OrgResponseType } from "@fluctux/types";
+import { connDb } from "../../lib/db.conn";
 
 export class Organization {
   protected session: UserSessionType | null = null;
