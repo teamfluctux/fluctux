@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useThemeSwitcher, useToggleOpen } from "@fluctux/hooks";
+import React, { useEffect, useRef, useState } from "react";
+import { useTaskBar, useThemeSwitcher, useToggleOpen } from "@fluctux/hooks";
 import {
   cn,
   FadeFavLoading,
@@ -8,15 +8,26 @@ import {
   FxFavIcon,
   InlineLoading,
   LUCIDE_WORKSPACE_ICON_SIZE,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
   TopLoading,
 } from "@fluctux/ui";
 import { Rnd } from "react-rnd";
 import {
+  CircleDot,
   CircleHelp,
+  Copy,
+  FileText,
   LogOut,
+  Maximize,
+  Minimize,
+  Minus,
   PanelLeft,
   PanelLeftClose,
   Settings,
+  X,
 } from "lucide-react";
 import { THEME_ICONS } from "@/constants/global";
 import Image from "next/image";
@@ -34,6 +45,21 @@ import Skeleton from "react-loading-skeleton";
 interface WorkspaceLayoutProps {
   children: React.ReactNode;
 }
+
+const TASK_BAR_ITEMS = [
+  {
+    slug: "my-issues",
+    label: "My issues"
+  },
+  {
+    slug: "my-new-page",
+    label: "My new page"
+  },
+  {
+    slug: "my-two-page",
+    label: "My two page"
+  }
+]
 
 const DynamicSidebarBottom = dynamic(
   () =>
@@ -93,8 +119,23 @@ const DynamicSidebarCommandMenu = dynamic(
   }
 );
 
+interface TabsRndType {
+  id?: number | null,
+  size?: {
+    width: number, height: number
+  },
+  position?: {
+    x: number,
+    y: number
+  },
+  isActive?: boolean,
+  slug?: string,
+  label?: string,
+  isMaximized?: boolean
+}
+
 export default function Layout({ children }: WorkspaceLayoutProps) {
-  const [mounted, setMounted] = useState<boolean>(false);
+
   // ==========================================================================
   //                                 Sidebar
   // ==========================================================================
@@ -112,7 +153,6 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
     const savedSize = localStorage.getItem("workspaceSidebarWidth");
     if (savedSize) {
       setSidebarSize(parseInt(savedSize, 10));
-      setMounted(true);
     } else {
       setSidebarSize(250); // Default value
     }
@@ -130,17 +170,39 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
     null
   );
 
+  // ==========================================================================
+  //                               Task bar
+  // ==========================================================================
+  const {
+    showTaskBar,
+    setShowTaskbar,
+    allowIntelligentAutoHideTaskBar,
+    setAllowIntelligentAutoHideTaskBar,
+    taskbarItems,
+    setTaskbarItems,
+    isDragStart,
+    setIsDragStart,
+    tabs,
+    setTabs,
+    updateTab,
+    handleCloseTab,
+    parentRef,
+    handleMaxMinTabSize,
+    handleNewTab
+  } = useTaskBar({ taskbarHoverItems: TASK_BAR_ITEMS })
+
   const { ThemeSwitcher } = useThemeSwitcher(THEME_ICONS);
 
-  if (!mounted) return <>
-  <div className="w-full h-screen fx-flex-center bg-background-color_1">
-    <FadeFavLoading/>
-  </div>
+  if (sidebarSize === null) return <>
+    <div className="w-full h-screen fx-flex-center bg-background-color_1">
+      <FadeFavLoading />
+    </div>
   </>
 
   return (
     <>
-      <div className={cn("flex justify-center items-center w-full", mounted && "animate-scaleUp" )}>
+      <div className={cn("flex justify-center items-center w-full overflow-hidden", sidebarSize !== null && "animate-scaleUp")}>
+
         <Rnd
           minWidth={250}
           maxWidth={350}
@@ -323,7 +385,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
         {/* ==========================================================================
                                       Content
       ========================================================================== */}
-        <div className={cn("w-full h-screen bg-background-color_2")}>
+        <div ref={parentRef} className={cn("w-full h-screen bg-background-color_2")}>
           <div className="border-b border-border-color_1 w-full h-[40px] relative fx-flex-center">
             <div
               className="w-[30px] h-[30px] fx-flex-center rounded-[5px] absolute left-1 hover:bg-background-color_3 cursor-pointer z-[50] text-text-svg_default hover:text-text-color_1"
@@ -336,7 +398,127 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
               )}
             </div>
           </div>
+
           {children}
+
+          {
+            tabs.map((tab, i) => {
+              if (tab.id === null) return
+              return <Rnd
+                key={tab.id}
+                size={tab.size}
+                position={tab.position}
+                minWidth={280}
+                minHeight={400}
+                bounds="parent"
+                onResize={(e, direction, ref, delta, pos) => {
+                  setIsDragStart(true)
+                  updateTab(tab.id || 0, {
+                    size: { width: ref.offsetWidth, height: ref.offsetHeight },
+                    position: pos,
+                  });
+                }}
+                onDragStop={(e, d) => {
+                  updateTab(tab.id!, { position: { x: d.x, y: d.y } });
+                  setIsDragStart(false);
+                }}
+                onResizeStop={(e, direction, ref, delta, pos) => {
+                  setIsDragStart(false)
+                }}
+                onDrag={() => updateTab(tab.id!, { isActive: true })}
+                onDragStart={() => setIsDragStart(true)}
+                dragHandleClassName="drag-handle"
+                className={cn("border border-border-color_2  rounded overflow-hidden cursor-[default_!important] transition-all bg-background-color_2 shadow-xl ", tab.isActive ? "z-50" : "z-1", isDragStart && "transition-none", tab.isActive && "border-border-primary_indigo")}
+              >
+                <div className="h-[30px] border-b border-border-color_2 fx-flex-between-ic pl-2 pr-1 bg-background-color_3 drag-handle">
+                  <h3 className="font-medium text-workspace_2">My Issue</h3>
+                  <div className="fx-flex-cr gap-2">
+                    <span className="hover:bg-background-color_2 p-[2px] rounded-tiny cursor-pointer">
+                      <Minus size={LUCIDE_WORKSPACE_ICON_SIZE} />
+                    </span>
+                    <span className="hover:bg-background-color_2 p-[2px] rounded-tiny cursor-pointer"  >
+                      {
+                        !tab.isMaximized &&
+                        <Minimize onClick={() => handleMaxMinTabSize(tab.id!)} size={16} />
+                      }
+                      {
+                        tab.isMaximized &&
+                        <Maximize onClick={() => handleMaxMinTabSize(tab.id!)} size={16} />
+
+                      }
+                    </span>
+
+                    <span onClick={() => handleCloseTab(tab.id!)} className="p-[2px] cursor-pointer rounded-tiny hover:bg-red-600">
+                      <X size={LUCIDE_WORKSPACE_ICON_SIZE} />
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  {tab.label}
+                </div>
+              </Rnd>
+
+            })
+          }
+
+          {/* ==========================================================================
+                                      Taskbar
+      ========================================================================== */}
+          <div className={cn("w-[100%] max-w-[500px] z-50 absolute bottom-[-57px] p-2 bg-transparent transition-all duration-300", allowIntelligentAutoHideTaskBar ? showTaskBar && "bottom-0 " : "bottom-0")} onMouseEnter={() => allowIntelligentAutoHideTaskBar && setShowTaskbar(true)} onMouseLeave={() => allowIntelligentAutoHideTaskBar && setShowTaskbar(false)}>
+
+            <div className="w-full h-[50px] rounded-tiny border border-border-color_2 backdrop-blur-lg fx-flex-cl p-1 gap-1 ">
+
+              <TooltipProvider delayDuration={0.1}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+
+                    <div className={cn("hover:bg-background-color_3  hover:border-border-color_2 hover:border w-[40px] h-[40px] rounded-tiny relative fx-flex-center")}>
+                      <div>
+                        <CircleDot size={LUCIDE_WORKSPACE_ICON_SIZE} />
+                      </div>
+                      <div className={cn("bottom_bar w-[10px] h-[3px] transition-all duration-300 rounded-tablet dark:bg-zinc-400 absolute bottom-0 left-[50%] translate-x-[-50%]", tabs.find((tab) => tab.isActive) && "dark:bg-background-indigo_primary w-[25px]")}></div>
+                    </div>
+
+                  </TooltipTrigger>
+
+                  <TooltipContent align="start" sideOffset={15} className="z-[52] bg-background-color_3 fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]">
+                    {
+                      taskbarItems.map((item, i) => (
+                        <div onClick={() => {
+                          handleNewTab(
+                            {
+                              id: i,
+                              size: { width: 700, height: 500 },
+                              position: { x: 50 + i * 50, y: 50 + i * 50 },
+                              isActive: true,
+                              slug: item.slug,
+                              label: item.label,
+                            }
+                          )
+                        }} className="w-[200px] group overflow-hidden h-[140px] border border-border-color_1 hover:border-border-primary_indigo transition-colors duration-150 rounded-tiny  backdrop-blur-lg bg-background-color_2">
+                          <div className="w-full group-hover:text-text-color_1 py-1 px-2 text-workspace_3 text-text-color_2 border-b border-border-color_1" >{item.label}</div>
+                        </div>
+                      ))
+                    }
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+
+
+              <div className=" w-[40px] h-[40px] rounded-tiny hover:bg-background-color_3 relative fx-flex-center">
+                <div className="fx-flex-center">
+                  <FileText size={LUCIDE_WORKSPACE_ICON_SIZE} />
+                </div>
+                {/* <div className="bottom_bar w-[25px] h-[4px] rounded-tablet bg-background-indigo_primary absolute bottom-0 left-[50%] translate-x-[-50%]"></div> */}
+              </div>
+
+              <div className=" hover:bg-background-color_3 w-[40px] h-[40px] rounded-tiny relative fx-flex-center">
+                {/* <div className="bottom_bar w-[25px] h-[4px] rounded-tablet bg-background-indigo_primary absolute bottom-0 left-[50%] translate-x-[-50%]"></div> */}
+              </div>
+
+            </div>
+
+          </div>
         </div>
       </div>
     </>

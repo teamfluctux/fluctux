@@ -51,6 +51,7 @@ module.exports = {
         border: {
           color_1: "var(--border-color-1)",
           color_2: "var(--border-color-2)",
+          primary_indigo: "var(--primary-color)",
         },
         text: {
           indigo: {
