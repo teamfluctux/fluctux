@@ -1,26 +1,5 @@
 import React, { useRef, useState } from 'react'
-
-interface UseTaskBarPropsType {
-    taskbarHoverItems: {
-        slug: string,
-        label: string
-    }[]
-}
-
-interface TabsRndType {
-    id?: number | null,
-    size?: {
-        width: number, height: number
-    },
-    position?: {
-        x: number,
-        y: number
-    },
-    isActive?: boolean,
-    slug?: string,
-    label?: string,
-    isMaximized?: boolean
-}
+import { TabsRndType, UseTaskBarPropsType } from "@fluctux/types"
 
 
 export const useTaskBar = ({ taskbarHoverItems }: UseTaskBarPropsType) => {
@@ -30,38 +9,64 @@ export const useTaskBar = ({ taskbarHoverItems }: UseTaskBarPropsType) => {
     const [taskbarItems, setTaskbarItems] = useState(taskbarHoverItems)
     const [isDragStart, setIsDragStart] = useState(false)
 
-    const [tabs, setTabs] = useState<TabsRndType[]>([
-        {
-            id: null,
-            size: { width: 700, height: 500 },
-            position: { x: 50 + 0 * 50, y: 50 + 0 * 50 },
-            isActive: false,
-            slug: "",
-            label: "",
-            isMaximized: false
-        }]);
+    const [tabs, setTabs] = useState<{
+        [key: string]: {
+            tabs: TabsRndType[]
+        }
+    }>({});
 
-    const updateTab = (id: number, newValues: TabsRndType[] | TabsRndType) => {
+    const updateTabInCategory = (categorySlug: string, tabId: number, newValues: Partial<TabsRndType>) => {
 
-        setTabs((prevTabs) =>
-            prevTabs.map((tab) => (tab.id === id ? { ...tab, ...newValues } : { ...tab, isActive: false }))
-        );
+        setTabs((prevCategories) => {
+            if (!prevCategories[categorySlug]) return prevCategories;
+
+            return {
+                ...prevCategories,
+                [categorySlug]: {
+                    ...prevCategories[categorySlug],
+                    tabs: prevCategories[categorySlug].tabs.map((tab) =>
+                        tab.id === tabId ? { ...tab, ...newValues, isActive : true } : {...tab, isActive: false}
+                    ),
+                },
+            };
+        });
     };
 
-    const handleCloseTab = (tabId: number) => {
-        setTabs((prevTab) => prevTab.filter((tab) => tab.id != tabId))
-    }
+
+    const handleCloseTab = (categorySlug: string, tabId: number) => {
+        setTabs((prevCategories) => {
+            if (!prevCategories[categorySlug]) return prevCategories;
+
+            return {
+                ...prevCategories,
+                [categorySlug]: {
+                    ...prevCategories[categorySlug],
+                    tabs: prevCategories[categorySlug].tabs.filter((tab) => tab.id !== tabId),
+                },
+            };
+        });
+    };
+
 
     const parentRef = useRef<HTMLDivElement>(null);
 
-    const handleMaxMinTabSize = (tabId: number) => {
+    const handleMaxMinTabSize = (tabId: number, categorySlug: string) => {
         if (!parentRef.current) return;
 
         const { offsetWidth, offsetHeight } = parentRef.current;
-        const getCurrentTab = tabs.find((tab) => tab.id === tabId)
-        if (getCurrentTab?.size?.width !== offsetWidth || getCurrentTab?.size?.height !== offsetHeight) {
 
-            updateTab(tabId, {
+
+        const category = tabs[categorySlug];
+
+        if (!category) return;
+
+        const getCurrentTab = category.tabs.find((tab) => tab.id === tabId);
+
+        if (!getCurrentTab) return;
+
+        if (getCurrentTab.size?.width !== offsetWidth || getCurrentTab.size?.height !== offsetHeight) {
+
+            updateTabInCategory(categorySlug, tabId, {
                 size: { width: offsetWidth, height: offsetHeight },
                 position: { x: 0, y: 0 },
                 isActive: true,
@@ -69,7 +74,7 @@ export const useTaskBar = ({ taskbarHoverItems }: UseTaskBarPropsType) => {
             });
 
         } else {
-            updateTab(tabId, {
+            updateTabInCategory(categorySlug, tabId, {
                 size: { width: 700, height: 500 },
                 position: { x: 50, y: 50 },
                 isMaximized: false
@@ -79,29 +84,51 @@ export const useTaskBar = ({ taskbarHoverItems }: UseTaskBarPropsType) => {
 
     };
 
-    const handleNewTab = (newTabs: TabsRndType) => {
-        const existedTabs = tabs.find((tab) => tab.id === newTabs.id)
-        const restTabs = tabs.find((tab) => tab.id !== newTabs.id)
-        restTabs?.isActive && updateTab(restTabs.id!, { isActive: false })
-        if (existedTabs) return
-        setTabs((prevTabs) => [...prevTabs, newTabs])
-    }
+    // const handleNewTab = (newTabs: TabsRndType) => {
+    //     const existedTabs = tabs.find((tab) => tab.id === newTabs.id)
+    //     const restTabs = tabs.find((tab) => tab.id !== newTabs.id)
+    //     restTabs?.isActive && updateTab(restTabs.id!, { isActive: false })
+    //     if (existedTabs) return
+    //     setTabs((prevTabs) => [...prevTabs, newTabs])
+    // }
+
+    const handleAddNewTab = (categorySlug: string, newTab: TabsRndType) => {
+        setTabs((prevCategories) => {
+            const existingCategory = prevCategories[categorySlug] || {
+                tabs: [],
+            };
+
+            // Check if a tab with the same ID already exists
+            const isTabExists = existingCategory.tabs.some((tab) => tab.id === newTab.id);
+            updateTabInCategory(categorySlug, newTab.id!, { isActive: false })
+            if (isTabExists) return prevCategories; // If found, return unchanged state
+            return {
+                ...prevCategories,
+                [categorySlug]: {
+                    ...existingCategory,
+                    tabs: [...existingCategory.tabs, newTab],
+                },
+            };
+        });
+    };
+
+
 
     return {
-        showTaskBar, 
+        showTaskBar,
         setShowTaskbar,
         allowIntelligentAutoHideTaskBar,
         setAllowIntelligentAutoHideTaskBar,
-        taskbarItems, 
+        taskbarItems,
         setTaskbarItems,
         isDragStart,
         setIsDragStart,
         tabs,
         setTabs,
-        updateTab,
+        updateTabInCategory,
         handleCloseTab,
         parentRef,
         handleMaxMinTabSize,
-        handleNewTab
+        handleAddNewTab
     }
 }

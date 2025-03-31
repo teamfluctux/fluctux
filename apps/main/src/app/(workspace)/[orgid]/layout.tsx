@@ -41,6 +41,7 @@ import {
 } from "@/constants/workspace";
 import dynamic from "next/dynamic";
 import Skeleton from "react-loading-skeleton";
+import { UseTaskBarPropsType } from "@fluctux/types";
 
 interface WorkspaceLayoutProps {
   children: React.ReactNode;
@@ -184,14 +185,17 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
     setIsDragStart,
     tabs,
     setTabs,
-    updateTab,
+    updateTabInCategory,
     handleCloseTab,
     parentRef,
     handleMaxMinTabSize,
-    handleNewTab
+    handleAddNewTab
   } = useTaskBar({ taskbarHoverItems: TASK_BAR_ITEMS })
 
   const { ThemeSwitcher } = useThemeSwitcher(THEME_ICONS);
+  useEffect(() => {
+    setAllowIntelligentAutoHideTaskBar(false)
+  }, [])
 
   if (sidebarSize === null) return <>
     <div className="w-full h-screen fx-flex-center bg-background-color_1">
@@ -402,61 +406,72 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
           {children}
 
           {
-            tabs.map((tab, i) => {
-              if (tab.id === null) return
-              return <Rnd
-                key={tab.id}
-                size={tab.size}
-                position={tab.position}
-                minWidth={280}
-                minHeight={400}
-                bounds="parent"
-                onResize={(e, direction, ref, delta, pos) => {
-                  setIsDragStart(true)
-                  updateTab(tab.id || 0, {
-                    size: { width: ref.offsetWidth, height: ref.offsetHeight },
-                    position: pos,
-                  });
-                }}
-                onDragStop={(e, d) => {
-                  updateTab(tab.id!, { position: { x: d.x, y: d.y } });
-                  setIsDragStart(false);
-                }}
-                onResizeStop={(e, direction, ref, delta, pos) => {
-                  setIsDragStart(false)
-                }}
-                onDrag={() => updateTab(tab.id!, { isActive: true })}
-                onDragStart={() => setIsDragStart(true)}
-                dragHandleClassName="drag-handle"
-                className={cn("border border-border-color_2  rounded overflow-hidden cursor-[default_!important] transition-all bg-background-color_2 shadow-xl ", tab.isActive ? "z-50" : "z-1", isDragStart && "transition-none", tab.isActive && "border-border-primary_indigo")}
-              >
-                <div className="h-[30px] border-b border-border-color_2 fx-flex-between-ic pl-2 pr-1 bg-background-color_3 drag-handle">
-                  <h3 className="font-medium text-workspace_2">My Issue</h3>
-                  <div className="fx-flex-cr gap-2">
-                    <span className="hover:bg-background-color_2 p-[2px] rounded-tiny cursor-pointer">
-                      <Minus size={LUCIDE_WORKSPACE_ICON_SIZE} />
-                    </span>
-                    <span className="hover:bg-background-color_2 p-[2px] rounded-tiny cursor-pointer"  >
-                      {
-                        !tab.isMaximized &&
-                        <Minimize onClick={() => handleMaxMinTabSize(tab.id!)} size={16} />
-                      }
-                      {
-                        tab.isMaximized &&
-                        <Maximize onClick={() => handleMaxMinTabSize(tab.id!)} size={16} />
+            Object.entries(tabs).map(([key, category]) => {
+              if (!key) return
+              return category.tabs.map((tab, j) => {
 
-                      }
-                    </span>
+                return <Rnd
+                  onMouseDown={() => updateTabInCategory(key, tab.id!, { isActive: true })}
+                  key={j}
+                  size={tab.size}
+                  position={tab.position}
+                  minWidth={280}
+                  minHeight={400}
+                  bounds="parent"
+                  onResize={(e, direction, ref, delta, pos) => {
+                    setIsDragStart(true)
+                    updateTabInCategory(key, tab.id!, {
+                      size: { width: ref.offsetWidth, height: ref.offsetHeight },
+                      position: pos
+                    });
+                  }}
+                  onDragStop={(e, d) => {
+                    updateTabInCategory(key, tab.id!, { position: { x: d.x, y: d.y } });
+                    setIsDragStart(false);
+                  }}
+                  onResizeStop={(e, direction, ref, delta, pos) => {
+                    setIsDragStart(false)
+                  }}
+                  onDrag={(e, d) => {
+                  updateTabInCategory(key, tab.id!, { isActive: true })
+                }}
+                  onDragStart={() => {
+                    setIsDragStart(true)
+                    
+                  }}
+          
+                  dragHandleClassName="drag-handle"
+                  className={cn("border border-border-color_2  rounded overflow-hidden cursor-[default_!important] transition-all bg-background-color_2 shadow-xl ", tab.isActive ? "z-50" : "z-1", isDragStart && "transition-none", tab.isActive && !tab.isMaximized && "border-border-primary_indigo", tab.isMaximized && "border-none")}
+                >
+                  <div className="h-[30px] border-b border-border-color_2 fx-flex-between-ic pl-2 pr-1 backdrop-blur-lg drag-handle">
+                    <h3 className="font-medium text-workspace_2">My Issue</h3>
+                    <div className="fx-flex-cr gap-2">
+                      <span className="hover:bg-background-color_5 p-[2px] rounded-tiny cursor-pointer">
+                        <Minus size={LUCIDE_WORKSPACE_ICON_SIZE} />
+                      </span>
+                      <span className="hover:bg-background-color_5 p-[2px] rounded-tiny cursor-pointer"  >
+                        {
+                          !tab.isMaximized &&
+                          <Minimize onClick={() => handleMaxMinTabSize(tab.id!, key)} size={16} />
+                        }
+                        {
+                          tab.isMaximized &&
+                          <Maximize onClick={() => handleMaxMinTabSize(tab.id!, key)} size={16} />
 
-                    <span onClick={() => handleCloseTab(tab.id!)} className="p-[2px] cursor-pointer rounded-tiny hover:bg-red-600">
-                      <X size={LUCIDE_WORKSPACE_ICON_SIZE} />
-                    </span>
+                        }
+                      </span>
+
+                      <span onClick={() => handleCloseTab(key, tab.id!)} className="p-[2px] cursor-pointer rounded-tiny hover:bg-red-600">
+                        <X size={LUCIDE_WORKSPACE_ICON_SIZE} />
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  {tab.label}
-                </div>
-              </Rnd>
+                  <div >
+                    {tab.label}
+                  </div>
+                </Rnd>
+
+              })
 
             })
           }
@@ -476,7 +491,9 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       <div>
                         <CircleDot size={LUCIDE_WORKSPACE_ICON_SIZE} />
                       </div>
-                      <div className={cn("bottom_bar w-[10px] h-[3px] transition-all duration-300 rounded-tablet dark:bg-zinc-400 absolute bottom-0 left-[50%] translate-x-[-50%]", tabs.find((tab) => tab.isActive) && "dark:bg-background-indigo_primary w-[25px]")}></div>
+                      <div className={cn("bottom_bar w-[10px] h-[3px] transition-all duration-300 rounded-tablet dark:bg-zinc-400 absolute bottom-0 left-[50%] translate-x-[-50%]", Object.values(tabs).some(category =>
+                        category.tabs.some(tab => tab.isActive)
+                      ) && "dark:bg-background-indigo_primary w-[25px]")}></div>
                     </div>
 
                   </TooltipTrigger>
@@ -484,8 +501,10 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                   <TooltipContent align="start" sideOffset={15} className="z-[52] bg-background-color_3 fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]">
                     {
                       taskbarItems.map((item, i) => (
-                        <div onClick={() => {
-                          handleNewTab(
+                        <div key={i} onClick={() => {
+                          handleAddNewTab(
+
+                            "my-issues",
                             {
                               id: i,
                               size: { width: 700, height: 500 },
@@ -495,7 +514,8 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                               label: item.label,
                             }
                           )
-                        }} className="w-[200px] group overflow-hidden h-[140px] border border-border-color_1 hover:border-border-primary_indigo transition-colors duration-150 rounded-tiny  backdrop-blur-lg bg-background-color_2">
+                        }}
+                          className="w-[200px] group overflow-hidden h-[140px] border border-border-color_1 hover:border-border-primary_indigo transition-colors duration-150 rounded-tiny  backdrop-blur-lg bg-background-color_2">
                           <div className="w-full group-hover:text-text-color_1 py-1 px-2 text-workspace_3 text-text-color_2 border-b border-border-color_1" >{item.label}</div>
                         </div>
                       ))
