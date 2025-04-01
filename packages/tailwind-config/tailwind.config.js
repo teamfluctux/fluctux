@@ -77,7 +77,8 @@ module.exports = {
       animation: {
         fadeLogoLoading: "fadeLogoLoading 2s infinite",
         scaleUp: "scaleUp 0.3s ease-out forwards",
-        fadeUpWinPlaceHolder: "fadeUpWinPlaceHolder 0.3s ease-out forwards"
+        fadeUpWinPlaceHolder: "fadeUpWinPlaceHolder 0.3s ease-out forwards",
+        fadeUp: "fadeUp 0.3s ease-out forwards",
       },
       keyframes: {
         fadeLogoLoading: {
@@ -91,6 +92,10 @@ module.exports = {
         fadeUpWinPlaceHolder: {
           "0%": { opacity: "0%" },
           "100%": { opacity: "20%" }
+        },
+        fadeUp: {
+          "0%": { opacity: "0%" },
+          "100%": { opacity: "100%" }
         }
       },
       fontSize: {

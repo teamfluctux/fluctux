@@ -80,7 +80,8 @@ export const useTaskBar = ({ taskbarHoverItems }: UseTaskBarPropsType) => {
                 isMaximized: false
             });
         }
-
+        
+        return
 
     };
 
