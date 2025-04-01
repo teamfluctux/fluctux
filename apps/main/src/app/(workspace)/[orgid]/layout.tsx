@@ -396,15 +396,25 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
         <div ref={parentRef} className={cn("w-full h-screen bg-background-color_2 relative ")}>
 
           {/* windows placeholders */}
-          <div className={cn("w-full h-full absolute bg-background-indigo_primary hidden opacity-[20%] top-0 left-0", enabledFullWindow && "animate-fadeUpWinPlaceHolder flex")}></div>
+          <div className={cn("w-full h-full absolute hidden opacity-[20%] top-0 left-0 p-2 z-10", enabledFullWindow && "animate-fadeUpWinPlaceHolder flex")}>
+            <div className="w-full h-full bg-background-indigo_primary rounded "></div>
+          </div>
 
-          <div className={cn("w-full h-1/2 absolute bg-background-indigo_primary hidden opacity-[20%] top-0 left-0", enabledTopWindow && "animate-fadeUpWinPlaceHolder flex")}></div>
+          <div className={cn("w-full h-1/2 absolute hidden opacity-[20%] top-0 left-0 z-10 p-2", enabledTopWindow && "animate-fadeUpWinPlaceHolder flex")}>
+            <div className="w-full h-full bg-background-indigo_primary rounded "></div>
+          </div>
 
-          <div className={cn("w-1/2 h-full absolute bg-background-indigo_primary hidden opacity-[20%] top-0 left-0", enabledLeftWindow && "animate-fadeUpWinPlaceHolder flex")}></div>
+          <div className={cn("w-1/2 h-full absolute hidden opacity-[20%] top-0 left-0 z-10 p-2", enabledLeftWindow && "animate-fadeUpWinPlaceHolder flex")}>
+            <div className="w-full h-full bg-background-indigo_primary rounded "></div>
+          </div>
 
-          <div className={cn("w-1/2 h-full absolute bg-background-indigo_primary hidden opacity-[20%] top-0 right-0", enabledRightWindow && "animate-fadeUpWinPlaceHolder flex")}></div>
+          <div className={cn("w-1/2 h-full absolute hidden opacity-[20%] top-0 right-0 z-10 p-2", enabledRightWindow && "animate-fadeUpWinPlaceHolder flex")}>
+            <div className="w-full h-full bg-background-indigo_primary rounded "></div>
+          </div>
 
-          <div className={cn("w-full h-1/2 absolute bg-background-indigo_primary hidden opacity-[20%] bottom-0 left-0", enabledBottomWindow && "animate-fadeUpWinPlaceHolder flex")}></div>
+          <div className={cn("w-full h-1/2 absolute hidden opacity-[20%] bottom-0 left-0 z-10 p-2", enabledBottomWindow && "animate-fadeUpWinPlaceHolder flex")}>
+            <div className="w-full h-full bg-background-indigo_primary rounded "></div>
+          </div>
 
 
 
@@ -448,11 +458,11 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                     setIsDragStart(false)
                   }}
                   onDrag={(e, d) => {
-                    
+
                     updateTabInCategory(key, tab.id!, { isActive: true })
 
 
-                    if (d.y < 30 && d.y !== 0 && d.x !== 0) {
+                    if (d.y < 30 && d.y !== 0 && d.x !== 0 && d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth!) {
                       // full window
                       setEnabledFullWindow(true)
 
@@ -460,7 +470,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       setEnabledLeftWindow(false)
                       setEnabledRightWindow(false)
                       setEnabledTopWindow(false)
-                    }else if(d.y === 0 && d.x !== 0 ){
+                    } else if (d.y === 0 && d.x !== 0 && tab.size?.height !== parentRef.current?.offsetHeight! && d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth!) {
                       // top window
                       setEnabledTopWindow(true)
 
@@ -468,8 +478,8 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       setEnabledBottomWindow(false)
                       setEnabledLeftWindow(false)
                       setEnabledRightWindow(false)
-                 
-                    }else if(d.x === 0 && d.y !== 0){
+
+                    } else if (d.x === 0 && d.y !== 0 && tab.size?.width !== parentRef.current?.offsetWidth! && d.y + d.node.offsetHeight !== parentRef.current?.offsetHeight) {
                       // left window
                       setEnabledLeftWindow(true)
 
@@ -477,7 +487,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       setEnabledBottomWindow(false)
                       setEnabledRightWindow(false)
                       setEnabledTopWindow(false)
-                    }else if(d.deltaX === 100){
+                    } else if (d.y !== 0 && d.x + d.node.offsetWidth === parentRef.current?.offsetWidth! && d.y + d.node.offsetHeight !== parentRef.current?.offsetHeight && tab.size?.width !== parentRef.current?.offsetWidth) {
                       // right window
                       setEnabledRightWindow(true)
 
@@ -485,7 +495,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       setEnabledBottomWindow(false)
                       setEnabledLeftWindow(false)
                       setEnabledTopWindow(false)
-                    }else if(d.y >= parentRef.current?.offsetHeight! ){
+                    } else if (d.y + d.node.offsetHeight === parentRef.current?.offsetHeight && d.x !== 0 && d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth) {
                       // bottom window
                       setEnabledBottomWindow(true)
 
@@ -526,8 +536,8 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         position: { x: 0, y: 0 },
                         isMaximized: true
                       });
-                    }else if(d.y === 0 && d.x !== 0 ){
-                       // top window
+                    } else if (d.y === 0 && d.x !== 0 && tab.size?.height !== parentRef.current?.offsetHeight! && d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth!) {
+                      // top window
                       updateTabInCategory(key, tab.id!, {
                         size: {
                           width: parentRef.current?.offsetWidth || 700,
@@ -536,7 +546,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         position: { x: 0, y: 0 },
                         isMaximized: false
                       });
-                    }else if(d.x === 0 && d.y !== 0){
+                    } else if (d.x === 0 && d.y !== 0 && tab.size?.width !== parentRef.current?.offsetWidth! && d.y + d.node.offsetHeight !== parentRef.current?.offsetHeight) {
                       // left window
                       updateTabInCategory(key, tab.id!, {
                         size: {
@@ -544,6 +554,28 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                           height: parentRef.current?.offsetHeight || 500
                         },
                         position: { x: 0, y: 0 },
+                        isMaximized: false
+                      });
+                    }
+                    else if (d.y + d.node.offsetHeight === parentRef.current?.offsetHeight && d.x !== 0 && d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth) {
+                      // bottom window
+                      updateTabInCategory(key, tab.id!, {
+                        size: {
+                          width: parentRef.current?.offsetWidth || 700,
+                          height: (parentRef.current?.offsetHeight || 500) / 2
+                        },
+                        position: { x: 0, y: parentRef.current?.offsetHeight - (parentRef.current?.offsetHeight || 500) / 2 },
+                        isMaximized: false
+                      });
+                    }
+                    else if (d.y !== 0 && d.x + d.node.offsetWidth === parentRef.current?.offsetWidth! && d.y + d.node.offsetHeight !== parentRef.current?.offsetHeight && tab.size?.width !== parentRef.current?.offsetWidth) {
+                      // right window
+                      updateTabInCategory(key, tab.id!, {
+                        size: {
+                          width: (parentRef.current?.offsetWidth || 700) / 2,
+                          height: parentRef.current?.offsetHeight || 500
+                        },
+                        position: { x: parentRef.current?.offsetWidth! - (parentRef.current?.offsetWidth || 700) / 2, y: 0 },
                         isMaximized: false
                       });
                     }
@@ -562,17 +594,17 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       <span className="hover:bg-background-color_5 p-[2px] rounded-tiny cursor-pointer"  >
                         {
                           !tab.isMaximized &&
-                          <Maximize onClick={(e) =>{
+                          <Maximize onClick={(e) => {
                             e.preventDefault()
-                             handleMaxMinTabSize(tab.id!, key)
+                            handleMaxMinTabSize(tab.id!, key)
 
                           }} size={16} />
                         }
                         {
                           tab.isMaximized &&
-                          <Minimize onClick={(e) =>{
+                          <Minimize onClick={(e) => {
                             e.preventDefault()
-                             handleMaxMinTabSize(tab.id!, key)
+                            handleMaxMinTabSize(tab.id!, key)
 
                           }} size={16} />
 
