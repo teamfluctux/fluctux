@@ -1,19 +1,14 @@
 import React, { useRef, useState } from 'react'
-import { TabsRndType, UseTaskBarPropsType } from "@fluctux/types"
+import { TabsRndType, TabsStateType, UseTaskBarPropsType } from "@fluctux/types"
 
 
-export const useTaskBar = ({ taskbarHoverItems }: UseTaskBarPropsType) => {
+export const useTaskBar = () => {
 
     const [showTaskBar, setShowTaskbar] = useState(false)
     const [allowIntelligentAutoHideTaskBar, setAllowIntelligentAutoHideTaskBar] = useState<boolean>(false)
-    const [taskbarItems, setTaskbarItems] = useState(taskbarHoverItems)
     const [isDragStart, setIsDragStart] = useState(false)
 
-    const [tabs, setTabs] = useState<{
-        [key: string]: {
-            tabs: TabsRndType[]
-        }
-    }>({});
+    const [tabs, setTabs] = useState<TabsStateType>({});
 
     const updateTabInCategory = (categorySlug: string, tabId: number, newValues: Partial<TabsRndType>) => {
 
@@ -110,8 +105,6 @@ export const useTaskBar = ({ taskbarHoverItems }: UseTaskBarPropsType) => {
         setShowTaskbar,
         allowIntelligentAutoHideTaskBar,
         setAllowIntelligentAutoHideTaskBar,
-        taskbarItems,
-        setTaskbarItems,
         isDragStart,
         setIsDragStart,
         tabs,

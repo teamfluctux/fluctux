@@ -179,7 +179,6 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
     setShowTaskbar,
     allowIntelligentAutoHideTaskBar,
     setAllowIntelligentAutoHideTaskBar,
-    taskbarItems,
     isDragStart,
     setIsDragStart,
     tabs,
@@ -188,8 +187,9 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
     parentRef,
     handleMaxMinTabSize,
     handleAddNewTab
-  } = useTaskBar({ taskbarHoverItems: TASK_BAR_ITEMS })
+  } = useTaskBar()
 
+  const [taskbarItems, setTaskbarItems] = useState(TASK_BAR_ITEMS)
   const [enabledTopWindow, setEnabledTopWindow] = useState(false)
   const [enabledLeftWindow, setEnabledLeftWindow] = useState(false)
   const [enabledRightWindow, setEnabledRightWindow] = useState(false)
@@ -437,7 +437,6 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
             Object.entries(tabs).map(([key, category]) => {
               if (!key) return
               return category.tabs.map((tab, j) => {
-
                 return <Rnd
                   onMouseDown={() => updateTabInCategory(key, tab.id!, { isActive: true })}
                   key={j}
@@ -653,7 +652,6 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       taskbarItems.map((item, i) => (
                         <div key={i} onClick={() => {
                           handleAddNewTab(
-
                             "my-issues",
                             {
                               id: i,
