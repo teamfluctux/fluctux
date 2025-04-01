@@ -34,7 +34,7 @@ export const useTaskBar = ({ taskbarHoverItems }: UseTaskBarPropsType) => {
 
 
     const handleCloseTab = (categorySlug: string, tabId: number) => {
-        setTabs((prevCategories) => {
+         setTabs((prevCategories) => {
             if (!prevCategories[categorySlug]) return prevCategories;
 
             return {
@@ -64,24 +64,14 @@ export const useTaskBar = ({ taskbarHoverItems }: UseTaskBarPropsType) => {
 
         if (!getCurrentTab) return;
 
-        if (getCurrentTab.size?.width !== offsetWidth || getCurrentTab.size?.height !== offsetHeight) {
-
-            updateTabInCategory(categorySlug, tabId, {
-                size: { width: offsetWidth, height: offsetHeight },
-                position: { x: 0, y: 0 },
-                isActive: true,
-                isMaximized: true
-            });
-
-        } else {
-            updateTabInCategory(categorySlug, tabId, {
-                size: { width: 700, height: 500 },
-                position: { x: 50, y: 50 },
-                isMaximized: false
-            });
-        }
-        
-        return
+        updateTabInCategory(categorySlug, tabId, {
+            size: (getCurrentTab.size?.width !== offsetWidth || getCurrentTab.size?.height !== offsetHeight)
+                ? { width: offsetWidth, height: offsetHeight }
+                : { width: 700, height: 500 },
+            position: (getCurrentTab.size?.width !== offsetWidth || getCurrentTab.size?.height !== offsetHeight) ? { x: 0, y: 0 }: {x: 50, y:50},
+            isMaximized: getCurrentTab.size?.width !== offsetWidth || getCurrentTab.size?.height !== offsetHeight,
+            isActive: true
+        });
 
     };
 
