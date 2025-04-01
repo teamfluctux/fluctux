@@ -444,7 +444,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                   size={tab.size}
                   position={tab.position}
                   minWidth={280}
-                  minHeight={400}
+                  minHeight={300}
                   bounds="parent"
                   onResize={(e, direction, ref, delta, pos) => {
                     setIsDragStart(true)
