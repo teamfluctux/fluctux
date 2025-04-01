@@ -495,7 +495,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       setEnabledBottomWindow(false)
                       setEnabledLeftWindow(false)
                       setEnabledTopWindow(false)
-                    } else if (d.y + d.node.offsetHeight === parentRef.current?.offsetHeight && d.x !== 0 && d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth) {
+                    } else if (d.y + d.node.offsetHeight === parentRef.current?.offsetHeight && d.x !== 0 && d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth && tab.size?.height !== parentRef.current?.offsetHeight) {
                       // bottom window
                       setEnabledBottomWindow(true)
 
@@ -557,7 +557,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         isMaximized: false
                       });
                     }
-                    else if (d.y + d.node.offsetHeight === parentRef.current?.offsetHeight && d.x !== 0 && d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth) {
+                    else if (d.y + d.node.offsetHeight === parentRef.current?.offsetHeight && d.x !== 0 && d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth && tab.size?.height !== parentRef.current?.offsetHeight) {
                       // bottom window
                       updateTabInCategory(key, tab.id!, {
                         size: {
