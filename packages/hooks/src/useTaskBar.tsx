@@ -1,118 +1,139 @@
-import React, { useRef, useState } from 'react'
-import { TabsRndType, TabsStateType, TaskbarCategoriesType, UseTaskBarPropsType } from "@fluctux/types"
-
+import React, { useRef, useState } from "react";
+import {
+  TabsRndType,
+  TabsStateType,
+  UseTaskBarPropsType,
+  TaskbarCategoriesType,
+} from "@fluctux/types";
 
 export const useTaskBar = () => {
+  const [showTaskBar, setShowTaskbar] = useState(false);
+  const [allowIntelligentAutoHideTaskBar, setAllowIntelligentAutoHideTaskBar] =
+    useState<boolean>(false);
+  const [isDragStart, setIsDragStart] = useState(false);
 
-    const [showTaskBar, setShowTaskbar] = useState(false)
-    const [allowIntelligentAutoHideTaskBar, setAllowIntelligentAutoHideTaskBar] = useState<boolean>(false)
-    const [isDragStart, setIsDragStart] = useState(false)
+  const [tabs, setTabs] = useState<TabsStateType>({});
 
-    const [tabCategories, setTabCategories] = useState<TabsStateType>({});
+  const updateTabInCategory = (
+    categorySlug: TaskbarCategoriesType,
+    tabId: number,
+    newValues: Partial<TabsRndType>
+  ) => {
+    setTabs((prevCategories) => {
+      if (!prevCategories[categorySlug]) return prevCategories;
 
-    const updateTabInCategory = (categorySlug: TaskbarCategoriesType, tabId: number, newValues: Partial<TabsRndType>) => {
+      return {
+        ...prevCategories,
+        [categorySlug]: {
+          ...prevCategories[categorySlug],
+          tabs: prevCategories[categorySlug].tabs.map((tab) =>
+            tab.id === tabId
+              ? { ...tab, ...newValues, isActive: true }
+              : { ...tab, isActive: false }
+          ),
+        },
+      };
+    });
+  };
 
-        setTabCategories((prevCategories) => {
-            if (!prevCategories[categorySlug]) return prevCategories;
+  const handleCloseTab = (categorySlug: string, tabId: number) => {
+    setTabs((prevCategories) => {
+      if (!prevCategories[categorySlug]) return prevCategories;
 
-            return {
-                ...prevCategories,
-                [categorySlug]: {
-                    ...prevCategories[categorySlug],
-                    tabs: prevCategories[categorySlug].tabs.map((tab) =>
-                        tab.id === tabId ? { ...tab, ...newValues, isActive : true } : {...tab, isActive: false}
-                    ),
-                },
-            };
-        });
-    };
+      return {
+        ...prevCategories,
+        [categorySlug]: {
+          ...prevCategories[categorySlug],
+          tabs: prevCategories[categorySlug].tabs.filter(
+            (tab) => tab.id !== tabId
+          ),
+        },
+      };
+    });
+  };
 
+  const parentRef = useRef<HTMLDivElement>(null);
 
-    const handleCloseTab = (categorySlug: string, tabId: number) => {
-         setTabCategories((prevCategories) => {
-            if (!prevCategories[categorySlug]) return prevCategories;
+  const handleMaxMinTabSize = (
+    tabId: number,
+    categorySlug: TaskbarCategoriesType
+  ) => {
+    if (!parentRef.current) return;
 
-            return {
-                ...prevCategories,
-                [categorySlug]: {
-                    ...prevCategories[categorySlug],
-                    tabs: prevCategories[categorySlug].tabs.filter((tab) => tab.id !== tabId),
-                },
-            };
-        });
-    };
+    const { offsetWidth, offsetHeight } = parentRef.current;
 
+    const category = tabs[categorySlug];
 
-    const parentRef = useRef<HTMLDivElement>(null);
+    if (!category) return;
 
-    const handleMaxMinTabSize = (tabId: number, categorySlug: TaskbarCategoriesType) => {
-        if (!parentRef.current) return;
+    const getCurrentTab = category.tabs.find((tab) => tab.id === tabId);
 
-        const { offsetWidth, offsetHeight } = parentRef.current;
+    if (!getCurrentTab) return;
 
+    updateTabInCategory(categorySlug, tabId, {
+      size:
+        getCurrentTab.size?.width !== offsetWidth ||
+        getCurrentTab.size?.height !== offsetHeight
+          ? { width: offsetWidth, height: offsetHeight }
+          : { width: 700, height: 500 },
+      position:
+        getCurrentTab.size?.width !== offsetWidth ||
+        getCurrentTab.size?.height !== offsetHeight
+          ? { x: 0, y: 0 }
+          : { x: 50, y: 50 },
+      isMaximized:
+        getCurrentTab.size?.width !== offsetWidth ||
+        getCurrentTab.size?.height !== offsetHeight,
+      isActive: true,
+    });
+  };
 
-        const category = tabCategories[categorySlug];
+  // const handleNewTab = (newTabs: TabsRndType) => {
+  //     const existedTabs = tabs.find((tab) => tab.id === newTabs.id)
+  //     const restTabs = tabs.find((tab) => tab.id !== newTabs.id)
+  //     restTabs?.isActive && updateTab(restTabs.id!, { isActive: false })
+  //     if (existedTabs) return
+  //     setTabs((prevTabs) => [...prevTabs, newTabs])
+  // }
 
-        if (!category) return;
+  const handleAddNewTab = (
+    categorySlug: TaskbarCategoriesType,
+    newTab: TabsRndType
+  ) => {
+    setTabs((prevCategories) => {
+      const existingCategory = prevCategories[categorySlug] || {
+        tabs: [],
+      };
 
-        const getCurrentTab = category.tabs.find((tab) => tab.id === tabId);
+      // Check if a tab with the same ID already exists
+      const isTabExists = existingCategory.tabs.some(
+        (tab) => tab.id === newTab.id
+      );
+      updateTabInCategory(categorySlug, newTab.id!, { isActive: false });
+      if (isTabExists) return prevCategories; // If found, return unchanged state
+      return {
+        ...prevCategories,
+        [categorySlug]: {
+          ...existingCategory,
+          tabs: [...existingCategory.tabs, newTab],
+        },
+      };
+    });
+  };
 
-        if (!getCurrentTab) return;
-
-        updateTabInCategory(categorySlug, tabId, {
-            size: (getCurrentTab.size?.width !== offsetWidth || getCurrentTab.size?.height !== offsetHeight)
-                ? { width: offsetWidth, height: offsetHeight }
-                : { width: 700, height: 500 },
-            position: (getCurrentTab.size?.width !== offsetWidth || getCurrentTab.size?.height !== offsetHeight) ? { x: 0, y: 0 }: {x: 50, y:50},
-            isMaximized: getCurrentTab.size?.width !== offsetWidth || getCurrentTab.size?.height !== offsetHeight,
-            isActive: true
-        });
-
-    };
-
-    // const handleNewTab = (newTabs: TabsRndType) => {
-    //     const existedTabs = tabs.find((tab) => tab.id === newTabs.id)
-    //     const restTabs = tabs.find((tab) => tab.id !== newTabs.id)
-    //     restTabs?.isActive && updateTab(restTabs.id!, { isActive: false })
-    //     if (existedTabs) return
-    //     setTabCategories((prevTabs) => [...prevTabs, newTabs])
-    // }
-
-    const handleAddNewTab = (categorySlug: TaskbarCategoriesType, newTab: TabsRndType) => {
-        setTabCategories((prevCategories) => {
-            const existingCategory = prevCategories[categorySlug] || {
-                tabs: [],
-            };
-
-            // Check if a tab with the same ID already exists
-            const isTabExists = existingCategory.tabs.some((tab) => tab.id === newTab.id);
-            updateTabInCategory(categorySlug, newTab.id!, { isActive: false })
-            if (isTabExists) return prevCategories; // If found, return unchanged state
-            return {
-                ...prevCategories,
-                [categorySlug]: {
-                    ...existingCategory,
-                    tabs: [...existingCategory.tabs, newTab],
-                },
-            };
-        });
-    };
-
-
-
-    return {
-        showTaskBar,
-        setShowTaskbar,
-        allowIntelligentAutoHideTaskBar,
-        setAllowIntelligentAutoHideTaskBar,
-        isDragStart,
-        setIsDragStart,
-        tabCategories,
-        setTabCategories,
-        updateTabInCategory,
-        handleCloseTab,
-        parentRef,
-        handleMaxMinTabSize,
-        handleAddNewTab
-    }
-}
+  return {
+    showTaskBar,
+    setShowTaskbar,
+    allowIntelligentAutoHideTaskBar,
+    setAllowIntelligentAutoHideTaskBar,
+    isDragStart,
+    setIsDragStart,
+    tabs,
+    setTabs,
+    updateTabInCategory,
+    handleCloseTab,
+    parentRef,
+    handleMaxMinTabSize,
+    handleAddNewTab,
+  };
+};

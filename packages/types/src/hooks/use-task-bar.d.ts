@@ -1,7 +1,4 @@
-export type TaskbarCategoriesType = 
-| "issues"
-| "pages"
-| "cycles"
+export type TaskbarCategoriesType = "issues" | "pages" | "cycles";
 
 export interface UseTaskBarPropsType {
   taskbarHoverItems: {
@@ -27,7 +24,7 @@ export interface TabsRndType {
 }
 
 export interface TabsStateType {
-  [key: keyof typeof taskbarCategoriesType]: {
+  [key: keyof typeof TaskbarCategoriesType]: {
     tabs: TabsRndType[];
   };
 }
