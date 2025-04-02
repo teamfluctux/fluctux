@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { TabsRndType, TabsStateType, UseTaskBarPropsType } from "@fluctux/types"
+import { TabsRndType, TabsStateType, TaskbarCategoriesType, UseTaskBarPropsType } from "@fluctux/types"
 
 
 export const useTaskBar = () => {
@@ -8,11 +8,11 @@ export const useTaskBar = () => {
     const [allowIntelligentAutoHideTaskBar, setAllowIntelligentAutoHideTaskBar] = useState<boolean>(false)
     const [isDragStart, setIsDragStart] = useState(false)
 
-    const [tabs, setTabs] = useState<TabsStateType>({});
+    const [tabCategories, setTabCategories] = useState<TabsStateType>({});
 
-    const updateTabInCategory = (categorySlug: string, tabId: number, newValues: Partial<TabsRndType>) => {
+    const updateTabInCategory = (categorySlug: TaskbarCategoriesType, tabId: number, newValues: Partial<TabsRndType>) => {
 
-        setTabs((prevCategories) => {
+        setTabCategories((prevCategories) => {
             if (!prevCategories[categorySlug]) return prevCategories;
 
             return {
@@ -29,7 +29,7 @@ export const useTaskBar = () => {
 
 
     const handleCloseTab = (categorySlug: string, tabId: number) => {
-         setTabs((prevCategories) => {
+         setTabCategories((prevCategories) => {
             if (!prevCategories[categorySlug]) return prevCategories;
 
             return {
@@ -45,13 +45,13 @@ export const useTaskBar = () => {
 
     const parentRef = useRef<HTMLDivElement>(null);
 
-    const handleMaxMinTabSize = (tabId: number, categorySlug: string) => {
+    const handleMaxMinTabSize = (tabId: number, categorySlug: TaskbarCategoriesType) => {
         if (!parentRef.current) return;
 
         const { offsetWidth, offsetHeight } = parentRef.current;
 
 
-        const category = tabs[categorySlug];
+        const category = tabCategories[categorySlug];
 
         if (!category) return;
 
@@ -75,11 +75,11 @@ export const useTaskBar = () => {
     //     const restTabs = tabs.find((tab) => tab.id !== newTabs.id)
     //     restTabs?.isActive && updateTab(restTabs.id!, { isActive: false })
     //     if (existedTabs) return
-    //     setTabs((prevTabs) => [...prevTabs, newTabs])
+    //     setTabCategories((prevTabs) => [...prevTabs, newTabs])
     // }
 
-    const handleAddNewTab = (categorySlug: string, newTab: TabsRndType) => {
-        setTabs((prevCategories) => {
+    const handleAddNewTab = (categorySlug: TaskbarCategoriesType, newTab: TabsRndType) => {
+        setTabCategories((prevCategories) => {
             const existingCategory = prevCategories[categorySlug] || {
                 tabs: [],
             };
@@ -107,8 +107,8 @@ export const useTaskBar = () => {
         setAllowIntelligentAutoHideTaskBar,
         isDragStart,
         setIsDragStart,
-        tabs,
-        setTabs,
+        tabCategories,
+        setTabCategories,
         updateTabInCategory,
         handleCloseTab,
         parentRef,

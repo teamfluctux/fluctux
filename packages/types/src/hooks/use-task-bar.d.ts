@@ -1,3 +1,8 @@
+export type TaskbarCategoriesType = 
+| "issues"
+| "pages"
+| "cycles"
+
 export interface UseTaskBarPropsType {
   taskbarHoverItems: {
     slug: string;
@@ -22,7 +27,7 @@ export interface TabsRndType {
 }
 
 export interface TabsStateType {
-  [key: string]: {
+  [key: keyof typeof taskbarCategoriesType]: {
     tabs: TabsRndType[];
   };
 }

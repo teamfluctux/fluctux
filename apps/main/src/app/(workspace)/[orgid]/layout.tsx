@@ -181,7 +181,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
     setAllowIntelligentAutoHideTaskBar,
     isDragStart,
     setIsDragStart,
-    tabs,
+    tabCategories,
     updateTabInCategory,
     handleCloseTab,
     parentRef,
@@ -434,10 +434,10 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
           {children}
 
           {
-            Object.entries(tabs).map(([key, category]) => {
+            Object.entries(tabCategories).map(([key, category]) => {
               if (!key) return
-              return category.tabs.map((tab, j) => {
-                return <Rnd
+              if(key === "issues") return category.tabs.map((tab, j) => {
+                <Rnd
                   onMouseDown={() => updateTabInCategory(key, tab.id!, { isActive: true })}
                   key={j}
                   size={tab.size}
@@ -640,7 +640,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       <div>
                         <CircleDot size={LUCIDE_WORKSPACE_ICON_SIZE} />
                       </div>
-                      <div className={cn("bottom_bar w-[10px] h-[3px] transition-all duration-300 rounded-tablet dark:bg-zinc-400 absolute bottom-0 left-[50%] translate-x-[-50%]", Object.values(tabs).some(category =>
+                      <div className={cn("bottom_bar w-[10px] h-[3px] transition-all duration-300 rounded-tablet dark:bg-zinc-400 absolute bottom-0 left-[50%] translate-x-[-50%]", Object.values(tabCategories).some(category =>
                         category.tabs.some(tab => tab.isActive)
                       ) && "dark:bg-background-indigo_primary w-[25px]")}></div>
                     </div>
@@ -652,7 +652,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       taskbarItems.map((item, i) => (
                         <div key={i} onClick={() => {
                           handleAddNewTab(
-                            "my-issues",
+                            "issues",
                             {
                               id: i,
                               size: { width: 700, height: 500 },
@@ -671,7 +671,6 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-
 
               <div className=" w-[40px] h-[40px] rounded-tiny hover:bg-background-color_3 relative fx-flex-center">
                 <div className="fx-flex-center">
