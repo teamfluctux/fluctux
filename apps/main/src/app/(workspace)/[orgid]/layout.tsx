@@ -35,6 +35,26 @@ interface WorkspaceLayoutProps {
   children: React.ReactNode;
 }
 
+const DynamicTaskBarAndTabs = dynamic(() =>
+  import("@/components/core/workspace/rnd-window").then((mod) => mod.RndWindows),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className={cn(
+          "w-[100%] max-w-[500px] z-50 absolute bottom-[-57px] p-2 bg-transparent transition-all duration-300")}
+      >
+        <div className="w-full rounded-tiny border border-border-color_2 backdrop-blur-lg fx-flex-cl p-1 gap-1 ">
+          <Skeleton
+            height={50}
+            borderRadius={"5px"}
+          />
+        </div>
+      </div>
+    )
+  }
+)
+
 const DynamicSidebarBottom = dynamic(
   () =>
     import("@/components/workspace/sidebar").then((mod) => mod.SidebarBottom),
@@ -344,7 +364,20 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
 
           {children}
 
-          <RndWindows />
+          {/* <div
+            className={cn(
+              "w-[100%] max-w-[500px] z-50 absolute bottom-0 p-2 bg-transparent transition-all duration-300 overflow-hidden")}
+          >
+            <div className="w-full rounded-tiny border border-border-color_2 backdrop-blur-lg fx-flex-cl p-1 gap-1 overflow-hidden ">
+              <Skeleton
+                height={50}
+                width={500}
+                borderRadius={"5px"}
+              />
+            </div>
+          </div> */}
+
+ <DynamicTaskBarAndTabs/>
         </div>
       </div>
     </>
