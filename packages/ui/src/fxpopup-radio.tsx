@@ -3,13 +3,14 @@ import React from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { ROUNDED_VARIANTS } from "./constant";
 import { FxButton } from "./fxbutton";
+import { OrgVisibilityType } from "@fluctux/types";
 
 interface ItemType {
   label?: string;
   desc?: string;
   id: string;
   value: string;
-  svg?: React.ReactNode;
+  svg?: React.ReactElement;
 }
 
 interface ClassNamesType {
@@ -28,7 +29,7 @@ interface FxPopupRadioProps
   align?: "start" | "center" | "end";
   buttonType?: keyof typeof radioButton;
   items: ItemType[];
-  initialValue?: string;
+  initialValue?: OrgVisibilityType;
   closeMenuOnSelect?: boolean;
   alignItems?: keyof typeof alignItemsVariant;
   onValueChange?: (value: string) => void;

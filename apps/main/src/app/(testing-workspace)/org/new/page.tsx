@@ -6,28 +6,28 @@ import {
   FxPopupRadio,
 } from "@fluctux/ui";
 import React, { useEffect } from "react";
-import { createOrgZodSchema } from "@/zod/organization";
-import { OrgVisibilityType } from "@/mongo/types";
+import { createOrgZodSchema } from "@fluctux/zod";
 import { z } from "zod";
 import { createOrganization } from "@/actions/org.server";
 import { ORG_VISIBILITY_OPTIONS } from "@/constants/workspace";
 import { toast } from "sonner";
 import { useReactForm } from "@fluctux/hooks";
+import { OrgVisibilityEnum } from "@fluctux/constants";
 
 export default function CreateNewOrgPage() {
   const { errors, handleSubmit, register, setValue } = useReactForm({
     ZOD_SCHEMA: createOrgZodSchema,
   });
 
-  const handleVisibilityChange = (value: string) => {
-    const visibilityValue = value as OrgVisibilityType;
+  const handleVisibilityChange = (value: string ) => {
+    const visibilityValue = value as OrgVisibilityEnum;
     setValue("org_visibility", visibilityValue);
   };
 
   useEffect(() => {
     setValue(
       "org_visibility",
-      ORG_VISIBILITY_OPTIONS[0]?.value as OrgVisibilityType
+      ORG_VISIBILITY_OPTIONS[0]?.value as OrgVisibilityEnum
     );
   }, [setValue]);
 

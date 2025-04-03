@@ -11,7 +11,7 @@ import {
   OrgMemberRequest,
   User,
 } from "@fluctux/database";
-import { ERROR, MEMBER_ADDED, REQUEST_SENT } from "@fluctux/httpCodesAnEvents";
+import { ERROR, MEMBER_ADDED, REQUEST_SENT } from "@fluctux/httpcodesanevents";
 
 export async function createOrganization(data: CreateOrganizationDataType) {
   const session = await getServerSession(authOptions);

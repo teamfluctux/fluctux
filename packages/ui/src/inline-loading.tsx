@@ -1,7 +1,7 @@
 import React from "react";
 import { cn } from "./lib/utils";
 
-export const InlineLoading = ({ className }: { className: string }) => {
+export const InlineLoading = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(

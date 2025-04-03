@@ -9,7 +9,7 @@ import {
   FxInput,
   FxSeparator,
 } from "@fluctux/ui";
-import { userZodSchema } from "@/zod/user/user.zod";
+import { userZodSchema } from "@fluctux/zod";
 import Link from "next/link";
 import React from "react";
 import { z } from "zod";
