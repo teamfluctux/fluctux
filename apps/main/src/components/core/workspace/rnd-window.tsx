@@ -20,10 +20,6 @@ import {
 } from "lucide-react";
 import { TaskbarCategoriesType } from "@fluctux/types";
 
-interface WorkspaceLayoutProps {
-  children: React.ReactNode;
-}
-
 const TASK_BAR_ITEMS = [
   {
     slug: "my-issues",
@@ -56,11 +52,65 @@ export const RndWindows = () => {
   } = useTaskBar();
 
   const [taskbarItems, setTaskbarItems] = useState(TASK_BAR_ITEMS);
+
   const [enabledTopWindow, setEnabledTopWindow] = useState(false);
   const [enabledLeftWindow, setEnabledLeftWindow] = useState(false);
   const [enabledRightWindow, setEnabledRightWindow] = useState(false);
   const [enabledBottomWindow, setEnabledBottomWindow] = useState(false);
   const [enabledFullWindow, setEnabledFullWindow] = useState(false);
+
+  const handleEnableTopWindow = () => {
+    setEnabledTopWindow(true);
+
+    setEnabledFullWindow(false);
+    setEnabledBottomWindow(false);
+    setEnabledLeftWindow(false);
+    setEnabledRightWindow(false);
+  };
+
+  const handleEnableFullWindow = () => {
+    setEnabledFullWindow(true);
+
+    setEnabledBottomWindow(false);
+    setEnabledLeftWindow(false);
+    setEnabledRightWindow(false);
+    setEnabledTopWindow(false);
+  };
+
+  const handleEnableRightWindow = () => {
+    setEnabledRightWindow(true);
+
+    setEnabledFullWindow(false);
+    setEnabledBottomWindow(false);
+    setEnabledLeftWindow(false);
+    setEnabledTopWindow(false);
+  };
+
+  const handleEnableLeftWindow = () => {
+    setEnabledLeftWindow(true);
+
+    setEnabledFullWindow(false);
+    setEnabledBottomWindow(false);
+    setEnabledRightWindow(false);
+    setEnabledTopWindow(false);
+  };
+
+  const handleEnableBottomWindow = () => {
+    setEnabledBottomWindow(true);
+
+    setEnabledFullWindow(false);
+    setEnabledLeftWindow(false);
+    setEnabledRightWindow(false);
+    setEnabledTopWindow(false);
+  };
+
+  const handleDisableWindowPlaceholders = () => {
+    setEnabledFullWindow(false);
+    setEnabledBottomWindow(false);
+    setEnabledLeftWindow(false);
+    setEnabledRightWindow(false);
+    setEnabledTopWindow(false);
+  };
 
   useEffect(() => {
     setAllowIntelligentAutoHideTaskBar(false);
@@ -153,12 +203,7 @@ export const RndWindows = () => {
                     d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth!
                   ) {
                     // full window
-                    setEnabledFullWindow(true);
-
-                    setEnabledBottomWindow(false);
-                    setEnabledLeftWindow(false);
-                    setEnabledRightWindow(false);
-                    setEnabledTopWindow(false);
+                    handleEnableFullWindow();
                   } else if (
                     d.y === 0 &&
                     d.x !== 0 &&
@@ -166,12 +211,7 @@ export const RndWindows = () => {
                     d.x + d.node.offsetWidth !== parentRef.current?.offsetWidth!
                   ) {
                     // top window
-                    setEnabledTopWindow(true);
-
-                    setEnabledFullWindow(false);
-                    setEnabledBottomWindow(false);
-                    setEnabledLeftWindow(false);
-                    setEnabledRightWindow(false);
+                    handleEnableTopWindow();
                   } else if (
                     d.x === 0 &&
                     d.y !== 0 &&
@@ -180,12 +220,7 @@ export const RndWindows = () => {
                       parentRef.current?.offsetHeight
                   ) {
                     // left window
-                    setEnabledLeftWindow(true);
-
-                    setEnabledFullWindow(false);
-                    setEnabledBottomWindow(false);
-                    setEnabledRightWindow(false);
-                    setEnabledTopWindow(false);
+                    handleEnableLeftWindow();
                   } else if (
                     d.y !== 0 &&
                     d.x + d.node.offsetWidth ===
@@ -195,12 +230,7 @@ export const RndWindows = () => {
                     tab.size?.width !== parentRef.current?.offsetWidth
                   ) {
                     // right window
-                    setEnabledRightWindow(true);
-
-                    setEnabledFullWindow(false);
-                    setEnabledBottomWindow(false);
-                    setEnabledLeftWindow(false);
-                    setEnabledTopWindow(false);
+                    handleEnableRightWindow();
                   } else if (
                     d.y + d.node.offsetHeight ===
                       parentRef.current?.offsetHeight &&
@@ -210,18 +240,9 @@ export const RndWindows = () => {
                     tab.size?.height !== parentRef.current?.offsetHeight
                   ) {
                     // bottom window
-                    setEnabledBottomWindow(true);
-
-                    setEnabledFullWindow(false);
-                    setEnabledLeftWindow(false);
-                    setEnabledRightWindow(false);
-                    setEnabledTopWindow(false);
+                    handleEnableBottomWindow();
                   } else {
-                    setEnabledFullWindow(false);
-                    setEnabledBottomWindow(false);
-                    setEnabledLeftWindow(false);
-                    setEnabledRightWindow(false);
-                    setEnabledTopWindow(false);
+                    handleDisableWindowPlaceholders();
                   }
                 }}
                 onDragStart={() => setIsDragStart(true)}
