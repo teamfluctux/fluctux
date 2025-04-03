@@ -1,18 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   TabsRndType,
   TabsStateType,
   UseTaskBarPropsType,
   TaskbarCategoriesType,
 } from "@fluctux/types";
+import { useWorkspaceContext } from "@/context/workspace-context";
 
 export const useTaskBar = () => {
   const [showTaskBar, setShowTaskbar] = useState(false);
   const [allowIntelligentAutoHideTaskBar, setAllowIntelligentAutoHideTaskBar] =
     useState<boolean>(false);
   const [isDragStart, setIsDragStart] = useState(false);
-
   const [tabs, setTabs] = useState<TabsStateType>({});
+  const { parentRef, sidebarSize } = useWorkspaceContext();
 
   const updateTabInCategory = (
     categorySlug: TaskbarCategoriesType,
@@ -52,8 +53,6 @@ export const useTaskBar = () => {
     });
   };
 
-  const parentRef = useRef<HTMLDivElement>(null);
-
   const handleMaxMinTabSize = (
     tabId: number,
     categorySlug: TaskbarCategoriesType
@@ -73,12 +72,12 @@ export const useTaskBar = () => {
     updateTabInCategory(categorySlug, tabId, {
       size:
         getCurrentTab.size?.width !== offsetWidth ||
-        getCurrentTab.size?.height !== offsetHeight
+          getCurrentTab.size?.height !== offsetHeight
           ? { width: offsetWidth, height: offsetHeight }
           : { width: 700, height: 500 },
       position:
         getCurrentTab.size?.width !== offsetWidth ||
-        getCurrentTab.size?.height !== offsetHeight
+          getCurrentTab.size?.height !== offsetHeight
           ? { x: 0, y: 0 }
           : { x: 50, y: 50 },
       isMaximized:
@@ -87,6 +86,43 @@ export const useTaskBar = () => {
       isActive: true,
     });
   };
+
+  useEffect(() => {
+
+    if (!parentRef.current) return;
+    const { offsetWidth, offsetHeight } = parentRef.current;
+    console.log(offsetWidth)
+    setTabs((prevTabs) => {
+      return Object.entries(prevTabs).reduce((newTabs, [categorySlug, category]) => {
+        newTabs[categorySlug] = {
+          ...category,
+          tabs: category.tabs.map((tab) => {
+
+            if(tab.isMaximized){
+              return { ...tab, size: { width: offsetWidth, height: offsetHeight } } // Update width as needed
+            }
+              
+            const tabWidth = tab.size?.width ?? 280;
+            const tabX = tab.position?.x ?? 0;
+            const tabY = tab.position?.y ?? 0;
+
+            // Check if the tab is out of bounds
+            const isOutOfBounds =
+              tabX + tabWidth > offsetWidth
+
+            if (isOutOfBounds && !tab.isMaximized) {
+              const isTabWidthGTOffsetWidth = tabWidth > offsetWidth
+              return { ...tab, size: { width: isTabWidthGTOffsetWidth ? offsetWidth : tabWidth, height: tab.size?.height }, position: { x: isTabWidthGTOffsetWidth ? 0 : tabX - ((tabX + tabWidth) - offsetWidth) , y: tabY } };
+            }
+            
+            return tab;
+          }
+          ),
+        };
+        return newTabs;
+      }, {} as typeof prevTabs);
+    });
+  }, [sidebarSize, parentRef])
 
   // const handleNewTab = (newTabs: TabsRndType) => {
   //     const existedTabs = tabs.find((tab) => tab.id === newTabs.id)

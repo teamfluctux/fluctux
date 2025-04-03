@@ -5,4 +5,3 @@ export * from "./useProcessMDX";
 export * from "./useThemeSwitcher";
 export * from "./useToggleOpen";
 export * from "./useShowSuggestions";
-export * from "./useTaskBar";

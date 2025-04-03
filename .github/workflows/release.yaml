@@ -50,7 +50,7 @@ jobs:
   fluctux-web:
     name: "Build & Push Web Docker Image"
     needs: [base-setup]
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:

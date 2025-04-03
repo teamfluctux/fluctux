@@ -10,8 +10,8 @@ export interface UseTaskBarPropsType {
 export interface TabsRndType {
   id?: number | null;
   size?: {
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
   };
   position?: {
     x: number;
