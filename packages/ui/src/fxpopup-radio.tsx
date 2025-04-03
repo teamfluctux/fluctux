@@ -29,7 +29,7 @@ interface FxPopupRadioProps
   align?: "start" | "center" | "end";
   buttonType?: keyof typeof radioButton;
   items: ItemType[];
-  initialValue?: OrgVisibilityType;
+  initialValue?: string;
   closeMenuOnSelect?: boolean;
   alignItems?: keyof typeof alignItemsVariant;
   onValueChange?: (value: string) => void;

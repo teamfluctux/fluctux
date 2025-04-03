@@ -19,7 +19,7 @@ export default function CreateNewOrgPage() {
     ZOD_SCHEMA: createOrgZodSchema,
   });
 
-  const handleVisibilityChange = (value: string ) => {
+  const handleVisibilityChange = (value: string) => {
     const visibilityValue = value as OrgVisibilityEnum;
     setValue("org_visibility", visibilityValue);
   };
