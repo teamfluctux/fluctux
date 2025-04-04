@@ -99,7 +99,7 @@ export const useTaskBar = () => {
           tabs: category.tabs.map((tab) => {
 
             if(tab.isMaximized){
-              return { ...tab, size: { width: offsetWidth, height: offsetHeight } } // Update width as needed
+              return { ...tab, size: { width: offsetWidth, height: offsetHeight } }
             }
               
             const tabWidth = tab.size?.width ?? 280;
