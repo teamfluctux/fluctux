@@ -24,7 +24,9 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: 🔧 Feature Description
+      value: |
+        ## 📝 Feature Description
+      label: Sample label
       description: Describe how the feature should work. Include details, potential API shape, or UI if applicable.
       placeholder: |
         e.g. Toggle switch in settings to enable dark mode; store preference in local storage.
