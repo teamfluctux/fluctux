@@ -1,0 +1,56 @@
+name: 🚀 Feature Request
+description: Suggest a new feature or enhancement for the project
+title: "[Feature]: "
+labels: [feature, needs-triage]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🚀 Feature Request
+
+        Thank you for taking the time to suggest a new feature! Please fill out the details below.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: What would you like to add? Give a one-line summary of the feature.
+      placeholder: e.g. Add dark mode support
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why do you need this feature? What problem does it solve or what benefit does it bring?
+      placeholder: |
+        e.g. Dark mode improves readability in low-light environments and reduces eye strain.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: Describe how the feature should work. Include details, potential API shape, or UI if applicable.
+      placeholder: |
+        e.g. Toggle switch in settings to enable dark mode; store preference in local storage.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered other ways to solve the problem?
+      placeholder: e.g. Using browser extensions like Dark Reader
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context, diagrams, or references.
+      placeholder: Screenshots, design mockups, links to discussions, etc.
