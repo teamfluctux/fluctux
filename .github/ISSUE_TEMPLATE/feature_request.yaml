@@ -3,7 +3,6 @@ description: Suggest a new feature or enhancement for the project
 title: "[feat]: "
 labels: [feature, needs-triage]
 
-
 body:
   - type: markdown
     attributes:
@@ -13,7 +12,7 @@ body:
   - type: input
     id: summary
     attributes:
-      label: 📝 Feature Summary
+      label: Feature Summary
       description: What would you like to add? Give a one-line summary of the feature.
       placeholder: e.g. Add dark mode support
     validations:
@@ -22,8 +21,8 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: " "
-      description: Describe how the feature should work. Include details, potential API shape, or UI if applicable.
+      label: " " # invisible label (required by GitHub form spec)
+      description: "" # leave empty
       placeholder: |
         e.g. Toggle switch in settings to enable dark mode; store preference in local storage.
     validations:
