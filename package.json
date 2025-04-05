@@ -12,6 +12,8 @@
     "clean": "turbo run clean"
   },
   "devDependencies": {
+    "@shikijs/rehype": "^3.2.1",
+    "@shikijs/transformers": "^3.2.1",
     "@tailwindcss/typography": "^0.5.16",
     "@types/bcrypt": "^5.0.2",
     "autoprefixer": "^10.4.20",
@@ -27,11 +29,6 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@fluctux/database": "workspace:*",
-    "@fluctux/httpcodesanevents": "workspace:*",
-    "@fluctux/zod": "workspace:*",
-    "@fluctux/types": "workspace:*",
-    "@fluctux/constants": "workspace:*",
     "@algolia/client-common": "^5.20.4",
     "@apollo/client": "^3.12.8",
     "@arcjet/next": "^1.0.0-alpha.34",
@@ -46,6 +43,11 @@
     "@escape.tech/graphql-armor-max-directives": "2.3.0",
     "@escape.tech/graphql-armor-max-tokens": "2.5.0",
     "@firecms/neat": "^0.3.0",
+    "@fluctux/constants": "workspace:*",
+    "@fluctux/database": "workspace:*",
+    "@fluctux/httpcodesanevents": "workspace:*",
+    "@fluctux/types": "workspace:*",
+    "@fluctux/zod": "workspace:*",
     "@graphiql/toolkit": "^0.11.1",
     "@graphql-yoga/plugin-disable-introspection": "^2.12.0",
     "@graphql-yoga/plugin-jwt": "^3.4.13",

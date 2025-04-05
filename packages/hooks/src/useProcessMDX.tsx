@@ -5,10 +5,14 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import rehypeSlug from "rehype-slug";
-import rehypePrettyCode from "rehype-pretty-code";
-import { transformerCopyButton } from "@rehype-pretty/transformers";
 import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
+import rehypeShiki from '@shikijs/rehype'
+import {
+  transformerNotationHighlight,
+  transformerNotationDiff,
+  transformerNotationErrorLevel
+} from '@shikijs/transformers'
 
 export const useProcessMDX = (data: string) => {
   const [content, setContent] = useState("");
@@ -23,13 +27,13 @@ export const useProcessMDX = (data: string) => {
       .use(rehypeFormat)
       .use(rehypeStringify)
       .use(rehypeSlug) // Generates IDs automatically
-      .use(rehypePrettyCode, {
+      .use(rehypeShiki, {
         theme: "material-theme-ocean",
         transformers: [
-          transformerCopyButton({
-            visibility: "always",
-            feedbackDuration: 2_000,
-          }),
+          transformerNotationHighlight(), 
+          transformerNotationDiff(),
+          transformerNotationErrorLevel()
+          // ...
         ],
       })
       .process(mdxContent);

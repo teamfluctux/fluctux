@@ -455,16 +455,44 @@ body {
   font-family: var(--font-jetbrains-mono) ;
 }
 
+/* single code highlight */
 .light
   .prose
   :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   background-color: #00000015;
 }
 
+pre {
+  padding: 20px 0px !important;
+}
+
 pre code {
   background-color: transparent !important;
   padding: 0px !important;
   border-radius: 0px !important;
+  display: grid;
+
+  .line{
+    padding-inline: 20px;
+  }
+
+  .highlighted{
+    background-color: #ffffff24;
+  }
+
+  .add{
+    background-color: #00800030;
+  }
+
+  .remove{
+    background-color: #ff00003e;
+  }
+
+  .warning{
+    background-color: #ffc1073d;
+  
+  }
+  
 }
 
 .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
@@ -489,3 +517,5 @@ pre code {
 .theme-color-mode-active svg {
   fill: var(--svg-default-color) !important;
 }
+
+

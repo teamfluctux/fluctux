@@ -37,7 +37,7 @@ interface WorkspaceLayoutProps {
 
 const DynamicTaskBarAndTabs = dynamic(
   () =>
-    import("@/components/core/workspace/rnd-window").then(
+    import("@/components/workspace/main-area").then(
       (mod) => mod.RndWindows
     ),
   {
