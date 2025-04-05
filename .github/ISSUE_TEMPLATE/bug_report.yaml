@@ -2,7 +2,7 @@ name: 🐞 Bug Report
 description: Report something that's broken or not working as expected
 title: "[bug]: "
 labels: [bug, triage]
-assignees: []
+
 
 body:
   - type: markdown
