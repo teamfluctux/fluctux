@@ -1,6 +1,6 @@
 name: 🚀 Feature Request
 description: Suggest a new feature or enhancement for the project
-title: "[Feature]: "
+title: "[feat]: "
 labels: [feature, needs-triage]
 assignees: []
 
@@ -28,8 +28,6 @@ body:
       description: Why do you need this feature? What problem does it solve or what benefit does it bring?
       placeholder: |
         e.g. Dark mode improves readability in low-light environments and reduces eye strain.
-    validations:
-      required: true
 
   - type: textarea
     id: description
