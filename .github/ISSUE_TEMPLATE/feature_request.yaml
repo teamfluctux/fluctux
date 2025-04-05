@@ -21,8 +21,8 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: " " # invisible label (required by GitHub form spec)
-      description: "" # leave empty
+      label: Feature Description
+      description: Describe how the feature should work. Include details, potential API shape, or UI if applicable.
       placeholder: |
         e.g. Toggle switch in settings to enable dark mode; store preference in local storage.
     validations:
