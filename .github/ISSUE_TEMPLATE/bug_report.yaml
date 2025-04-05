@@ -8,8 +8,6 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 🐞 Bug Report
-
         Thanks for reporting a bug! Please help us fix it faster by filling out this form.
 
   - type: input
