@@ -8,8 +8,6 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## 🚀 Feature Request
-
         Thank you for taking the time to suggest a new feature! Please fill out the details below.
 
   - type: input
