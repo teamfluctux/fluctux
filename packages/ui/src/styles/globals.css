@@ -492,6 +492,11 @@ pre code {
     background-color: #ffc1073d;
   
   }
+
+  .error{
+    border: 2px solid #dc3546;
+    background-color: #dc35463d;
+  }
   
 }
 
