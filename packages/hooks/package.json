@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "unified": "^11.0.5",
-    "gray-matter": "^4.0.3",
     "rehype-document": "^7.0.3",
     "rehype-format": "^5.0.1",
     "rehype-pretty-code": "^0.14.0",

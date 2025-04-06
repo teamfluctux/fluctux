@@ -29,6 +29,7 @@
     "node": ">=18"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "@algolia/client-common": "^5.20.4",
     "@apollo/client": "^3.12.8",
     "@arcjet/next": "^1.0.0-alpha.34",

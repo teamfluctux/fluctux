@@ -1,5 +1,5 @@
 import { Footer } from "@/components/core";
-import DocHeader from "@/components/core/docs/doc-header";
+import DocHeader from "@/components/docs/doc-header";
 import React from "react";
 
 interface DocParentLayoutPropsType {
