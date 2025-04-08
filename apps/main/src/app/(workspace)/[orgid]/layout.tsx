@@ -368,7 +368,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                                       Content
       ========================================================================== */}
           <div ref={parentRef} className={cn("w-full h-screen bg-background-color_2 relative")}>
-            <div className="border-b border-border-color_1 w-full h-[40px] relative fx-flex-center">
+            <div className="border-b border-border-color_1 w-full h-[40px] sticky top-0 fx-flex-center">
               <div
                 className="w-[30px] h-[30px] fx-flex-center rounded-[5px] absolute left-1 hover:bg-background-color_3 cursor-pointer z-[50] text-text-svg_default hover:text-text-color_1"
                 onClick={toggleSidebarOpen}
