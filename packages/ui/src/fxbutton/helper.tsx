@@ -1,6 +1,6 @@
 import { SizeType } from "../type";
 
-export type ButtonVariant = "primary" | "secondary" | "silent";
+export type ButtonVariant = "primary" | "secondary" | "silent" | "lightSilent";
 
 export interface ButtonStylingType {
   [key: string]: {
@@ -34,6 +34,11 @@ export const buttonStyling: ButtonStylingType = {
   silent: {
     default: "cursor-pointer",
     hover: "hover:bg-background-color_2",
+    disabled: "text-text-color_3 cursor-not-allowed opacity-60",
+  },
+  lightSilent: {
+    default: "cursor-pointer",
+    hover: "hover:bg-background-color_4",
     disabled: "text-text-color_3 cursor-not-allowed opacity-60",
   },
 };
