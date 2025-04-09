@@ -38,7 +38,7 @@ export const buttonStyling: ButtonStylingType = {
   },
   lightSilent: {
     default: "cursor-pointer",
-    hover: "hover:bg-background-color_4",
+    hover: "hover:bg-background-color_5",
     disabled: "text-text-color_3 cursor-not-allowed opacity-60",
   },
 };
