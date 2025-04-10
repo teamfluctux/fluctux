@@ -20,6 +20,7 @@ export * from "./alert-dialog";
 export * from "./inline-loading";
 export * from "./fade-fav-loading";
 export * from "./switch";
+export * from "./fxonelist";
 export * from "./lib/utils";
 export * from "./styles/globals";
 

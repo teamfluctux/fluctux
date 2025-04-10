@@ -36,14 +36,13 @@ export default function WorkspacePage() {
           </FxButton>
         </div>
 
-        <div className="h-[calc(100%-40px)] overflow-y-auto p-1 w-full">
-          <FxButton radius="tiny" variant="lightSilent" className="w-full">
-            <label className="w-full p-2 fx-flex-between-ic gap-2">
+        <div className="h-[calc(100%-40px)] overflow-y-auto p-1 w-full overflow-x-hidden">
+          <FxButton radius="tiny" variant="lightSilent" className="w-full" >
+            <label className="w-full px-2 py-1 fx-flex-between-ic gap-2">
               <div>
-              <span className="text-workspace_1">Airplane Mode</span>
-
+              <span className="text-workspace_2 text-text-color_4 font-medium">Full width</span>
               </div>
-              <Switch />
+              <Switch  />
             </label>
           </FxButton>
         </div>
