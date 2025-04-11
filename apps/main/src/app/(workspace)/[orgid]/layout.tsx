@@ -180,8 +180,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
       <workspaceContext.Provider value={{ parentRef, sidebarSize }}>
         <div
           className={cn(
-            "flex justify-center items-center w-full overflow-hidden",
-            sidebarSize !== null && "animate-scaleUp"
+            "flex justify-center items-center w-full overflow-hidden"
           )}
         >
           <Rnd
@@ -224,7 +223,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         <div
                           className={cn(
                             "w-[30px] h-[30px] hover:bg-background-color_2 cursor-pointer fx-flex-center rounded-tiny",
-                            isCommandOpen ? "bg-background-color_3" : ""
+                            isCommandOpen ? "bg-background-transparent-indigo_1 border border-border-primary_indigo" : ""
                           )}
                         >
                           <FxFavIcon customSize={15} variant="theme" />
@@ -315,12 +314,12 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       )}
                     >
                       <Image
-                        src={""}
+                        src={"/placeholder_img.png"}
                         width={500}
                         height={500}
                         className="w-[35px] flex-shrink-0 overflow-hidden cursor-pointer h-[35px]  rounded-tiny object-cover object-center border border-border-color_1 "
                         alt="profile-image"
-                      />
+                      /> 
                       <div className="fx-flex-between-ic w-full">
                         <div className="text-left leading-[16px]">
                           <h3 className="text-workspace_1 font-medium">
@@ -388,7 +387,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
             {children}
 
             {/* taskbar uncomment this */}
-            {/* {sidebarSize !== null && <DynamicTaskBarAndTabs />} */}
+            {sidebarSize !== null && <DynamicTaskBarAndTabs />}
           </div>
         </div>
       </workspaceContext.Provider>

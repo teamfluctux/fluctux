@@ -15,6 +15,7 @@ import {
   UnlockKeyhole,
 } from "lucide-react";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 export default function WorkspacePage() {
   const [pageSettingsOpen, setPageSettingsOpen] = useState<boolean>(false);
@@ -22,6 +23,8 @@ export default function WorkspacePage() {
 
   const handleLockPage = (checked: boolean) => {
     setLockedPage(checked);
+    checked && toast.success("Page Locked")
+    !checked && toast.warning("Page Unlocked")
   };
 
   return (
