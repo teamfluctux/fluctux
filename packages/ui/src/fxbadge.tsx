@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useToggleOpen } from "@fluctux/hooks";
 
 interface FxBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   className?: string;

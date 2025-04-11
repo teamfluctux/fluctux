@@ -107,6 +107,7 @@
 
   /* others */
   --indigo-transparent-1st: #4e46e53c;
+  --indigo-transparent-2nd: #4e46e521;
 }
 
 .dark {
@@ -523,5 +524,3 @@ pre code {
 .theme-color-mode-active svg {
   fill: var(--svg-default-color) !important;
 }
-
-

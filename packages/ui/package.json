@@ -16,7 +16,6 @@
   "devDependencies": {
     "@fluctux/eslint-config": "workspace:*",
     "@fluctux/typescript-config": "workspace:*",
-    "@fluctux/hooks": "workspace:*",
     "@turbo/gen": "^2.4.4",
     "@types/node": "^22.13.9",
     "@types/react": "19.0.10",
@@ -25,7 +24,9 @@
     "typescript": "5.8.2"
   },
   "dependencies": {
+    "@radix-ui/react-switch": "^1.1.4",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "tailwind-config": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }

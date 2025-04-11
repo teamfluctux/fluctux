@@ -14,7 +14,7 @@ interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 }
 
-export function FxButton({
+export const FxButton = ({
   className,
   children,
   variant,
@@ -23,7 +23,7 @@ export function FxButton({
   disabled = false,
   loading = false,
   ...props
-}: FxButtonProps) {
+}: FxButtonProps) => {
   const buttonStyling = getButtonStyling(variant, size, disabled || loading);
   const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
 
