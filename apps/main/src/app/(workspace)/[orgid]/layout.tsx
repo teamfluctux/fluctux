@@ -180,8 +180,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
       <workspaceContext.Provider value={{ parentRef, sidebarSize }}>
         <div
           className={cn(
-            "flex justify-center items-center w-full overflow-hidden",
-            sidebarSize !== null && "animate-scaleUp"
+            "flex justify-center items-center w-full overflow-hidden"
           )}
         >
           <Rnd
@@ -388,7 +387,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
             {children}
 
             {/* taskbar uncomment this */}
-            {/* {sidebarSize !== null && <DynamicTaskBarAndTabs />} */}
+            {sidebarSize !== null && <DynamicTaskBarAndTabs />}
           </div>
         </div>
       </workspaceContext.Provider>
