@@ -1,11 +1,28 @@
 "use client";
 import { ICON_DEFAULT_COLOR } from "@/constants/workspace";
-import { cn, FxButton, LUCIDE_WORKSPACE_ICON_SIZE, Switch } from "@fluctux/ui";
-import { Settings } from "lucide-react";
+import {
+  cn,
+  FxButton,
+  FxOneList,
+  FxSeparator,
+  LUCIDE_WORKSPACE_ICON_SIZE,
+  Switch,
+} from "@fluctux/ui";
+import {
+  LockKeyhole,
+  MoveHorizontal,
+  Settings,
+  UnlockKeyhole,
+} from "lucide-react";
 import React, { useState } from "react";
 
 export default function WorkspacePage() {
   const [pageSettingsOpen, setPageSettingsOpen] = useState<boolean>(false);
+  const [lockedPage, setLockedPage] = useState<boolean | null>(null);
+
+  const handleLockPage = (checked: boolean) => {
+    setLockedPage(checked);
+  };
 
   return (
     <div className="flex justify-center items-start h-screen">
@@ -37,14 +54,49 @@ export default function WorkspacePage() {
         </div>
 
         <div className="h-[calc(100%-40px)] overflow-y-auto p-1 w-full overflow-x-hidden">
-          <FxButton radius="tiny" variant="lightSilent" className="w-full" >
+          <FxOneList variant="primary">
             <label className="w-full px-2 py-1 fx-flex-between-ic gap-2">
-              <div>
-              <span className="text-workspace_2 text-text-color_4 font-medium">Full width</span>
+              <div className="fx-flex-cl gap-2">
+                <MoveHorizontal
+                  size={LUCIDE_WORKSPACE_ICON_SIZE}
+                  color={ICON_DEFAULT_COLOR}
+                />
+                <span>Full width</span>
               </div>
-              <Switch  />
+              <Switch />
             </label>
-          </FxButton>
+          </FxOneList>
+
+          <FxSeparator
+            orientation="horizontal"
+            gap="tiny"
+            color="var(--border-color-1)"
+          />
+
+          <FxOneList variant="primary">
+            <label className="w-full px-2 py-1 fx-flex-between-ic gap-2">
+              <div className="fx-flex-cl gap-2">
+                {lockedPage ? (
+                  <LockKeyhole
+                    size={LUCIDE_WORKSPACE_ICON_SIZE}
+                    color={ICON_DEFAULT_COLOR}
+                  />
+                ) : (
+                  <UnlockKeyhole
+                    size={LUCIDE_WORKSPACE_ICON_SIZE}
+                    color={ICON_DEFAULT_COLOR}
+                  />
+                )}
+                <span>Lock Page</span>
+              </div>
+              <Switch
+                name="lockPage"
+                onCheckedChange={(checked) => {
+                  handleLockPage(checked);
+                }}
+              />
+            </label>
+          </FxOneList>
         </div>
       </div>
     </div>

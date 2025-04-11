@@ -12,12 +12,15 @@ interface FxSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: string;
 }
 
+type FxSeparatorSizeType = SizeType | "tiny";
+
 const sepOrnAttributes: { [key in OrientationType]: string } = {
   vertical: "w-full rotate-[90deg]",
   horizontal: "w-full",
 };
 
-const GapAttributes: { [key in SizeType]: string } = {
+const GapAttributes: { [key in FxSeparatorSizeType]: string } = {
+  tiny: "5px",
   sm: "10px",
   md: "20px",
   lg: "30px",

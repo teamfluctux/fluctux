@@ -550,13 +550,13 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      tailwind-config:
+        specifier: workspace:*
+        version: link:../tailwind-config
     devDependencies:
       '@fluctux/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@fluctux/hooks':
-        specifier: workspace:*
-        version: link:../hooks
       '@fluctux/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config

@@ -11,6 +11,7 @@ interface FxOneListPropsType {
   loading?: boolean;
   radius?: keyof typeof ROUNDED_VARIANTS;
   showActiveIndicator?: boolean;
+  isActive?: boolean
 }
 
 export const FxOneList = ({
@@ -22,17 +23,22 @@ export const FxOneList = ({
   loading,
   radius,
   showActiveIndicator,
+  isActive = false,
   ...props
 }: FxOneListPropsType) => {
-  const variantStyling = getOneListStyling(variant, disabled || loading, size);
-  const radiusVariant = radius ? ROUNDED_VARIANTS[radius] : "";
+  const variantStyling = getOneListStyling(variant, disabled || loading, isActive, size);
+  const radiusVariant = radius ? ROUNDED_VARIANTS[radius] : ROUNDED_VARIANTS["tiny"];
   return (
-    <li
+    <div
       className={cn(variantStyling, radiusVariant, className, "relative")}
       {...props}
     >
         {children}
-        <span className="absolute w-[2px] h-[8px] rounded-tablet bg-background-indigo_primary"></span>
-    </li>
+        {
+           !disabled && showActiveIndicator && isActive &&
+            <span className="absolute w-[4px] h-[18px] rounded-tablet bg-background-indigo_primary left-0 top-1/2 -translate-y-1/2"></span>
+
+        }
+    </div>
   );
 };
