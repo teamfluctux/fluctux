@@ -22,9 +22,8 @@ export default function WorkspacePage() {
 
   const handleLockPage = (checked: boolean) => {
     setLockedPage(checked);
-  };
+  }; 
 
-  
   return (
     <div className="flex justify-center items-start h-screen">
       <div className="w-full h-full overflow-y-auto custom-scrollbar">
