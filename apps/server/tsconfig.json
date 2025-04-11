@@ -1,10 +1,8 @@
 {
-  "extends": "@fluctux/typescript-config/node.json",
+  "extends": "@fluctux/typescript-config/base.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "react",
     "outDir": "dist",
-    "tsBuildInfoFile": "tsconfig.tsbuildinfo"
   },
   "include": [
     "."
