@@ -42,7 +42,7 @@ export const FxOneList = ({
     >
       {children}
       {!disabled && showActiveIndicator && isActive && (
-        <span className="absolute w-[4px] h-[18px] rounded-tablet bg-background-indigo_primary left-0 top-1/2 -translate-y-1/2"></span>
+        <span className="absolute w-[3.5px] h-[16px] rounded-tablet bg-background-indigo_primary left-0 top-1/2 -translate-y-1/2"></span>
       )}
     </div>
   );

@@ -299,7 +299,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                               {path_name.endsWith(
                                 `${navTreeItem.name.replace(".mdx", "")}`
                               ) && (
-                                <span className="absolute transition left-[-0px] top-[50%] translate-y-[-50%] h-[17px] w-[3px] bg-background-indigo_primary z-10 rounded-[50px] "></span>
+                                <span className="absolute transition left-[-0px] top-[50%] translate-y-[-50%] h-[16px] w-[3.5px] bg-background-indigo_primary z-10 rounded-[50px] "></span>
                               )}
                             </Link>
                           );
