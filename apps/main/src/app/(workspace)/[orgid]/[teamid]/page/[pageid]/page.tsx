@@ -22,7 +22,7 @@ export default function WorkspacePage() {
 
   const handleLockPage = (checked: boolean) => {
     setLockedPage(checked);
-  }; 
+  };
 
   return (
     <div className="flex justify-center items-start h-screen">
