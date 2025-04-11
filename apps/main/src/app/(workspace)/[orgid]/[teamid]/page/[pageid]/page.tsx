@@ -24,7 +24,6 @@ export default function WorkspacePage() {
     setLockedPage(checked);
   };
 
-  
   return (
     <div className="flex justify-center items-start h-screen">
       <div className="w-full h-full overflow-y-auto custom-scrollbar">
