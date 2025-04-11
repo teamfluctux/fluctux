@@ -223,7 +223,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         <div
                           className={cn(
                             "w-[30px] h-[30px] hover:bg-background-color_2 cursor-pointer fx-flex-center rounded-tiny",
-                            isCommandOpen ? "bg-background-transparent-indigo_1 hover:bg-background-transparent-indigo_2 border border-border-primary_indigo" : ""
+                            isCommandOpen ? "bg-background-transparent-indigo_2 hover:bg-background-transparent-indigo_1 border border-border-primary_indigo" : ""
                           )}
                         >
                           <FxFavIcon customSize={15} variant="theme" />
