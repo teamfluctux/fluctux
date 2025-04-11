@@ -1,6 +1,6 @@
 import { apolloClient } from "@/lib/apollo-client";
 import React from "react";
-import { DocNavListType, DocOnDemandContent } from "@/components/core/docs";
+import { DocNavListType, DocOnDemandContent } from "@/components/docs";
 import { gql } from "@apollo/client";
 import { algolia, IndexDocNavListsType } from "@/services/algolia";
 

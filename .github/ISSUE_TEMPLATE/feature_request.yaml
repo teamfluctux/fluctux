@@ -1,29 +1,50 @@
 name: 🚀 Feature Request
-description: Suggest a new feature or enhancement for the project
+description: Suggest an enhancement or new functionality for the project.
 title: "[feat]: "
-labels: [feature, needs-triage]
+labels: [feature, triage]
 
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thank you for taking the time to suggest a new feature! Please fill out the details below.
-
   - type: input
     id: summary
     attributes:
       label: Feature Summary
-      description: What would you like to add? Give a one-line summary of the feature.
-      placeholder: e.g. Add dark mode support
+      description: A short, concise title for the feature.
+      placeholder: e.g. Add dark mode to the application
     validations:
       required: true
 
   - type: textarea
-    id: description
+    id: use_case
     attributes:
-      label: Feature Description
-      description: Describe how the feature should work. Include details, potential API shape, or UI if applicable.
-      placeholder: |
-        e.g. Toggle switch in settings to enable dark mode; store preference in local storage.
+      label: Use Case
+      description: Describe the problem this feature aims to solve or the value it would bring.
+      placeholder: e.g. Users want a dark mode option for better accessibility.
     validations:
       required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution
+      description: Explain how the feature should work, including any expected behavior, UI design, or APIs.
+      placeholder: e.g. Provide a toggle in settings to switch between light and dark modes.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: If any, describe alternatives or workarounds you’ve considered or tried.
+      placeholder: e.g. A browser extension was used to achieve dark mode.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Any extra information that could help in implementing the feature (e.g. design references, related issues, etc.)
+      placeholder: e.g. Link to relevant design mockups, related issues, or documents.
+    validations:
+      required: false

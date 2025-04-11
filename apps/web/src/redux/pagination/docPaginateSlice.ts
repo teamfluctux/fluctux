@@ -1,4 +1,4 @@
-import { DocNavListType } from "@/components/core/docs";
+import { DocNavListType } from "@/components/docs";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction, Slice } from "@reduxjs/toolkit";
 
