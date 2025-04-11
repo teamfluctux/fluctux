@@ -21,6 +21,7 @@ export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
           {children}
           <Toaster
             richColors
+            position="bottom-center"
             theme={theme as ToasterProps["theme"]}
             closeButton
           />

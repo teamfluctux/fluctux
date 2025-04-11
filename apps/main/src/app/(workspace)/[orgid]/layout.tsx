@@ -314,13 +314,13 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         isAccountMenuOpen ? "bg-background-color_3" : ""
                       )}
                     >
-                      <Image
+                      {/* <Image
                         src={""}
                         width={500}
                         height={500}
                         className="w-[35px] flex-shrink-0 overflow-hidden cursor-pointer h-[35px]  rounded-tiny object-cover object-center border border-border-color_1 "
                         alt="profile-image"
-                      />
+                      /> */}
                       <div className="fx-flex-between-ic w-full">
                         <div className="text-left leading-[16px]">
                           <h3 className="text-workspace_1 font-medium">
