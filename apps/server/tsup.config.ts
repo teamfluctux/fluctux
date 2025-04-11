@@ -5,7 +5,7 @@ export default defineConfig({
   noExternal: ['@fluctux'], // Bundle any package starting with `@example` and their dependencies
   splitting: false,
   bundle: true,
-  format: ['esm'],
+  format: ["cjs"],
   outDir: './dist',
   clean: true,
   env: { IS_SERVER_BUILD: 'true' },

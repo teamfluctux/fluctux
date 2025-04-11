@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --concurrency=20",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
@@ -29,7 +29,6 @@
     "node": ">=18"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
     "@algolia/client-common": "^5.20.4",
     "@apollo/client": "^3.12.8",
     "@arcjet/next": "^1.0.0-alpha.34",
@@ -69,9 +68,11 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "dotenv": "^16.5.0",
     "graphiql": "^3.8.3",
     "graphql": "^16.10.0",
     "graphql-yoga": "^5.10.11",
+    "gray-matter": "^4.0.3",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.471.2",
     "mongoose": "8.9.5",

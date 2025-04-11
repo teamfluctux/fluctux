@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
-      "clean": "rm -rf node_modules .turbo .next && echo 'Cleanup complete!'"
+    "clean": "rm -rf node_modules .turbo .next && echo 'Cleanup complete!'"
   },
   "dependencies": {
     "@fluctux/ui": "workspace:*",
