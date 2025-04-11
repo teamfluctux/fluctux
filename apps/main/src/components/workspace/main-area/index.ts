@@ -1,1 +1,1 @@
-export * from "./rnd-window"
+export * from "./rnd-window";

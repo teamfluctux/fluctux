@@ -36,4 +36,4 @@ export const FxButton = ({
       {children}
     </button>
   );
-}
+};
