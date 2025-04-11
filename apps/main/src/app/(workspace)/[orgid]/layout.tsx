@@ -387,7 +387,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
 
             {children}
 
-                {/* taskbar uncomment this */}
+            {/* taskbar uncomment this */}
             {/* {sidebarSize !== null && <DynamicTaskBarAndTabs />} */}
           </div>
         </div>

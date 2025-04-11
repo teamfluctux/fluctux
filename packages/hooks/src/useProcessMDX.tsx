@@ -7,12 +7,12 @@ import { unified } from "unified";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import matter from "gray-matter";
-import rehypeShiki from '@shikijs/rehype'
+import rehypeShiki from "@shikijs/rehype";
 import {
   transformerNotationHighlight,
   transformerNotationDiff,
-  transformerNotationErrorLevel
-} from '@shikijs/transformers'
+  transformerNotationErrorLevel,
+} from "@shikijs/transformers";
 
 export const useProcessMDX = (data: string) => {
   const [content, setContent] = useState("");
@@ -30,9 +30,9 @@ export const useProcessMDX = (data: string) => {
       .use(rehypeShiki, {
         theme: "material-theme-ocean",
         transformers: [
-          transformerNotationHighlight(), 
+          transformerNotationHighlight(),
           transformerNotationDiff(),
-          transformerNotationErrorLevel()
+          transformerNotationErrorLevel(),
           // ...
         ],
       })

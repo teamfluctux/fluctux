@@ -72,12 +72,12 @@ export const useTaskBar = () => {
     updateTabInCategory(categorySlug, tabId, {
       size:
         getCurrentTab.size?.width !== offsetWidth ||
-          getCurrentTab.size?.height !== offsetHeight
+        getCurrentTab.size?.height !== offsetHeight
           ? { width: offsetWidth, height: offsetHeight }
           : { width: 700, height: 500 },
       position:
         getCurrentTab.size?.width !== offsetWidth ||
-          getCurrentTab.size?.height !== offsetHeight
+        getCurrentTab.size?.height !== offsetHeight
           ? { x: 0, y: 0 }
           : { x: 50, y: 50 },
       isMaximized:
@@ -88,41 +88,55 @@ export const useTaskBar = () => {
   };
 
   useEffect(() => {
-
     if (!parentRef.current) return;
     const { offsetWidth, offsetHeight } = parentRef.current;
-    console.log(offsetWidth)
+    console.log(offsetWidth);
     setTabs((prevTabs) => {
-      return Object.entries(prevTabs).reduce((newTabs, [categorySlug, category]) => {
-        newTabs[categorySlug] = {
-          ...category,
-          tabs: category.tabs.map((tab) => {
+      return Object.entries(prevTabs).reduce(
+        (newTabs, [categorySlug, category]) => {
+          newTabs[categorySlug] = {
+            ...category,
+            tabs: category.tabs.map((tab) => {
+              if (tab.isMaximized) {
+                return {
+                  ...tab,
+                  size: { width: offsetWidth, height: offsetHeight },
+                };
+              }
 
-            if(tab.isMaximized){
-              return { ...tab, size: { width: offsetWidth, height: offsetHeight } }
-            }
-              
-            const tabWidth = tab.size?.width ?? 280;
-            const tabX = tab.position?.x ?? 0;
-            const tabY = tab.position?.y ?? 0;
+              const tabWidth = tab.size?.width ?? 280;
+              const tabX = tab.position?.x ?? 0;
+              const tabY = tab.position?.y ?? 0;
 
-            // Check if the tab is out of bounds
-            const isOutOfBounds =
-              tabX + tabWidth > offsetWidth
+              // Check if the tab is out of bounds
+              const isOutOfBounds = tabX + tabWidth > offsetWidth;
 
-            if (isOutOfBounds && !tab.isMaximized) {
-              const isTabWidthGTOffsetWidth = tabWidth > offsetWidth
-              return { ...tab, size: { width: isTabWidthGTOffsetWidth ? offsetWidth : tabWidth, height: tab.size?.height }, position: { x: isTabWidthGTOffsetWidth ? 0 : tabX - ((tabX + tabWidth) - offsetWidth) , y: tabY } };
-            }
-            
-            return tab;
-          }
-          ),
-        };
-        return newTabs;
-      }, {} as typeof prevTabs);
+              if (isOutOfBounds && !tab.isMaximized) {
+                const isTabWidthGTOffsetWidth = tabWidth > offsetWidth;
+                return {
+                  ...tab,
+                  size: {
+                    width: isTabWidthGTOffsetWidth ? offsetWidth : tabWidth,
+                    height: tab.size?.height,
+                  },
+                  position: {
+                    x: isTabWidthGTOffsetWidth
+                      ? 0
+                      : tabX - (tabX + tabWidth - offsetWidth),
+                    y: tabY,
+                  },
+                };
+              }
+
+              return tab;
+            }),
+          };
+          return newTabs;
+        },
+        {} as typeof prevTabs
+      );
     });
-  }, [sidebarSize, parentRef])
+  }, [sidebarSize, parentRef]);
 
   // const handleNewTab = (newTabs: TabsRndType) => {
   //     const existedTabs = tabs.find((tab) => tab.id === newTabs.id)
