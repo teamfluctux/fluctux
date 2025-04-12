@@ -1,48 +1,67 @@
 services:
-  web:
+  # web:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/web/Dockerfile.dev
+  #   container_name: fluctux-web
+  #   env_file:
+  #     - ./apps/web/.env
+  #   ports:
+  #     - "3002:3002"
+  #   develop:
+  #     watch:
+  #       - action: sync
+  #         path: ./apps/web
+  #         target: /app/apps/web
+
+  #       - action: rebuild
+  #         path: package.json
+  #       - action: rebuild
+  #         path: ./apps/web/package.json
+  #       - action: rebuild
+  #         path: ./apps/web/Dockerfile.dev
+  #       - action: rebuild
+  #         path: ./packages
+
+  # workspace:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/main/Dockerfile.dev
+  #   ports:
+  #     - "3000:3000"
+  #   develop:
+  #     watch:
+  #       - action: sync
+  #         path: ./apps/main
+  #         target: /app/apps/main
+
+  #       - action: rebuild
+  #         path: package.json
+  #       - action: rebuild
+  #         path: ./apps/main/package.json
+  #       - action: rebuild
+  #         path: ./apps/main/Dockerfile.dev
+  #       - action: rebuild
+  #         path: ./packages
+
+  server: 
     build:
       context: .
-      dockerfile: ./apps/web/Dockerfile.dev
-    container_name: fluctux-web
+      dockerfile: ./apps/server/Dockerfile
     env_file:
-      - ./apps/web/.env
+      - ./apps/server/.env
     ports:
-      - "3002:3002"
-    develop:
-      watch:
-        - action: sync
-          path: ./apps/web
-          target: /app/apps/web
+      - 5001:5000
 
-        - action: rebuild
-          path: package.json
-        - action: rebuild
-          path: ./apps/web/package.json
-        - action: rebuild
-          path: ./apps/web/Dockerfile.dev
-        - action: rebuild
-          path: ./packages
-
-  workspace:
+  nginx: 
     build:
       context: .
-      dockerfile: ./apps/main/Dockerfile.dev
+      dockerfile: ./nginx/Dockerfile
     ports:
-      - "3000:3000"
-    develop:
-      watch:
-        - action: sync
-          path: ./apps/main
-          target: /app/apps/main
+      - 80:80
+    depends_on:
+      - server
 
-        - action: rebuild
-          path: package.json
-        - action: rebuild
-          path: ./apps/main/package.json
-        - action: rebuild
-          path: ./apps/main/Dockerfile.dev
-        - action: rebuild
-          path: ./packages
 
   mongoDb:
     image: mongo
