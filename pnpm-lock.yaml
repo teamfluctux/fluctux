@@ -234,6 +234,9 @@ importers:
       tsup:
         specifier: ^8.4.0
         version: 8.4.0(@swc/core@1.11.20(@swc/helpers@0.5.15))(jiti@2.4.2)(postcss@8.5.3)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0)
+      tsx:
+        specifier: ^4.19.3
+        version: 4.19.3
       turbo:
         specifier: ^2.4.4
         version: 2.4.4
@@ -348,9 +351,6 @@ importers:
       nodemon:
         specifier: ^3.1.9
         version: 3.1.9
-      tsx:
-        specifier: ^4.19.3
-        version: 4.19.3
       typescript:
         specifier: 5.8.2
         version: 5.8.2
