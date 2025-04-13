@@ -27,10 +27,21 @@ export default function WorkspacePage() {
     !checked && toast.warning("Page Unlocked")
   };
 
+  const getUser = async () => {
+    const data = await fetch("http://localhost/api/user")
+    const user = await data.json()
+    console.log(user);
+    
+  }
+
   return (
     <div className="flex justify-center items-start h-screen">
       <div className="w-full h-full overflow-y-auto custom-scrollbar">
-        <div className="h-[1500px]"></div>
+        <div className="h-[1500px]">
+          <button onClick={getUser}>
+            click
+          </button>
+        </div>
       </div>
 
       <div
