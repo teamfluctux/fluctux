@@ -128,9 +128,6 @@ importers:
       dotenv:
         specifier: ^16.5.0
         version: 16.5.0
-      express:
-        specifier: ^5.1.0
-        version: 5.1.0
       graphiql:
         specifier: ^3.8.3
         version: 3.8.3(@codemirror/language@6.0.0)(@types/node@22.13.9)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(graphql@16.10.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -331,6 +328,10 @@ importers:
         version: 5.8.2
 
   apps/server:
+    dependencies:
+      express:
+        specifier: ^5.1.0
+        version: 5.1.0
     devDependencies:
       '@fluctux/eslint-config':
         specifier: workspace:*
