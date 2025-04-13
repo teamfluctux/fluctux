@@ -51,7 +51,9 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 COPY --from=builder /app/apps/server/package*.json ./apps/server/
+# copy server node_modules
 COPY --from=builder /app/apps/server/node_modules ./apps/server/node_modules/
+# copry root node_modules
 COPY --from=builder /app/node_modules ./node_modules/
 COPY --from=builder /app/apps/server/dist ./apps/server/dist/
 
