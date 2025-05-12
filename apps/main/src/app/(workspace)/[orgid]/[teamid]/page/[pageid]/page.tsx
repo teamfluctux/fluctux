@@ -23,24 +23,21 @@ export default function WorkspacePage() {
 
   const handleLockPage = (checked: boolean) => {
     setLockedPage(checked);
-    checked && toast.success("Page Locked")
-    !checked && toast.warning("Page Unlocked")
+    checked && toast.success("Page Locked");
+    !checked && toast.warning("Page Unlocked");
   };
 
   const getUser = async () => {
-    const data = await fetch("http://localhost/api/user")
-    const user = await data.json()
+    const data = await fetch("http://localhost/api/user");
+    const user = await data.json();
     console.log(user);
-    
-  }
+  };
 
   return (
     <div className="flex justify-center items-start h-screen">
       <div className="w-full h-full overflow-y-auto custom-scrollbar">
         <div className="h-[1500px]">
-          <button onClick={getUser}>
-            click
-          </button>
+          <button onClick={getUser}>click</button>
         </div>
       </div>
 
