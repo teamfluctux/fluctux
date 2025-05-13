@@ -407,7 +407,7 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       typescript:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
 
   packages/database:
@@ -425,7 +425,7 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       typescript:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
 
   packages/eslint-config:
@@ -540,7 +540,7 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       typescript:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
 
   packages/shared:
@@ -618,10 +618,17 @@ importers:
         version: 2.4.4(@swc/core@1.11.20(@swc/helpers@0.5.15))(@types/node@22.15.17)(typescript@5.8.2)
       '@types/react':
         specifier: ^19.0.10
+<<<<<<< HEAD
         version: 19.1.0
       '@types/react-dom':
         specifier: ^19.0.4
         version: 19.1.1(@types/react@19.1.0)
+=======
+        version: 19.0.10
+      '@types/react-dom':
+        specifier: ^19.0.4
+        version: 19.0.4(@types/react@19.0.10)
+>>>>>>> 76ef336cc6497e9a1cf32ca9c584235bb615130b
       eslint:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
@@ -644,7 +651,7 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       typescript:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
 
 packages:
