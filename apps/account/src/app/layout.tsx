@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@fluctux/ui/globals";
-import "./globals.css";
+import { ThemeProvider } from "next-themes";
+import { Suspense } from "react";
+import { SkeletonTheme } from "react-loading-skeleton";
+import GlobalWrappers from "@/components/providers/global-wrappers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -25,8 +30,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ThemeProvider attribute="class">
+          <Suspense>
+            <GlobalWrappers>
+              <SkeletonTheme
+                baseColor="var(--skeleton-base-color)"
+                highlightColor="var(--skeleton-highlightColor)"
+              >
+                {children}
+              </SkeletonTheme>
+            </GlobalWrappers>
+          </Suspense>
+        </ThemeProvider>
       </body>
     </html>
   );
