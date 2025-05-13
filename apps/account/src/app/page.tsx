@@ -14,10 +14,10 @@ export default function Home() {
           priority
         />
         <ol>
-          <li>
+          <li className="text-green-500">
             Get started by editing <code>src/app/page.tsx</code>.
           </li>
-          <li>Save and see your changes instantly.</li>
+          <li className="text-red-500">Save and see your changes instantly.</li>
         </ol>
 
         <div className={styles.ctas}>
