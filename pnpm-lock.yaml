@@ -416,7 +416,7 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       typescript:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
 
   packages/database:
@@ -437,7 +437,7 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       typescript:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
 
   packages/eslint-config:
@@ -561,7 +561,7 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       typescript:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
 
   packages/tailwind-config: {}
@@ -601,16 +601,16 @@ importers:
         specifier: ^22.13.9
         version: 22.13.9
       '@types/react':
-        specifier: 19.0.10
+        specifier: ^19.0.10
         version: 19.0.10
       '@types/react-dom':
-        specifier: 19.0.4
+        specifier: ^19.0.4
         version: 19.0.4(@types/react@19.0.10)
       eslint:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       typescript:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
 
   packages/zod:
@@ -631,7 +631,7 @@ importers:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
       typescript:
-        specifier: 5.8.2
+        specifier: ^5.8.2
         version: 5.8.2
 
 packages:
