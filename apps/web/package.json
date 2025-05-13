@@ -20,9 +20,8 @@
   "devDependencies": {
     "@fluctux/eslint-config": "workspace:*",
     "@fluctux/typescript-config": "workspace:*",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "tailwind-config": "workspace:*",
     "eslint": "^9",
     "typescript": "^5"
