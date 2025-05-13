@@ -2,13 +2,15 @@
   "name": "@fluctux/zod",
   "version": "0.1.0",
   "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./src/index.ts"
   },
   "scripts": {
     "dev": "tsc --watch",
+    "build": "tsup --dts --minify",
     "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
     "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
   },
