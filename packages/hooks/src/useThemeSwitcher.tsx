@@ -5,7 +5,7 @@ export type ThemeModeIconsType = {
   svg: React.ReactElement;
 };
 
-export const useThemeSwitcher = (THEME_ICONS: ThemeModeIconsType[]) => {
+export const useThemeSwitcher = (THEME_ICONS: ThemeModeIconsType[]): any => {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
   useEffect(() => {
