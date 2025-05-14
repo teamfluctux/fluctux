@@ -17,7 +17,6 @@ import {
   Settings,
   X,
 } from "lucide-react";
-import { THEME_ICONS } from "@/constants/global";
 import Image from "next/image";
 import { Popover, PopoverContent, PopoverTrigger } from "@fluctux/ui";
 import Link from "next/link";
@@ -164,7 +163,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
     null
   );
 
-  const { ThemeSwitcher } = useThemeSwitcher(THEME_ICONS);
+  const { ThemeSwitcher } = useThemeSwitcher();
 
   if (sidebarSize === null)
     return (

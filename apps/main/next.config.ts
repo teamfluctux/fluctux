@@ -33,33 +33,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-
-  async rewrites() {
-    const rewrites = [
-      {
-        source: "/sign-in",
-        destination: "/login",
-      },
-      {
-        source: "/signin",
-        destination: "/login",
-      },
-      {
-        source: "/register",
-        destination: "/signup",
-      },
-      {
-        source: "/sign-up",
-        destination: "/signup",
-      },
-      {
-        source: "/log-in",
-        destination: "/login",
-      },
-    ];
-
-    return rewrites;
-  },
 };
 
 export default nextConfig;

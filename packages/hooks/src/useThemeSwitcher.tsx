@@ -1,11 +1,26 @@
 import { useTheme } from "next-themes";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
+import { Monitor, Moon, SunMedium } from "lucide-react";
 
 export type ThemeModeIconsType = {
-  svg: React.ReactElement;
+  icon: ReactNode;
 };
 
-export const useThemeSwitcher = (THEME_ICONS: ThemeModeIconsType[]): any => {
+
+const THEME_ICONS: ThemeModeIconsType[]  = [
+  {
+    icon: <SunMedium size={18} />,
+  },
+  {
+    icon: <Moon size={18} />,
+  },
+  {
+    icon: <Monitor size={18} />,
+  },
+];
+
+
+export const useThemeSwitcher = (): any => {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [activeIndex, setActiveIndex] = useState(0);
   useEffect(() => {
@@ -38,9 +53,9 @@ export const useThemeSwitcher = (THEME_ICONS: ThemeModeIconsType[]): any => {
             <li
               onClick={() => handleChangeAppearanceMode(i)}
               key={i}
-              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px] fx-flex-center hover:bg-background-color_2 ${activeIndex === i && "bg-background-color_1 border-border-color_1 border theme-color-mode-active"} `}
+              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px]  fx-flex-center hover:bg-background-color_2 ${activeIndex === i ? "bg-background-color_1 text-text-color_1 theme-color-mode-active": "text-text-icon_default"} `}
             >
-              {item?.svg}
+              {item?.icon}
             </li>
           );
         })}
