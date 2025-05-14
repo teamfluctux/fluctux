@@ -1,9 +1,9 @@
 import { useTheme } from "next-themes";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Monitor, Moon, SunMedium } from "lucide-react";
 
 export type ThemeModeIconsType = {
-  icon: ReactNode;
+  icon: React.ReactNode;
 };
 
 
