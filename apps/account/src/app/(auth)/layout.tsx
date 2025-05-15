@@ -1,5 +1,6 @@
 "use client";
 import { FxButton, FxFavIcon, useThemeSwitcher } from "@fluctux/ui";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
