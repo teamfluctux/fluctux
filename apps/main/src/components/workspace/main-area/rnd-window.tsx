@@ -25,7 +25,7 @@ const DynamicRnd = dynamic(() => import("react-rnd").then((mod) => mod.Rnd), {
   ssr: false,
   loading: () => (
     <>
-      <div className="w-full h-full absolute z-20 top-0 fx-flex-center bg-background-color_1">
+      <div className="w-full h-full absolute z-20 top-0 fx-flex-center bg-background-color_950C">
         <FadeFavLoading />
       </div>
     </>
@@ -379,7 +379,7 @@ export const RndWindows = () => {
                   }}
                   dragHandleClassName="drag-handle"
                   className={cn(
-                    "border border-border-color_2 animate-fadeUp rounded overflow-hidden cursor-[default_!important] transition-all bg-background-color_2 shadow-xl ",
+                    "border border-border-color_2 animate-fadeUp rounded overflow-hidden cursor-[default_!important] transition-all bg-background-color_900C shadow-xl ",
                     tab.isActive ? "z-50" : "z-1",
                     isDragStart && "transition-none",
                     tab.isActive &&
@@ -388,13 +388,13 @@ export const RndWindows = () => {
                     tab.isMaximized && "border-none"
                   )}
                 >
-                  <div className="h-[30px] border-b border-border-color_2 fx-flex-between-ic pl-2 pr-1 bg-background-color_3 drag-handle">
+                  <div className="h-[30px] border-b border-border-color_2 fx-flex-between-ic pl-2 pr-1 bg-background-color_800C drag-handle">
                     <h3 className="font-medium text-workspace_2">My Issue</h3>
                     <div className="fx-flex-cr gap-2">
-                      <span className="hover:bg-background-color_2 p-[2px] rounded-tiny cursor-pointer">
+                      <span className="hover:bg-background-color_900C p-[2px] rounded-tiny cursor-pointer">
                         <Minus size={LUCIDE_WORKSPACE_ICON_SIZE} />
                       </span>
-                      <span className="hover:bg-background-color_2 p-[2px] rounded-tiny cursor-pointer">
+                      <span className="hover:bg-background-color_900C p-[2px] rounded-tiny cursor-pointer">
                         {!tab.isMaximized && (
                           <Maximize
                             onClick={(e) => {
@@ -454,8 +454,8 @@ export const RndWindows = () => {
               <TooltipTrigger asChild>
                 <div
                   className={cn(
-                    "hover:bg-background-color_3  hover:border-border-color_2 hover:border w-[40px] h-[40px] rounded-tiny relative fx-flex-center",
-                    isTabActive && "bg-background-color_3"
+                    "hover:bg-background-color_800C  hover:border-border-color_2 hover:border w-[40px] h-[40px] rounded-tiny relative fx-flex-center",
+                    isTabActive && "bg-background-color_800C"
                   )}
                 >
                   <div>
@@ -474,7 +474,7 @@ export const RndWindows = () => {
               <TooltipContent
                 align="start"
                 sideOffset={15}
-                className="z-[52] bg-background-color_3 fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]"
+                className="z-[52] bg-background-color_800C fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]"
               >
                 {taskbarItems.map((item, i) => (
                   <div
@@ -489,7 +489,7 @@ export const RndWindows = () => {
                         label: item.label,
                       });
                     }}
-                    className="w-[200px] group overflow-hidden h-[140px] border border-border-color_1 hover:border-border-primary_indigo transition-colors duration-150 rounded-tiny  backdrop-blur-lg bg-background-color_2"
+                    className="w-[200px] group overflow-hidden h-[140px] border border-border-color_1 hover:border-border-primary_indigo transition-colors duration-150 rounded-tiny  backdrop-blur-lg bg-background-color_900C"
                   >
                     <div className="w-full group-hover:text-text-color_1 py-1 px-2 text-workspace_3 text-text-color_2 border-b border-border-color_1">
                       {item.label}
@@ -500,14 +500,14 @@ export const RndWindows = () => {
             </Tooltip>
           </TooltipProvider>
 
-          <div className=" w-[40px] h-[40px] rounded-tiny hover:bg-background-color_3 relative fx-flex-center">
+          <div className=" w-[40px] h-[40px] rounded-tiny hover:bg-background-color_800C relative fx-flex-center">
             <div className="fx-flex-center">
               <FileText size={LUCIDE_WORKSPACE_ICON_SIZE} />
             </div>
             {/* <div className="bottom_bar w-[25px] h-[4px] rounded-tablet bg-background-indigo_primary absolute bottom-0 left-[50%] translate-x-[-50%]"></div> */}
           </div>
 
-          <div className=" hover:bg-background-color_3 w-[40px] h-[40px] rounded-tiny relative fx-flex-center">
+          <div className=" hover:bg-background-color_800C w-[40px] h-[40px] rounded-tiny relative fx-flex-center">
             {/* <div className="bottom_bar w-[25px] h-[4px] rounded-tablet bg-background-indigo_primary absolute bottom-0 left-[50%] translate-x-[-50%]"></div> */}
           </div>
         </div>

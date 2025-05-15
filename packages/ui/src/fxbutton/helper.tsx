@@ -26,19 +26,19 @@ export const buttonStyling: ButtonStylingType = {
   },
   secondary: {
     default:
-      "border border-border-color_1 bg-background-color_2  cursor-pointer ",
-    hover: "hover:bg-background-color_3",
+      "border border-border-color_1 bg-background-color_900C  cursor-pointer ",
+    hover: "hover:bg-background-color_800C",
     disabled:
-      "text-text-color_3 cursor-not-allowed bg-background-color_2 border border-border-color_1",
+      "text-text-color_3 cursor-not-allowed bg-background-color_900C border border-border-color_1",
   },
   silent: {
     default: "cursor-pointer",
-    hover: "hover:bg-background-color_2",
+    hover: "hover:bg-background-color_900C",
     disabled: "text-text-color_3 cursor-not-allowed opacity-60",
   },
   lightSilent: {
     default: "cursor-pointer",
-    hover: "hover:bg-background-color_5",
+    hover: "hover:bg-background-color_750C",
     disabled: "text-text-color_3 cursor-not-allowed opacity-60",
   },
 };

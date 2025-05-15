@@ -21,7 +21,7 @@ export const Footer = () => {
   const { ThemeSwitcher } = useThemeSwitcher();
   return (
     <footer className="w-full mt-auto">
-      <div className=" border-t border-border-color_1 w-full fx-flex-center  pt-16 bg-background-color_1">
+      <div className=" border-t border-border-color_1 w-full fx-flex-center  pt-16 bg-background-color_950C">
         <div className="w-full flex flex-col justify-start items-center">
           <div className="fx-layout-max-1200">
             <div className="w-full grid grid-cols-[1fr_1fr_1fr_1fr_1fr] px-3 justify-center items-start">
@@ -99,7 +99,7 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="w-full bg-background-color_2 pt-4 pb-4 mt-24 fx-flex-center">
+          <div className="w-full bg-background-color_900C pt-4 pb-4 mt-24 fx-flex-center">
             <div className="fx-layout-max-1200  fx-flex-between-ic px-3">
               <span className="text-text-color_2">
                 &copy; {currentYear} Fluctux
