@@ -30,7 +30,7 @@ export const CommandMenu = () => {
             </p>
             <li
               onMouseEnter={() => handleMouseEnterOrgItem("hello-world")}
-              className="text-workspace_2  text-text-color_4 hover:bg-background-color_5 hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium "
+              className="text-workspace_2  text-text-color_4 hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium "
             >
               Mahin Org
             </li>
@@ -45,7 +45,7 @@ export const CommandMenu = () => {
                 <span>Create new org</span>
               </li>
             </Link>
-            <li className="text-workspace_2 group text-text-color_4 hover:bg-background-color_5 hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
+            <li className="text-workspace_2 group text-text-color_4 hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
               <div className="text-text-color_2 group-hover:text-text-indigo-color_1">
                 <Telescope size={LUCIDE_WORKSPACE_ICON_SIZE} />
               </div>
@@ -54,7 +54,7 @@ export const CommandMenu = () => {
           </ul>
           <FxSeparator orientation="horizontal" />
           <ul className="p-2">
-            <li className="text-workspace_2  text-text-color_4 group hover:bg-background-color_5 hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
+            <li className="text-workspace_2  text-text-color_4 group hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
               <div className="text-text-svg_default group-hover:text-text-color_1">
                 <ArrowLeftRight size={LUCIDE_WORKSPACE_ICON_SIZE} />
               </div>

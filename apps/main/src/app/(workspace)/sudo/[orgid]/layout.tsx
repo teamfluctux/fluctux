@@ -277,7 +277,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         <div className="p-1">
                           {FIND_HELP_ITEMS.map((item, index) => (
                             <Link href={item.slug} key={index}>
-                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_5 rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
+                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
                                 <div className="text-text-svg_default group-hover:text-text-color_1">
                                   {item.icon}
                                 </div>
@@ -293,7 +293,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                           </p>
                           {WHATS_NEW_ITEMS.map((item, index) => (
                             <Link href={item.slug} key={index}>
-                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_5 rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
+                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
                                 <div className="text-text-svg_default group-hover:text-text-color_1">
                                   {item.icon}
                                 </div>
@@ -339,7 +339,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         <div className="p-1 ">
                           {ACCOUNT_MENU_ITEMS.map((item, index) => (
                             <Link href={item.slug} key={index}>
-                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_5 rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
+                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
                                 <div className="text-text-svg_default group-hover:text-text-color_1">
                                   {item.icon}
                                 </div>
@@ -350,7 +350,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         </div>
 
                         <div className="p-1 border-t border-border-color_2">
-                          <li className="fx-flex-cl w-full cursor-pointer group gap-2 hover:bg-background-color_5 rounded-tiny px-2 text-text-color_4 hover:text-red-500">
+                          <li className="fx-flex-cl w-full cursor-pointer group gap-2 hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-red-500">
                             <div className="text-text-svg_default group-hover:text-red-500">
                               <LogOut size={LUCIDE_WORKSPACE_ICON_SIZE} />
                             </div>
