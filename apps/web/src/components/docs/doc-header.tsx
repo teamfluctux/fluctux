@@ -55,7 +55,7 @@ export default function DocHeader() {
       >
         <FxButton
           onClick={toggleDocHeaderMenu}
-          className="w-[35px] h-[35px] rounded-[50%] flex-shrink-0 border-none bg-transparent hidden hover:bg-background-color_3 doc-header-menu-btn"
+          className="w-[35px] h-[35px] rounded-[50%] flex-shrink-0 border-none bg-transparent hidden hover:bg-background-color_800C doc-header-menu-btn"
         >
           <MenuTwoBarIcon className={`${isDocHeaderMenuOpen && "hidden"}`} />
           <CancelIcon className={`${!isDocHeaderMenuOpen && "hidden"}`} />

@@ -52,7 +52,7 @@ export default function LoginPage() {
       </>
 
       <FxSeparator orientation="horizontal" gap="xl">
-        <p className="text-text-color_2 bg-background-color_1 pl-2 pr-2 font-medium">
+        <p className="text-text-color_2 bg-background-color_950C pl-2 pr-2 font-medium">
           Or
         </p>
       </FxSeparator>

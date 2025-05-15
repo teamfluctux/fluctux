@@ -147,7 +147,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
   return (
     <>
       <aside
-        className={`w-[250px] h-screen sticky top-0 bg-background-color_1 flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}
+        className={`w-[250px] h-screen sticky top-0 bg-background-color_950C flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}
       >
         <div
           onClick={docAsideToggleOpen}
@@ -184,7 +184,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             align="start"
             classNames={{
               button:
-                "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full bg-background-color_2 sticky top-[0px] z-[20] font-medium",
+                "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full bg-background-color_900C sticky top-[0px] z-[20] font-medium",
               activeLabel:
                 "hover:bg-[var(--background-color-3)_!important] bg-[var(--background-color-3)]",
               label:
@@ -230,7 +230,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 <div key={i}>
                   {navItem.type === "dir" ? (
                     <button
-                      className={`font-medium text-[15px] relative z-[2] hover:bg-background-color_2 transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${isOpenFromArray(`${i}`) && "text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important] "}`}
+                      className={`font-medium text-[15px] relative z-[2] hover:bg-background-color_900C transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${isOpenFromArray(`${i}`) && "text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important] "}`}
                       onClick={() => handleOpenArray(`${i}`)}
                     >
                       <span>
@@ -252,7 +252,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                       }}
                     >
                       <button
-                        className={` text-[15px] hover:bg-background-color_2 transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "bg-background-color_2 font-medium text-[var(--primary-color)_!important]"}`}
+                        className={` text-[15px] hover:bg-background-color_900C transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "bg-background-color_900C font-medium text-[var(--primary-color)_!important]"}`}
                       >
                         <span>
                           {navItem.name
@@ -283,7 +283,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                                 lessons.current[slug] = el;
                               }}
                               href={slug}
-                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50  hover:text-fx_zinc-950 relative hover:bg-background-color_2 transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-text-indigo-color_1 bg-background-color_2 font-medium hover:text-[var(--primary-color)_!important]"}`}
+                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50  hover:text-fx_zinc-950 relative hover:bg-background-color_900C transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-text-indigo-color_1 bg-background-color_900C font-medium hover:text-[var(--primary-color)_!important]"}`}
                               onClick={(e) => {
                                 path_name === slug && e.preventDefault();
                                 localStorage.setItem(lessonKey, slug);

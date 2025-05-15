@@ -6,8 +6,9 @@
   /* fx default colors */
   /* ZINC */
   --color-zinc-950: #09090b;
+  --color-zinc-925: #111113;
   --color-zinc-900: #18181b;
-  --color-zinc-850: #1E1E21;
+  --color-zinc-850: #1e1e21;
   --color-zinc-800: #27272a;
   --color-zinc-750: #2e2e36;
   --color-zinc-700: #3f3f46;
@@ -32,6 +33,7 @@
   --color-indigo-300: #a5b4fc;
   --color-indigo-200: #c7d2fe;
   --color-indigo-100: #e0e7ff;
+  --color-zinc-75: #f7f7f8;
   --color-indigo-50: #eef2ff;
 
   /* primary color */
@@ -39,10 +41,12 @@
 
   /* backgrounds */
   --background: var(--color-zinc-50);
-  --background-color-2: var(--color-zinc-100);
-  --background-color-3: var(--color-zinc-200);
-  --background-color-4: var(--color-zinc-250);
-  --background-color-5: var(--color-zinc-350);
+
+  --background-color-925C: var(--color-zinc-75);
+  --background-color-900C: var(--color-zinc-100);
+  --background-color-800C: var(--color-zinc-200);
+  --background-color-850C: var(--color-zinc-250);
+  --background-color-750C: var(--color-zinc-350);
 
   /* text & labels */
   --foreground: var(--color-zinc-950);
@@ -79,7 +83,6 @@
 
   /* hover */
   --primary-purple-hover-bg: var(--color-indigo-600);
-  
 
   /* overlay */
   --overlay-bg-dialog: #09090ba6;
@@ -112,10 +115,12 @@
 
 .dark {
   --background: var(--color-zinc-950);
-  --background-color-2: var(--color-zinc-900);
-  --background-color-3: var(--color-zinc-800);
-  --background-color-4: var(--color-zinc-850);
-  --background-color-5: var(--color-zinc-750);
+
+  --background-color-925C: var(--color-zinc-925);
+  --background-color-900C: var(--color-zinc-900);
+  --background-color-800C: var(--color-zinc-800);
+  --background-color-850C: var(--color-zinc-850);
+  --background-color-750C: var(--color-zinc-750);
 
   /* border */
   --border-color-1: var(--color-zinc-800);
@@ -453,7 +458,7 @@ body {
   font-weight: inherit;
   font-size: inherit;
   color: inherit;
-  font-family: var(--font-jetbrains-mono) ;
+  font-family: var(--font-jetbrains-mono);
 }
 
 /* single code highlight */
@@ -473,33 +478,31 @@ pre code {
   border-radius: 0px !important;
   display: grid;
 
-  .line{
+  .line {
     padding-inline: 20px;
   }
 
-  .highlighted{
+  .highlighted {
     background-color: #ffffff24;
     border-left: 2px solid var(--primary-color);
   }
 
-  .add{
+  .add {
     background-color: #00800030;
   }
 
-  .remove{
+  .remove {
     background-color: #ff00003e;
   }
 
-  .warning{
+  .warning {
     background-color: #ffc1073d;
-  
   }
 
-  .error{
+  .error {
     border: 2px solid #dc3546;
     background-color: #dc35463d;
   }
-  
 }
 
 .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {

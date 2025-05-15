@@ -17,10 +17,10 @@ export const CommandMenu = () => {
   };
   return (
     <>
-      <div className="w-fit border-border-color_1 overflow-hidden bg-background-color_1 border rounded h-[400px] fx-flex-center">
+      <div className="w-fit border-border-color_1 overflow-hidden bg-background-color_950C border rounded h-[400px] fx-flex-center">
         <div
           className={cn(
-            "hover:bg-background-color_2 w-[200px]  flex-shrink-0  border-border-color_1 h-full",
+            "hover:bg-background-color_900C w-[200px]  flex-shrink-0  border-border-color_1 h-full",
             isOrgItemHover ? "border-r" : "border-none"
           )}
         >
@@ -30,7 +30,7 @@ export const CommandMenu = () => {
             </p>
             <li
               onMouseEnter={() => handleMouseEnterOrgItem("hello-world")}
-              className="text-workspace_2  text-text-color_4 hover:bg-background-color_5 hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium "
+              className="text-workspace_2  text-text-color_4 hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium "
             >
               Mahin Org
             </li>
@@ -45,7 +45,7 @@ export const CommandMenu = () => {
                 <span>Create new org</span>
               </li>
             </Link>
-            <li className="text-workspace_2 group text-text-color_4 hover:bg-background-color_5 hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
+            <li className="text-workspace_2 group text-text-color_4 hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
               <div className="text-text-color_2 group-hover:text-text-indigo-color_1">
                 <Telescope size={LUCIDE_WORKSPACE_ICON_SIZE} />
               </div>
@@ -54,7 +54,7 @@ export const CommandMenu = () => {
           </ul>
           <FxSeparator orientation="horizontal" />
           <ul className="p-2">
-            <li className="text-workspace_2  text-text-color_4 group hover:bg-background-color_5 hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
+            <li className="text-workspace_2  text-text-color_4 group hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
               <div className="text-text-svg_default group-hover:text-text-color_1">
                 <ArrowLeftRight size={LUCIDE_WORKSPACE_ICON_SIZE} />
               </div>
@@ -67,7 +67,7 @@ export const CommandMenu = () => {
           onMouseLeave={() => handleMouseLeaveOrgItem()}
           onMouseEnter={() => setIsOrgItemHover(true)}
           className={cn(
-            "hover:bg-background-color_2 h-full transition-all duration-300 opacity-0 overflow-hidden",
+            "hover:bg-background-color_900C h-full transition-all duration-300 opacity-0 overflow-hidden",
             isOrgItemHover ? "w-[250px] opacity-100" : "w-0"
           )}
         >

@@ -115,7 +115,7 @@ const DynamicSidebarCommandMenu = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-[200px] p-2 border-border-color_1 overflow-hidden bg-background-color_1 border rounded h-[400px]">
+      <div className="w-[200px] p-2 border-border-color_1 overflow-hidden bg-background-color_950C border rounded h-[400px]">
         {Array.from({ length: 5 }).map((_, i) => {
           return (
             <div key={i} className="mb-1">
@@ -168,7 +168,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
   if (sidebarSize === null)
     return (
       <>
-        <div className="w-full h-screen fx-flex-center bg-background-color_1">
+        <div className="w-full h-screen fx-flex-center bg-background-color_950C">
           <FadeFavLoading />
         </div>
       </>
@@ -199,7 +199,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
             }}
             style={{ position: "unset" }}
             className={cn(
-              "overflow-hidden transition-all duration-500 bg-background-color_1 rnd-workspace-sidebar",
+              "overflow-hidden transition-all duration-500 bg-background-color_950C rnd-workspace-sidebar",
               isSidebarOpen ? "left-[0%_!important]" : "left-[-100%_!important]"
             )}
             onResize={(e, direction, ref, delta, position) => {
@@ -221,7 +221,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       <PopoverTrigger asChild>
                         <div
                           className={cn(
-                            "w-[30px] h-[30px] hover:bg-background-color_2 cursor-pointer fx-flex-center rounded-tiny",
+                            "w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-tiny",
                             isCommandOpen
                               ? "bg-background-transparent-indigo_2 hover:bg-background-transparent-indigo_1 border border-border-primary_indigo"
                               : ""
@@ -262,9 +262,9 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                   <PopoverTrigger asChild>
                     <div
                       className={cn(
-                        "rounded-circle flex-shrink-0 p-2 text-text-svg_default hover:bg-background-color_2 cursor-pointer",
+                        "rounded-circle flex-shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C cursor-pointer",
                         isWhatsNewMenuOpen
-                          ? "bg-background-color_3 text-text-color_1"
+                          ? "bg-background-color_800C text-text-color_1"
                           : ""
                       )}
                     >
@@ -272,12 +272,12 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                     </div>
                   </PopoverTrigger>
                   <PopoverContent align="start" side="top">
-                    <div className="bg-background-color_4 border border-border-color_2 rounded  w-[200px]">
+                    <div className="bg-background-color_850C border border-border-color_2 rounded  w-[200px]">
                       <ul className="text-workspace_2 font-medium leading-7">
                         <div className="p-1">
                           {FIND_HELP_ITEMS.map((item, index) => (
                             <Link href={item.slug} key={index}>
-                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_5 rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
+                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
                                 <div className="text-text-svg_default group-hover:text-text-color_1">
                                   {item.icon}
                                 </div>
@@ -293,7 +293,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                           </p>
                           {WHATS_NEW_ITEMS.map((item, index) => (
                             <Link href={item.slug} key={index}>
-                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_5 rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
+                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
                                 <div className="text-text-svg_default group-hover:text-text-color_1">
                                   {item.icon}
                                 </div>
@@ -310,8 +310,8 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                   <PopoverTrigger asChild>
                     <div
                       className={cn(
-                        "fx-flex-cl w-full rounded-tiny hover:bg-background-color_2 gap-2 cursor-pointer p-1",
-                        isAccountMenuOpen ? "bg-background-color_3" : ""
+                        "fx-flex-cl w-full rounded-tiny hover:bg-background-color_900C gap-2 cursor-pointer p-1",
+                        isAccountMenuOpen ? "bg-background-color_800C" : ""
                       )}
                     >
                       <Image
@@ -334,12 +334,12 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                     </div>
                   </PopoverTrigger>
                   <PopoverContent align="end" side="right">
-                    <div className="w-[200px] bg-background-color_4 border border-border-color_2 rounded">
+                    <div className="w-[200px] bg-background-color_850C border border-border-color_2 rounded">
                       <ul className="text-workspace_2 font-medium leading-7">
                         <div className="p-1 ">
                           {ACCOUNT_MENU_ITEMS.map((item, index) => (
                             <Link href={item.slug} key={index}>
-                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_5 rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
+                              <li className="fx-flex-cl gap-2  group hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
                                 <div className="text-text-svg_default group-hover:text-text-color_1">
                                   {item.icon}
                                 </div>
@@ -350,7 +350,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                         </div>
 
                         <div className="p-1 border-t border-border-color_2">
-                          <li className="fx-flex-cl w-full cursor-pointer group gap-2 hover:bg-background-color_5 rounded-tiny px-2 text-text-color_4 hover:text-red-500">
+                          <li className="fx-flex-cl w-full cursor-pointer group gap-2 hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-red-500">
                             <div className="text-text-svg_default group-hover:text-red-500">
                               <LogOut size={LUCIDE_WORKSPACE_ICON_SIZE} />
                             </div>
@@ -370,7 +370,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
       ========================================================================== */}
           <div
             ref={parentRef}
-            className={cn("w-full h-screen bg-background-color_2 relative")}
+            className={cn("w-full h-screen bg-background-color_900C relative")}
           >
             <div className="border-b border-border-color_1 w-full h-[40px] sticky top-0 fx-flex-center">
               <div
