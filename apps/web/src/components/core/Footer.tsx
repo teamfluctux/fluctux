@@ -13,13 +13,12 @@ import {
   GithubCircleIcon,
   XLogoIcon,
   FxFavIcon,
+  useThemeSwitcher
 } from "@fluctux/ui";
-import { useThemeSwitcher } from "@fluctux/hooks";
-import { THEME_ICONS } from "@/constants/global";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { ThemeSwitcher } = useThemeSwitcher(THEME_ICONS);
+  const { ThemeSwitcher } = useThemeSwitcher();
   return (
     <footer className="w-full mt-auto">
       <div className=" border-t border-border-color_1 w-full fx-flex-center  pt-16 bg-background-color_1">

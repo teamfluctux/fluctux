@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { useThemeSwitcher, useToggleOpen } from "@fluctux/hooks";
+import { useToggleOpen } from "@fluctux/hooks";
 import {
   cn,
   FadeFavLoading,
@@ -17,9 +17,8 @@ import {
   Settings,
   X,
 } from "lucide-react";
-import { THEME_ICONS } from "@/constants/global";
 import Image from "next/image";
-import { Popover, PopoverContent, PopoverTrigger } from "@fluctux/ui";
+import { Popover, PopoverContent, PopoverTrigger, useThemeSwitcher } from "@fluctux/ui";
 import Link from "next/link";
 import {
   ACCOUNT_MENU_ITEMS,
@@ -164,7 +163,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
     null
   );
 
-  const { ThemeSwitcher } = useThemeSwitcher(THEME_ICONS);
+  const { ThemeSwitcher } = useThemeSwitcher();
 
   if (sidebarSize === null)
     return (

@@ -1,7 +1,5 @@
 "use client";
-import { THEME_ICONS } from "@/constants/global";
-import { useThemeSwitcher } from "@fluctux/hooks";
-import { FxButton, FxFavIcon } from "@fluctux/ui";
+import { FxButton, FxFavIcon, useThemeSwitcher } from "@fluctux/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,7 +8,7 @@ import React from "react";
 export default function Layout({ children }: { children: React.ReactNode }) {
   const path_name = usePathname();
   const current_path = path_name.split("/")[1];
-  const { ThemeSwitcher } = useThemeSwitcher(THEME_ICONS);
+  const { ThemeSwitcher } = useThemeSwitcher();
 
   return (
     <section className="flex justify-center items-center w-full h-screen overflow-y-auto hide-scrollbar">

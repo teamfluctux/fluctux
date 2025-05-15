@@ -522,5 +522,5 @@ pre code {
 }
 
 .theme-color-mode-active svg {
-  fill: var(--svg-default-color) !important;
+  fill: var(--foreground) !important;
 }
