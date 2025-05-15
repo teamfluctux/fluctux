@@ -17,7 +17,7 @@ export const CommandMenu = () => {
   };
   return (
     <>
-      <div className="w-fit border-border-color_1 overflow-hidden bg-background-color_1 border rounded h-[400px] fx-flex-center">
+      <div className="w-fit border-border-color_1 overflow-hidden bg-background-color_950C border rounded h-[400px] fx-flex-center">
         <div
           className={cn(
             "hover:bg-background-color_900C w-[200px]  flex-shrink-0  border-border-color_1 h-full",

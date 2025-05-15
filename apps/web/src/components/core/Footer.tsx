@@ -21,7 +21,7 @@ export const Footer = () => {
   const { ThemeSwitcher } = useThemeSwitcher();
   return (
     <footer className="w-full mt-auto">
-      <div className=" border-t border-border-color_1 w-full fx-flex-center  pt-16 bg-background-color_1">
+      <div className=" border-t border-border-color_1 w-full fx-flex-center  pt-16 bg-background-color_950C">
         <div className="w-full flex flex-col justify-start items-center">
           <div className="fx-layout-max-1200">
             <div className="w-full grid grid-cols-[1fr_1fr_1fr_1fr_1fr] px-3 justify-center items-start">

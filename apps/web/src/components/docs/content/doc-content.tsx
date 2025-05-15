@@ -205,7 +205,7 @@ export default function DocContent({ data }: DocContentPropsType) {
             />
           </div>
           <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar pb-24 doc-on-this-page-aside-container">
-            <div className="fx-flex-cl gap-2 sticky top-0 bg-background-color_1 pb-1">
+            <div className="fx-flex-cl gap-2 sticky top-0 bg-background-color_950C pb-1">
               <TextAlignLeftIcon width={15} height={15} />
               <h3 className="font-medium">On this page</h3>
             </div>

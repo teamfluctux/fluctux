@@ -25,7 +25,7 @@ const DynamicRnd = dynamic(() => import("react-rnd").then((mod) => mod.Rnd), {
   ssr: false,
   loading: () => (
     <>
-      <div className="w-full h-full absolute z-20 top-0 fx-flex-center bg-background-color_1">
+      <div className="w-full h-full absolute z-20 top-0 fx-flex-center bg-background-color_950C">
         <FadeFavLoading />
       </div>
     </>

@@ -147,7 +147,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
   return (
     <>
       <aside
-        className={`w-[250px] h-screen sticky top-0 bg-background-color_1 flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}
+        className={`w-[250px] h-screen sticky top-0 bg-background-color_950C flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}
       >
         <div
           onClick={docAsideToggleOpen}

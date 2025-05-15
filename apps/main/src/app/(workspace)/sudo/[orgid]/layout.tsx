@@ -115,7 +115,7 @@ const DynamicSidebarCommandMenu = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-[200px] p-2 border-border-color_1 overflow-hidden bg-background-color_1 border rounded h-[400px]">
+      <div className="w-[200px] p-2 border-border-color_1 overflow-hidden bg-background-color_950C border rounded h-[400px]">
         {Array.from({ length: 5 }).map((_, i) => {
           return (
             <div key={i} className="mb-1">
@@ -168,7 +168,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
   if (sidebarSize === null)
     return (
       <>
-        <div className="w-full h-screen fx-flex-center bg-background-color_1">
+        <div className="w-full h-screen fx-flex-center bg-background-color_950C">
           <FadeFavLoading />
         </div>
       </>
@@ -199,7 +199,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
             }}
             style={{ position: "unset" }}
             className={cn(
-              "overflow-hidden transition-all duration-500 bg-background-color_1 rnd-workspace-sidebar",
+              "overflow-hidden transition-all duration-500 bg-background-color_950C rnd-workspace-sidebar",
               isSidebarOpen ? "left-[0%_!important]" : "left-[-100%_!important]"
             )}
             onResize={(e, direction, ref, delta, position) => {

@@ -51,7 +51,7 @@ export const useThemeSwitcher = (): any => {
             <li
               onClick={() => handleChangeAppearanceMode(i)}
               key={i}
-              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px]  fx-flex-center hover:bg-background-color_900C ${activeIndex === i ? "bg-background-color_1 text-text-color_1 theme-color-mode-active" : "text-text-icon_default"} `}
+              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px]  fx-flex-center hover:bg-background-color_900C ${activeIndex === i ? "bg-background-color_950C text-text-color_1 theme-color-mode-active" : "text-text-icon_default"} `}
             >
               {item?.icon}
             </li>
