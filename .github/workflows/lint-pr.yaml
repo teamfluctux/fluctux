@@ -21,8 +21,8 @@ jobs:
         id: lint_pr_title
         with:
           types: |
-            hotfix: For urgent fixes
-            release: For branches preparing a release
+            hotfix: Immediate fix for critical bugs affecting production.
+            release: Prepares codebase for a stable production deployment.
             feat: A new feature
             fix: A bug fix
             docs: Documentation only changes
