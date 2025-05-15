@@ -43,7 +43,7 @@ export default function WorkspacePage() {
 
       <div
         className={cn(
-          "w-0 transition-[width] flex-shrink-0 border-l border-border-color_1 h-full bg-background-color_4 relative",
+          "w-0 transition-[width] flex-shrink-0 border-l border-border-color_1 h-full bg-background-color_850C relative",
           pageSettingsOpen && "w-[250px]"
         )}
       >

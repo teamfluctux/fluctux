@@ -272,7 +272,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                     </div>
                   </PopoverTrigger>
                   <PopoverContent align="start" side="top">
-                    <div className="bg-background-color_4 border border-border-color_2 rounded  w-[200px]">
+                    <div className="bg-background-color_850C border border-border-color_2 rounded  w-[200px]">
                       <ul className="text-workspace_2 font-medium leading-7">
                         <div className="p-1">
                           {FIND_HELP_ITEMS.map((item, index) => (
@@ -334,7 +334,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                     </div>
                   </PopoverTrigger>
                   <PopoverContent align="end" side="right">
-                    <div className="w-[200px] bg-background-color_4 border border-border-color_2 rounded">
+                    <div className="w-[200px] bg-background-color_850C border border-border-color_2 rounded">
                       <ul className="text-workspace_2 font-medium leading-7">
                         <div className="p-1 ">
                           {ACCOUNT_MENU_ITEMS.map((item, index) => (
