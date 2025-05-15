@@ -41,10 +41,6 @@
 
   /* backgrounds */
   --background: var(--color-zinc-50);
-  --background-color-2: var(--color-zinc-100);
-  --background-color-3: var(--color-zinc-200);
-  --background-color-4: var(--color-zinc-250);
-  --background-color-5: var(--color-zinc-350);
 
   --background-color-925C: var(--color-zinc-75);
   --background-color-900C: var(--color-zinc-100);
@@ -119,10 +115,6 @@
 
 .dark {
   --background: var(--color-zinc-950);
-  --background-color-2: var(--color-zinc-900);
-  --background-color-3: var(--color-zinc-800);
-  --background-color-4: var(--color-zinc-850);
-  --background-color-5: var(--color-zinc-750);
 
   --background-color-925C: var(--color-zinc-925);
   --background-color-900C: var(--color-zinc-900);

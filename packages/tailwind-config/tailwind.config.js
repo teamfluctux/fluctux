@@ -43,11 +43,6 @@ module.exports = {
             indigo_1: "var(--indigo-transparent-1st)",
             indigo_2: "var(--indigo-transparent-2nd)"
           },
-          color_1: "var(--background)",
-          color_2: "var(--background-color-2)",
-          color_3: "var(--background-color-3)",
-          color_4: "var(--background-color-4)",
-          color_5: "var(--background-color-5)",
           color_950C: "var(--background)",
           color_925C: "var(--background-color-925C)",
           color_900C: "var(--background-color-900C)",
