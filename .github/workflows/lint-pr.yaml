@@ -21,8 +21,8 @@ jobs:
         id: lint_pr_title
         with:
           types: |
-            hotfix
-            release
+            hotfix: For urgent fixes
+            release: For branches preparing a release
             feat: A new feature
             fix: A bug fix
             docs: Documentation only changes
