@@ -23,7 +23,7 @@ export default function NoResults() {
         <ul className=" w-full mt-1 border border-border-color_1 overflow-hidden  fx-rounded">
           {/* Fluctux is an advanced open source work and project management platform where users can join both public & private organizations, collaborate in teams, make friends, and share their daily work—all in one place. */}
           <Link href={""}>
-            <li className="w-full p-3 fx-flex-between-ic gap-3 border-b border-border-color_1 text-text-color_2 hover:text-[var(--foreground)]  hover:bg-background-color_3">
+            <li className="w-full p-3 fx-flex-between-ic gap-3 border-b border-border-color_1 text-text-color_2 hover:text-[var(--foreground)]  hover:bg-background-color_800C">
               <div className="fx-flex-cl gap-2">
                 <UserIcon />
                 <p>Quickstart for Users</p>
@@ -34,7 +34,7 @@ export default function NoResults() {
             </li>
           </Link>
           <Link href={""}>
-            <li className="w-full p-3 fx-flex-between-ic gap-3 text-text-color_2 hover:text-[var(--foreground)]  hover:bg-background-color_3">
+            <li className="w-full p-3 fx-flex-between-ic gap-3 text-text-color_2 hover:text-[var(--foreground)]  hover:bg-background-color_800C">
               <div className="fx-flex-cl gap-2">
                 <CodeIcon />
                 <p>Quickstart for Developers</p>

@@ -64,7 +64,7 @@ export function FxPopupRadio({
   radius = "tiny",
   showDescInButton = false,
   classNames = {
-    activeLabel: "bg-background-color_3",
+    activeLabel: "bg-background-color_800C",
     buttonSvgContainer: "",
     labelIconContainer: "",
     button: "",

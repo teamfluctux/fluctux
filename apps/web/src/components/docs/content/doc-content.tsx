@@ -169,16 +169,16 @@ export default function DocContent({ data }: DocContentPropsType) {
                     Was this helpful?
                   </span>
                   <div className="fx-flex-center w-fit">
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_3">
+                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
                       <StarFaceIcon />
                     </span>
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_3">
+                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
                       <SmileIcon />
                     </span>
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_3">
+                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
                       <SadIcon />
                     </span>
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_3">
+                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
                       <AngryIcon />
                     </span>
                   </div>

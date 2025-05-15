@@ -264,7 +264,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       className={cn(
                         "rounded-circle flex-shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C cursor-pointer",
                         isWhatsNewMenuOpen
-                          ? "bg-background-color_3 text-text-color_1"
+                          ? "bg-background-color_800C text-text-color_1"
                           : ""
                       )}
                     >
@@ -311,7 +311,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                     <div
                       className={cn(
                         "fx-flex-cl w-full rounded-tiny hover:bg-background-color_900C gap-2 cursor-pointer p-1",
-                        isAccountMenuOpen ? "bg-background-color_3" : ""
+                        isAccountMenuOpen ? "bg-background-color_800C" : ""
                       )}
                     >
                       <Image
