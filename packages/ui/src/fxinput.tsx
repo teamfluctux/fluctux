@@ -15,7 +15,7 @@ type InputVariantType = "primary" | "secondary" | "outline";
 
 const inputVariants: { [key in InputVariantType]: string } = {
   primary:
-    "border border-border-color_1 bg-background-color_2 focus:fx-input-outline",
+    "border border-border-color_1 bg-background-color_900C focus:fx-input-outline",
   secondary: "border border-border-color_1 bg-transparent",
   outline:
     "bg-transparent border border-border-color_1 w-full focus:outline-fxInput",

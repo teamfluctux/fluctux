@@ -379,7 +379,7 @@ export const RndWindows = () => {
                   }}
                   dragHandleClassName="drag-handle"
                   className={cn(
-                    "border border-border-color_2 animate-fadeUp rounded overflow-hidden cursor-[default_!important] transition-all bg-background-color_2 shadow-xl ",
+                    "border border-border-color_2 animate-fadeUp rounded overflow-hidden cursor-[default_!important] transition-all bg-background-color_900C shadow-xl ",
                     tab.isActive ? "z-50" : "z-1",
                     isDragStart && "transition-none",
                     tab.isActive &&
@@ -391,10 +391,10 @@ export const RndWindows = () => {
                   <div className="h-[30px] border-b border-border-color_2 fx-flex-between-ic pl-2 pr-1 bg-background-color_3 drag-handle">
                     <h3 className="font-medium text-workspace_2">My Issue</h3>
                     <div className="fx-flex-cr gap-2">
-                      <span className="hover:bg-background-color_2 p-[2px] rounded-tiny cursor-pointer">
+                      <span className="hover:bg-background-color_900C p-[2px] rounded-tiny cursor-pointer">
                         <Minus size={LUCIDE_WORKSPACE_ICON_SIZE} />
                       </span>
-                      <span className="hover:bg-background-color_2 p-[2px] rounded-tiny cursor-pointer">
+                      <span className="hover:bg-background-color_900C p-[2px] rounded-tiny cursor-pointer">
                         {!tab.isMaximized && (
                           <Maximize
                             onClick={(e) => {
@@ -489,7 +489,7 @@ export const RndWindows = () => {
                         label: item.label,
                       });
                     }}
-                    className="w-[200px] group overflow-hidden h-[140px] border border-border-color_1 hover:border-border-primary_indigo transition-colors duration-150 rounded-tiny  backdrop-blur-lg bg-background-color_2"
+                    className="w-[200px] group overflow-hidden h-[140px] border border-border-color_1 hover:border-border-primary_indigo transition-colors duration-150 rounded-tiny  backdrop-blur-lg bg-background-color_900C"
                   >
                     <div className="w-full group-hover:text-text-color_1 py-1 px-2 text-workspace_3 text-text-color_2 border-b border-border-color_1">
                       {item.label}

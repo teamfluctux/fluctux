@@ -87,7 +87,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                     localStorage.setItem(lessonKey, path_name);
                   }}
                 >
-                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_2 fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2">
+                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2">
                     <div className="fx-flex-cl">
                       <RightArrowIcon className="rotate-180" />
                       <p className="text-text-color_2 font-medium text-[15px]">
@@ -113,7 +113,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                     localStorage.setItem(lessonKey, path_name);
                   }}
                 >
-                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_2 fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2">
+                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2">
                     <div className="fx-flex-cr">
                       <p className="text-text-color_2 font-medium text-[15px]">
                         Next
@@ -164,7 +164,7 @@ export default function DocContent({ data }: DocContentPropsType) {
 
             {data !== "404: Not Found" && (
               <div className="w-full fx-flex-center mt-5">
-                <div className="border border-border-color_1 rounded-[50px] p-1 gap-2 fx-flex-center w-fit bg-background-color_2">
+                <div className="border border-border-color_1 rounded-[50px] p-1 gap-2 fx-flex-center w-fit bg-background-color_900C">
                   <span className="text-text-color_2 text-[14px] font-medium ml-2">
                     Was this helpful?
                   </span>

@@ -99,7 +99,7 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="w-full bg-background-color_2 pt-4 pb-4 mt-24 fx-flex-center">
+          <div className="w-full bg-background-color_900C pt-4 pb-4 mt-24 fx-flex-center">
             <div className="fx-layout-max-1200  fx-flex-between-ic px-3">
               <span className="text-text-color_2">
                 &copy; {currentYear} Fluctux

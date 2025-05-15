@@ -20,7 +20,7 @@ export const CommandMenu = () => {
       <div className="w-fit border-border-color_1 overflow-hidden bg-background-color_1 border rounded h-[400px] fx-flex-center">
         <div
           className={cn(
-            "hover:bg-background-color_2 w-[200px]  flex-shrink-0  border-border-color_1 h-full",
+            "hover:bg-background-color_900C w-[200px]  flex-shrink-0  border-border-color_1 h-full",
             isOrgItemHover ? "border-r" : "border-none"
           )}
         >
@@ -67,7 +67,7 @@ export const CommandMenu = () => {
           onMouseLeave={() => handleMouseLeaveOrgItem()}
           onMouseEnter={() => setIsOrgItemHover(true)}
           className={cn(
-            "hover:bg-background-color_2 h-full transition-all duration-300 opacity-0 overflow-hidden",
+            "hover:bg-background-color_900C h-full transition-all duration-300 opacity-0 overflow-hidden",
             isOrgItemHover ? "w-[250px] opacity-100" : "w-0"
           )}
         >

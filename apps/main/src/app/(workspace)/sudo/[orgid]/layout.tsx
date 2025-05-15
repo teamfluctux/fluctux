@@ -221,7 +221,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       <PopoverTrigger asChild>
                         <div
                           className={cn(
-                            "w-[30px] h-[30px] hover:bg-background-color_2 cursor-pointer fx-flex-center rounded-tiny",
+                            "w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-tiny",
                             isCommandOpen
                               ? "bg-background-transparent-indigo_2 hover:bg-background-transparent-indigo_1 border border-border-primary_indigo"
                               : ""
@@ -262,7 +262,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                   <PopoverTrigger asChild>
                     <div
                       className={cn(
-                        "rounded-circle flex-shrink-0 p-2 text-text-svg_default hover:bg-background-color_2 cursor-pointer",
+                        "rounded-circle flex-shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C cursor-pointer",
                         isWhatsNewMenuOpen
                           ? "bg-background-color_3 text-text-color_1"
                           : ""
@@ -310,7 +310,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                   <PopoverTrigger asChild>
                     <div
                       className={cn(
-                        "fx-flex-cl w-full rounded-tiny hover:bg-background-color_2 gap-2 cursor-pointer p-1",
+                        "fx-flex-cl w-full rounded-tiny hover:bg-background-color_900C gap-2 cursor-pointer p-1",
                         isAccountMenuOpen ? "bg-background-color_3" : ""
                       )}
                     >
@@ -370,7 +370,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
       ========================================================================== */}
           <div
             ref={parentRef}
-            className={cn("w-full h-screen bg-background-color_2 relative")}
+            className={cn("w-full h-screen bg-background-color_900C relative")}
           >
             <div className="border-b border-border-color_1 w-full h-[40px] sticky top-0 fx-flex-center">
               <div
