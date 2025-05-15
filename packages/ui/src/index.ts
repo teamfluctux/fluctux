@@ -88,3 +88,6 @@ export * from "./icons/arrow-right-stroke-icon";
 export * from "./icons/image-icon";
 export * from "./icons/sidebar-left-icon";
 export * from "./icons/type";
+
+
+export * from "./hooks"

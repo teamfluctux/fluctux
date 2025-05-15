@@ -511,10 +511,10 @@ importers:
         version: 0.13.2
       react:
         specifier: ^19.0.0
-        version: 19.0.0
+        version: 19.1.0
       react-dom:
         specifier: ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.1.0(react@19.1.0)
       rehype-document:
         specifier: ^7.0.3
         version: 7.0.3
@@ -595,10 +595,10 @@ importers:
         specifier: ^15.2.4
         version: 15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react:
-        specifier: ^19.1.0
+        specifier: ^19.0.0
         version: 19.1.0
       react-dom:
-        specifier: ^19.1.0
+        specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
     devDependencies:
       '@fluctux/eslint-config':
@@ -614,7 +614,7 @@ importers:
         specifier: ^19.0.4
         version: 19.1.1(@types/react@19.1.0)
       eslint:
-        specifier: ^9.24.0
+        specifier: ^9.21.0
         version: 9.26.0(jiti@2.4.2)
       tailwind-config:
         specifier: workspace:*

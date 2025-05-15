@@ -13,8 +13,8 @@ import {
   GithubCircleIcon,
   XLogoIcon,
   FxFavIcon,
+  useThemeSwitcher
 } from "@fluctux/ui";
-import { useThemeSwitcher } from "@fluctux/hooks";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
