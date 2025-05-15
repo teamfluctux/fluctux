@@ -117,7 +117,7 @@ export const Footer = () => {
                   className="cursor-pointer"
                 />
               </div>
-              <ThemeSwitcher />
+              <ThemeSwitcher className="hover:bg-background-color_800C" />
             </div>
           </div>
         </div>

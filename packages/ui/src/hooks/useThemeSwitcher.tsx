@@ -43,7 +43,7 @@ export const useThemeSwitcher = (): any => {
     }
   };
 
-  const ThemeSwitcher: React.FC = () => (
+  const ThemeSwitcher: React.FC = ({className, activeIndicatorClassname}: {className?: string, activeIndicatorClassname?: string}) => (
     <div className="fx-flex-center w-fit rounded-[50px] border border-border-color_1 p-[2px]">
       <ul className="fx-flex-center w-fit relative">
         {THEME_ICONS.map((item, i) => {
@@ -51,7 +51,7 @@ export const useThemeSwitcher = (): any => {
             <li
               onClick={() => handleChangeAppearanceMode(i)}
               key={i}
-              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px]  fx-flex-center hover:bg-background-color_900C ${activeIndex === i ? "bg-background-color_950C text-text-color_1 theme-color-mode-active" : "text-text-icon_default"} `}
+              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px]  fx-flex-center ${className ? className : "hover:bg-background-color_900C"}  ${activeIndex === i ? `${activeIndicatorClassname ? activeIndicatorClassname : "bg-background-color_950C" } text-text-color_1 theme-color-mode-active` : "text-text-icon_default"} `}
             >
               {item?.icon}
             </li>
