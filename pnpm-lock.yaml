@@ -573,9 +573,6 @@ importers:
       '@fluctux/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@turbo/gen':
-        specifier: ^2.4.4
-        version: 2.4.4(@swc/core@1.11.20(@swc/helpers@0.5.15))(@types/node@22.15.17)(typescript@5.8.2)
       eslint:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
