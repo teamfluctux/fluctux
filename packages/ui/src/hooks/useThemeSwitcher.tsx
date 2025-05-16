@@ -43,7 +43,7 @@ export const useThemeSwitcher = (): any => {
     }
   };
 
-  const ThemeSwitcher: React.FC = ({className, activeIndicatorClassname}: {className?: string, activeIndicatorClassname?: string}) => (
+  const ThemeSwitcher: React.FC<{className?: string, activeIndicatorClassname?: string}> = ({className, activeIndicatorClassname}) => (
     <div className="fx-flex-center w-fit rounded-[50px] border border-border-color_1 p-[2px]">
       <ul className="fx-flex-center w-fit relative">
         {THEME_ICONS.map((item, i) => {

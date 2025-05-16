@@ -1,11 +1,10 @@
 "use client";
 import { FxButton, FxFavIcon, useThemeSwitcher } from "@fluctux/ui";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function AuthWrapper({ children }: { children: React.ReactNode }) {
   const path_name = usePathname();
   const current_path = path_name.split("/")[1];
   const { ThemeSwitcher } = useThemeSwitcher();

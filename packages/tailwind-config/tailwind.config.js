@@ -107,6 +107,9 @@ module.exports = {
         workspace_1: "15px",
         workspace_2: "14px",
         workspace_3: "13px",
+        read_25: "25px",
+        read_20: "20px",
+        read_16: "16px",
       },
       borderRadius: {
         DEFAULT: "8px",
