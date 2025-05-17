@@ -114,7 +114,7 @@ export function FxPopupRadio({
             <div className="text-left">
               <p>{items.find((item) => item.value === selectedValue)?.label}</p>
               {showDescInButton && (
-                <span className="text-text-color_900C one-line-ellipsis text-[13px]">
+                <span className="text-text-color_2 one-line-ellipsis text-[13px]">
                   {items.find((item) => item.value === selectedValue)?.desc}
                 </span>
               )}

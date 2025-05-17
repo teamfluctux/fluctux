@@ -110,6 +110,9 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
         navItem.path.replace("src/content/docs/", "").replace(".mdx", "")
       )
     );
+
+    if(!setPagination) return
+
     if (currentIndex !== -1) {
       dispatch(setPagination({ currentIndex, flatDocList }));
     } else {
@@ -186,12 +189,12 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
               button:
                 "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full bg-background-color_900C sticky top-[0px] z-[20] font-medium",
               activeLabel:
-                "hover:bg-[var(--background-color-3)_!important] bg-[var(--background-color-3)]",
+                "hover:bg-[var(--background-color-800C)_!important] bg-[var(--background-color-800C)]",
               label:
                 "w-full fx-secondary-hover-bg p-2 hover:bg-[transparent] group",
               layout: "w-[230px] p-[0px_!important] overflow-hidden",
               labelIconContainer:
-                " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] group-hover:border group-hover:fx-primary-purple-border",
+                " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] group-hover:border group-hover:border-border-primary_indigo transition",
               buttonSvgContainer:
                 " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] ",
             }}

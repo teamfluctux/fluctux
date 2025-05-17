@@ -1,5 +1,3 @@
-import { Footer } from "@/components/core";
-import DocHeader from "@/components/docs/doc-header";
 import React from "react";
 
 interface DocParentLayoutPropsType {
@@ -9,9 +7,7 @@ interface DocParentLayoutPropsType {
 export default function Layout({ children }: DocParentLayoutPropsType) {
   return (
     <>
-      <DocHeader />
       {children}
-      <Footer />
     </>
   );
 }
