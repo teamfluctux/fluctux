@@ -10,9 +10,13 @@ import {
 } from "@fluctux/ui";
 import Link from "next/link";
 import React from "react";
+import AuthWrapper from "../auth-wrapper";
 
 export default function LoginPage() {
   return (
+      <AuthWrapper>
+
+   
     <div className=" w-full">
       <h1 className="text-[25px] font-medium mb-5 black-white-gradient-bt">
         Login to Fluctux
@@ -100,5 +104,6 @@ export default function LoginPage() {
         </Link>
       </p>
     </div>
+       </AuthWrapper>
   );
 }

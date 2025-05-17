@@ -41,7 +41,7 @@ module.exports = {
           indigo_primary: "var(--primary-color)",
           transparent: {
             indigo_1: "var(--indigo-transparent-1st)",
-            indigo_2: "var(--indigo-transparent-2nd)"
+            indigo_2: "var(--indigo-transparent-2nd)",
           },
           color_950C: "var(--background)",
           color_925C: "var(--background-color-925C)",
@@ -51,7 +51,7 @@ module.exports = {
           color_750C: "var(--background-color-750C)",
           hover: {
             indigo_primary: "var(--primary-purple-hover-bg)",
-          }
+          },
         },
         border: {
           color_1: "var(--border-color-1)",
@@ -60,14 +60,14 @@ module.exports = {
         },
         text: {
           indigo: {
-            color_1: "var(--primary-color)"
+            color_1: "var(--primary-color)",
           },
           color_1: "var(--foreground)",
           color_2: "var(--foreground-color-2)",
           color_3: "var(--foreground-color-3)",
           color_4: "var(--foreground-color-4)",
           svg_default: "var(--svg-default-color)",
-          color_default_white: "var(--color-zinc-50)"
+          color_default_white: "var(--color-zinc-50)",
         },
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -84,29 +84,37 @@ module.exports = {
         scaleUp: "scaleUp 0.3s ease-out forwards",
         fadeUpWinPlaceHolder: "fadeUpWinPlaceHolder 0.3s ease-out forwards",
         fadeUp: "fadeUp 0.3s ease-out forwards",
+        "spin-gradient": "rotate360 2s linear infinite",
       },
       keyframes: {
+        rotate360: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
         fadeLogoLoading: {
           "0%, 100%": { opacity: "100%" },
           "50%": { opacity: "30%" },
         },
         scaleUp: {
           "0%": { transform: "scale(0.9)", opacity: "0%" },
-          "100%": { transform: "scale(1)", opacity: "100%" }
+          "100%": { transform: "scale(1)", opacity: "100%" },
         },
         fadeUpWinPlaceHolder: {
           "0%": { opacity: "0%" },
-          "100%": { opacity: "20%" }
+          "100%": { opacity: "20%" },
         },
         fadeUp: {
           "0%": { opacity: "0%" },
-          "100%": { opacity: "100%" }
-        }
+          "100%": { opacity: "100%" },
+        },
       },
       fontSize: {
         workspace_1: "15px",
         workspace_2: "14px",
         workspace_3: "13px",
+        read_25: "25px",
+        read_20: "20px",
+        read_16: "16px",
       },
       borderRadius: {
         DEFAULT: "8px",
