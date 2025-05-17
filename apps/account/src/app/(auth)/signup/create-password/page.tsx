@@ -1,6 +1,6 @@
 "use client";
 import { FxButton, FxInput, useTogglePassword } from "@fluctux/ui";
-import aiIcon from "../../../../../public/ai.png"
+import aiIcon from "../../../../../public/ai.png";
 import Image from "next/image";
 
 import React from "react";
@@ -40,12 +40,25 @@ export default function CreatePassword() {
               className="w-full"
               type={isShowMainPassword ? "text" : "password"}
             />
-            <FxButton
-                className={`fx-flex-center p-[3px] rounded-tiny right-9 absolute hover:bg-background-color_750C transition-colors group`}
-                variant="silent"
-              >
-                <Image src={aiIcon} width={200} height={200} className="w-[25px] h-[25px] " alt="AI" />
-              </FxButton>
+
+<div className="absolute w-[50px] h-[50px] group right-7 flex justify-center items-center">
+  {/* Glow rotating on hover */}
+  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-50 group-hover:animate-spin-gradient transition-all duration-500 blur-md bg-gradient-to-br from-[#2563eb] to-[#d946ef]"></div>
+
+  {/* Actual image */}
+  <div className="relative z-10 rounded-full overflow-hidden">
+    <Image
+      src={aiIcon}
+      alt="AI"
+      width={200}
+      height={200}
+      className="transition-all duration-300 w-[25px] h-[25px] group-hover:brightness-125 cursor-pointer group-hover:contrast-200"
+    />
+  </div>
+</div>
+
+
+
             <ToggleShowMainPasswordButton />
           </ToggleShowPasswordWrapper>
 
@@ -58,10 +71,9 @@ export default function CreatePassword() {
                 variant="primary"
                 size="md"
                 radius="primary"
-                className="w-full mt-1"
+                className="w-full"
                 type={isShowConfirmPassword ? "text" : "password"}
               />
-              
               <ToggleShowConfirmPasswordButton />
             </ToggleShowPasswordWrapper>
           </div>
