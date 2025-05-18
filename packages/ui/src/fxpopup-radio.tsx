@@ -112,7 +112,7 @@ export function FxPopupRadio({
               {items.find((item) => item.value === selectedValue)?.svg}
             </div>
             <div className="text-left">
-              <p>{items.find((item) => item.value === selectedValue)?.label}</p>
+              <p className="text-workspace_1">{items.find((item) => item.value === selectedValue)?.label}</p>
               {showDescInButton && (
                 <span className="text-text-color_2 one-line-ellipsis text-[13px]">
                   {items.find((item) => item.value === selectedValue)?.desc}
@@ -150,14 +150,14 @@ export function FxPopupRadio({
                         <div className="flex justify-center items-start flex-col">
                           {item.label && (
                             <span
-                              className={`font-medium ${selectedValue === item.value ? "text-[var(--foreground)]" : "fx-label-color"} `}
+                              className={`font-medium text-workspace_1 ${selectedValue === item.value ? "text-[var(--foreground)]" : "text-text-color_4"} `}
                             >
                               {item.label}
                             </span>
                           )}
 
                           {item.desc && (
-                            <span className="text-[14px] text-text-color_900C radio-description leading-[1.2rem]">
+                            <span className="text-workspace_3 font-medium text-text-color_3 radio-description leading-[1.2rem]">
                               {item.desc}
                             </span>
                           )}

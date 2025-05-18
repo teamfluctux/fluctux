@@ -87,7 +87,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                     localStorage.setItem(lessonKey, path_name);
                   }}
                 >
-                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2">
+                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C transition-colors duration-150 fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2">
                     <div className="fx-flex-cl">
                       <RightArrowIcon className="rotate-180" />
                       <p className="text-text-color_2 font-medium text-[15px]">
@@ -113,7 +113,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                     localStorage.setItem(lessonKey, path_name);
                   }}
                 >
-                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2">
+                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C transition-colors duration-150 fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2">
                     <div className="fx-flex-cr">
                       <p className="text-text-color_2 font-medium text-[15px]">
                         Next
@@ -207,7 +207,7 @@ export default function DocContent({ data }: DocContentPropsType) {
           <nav className="h-[calc(100%-105px)] sticky top-[105px] overflow-y-auto custom-scrollbar doc-hide-scrollbar pb-24 doc-on-this-page-aside-container">
             <div className="fx-flex-cl gap-2 sticky top-0 bg-background-color_950C pb-1">
               <TextAlignLeftIcon width={15} height={15} />
-              <h3 className="font-medium">On this page</h3>
+              <h3 className="font-medium text-workspace_1">On this page</h3>
             </div>
 
             <ul className="text-text-color_2 leading-7">
@@ -216,7 +216,7 @@ export default function DocContent({ data }: DocContentPropsType) {
                   <Link
                     href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
                     key={i}
-                    className="dark:hover:text-fx_zinc-50 hover:text-fx_zinc-950"
+                    className="dark:hover:text-fx_zinc-50 text-workspace_1 hover:text-fx_zinc-950"
                   >
                     <li
                       onClick={() => setDocOnPageOpen(false)}
