@@ -1,0 +1,47 @@
+.hero_workspace_box::after {
+  content: "";
+  box-sizing: content-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  padding: 1px;
+  transform: translate(-50%, -50%);
+  border-radius: 26px;
+  background-image: conic-gradient(
+    from 99deg,
+    transparent 145deg,
+    transparent 44deg,
+    var(--color-indigo-500) 195deg,
+    transparent 258deg,
+    transparent 1turn
+  );
+  filter: blur(0px);
+  opacity: 50%;
+}
+
+.hero_workspace_box::before {
+  content: "";
+  box-sizing: content-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  padding: 1px;
+  transform: translate(-50%, -50%);
+  border-radius: 26px;
+  background-image: conic-gradient(
+    from 224deg,
+    transparent 145deg,
+    transparent 44deg,
+    var(--color-indigo-500) 195deg,
+    transparent 258deg,
+    transparent 1turn
+  );
+    filter: blur(0px);
+    opacity: 50%;
+}
