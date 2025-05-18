@@ -42,10 +42,10 @@ export default function HomePage() {
             </p>
           </div>
           <div className="w-full flex justify-center items-center gap-3 mt-6">
-            <FxButton radius="primary" className="py-2 px-5 font-medium text-workspace_1">
+            <FxButton radius="primary" className="py-2 px-5 font-medium text-workspace_1 transition-colors">
               Get Started
             </FxButton>
-            <FxButton radius="primary" className="py-2 px-5 bg-transparent hover:backdrop-blur-3xl hover:bg-transparent hover:border border-fx_indigo-500 font-medium text-workspace_1">
+            <FxButton radius="primary" variant="secondary" className="py-2 px-5 font-medium text-workspace_1 transition-colors">
               Get Custom Guidance
             </FxButton>
 
@@ -54,7 +54,7 @@ export default function HomePage() {
           <div className="w-full px-[1px]">
 
             <div className="w-full h-[650px] mt-16 p-2 rounded-[25px] bg-background-color_850C hero_workspace_box relative">
-              <div className="w-full absolute -z-10 left-0 -top-[80px] h-[100px] rounded-t-[50%] bg-fx_indigo-500 blur-[200px]"></div>
+             <div className=" w-[500px] absolute -z-10 left-[50%] -translate-x-1/2 -top-[80px] h-[500px] rounded-t-[50%] bg-background-color_950C  blur-[80px]"></div>
               <div className="w-full h-full bg-background-color_925C overflow-hidden rounded-[20px] border border-border-color_1"></div>
             </div>
   
