@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  if(!token && pathname === "/"){
+  if (!token && pathname === "/") {
     return NextResponse.rewrite(new URL("/login", req.url));
   }
 }

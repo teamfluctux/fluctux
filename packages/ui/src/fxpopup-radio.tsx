@@ -112,7 +112,9 @@ export function FxPopupRadio({
               {items.find((item) => item.value === selectedValue)?.svg}
             </div>
             <div className="text-left">
-              <p className="text-workspace_1">{items.find((item) => item.value === selectedValue)?.label}</p>
+              <p className="text-workspace_1">
+                {items.find((item) => item.value === selectedValue)?.label}
+              </p>
               {showDescInButton && (
                 <span className="text-text-color_2 one-line-ellipsis text-[13px]">
                   {items.find((item) => item.value === selectedValue)?.desc}
@@ -123,7 +125,9 @@ export function FxPopupRadio({
         ) : (
           <div className="leading-5">
             <p className="text-red-600 font-medium">No items to display</p>
-            <span className="text-text-color_900C text-[14px]">FxPopupRadio</span>
+            <span className="text-text-color_900C text-[14px]">
+              FxPopupRadio
+            </span>
           </div>
         )}
       </PopoverTrigger>

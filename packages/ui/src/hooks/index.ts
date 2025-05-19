@@ -1,2 +1,2 @@
-export * from "./useThemeSwitcher"
-export * from "./useTogglePassword"
+export * from "./useThemeSwitcher";
+export * from "./useTogglePassword";

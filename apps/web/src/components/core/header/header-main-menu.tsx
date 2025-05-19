@@ -71,7 +71,9 @@ const ResourcesListItemWithImage = ({
 
         <div className="p-3 pl-5 relative z-10">
           <h3 className="font-medium text-workspace_1">{label}</h3>
-          <p className=" text-workspace_3 text-text-color_3 leading-[1.1rem] mt-1 ">{desc}</p>
+          <p className=" text-workspace_3 text-text-color_3 leading-[1.1rem] mt-1 ">
+            {desc}
+          </p>
         </div>
 
         <div className="w-[200px] h-[180px] bg-background-color_900C pt-1 pl-1 z-10 absolute bottom-0 right-0 border-t border-l rounded-tl-[8px] border-border-color_1">
@@ -165,7 +167,6 @@ export const HeaderMainMenu = () => {
                         label="Contact"
                         desc="We’d love to hear from you."
                       />
-                     
                     </div>
                   </div>
                 </div>

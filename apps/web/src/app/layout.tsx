@@ -5,10 +5,10 @@ import "./styles/docs.style.css";
 import "./styles/alert.style.css";
 import "./styles/landing-page.style.css";
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-fade';
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 import GlobalClientProvider from "@/components/providers/global-client-providers";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
@@ -52,9 +52,9 @@ export default function RootLayout({
                 baseColor="var(--skeleton-base-color)"
                 highlightColor="var(--skeleton-highlightColor)"
               >
-                <Header/>
+                <Header />
                 {children}
-                <Footer/>
+                <Footer />
               </SkeletonTheme>
             </GlobalClientProvider>
           </Suspense>

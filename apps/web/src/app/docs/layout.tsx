@@ -5,9 +5,5 @@ interface DocParentLayoutPropsType {
 }
 
 export default function Layout({ children }: DocParentLayoutPropsType) {
-  return (
-    <>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

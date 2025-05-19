@@ -1,3 +1,4 @@
+"use client";
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
 import { Monitor, Moon, SunMedium } from "lucide-react";
@@ -43,7 +44,10 @@ export const useThemeSwitcher = (): any => {
     }
   };
 
-  const ThemeSwitcher: React.FC<{className?: string, activeIndicatorClassname?: string}> = ({className, activeIndicatorClassname}) => (
+  const ThemeSwitcher: React.FC<{
+    className?: string;
+    activeIndicatorClassname?: string;
+  }> = ({ className, activeIndicatorClassname }) => (
     <div className="fx-flex-center w-fit rounded-[50px] border border-border-color_1 p-[2px]">
       <ul className="fx-flex-center w-fit relative">
         {THEME_ICONS.map((item, i) => {
@@ -51,7 +55,7 @@ export const useThemeSwitcher = (): any => {
             <li
               onClick={() => handleChangeAppearanceMode(i)}
               key={i}
-              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px]  fx-flex-center ${className ? className : "hover:bg-background-color_900C"}  ${activeIndex === i ? `${activeIndicatorClassname ? activeIndicatorClassname : "bg-background-color_950C" } text-text-color_1 theme-color-mode-active` : "text-text-icon_default"} `}
+              className={`cursor-pointer rounded-[50%] flex-shrink-0 w-[30px] h-[30px]  fx-flex-center ${className ? className : "hover:bg-background-color_900C"}  ${activeIndex === i ? `${activeIndicatorClassname ? activeIndicatorClassname : "bg-background-color_950C"} text-text-color_1 theme-color-mode-active` : "text-text-icon_default"} `}
             >
               {item?.icon}
             </li>

@@ -1,0 +1,36 @@
+"use client";
+
+import React from "react";
+import { FxButton } from "@fluctux/ui";
+
+export const HeroMainContent = () => {
+  return (
+    <>
+      <div className="w-full flex flex-col justify-center items-center mt-52">
+        <h1 className="text-[55px] font-semibold flex flex-col justify-center items-center max-w-[900px] w-full leading-[3.6rem]">
+          <span>Made for Teams</span>
+          <span>Designed for Collaboration</span>
+        </h1>
+        <p className="text-[18px] font-medium text-text-color_4 text-center max-w-[800px] mt-6 leading-[1.5rem]">
+          Combining smart project management with social connection to help
+          teams move faster, stay in sync, and get more done together
+        </p>
+      </div>
+      <div className="w-full flex justify-center items-center gap-3 mt-6 mb-24">
+        <FxButton
+          radius="primary"
+          className="py-2 px-5 font-medium text-workspace_1 transition-colors"
+        >
+          Get Started
+        </FxButton>
+        <FxButton
+          radius="primary"
+          variant="secondary"
+          className="py-2 px-5 font-medium text-workspace_1 transition-colors"
+        >
+          Get Custom Guidance
+        </FxButton>
+      </div>
+    </>
+  );
+};

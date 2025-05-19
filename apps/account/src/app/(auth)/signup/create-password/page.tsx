@@ -41,23 +41,21 @@ export default function CreatePassword() {
               type={isShowMainPassword ? "text" : "password"}
             />
 
-<div className="absolute w-[50px] h-[50px] group right-7 flex justify-center items-center">
-  {/* Glow rotating on hover */}
-  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-50 group-hover:animate-spin-gradient transition-all duration-500 blur-md bg-gradient-to-br from-[#2563eb] to-[#d946ef]"></div>
+            <div className="absolute w-[50px] h-[50px] group right-7 flex justify-center items-center">
+              {/* Glow rotating on hover */}
+              <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-50 group-hover:animate-spin-gradient transition-all duration-500 blur-md bg-gradient-to-br from-[#2563eb] to-[#d946ef]"></div>
 
-  {/* Actual image */}
-  <div className="relative z-10 rounded-full overflow-hidden">
-    <Image
-      src={aiIcon}
-      alt="AI"
-      width={200}
-      height={200}
-      className="transition-all duration-300 w-[25px] h-[25px] group-hover:brightness-125 cursor-pointer group-hover:contrast-200"
-    />
-  </div>
-</div>
-
-
+              {/* Actual image */}
+              <div className="relative z-10 rounded-full overflow-hidden">
+                <Image
+                  src={aiIcon}
+                  alt="AI"
+                  width={200}
+                  height={200}
+                  className="transition-all duration-300 w-[25px] h-[25px] group-hover:brightness-125 cursor-pointer group-hover:contrast-200"
+                />
+              </div>
+            </div>
 
             <ToggleShowMainPasswordButton />
           </ToggleShowPasswordWrapper>

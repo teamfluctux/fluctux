@@ -14,13 +14,13 @@ export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
   const { theme = "system" } = useTheme();
   return (
     <SessionProvider>
-          {children}
-          <Toaster
-            richColors
-            position="bottom-center"
-            theme={theme as ToasterProps["theme"]}
-            closeButton
-          />
+      {children}
+      <Toaster
+        richColors
+        position="bottom-center"
+        theme={theme as ToasterProps["theme"]}
+        closeButton
+      />
     </SessionProvider>
   );
 }

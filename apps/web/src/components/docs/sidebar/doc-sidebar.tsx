@@ -111,7 +111,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
       )
     );
 
-    if(!setPagination) return
+    if (!setPagination) return;
 
     if (currentIndex !== -1) {
       dispatch(setPagination({ currentIndex, flatDocList }));
