@@ -170,7 +170,7 @@ export const HeaderMainMenu = () => {
                   </div>
                 </div>
 
-                <div className="w-full h-[80px] mt-2">
+                <div className="w-full h-[70px] mt-2">
                   <div className="w-full h-full flex justify-between px-5 items-center gap-3">
                     <h3 className="text-workspace_1 text-text-color_2 font-medium">
                       Connect with the dev community, get instant support, and

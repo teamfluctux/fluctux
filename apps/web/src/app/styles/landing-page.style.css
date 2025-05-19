@@ -45,3 +45,28 @@
     filter: blur(0px);
     opacity: 50%;
 }
+
+
+.chrome_tab::before{
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  bottom: 0;
+  left: 100%;
+  box-shadow: -13px 11px  var(--background-color-850C);
+}
+
+.chrome_tab::after{
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  bottom: 0;
+  right: 100%;
+  box-shadow: 13px 11px var(--background-color-850C);
+}
