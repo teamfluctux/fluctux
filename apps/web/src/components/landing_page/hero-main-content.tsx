@@ -19,9 +19,12 @@ export const HeroMainContent = () => {
       <div className="w-full flex justify-center items-center gap-3 mt-6 mb-24">
         <FxButton
           radius="primary"
-          className="py-2 px-5 font-medium text-workspace_1 transition-colors"
+          className="py-2 px-5  transition-colors "
         >
+          <span className="text-fx_zinc-50 font-medium text-workspace_1">
           Get Started
+
+          </span>
         </FxButton>
         <FxButton
           radius="primary"

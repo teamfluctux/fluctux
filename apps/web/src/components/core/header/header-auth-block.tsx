@@ -17,8 +17,10 @@ export const HeaderAuthBlock = () => {
   return (
     <div>
       <div className="rounded overflow-hidden h-[35px] flex  justify-center items-center">
-        <FxButton className="pl-4 pr-2 h-full  font-medium text-workspace_1">
+        <FxButton className="pl-4 pr-2 h-full  ">
+          <span className="text-fx_zinc-50 font-medium text-workspace_1">
           Sign up
+          </span>
         </FxButton>
         <Popover>
           <PopoverTrigger asChild className="outline-none">

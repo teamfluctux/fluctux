@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
         port: "", // Leave empty unless a specific port is needed
         pathname: "/**", // Use `/` followed by `**` to allow all subpaths
       },
-    ],
+    ], 
   },
 };
 

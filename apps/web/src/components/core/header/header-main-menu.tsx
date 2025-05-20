@@ -182,7 +182,7 @@ export const HeaderMainMenu = () => {
                       className="px-4 py-1 flex justify-center items-center gap-1"
                     >
                       <DiscordIcon color="#ffffff" width={22} height={22} />
-                      <span className="text-workspace_1 font-medium">
+                      <span className="text-workspace_1 font-medium text-fx_zinc-50">
                         Join Discord
                       </span>
                     </FxButton>

@@ -28,19 +28,26 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-transparent to-background-color_950C h-[300px]"></div>
       </div>
 
-<div className="w-full relative">
+      <section className="w-full relative">
+        <div className="fx-layout-max-1200 mx-auto ">
+          <div>
+            {/* Hero main content here */}
+            <HeroMainContent />
+            {/* hero tabs here */}
+            <HeroTabs />
+          </div>
+        </div>
+        <div className="w-full h-[300px] absolute bottom-[-180px] bg-background-color_950C z-10 blur-[50px]"></div>
+      </section>
 
-      <div className="fx-layout-max-1200 mx-auto ">
-        <section>
-          {/* Hero main content here */}
-          <HeroMainContent />
-          {/* hero tabs here */}
-          <HeroTabs />
-        </section>
-      </div>
-
-      <div className="w-full h-[300px] absolute bottom-[-180px] bg-background-color_950C z-10 blur-[50px]"></div>
-</div>
+      <section className="w-full relative z-10 mt-14">
+        <div className="fx-layout-max-1200 mx-auto py-5">
+          <div className="max-w-[450px] w-full">
+          <h2 className="text-read_20 font-medium">Powering the Next Generation of Teamwork</h2>
+          <p className="text-read_16 font-medium text-text-color_2 leading-5 mt-1">From startups to enterprises, teams rely on us to stay aligned and move faster.</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
