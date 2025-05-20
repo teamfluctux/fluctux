@@ -113,7 +113,7 @@ export const HeroTabs = () => {
             effect={"fade"}
           >
             <SwiperSlide className="bg-background-color_925C">
-              <Image src={"/images/work-item-dark.png"} width={1200} height={1200} alt="work-item-dark" className="object-cover object-top w-full h-full" />
+              <Image src={"/images/demo_management.png"} width={1200} height={1200} alt="work-item-dark" className="object-cover object-top w-full h-full" />
             </SwiperSlide>
             <SwiperSlide className="bg-background-color_925C">Slide 2</SwiperSlide>
             <SwiperSlide className="bg-background-color_925C">Slide 3</SwiperSlide>
