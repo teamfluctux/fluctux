@@ -1,0 +1,120 @@
+.hero_workspace_box::after {
+  content: "";
+  box-sizing: content-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  padding: 1px;
+  transform: translate(-50%, -50%);
+  border-radius: 26px;
+  background-image: conic-gradient(
+    from 99deg,
+    transparent 145deg,
+    transparent 44deg,
+    var(--color-indigo-500) 195deg,
+    transparent 258deg,
+    transparent 1turn
+  );
+}
+
+.hero_workspace_box::before {
+  content: "";
+  box-sizing: content-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  padding: 1px;
+  transform: translate(-50%, -50%);
+  border-radius: 26px;
+  background-image: conic-gradient(
+    from 224deg,
+    transparent 145deg,
+    transparent 44deg,
+    var(--color-indigo-500) 195deg,
+    transparent 258deg,
+    transparent 1turn
+  );
+}
+
+.chrome_tab::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  bottom: 0;
+  left: 100%;
+  box-shadow: -13px 11px var(--color-indigo-900);
+}
+
+.chrome_tab::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  bottom: 0;
+  right: 100%;
+  box-shadow: 13px 11px var(--color-indigo-900);
+}
+
+.light {
+  .chrome_tab::after {
+    box-shadow: 13px 11px var(--color-indigo-400);
+  }
+
+  .chrome_tab::before {
+    box-shadow: -13px 11px var(--color-indigo-400);
+  }
+}
+
+
+.company_logo_marquee_wrapper::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(to right, var(--background), transparent);
+  z-index: 11;
+}
+
+.company_logo_marquee_wrapper::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(to left, var(--background), transparent);
+  z-index: 11;
+}
+
+.company_logo_marquee_wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.company_logo_marquee {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

@@ -1,80 +1,50 @@
-"use client";
-import { Header } from "@/components/core";
-import { NeatConfig, NeatGradient } from "@firecms/neat";
-import { useEffect, useRef } from "react";
+import { CompanyMarquee } from "@/components/landing_page/company-marquee";
+import { HeroMainContent } from "@/components/landing_page/hero-main-content";
+import { HeroTabs } from "@/components/landing_page/hero-tabs";
 
-const config: NeatConfig = {
-  colors: [
-    { color: "#00BAFF", enabled: true },
-    { color: "#FB40F8", enabled: true },
-    { color: "#FFB700", enabled: false },
-    { color: "#5865F2", enabled: true },
-    { color: "#32ED7C", enabled: false },
-  ],
-  speed: 4,
-  horizontalPressure: 3,
-  verticalPressure: 4,
-  waveFrequencyX: 10,
-  waveFrequencyY: 0,
-  waveAmplitude: 10,
-  shadows: 5,
-  highlights: 10,
-  colorBrightness: 0.25,
-  colorSaturation: 2,
-  wireframe: false,
-  colorBlending: 9,
-  backgroundColor: "#003FFF",
-  backgroundAlpha: 1,
-  grainScale: 2,
-  grainIntensity: 0.05,
-  grainSpeed: 1,
-  resolution: 0.5,
-};
+import React from "react";
 
-export default function Home() {
-  const canvasRef = useRef<HTMLCanvasElement>(null); // Use HTMLCanvasElement
-  let neatInstance: NeatGradient | null = null;
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      neatInstance = new NeatGradient({
-        ref: canvasRef.current,
-        ...config,
-      });
-      neatInstance.speed = 6;
-    }
-
-    return () => {
-      if (neatInstance) {
-        neatInstance.destroy();
-        neatInstance = null;
-      }
-    };
-  }, []);
-
+export default function HomePage() {
   return (
-    <>
-      <Header />
+    <div className="w-full pb-24">
+      {/* <div className="absolute inset-0 h-screen -z-10">
+        <div className="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,var(--background-color-900C)1px,transparent_1px),linear-gradient(to_bottom,var(--background-color-900C)1px,transparent_1px)] bg-[size:6rem_6rem]"></div>
+      </div> */}
 
-      <div className="w-full fx-flex-center flex-col absolute top-0">
-        <div className="hero-bg-animation relative z-10 h-[700px] fx-default-layout "></div>
-
-        <div className="fx-default-layout overflow-hidden h-[700px] absolute top-0">
-          <div className="absolute inset-0 top-0 z-[-1] h-[700px] bg-transparent bg-[linear-gradient(to_right,var(--gradient-grid-main-header)_1px,transparent_1px),linear-gradient(to_bottom,var(--gradient-grid-main-header)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+      <div className="absolute h-[800px] w-full top-0 left-0 overflow-hidden -z-10">
+        <div className="flex justify-center items-center w-full h-full rotate-[140deg]">
+          <div className="w-[100px] h-[calc(100vh+150%)] bg-[linear-gradient(85deg,_var(--background),_var(--background),_var(--background-color-900C))] "></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 11 bg-[linear-gradient(262deg,_var(--background-color-900C),_var(--background),_var(--background))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 10 bg-[linear-gradient(92deg,_var(--background),_var(--background),_var(--background-color-900C))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 9 bg-[linear-gradient(63deg,_var(--background),_var(--background),_var(--background-color-900C))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 8 bg-[linear-gradient(81deg,_var(--background),_var(--background),_var(--background-color-900C))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 7 bg-[linear-gradient(96deg,_var(--background),_var(--background),_var(--background-color-850C))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 6 bg-[linear-gradient(86deg,_var(--background),_var(--background),_var(--background-color-850C))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 5 bg-[linear-gradient(94deg,_var(--background),_var(--background),_var(--background-color-900C))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 4 bg-[linear-gradient(85deg,_var(--background),_var(--background),_var(--background-color-800C))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 3 bg-[linear-gradient(112deg,_var(--background),_var(--background),_var(--background-color-900C))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 2 bg-[linear-gradient(97deg,_var(--background),_var(--background),_var(--background-color-850C))]"></div>
+          <div className="w-[100px] h-[calc(100vh+150%)] 1 bg-[linear-gradient(84deg,_var(--background),_var(--background-color-900C))]"></div>
         </div>
 
-        <div className="PZLPMy fx-default-layout h-[700px] overflow-hidden absolute top-0">
-          <canvas
-            ref={canvasRef}
-            className="w-full h-[700px] absolute -z-10 top-0 left-0"
-          />{" "}
-          {/* Use canvas tag */}
-        </div>
+        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-b from-transparent to-background-color_950C h-[300px]"></div>
       </div>
 
-      <div className="pt-[64px]">
-        <h1>Hello world</h1>
-      </div>
-    </>
+      <section className="w-full relative">
+        <div className="fx-layout-max-1200 mx-auto ">
+          <div>
+            {/* Hero main content here */}
+            <HeroMainContent />
+            {/* hero tabs here */}
+            <HeroTabs />
+          </div>
+        </div>
+        <div className="w-full h-[300px] absolute bottom-[-180px] bg-background-color_950C z-10 blur-[50px]"></div>
+      </section>
+
+      <section className="w-full relative z-10 mt-14">
+        <CompanyMarquee />
+      </section>
+    </div>
   );
 }

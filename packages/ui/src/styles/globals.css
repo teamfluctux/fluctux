@@ -175,10 +175,6 @@ body {
 } */
 
 @layer utilities {
-  .fx-org-layout-width {
-    @apply max-w-[1500px] w-full;
-  }
-
   .fx-layout-max-1200 {
     @apply max-w-[1200px] w-full;
   }
@@ -526,4 +522,21 @@ pre code {
 
 .theme-color-mode-active svg {
   fill: var(--foreground) !important;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+
+.dark .main-header{
+  background: #09090bb3;
+}
+
+.light .main-header{
+  background: #fafafabb;
 }

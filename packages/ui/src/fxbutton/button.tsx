@@ -30,7 +30,12 @@ export const FxButton = ({
   return (
     <button
       disabled={disabled || loading}
-      className={cn(buttonStyling, roundedVariant, className, "test")}
+      className={cn(
+        "transition-colors",
+        buttonStyling,
+        roundedVariant,
+        className
+      )}
       {...props}
     >
       {children}

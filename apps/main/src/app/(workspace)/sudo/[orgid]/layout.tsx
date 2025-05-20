@@ -18,7 +18,12 @@ import {
   X,
 } from "lucide-react";
 import Image from "next/image";
-import { Popover, PopoverContent, PopoverTrigger, useThemeSwitcher } from "@fluctux/ui";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  useThemeSwitcher,
+} from "@fluctux/ui";
 import Link from "next/link";
 import {
   ACCOUNT_MENU_ITEMS,
@@ -29,6 +34,7 @@ import {
 import dynamic from "next/dynamic";
 import Skeleton from "react-loading-skeleton";
 import { workspaceContext } from "@/context/workspace-context";
+import { CommandMenuSkeleton, SidebarSkeletonLoading } from "@/components/workspace/sidebar";
 
 interface WorkspaceLayoutProps {
   children: React.ReactNode;
@@ -75,38 +81,7 @@ const DynamicSidebarBottom = dynamic(
     import("@/components/workspace/sidebar").then((mod) => mod.SidebarBottom),
   {
     ssr: false,
-    loading: () => (
-      <div className="h-[calc(100%-107px)] w-full overflow-y-auto custom-scrollbar p-2">
-        {Array.from({ length: 3 }).map((_, i) => {
-          return (
-            <div key={i} className="mb-2">
-              <Skeleton
-                height={25}
-                borderRadius={"5px"}
-                style={{ marginBottom: "2px" }}
-              />
-              <Skeleton
-                width={200}
-                height={25}
-                borderRadius={"5px"}
-                style={{ marginBottom: "2px" }}
-              />
-              <Skeleton
-                height={25}
-                borderRadius={"5px"}
-                style={{ marginBottom: "2px" }}
-              />
-              <Skeleton
-                width={180}
-                height={25}
-                borderRadius={"5px"}
-                style={{ marginBottom: "2px" }}
-              />
-            </div>
-          );
-        })}
-      </div>
-    ),
+    loading: () => <SidebarSkeletonLoading />,
   }
 );
 
@@ -115,15 +90,7 @@ const DynamicSidebarCommandMenu = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-[200px] p-2 border-border-color_1 overflow-hidden bg-background-color_950C border rounded h-[400px]">
-        {Array.from({ length: 5 }).map((_, i) => {
-          return (
-            <div key={i} className="mb-1">
-              <Skeleton height={25} borderRadius={"5px"} />
-            </div>
-          );
-        })}
-      </div>
+      <CommandMenuSkeleton/>
     ),
   }
 );
@@ -232,6 +199,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
                       </PopoverTrigger>
                       <PopoverContent align="start">
                         {isCommandOpen && <DynamicSidebarCommandMenu />}
+                       
                       </PopoverContent>
                     </Popover>
 

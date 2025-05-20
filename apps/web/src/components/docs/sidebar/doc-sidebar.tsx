@@ -110,6 +110,9 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
         navItem.path.replace("src/content/docs/", "").replace(".mdx", "")
       )
     );
+
+    if (!setPagination) return;
+
     if (currentIndex !== -1) {
       dispatch(setPagination({ currentIndex, flatDocList }));
     } else {
@@ -172,8 +175,8 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
               <FxFavIcon size="sm" variant="default" />
             </div>
             <div className="text-left">
-              <p className="font-medium">Fluctux</p>
-              <p className="text-text-color_2 text-[13px] font-medium">
+              <p className="font-medium text-workspace_1">Fluctux</p>
+              <p className="text-text-color_2 text-workspace_3 font-medium">
                 v{FLUCTUX_VERSION}
               </p>
             </div>
@@ -186,12 +189,12 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
               button:
                 "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full bg-background-color_900C sticky top-[0px] z-[20] font-medium",
               activeLabel:
-                "hover:bg-[var(--background-color-3)_!important] bg-[var(--background-color-3)]",
+                "hover:bg-[var(--background-color-800C)_!important] bg-[var(--background-color-800C)]",
               label:
                 "w-full fx-secondary-hover-bg p-2 hover:bg-[transparent] group",
               layout: "w-[230px] p-[0px_!important] overflow-hidden",
               labelIconContainer:
-                " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] group-hover:border group-hover:fx-primary-purple-border",
+                " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] group-hover:border group-hover:border-border-primary_indigo transition",
               buttonSvgContainer:
                 " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] ",
             }}
@@ -209,7 +212,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 <TooltipTrigger>
                   <FxButton
                     variant="silent"
-                    className="px-2 py-[2px] text-[15px] fx-flex-cl gap-2"
+                    className="px-2 py-[2px] text-workspace_1 fx-flex-cl gap-2"
                     radius="tiny"
                     onClick={() => goToReading()}
                   >
@@ -230,7 +233,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 <div key={i}>
                   {navItem.type === "dir" ? (
                     <button
-                      className={`font-medium text-[15px] relative z-[2] hover:bg-background-color_900C transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${isOpenFromArray(`${i}`) && "text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important] "}`}
+                      className={`font-medium text-workspace_1 relative z-[2] hover:bg-background-color_900C transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${isOpenFromArray(`${i}`) && "text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important] "}`}
                       onClick={() => handleOpenArray(`${i}`)}
                     >
                       <span>
@@ -252,7 +255,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                       }}
                     >
                       <button
-                        className={` text-[15px] hover:bg-background-color_900C transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "bg-background-color_900C font-medium text-[var(--primary-color)_!important]"}`}
+                        className={` text-workspace_1 hover:bg-background-color_900C transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] font-medium text-text-color_2 ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "bg-background-color_900C  text-[var(--primary-color)_!important]"}`}
                       >
                         <span>
                           {navItem.name
@@ -283,7 +286,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                                 lessons.current[slug] = el;
                               }}
                               href={slug}
-                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50  hover:text-fx_zinc-950 relative hover:bg-background-color_900C transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-text-indigo-color_1 bg-background-color_900C font-medium hover:text-[var(--primary-color)_!important]"}`}
+                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50 text-workspace_1 font-medium  hover:text-fx_zinc-950 relative hover:bg-background-color_900C transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-text-indigo-color_1 bg-background-color_900C font-medium hover:text-[var(--primary-color)_!important]"}`}
                               onClick={(e) => {
                                 path_name === slug && e.preventDefault();
                                 localStorage.setItem(lessonKey, slug);

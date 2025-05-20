@@ -2,11 +2,14 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "../../packages/**/*.{js,ts,jsx,tsx,mdx}",
     "!../../packages/**/node_modules/**",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -115,6 +118,11 @@ module.exports = {
         read_25: "25px",
         read_20: "20px",
         read_16: "16px",
+      },
+      fontFamily: {
+        geist_sans: ["var(--font-geist-sans)"],
+        geist_mono: ["var(--font-geist-mono)"],
+        jetbrains_mono: ["var(--font-jetbrains-mono)"],
       },
       borderRadius: {
         DEFAULT: "8px",

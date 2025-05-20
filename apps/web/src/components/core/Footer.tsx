@@ -13,7 +13,7 @@ import {
   GithubCircleIcon,
   XLogoIcon,
   FxFavIcon,
-  useThemeSwitcher
+  useThemeSwitcher,
 } from "@fluctux/ui";
 
 export const Footer = () => {

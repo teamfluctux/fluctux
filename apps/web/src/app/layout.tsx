@@ -3,11 +3,18 @@ import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import "@fluctux/ui/globals";
 import "./styles/docs.style.css";
 import "./styles/alert.style.css";
+import "./styles/landing-page.style.css";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 import GlobalClientProvider from "@/components/providers/global-client-providers";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { ThemeProvider } from "next-themes";
+import { Footer, Header } from "@/components/core";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,7 +52,9 @@ export default function RootLayout({
                 baseColor="var(--skeleton-base-color)"
                 highlightColor="var(--skeleton-highlightColor)"
               >
+                <Header />
                 {children}
+                <Footer />
               </SkeletonTheme>
             </GlobalClientProvider>
           </Suspense>

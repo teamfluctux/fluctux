@@ -4,7 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-export default function AuthWrapper({ children }: { children: React.ReactNode }) {
+export default function AuthWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const path_name = usePathname();
   const current_path = path_name.split("/")[1];
   const { ThemeSwitcher } = useThemeSwitcher();
@@ -13,7 +17,10 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
     <section className="flex justify-center items-center w-full h-screen overflow-y-auto hide-scrollbar">
       <div className="max-w-[420px] my-auto w-full p-3 pt-16 pb-24">
         <div className="w-fit fixed top-2 right-2">
-          <ThemeSwitcher className="hover:bg-background-color_800C" activeIndicatorClassname="bg-background-color_750C" />
+          <ThemeSwitcher
+            className="hover:bg-background-color_800C"
+            activeIndicatorClassname="bg-background-color_750C"
+          />
         </div>
 
         <div className=" w-fit rounded-[8px] p-2 mb-2 bg-gradient-to-tr dark:from-[var(--background)] from-[#b7b7b7] dark:to-[#232323] to-[#ffffff] relative login-fx-logo-box">
