@@ -75,3 +75,47 @@
     box-shadow: -13px 11px var(--color-indigo-400);
   }
 }
+
+
+.company_logo_marquee_wrapper::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(to right, var(--background), transparent);
+  z-index: 11;
+}
+
+.company_logo_marquee_wrapper::after{
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(to left, var(--background), transparent);
+  z-index: 11;
+}
+
+.company_logo_marquee_wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.company_logo_marquee {
+  display: flex;
+  gap: 2.5rem; /* gap-10 */
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

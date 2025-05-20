@@ -1,5 +1,7 @@
+import { CompanyMarquee } from "@/components/landing_page/company-marquee";
 import { HeroMainContent } from "@/components/landing_page/hero-main-content";
 import { HeroTabs } from "@/components/landing_page/hero-tabs";
+
 import React from "react";
 
 export default function HomePage() {
@@ -41,12 +43,7 @@ export default function HomePage() {
       </section>
 
       <section className="w-full relative z-10 mt-14">
-        <div className="fx-layout-max-1200 mx-auto py-5">
-          <div className="max-w-[450px] w-full">
-          <h2 className="text-read_20 font-medium">Powering the Next Generation of Teamwork</h2>
-          <p className="text-read_16 font-medium text-text-color_2 leading-5 mt-1">From startups to enterprises, teams rely on us to stay aligned and move faster.</p>
-          </div>
-        </div>
+        <CompanyMarquee />
       </section>
     </div>
   );
