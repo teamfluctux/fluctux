@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   TabsRndType,
   TabsStateType,
-  UseTaskBarPropsType,
   TaskbarCategoriesType,
 } from "@fluctux/types";
 import { useWorkspaceContext } from "@/context/workspace-context";
@@ -15,77 +14,83 @@ export const useTaskBar = () => {
   const [tabs, setTabs] = useState<TabsStateType>({});
   const { parentRef, sidebarSize } = useWorkspaceContext();
 
-  const updateTabInCategory = (
-    categorySlug: TaskbarCategoriesType,
-    tabId: number,
-    newValues: Partial<TabsRndType>
-  ) => {
-    setTabs((prevCategories) => {
-      if (!prevCategories[categorySlug]) return prevCategories;
+  const updateTabInCategory = useCallback(
+    (
+      categorySlug: TaskbarCategoriesType,
+      tabId: number,
+      newValues: Partial<TabsRndType>
+    ) => {
+      setTabs((prevCategories) => {
+        if (!prevCategories[categorySlug]) return prevCategories;
 
-      return {
-        ...prevCategories,
-        [categorySlug]: {
-          ...prevCategories[categorySlug],
-          tabs: prevCategories[categorySlug].tabs.map((tab) =>
-            tab.id === tabId
-              ? { ...tab, ...newValues, isActive: true }
-              : { ...tab, isActive: false }
-          ),
-        },
-      };
-    });
-  };
+        return {
+          ...prevCategories,
+          [categorySlug]: {
+            ...prevCategories[categorySlug],
+            tabs: prevCategories[categorySlug].tabs.map((tab) =>
+              tab.id === tabId
+                ? { ...tab, ...newValues, isActive: true }
+                : { ...tab, isActive: false }
+            ),
+          },
+        };
+      });
+    },
+    []
+  );
 
-  const handleCloseTab = (categorySlug: string, tabId: number) => {
-    setTabs((prevCategories) => {
-      if (!prevCategories[categorySlug]) return prevCategories;
+  const handleCloseTab = useCallback(
+    (categorySlug: string, tabId: number) => {
+      setTabs((prevCategories) => {
+        if (!prevCategories[categorySlug]) return prevCategories;
 
-      return {
-        ...prevCategories,
-        [categorySlug]: {
-          ...prevCategories[categorySlug],
-          tabs: prevCategories[categorySlug].tabs.filter(
-            (tab) => tab.id !== tabId
-          ),
-        },
-      };
-    });
-  };
+        return {
+          ...prevCategories,
+          [categorySlug]: {
+            ...prevCategories[categorySlug],
+            tabs: prevCategories[categorySlug].tabs.filter(
+              (tab) => tab.id !== tabId
+            ),
+          },
+        };
+      });
+    },
+    []
+  );
 
-  const handleMaxMinTabSize = (
-    tabId: number,
-    categorySlug: TaskbarCategoriesType
-  ) => {
-    if (!parentRef.current) return;
+  const handleMaxMinTabSize = useCallback(
+    (tabId: number, categorySlug: TaskbarCategoriesType) => {
+      if (!parentRef.current) return;
 
-    const { offsetWidth, offsetHeight } = parentRef.current;
+      const { offsetWidth, offsetHeight } = parentRef.current;
 
-    const category = tabs[categorySlug];
+      const category = tabs[categorySlug];
 
-    if (!category) return;
+      if (!category) return;
 
-    const getCurrentTab = category.tabs.find((tab) => tab.id === tabId);
+      const getCurrentTab = category.tabs.find((tab) => tab.id === tabId);
 
-    if (!getCurrentTab) return;
+      if (!getCurrentTab) return;
 
-    updateTabInCategory(categorySlug, tabId, {
-      size:
-        getCurrentTab.size?.width !== offsetWidth ||
-        getCurrentTab.size?.height !== offsetHeight
-          ? { width: offsetWidth, height: offsetHeight }
-          : { width: 700, height: 500 },
-      position:
-        getCurrentTab.size?.width !== offsetWidth ||
-        getCurrentTab.size?.height !== offsetHeight
-          ? { x: 0, y: 0 }
-          : { x: 50, y: 50 },
-      isMaximized:
-        getCurrentTab.size?.width !== offsetWidth ||
-        getCurrentTab.size?.height !== offsetHeight,
-      isActive: true,
-    });
-  };
+      updateTabInCategory(categorySlug, tabId, {
+        size:
+          getCurrentTab.size?.width !== offsetWidth ||
+          getCurrentTab.size?.height !== offsetHeight
+            ? { width: offsetWidth, height: offsetHeight }
+            : { width: 700, height: 500 },
+        position:
+          getCurrentTab.size?.width !== offsetWidth ||
+          getCurrentTab.size?.height !== offsetHeight
+            ? { x: 0, y: 0 }
+            : { x: 50, y: 50 },
+        isMaximized:
+          getCurrentTab.size?.width !== offsetWidth ||
+          getCurrentTab.size?.height !== offsetHeight,
+        isActive: true,
+      });
+    },
+    [tabs, parentRef, updateTabInCategory]
+  );
 
   useEffect(() => {
     if (!parentRef.current) return;
@@ -146,30 +151,30 @@ export const useTaskBar = () => {
   //     setTabs((prevTabs) => [...prevTabs, newTabs])
   // }
 
-  const handleAddNewTab = (
-    categorySlug: TaskbarCategoriesType,
-    newTab: TabsRndType
-  ) => {
-    setTabs((prevCategories) => {
-      const existingCategory = prevCategories[categorySlug] || {
-        tabs: [],
-      };
+  const handleAddNewTab = useCallback(
+    (categorySlug: TaskbarCategoriesType, newTab: TabsRndType) => {
+      setTabs((prevCategories) => {
+        const existingCategory = prevCategories[categorySlug] || {
+          tabs: [],
+        };
 
-      // Check if a tab with the same ID already exists
-      const isTabExists = existingCategory.tabs.some(
-        (tab) => tab.id === newTab.id
-      );
-      updateTabInCategory(categorySlug, newTab.id!, { isActive: false });
-      if (isTabExists) return prevCategories; // If found, return unchanged state
-      return {
-        ...prevCategories,
-        [categorySlug]: {
-          ...existingCategory,
-          tabs: [...existingCategory.tabs, newTab],
-        },
-      };
-    });
-  };
+        // Check if a tab with the same ID already exists
+        const isTabExists = existingCategory.tabs.some(
+          (tab) => tab.id === newTab.id
+        );
+        updateTabInCategory(categorySlug, newTab.id!, { isActive: false });
+        if (isTabExists) return prevCategories; // If found, return unchanged state
+        return {
+          ...prevCategories,
+          [categorySlug]: {
+            ...existingCategory,
+            tabs: [...existingCategory.tabs, newTab],
+          },
+        };
+      });
+    },
+    [updateTabInCategory]
+  );
 
   return {
     showTaskBar,
