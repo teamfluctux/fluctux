@@ -31,7 +31,7 @@ export const HeaderAuthBlock = () => {
               />
             </FxButton>
           </PopoverTrigger>
-          <PopoverContent className="w-[103px] rounded h-[38px]" align="end">
+          <PopoverContent className="w-[103px] rounded h-[38px] bg-background-color_925C border border-border-color_1 p-1" align="end">
             <Link href={"#"}>
               <li className="text-workspace_1 font-medium text-text-color_1 cursor-pointer px-2 h-full flex justify-start items-center  rounded-tiny list-none hover:bg-background-color_800C transition-colors">
                 Login

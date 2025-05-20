@@ -534,11 +534,9 @@ pre code {
 
 
 .dark .main-header{
-  isolation: isolate;
   background: #09090bb3;
 }
 
 .light .main-header{
-  isolation: isolate;
   background: #fafafabb;
 }

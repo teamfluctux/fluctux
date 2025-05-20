@@ -39,19 +39,19 @@ const BLACK_COMPANY_LOGOS = [
 
 export const CompanyMarquee = () => {
   return (
-    <div className="fx-layout-max-1200 mx-auto py-5 flex justify-between items-center">
-      <div className="max-w-[450px] w-full flex-shrink-0">
-        <h2 className="text-read_20 font-medium">
+    <div className="fx-layout-max-1200 mx-auto py-5">
+      <div className="w-full flex-shrink-0 mx-auto">
+        <h2 className="text-read_20 font-medium text-center">
           Powering the Next Generation of Teamwork
         </h2>
-        <p className="text-read_16 font-medium text-text-color_2 leading-5 mt-1">
+        <p className="text-read_16 text-text-color_2 text-center leading-5 mt-1">
           From startups to enterprises, teams rely on us to stay aligned and
           move faster.
         </p>
       </div>
 
-      <div className="company_logo_marquee_wrapper w-full relative">
-        <div className=" flex justify-start items-center gap-10 company_logo_marquee">
+      <div className="company_logo_marquee_wrapper max-w-[800px] mx-auto w-full relative mt-12">
+        <div className="flex justify-start items-center gap-10 company_logo_marquee select-none">
           {WHITE_COMPANY_LOGOS.map((src, i) => (
             <Image
               key={i}

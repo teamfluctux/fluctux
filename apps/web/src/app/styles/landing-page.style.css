@@ -106,7 +106,6 @@
 
 .company_logo_marquee {
   display: flex;
-  gap: 2.5rem; /* gap-10 */
   animation: marquee 30s linear infinite;
   width: max-content;
 }

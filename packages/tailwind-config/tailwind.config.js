@@ -119,6 +119,11 @@ module.exports = {
         read_20: "20px",
         read_16: "16px",
       },
+      fontFamily: {
+        geist_sans: ["var(--font-geist-sans)"],
+        geist_mono: ["var(--font-geist-mono)"],
+        jetbrains_mono: ["var(--font-jetbrains-mono)"],
+      },
       borderRadius: {
         DEFAULT: "8px",
         tiny: "5px",

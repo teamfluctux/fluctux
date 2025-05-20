@@ -67,7 +67,7 @@ export const HeroTabs = () => {
                 key={i}
                 ref={(el) => void (tabRefs.current[i] = el)}
                 onClick={() => swiperRef.current?.slideTo(i)}
-                className={`transition-colors group fx-flex-center gap-1  rounded h-full px-3 text-workspace_2 font-medium  ${slideIndex === i ? "text-text-color_default_white bg-transparent drop-shadow-md" : "text-text-color_2 hover:text-text-color_1"}`} 
+                className={`transition-colors group select-none fx-flex-center gap-1  rounded h-full px-3 text-workspace_2 font-medium  ${slideIndex === i ? "text-text-color_default_white bg-transparent drop-shadow-md" : "text-text-color_2 hover:text-text-color_1"}`} 
               > 
                 <div className="text-text-color_1">
                   <Icon
