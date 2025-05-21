@@ -540,6 +540,7 @@ export const RndWindows = () => {
                 {/* 
                 DATA STRUCTURE FOR TASKBAR ITEMS
                 KEEP ONE TOOLTIP PROVIDER AND MAP OVER THE ITEMS
+                
                 [key: string] {
                   label: string;
                   slug: string;
