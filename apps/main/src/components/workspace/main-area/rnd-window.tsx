@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTaskBar } from "@/hooks/useTaskBar";
 import {
   cn,
@@ -131,6 +131,10 @@ export const RndWindows = () => {
   const isTabActive = Object.values(tabs).some((category) =>
     category.tabs.some((tab) => tab.isActive)
   );
+
+  const isTabActiveInCategory = useCallback((category: TaskbarCategoriesType) => {
+    return tabs[category]?.tabs.some((tab) => tab.isActive);
+   }, [tabs])
 
   return (
     <>
@@ -455,13 +459,13 @@ export const RndWindows = () => {
                 <div
                   className={cn(
                     "hover:bg-background-color_750C h-[30px] cursor-pointer  px-2 rounded-tiny relative fx-flex-center",
-                    isTabActive && "bg-background-color_800C"
+                    isTabActiveInCategory("issues") && "bg-background-color_800C"
                   )}
                 >
                   <div className="flex justify-center items-center gap-1">
                     <CircleDot size={16} className="text-text-svg_default" />
                     <span
-                      className={`${isTabActive ? "text-text-color_1" : "text-text-color_4"} text-workspace_2`}
+                      className={`${isTabActiveInCategory("issues") ? "text-text-color_1" : "text-text-color_4"} text-workspace_2`}
                     >
                       Issues
                     </span>
@@ -469,7 +473,7 @@ export const RndWindows = () => {
                   <div
                     className={cn(
                       "bottom_bar w-[6px] h-[3px] transition-all duration-300 rounded-tablet dark:bg-zinc-400 absolute bottom-0 left-[50%] translate-x-[-50%]",
-                      isTabActive &&
+                      isTabActiveInCategory("issues") &&
                         "dark:bg-background-indigo_primary w-[15px]"
                     )}
                   ></div>
@@ -511,13 +515,13 @@ export const RndWindows = () => {
                 <div
                   className={cn(
                     "hover:bg-background-color_750C h-[30px] cursor-pointer  px-2 rounded-tiny relative fx-flex-center",
-                    isTabActive && "bg-background-color_800C"
+                    isTabActiveInCategory("pages") && "bg-background-color_800C"
                   )}
                 >
                   <div className="flex justify-center items-center gap-1">
                     <FileText size={16} className="text-text-svg_default" />
                     <span
-                      className={`${isTabActive ? "text-text-color_1" : "text-text-color_4"} text-workspace_2`}
+                      className={`${isTabActiveInCategory("pages") ? "text-text-color_1" : "text-text-color_4"} text-workspace_2`}
                     >
                       Pages
                     </span>
@@ -525,7 +529,7 @@ export const RndWindows = () => {
                   <div
                     className={cn(
                       "bottom_bar w-[6px] h-[3px] transition-all duration-300 rounded-tablet dark:bg-zinc-400 absolute bottom-0 left-[50%] translate-x-[-50%]",
-                      isTabActive &&
+                      isTabActiveInCategory("pages") &&
                         "dark:bg-background-indigo_primary w-[15px]"
                     )}
                   ></div>
