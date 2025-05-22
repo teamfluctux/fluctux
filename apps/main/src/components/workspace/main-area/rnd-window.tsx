@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTaskBar } from "@/hooks/useTaskBar";
 import {
   cn,
@@ -131,6 +131,10 @@ export const RndWindows = () => {
   const isTabActive = Object.values(tabs).some((category) =>
     category.tabs.some((tab) => tab.isActive)
   );
+
+  const isTabActiveInCategory = useCallback((category: TaskbarCategoriesType) => {
+    return tabs[category]?.tabs.some((tab) => tab.isActive);
+   }, [tabs])
 
   return (
     <>
@@ -448,23 +452,28 @@ export const RndWindows = () => {
           allowIntelligentAutoHideTaskBar && setShowTaskbar(false)
         }
       >
-        <div className="w-full h-[50px] rounded-tiny backdrop-blur-lg fx-flex-cl p-1 gap-1 ">
+        <div className="w-full h-fit rounded-tiny backdrop-blur-lg fx-flex-cl px-1 gap-1 ">
           <TooltipProvider delayDuration={0.1}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <div
                   className={cn(
-                    "hover:bg-background-color_800C  hover:border-border-color_2 hover:border w-[40px] h-[40px] rounded-tiny relative fx-flex-center",
-                    isTabActive && "bg-background-color_800C"
+                    "hover:bg-background-color_750C h-[30px] cursor-pointer  px-2 rounded-tiny relative fx-flex-center",
+                    isTabActiveInCategory("issues") && "bg-background-color_800C"
                   )}
                 >
-                  <div>
-                    <CircleDot size={LUCIDE_WORKSPACE_ICON_SIZE} />
+                  <div className="flex justify-center items-center gap-1">
+                    <CircleDot size={16} className="text-text-svg_default" />
+                    <span
+                      className={`${isTabActiveInCategory("issues") ? "text-text-color_1" : "text-text-color_4"} text-workspace_2`}
+                    >
+                      Issues
+                    </span>
                   </div>
                   <div
                     className={cn(
                       "bottom_bar w-[6px] h-[3px] transition-all duration-300 rounded-tablet dark:bg-zinc-400 absolute bottom-0 left-[50%] translate-x-[-50%]",
-                      isTabActive &&
+                      isTabActiveInCategory("issues") &&
                         "dark:bg-background-indigo_primary w-[15px]"
                     )}
                   ></div>
@@ -500,12 +509,71 @@ export const RndWindows = () => {
             </Tooltip>
           </TooltipProvider>
 
-          <div className=" w-[40px] h-[40px] rounded-tiny hover:bg-background-color_800C relative fx-flex-center">
-            <div className="fx-flex-center">
-              <FileText size={LUCIDE_WORKSPACE_ICON_SIZE} />
-            </div>
-            {/* <div className="bottom_bar w-[25px] h-[4px] rounded-tablet bg-background-indigo_primary absolute bottom-0 left-[50%] translate-x-[-50%]"></div> */}
-          </div>
+          <TooltipProvider delayDuration={0.1}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div
+                  className={cn(
+                    "hover:bg-background-color_750C h-[30px] cursor-pointer  px-2 rounded-tiny relative fx-flex-center",
+                    isTabActiveInCategory("pages") && "bg-background-color_800C"
+                  )}
+                >
+                  <div className="flex justify-center items-center gap-1">
+                    <FileText size={16} className="text-text-svg_default" />
+                    <span
+                      className={`${isTabActiveInCategory("pages") ? "text-text-color_1" : "text-text-color_4"} text-workspace_2`}
+                    >
+                      Pages
+                    </span>
+                  </div>
+                  <div
+                    className={cn(
+                      "bottom_bar w-[6px] h-[3px] transition-all duration-300 rounded-tablet dark:bg-zinc-400 absolute bottom-0 left-[50%] translate-x-[-50%]",
+                      isTabActiveInCategory("pages") &&
+                        "dark:bg-background-indigo_primary w-[15px]"
+                    )}
+                  ></div>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent
+                align="start"
+                sideOffset={15}
+                className="z-[52] bg-background-color_800C fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]"
+              >
+
+                {/* 
+                DATA STRUCTURE FOR TASKBAR ITEMS
+                KEEP ONE TOOLTIP PROVIDER AND MAP OVER THE ITEMS
+                
+                [key: string] {
+                  label: string;
+                  slug: string;
+                }[] 
+                 
+                */}
+                {taskbarItems.map((item, i) => (
+                  <div
+                    key={i}
+                    onClick={() => {
+                      handleAddNewTab("pages", {
+                        id: i,
+                        size: { width: 700, height: 500 },
+                        position: { x: 50 + i * 50, y: 50 + i * 50 },
+                        isActive: true,
+                        slug: item.slug,
+                        label: item.label,
+                      });
+                    }}
+                    className="w-[200px] group overflow-hidden h-[140px] border border-border-color_1 hover:border-border-primary_indigo transition-colors duration-150 rounded-tiny  backdrop-blur-lg bg-background-color_900C"
+                  >
+                    <div className="w-full group-hover:text-text-color_1 py-1 px-2 text-workspace_3 text-text-color_2 border-b border-border-color_1">
+                      {item.label}
+                    </div>
+                  </div>
+                ))}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
           <div className=" hover:bg-background-color_800C w-[40px] h-[40px] rounded-tiny relative fx-flex-center">
             {/* <div className="bottom_bar w-[25px] h-[4px] rounded-tablet bg-background-indigo_primary absolute bottom-0 left-[50%] translate-x-[-50%]"></div> */}
