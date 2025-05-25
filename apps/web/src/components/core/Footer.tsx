@@ -9,12 +9,10 @@ import {
   WORK_MANAGEMENT_ITEMS,
 } from "@/constants/footer";
 import {
-  DiscordIcon,
-  GithubCircleIcon,
-  XLogoIcon,
   FxFavIcon,
   useThemeSwitcher,
 } from "@fluctux/ui";
+import Image from "next/image";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -105,17 +103,21 @@ export const Footer = () => {
                 &copy; {currentYear} Fluctux
               </span>
               <div className="fx-flex-center gap-3">
-                <GithubCircleIcon
-                  width={24}
-                  height={24}
-                  className="cursor-pointer"
-                />
-                <XLogoIcon width={22} height={22} className="cursor-pointer" />
-                <DiscordIcon
-                  width={27}
-                  height={27}
-                  className="cursor-pointer"
-                />
+                
+                <Image
+                src={"/icons/discord.svg"}
+                width={100}
+                height={100}
+                alt="icon"
+                className="w-[27px] h-[27px] select-none"
+              />
+                <Image
+                src={"/icons/github.svg"}
+                width={100}
+                height={100}
+                alt="icon"
+                className="w-[27px] h-[27px] select-none"
+              />
               </div>
               <ThemeSwitcher className="hover:bg-background-color_800C" />
             </div>
