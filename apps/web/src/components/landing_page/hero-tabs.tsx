@@ -111,6 +111,7 @@ export const HeroTabs = () => {
             className="w-full h-full"
             modules={[EffectFade, Autoplay]}
             effect={"fade"}
+            allowTouchMove={false}
           >
             <SwiperSlide className="bg-background-color_925C">
               <Image src={"/images/demo_management.png"} width={1200} height={1200} alt="work-item-dark" className="object-cover object-top w-full h-full" />

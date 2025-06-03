@@ -524,3 +524,20 @@ pre code {
 .light .main-header{
   background: #fafafabb;
 }
+
+/* uses in page titles */
+.fx_page_title {
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.2;
+}
+
+
+/* uses in design */
+.main_hero_heading_sync {
+  font-size: clamp(35px, 5vw, 56px);
+  line-height: 1.1;
+}
+
+.weight_450{
+  font-weight: 450;
+}

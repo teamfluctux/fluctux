@@ -7,11 +7,12 @@ export const HeroMainContent = () => {
   return (
     <>
       <div className="w-full flex flex-col justify-center items-center mt-52">
-        <h1 className="text-[55px] font-semibold flex flex-col justify-center items-center max-w-[900px] w-full leading-[3.6rem]">
-          <span>Made for Teams</span>
-          <span>Designed for Collaboration</span>
+        <h1 className="main_hero_heading_sync text-center font-semibold max-w-[900px] w-full">
+          Made for Teams
+          <br />
+          Designed for Collaboration
         </h1>
-        <p className="text-[18px] font-medium text-text-color_4 text-center max-w-[800px] mt-6 leading-[1.5rem]">
+        <p className="text-[18px] weight_450 text-text-color_4 text-center max-w-[600px] mt-5 leading-[1.5rem]">
           Combining smart project management with social connection to help
           teams move faster, stay in sync, and get more done together
         </p>
