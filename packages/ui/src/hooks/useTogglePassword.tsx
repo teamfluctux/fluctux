@@ -27,7 +27,7 @@ export const useTogglePassword = () => {
     return (
       <FxButton
         className={`fx-flex-center ${classNames?.buttonClassName ? classNames.buttonClassName : "p-1 rounded-tiny right-2 absolute hover:bg-background-color_750C top-1/2 -translate-y-1/2"}  transition-colors group`}
-        variant="silent"
+        variant="ghost_zinc"
         onClick={togglePasswordVisibility}
       >
         {showPassword ? (

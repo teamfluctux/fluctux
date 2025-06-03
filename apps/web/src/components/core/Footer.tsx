@@ -50,7 +50,7 @@ export const Footer = () => {
                   {value.map((item, i) => {
                     return (
                       <Link href={`${item.slug}`} key={i}>
-                        <li className="hover:text-[var(--primary-color)] text-workspace_3  font-medium">
+                        <li className="hover:text-text-color_1 text-workspace_3  font-medium">
                           {item.label}
                         </li>
                       </Link>

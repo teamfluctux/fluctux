@@ -37,7 +37,7 @@
   --color-indigo-50: #eef2ff;
 
   /* primary color */
-  --primary-color: var(--color-indigo-500);
+  --primary-color: var(--color-indigo-600);
 
   /* backgrounds */
   --background: var(--color-zinc-50);
