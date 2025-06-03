@@ -105,7 +105,7 @@ export const WorkspaceSidebar = () => {
                     className={cn(
                       "w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-tiny",
                       isCommandOpen
-                        ? "bg-background-transparent-indigo_2 hover:bg-background-transparent-indigo_1 border border-border-primary_indigo"
+                        ? "border"
                         : ""
                     )}
                   >
@@ -121,7 +121,7 @@ export const WorkspaceSidebar = () => {
             </div>
             <FxButton
               variant="ghost_zinc"
-              className="w-[30px] h-[30px] fx-flex-center rounded-tiny group"
+              className="w-[25px] h-[25px] fx-flex-center rounded-tiny group"
             >
               <Settings
                 className="text-text-svg_default group-hover:text-text-color_1 transition-colors"
@@ -144,7 +144,7 @@ export const WorkspaceSidebar = () => {
             <PopoverTrigger asChild>
               <div
                 className={cn(
-                  "rounded-circle flex-shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C cursor-pointer",
+                  "rounded-circle flex-shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C transition-colors cursor-pointer",
                   isWhatsNewMenuOpen
                     ? "bg-background-color_800C text-text-color_1"
                     : ""
@@ -159,8 +159,8 @@ export const WorkspaceSidebar = () => {
                   <div className="p-1">
                     {FIND_HELP_ITEMS.map((item, index) => (
                       <Link href={item.slug} key={index}>
-                        <li className="fx-flex-cl gap-2  group hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
-                          <div className="text-text-svg_default group-hover:text-text-color_1">
+                        <li className="fx-flex-cl gap-2  group transition-colors hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
+                          <div className="text-text-svg_default group-hover:text-text-color_1 transition-colors">
                             {item.icon}
                           </div>
                           <span>{item.label}</span>
@@ -175,8 +175,8 @@ export const WorkspaceSidebar = () => {
                     </p>
                     {WHATS_NEW_ITEMS.map((item, index) => (
                       <Link href={item.slug} key={index}>
-                        <li className="fx-flex-cl gap-2  group hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
-                          <div className="text-text-svg_default group-hover:text-text-color_1">
+                        <li className="fx-flex-cl gap-2  group transition-colors hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
+                          <div className="text-text-svg_default transition-colors group-hover:text-text-color_1">
                             {item.icon}
                           </div>
                           <span>{item.label}</span>
@@ -192,7 +192,7 @@ export const WorkspaceSidebar = () => {
             <PopoverTrigger asChild>
               <div
                 className={cn(
-                  "fx-flex-cl w-full rounded-tiny hover:bg-background-color_900C gap-2 cursor-pointer p-1",
+                  "fx-flex-cl w-full rounded-tiny hover:bg-background-color_900C gap-2 transition-colors cursor-pointer p-1",
                   isAccountMenuOpen ? "bg-background-color_800C" : ""
                 )}
               >
@@ -219,8 +219,8 @@ export const WorkspaceSidebar = () => {
                   <div className="p-1 ">
                     {ACCOUNT_MENU_ITEMS.map((item, index) => (
                       <Link href={item.slug} key={index}>
-                        <li className="fx-flex-cl gap-2  group hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
-                          <div className="text-text-svg_default group-hover:text-text-color_1">
+                        <li className="fx-flex-cl gap-2  group transition-colors hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
+                          <div className="text-text-svg_default transition-colors group-hover:text-text-color_1">
                             {item.icon}
                           </div>
                           <span>{item.label}</span>
@@ -230,8 +230,8 @@ export const WorkspaceSidebar = () => {
                   </div>
 
                   <div className="p-1 border-t border-border-color_2">
-                    <li className="fx-flex-cl w-full cursor-pointer group gap-2 hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-red-500">
-                      <div className="text-text-svg_default group-hover:text-red-500">
+                    <li className="fx-flex-cl w-full cursor-pointer group gap-2 hover:bg-background-color_750C transition-colors rounded-tiny px-2 text-text-color_4 hover:text-red-500">
+                      <div className="text-text-svg_default group-hover:text-red-500 transition-colors">
                         <LogOut size={LUCIDE_WORKSPACE_ICON_SIZE} />
                       </div>
                       <span>Log out</span>

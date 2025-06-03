@@ -71,7 +71,7 @@ export const SidebarSkeletonLoading = () => {
                 <div className="border-t border-border-color_1 mt-3 pt-3">
                   <div>
                     <Skeleton width={222} height={16} borderRadius={"50px"} />
-                    <div className="border-l border-border-color_1 flex justify-start items-center gap-2 ml-2 pl-3">
+                    <div className=" border-border-color_1 flex justify-start items-center gap-2">
                       <Skeleton
                         className="flex-shrink-0"
                         width={16}
@@ -80,7 +80,7 @@ export const SidebarSkeletonLoading = () => {
                       />
                       <Skeleton width={150} height={16} borderRadius={"50px"} />
                     </div>
-                    <div className="border-l border-border-color_1 flex justify-start items-center gap-2 ml-2 pl-3">
+                    <div className=" border-border-color_1 flex justify-start items-center gap-2">
                       <Skeleton
                         className="flex-shrink-0"
                         width={16}
@@ -89,7 +89,7 @@ export const SidebarSkeletonLoading = () => {
                       />
                       <Skeleton width={100} height={16} borderRadius={"50px"} />
                     </div>
-                    <div className="border-l border-border-color_1 flex justify-start items-center gap-2 ml-2 pl-3">
+                    <div className=" border-border-color_1 flex justify-start items-center gap-2">
                       <Skeleton
                         className="flex-shrink-0"
                         width={16}
@@ -101,7 +101,7 @@ export const SidebarSkeletonLoading = () => {
                   </div>
                   <div className="mt-3">
                     <Skeleton width={222} height={16} borderRadius={"50px"} />
-                    <div className="border-l border-border-color_1 flex justify-start items-center gap-2 ml-2 pl-3">
+                    <div className=" border-border-color_1 flex justify-start items-center gap-2">
                       <Skeleton
                         className="flex-shrink-0"
                         width={16}
@@ -110,7 +110,7 @@ export const SidebarSkeletonLoading = () => {
                       />
                       <Skeleton width={110} height={16} borderRadius={"50px"} />
                     </div>
-                    <div className="border-l border-border-color_1 flex justify-start items-center gap-2 ml-2 pl-3">
+                    <div className=" border-border-color_1 flex justify-start items-center gap-2">
                       <Skeleton
                         className="flex-shrink-0"
                         width={16}
@@ -119,7 +119,7 @@ export const SidebarSkeletonLoading = () => {
                       />
                       <Skeleton width={140} height={16} borderRadius={"50px"} />
                     </div>
-                    <div className="border-l border-border-color_1 flex justify-start items-center gap-2 ml-2 pl-3">
+                    <div className=" border-border-color_1 flex justify-start items-center gap-2">
                       <Skeleton
                         className="flex-shrink-0"
                         width={16}
