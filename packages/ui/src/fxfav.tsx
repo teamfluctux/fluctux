@@ -36,34 +36,30 @@ export function FxFavIcon({ size, variant, customSize }: FxFavIconPropsType) {
       {variant !== iconVariants.default ? (
         variant === iconVariants.dark ? (
           <FxFavSVGIcon
-            width={sizeVariant}
-            height={sizeVariant}
+            size={sizeVariant}
             color="#ffffff"
           />
         ) : variant === iconVariants.light ? (
           <FxFavSVGIcon
-            width={sizeVariant}
-            height={sizeVariant}
+            size={sizeVariant}
             color="#000000"
           />
         ) : (
           <>
             <FxFavSVGIcon
-              width={sizeVariant}
-              height={sizeVariant}
+              size={sizeVariant}
               color="#ffffff"
               className="dark:block hidden"
             />
             <FxFavSVGIcon
-              width={sizeVariant}
-              height={sizeVariant}
+              size={sizeVariant}
               color="#000000"
               className="dark:hidden block"
             />
           </>
         )
       ) : (
-        <FxFavSVGIcon width={sizeVariant} height={sizeVariant} />
+        <FxFavSVGIcon size={sizeVariant} />
       )}
     </>
   );

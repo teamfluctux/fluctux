@@ -1,6 +1,6 @@
 import { SizeType } from "../type";
 
-export type ButtonVariant = "primary" | "secondary" | "silent" | "lightSilent";
+export type ButtonVariant = "primary" | "secondary" | "silent" | "ghost_zinc";
 
 export interface ButtonStylingType {
   [key: string]: {
@@ -22,25 +22,20 @@ export const buttonStyling: ButtonStylingType = {
     default: "bg-background-indigo_primary cursor-pointer border-none",
     hover: "hover:bg-background-hover-indigo_primary",
     disabled:
-      "text-text-color_3 cursor-not-allowed !bg-[var(--button-primary-disabled)] border border-border-color_1",
+      "!text-text-color_2 cursor-not-allowed !bg-fx_indigo-800 border border-border-color_1",
   },
   secondary: {
     default:
       "border border-border-color_1 bg-background-color_900C  cursor-pointer ",
     hover: "hover:bg-background-color_800C",
     disabled:
-      "text-text-color_3 cursor-not-allowed bg-background-color_900C border border-border-color_1",
+      "!text-text-color_3 cursor-not-allowed !bg-background-color_900C border !border-background-color_900C",
   },
-  silent: {
+  ghost_zinc: {
     default: "cursor-pointer",
-    hover: "hover:bg-background-color_900C",
-    disabled: "text-text-color_3 cursor-not-allowed opacity-60",
-  },
-  lightSilent: {
-    default: "cursor-pointer",
-    hover: "hover:bg-background-color_750C",
-    disabled: "text-text-color_3 cursor-not-allowed opacity-60",
-  },
+    hover: "hover:bg-background-color_900C hover:!text-text-color_1",
+    disabled: "!text-text-color_3 cursor-not-allowed !bg-transparent",
+  }
 };
 
 export const getButtonStyling = (

@@ -78,3 +78,16 @@ export const WORK_MANAGEMENT_ITEMS: FooterListType[] = [
     slug: "",
   },
 ];
+
+interface FooterMenusType {
+  [key: string]: FooterListType[]
+
+}
+
+
+export const FOOTER_MENUS: FooterMenusType ={
+  "Work Management": WORK_MANAGEMENT_ITEMS,
+  "Resources": RESOURCES_ITEMS,
+  "Pricing": PLAN_ITEMS,
+  "Legals": LEGAL_ITEMS,
+}

@@ -1,6 +1,5 @@
 export interface SvgType extends React.SVGAttributes<SVGElement> {
-  width?: number;
-  height?: number;
+  size?: number;
   className?: string;
   color?: string;
 }

@@ -2,8 +2,8 @@ import React from "react";
 import { SvgSizeInSQR, SvgType } from "./type";
 
 export const FxFavSVGIcon: React.FC<SvgType> = ({
-  width = SvgSizeInSQR.PRIMARY,
-  height = SvgSizeInSQR.PRIMARY,
+  size = SvgSizeInSQR.PRIMARY,
+
   className,
   color = "#5b66af",
   ...props
@@ -12,8 +12,8 @@ export const FxFavSVGIcon: React.FC<SvgType> = ({
     id="Layer_1"
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"
-    width={width}
-    height={height}
+    width={size}
+    height={size}
     className={className}
     viewBox="0 0 396 458.98"
     {...props}
