@@ -20,7 +20,7 @@ export const buttonSizes: { [key in SizeType]: string } = {
 export const buttonStyling: ButtonStylingType = {
   primary: {
     default: "bg-background-indigo_primary cursor-pointer border-none",
-    hover: "hover:bg-background-hover-indigo_primary",
+    hover: "hover:bg-fx_indigo-700",
     disabled:
       "!text-text-color_2 cursor-not-allowed !bg-fx_indigo-800 border border-border-color_1",
   },
