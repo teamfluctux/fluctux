@@ -2,15 +2,14 @@ import React from "react";
 import { SvgSizeInSQR, SvgType } from "./type";
 
 export const GithubCircleIcon: React.FC<SvgType> = ({
-  width = SvgSizeInSQR.PRIMARY,
-  height = SvgSizeInSQR.PRIMARY,
+  size = SvgSizeInSQR.PRIMARY,
   className,
   color = "var(--svg-default-color)",
   ...props
 }) => (
   <svg
-    width={width}
-    height={height}
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     className={className}

@@ -2,14 +2,13 @@ import React from "react";
 import { SvgSizeInSQR, SvgType } from "./type";
 
 export const GoogleIcon: React.FC<SvgType> = ({
-  width = SvgSizeInSQR.PRIMARY,
-  height = SvgSizeInSQR.PRIMARY,
+  size = SvgSizeInSQR.PRIMARY,
   className,
   ...props
 }) => (
   <svg
-    width={width}
-    height={height}
+    width={size}
+    height={size}
     className={className}
     viewBox="-3 0 262 262"
     xmlns="http://www.w3.org/2000/svg"

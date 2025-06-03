@@ -120,11 +120,11 @@ export const WorkspaceSidebar = () => {
               <h1 className="font-medium text-workspace_1">NI, Org</h1>
             </div>
             <FxButton
-              variant="silent"
-              className="w-[30px] h-[30px] fx-flex-center rounded-tiny"
+              variant="ghost_zinc"
+              className="w-[30px] h-[30px] fx-flex-center rounded-tiny group"
             >
               <Settings
-                color={ICON_DEFAULT_COLOR}
+                className="text-text-svg_default group-hover:text-text-color_1 transition-colors"
                 size={LUCIDE_WORKSPACE_ICON_SIZE}
               />
             </FxButton>

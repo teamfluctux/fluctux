@@ -2,15 +2,15 @@ import React from "react";
 import { SvgSizeInSQR, SvgType } from "./type";
 
 export const DiscordIcon: React.FC<SvgType> = ({
-  width = SvgSizeInSQR.PRIMARY,
-  height = SvgSizeInSQR.PRIMARY,
+  size = SvgSizeInSQR.PRIMARY,
+
   className,
   color = "var(--svg-default-color)",
   ...props
 }) => (
   <svg
-    width={width}
-    height={height}
+    width={size}
+    height={size}
     className={className}
     viewBox="0 0 24 24"
     fill="none"
