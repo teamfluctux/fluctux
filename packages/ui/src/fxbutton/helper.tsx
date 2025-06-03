@@ -1,6 +1,6 @@
 import { SizeType } from "../type";
 
-export type ButtonVariant = "primary" | "secondary" | "silent" | "ghost_zinc";
+export type ButtonVariant = "primary" | "secondary" | "ghost_zinc";
 
 export interface ButtonStylingType {
   [key: string]: {
