@@ -30,7 +30,7 @@ export const HeroMainContent = () => {
           radius="primary"
           variant="secondary"
           className="py-2 px-5 font-medium text-workspace_1 transition-colors"
-          disabled
+          
         >
           Get Custom Guidance
         </FxButton>
