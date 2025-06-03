@@ -121,7 +121,7 @@ export const WorkspaceSidebar = () => {
             </div>
             <FxButton
               variant="silent"
-              className="w-[30px] h-[30px] fx-flex-center rounded-tiny"
+              className="w-[25px] h-[25px] fx-flex-center rounded-tiny"
             >
               <Settings
                 color={ICON_DEFAULT_COLOR}

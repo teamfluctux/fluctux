@@ -81,9 +81,6 @@
   --border-color-1: var(--color-zinc-300);
   --border-color-2: var(--color-zinc-400);
 
-  /* hover */
-  --primary-purple-hover-bg: var(--color-indigo-600);
-
   /* overlay */
   --overlay-bg-dialog: #09090ba6;
 
@@ -97,9 +94,6 @@
   /* svg */
   --svg-default-color: var(--color-zinc-500);
 
-  /* buttons */
-  --button-primary-disabled: #14183a;
-
   /* gradients text */
   --text-color-gradient-b: #000000;
   --text-color-gradient-t: #4a4a4a;
@@ -107,10 +101,6 @@
   /* outline border */
   --outline-offset-color: var(--color-zinc-300);
   --outline-border-color: var(--color-zinc-600);
-
-  /* others */
-  --indigo-transparent-1st: #4e46e53c;
-  --indigo-transparent-2nd: #4e46e521;
 }
 
 .dark {
@@ -125,9 +115,6 @@
   /* border */
   --border-color-1: var(--color-zinc-800);
   --border-color-2: var(--color-zinc-700);
-
-  /* hover */
-  --primary-purple-hover-bg: var(--color-indigo-700);
 
   /* overlay */
   --overlay-bg-dialog: #09090bc3;
@@ -155,9 +142,6 @@
   /* outline border */
   --outline-offset-color: var(--color-zinc-600);
   --outline-border-color: var(--color-zinc-300);
-
-  /* others */
-  --indigo-transparent-1st: #4e46e53b;
 }
 
 html {
