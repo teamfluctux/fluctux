@@ -94,7 +94,7 @@ export default function CreateOrgPage() {
   const [orgVisibilityType, setOrgVisibilityType] = useState<OrgVisibilityType>(
     ORG_VISIBILITY_OPTIONS[0]?.value as OrgVisibilityType
   );
-  const [orgPrivacyOptionDesc, setOrgPrivacyOptionDesc] = useState("");
+  const [orgPrivacyOptionDesc, setOrgPrivacyOptionDesc] = useState(ORG_PRIVACY_OPTIONS[0]?.desc || "");
   const [customVisbilityCategoryType, setCustomVisbilityCategoryType] =
     useState<CustomVisibilityCategoryType>(
       SELECT_CATEGORY_FOR_CUSTOM_VISIBILITY[0]
@@ -280,6 +280,10 @@ export default function CreateOrgPage() {
                 </label>
               );
             })}
+          </div>
+          <div>
+          <p className="text-workspace_3 text-text-color_3 px-4 pt-2">{orgPrivacyOptionDesc}</p>
+
           </div>
         </div>
         <FxSeparator gap="md" orientation="horizontal" />
