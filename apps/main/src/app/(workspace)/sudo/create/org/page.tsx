@@ -11,6 +11,7 @@ import {
   FxSeparator,
   LUCIDE_WORKSPACE_ICON_SIZE,
 } from "@fluctux/ui";
+import { MailPlus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -196,6 +197,7 @@ export default function CreateOrgPage() {
                     <FxInput
                       variant="outline"
                       name="search_uandorg"
+                      size="sm"
                       className="w-full !py-0.5 placeholder:text-text-color_3 !bg-background-color_900C"
                       placeholder="Search users and organizations"
                     />
@@ -232,11 +234,12 @@ export default function CreateOrgPage() {
                   <FxInput
                     variant="outline"
                     name="search_uandorg"
-                  
-                    className="w-full placeholder:text-text-color_3 !bg-background-color_900C"
-                    placeholder="Search users and organizations"
+                  size="md"
+                    className="w-full placeholder:text-text-color_3 !py-1 !bg-background-color_900C"
+                    placeholder="jhondoe@gmail.com"
                   />
-                  <FxButton className="px-3 py-1 rounded-tiny">
+                  <FxButton className="px-3 py-1 rounded-tiny flex justify-center items-center gap-1">
+                    <MailPlus size={16} className="text-fx_zinc-50" />
                     <span className="text-workspace_2 font-medium text-fx_zinc-50 ">
                       Add
                     </span>
