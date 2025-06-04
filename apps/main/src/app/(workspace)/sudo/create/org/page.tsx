@@ -12,7 +12,6 @@ import {
   LUCIDE_WORKSPACE_ICON_SIZE,
 } from "@fluctux/ui";
 import Image from "next/image";
-
 import React, { useState } from "react";
 
 const RadioButton = ({
@@ -44,7 +43,9 @@ const CheckboxButton = ({
   img: string;
 }) => {
   return (
-    <div className={`flex justify-start items-center text-workspace_2 gap-1.5 font-medium peer-checked:!text-[var(--surface-indigo-fg)] ${className}`}>
+    <div
+      className={`flex justify-start items-center text-workspace_2 gap-1.5 font-medium text-text-color_2 ${className}`}
+    >
       {img && (
         <div className="w-[25px] h-[25px] rounded-full overflow-hidden border border-border-color_1 ">
           <Image
@@ -57,10 +58,35 @@ const CheckboxButton = ({
         </div>
       )}
 
-      <span >{label}</span>
+      <span>{label}</span>
     </div>
   );
 };
+
+type CustomVisibilityCategoryType =
+  | "FRIENDS"
+  | "ORGANIZATIONS"
+  | "ADD_BY_EMAIL";
+
+interface SelectCategoryForCustomVisibility {
+  label: string;
+  value: CustomVisibilityCategoryType;
+}
+const SELECT_CATEGORY_FOR_CUSTOM_VISIBILITY: SelectCategoryForCustomVisibility[] =
+  [
+    {
+      label: "Friends",
+      value: "FRIENDS",
+    },
+    {
+      label: "Organizations",
+      value: "ORGANIZATIONS",
+    },
+    {
+      label: "Add by Email",
+      value: "ADD_BY_EMAIL",
+    },
+  ];
 
 export default function CreateOrgPage() {
   const [orgVisibilityOptionDesc, setOrgVisibilityOptionDesc] = useState("");
@@ -68,16 +94,28 @@ export default function CreateOrgPage() {
     ORG_VISIBILITY_OPTIONS[0]?.value as OrgVisibilityType
   );
   const [orgPrivacyOptionDesc, setOrgPrivacyOptionDesc] = useState("");
+  const [customVisbilityCategoryType, setCustomVisbilityCategoryType] =
+    useState<CustomVisibilityCategoryType>(
+      SELECT_CATEGORY_FOR_CUSTOM_VISIBILITY[0]
+        ?.value as CustomVisibilityCategoryType
+    );
+
   const handleGetVisibilityOption = (desc: string, type: OrgVisibilityType) => {
     setOrgVisibilityOptionDesc(desc);
     setOrgVisibilityType(type);
+    setCustomVisbilityCategoryType("FRIENDS");
   };
   const handleGetPrivacyOptionDesc = (desc: string) => {
     setOrgPrivacyOptionDesc(desc);
   };
+  const handleCustomVisibilityCategoryType = (
+    type: CustomVisibilityCategoryType
+  ) => {
+    setCustomVisbilityCategoryType(type);
+  };
   return (
-    <div className="w-full h-screen overflow-y-auto flex justify-center items-center">
-      <div className="max-w-[350px] h-[500px] ">
+    <div className="w-full h-screen overflow-y-auto flex justify-center items-center ">
+      <div className="max-w-[350px] h-[500px]">
         <h1 className="text-read_25 font-medium text-center ">
           Create a new organization
         </h1>
@@ -87,13 +125,21 @@ export default function CreateOrgPage() {
           efficiently.
         </p>
         <div className="mt-10">
-          <FxInput variant="outlineLabel" label="Organization Name" />
+          <FxInput
+            variant="outlineLabel"
+            label="Organization Name"
+            placeholder="e.g. Jhon's Org"
+          />
           <div className="mt-5">
-            <FxInput variant="outlineLabel" label="Organization URL" />
+            <FxInput
+              variant="outlineLabel"
+              label="Organization URL"
+              placeholder="e.g. jhons-org"
+            />
           </div>
         </div>
         <div className="w-full bg-background-color_925C p-2 px-0 rounded mt-5">
-          <div className="flex justify-start items-center gap-2 border-b border-border-color_1 pb-2 px-2">
+          <div className="flex justify-start items-center gap-1 border-b border-border-color_1 pb-2 px-2">
             {ORG_VISIBILITY_OPTIONS.map((option, i) => {
               return (
                 <label key={i}>
@@ -113,25 +159,90 @@ export default function CreateOrgPage() {
               );
             })}
           </div>
-          <p className="text-workspace_3 text-text-color_3 px-2 pt-1 mt-1">
+          <p className="text-workspace_3 text-text-color_3 px-4 pt-1 mt-1">
             {orgVisibilityOptionDesc || "Visible to everyone on Fluctux"}
           </p>
           {orgVisibilityType === "CUSTOM" && (
             <div className="border-t border-border-color_1 mt-1">
-              <div>
-                <label className="flex justify-start items-center gap-5 px-4 py-1.5">
-                <Checkbox  className="peer" />
-                <CheckboxButton label="Nimul Islam Mahin" img="my-image" />
-                </label>
-                <label className="flex justify-start items-center gap-5 px-4 py-1.5">
-                <Checkbox  className="peer" />
-                <CheckboxButton label="Nimul Islam Mahin" img="my-image" />
-                </label>
-                <label className="flex justify-start items-center gap-5 px-4 py-1.5">
-                <Checkbox  className="peer" />
-                <CheckboxButton label="Nimul Islam Mahin" img="my-image" />
-                </label>
+              <div className="flex justify-start items-center gap-1 px-2 pt-2">
+                {SELECT_CATEGORY_FOR_CUSTOM_VISIBILITY.map((option, i) => {
+                  return (
+                    <label key={i}>
+                      <input
+                        type="radio"
+                        name="custom_visibility_category"
+                        className="hidden peer"
+                        value={option.value}
+                        id={option.value}
+                        defaultChecked={i == 0}
+                        onChange={() =>
+                          handleCustomVisibilityCategoryType(option.value)
+                        }
+                      />
+                      <RadioButton
+                        label={option.label}
+                        className="text-text-color_4"
+                      />
+                    </label>
+                  );
+                })}
               </div>
+              {customVisbilityCategoryType !== "ADD_BY_EMAIL" && (
+                <>
+                  <div className="px-4 mt-2 mb-1">
+                    <p className="text-text-color_3 text-workspace_3 mb-2">
+                      Find & select specific Users and Organizations.
+                    </p>
+                    <FxInput
+                      variant="outline"
+                      name="search_uandorg"
+                      className="w-full !py-0.5 placeholder:text-text-color_3 !bg-background-color_900C"
+                      placeholder="Search users and organizations"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="flex justify-start items-center gap-5 px-4 py-1.5">
+                      <Checkbox />
+                      <CheckboxButton
+                        label="Nimul Islam Mahin"
+                        img="my-image"
+                      />
+                    </label>
+                    <label className="flex justify-start items-center gap-5 px-4 py-1.5">
+                      <Checkbox />
+                      <CheckboxButton
+                        label="Nimul Islam Mahin"
+                        img="my-image"
+                      />
+                    </label>
+                    <label className="flex justify-start items-center gap-5 px-4 py-1.5">
+                      <Checkbox />
+                      <CheckboxButton
+                        label="Nimul Islam Mahin"
+                        img="my-image"
+                      />
+                    </label>
+                  </div>
+                </>
+              )}
+
+              {customVisbilityCategoryType === "ADD_BY_EMAIL" && (
+                <div className="px-4 mt-5 flex justify-center items-center gap-2">
+                  <FxInput
+                    variant="outline"
+                    name="search_uandorg"
+                  
+                    className="w-full placeholder:text-text-color_3 !bg-background-color_900C"
+                    placeholder="Search users and organizations"
+                  />
+                  <FxButton className="px-3 py-1 rounded-tiny">
+                    <span className="text-workspace_2 font-medium text-fx_zinc-50 ">
+                      Add
+                    </span>
+                  </FxButton>
+                </div>
+              )}
             </div>
           )}
         </div>
