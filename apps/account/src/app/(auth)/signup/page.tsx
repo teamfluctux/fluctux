@@ -35,9 +35,9 @@ export default function SignUpPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="fx-flex-between-ic gap-3">
             <div>
-              <p className="text-text-color_2 font-medium">First Name</p>
+              <p className="text-text-color_2 text-workspace_1 font-medium">First Name</p>
               <FxInput
-                className="w-full"
+                className="w-full text-workspace_2 font-medium"
                 variant="primary"
                 size="md"
                 placeholder="Jhon"
@@ -48,9 +48,9 @@ export default function SignUpPage() {
               {errors.fname && <p>{errors.fname.message}</p>}
             </div>
             <div>
-              <p className="text-text-color_2 font-medium">Last Name</p>
+              <p className="text-text-color_2 text-workspace_1 font-medium">Last Name</p>
               <FxInput
-                className="w-full"
+                className="w-full text-workspace_1 font-medium"
                 variant="primary"
                 size="md"
                 placeholder="Doe"
@@ -61,9 +61,9 @@ export default function SignUpPage() {
               {errors.lname && <p>{errors.lname.message}</p>}
             </div>
           </div>
-          <p className="text-text-color_2 mt-3 font-medium">Email</p>
+          <p className="text-text-color_2 mt-3 text-workspace_1 font-medium">Email</p>
           <FxInput
-            className="w-full"
+            className="w-full text-workspace_1 font-medium"
             variant="primary"
             size="md"
             placeholder="youremail@gmail.com"
@@ -80,43 +80,43 @@ export default function SignUpPage() {
             radius="primary"
             type="submit"
           >
-            <p className="font-medium text-white">Continue</p>
+            <p className="font-medium text-white text-workspace_1">Continue</p>
           </FxButton>
         </form>
 
         <FxSeparator orientation="horizontal" gap="xl">
-          <p className="text-text-color_2 bg-[var(--background)] font-medium pl-2 pr-2">
+          <p className="text-text-color_2 bg-[var(--background)] font-medium pl-2 pr-2 text-workspace_1">
             Or
           </p>
         </FxSeparator>
 
         <>
           <FxButton
-            className="w-full  flex justify-center items-center gap-2"
+            className="w-full  flex justify-center items-center gap-2 group"
             variant="secondary"
             size="md"
             radius="primary"
           >
-            <p className="font-medium fx-label-color">Google</p>
+            <p className="text-workspace_1 font-medium text-text-color_2 group-hover:text-text-color_1">Google</p>
             <GoogleIcon />
           </FxButton>
           <div className="flex justify-center items-center gap-3 mt-3">
             <FxButton
-              className="w-full flex justify-center items-center gap-2"
+              className="w-full flex justify-center items-center gap-2 group"
               variant="secondary"
               size="md"
               radius="primary"
             >
-              <p className="font-medium fx-label-color">Github</p>
+              <p className="text-workspace_1 font-medium text-text-color_2 group-hover:text-text-color_1">Github</p>
               <GithubIcon />
             </FxButton>
             <FxButton
-              className="w-full flex justify-center items-center gap-2"
+              className="w-full flex justify-center items-center gap-2 group"
               variant="secondary"
               size="md"
               radius="primary"
             >
-              <p className="font-medium fx-label-color">Discord</p>
+              <p className="text-workspace_1 font-medium text-text-color_2 group-hover:text-text-color_1">Discord</p>
               <DiscordIcon
                 width={25}
                 height={25}

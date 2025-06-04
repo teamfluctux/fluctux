@@ -14,6 +14,7 @@ import {
 import { MailPlus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 const RadioButton = ({
   label,
@@ -94,7 +95,9 @@ export default function CreateOrgPage() {
   const [orgVisibilityType, setOrgVisibilityType] = useState<OrgVisibilityType>(
     ORG_VISIBILITY_OPTIONS[0]?.value as OrgVisibilityType
   );
-  const [orgPrivacyOptionDesc, setOrgPrivacyOptionDesc] = useState(ORG_PRIVACY_OPTIONS[0]?.desc || "");
+  const [orgPrivacyOptionDesc, setOrgPrivacyOptionDesc] = useState(
+    ORG_PRIVACY_OPTIONS[0]?.desc || ""
+  );
   const [customVisbilityCategoryType, setCustomVisbilityCategoryType] =
     useState<CustomVisibilityCategoryType>(
       SELECT_CATEGORY_FOR_CUSTOM_VISIBILITY[0]
@@ -114,6 +117,13 @@ export default function CreateOrgPage() {
   ) => {
     setCustomVisbilityCategoryType(type);
   };
+
+  const handleCreateOrg = async () => {
+    const response = await fetch("/api/user");
+    const data = await response.json();
+    toast.success(data.message);
+  };
+
   return (
     <div className="w-full h-screen overflow-y-auto flex justify-center items-start ">
       <div className="max-w-[350px] h-fit w-full my-auto py-24">
@@ -139,10 +149,10 @@ export default function CreateOrgPage() {
             />
           </div>
         </div>
-          <FxSeparator gap="md" orientation="horizontal" />
-          <p className="text-workspace_2 font-medium text-text-color_4">
-            Visibility
-          </p>
+        <FxSeparator gap="md" orientation="horizontal" />
+        <p className="text-workspace_2 font-medium text-text-color_4">
+          Visibility
+        </p>
         <div className="w-full bg-background-color_925C p-2 px-0 rounded mt-1">
           <div className="flex justify-start items-center gap-1 border-b border-border-color_1 pb-2 px-2">
             {ORG_VISIBILITY_OPTIONS.map((option, i) => {
@@ -238,7 +248,7 @@ export default function CreateOrgPage() {
                   <FxInput
                     variant="outline"
                     name="search_uandorg"
-                  size="md"
+                    size="md"
                     className="w-full placeholder:text-text-color_3 !py-1 !bg-background-color_900C"
                     placeholder="jhondoe@gmail.com"
                   />
@@ -282,14 +292,16 @@ export default function CreateOrgPage() {
             })}
           </div>
           <div>
-          <p className="text-workspace_3 text-text-color_3 px-4 pt-2">{orgPrivacyOptionDesc}</p>
-
+            <p className="text-workspace_3 text-text-color_3 px-4 pt-2">
+              {orgPrivacyOptionDesc}
+            </p>
           </div>
         </div>
         <FxSeparator gap="md" orientation="horizontal" />
 
         <div className="mt-5">
           <FxButton
+          onClick={handleCreateOrg}
             variant="primary"
             className="font-medium text-workspace_2 w-full py-2 rounded-tiny"
           >

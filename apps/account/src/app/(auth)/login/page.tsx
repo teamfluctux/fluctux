@@ -20,17 +20,17 @@ export default function LoginPage() {
           Login to Fluctux
         </h1>
         <>
-          <p className="text-text-color_2 font-medium">Email</p>
+          <p className="text-text-color_2 font-medium text-workspace_1">Email</p>
           <FxInput
-            className="w-full"
+            className="w-full text-workspace_1 font-medium"
             variant="primary"
             size="md"
             placeholder="youremail@gmail.com"
             radius="primary"
           />
-          <p className="text-text-color_2 mt-3 font-medium">Password</p>
+          <p className="text-text-color_2 mt-3 font-medium text-workspace_1">Password</p>
           <FxInput
-            className="w-full"
+            className="w-full text-workspace_1 font-medium"
             type="password"
             variant="primary"
             size="md"
@@ -40,7 +40,7 @@ export default function LoginPage() {
           <div className="mt-1">
             <Link
               href={""}
-              className="fx-link-color hover:underline text-[14px]"
+              className="fx-link-color hover:underline text-workspace_2"
             >
               Forget Password?
             </Link>
@@ -52,43 +52,43 @@ export default function LoginPage() {
             size="md"
             radius="primary"
           >
-            <p className="font-medium text-white">Continue</p>
+            <p className="font-medium text-white text-workspace_1">Continue</p>
           </FxButton>
         </>
 
         <FxSeparator orientation="horizontal" gap="xl">
-          <p className="text-text-color_2 bg-background-color_950C pl-2 pr-2 font-medium">
+          <p className="text-text-color_2 bg-background-color_950C pl-2 pr-2 font-medium text-workspace_1">
             Or
           </p>
         </FxSeparator>
 
         <>
           <FxButton
-            className="w-full  flex justify-center items-center gap-2"
+            className="w-full  flex justify-center items-center gap-2 group"
             variant="secondary"
             size="md"
             radius="primary"
           >
-            <p className="font-medium text-text-color_2">Google</p>
+            <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">Google</p>
             <GoogleIcon />
           </FxButton>
           <div className="flex justify-center items-center gap-3 mt-3">
             <FxButton
-              className="w-full  flex justify-center items-center gap-2"
+              className="w-full  flex justify-center items-center gap-2 group"
               variant="secondary"
               size="md"
               radius="primary"
             >
-              <p className="font-medium text-text-color_2">Github</p>
+              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">Github</p>
               <GithubIcon />
             </FxButton>
             <FxButton
-              className="w-full  flex justify-center items-center gap-2"
+              className="w-full  flex justify-center items-center gap-2 group"
               variant="secondary"
               size="md"
               radius="primary"
             >
-              <p className="font-medium text-text-color_2">Discord</p>
+              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">Discord</p>
               <DiscordIcon
                 width={25}
                 height={25}

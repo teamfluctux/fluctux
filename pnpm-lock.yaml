@@ -369,6 +369,9 @@ importers:
 
   apps/server:
     dependencies:
+      cors:
+        specifier: ^2.8.5
+        version: 2.8.5
       express:
         specifier: ^5.1.0
         version: 5.1.0
@@ -379,6 +382,9 @@ importers:
       '@fluctux/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
+      '@types/cors':
+        specifier: ^2.8.18
+        version: 2.8.18
       '@types/express':
         specifier: ^5.0.1
         version: 5.0.1
@@ -3014,6 +3020,9 @@ packages:
 
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
+
+  '@types/cors@2.8.18':
+    resolution: {integrity: sha512-nX3d0sxJW41CqQvfOzVG1NCTXfFDrDWIghCZncpHeWlVFd81zxB/DLhg7avFg6eHLCRX7ckBmoIIcqa++upvJA==}
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
@@ -9780,6 +9789,10 @@ snapshots:
       '@types/tern': 0.23.9
 
   '@types/connect@3.4.38':
+    dependencies:
+      '@types/node': 22.15.17
+
+  '@types/cors@2.8.18':
     dependencies:
       '@types/node': 22.15.17
 

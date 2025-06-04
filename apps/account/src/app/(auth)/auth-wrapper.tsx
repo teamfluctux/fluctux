@@ -10,7 +10,7 @@ export default function AuthWrapper({
   children: React.ReactNode;
 }) {
   const path_name = usePathname();
-  const current_path = path_name.split("/")[1];
+  const current_path = path_name.split("/").pop();
   const { ThemeSwitcher } = useThemeSwitcher();
 
   return (
@@ -31,13 +31,13 @@ export default function AuthWrapper({
       <div className="fixed bottom-0 left-0 w-full h-[60px] bg-background-color_900C fx-flex-center z-10">
         {current_path === "login" || path_name === "/" ? (
           <div className="flex justify-center items-center gap-2">
-            <p className="text-text-color_2 font-medium">New to Fluctux?</p>
+            <p className="text-text-color_2 font-medium text-workspace_1">New to Fluctux?</p>
             <Link href={"/signup"}>
               <FxButton
                 variant="secondary"
                 radius="tablet"
                 size="sm"
-                className="relative rgb-animation font-medium"
+                className="relative rgb-animation font-medium text-workspace_1"
               >
                 Create Account
               </FxButton>
@@ -45,7 +45,7 @@ export default function AuthWrapper({
           </div>
         ) : (
           <div className="flex justify-center items-center gap-2">
-            <p className="text-text-color_2 font-medium">
+            <p className="text-text-color_2 font-medium text-workspace_1">
               Already have an account?
             </p>
             <Link href={"/login"}>
@@ -53,7 +53,7 @@ export default function AuthWrapper({
                 variant="primary"
                 radius="tablet"
                 size="sm"
-                className="font-medium pl-[20px] pr-[20px] text-white"
+                className="font-medium pl-[20px] pr-[20px] text-white text-workspace_1"
               >
                 Login
               </FxButton>
