@@ -115,8 +115,8 @@ export default function CreateOrgPage() {
     setCustomVisbilityCategoryType(type);
   };
   return (
-    <div className="w-full h-screen overflow-y-auto flex justify-center items-center ">
-      <div className="max-w-[350px] h-[500px]">
+    <div className="w-full h-screen overflow-y-auto flex justify-center items-start ">
+      <div className="max-w-[350px] h-fit w-full my-auto py-24">
         <h1 className="text-read_25 font-medium text-center ">
           Create a new organization
         </h1>
