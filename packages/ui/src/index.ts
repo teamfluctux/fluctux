@@ -23,6 +23,7 @@ export * from "./switch";
 export * from "./fxonelist";
 export * from "./dropdown-menu";
 export * from "./navigation-menu";
+export * from "./checkbox";
 export * from "./lib/utils";
 export * from "./styles/globals";
 

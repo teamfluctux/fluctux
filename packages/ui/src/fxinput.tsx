@@ -11,21 +11,23 @@ interface FxInputProps
   label?: string;
 }
 
-type InputVariantType = "primary" | "secondary" | "outline";
+type InputVariantType = "primary" | "secondary" | "outlineLabel" | "outline";
 
 const inputVariants: { [key in InputVariantType]: string } = {
   primary:
-    "border border-border-color_1 bg-background-color_900C focus:fx-input-outline",
-  secondary: "border border-border-color_1 bg-transparent",
+    "border border-border-color_1 bg-background-color_900C focus:fx-input-outline transition-colors",
+  secondary: "border border-border-color_1 bg-transparent transition-colors",
+  outlineLabel:
+    "rounded-tiny pb-2 text-workspace_2 font-medium px-3 pt-4 bg-transparent border border-border-color_1  w-full focus:outline-fxInput hover:border-border-color_2 focus:border-transparent transition-colors",
   outline:
-    "rounded-tiny pb-2 text-workspace_2 font-medium px-3 pt-4 bg-transparent border border-border-color_1  w-full focus:outline-fxInput ",
+    "focus:ring-[1.5px] transition-colors bg-transparent focus:ring-fx_indigo-primary border border-border-color_1 outline-none mt-5 rounded-tiny py-1.5 text-workspace_2 font-medium px-2 hover:border-border-color_2 disabled:!text-text-color_3 disabled:!border-background-color_900C disabled:hover:!border-background-color_900C disabled:cursor-not-allowed focus:border-transparent",
 };
 
 const inputSizes: { [key in SizeType]: string } = {
-  sm: "p-1 pl-2 pr-2",
-  md: "p-2 pl-3 pr-3",
-  lg: "p-3 pl-4 pr-4",
-  xl: "p-4 pl-5 pr-5",
+  sm: "p-1 px-2",
+  md: "p-2 px-3",
+  lg: "p-3 px-4",
+  xl: "p-4 px-5",
 };
 
 export function FxInput({
@@ -40,7 +42,7 @@ export function FxInput({
   const inputSize = size ? inputSizes[size] : "";
   const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
 
-  return variant === "outline" ? (
+  return variant === "outlineLabel" ? (
     <div className="w-full relative group">
       <input
         className={`peer ${inputVariant} ${inputSize} ${roundedVariant} ${className} `}

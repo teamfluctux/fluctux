@@ -3,12 +3,15 @@ import {
   ORG_PRIVACY_OPTIONS,
   ORG_VISIBILITY_OPTIONS,
 } from "@fluctux/constants";
+import { OrgVisibilityType } from "@fluctux/types";
 import {
+  Checkbox,
   FxButton,
   FxInput,
   FxSeparator,
   LUCIDE_WORKSPACE_ICON_SIZE,
 } from "@fluctux/ui";
+import Image from "next/image";
 
 import React, { useState } from "react";
 
@@ -31,11 +34,43 @@ const RadioButton = ({
   );
 };
 
+const CheckboxButton = ({
+  label,
+  className,
+  img,
+}: {
+  label: string;
+  className?: string;
+  img: string;
+}) => {
+  return (
+    <div className={`flex justify-start items-center text-workspace_2 gap-1.5 font-medium peer-checked:!text-[var(--surface-indigo-fg)] ${className}`}>
+      {img && (
+        <div className="w-[25px] h-[25px] rounded-full overflow-hidden border border-border-color_1 ">
+          <Image
+            src={""}
+            width={300}
+            height={300}
+            className="w-full h-full object-cover object-center"
+            alt="profile-image"
+          />
+        </div>
+      )}
+
+      <span >{label}</span>
+    </div>
+  );
+};
+
 export default function CreateOrgPage() {
   const [orgVisibilityOptionDesc, setOrgVisibilityOptionDesc] = useState("");
+  const [orgVisibilityType, setOrgVisibilityType] = useState<OrgVisibilityType>(
+    ORG_VISIBILITY_OPTIONS[0]?.value as OrgVisibilityType
+  );
   const [orgPrivacyOptionDesc, setOrgPrivacyOptionDesc] = useState("");
-  const handleGetVisibilityOptionDesc = (desc: string) => {
+  const handleGetVisibilityOption = (desc: string, type: OrgVisibilityType) => {
     setOrgVisibilityOptionDesc(desc);
+    setOrgVisibilityType(type);
   };
   const handleGetPrivacyOptionDesc = (desc: string) => {
     setOrgPrivacyOptionDesc(desc);
@@ -52,9 +87,9 @@ export default function CreateOrgPage() {
           efficiently.
         </p>
         <div className="mt-10">
-          <FxInput variant="outline" label="Organization Name" />
+          <FxInput variant="outlineLabel" label="Organization Name" />
           <div className="mt-5">
-            <FxInput variant="outline" label="Organization URL" />
+            <FxInput variant="outlineLabel" label="Organization URL" />
           </div>
         </div>
         <div className="w-full bg-background-color_925C p-2 px-0 rounded mt-5">
@@ -69,16 +104,36 @@ export default function CreateOrgPage() {
                     value={option.value}
                     id={option.value}
                     defaultChecked={i == 0}
-                    onChange={() => handleGetVisibilityOptionDesc(option.desc)}
+                    onChange={() =>
+                      handleGetVisibilityOption(option.desc, option.value)
+                    }
                   />
                   <RadioButton label={option.label} />
                 </label>
               );
             })}
           </div>
-          <p className="text-workspace_3 text-text-color_3 px-2 pt-2 mt-1">
+          <p className="text-workspace_3 text-text-color_3 px-2 pt-1 mt-1">
             {orgVisibilityOptionDesc || "Visible to everyone on Fluctux"}
           </p>
+          {orgVisibilityType === "CUSTOM" && (
+            <div className="border-t border-border-color_1 mt-1">
+              <div>
+                <label className="flex justify-start items-center gap-5 px-4 py-1.5">
+                <Checkbox  className="peer" />
+                <CheckboxButton label="Nimul Islam Mahin" img="my-image" />
+                </label>
+                <label className="flex justify-start items-center gap-5 px-4 py-1.5">
+                <Checkbox  className="peer" />
+                <CheckboxButton label="Nimul Islam Mahin" img="my-image" />
+                </label>
+                <label className="flex justify-start items-center gap-5 px-4 py-1.5">
+                <Checkbox  className="peer" />
+                <CheckboxButton label="Nimul Islam Mahin" img="my-image" />
+                </label>
+              </div>
+            </div>
+          )}
         </div>
         <FxSeparator gap="md" orientation="horizontal" />
         <div className=" w-full">

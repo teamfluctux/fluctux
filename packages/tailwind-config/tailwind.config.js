@@ -39,6 +39,7 @@ module.exports = {
           200: "var(--color-indigo-200)",
           100: "var(--color-indigo-100)",
           50: "var(--color-indigo-50)",
+          "primary": "var(--color-indigo-600)",
         },
         background: {
           indigo_primary: "var(--primary-color)",
