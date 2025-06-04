@@ -139,7 +139,11 @@ export default function CreateOrgPage() {
             />
           </div>
         </div>
-        <div className="w-full bg-background-color_925C p-2 px-0 rounded mt-5">
+          <FxSeparator gap="md" orientation="horizontal" />
+          <p className="text-workspace_2 font-medium text-text-color_4">
+            Visibility
+          </p>
+        <div className="w-full bg-background-color_925C p-2 px-0 rounded mt-1">
           <div className="flex justify-start items-center gap-1 border-b border-border-color_1 pb-2 px-2">
             {ORG_VISIBILITY_OPTIONS.map((option, i) => {
               return (
