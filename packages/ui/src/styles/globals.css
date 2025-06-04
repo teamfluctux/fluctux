@@ -101,6 +101,15 @@
   /* outline border */
   --outline-offset-color: var(--color-zinc-300);
   --outline-border-color: var(--color-zinc-600);
+
+
+  /* other colors */
+  --surface-indigo-bg: #171d3b80 ;
+  --surface-indigo-bg-active: #2f62ff3c ;
+  --surface-indigo-border: #5a7fff90 ;
+  --surface-indigo-border-active: #5b81feac ;
+  --surface-indigo-fg: #9eb1ff ;
+  
 }
 
 .dark {

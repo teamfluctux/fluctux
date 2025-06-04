@@ -18,7 +18,7 @@ const inputVariants: { [key in InputVariantType]: string } = {
     "border border-border-color_1 bg-background-color_900C focus:fx-input-outline",
   secondary: "border border-border-color_1 bg-transparent",
   outline:
-    "bg-transparent border border-border-color_1 w-full focus:outline-fxInput",
+    "rounded-tiny pb-2 text-workspace_2 font-medium px-3 pt-4 bg-transparent border border-border-color_1  w-full focus:outline-fxInput ",
 };
 
 const inputSizes: { [key in SizeType]: string } = {
@@ -49,14 +49,14 @@ export function FxInput({
       />
       <label
         htmlFor={`${label.replace(" ", "-")}`}
-        className="absolute translate-y-[-50%] fx-label-color peer-focus:text-[var(--primary-color)] left-[15px] fx-primary-bg py-0 px-1 text-[14px] font-medium "
+        className="absolute translate-y-[-50%] text-text-color_4 transition-colors peer-focus:text-[var(--primary-color)] left-[15px] bg-background-color_950C py-0 px-1 text-[14px] font-medium "
       >
         {label}
       </label>
     </div>
   ) : (
     <input
-      className={`${inputVariant} ${inputSize} ${roundedVariant} ${className}`}
+      className={`transition-colors ${inputVariant} ${inputSize} ${roundedVariant} ${className}`}
       {...props}
     />
   );

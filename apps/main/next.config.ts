@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   output: "standalone",
  
   images: {
-    remotePatterns: [
+    remotePatterns: [ 
       {
         protocol: "https", // Specify the protocol
         hostname: "images.pexels.com", // Correct hostname

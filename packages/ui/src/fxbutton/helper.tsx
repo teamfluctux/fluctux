@@ -1,6 +1,10 @@
 import { SizeType } from "../type";
 
-export type ButtonVariant = "primary" | "secondary" | "ghost_zinc";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "ghost_zinc"
+  | "surface_indigo";
 
 export interface ButtonStylingType {
   [key: string]: {
@@ -19,7 +23,8 @@ export const buttonSizes: { [key in SizeType]: string } = {
 
 export const buttonStyling: ButtonStylingType = {
   primary: {
-    default: "bg-background-indigo_primary cursor-pointer border-none",
+    default:
+      "bg-background-indigo_primary cursor-pointer border-none text-text-color_default_white",
     hover: "hover:bg-fx_indigo-700",
     disabled:
       "!text-text-color_2 cursor-not-allowed !bg-fx_indigo-800 border border-border-color_1",
@@ -35,7 +40,12 @@ export const buttonStyling: ButtonStylingType = {
     default: "cursor-pointer",
     hover: "hover:bg-background-color_900C hover:!text-text-color_1",
     disabled: "!text-text-color_3 cursor-not-allowed !bg-transparent",
-  }
+  },
+  surface_indigo: {
+    default: "bg-[var(--surface-indigo-bg)] border border-[var(--surface-indigo-border)] !text-[var(--surface-indigo-fg)] active:bg-[var(--surface-indigo-bg-active)] active:border-[var(--surface-indigo-border-active)] cursor-pointer",
+    hover: "hover:!border-[var(--surface-indigo-border-active)]",
+    disabled: "opacity-50 cursor-not-allowed",
+  },
 };
 
 export const getButtonStyling = (
