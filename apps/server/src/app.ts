@@ -11,6 +11,9 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials: true
 })) // NO NEED AS WE ARE USING NGINX -> UBUNTU
+app.use(express.json({limit: "500kb"}))
+app.use(express.urlencoded({extended: true, limit: "500kb"}))
+
 // If your app is served through a proxy
 // trust the proxy to allow us to read the `X-Forwarded-*` headers
 app.set("trust proxy", true);
