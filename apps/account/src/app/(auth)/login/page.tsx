@@ -7,6 +7,7 @@ import {
   FxButton,
   FxInput,
   FxSeparator,
+  SlackIcon,
 } from "@fluctux/ui";
 import Link from "next/link";
 import React from "react";
@@ -38,7 +39,6 @@ export default function LoginPage() {
             type="password"
             variant="primary"
             size="md"
-            placeholder="********"
             radius="primary"
           />
           <div className="mt-1">
@@ -74,7 +74,7 @@ export default function LoginPage() {
             radius="primary"
           >
             <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-              Google
+              Login with Google
             </p>
             <GoogleIcon />
           </FxButton>
@@ -86,7 +86,7 @@ export default function LoginPage() {
               radius="primary"
             >
               <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-                Github
+                Login with Github
               </p>
               <GithubIcon />
             </FxButton>
@@ -97,13 +97,9 @@ export default function LoginPage() {
               radius="primary"
             >
               <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-                Discord
+                Login with Slack
               </p>
-              <DiscordIcon
-                width={25}
-                height={25}
-                color="var(--primary-color)"
-              />
+              <SlackIcon width={25} height={25} />
             </FxButton>
           </div>
         </>
