@@ -42,7 +42,6 @@ export const PROJECT_VISIBILITY_OPTIONS = [
   },
 ];
 
-
 export const TEAM_VISIBILITY_OPTIONS = [
   {
     label: "Public",

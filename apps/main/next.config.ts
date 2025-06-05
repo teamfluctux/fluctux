@@ -7,9 +7,9 @@ const nextConfig: NextConfig = {
   },
   // TODO: for docker image. otherwise comment this
   output: "standalone",
- 
+
   images: {
-    remotePatterns: [ 
+    remotePatterns: [
       {
         protocol: "https", // Specify the protocol
         hostname: "images.pexels.com", // Correct hostname
@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  
+
   async headers() {
     return [
       {

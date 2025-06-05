@@ -67,8 +67,8 @@ export const HeroTabs = () => {
                 key={i}
                 ref={(el) => void (tabRefs.current[i] = el)}
                 onClick={() => swiperRef.current?.slideTo(i)}
-                className={`transition-colors group select-none fx-flex-center gap-1  rounded h-full px-3 text-workspace_2 font-medium  ${slideIndex === i ? "text-text-color_default_white bg-transparent drop-shadow-md" : "text-text-color_2 hover:text-text-color_1"}`} 
-              > 
+                className={`transition-colors group select-none fx-flex-center gap-1  rounded h-full px-3 text-workspace_2 font-medium  ${slideIndex === i ? "text-text-color_default_white bg-transparent drop-shadow-md" : "text-text-color_2 hover:text-text-color_1"}`}
+              >
                 <div className="text-text-color_1">
                   <Icon
                     size={16}
@@ -114,11 +114,23 @@ export const HeroTabs = () => {
             allowTouchMove={false}
           >
             <SwiperSlide className="bg-background-color_925C">
-              <Image src={"/images/demo_management.png"} width={1200} height={1200} alt="work-item-dark" className="object-cover object-top w-full h-full" />
+              <Image
+                src={"/images/demo_management.png"}
+                width={1200}
+                height={1200}
+                alt="work-item-dark"
+                className="object-cover object-top w-full h-full"
+              />
             </SwiperSlide>
-            <SwiperSlide className="bg-background-color_925C">Slide 2</SwiperSlide>
-            <SwiperSlide className="bg-background-color_925C">Slide 3</SwiperSlide>
-            <SwiperSlide className="bg-background-color_925C">Slide 4</SwiperSlide>
+            <SwiperSlide className="bg-background-color_925C">
+              Slide 2
+            </SwiperSlide>
+            <SwiperSlide className="bg-background-color_925C">
+              Slide 3
+            </SwiperSlide>
+            <SwiperSlide className="bg-background-color_925C">
+              Slide 4
+            </SwiperSlide>
           </Swiper>
         </div>
       </div>

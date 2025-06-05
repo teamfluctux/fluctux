@@ -23,7 +23,7 @@ export enum OrgStatusEnum {
 
 export enum OrgPrivacyEnum {
   DEFAULT = "DEFAULT",
-  LOCKED = "LOCKED"
+  LOCKED = "LOCKED",
 }
 
 export enum OrgVisibilityEnum {
@@ -47,7 +47,6 @@ export enum TeamCategoryEnum {
   BUSINESS = "BUSINESS",
   SRPOTS = "SRPOTS",
 }
-
 
 export interface OrgVisibilityOptionsType {
   label: string;
@@ -85,15 +84,15 @@ export const ORG_VISIBILITY_OPTIONS: OrgVisibilityOptionsType[] = [
 
 export interface OrgPrivacyOptionsType {
   label: string;
-  desc: string
+  desc: string;
   icon: LucideIcon;
   value: OrgPrivacyEnum;
 }
 
-export const ORG_PRIVACY_OPTIONS: OrgPrivacyOptionsType[] =[
+export const ORG_PRIVACY_OPTIONS: OrgPrivacyOptionsType[] = [
   {
     label: "Default",
-    desc:  "Allow anyone to join the organization.",
+    desc: "Allow anyone to join the organization.",
     icon: Globe,
     value: OrgPrivacyEnum.DEFAULT,
   },
@@ -102,5 +101,5 @@ export const ORG_PRIVACY_OPTIONS: OrgPrivacyOptionsType[] =[
     desc: "Require approval to join the organization.",
     icon: Shield,
     value: OrgPrivacyEnum.LOCKED,
-  }
-]
+  },
+];

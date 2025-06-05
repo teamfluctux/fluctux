@@ -42,24 +42,24 @@ export const Footer = () => {
                 </ul>
               </div>
 
-              {
-                Object.entries(FOOTER_MENUS).map(([listTitle, value], i) => {
-                  return  <div key={i} className="w-fit">
-                <p className="text-workspace_3 font-medium">{listTitle}</p>
-                <ul className="text-text-color_2 mt-3 leading-8">
-                  {value.map((item, i) => {
-                    return (
-                      <Link href={`${item.slug}`} key={i}>
-                        <li className="hover:text-text-color_1 text-workspace_3  font-medium">
-                          {item.label}
-                        </li>
-                      </Link>
-                    );
-                  })}
-                </ul>
-              </div>
-                })
-              }
+              {Object.entries(FOOTER_MENUS).map(([listTitle, value], i) => {
+                return (
+                  <div key={i} className="w-fit">
+                    <p className="text-workspace_3 font-medium">{listTitle}</p>
+                    <ul className="text-text-color_2 mt-3 leading-8">
+                      {value.map((item, i) => {
+                        return (
+                          <Link href={`${item.slug}`} key={i}>
+                            <li className="hover:text-text-color_1 text-workspace_3  font-medium">
+                              {item.label}
+                            </li>
+                          </Link>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className="w-full bg-background-color_900C pt-4 pb-4 mt-24 fx-flex-center">

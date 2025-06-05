@@ -132,9 +132,12 @@ export const RndWindows = () => {
     category.tabs.some((tab) => tab.isActive)
   );
 
-  const isTabActiveInCategory = useCallback((category: TaskbarCategoriesType) => {
-    return tabs[category]?.tabs.some((tab) => tab.isActive);
-   }, [tabs])
+  const isTabActiveInCategory = useCallback(
+    (category: TaskbarCategoriesType) => {
+      return tabs[category]?.tabs.some((tab) => tab.isActive);
+    },
+    [tabs]
+  );
 
   return (
     <>
@@ -459,7 +462,8 @@ export const RndWindows = () => {
                 <div
                   className={cn(
                     "hover:bg-background-color_750C h-[30px] cursor-pointer  px-2 rounded-tiny relative fx-flex-center",
-                    isTabActiveInCategory("issues") && "bg-background-color_800C"
+                    isTabActiveInCategory("issues") &&
+                      "bg-background-color_800C"
                   )}
                 >
                   <div className="flex justify-center items-center gap-1">
@@ -540,7 +544,6 @@ export const RndWindows = () => {
                 sideOffset={15}
                 className="z-[52] bg-background-color_800C fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]"
               >
-
                 {/* 
                 DATA STRUCTURE FOR TASKBAR ITEMS
                 KEEP ONE TOOLTIP PROVIDER AND MAP OVER THE ITEMS

@@ -27,13 +27,13 @@ export * from "./checkbox";
 export * from "./lib/utils";
 export * from "./styles/globals";
 
-export * from "./icons/fav-icon"
-export * from "./icons/discord-icon"
-export * from "./icons/github-circle-icon"
-export * from "./icons/github-icon"
-export * from "./icons/google-icon"
-export * from "./icons/twitter-icon"
-export * from "./icons/facebook"
-export * from "./icons/type"
+export * from "./icons/fav-icon";
+export * from "./icons/discord-icon";
+export * from "./icons/github-circle-icon";
+export * from "./icons/github-icon";
+export * from "./icons/google-icon";
+export * from "./icons/twitter-icon";
+export * from "./icons/facebook";
+export * from "./icons/type";
 
 export * from "./hooks";

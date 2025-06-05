@@ -42,7 +42,8 @@ export const buttonStyling: ButtonStylingType = {
     disabled: "!text-text-color_3 cursor-not-allowed !bg-transparent",
   },
   surface_indigo: {
-    default: "bg-[var(--surface-indigo-bg)] border border-[var(--surface-indigo-border)] !text-[var(--surface-indigo-fg)] active:bg-[var(--surface-indigo-bg-active)] active:border-[var(--surface-indigo-border-active)] cursor-pointer",
+    default:
+      "bg-[var(--surface-indigo-bg)] border border-[var(--surface-indigo-border)] !text-[var(--surface-indigo-fg)] active:bg-[var(--surface-indigo-bg-active)] active:border-[var(--surface-indigo-border-active)] cursor-pointer",
     hover: "hover:!border-[var(--surface-indigo-border-active)]",
     disabled: "opacity-50 cursor-not-allowed",
   },

@@ -39,24 +39,21 @@ export const useTaskBar = () => {
     []
   );
 
-  const handleCloseTab = useCallback(
-    (categorySlug: string, tabId: number) => {
-      setTabs((prevCategories) => {
-        if (!prevCategories[categorySlug]) return prevCategories;
+  const handleCloseTab = useCallback((categorySlug: string, tabId: number) => {
+    setTabs((prevCategories) => {
+      if (!prevCategories[categorySlug]) return prevCategories;
 
-        return {
-          ...prevCategories,
-          [categorySlug]: {
-            ...prevCategories[categorySlug],
-            tabs: prevCategories[categorySlug].tabs.filter(
-              (tab) => tab.id !== tabId
-            ),
-          },
-        };
-      });
-    },
-    []
-  );
+      return {
+        ...prevCategories,
+        [categorySlug]: {
+          ...prevCategories[categorySlug],
+          tabs: prevCategories[categorySlug].tabs.filter(
+            (tab) => tab.id !== tabId
+          ),
+        },
+      };
+    });
+  }, []);
 
   const handleMaxMinTabSize = useCallback(
     (tabId: number, categorySlug: TaskbarCategoriesType) => {

@@ -1,7 +1,6 @@
 import { SvgSizeInSQR, SvgType } from "./type";
 
 export const FacebookIcon: React.FC<SvgType> = ({
-
   className,
   size = SvgSizeInSQR.PRIMARY,
   color = "var(--svg-default-color)",

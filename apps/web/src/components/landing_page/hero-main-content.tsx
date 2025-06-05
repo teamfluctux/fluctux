@@ -22,16 +22,12 @@ export const HeroMainContent = () => {
           radius="primary"
           className="py-2 px-5  transition-colors text-fx_zinc-50"
         >
-          <span className=" font-medium text-workspace_1">
-          Get Started
-
-          </span>
+          <span className=" font-medium text-workspace_1">Get Started</span>
         </FxButton>
         <FxButton
           radius="primary"
           variant="secondary"
           className="py-2 px-5 font-medium text-workspace_1 transition-colors"
-          
         >
           Get Custom Guidance
         </FxButton>

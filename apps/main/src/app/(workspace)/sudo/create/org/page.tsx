@@ -301,7 +301,7 @@ export default function CreateOrgPage() {
 
         <div className="mt-5">
           <FxButton
-          onClick={handleCreateOrg}
+            onClick={handleCreateOrg}
             variant="primary"
             className="font-medium text-workspace_2 w-full py-2 rounded-tiny"
           >

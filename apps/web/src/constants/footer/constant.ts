@@ -80,14 +80,12 @@ export const WORK_MANAGEMENT_ITEMS: FooterListType[] = [
 ];
 
 interface FooterMenusType {
-  [key: string]: FooterListType[]
-
+  [key: string]: FooterListType[];
 }
 
-
-export const FOOTER_MENUS: FooterMenusType ={
+export const FOOTER_MENUS: FooterMenusType = {
   "Work Management": WORK_MANAGEMENT_ITEMS,
-  "Resources": RESOURCES_ITEMS,
-  "Pricing": PLAN_ITEMS,
-  "Legals": LEGAL_ITEMS,
-}
+  Resources: RESOURCES_ITEMS,
+  Pricing: PLAN_ITEMS,
+  Legals: LEGAL_ITEMS,
+};

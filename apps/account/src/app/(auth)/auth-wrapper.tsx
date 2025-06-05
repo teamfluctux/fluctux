@@ -31,7 +31,9 @@ export default function AuthWrapper({
       <div className="fixed bottom-0 left-0 w-full h-[60px] bg-background-color_900C fx-flex-center z-10">
         {current_path === "login" || path_name === "/" ? (
           <div className="flex justify-center items-center gap-2">
-            <p className="text-text-color_2 font-medium text-workspace_1">New to Fluctux?</p>
+            <p className="text-text-color_2 font-medium text-workspace_1">
+              New to Fluctux?
+            </p>
             <Link href={"/signup"}>
               <FxButton
                 variant="secondary"

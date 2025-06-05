@@ -35,15 +35,9 @@ export function FxFavIcon({ size, variant, customSize }: FxFavIconPropsType) {
     <>
       {variant !== iconVariants.default ? (
         variant === iconVariants.dark ? (
-          <FxFavSVGIcon
-            size={sizeVariant}
-            color="#ffffff"
-          />
+          <FxFavSVGIcon size={sizeVariant} color="#ffffff" />
         ) : variant === iconVariants.light ? (
-          <FxFavSVGIcon
-            size={sizeVariant}
-            color="#000000"
-          />
+          <FxFavSVGIcon size={sizeVariant} color="#000000" />
         ) : (
           <>
             <FxFavSVGIcon

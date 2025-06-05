@@ -20,7 +20,9 @@ export default function LoginPage() {
           Login to Fluctux
         </h1>
         <>
-          <p className="text-text-color_2 font-medium text-workspace_1">Email</p>
+          <p className="text-text-color_2 font-medium text-workspace_1">
+            Email
+          </p>
           <FxInput
             className="w-full text-workspace_1 font-medium"
             variant="primary"
@@ -28,7 +30,9 @@ export default function LoginPage() {
             placeholder="youremail@gmail.com"
             radius="primary"
           />
-          <p className="text-text-color_2 mt-3 font-medium text-workspace_1">Password</p>
+          <p className="text-text-color_2 mt-3 font-medium text-workspace_1">
+            Password
+          </p>
           <FxInput
             className="w-full text-workspace_1 font-medium"
             type="password"
@@ -69,7 +73,9 @@ export default function LoginPage() {
             size="md"
             radius="primary"
           >
-            <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">Google</p>
+            <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
+              Google
+            </p>
             <GoogleIcon />
           </FxButton>
           <div className="flex justify-center items-center gap-3 mt-3">
@@ -79,7 +85,9 @@ export default function LoginPage() {
               size="md"
               radius="primary"
             >
-              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">Github</p>
+              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
+                Github
+              </p>
               <GithubIcon />
             </FxButton>
             <FxButton
@@ -88,7 +96,9 @@ export default function LoginPage() {
               size="md"
               radius="primary"
             >
-              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">Discord</p>
+              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
+                Discord
+              </p>
               <DiscordIcon
                 width={25}
                 height={25}

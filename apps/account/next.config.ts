@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
-  }, 
+  },
 
   async rewrites() {
     const rewrites = [

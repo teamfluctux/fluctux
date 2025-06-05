@@ -57,11 +57,12 @@ export const WorkspaceSidebar = () => {
   );
   const { parentRef, sidebarSize, setSidebarSize } = useWorkspaceContext();
 
-
-
-  const saveWidth = useCallback((width: string) => {
-    localStorage.setItem("workspaceSidebarWidth", width);
-  }, [sidebarSize]);
+  const saveWidth = useCallback(
+    (width: string) => {
+      localStorage.setItem("workspaceSidebarWidth", width);
+    },
+    [sidebarSize]
+  );
 
   return (
     <Rnd
@@ -104,9 +105,7 @@ export const WorkspaceSidebar = () => {
                   <div
                     className={cn(
                       "w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-tiny",
-                      isCommandOpen
-                        ? "border"
-                        : ""
+                      isCommandOpen ? "border" : ""
                     )}
                   >
                     <FxFavIcon customSize={15} variant="theme" />
