@@ -1,31 +1,39 @@
 import express from "express";
 import cors from "cors";
 import { ExpressAuth } from "@auth/express";
-import Google from "@auth/express/providers/google";
-import Github from "@auth/express/providers/github";
-import Discord from "@auth/express/providers/discord";
-import Twitter from "@auth/express/providers/twitter";
+import { AuthOptions } from "./services/auth/auth.service";
+import { currentSession } from "./middlewares";
+import dotenv from "dotenv";
+dotenv.config({
+  path: "./.env"
+});
 
 const app = express();
+
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: process.env.CORS_ORIGIN, 
     credentials: true,
   })
 ); // NO NEED AS WE ARE USING NGINX -> UBUNTU
 app.use(express.json({ limit: "500kb" }));
 app.use(express.urlencoded({ extended: true, limit: "500kb" }));
 
+// ============ AUTH.JS IMPLEMENTATIONS ================
 // If your app is served through a proxy
 // trust the proxy to allow us to read the `X-Forwarded-*` headers
 app.set("trust proxy", true);
-app.use(
-  "/auth",
-  ExpressAuth({ providers: [Google, Github, Discord, Twitter] })
-);
+app.use("/auth", ExpressAuth(AuthOptions));
+// auth js middleware
+app.use(currentSession);
 
-app.get("/api/user", (req, res) => {
-  res.status(200).json({ message: "Hello world from server " });
-});
+// ========= ROUTES IMPORTS ===========
+import authRouter from "@/routes/auth.route";
+
+app.use("/api/v1/auth", authRouter);
+
+app.get("/health", (req, res) => {
+  res.status(200).json({message: "Server is healthy"})
+})
 
 export { app };

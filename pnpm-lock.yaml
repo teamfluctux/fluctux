@@ -53,12 +53,6 @@ importers:
       '@fluctux/constants':
         specifier: workspace:*
         version: link:packages/constants
-      '@fluctux/database':
-        specifier: workspace:*
-        version: link:packages/database
-      '@fluctux/httpcodesanevents':
-        specifier: workspace:*
-        version: link:packages/httpCodesAnEvents
       '@fluctux/shared':
         specifier: workspace:*
         version: link:packages/shared
@@ -445,24 +439,6 @@ importers:
         version: 5.8.2
 
   packages/constants:
-    devDependencies:
-      '@fluctux/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@fluctux/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@turbo/gen':
-        specifier: ^2.4.4
-        version: 2.4.4(@swc/core@1.11.20(@swc/helpers@0.5.15))(@types/node@22.15.17)(typescript@5.8.2)
-      eslint:
-        specifier: ^9.21.0
-        version: 9.21.0(jiti@2.4.2)
-      typescript:
-        specifier: ^5.8.2
-        version: 5.8.2
-
-  packages/database:
     devDependencies:
       '@fluctux/eslint-config':
         specifier: workspace:*

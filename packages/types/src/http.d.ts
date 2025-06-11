@@ -1,14 +1,14 @@
 export interface ApiResponseType {
   status: number;
   message: string;
-  data: unknown;
-  success: boolean;
+  data?: unknown | null;
+  success?: boolean;
 }
 
 export interface ApiErrorType {
   status: number;
-  success: boolean;
+  success?: boolean;
   message: string;
   stack?: string;
-  errors: unknown[];
+  errors?: unknown[];
 }

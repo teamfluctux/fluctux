@@ -1,4 +1,4 @@
-export enum ErrorCodes {
+export enum CustomErrorEnums {
   "INTERNAL_SERVER_ERROR" = "INTERNAL_SERVER_ERROR",
   "UNAUTHORIZED_USER" = "UNAUTHORIZED_USER",
   "INVITATION_NOT_FOUND" = "INVITATION_NOT_FOUND",
@@ -51,40 +51,40 @@ export enum HTTPErrorCodes {
 }
 
 export const ERROR: {
-  [key in ErrorCodes]: {
+  [key in CustomErrorEnums]: {
     title: string;
     message: string;
     statusCode: number;
   };
 } = {
-  [ErrorCodes.INTERNAL_SERVER_ERROR]: {
+  [CustomErrorEnums.INTERNAL_SERVER_ERROR]: {
     title: "Something went wrong",
     message:
       "There might be a technical issue. We are working on resolving it. Please try again later.",
     statusCode: HTTPErrorCodes.INTERNAL_SERVER_ERROR,
   },
-  [ErrorCodes.UNAUTHORIZED_USER]: {
+  [CustomErrorEnums.UNAUTHORIZED_USER]: {
     title: "Unauthorized Access",
     message:
       "You do not have the necessary permissions to access this resource.",
     statusCode: HTTPErrorCodes.UNAUTHORIZED,
   },
-  [ErrorCodes.INVITATION_NOT_FOUND]: {
+  [CustomErrorEnums.INVITATION_NOT_FOUND]: {
     title: "Invitation Not Found",
     message: "The invitation you are looking for does not exist.",
     statusCode: HTTPErrorCodes.NOT_FOUND,
   },
-  [ErrorCodes.USER_NOT_FOUND]: {
+  [CustomErrorEnums.USER_NOT_FOUND]: {
     title: "User Not Found",
     message: "The user you are looking for does not exist.",
     statusCode: HTTPErrorCodes.NOT_FOUND,
   },
-  [ErrorCodes.INVALID_REQUEST]: {
+  [CustomErrorEnums.INVALID_REQUEST]: {
     title: "Invalid Request",
     message: "The request made is invalid.",
     statusCode: HTTPErrorCodes.BAD_REQUEST,
   },
-  [ErrorCodes.NOT_ACCEPTABLE]: {
+  [CustomErrorEnums.NOT_ACCEPTABLE]: {
     title: "Not Acceptable",
     message: "The request made is not acceptable.",
     statusCode: HTTPErrorCodes.NOT_ACCEPTABLE,
