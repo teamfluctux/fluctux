@@ -7,7 +7,7 @@ export class AuthManager {
     try {
       //   await signIn(req, res);
       // res.redirect("/dashboard");
-      console.log("hello world");
+      console.log("hello world in signin v1");
       
       res.status(200).json({message: new ApiResponse(HTTPSuccessCodes.OK, "Sign in successful")})
     } catch (error) {
@@ -24,11 +24,11 @@ export class AuthManager {
     }
   }
 
-  handleSignIn = (req: Request, res: Response) => {
+  handleSignIn(req: Request, res: Response){
     return this.signInV1(req, res);
   }
 
-  handleSignOut = (req: Request, res: Response) => {
+  handleSignOut(req: Request, res: Response){
     return this.signOutV1(req, res);
   }
 }

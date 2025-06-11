@@ -12,18 +12,20 @@ export async function authenticatedUser(
   const session =
     res.locals.session ?? (await getSession(req, AuthOptions)) ?? undefined;
   res.locals.session = session;
-  if (session) {
+  // TODO: convert it to only session. for signin testing its currently !session 
+  if (!session) {
     next();
   }
 
-  res.status(HTTPErrorCodes.UNAUTHORIZED).json({
-    error: new ApiError(
-      HTTPErrorCodes.UNAUTHORIZED,
-      "Failed to authenticate! Unauthorized user",
-      undefined,
-      [ERROR.UNAUTHORIZED_USER]
-    ),
-  });
+  // TODO: uncomment it
+  // res.status(HTTPErrorCodes.UNAUTHORIZED).json({
+  //   error: new ApiError(
+  //     HTTPErrorCodes.UNAUTHORIZED,
+  //     "Failed to authenticate! Unauthorized user",
+  //     undefined,
+  //     [ERROR.UNAUTHORIZED_USER]
+  //   ),
+  // });
 }
 
 
