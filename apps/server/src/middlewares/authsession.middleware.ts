@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { getSession } from "@auth/express";
-import { AuthOptions } from "@/services/auth/auth.service";
+import { AuthOptions } from "@/config";
 import { ApiError } from "@/utils/ApiError";
 import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
 

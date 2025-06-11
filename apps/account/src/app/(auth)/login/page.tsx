@@ -51,6 +51,22 @@ export default function LoginPage() {
           </div>
 
           <FxButton
+            onClick={async () => {
+              const res = await fetch("http://localhost:5000/api/auth/csrf");
+              const { csrfToken } = await res.json();
+
+              await fetch("http://localhost:5000/api/auth/signin", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  csrfToken,
+                  provider: "google",
+           
+                }),
+              });
+            }}
             className="w-full mt-5"
             variant="primary"
             size="md"

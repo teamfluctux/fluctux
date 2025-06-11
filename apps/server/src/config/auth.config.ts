@@ -20,7 +20,7 @@ export const AuthOptions: ExpressAuthConfig = {
       clientSecret: process.env.SLACK_CLIENT_SECRET!,
     }),
   ],
-  callbacks: { 
+  callbacks: {
     async signIn() {
       return true;
     },
@@ -51,17 +51,17 @@ export const AuthOptions: ExpressAuthConfig = {
     error: "/auth/error",
     verifyRequest: "/auth/verify-request",
   },
-  cookies: {
-    sessionToken: {
-      name: `__Secure-next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: "none",
-        secure: true, // ensure this is true in production
-        path: "/",
-      },
-    },
-  },
+//   cookies: {
+//     sessionToken: {
+//       name: `__Secure-next-auth.session-token`,
+//       options: {
+//         httpOnly: true,
+//         sameSite: "none",
+//         secure: true, // ensure this is true in production
+//         path: "/",
+//       },
+//     },
+//   },
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days for token expiration

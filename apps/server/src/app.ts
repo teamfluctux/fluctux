@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
 import { ExpressAuth } from "@auth/express";
-import { AuthOptions } from "./services/auth/auth.service";
 import { currentSession } from "./middlewares";
+import { AuthOptions } from "./config/auth.config";
 import dotenv from "dotenv";
+
 dotenv.config({
   path: "./.env"
 });
@@ -23,7 +24,7 @@ app.use(express.urlencoded({ extended: true, limit: "500kb" }));
 // If your app is served through a proxy
 // trust the proxy to allow us to read the `X-Forwarded-*` headers
 app.set("trust proxy", true);
-app.use("/auth", ExpressAuth(AuthOptions));
+app.use("/api/v1/auth", ExpressAuth(AuthOptions));
 // auth js middleware
 app.use(currentSession);
 
