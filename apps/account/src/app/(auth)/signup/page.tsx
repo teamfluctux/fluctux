@@ -8,6 +8,7 @@ import {
   FxButton,
   FxInput,
   FxSeparator,
+  SlackIcon,
 } from "@fluctux/ui";
 import { userZodSchema } from "@fluctux/zod";
 import Link from "next/link";
@@ -104,7 +105,7 @@ export default function SignUpPage() {
             radius="primary"
           >
             <p className="text-workspace_1 font-medium text-text-color_2 group-hover:text-text-color_1">
-              Google
+              Sign up with Google
             </p>
             <GoogleIcon />
           </FxButton>
@@ -116,25 +117,21 @@ export default function SignUpPage() {
               radius="primary"
             >
               <p className="text-workspace_1 font-medium text-text-color_2 group-hover:text-text-color_1">
-                Github
+                Sign up with Github
               </p>
               <GithubIcon />
             </FxButton>
-            <FxButton
-              className="w-full flex justify-center items-center gap-2 group"
-              variant="secondary"
-              size="md"
-              radius="primary"
-            >
-              <p className="text-workspace_1 font-medium text-text-color_2 group-hover:text-text-color_1">
-                Discord
-              </p>
-              <DiscordIcon
-                width={25}
-                height={25}
-                color="var(--primary-color)"
-              />
-            </FxButton>
+             <FxButton
+                          className="w-full  flex justify-center items-center gap-2 group"
+                          variant="secondary"
+                          size="md"
+                          radius="primary"
+                        >
+                          <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
+                            Sign up with Slack
+                          </p>
+                          <SlackIcon width={25} height={25} />
+                        </FxButton>
           </div>
         </>
 

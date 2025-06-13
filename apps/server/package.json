@@ -20,6 +20,7 @@
     "typescript": "5.8.2"
   },
   "dependencies": {
+    "@auth/express": "^0.10.1",
     "cors": "^2.8.5",
     "express": "^5.1.0"
   },

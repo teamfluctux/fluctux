@@ -8,12 +8,12 @@ import {
   unauthorizedError,
 } from "@fluctux/httpcodesanevents";
 
-import { Org } from "../../mongo/org/org.model";
+import { Org } from "@/models/org";
 import { ApiResponse, ApiError } from "@fluctux/httpcodesanevents";
 import { createOrgZodSchema, getFormattedZodErrors } from "@fluctux/zod";
 import { User as UserSessionType } from "next-auth";
 import { CreateOrganizationDataType, OrgResponseType } from "@fluctux/types";
-import { connDb } from "../../lib/db.conn";
+import { connDb } from "@/db/db.conn";
 
 export class Organization {
   protected session: UserSessionType | null = null;

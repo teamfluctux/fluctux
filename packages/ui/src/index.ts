@@ -34,6 +34,7 @@ export * from "./icons/github-icon";
 export * from "./icons/google-icon";
 export * from "./icons/twitter-icon";
 export * from "./icons/facebook";
+export * from "./icons/slack";
 export * from "./icons/type";
 
 export * from "./hooks";

@@ -15,7 +15,7 @@ export default function AuthWrapper({
 
   return (
     <section className="flex justify-center items-center w-full h-screen overflow-y-auto hide-scrollbar">
-      <div className="max-w-[420px] my-auto w-full p-3 pt-16 pb-24">
+      <div className="max-w-[450px] my-auto w-full p-3 pt-16 pb-24">
         <div className="w-fit fixed top-2 right-2">
           <ThemeSwitcher
             className="hover:bg-background-color_800C"
