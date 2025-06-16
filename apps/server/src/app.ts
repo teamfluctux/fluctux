@@ -27,6 +27,7 @@ app.use(cookieParser());
 
 app.use((req, res, next) => {
   console.log(`${NODE_ENV} ${req.method} ${req.path}`, req.body)
+  next()
 })
 
 // All Routes

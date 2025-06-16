@@ -8,8 +8,8 @@ const auth = new AuthManager()
 
 // dont make handleSignIN an arrow function in the class to solve function undefined error as it causes unecessary function creation on each instantiated 
 // using bind and arrow wrapper is negligible in perfomance
-authRouter.route("/signin/google").get(auth.callbackGoogleAuth.bind(auth))
-authRouter.route("/refresh").get()
+authRouter.route("/v1/signin/google").get(auth.callbackGoogleAuth.bind(auth))
+authRouter.route("/v1/callback/google").get(auth.handleSignInWithGoogle.bind(auth))
 // authRouter.route("/signout").post(user.handleSignOut)
 
 export default authRouter

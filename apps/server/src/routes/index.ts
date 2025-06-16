@@ -4,6 +4,6 @@ import authRouter from "./auth.route"
 const router = Router()
 
 // Authentication Routes
-router.use("/v1/auth", authRouter)
+router.use("/auth", authRouter)
 
 export default router

@@ -1,5 +1,10 @@
 import { CookieOptions } from "express";
-import { TokenProvidersType } from "../../../types/types";
+
+export enum AuthProviderCookieType {
+    GOOGLE = "google",
+    GITHUB = "github",
+    DISCORD = "discord",
+}
 
 type CookieType = {
   name: string;
@@ -7,54 +12,55 @@ type CookieType = {
 };
 
 export class CookieService {
-  TOKENTYPE: TokenProvidersType;
+  static REFRESH_TOKEN: CookieType = {
+    name: "refreshToken",
+    cookie: {
+      domain: process.env.COOKIE_DOMAIN,
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/api/auth/refresh",
+      // 30 days
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    },
+  };
 
-  constructor(tokenType: TokenProvidersType) {
-    this.TOKENTYPE = tokenType;
-  }
+  static REFRESH_TOKEN_LOGOUT: CookieType = {
+    name: "refreshTokenLogout",
+    cookie: {
+      domain: process.env.COOKIE_DOMAIN,
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/api/auth/logout",
+      // 30 days
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    },
+  };
 
-  get REFRESH_TOKEN(): CookieType {
-    return {
-      name: `refreshToken-${this.TOKENTYPE}`,
-      cookie: {
-        domain: process.env.COOKIE_DOMAIN,
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        path: "/api/auth/refresh",
-        // 30 days
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-      },
-    };
-  }
+  static ID_TOKEN: CookieType = {
+    name: "idToken",
+    cookie: {
+      domain: process.env.COOKIE_DOMAIN,
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+      // 15 mins
+      maxAge: 15 * 60 * 1000,
+    },
+  };
 
-  get REFRESH_TOKEN_LOGOUT(): CookieType {
-    return {
-      name: `refreshTokenLogout-${this.TOKENTYPE}`,
-      cookie: {
-        domain: process.env.COOKIE_DOMAIN,
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        path: "/api/auth/logout",
-        // 30 days
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-      },
-    };
-  }
-
-  get ID_TOKEN(): CookieType {
-    return {
-      name: `idToken-${this.TOKENTYPE}`,
-      cookie: {
-        domain: process.env.COOKIE_DOMAIN,
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        path: "/",
-        // 15 mins
-        maxAge: 15 * 60 * 1000,
-      },
-    };
-  }
+  static PROVIDER_COOKIE: CookieType = {
+    name: "provider",
+    cookie: {
+      domain: process.env.COOKIE_DOMAIN,
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/api/auth/logout",
+      // 30 days
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    },
+  };
 }
