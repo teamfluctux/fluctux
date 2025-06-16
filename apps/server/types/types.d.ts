@@ -26,3 +26,6 @@ declare module "next-auth/jwt" {
     id?: string;
   }
 }
+
+
+export type TokenProvidersType = "google" | "github" | "discord"

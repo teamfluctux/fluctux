@@ -1,40 +1,38 @@
 import express from "express";
 import cors from "cors";
-import { ExpressAuth } from "@auth/express";
-import { currentSession } from "./middlewares";
-import { AuthOptions } from "./config/auth.config";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import router from "@/routes/index";
+import { ApiResponse } from "./utils/ApiResponse";
 
-dotenv.config({
-  path: "./.env"
-});
+dotenv.config();
+
+const NODE_ENV = process.env.NODE_ENV; 
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
 
 const app = express();
 
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN, 
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
   })
 ); // NO NEED AS WE ARE USING NGINX -> UBUNTU
 app.use(express.json({ limit: "500kb" }));
 app.use(express.urlencoded({ extended: true, limit: "500kb" }));
+app.use(cookieParser());
 
-// ============ AUTH.JS IMPLEMENTATIONS ================
-// If your app is served through a proxy
-// trust the proxy to allow us to read the `X-Forwarded-*` headers
-app.set("trust proxy", true);
-app.use("/api/v1/auth", ExpressAuth(AuthOptions));
-// auth js middleware
-app.use(currentSession);
+app.use((req, res, next) => {
+  console.log(`${NODE_ENV} ${req.method} ${req.path}`, req.body)
+  next()
+})  
 
-// ========= ROUTES IMPORTS ===========
-import authRouter from "@/routes/auth.route";
-
-app.use("/api/v1/auth", authRouter);
+// All Routes
+app.use("/api", router);
 
 app.get("/health", (req, res) => {
-  res.status(200).json({message: "Server is healthy"})
-})
-
+  res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });
+}); 
+ 
 export { app };

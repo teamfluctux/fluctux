@@ -12,8 +12,10 @@ import {
 import Link from "next/link";
 import React from "react";
 import AuthWrapper from "../auth-wrapper";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
   return (
     <AuthWrapper>
       <div className=" w-full">
@@ -79,11 +81,14 @@ export default function LoginPage() {
         <FxSeparator orientation="horizontal" gap="xl">
           <p className="text-text-color_2 bg-background-color_950C pl-2 pr-2 font-medium text-workspace_1">
             Or
-          </p>
+          </p> 
         </FxSeparator>
 
         <>
           <FxButton
+          onClick={() => {
+            router.push("http://localhost:5000/api/auth/signin/google")
+          }}
             className="w-full  flex justify-center items-center gap-2 group"
             variant="secondary"
             size="md"
