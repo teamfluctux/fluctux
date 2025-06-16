@@ -1,34 +1,31 @@
-import { HTTPSuccessCodes } from "@/constants/http-status";
+import { ERROR, HTTPSuccessCodes } from "@/constants/http-status";
+import { GoogleAuth } from "@/services/auth";
+import { CookieService } from "@/services/auth/cookie.service";
+import { ApiError } from "@/utils/ApiError";
 import { ApiResponse } from "@/utils/ApiResponse";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
-export class AuthManager {
-   protected async signInV1(req: Request, res: Response) {
+export class AuthManager extends GoogleAuth {
+  callbackGoogleAuth(req: Request, res: Response) {
+    return res.redirect(this.generateGoogleAuthUrl()) 
+  }
+
+  async handleSignInWithGoogle(req: Request, res: Response, next: NextFunction) {
     try {
-      //   await signIn(req, res);
-      // res.redirect("/dashboard");
-      console.log("hello world in signin v1");
-      
-      res.status(200).json({message: new ApiResponse(HTTPSuccessCodes.OK, "Sign in successful")})
+      const {code} = req.query;
+      const { idToken, refreshToken } = await this.getGoogleAuthtokens(code as string)
+      const cookieService = new CookieService("google")
+      res.cookie(cookieService.ID_TOKEN.name, idToken, cookieService.ID_TOKEN.cookie)
+      res.cookie(cookieService.REFRESH_TOKEN.name, refreshToken, cookieService.REFRESH_TOKEN.cookie)
+      res.redirect("/sudo/orgid")
     } catch (error) {
-      res.status(500).send("Sign in failed");
+      res.status(500).json({error: new ApiError(500, "Error sign in user", "", [ERROR.INTERNAL_SERVER_ERROR] )})
     }
   }
 
-  protected async signOutV1(req: Request, res: Response) {
-    try {
-      //   await signOut(req, res);
-      // res.redirect("/");
-    } catch (error) {
-      res.status(500).send("Sign out failed");
-    }
+  async refreshToken(req: Request, res: Response) {
+
   }
 
-  handleSignIn(req: Request, res: Response){
-    return this.signInV1(req, res);
-  }
 
-  handleSignOut(req: Request, res: Response){
-    return this.signOutV1(req, res);
-  }
 }

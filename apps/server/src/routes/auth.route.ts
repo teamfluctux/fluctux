@@ -1,13 +1,15 @@
+import { AuthManager } from "@/controllers";
 import { FxUser } from "@/controllers/user.controller";
 import { authenticatedUser } from "@/middlewares";
 import { Router } from "express";
 
 const authRouter = Router()
-const user = new FxUser()
+const auth = new AuthManager()
 
 // dont make handleSignIN an arrow function in the class to solve function undefined error as it causes unecessary function creation on each instantiated 
 // using bind and arrow wrapper is negligible in perfomance
-authRouter.route("/signin").post(authenticatedUser, user.handleSignIn.bind(user))
-authRouter.route("/signout").post(user.handleSignOut)
+authRouter.route("/signin/google").get(auth.callbackGoogleAuth.bind(auth))
+authRouter.route("/refresh").get()
+// authRouter.route("/signout").post(user.handleSignOut)
 
 export default authRouter
