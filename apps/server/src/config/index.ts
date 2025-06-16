@@ -1,1 +1,1 @@
-export * from "./auth.config"
+// Configs like auth config

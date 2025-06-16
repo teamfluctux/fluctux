@@ -13,6 +13,7 @@
   "devDependencies": {
     "@fluctux/eslint-config": "workspace:*",
     "@fluctux/typescript-config": "workspace:*",
+    "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.1",
     "eslint": "^9.21.0",
@@ -20,7 +21,7 @@
     "typescript": "5.8.2"
   },
   "dependencies": {
-    "@auth/express": "^0.10.1",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^5.1.0"
   },
