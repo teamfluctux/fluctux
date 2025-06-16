@@ -9,7 +9,7 @@ dotenv.config({
   path: "./.env",
 });
 
-const NODE_ENV = process.env.NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV; 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT;
 
@@ -28,13 +28,13 @@ app.use(cookieParser());
 app.use((req, res, next) => {
   console.log(`${NODE_ENV} ${req.method} ${req.path}`, req.body)
   next()
-})
+})  
 
 // All Routes
 app.use("/api", router);
 
 app.get("/health", (req, res) => {
   res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });
-});
-
+}); 
+ 
 export { app };

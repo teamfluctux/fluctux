@@ -13,8 +13,12 @@ export class GoogleAuth {
   private oauthClient;
 
   constructor() {
-    this.oauthClient = new google.auth.OAuth2();
-    GoogleAuth.CLIENT_ID, GoogleAuth.CLIENT_SECRET, GoogleAuth.REDIRECT_URI;
+    this.oauthClient = new google.auth.OAuth2({
+        client_id: GoogleAuth.CLIENT_ID,
+        client_secret: GoogleAuth.CLIENT_SECRET,
+        redirectUri: GoogleAuth.REDIRECT_URI,
+    });
+    
   }
 
   protected generateGoogleAuthUrl() {
@@ -24,6 +28,7 @@ export class GoogleAuth {
       include_granted_scopes: true,
       // it will display the consent screen to the user
       prompt: "consent",
+      redirect_uri: GoogleAuth.REDIRECT_URI,
     });
   }
 

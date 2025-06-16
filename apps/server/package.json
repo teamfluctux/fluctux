@@ -5,7 +5,7 @@
   "main": "server.ts",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch src/server.ts --env-file .env",
     "start": "node dist/server.cjs",
     "build": "tsup",
     "clean": "rm -rf node_modules .turbo && echo 'Cleanup complete!'"

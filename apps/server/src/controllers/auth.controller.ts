@@ -10,13 +10,12 @@ import { NextFunction, Request, Response } from "express";
 
 export class AuthManager extends GoogleAuth {
   callbackGoogleAuth(req: Request, res: Response) {
-    return res.redirect(this.generateGoogleAuthUrl());
+    res.redirect(this.generateGoogleAuthUrl());
   }
 
   async handleSignInWithGoogle(
     req: Request,
-    res: Response,
-    next: NextFunction
+    res: Response
   ) {
     try {
       const { code } = req.query;
