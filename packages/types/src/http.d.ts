@@ -1,7 +1,7 @@
 export interface ApiResponseType {
   status: number;
   message: string;
-  data?: unknown | null;
+  data?: unknown;
   success?: boolean;
 }
 
