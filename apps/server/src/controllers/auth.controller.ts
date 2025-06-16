@@ -37,7 +37,7 @@ export class AuthManager extends GoogleAuth {
         refreshToken,
         CookieService.REFRESH_TOKEN.cookie
       );
-      res.redirect("/sudo/orgid");
+      res.redirect("http://localhost:3000/sudo/orgid");
     } catch (error) {
       res.status(500).json({
         error: new ApiError(500, "Error sign in user", "", [

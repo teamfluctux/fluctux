@@ -87,7 +87,7 @@ export default function LoginPage() {
         <>
           <FxButton
           onClick={() => {
-            router.push("http://localhost:5000/api/auth/v1/signin/google")
+            router.push("http://localhost:5000/api/auth/signin/google")
           }}
             className="w-full  flex justify-center items-center gap-2 group"
             variant="secondary"

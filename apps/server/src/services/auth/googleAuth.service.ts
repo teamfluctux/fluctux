@@ -1,6 +1,5 @@
 import { google } from "googleapis";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 export class GoogleAuth {
@@ -30,6 +29,7 @@ export class GoogleAuth {
       include_granted_scopes: true,
       // it will display the consent screen to the user
       prompt: "consent",
+      // MSG_WARNING: redirect_uri is must. otherwise will throw error
       redirect_uri: GoogleAuth.REDIRECT_URI,
     });
   }
