@@ -1,4 +1,7 @@
 import { google } from "googleapis";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export class GoogleAuth {
   private static CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
@@ -14,11 +17,10 @@ export class GoogleAuth {
 
   constructor() {
     this.oauthClient = new google.auth.OAuth2({
-        client_id: GoogleAuth.CLIENT_ID,
-        client_secret: GoogleAuth.CLIENT_SECRET,
-        redirectUri: GoogleAuth.REDIRECT_URI,
+      client_id: GoogleAuth.CLIENT_ID,
+      client_secret: GoogleAuth.CLIENT_SECRET,
+      redirectUri: GoogleAuth.REDIRECT_URI,
     });
-    
   }
 
   protected generateGoogleAuthUrl() {

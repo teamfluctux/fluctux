@@ -5,9 +5,7 @@ import dotenv from "dotenv";
 import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
 
-dotenv.config({
-  path: "./.env",
-});
+dotenv.config();
 
 const NODE_ENV = process.env.NODE_ENV; 
 const HOST = process.env.HOST;
