@@ -1,9 +1,11 @@
-import express from "express";
+import express, { Request } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
+import { authenticatedUser } from "./middlewares";
+import { CookieService } from "./services/auth/cookie.service";
 
 dotenv.config();
 
@@ -25,13 +27,14 @@ app.use(cookieParser());
 
 app.use((req, res, next) => {
   console.log(`${NODE_ENV} ${req.method} ${req.path}`, req.body)
-  next()
+  return next()
 })  
 
 // All Routes
+app.use(authenticatedUser)
 app.use("/api", router);
 
-app.get("/health", (req, res) => {
+app.get("/health", authenticatedUser, (req: Request, res) => {
   res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });
 }); 
  

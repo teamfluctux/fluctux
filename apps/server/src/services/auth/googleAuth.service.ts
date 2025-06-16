@@ -48,4 +48,12 @@ export class GoogleAuth {
     const tokens = await this.oauthClient.refreshAccessToken();
     return tokens.credentials.id_token;
   }
+
+  async getUserDataFromGoogleAuthToken(idToken: string) {
+    const data = await this.oauthClient.verifyIdToken({
+      idToken,
+    });
+
+    return data.getPayload();
+  }
 }

@@ -13,10 +13,14 @@ export class AuthManager extends GoogleAuth {
     res.redirect(this.generateGoogleAuthUrl());
   }
 
-  async handleSignInWithGoogle(
-    req: Request,
-    res: Response
-  ) {
+  static clearProtectedCookies(_: Request, res: Response) {
+    res.clearCookie(CookieService.ID_TOKEN.name);
+    res.clearCookie(CookieService.REFRESH_TOKEN.name);
+    res.clearCookie(CookieService.PROVIDER_COOKIE.name);
+    res.clearCookie(CookieService.REFRESH_TOKEN_LOGOUT.name);
+  }
+
+  async handleSignInWithGoogle(req: Request, res: Response) {
     try {
       const { code } = req.query;
       const { idToken, refreshToken } = await this.getGoogleAuthtokens(
@@ -50,43 +54,49 @@ export class AuthManager extends GoogleAuth {
   async refreshToken(req: Request, res: Response) {
     const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
     const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
-    if (!refreshToken || !providerToken) {
-      return res.status(401).json({
+    if (!refreshToken ) {
+      res.status(401).json({
         error: new ApiError(401, "Unauthorized Access!", "", [
           ERROR.UNAUTHORIZED_USER,
         ]),
       });
     }
 
-    try {
-      switch (providerToken) {
-        case AuthProviderCookieType.GOOGLE:
-          const newIdToken = await this.getNewGoogleAuthIdToken(refreshToken);
+    // MSG_WARNING: For testing purpose comment it after success
+const newIdToken = await this.getNewGoogleAuthIdToken(refreshToken);
           res.cookie(
             CookieService.ID_TOKEN.name,
             newIdToken,
             CookieService.ID_TOKEN.cookie
           );
-          return res.status(200);
-        default:
-          return res.status(400).json({
-            error: new ApiError(400, "Invalid Provider!", "", [
-              ERROR.INVALID_REQUEST,
-            ]),
-          });
-      }
-    } catch (error) {
-      res.clearCookie(CookieService.ID_TOKEN.name);
-      res.clearCookie(CookieService.REFRESH_TOKEN.name);
-      res.clearCookie(CookieService.PROVIDER_COOKIE.name);
-
-      res
-        .status(500)
-        .json({
-          error: new ApiError(500, "Internal Server Error", "", [
-            ERROR.INTERNAL_SERVER_ERROR,
-          ]),
-        });
-    }
+          res.status(200);
+          // TODO: Uncomment it
+    // try {
+    //   switch (providerToken) {
+    //     case AuthProviderCookieType.GOOGLE:
+    //       const newIdToken = await this.getNewGoogleAuthIdToken(refreshToken);
+    //       res.cookie(
+    //         CookieService.ID_TOKEN.name,
+    //         newIdToken,
+    //         CookieService.ID_TOKEN.cookie
+    //       );
+    //       res.status(200);
+    //       break;
+    //     default:
+    //       res.status(400).json({
+    //         error: new ApiError(400, "Invalid Provider!", "", [
+    //           ERROR.INVALID_REQUEST,
+    //         ]),
+    //       });
+    //       break;
+    //   }
+    // } catch (error) {
+    //   AuthManager.clearProtectedCookies(req, res);
+    //   res.status(500).json({
+    //     error: new ApiError(500, "Internal Server Error", "", [
+    //       ERROR.INTERNAL_SERVER_ERROR,
+    //     ]),
+    //   });
+    // }
   }
 }

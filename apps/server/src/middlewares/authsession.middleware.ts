@@ -1,20 +1,24 @@
 import { NextFunction, Request, Response } from "express";
 import { ApiError } from "@/utils/ApiError";
 import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
+import { getSession } from "@/lib/getSession";
+import { CookieService } from "@/services/auth/cookie.service";
 
 export async function authenticatedUser(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  // const session =
-  //   res.locals.session ?? (await getSession(req, AuthOptions)) ?? undefined;
-  // res.locals.session = session;
-  // TODO: convert it to only session. for signin testing its currently !session 
-  // if (!session) {
-  //   next();
-  // }
-
+  const session =
+    res.locals.session ?? (await getSession(req, res)) ?? undefined;
+  res.locals.session = session;
+   
+  // TODO: convert it to only session. for signin testing its currently !session
+  if (session) {
+    console.log("session", session);
+    return next();
+  }
+  
   // TODO: uncomment it
   // res.status(HTTPErrorCodes.UNAUTHORIZED).json({
   //   error: new ApiError(
@@ -24,15 +28,5 @@ export async function authenticatedUser(
   //     [ERROR.UNAUTHORIZED_USER]
   //   ),
   // });
-}
-
-
-export async function currentSession(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
-  // const session = (await getSession(req, AuthOptions)) ?? undefined
-  // res.locals.session = session
-  // return next()
+  return next();
 }

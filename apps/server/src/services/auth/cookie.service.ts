@@ -58,7 +58,7 @@ export class CookieService {
       httpOnly: true,
       secure: true,
       sameSite: "lax",
-      path: "/api/auth/logout",
+      path: "/",
       // 30 days
       maxAge: 30 * 24 * 60 * 60 * 1000,
     },
