@@ -16,8 +16,11 @@ export const getSession = async (req: Request, res: Response) => {
   }
 
   const userData = await auth.getUserDataFromGoogleAuthToken(idToken);
-  return userData;
-
+  return {
+    user: userData,
+    provider: providerToken
+  };
+ 
 //   TODO: uncomment it
   //   switch (providerToken) {
   //     case AuthProviderCookieType.GOOGLE:

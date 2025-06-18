@@ -31,7 +31,6 @@ app.use((req, res, next) => {
 })  
 
 // All Routes
-app.use(authenticatedUser)
 app.use("/api", router);
 
 app.get("/health", authenticatedUser, (req: Request, res) => {
