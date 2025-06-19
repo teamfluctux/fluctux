@@ -4,8 +4,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
-import { authenticatedUser } from "./middlewares";
-import { CookieService } from "./services/auth/cookie.service";
+import { authenticateUser } from "./middlewares";
 
 dotenv.config();
 
@@ -31,9 +30,10 @@ app.use((req, res, next) => {
 })  
 
 // All Routes
+app.use(authenticateUser)
 app.use("/api", router);
 
-app.get("/health", authenticatedUser, (req: Request, res) => {
+app.get("/health", authenticateUser, (req: Request, res) => {
   res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });
 }); 
  

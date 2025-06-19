@@ -3,8 +3,9 @@ import { ApiError } from "@/utils/ApiError";
 import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
 import { getSession } from "@/lib/getSession";
 import { CookieService } from "@/services/auth/cookie.service";
+import { AuthManager } from "@/controllers";
 
-export async function authenticatedUser(
+export async function authenticateUser(
   req: Request,
   res: Response,
   next: NextFunction
@@ -13,7 +14,7 @@ export async function authenticatedUser(
 
   // TODO: convert it to only session. for signin testing its currently !session
   if (session) {
-    console.log("session", session.user);
+    console.log("session", session.payload.user);
     return next();
   }
 
@@ -27,7 +28,29 @@ export async function authenticatedUser(
   //   ),
   // });
 
+  // MSG_WARNING: Remove after testing
+  return next();
+}
 
-  // MSG_WARNING: Remove this after testing
+export async function tokenValidator(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const idToken = req.cookies[CookieService.ID_TOKEN.name];
+
+  if (!idToken) {
+    const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
+    if (!refreshToken)
+      res.status(401).json({
+        error: new ApiError(401, "Unauthorized user! Token expired!", "", [
+          ERROR.UNAUTHORIZED_USER,
+        ]),
+      });
+    const auth = new AuthManager();
+    await auth.refreshToken(req, res);
+    return next();
+  }
+
   return next();
 }
