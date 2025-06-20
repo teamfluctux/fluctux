@@ -35,6 +35,6 @@ export type TokenProvidersType = "google" | "github" | "discord"
 declare module "express" {
     // Inject additional properties on express.Request
     interface Request  {
-        user?: SessionDataType
+        user?: SessionDataType | null
     }
 }

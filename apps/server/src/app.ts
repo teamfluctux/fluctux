@@ -35,16 +35,6 @@ app.use((req, res, next) => {
 app.use("/api", router);
 
 app.get("/health", async (req: Request, res) => {
-  const auth = new AuthManager();
-
-  const newIdToken = await auth.refreshToken(req, res);
-  
-  res.cookie(
-    CookieService.ID_TOKEN.name,
-    newIdToken,
-    CookieService.ID_TOKEN.cookie
-  );
-
   res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });
 });
 

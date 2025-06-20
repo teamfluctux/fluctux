@@ -19,16 +19,7 @@ export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
       credentials: "include",
     });
     const session = await userRequest.json();
-
-    if (session.session.email === "") {
-      console.log("refreshing token");
-
-      await fetch("http://localhost:5000/health", {
-        credentials: "include",
-      });
-    }
     console.log("user is here", session);
-
     setUser(session);
   };
 

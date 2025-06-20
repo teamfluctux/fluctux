@@ -51,48 +51,18 @@ export class AuthManager extends GoogleAuth {
     }
   }
 
-  async refreshToken(req: Request, res: Response) {
-    const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
-    const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
-    if (!refreshToken || !providerToken) {
-      res.status(401).json({
-        error: new ApiError(401, "Unauthorized Access!", "", [
-          ERROR.UNAUTHORIZED_USER,
-        ]),
-      });
-    }
-
-    // MSG_WARNING: For testing purpose comment it after success
-    // const newIdToken = await this.getNewGoogleAuthIdToken(refreshToken);
-    // res.cookie(
-    //   CookieService.ID_TOKEN.name,
-    //   newIdToken,
-    //   CookieService.ID_TOKEN.cookie
-    // );
-    // res.status(200);
-    // TODO: Uncomment it
+  async refreshToken(providerToken: string, refreshToken: string) {
     try {
       switch (providerToken) {
         case AuthProviderCookieType.GOOGLE:
           console.log("TOKEN REFRESHED VIA GOOGLE");
-          const token =  await this.getNewGoogleAuthIdToken(refreshToken);
-          console.log("TOKEN REFRESHED VIA GOOGLE", token);
-          
+          const token = await this.getNewGoogleAuthIdToken(refreshToken);
           return token
         default:
-          res.status(500).json({
-            error: new ApiError(500, "Internal Server Error", "", [
-              ERROR.INTERNAL_SERVER_ERROR,
-            ]),
-          });
-          break;
+          return null
       }
     } catch (error) {
-      res.status(500).json({
-        error: new ApiError(500, "Internal Server Error", "", [
-          ERROR.INTERNAL_SERVER_ERROR,
-        ]),
-      });
+      return null
     }
   }
 }

@@ -13,17 +13,9 @@ const auth = new AuthManager()
 
 router.use("/auth", authRouter);
 
-router.get("/protected",  async (req: Request, res: Response) => {
-  const session = await getSession(req, res);
-  const modifiedSession: SessionDataType = {
-    email: session?.user?.email || "",
-    _id: session?.user?.sub || "",
-    name: session?.user?.name || "",
-    picture: session?.user?.picture || "",
-    role: "USER",
-    provider: session?.provider,
-  }
-  res.status(200).json({ session: modifiedSession });
+router.get("/protected", authenticateUser,  async (req: Request, res: Response) => {
+  const user = req.user
+  res.status(200).json({ session: user });
 });
 
 export default router;

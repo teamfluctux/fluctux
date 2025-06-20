@@ -11,26 +11,78 @@ export async function authenticateUser(
   res: Response,
   next: NextFunction
 ) {
+  const auth = new AuthManager();
   const idToken = req.cookies[CookieService.ID_TOKEN.name];
-  if (!idToken) {
-    console.log("ID TOKEN INVALID");
+  const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
+  const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
 
-    const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
-    const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
-    if (!refreshToken || !providerToken) {
-      console.log("REFRESH TOKEN INVALID");
-      res.status(401).json({
-        error: new ApiError(401, "Unauthorized user! Token expired!", "", [
-          ERROR.UNAUTHORIZED_USER,
+  if (!refreshToken || !providerToken) {
+    console.log("refresh or provider token missing");
+
+    res.status(401).json({
+      error: new ApiError(401, "Unauthorized access!", "", [
+        ERROR.UNAUTHORIZED_USER,
+        "Invalid refresh token",
+        "Invalid provider token",
+      ]),
+    });
+    return;
+  }
+
+  if (!idToken) {
+    console.log("id token missing");
+
+    const newIdToken = await auth.refreshToken(providerToken, refreshToken);
+    if (!newIdToken) {
+      res.status(400).json({
+        error: new ApiError(400, "Invalid request", "", [
+          ERROR.INVALID_REQUEST,
+          "Invalid refresh token",
         ]),
       });
-    } else {
-      const auth = new AuthManager();
-      console.log("ID TOKEN REFRESHED");
-      await auth.refreshToken(req, res);
-      return next()
+      return;
     }
+    console.log("new id token generated");
+
+    const session = await getSession(providerToken, newIdToken);
+    const user: SessionDataType = {
+      _id: session?.user?.sub || "",
+      name: session?.user?.name || "",
+      email: session?.user?.email || "",
+      picture: session?.user?.picture || "",
+      role: "USER",
+      provider: session?.provider || "",
+    };
+
+    console.log("user saved in req after refreshing", user);
+
+    req.user = user;
+    return next();
   }
-  console.log("ID TOKEN VALID");
+
+  const session = await getSession(providerToken, idToken);
+  if (!session) {
+    console.log("session missing");
+
+    res.status(401).json({
+      error: new ApiError(401, "Unauthorized access!", "", [
+        ERROR.UNAUTHORIZED_USER,
+        "Invalid session",
+      ]),
+    });
+    return;
+  }
+
+  const user: SessionDataType = {
+    _id: session?.user?.sub || "",
+    name: session?.user?.name || "",
+    email: session?.user?.email || "",
+    picture: session?.user?.picture || "",
+    role: "USER",
+    provider: session?.provider || "",
+  };
+  console.log("user saved in req normally", user);
+
+  req.user = user;
   return next();
 }
