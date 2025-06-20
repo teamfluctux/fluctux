@@ -1,10 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Provider } from "react-redux";
-import { SessionProvider } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { Toaster, ToasterProps } from "sonner";
-import { ApolloProvider } from "@apollo/client";
 import { SessionDataType } from "@fluctux/types";
 
 interface GlobalWrapperPropsType {
@@ -20,7 +17,7 @@ export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
     });
     const session = await userRequest.json();
     console.log("user is here", session);
-    setUser(session);
+    setUser(session.session);
   };
 
   useEffect(() => {
@@ -32,7 +29,10 @@ export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
   }, [user]);
 
   return (
-    <SessionProvider>
+    <>
+      <p>
+        Testing: {user?.email} {user?.name}
+      </p>
       {children}
       <Toaster
         richColors
@@ -40,6 +40,6 @@ export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
         theme={theme as ToasterProps["theme"]}
         closeButton
       />
-    </SessionProvider>
+    </>
   );
 }

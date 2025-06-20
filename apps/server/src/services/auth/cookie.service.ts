@@ -20,8 +20,8 @@ export class CookieService {
       secure: true,
       sameSite: "lax",
       path: "/",
-      // 30 days
-      maxAge: 30 * 24 * 60 * 60 * 1000,
+      // MSG_WARNING for testing its now 1 min
+      maxAge: 1 * 60 * 1000,
     },
   };
 
@@ -33,8 +33,8 @@ export class CookieService {
       secure: true,
       sameSite: "lax",
       path: "/api/auth/logout",
-      // 30 days
-      maxAge: 30 * 24 * 60 * 60 * 1000,
+     // MSG_WARNING for testing its now 1 min
+      maxAge: 1 * 60 * 1000,
     },
   };
 
@@ -46,7 +46,7 @@ export class CookieService {
       secure: true,
       sameSite: "lax",
       path: "/",
-      // 10 sec
+      // MSG_WARNING for testing its now 20 SEC
       maxAge: 20 * 1000,
     },
   };
@@ -59,8 +59,8 @@ export class CookieService {
       secure: true,
       sameSite: "lax",
       path: "/",
-      // 30 days
-      maxAge: 30 * 24 * 60 * 60 * 1000,
+      // MSG_WARNING for testing its now 1 min
+      maxAge: 1 * 60 * 1000,
     },
   };
 }

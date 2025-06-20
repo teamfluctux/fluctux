@@ -55,7 +55,7 @@ export async function authenticateUser(
     };
 
     console.log("user saved in req after refreshing", user);
-
+    req.newIDToken = newIdToken;
     req.user = user;
     return next();
   }
