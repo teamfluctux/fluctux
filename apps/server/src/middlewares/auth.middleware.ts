@@ -5,6 +5,7 @@ import { getSession } from "@/lib/getSession";
 import { CookieService } from "@/services/auth/cookie.service";
 import { AuthManager } from "@/controllers";
 import { SessionDataType } from "@fluctux/types";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 export async function authenticateUser(
   req: Request,
@@ -29,10 +30,27 @@ export async function authenticateUser(
     return;
   }
 
+  const decryptedProviderToken = jwt.verify(
+    providerToken,
+    process.env.JWT_SECRET as string
+  ) as { provider: string };
+
+  if (!decryptedProviderToken) {
+    res.status(400).json({
+      error: new ApiError(400, "Invalid request", "", [
+        ERROR.INVALID_REQUEST,
+        "Invalid provider token",
+      ]),
+    });
+  }
+
   if (!idToken) {
     console.log("id token missing");
 
-    const newIdToken = await auth.refreshToken(providerToken, refreshToken);
+    const newIdToken = await auth.refreshToken(
+      decryptedProviderToken.provider,
+      refreshToken
+    );
     if (!newIdToken) {
       res.status(400).json({
         error: new ApiError(400, "Invalid request", "", [
@@ -44,7 +62,10 @@ export async function authenticateUser(
     }
     console.log("new id token generated");
 
-    const session = await getSession(providerToken, newIdToken);
+    const session = await getSession(
+      decryptedProviderToken.provider,
+      newIdToken
+    );
     const user: SessionDataType = {
       _id: session?.user?.sub || "",
       name: session?.user?.name || "",
@@ -60,7 +81,7 @@ export async function authenticateUser(
     return next();
   }
 
-  const session = await getSession(providerToken, idToken);
+  const session = await getSession(decryptedProviderToken.provider, idToken);
   if (!session) {
     console.log("session missing");
 

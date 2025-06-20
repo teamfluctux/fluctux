@@ -1,4 +1,3 @@
-import { ERROR } from "@/constants/http-status";
 import { AuthManager } from "@/controllers";
 import {
   AuthProviderCookieType,
