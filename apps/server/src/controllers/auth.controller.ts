@@ -41,7 +41,7 @@ export class AuthManager extends GoogleAuth {
         refreshToken,
         CookieService.REFRESH_TOKEN.cookie
       );
-      res.redirect("http://localhost:3000/sudo/orgid");
+      res.redirect("http://localhost:3003/");
     } catch (error) {
       res.status(500).json({
         error: new ApiError(500, "Error sign in user", "", [
@@ -54,7 +54,7 @@ export class AuthManager extends GoogleAuth {
   async refreshToken(req: Request, res: Response) {
     const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
     const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
-    if (!refreshToken) {
+    if (!refreshToken || !providerToken) {
       res.status(401).json({
         error: new ApiError(401, "Unauthorized Access!", "", [
           ERROR.UNAUTHORIZED_USER,
@@ -63,35 +63,31 @@ export class AuthManager extends GoogleAuth {
     }
 
     // MSG_WARNING: For testing purpose comment it after success
-    const newIdToken = await this.getNewGoogleAuthIdToken(refreshToken);
-    res.cookie(
-      CookieService.ID_TOKEN.name,
-      newIdToken,
-      CookieService.ID_TOKEN.cookie
-    );
-    res.status(200);
+    // const newIdToken = await this.getNewGoogleAuthIdToken(refreshToken);
+    // res.cookie(
+    //   CookieService.ID_TOKEN.name,
+    //   newIdToken,
+    //   CookieService.ID_TOKEN.cookie
+    // );
+    // res.status(200);
     // TODO: Uncomment it
     try {
       switch (providerToken) {
         case AuthProviderCookieType.GOOGLE:
-          const newIdToken = await this.getNewGoogleAuthIdToken(refreshToken);
-          res.cookie(
-            CookieService.ID_TOKEN.name,
-            newIdToken,
-            CookieService.ID_TOKEN.cookie
-          );
-          res.status(200);
-          break;
+          console.log("TOKEN REFRESHED VIA GOOGLE");
+          const token =  await this.getNewGoogleAuthIdToken(refreshToken);
+          console.log("TOKEN REFRESHED VIA GOOGLE", token);
+          
+          return token
         default:
-          res.status(400).json({
-            error: new ApiError(400, "Invalid Provider!", "", [
-              ERROR.INVALID_REQUEST,
+          res.status(500).json({
+            error: new ApiError(500, "Internal Server Error", "", [
+              ERROR.INTERNAL_SERVER_ERROR,
             ]),
           });
           break;
       }
     } catch (error) {
-      AuthManager.clearProtectedCookies(req, res);
       res.status(500).json({
         error: new ApiError(500, "Internal Server Error", "", [
           ERROR.INTERNAL_SERVER_ERROR,

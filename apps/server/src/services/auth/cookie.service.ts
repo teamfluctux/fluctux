@@ -19,7 +19,7 @@ export class CookieService {
       httpOnly: true,
       secure: true,
       sameSite: "lax",
-      path: "/api/auth/refresh",
+      path: "/",
       // 30 days
       maxAge: 30 * 24 * 60 * 60 * 1000,
     },
@@ -46,8 +46,8 @@ export class CookieService {
       secure: true,
       sameSite: "lax",
       path: "/",
-      // 15 mins
-      maxAge: 15 * 60 * 1000,
+      // 10 sec
+      maxAge: 20 * 1000,
     },
   };
 

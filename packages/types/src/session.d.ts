@@ -3,7 +3,7 @@ export type SessionDataType = {
   name: string;
   picture: string;
   email: string;
-  apiVersion: string;
+  apiVersion?: string;
   provider: string;
   role: string;
 };
