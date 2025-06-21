@@ -1,4 +1,5 @@
 import { DefaultSession } from "@auth/express";
+import { SessionDataType } from "@fluctux/types";
 import { JWT } from "next-auth/jwt";
 
 declare module "@auth/express" {
@@ -29,3 +30,12 @@ declare module "next-auth/jwt" {
 
 
 export type TokenProvidersType = "google" | "github" | "discord"
+
+
+declare module "express" {
+    // Inject additional properties on express.Request
+    interface Request  {
+        user?: SessionDataType | null
+        newIDToken?: string
+    }
+}

@@ -1,8 +1,9 @@
 import { google } from "googleapis";
 import dotenv from "dotenv";
+import { GithubAuth } from "./githubAuth.service";
 dotenv.config();
 
-export class GoogleAuth {
+export class GoogleAuth extends GithubAuth {
   private static CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
   private static CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
   private static REDIRECT_URI = process.env.GOOGLE_AUTH_REDIRECT_URI;
@@ -15,6 +16,7 @@ export class GoogleAuth {
   private oauthClient;
 
   constructor() {
+    super()
     this.oauthClient = new google.auth.OAuth2({
       client_id: GoogleAuth.CLIENT_ID,
       client_secret: GoogleAuth.CLIENT_SECRET,
@@ -44,8 +46,16 @@ export class GoogleAuth {
   }
 
   protected async getNewGoogleAuthIdToken(refreshToken: string) {
-    this.oauthClient.setCredentials({ refresh_token: refreshToken });
+    this.oauthClient.setCredentials({ refresh_token: refreshToken, scope: GoogleAuth.SCOPES[0] });
     const tokens = await this.oauthClient.refreshAccessToken();
     return tokens.credentials.id_token;
+  }
+
+  async getUserDataFromGoogleAuthToken(idToken: string) {
+    const data = await this.oauthClient.verifyIdToken({
+      idToken,
+    });
+
+    return data.getPayload();
   }
 }

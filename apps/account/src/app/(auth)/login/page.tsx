@@ -65,7 +65,6 @@ export default function LoginPage() {
                 body: JSON.stringify({
                   csrfToken,
                   provider: "google",
-           
                 }),
               });
             }}
@@ -81,14 +80,14 @@ export default function LoginPage() {
         <FxSeparator orientation="horizontal" gap="xl">
           <p className="text-text-color_2 bg-background-color_950C pl-2 pr-2 font-medium text-workspace_1">
             Or
-          </p> 
+          </p>
         </FxSeparator>
 
         <>
           <FxButton
-          onClick={() => {
-            router.push("http://localhost:5000/api/auth/signin/google")
-          }}
+            onClick={() => {
+              router.push("http://localhost:5000/api/auth/signin/google");
+            }}
             className="w-full  flex justify-center items-center gap-2 group"
             variant="secondary"
             size="md"
@@ -101,6 +100,9 @@ export default function LoginPage() {
           </FxButton>
           <div className="flex justify-center items-center gap-3 mt-3">
             <FxButton
+              onClick={() => {
+              router.push("http://localhost:5000/api/auth/signin/github");
+            }}
               className="w-full  flex justify-center items-center gap-2 group"
               variant="secondary"
               size="md"

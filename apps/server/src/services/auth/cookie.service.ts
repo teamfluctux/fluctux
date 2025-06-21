@@ -19,9 +19,9 @@ export class CookieService {
       httpOnly: true,
       secure: true,
       sameSite: "lax",
-      path: "/api/auth/refresh",
-      // 30 days
-      maxAge: 30 * 24 * 60 * 60 * 1000,
+      path: "/",
+      // MSG_WARNING for testing its now 1 min
+      maxAge: 1 * 60 * 1000,
     },
   };
 
@@ -33,8 +33,8 @@ export class CookieService {
       secure: true,
       sameSite: "lax",
       path: "/api/auth/logout",
-      // 30 days
-      maxAge: 30 * 24 * 60 * 60 * 1000,
+     // MSG_WARNING for testing its now 1 min
+      maxAge: 1 * 60 * 1000,
     },
   };
 
@@ -46,11 +46,11 @@ export class CookieService {
       secure: true,
       sameSite: "lax",
       path: "/",
-      // 15 mins
-      maxAge: 15 * 60 * 1000,
+      // MSG_WARNING for testing its now 20 SEC
+      maxAge: 20 * 1000,
     },
   };
-
+// TODO: change it to metacookie
   static PROVIDER_COOKIE: CookieType = {
     name: "provider",
     cookie: {
@@ -58,9 +58,9 @@ export class CookieService {
       httpOnly: true,
       secure: true,
       sameSite: "lax",
-      path: "/api/auth/logout",
-      // 30 days
-      maxAge: 30 * 24 * 60 * 60 * 1000,
+      path: "/",
+      // MSG_WARNING for testing its now 1 min
+      maxAge: 1 * 60 * 1000,
     },
   };
 }

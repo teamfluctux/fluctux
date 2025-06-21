@@ -5,26 +5,39 @@ import {
   CookieService,
 } from "@/services/auth/cookie.service";
 import { ApiError } from "@/utils/ApiError";
-import { ApiResponse } from "@/utils/ApiResponse";
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+import { GithubAuth } from "@/services/auth/githubAuth.service";
+import { generateEncryptedJWTTokens } from "@/utils/generateEncryptedJWTToken";
+dotenv.config();
 
 export class AuthManager extends GoogleAuth {
-  callbackGoogleAuth(req: Request, res: Response) {
-    res.redirect(this.generateGoogleAuthUrl());
+  redirectGoogleAuth(req: Request, res: Response) {
+    return res.redirect(this.generateGoogleAuthUrl());
   }
 
-  async handleSignInWithGoogle(
-    req: Request,
-    res: Response
-  ) {
+  redirectGithubAuth(req: Request, res: Response) {
+    return res.redirect(this.generateGithubAuthUrl());
+  }
+
+  static clearProtectedCookies(_: Request, res: Response) {
+    res.clearCookie(CookieService.ID_TOKEN.name);
+    res.clearCookie(CookieService.REFRESH_TOKEN.name);
+    res.clearCookie(CookieService.PROVIDER_COOKIE.name);
+    res.clearCookie(CookieService.REFRESH_TOKEN_LOGOUT.name);
+  }
+
+  async handleSignInWithGoogle(req: Request, res: Response) {
     try {
       const { code } = req.query;
       const { idToken, refreshToken } = await this.getGoogleAuthtokens(
         code as string
       );
+           const providerNameJWT = generateEncryptedJWTTokens({provider: AuthProviderCookieType.GOOGLE}, {expiresIn: "720h"})
       res.cookie(
         CookieService.PROVIDER_COOKIE.name,
-        AuthProviderCookieType.GOOGLE,
+        providerNameJWT,
         CookieService.PROVIDER_COOKIE.cookie
       );
       res.cookie(
@@ -37,56 +50,58 @@ export class AuthManager extends GoogleAuth {
         refreshToken,
         CookieService.REFRESH_TOKEN.cookie
       );
-      res.redirect("http://localhost:3000/sudo/orgid");
+      res.redirect("http://localhost:3003/");
     } catch (error) {
       res.status(500).json({
-        error: new ApiError(500, "Error sign in user", "", [
+        error: new ApiError(500, "Error sign in user vai google", "", [
           ERROR.INTERNAL_SERVER_ERROR,
         ]),
       });
     }
   }
 
-  async refreshToken(req: Request, res: Response) {
-    const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
-    const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
-    if (!refreshToken || !providerToken) {
-      return res.status(401).json({
-        error: new ApiError(401, "Unauthorized Access!", "", [
-          ERROR.UNAUTHORIZED_USER,
-        ]),
-      });
-    }
-
+  async handleSignInWithGithub(req: Request, res: Response) {
     try {
-      switch (providerToken) {
+      const {code} = req.query
+      const {idToken} = await this.getGithubAuthTokens(code as string)
+      console.log("Token github", idToken);
+
+       const providerNameJWT = generateEncryptedJWTTokens({provider: AuthProviderCookieType.GITHUB}, {expiresIn: "720h"})
+      
+      res.cookie(
+        CookieService.ID_TOKEN.name,
+        idToken,
+        CookieService.ID_TOKEN.cookie
+      )
+
+      res.cookie(
+        CookieService.PROVIDER_COOKIE.name,
+        providerNameJWT,
+        CookieService.PROVIDER_COOKIE.cookie
+      )
+
+      res.redirect("http://localhost:3003/");
+    } catch (error) {
+      console.log(error);
+      
+      res.status(500).json({
+        error: new ApiError(500, "Error sign in user via github", "", [ERROR.INTERNAL_SERVER_ERROR, "Error accessing token from github"])
+      })
+    }
+  }
+
+  async refreshToken(providerName: string, refreshToken: string) {
+    try {
+      switch (providerName) {
         case AuthProviderCookieType.GOOGLE:
-          const newIdToken = await this.getNewGoogleAuthIdToken(refreshToken);
-          res.cookie(
-            CookieService.ID_TOKEN.name,
-            newIdToken,
-            CookieService.ID_TOKEN.cookie
-          );
-          return res.status(200);
+          console.log("TOKEN REFRESHED VIA GOOGLE");
+          const token = await this.getNewGoogleAuthIdToken(refreshToken);
+          return token;
         default:
-          return res.status(400).json({
-            error: new ApiError(400, "Invalid Provider!", "", [
-              ERROR.INVALID_REQUEST,
-            ]),
-          });
+          return null;
       }
     } catch (error) {
-      res.clearCookie(CookieService.ID_TOKEN.name);
-      res.clearCookie(CookieService.REFRESH_TOKEN.name);
-      res.clearCookie(CookieService.PROVIDER_COOKIE.name);
-
-      res
-        .status(500)
-        .json({
-          error: new ApiError(500, "Internal Server Error", "", [
-            ERROR.INTERNAL_SERVER_ERROR,
-          ]),
-        });
+      return null;
     }
   }
 }

@@ -1,1 +1,1 @@
-export * from "./authsession.middleware"
+export * from "./auth.middleware"

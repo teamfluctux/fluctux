@@ -16,15 +16,22 @@
     "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.10",
     "eslint": "^9.21.0",
     "nodemon": "^3.1.9",
     "typescript": "5.8.2"
   },
   "dependencies": {
+    "@octokit/auth-oauth-app": "^9.0.1",
+    "@octokit/core": "^7.0.2",
+    "@octokit/oauth-app": "^8.0.1",
+    "@octokit/oauth-methods": "^6.0.0",
+    "@octokit/rest": "^22.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "googleapis": "^150.0.1"
+    "googleapis": "^150.0.1",
+    "jsonwebtoken": "^9.0.2"
   },
   "keywords": [],
   "author": "",
