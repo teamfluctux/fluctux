@@ -1,15 +1,4 @@
 import { OAuthApp } from "@octokit/oauth-app";
-import {
-  exchangeWebFlowCode,
-  createDeviceCode,
-  exchangeDeviceCode,
-  checkToken,
-  refreshToken,
-  scopeToken,
-  resetToken,
-  deleteToken,
-  deleteAuthorization,
-} from "@octokit/oauth-methods";
 
 import dotenv from "dotenv";
 dotenv.config();
