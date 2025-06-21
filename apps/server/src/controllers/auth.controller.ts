@@ -9,6 +9,7 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { GithubAuth } from "@/services/auth/githubAuth.service";
+import { generateEncryptedJWTTokens } from "@/utils/generateEncryptedJWTToken";
 dotenv.config();
 
 export class AuthManager extends GoogleAuth {
@@ -33,13 +34,7 @@ export class AuthManager extends GoogleAuth {
       const { idToken, refreshToken } = await this.getGoogleAuthtokens(
         code as string
       );
-      const providerNameJWT = jwt.sign(
-        { provider: AuthProviderCookieType.GOOGLE },
-        process.env.JWT_SECRET as string,
-        {
-          expiresIn: "720h",
-        }
-      );
+           const providerNameJWT = generateEncryptedJWTTokens({provider: AuthProviderCookieType.GOOGLE}, {expiresIn: "720h"})
       res.cookie(
         CookieService.PROVIDER_COOKIE.name,
         providerNameJWT,
@@ -70,11 +65,19 @@ export class AuthManager extends GoogleAuth {
       const {code} = req.query
       const {idToken} = await this.getGithubAuthTokens(code as string)
       console.log("Token github", idToken);
+
+       const providerNameJWT = generateEncryptedJWTTokens({provider: AuthProviderCookieType.GITHUB}, {expiresIn: "720h"})
       
       res.cookie(
         CookieService.ID_TOKEN.name,
         idToken,
         CookieService.ID_TOKEN.cookie
+      )
+
+      res.cookie(
+        CookieService.PROVIDER_COOKIE.name,
+        providerNameJWT,
+        CookieService.PROVIDER_COOKIE.cookie
       )
 
       res.redirect("http://localhost:3003/");
@@ -87,9 +90,9 @@ export class AuthManager extends GoogleAuth {
     }
   }
 
-  async refreshToken(providerToken: string, refreshToken: string) {
+  async refreshToken(providerName: string, refreshToken: string) {
     try {
-      switch (providerToken) {
+      switch (providerName) {
         case AuthProviderCookieType.GOOGLE:
           console.log("TOKEN REFRESHED VIA GOOGLE");
           const token = await this.getNewGoogleAuthIdToken(refreshToken);

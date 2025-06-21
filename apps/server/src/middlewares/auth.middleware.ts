@@ -17,7 +17,7 @@ export async function authenticateUser(
   const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
   const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
 
-  if (!refreshToken || !providerToken) {
+  if ( !providerToken) {
     console.log("refresh or provider token missing");
 
     res.status(401).json({
@@ -82,6 +82,9 @@ export async function authenticateUser(
   }
 
   const session = await getSession(decryptedProviderToken.provider, idToken);
+  console.log("provider",decryptedProviderToken.provider);
+  console.log("session", session);
+  
   if (!session) {
     console.log("session missing");
 

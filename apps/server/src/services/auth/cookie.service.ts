@@ -50,7 +50,7 @@ export class CookieService {
       maxAge: 20 * 1000,
     },
   };
-
+// TODO: change it to metacookie
   static PROVIDER_COOKIE: CookieType = {
     name: "provider",
     cookie: {
