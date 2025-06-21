@@ -1,9 +1,9 @@
 import { CookieOptions } from "express";
 
 export enum AuthProviderCookieType {
-    GOOGLE = "google",
-    GITHUB = "github",
-    DISCORD = "discord",
+  GOOGLE = "google",
+  GITHUB = "github",
+  DISCORD = "discord",
 }
 
 type CookieType = {
@@ -33,7 +33,7 @@ export class CookieService {
       secure: true,
       sameSite: "lax",
       path: "/api/auth/logout",
-     // MSG_WARNING for testing its now 1 min
+      // MSG_WARNING for testing its now 1 min
       maxAge: 1 * 60 * 1000,
     },
   };
@@ -50,7 +50,7 @@ export class CookieService {
       maxAge: 20 * 1000,
     },
   };
-// TODO: change it to metacookie
+  // TODO: change it to metacookie
   static PROVIDER_COOKIE: CookieType = {
     name: "provider",
     cookie: {

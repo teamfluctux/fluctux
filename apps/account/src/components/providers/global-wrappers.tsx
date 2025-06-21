@@ -16,7 +16,7 @@ export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
       credentials: "include",
     });
     const session = await userRequest.json();
-    if(session.session) {
+    if (session.session) {
       console.log("user is here", session);
       setUser(session.session);
     }

@@ -1,5 +1,1 @@
-
-
-export class FxUser {
-
-}
+export class FxUser {}

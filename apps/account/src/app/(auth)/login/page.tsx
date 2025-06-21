@@ -101,8 +101,8 @@ export default function LoginPage() {
           <div className="flex justify-center items-center gap-3 mt-3">
             <FxButton
               onClick={() => {
-              router.push("http://localhost:5000/api/auth/signin/github");
-            }}
+                router.push("http://localhost:5000/api/auth/signin/github");
+              }}
               className="w-full  flex justify-center items-center gap-2 group"
               variant="secondary"
               size="md"

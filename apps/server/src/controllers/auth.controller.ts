@@ -34,7 +34,10 @@ export class AuthManager extends GoogleAuth {
       const { idToken, refreshToken } = await this.getGoogleAuthtokens(
         code as string
       );
-           const providerNameJWT = generateEncryptedJWTTokens({provider: AuthProviderCookieType.GOOGLE}, {expiresIn: "720h"})
+      const providerNameJWT = generateEncryptedJWTTokens(
+        { provider: AuthProviderCookieType.GOOGLE },
+        { expiresIn: "720h" }
+      );
       res.cookie(
         CookieService.PROVIDER_COOKIE.name,
         providerNameJWT,
@@ -62,31 +65,37 @@ export class AuthManager extends GoogleAuth {
 
   async handleSignInWithGithub(req: Request, res: Response) {
     try {
-      const {code} = req.query
-      const {idToken} = await this.getGithubAuthTokens(code as string)
+      const { code } = req.query;
+      const { idToken } = await this.getGithubAuthTokens(code as string);
       console.log("Token github", idToken);
 
-       const providerNameJWT = generateEncryptedJWTTokens({provider: AuthProviderCookieType.GITHUB}, {expiresIn: "720h"})
-      
+      const providerNameJWT = generateEncryptedJWTTokens(
+        { provider: AuthProviderCookieType.GITHUB },
+        { expiresIn: "720h" }
+      );
+
       res.cookie(
         CookieService.ID_TOKEN.name,
         idToken,
         CookieService.ID_TOKEN.cookie
-      )
+      );
 
       res.cookie(
         CookieService.PROVIDER_COOKIE.name,
         providerNameJWT,
         CookieService.PROVIDER_COOKIE.cookie
-      )
+      );
 
       res.redirect("http://localhost:3003/");
     } catch (error) {
       console.log(error);
-      
+
       res.status(500).json({
-        error: new ApiError(500, "Error sign in user via github", "", [ERROR.INTERNAL_SERVER_ERROR, "Error accessing token from github"])
-      })
+        error: new ApiError(500, "Error sign in user via github", "", [
+          ERROR.INTERNAL_SERVER_ERROR,
+          "Error accessing token from github",
+        ]),
+      });
     }
   }
 

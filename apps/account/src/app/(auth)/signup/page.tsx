@@ -121,17 +121,17 @@ export default function SignUpPage() {
               </p>
               <GithubIcon />
             </FxButton>
-             <FxButton
-                          className="w-full  flex justify-center items-center gap-2 group"
-                          variant="secondary"
-                          size="md"
-                          radius="primary"
-                        >
-                          <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-                            Sign up with Slack
-                          </p>
-                          <SlackIcon width={25} height={25} />
-                        </FxButton>
+            <FxButton
+              className="w-full  flex justify-center items-center gap-2 group"
+              variant="secondary"
+              size="md"
+              radius="primary"
+            >
+              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
+                Sign up with Slack
+              </p>
+              <SlackIcon width={25} height={25} />
+            </FxButton>
           </div>
         </>
 

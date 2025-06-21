@@ -47,9 +47,9 @@ export class GithubAuth {
 
   async getUserFromGithubToken(idToken: string) {
     const data = await this.octoClient.getUserOctokit({
-        token: idToken,
-        code: ""
-    })
-    return data
+      token: idToken,
+      code: "",
+    });
+    return data;
   }
 }
