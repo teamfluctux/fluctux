@@ -12,6 +12,7 @@ const auth = new AuthManager()
 // using bind and arrow wrapper is negligible in perfomance
 authRouter.route("/signin/google").get(auth.callbackGoogleAuth.bind(auth))
 authRouter.route("/callback/google").get(auth.handleSignInWithGoogle.bind(auth))
+authRouter.route("/signin/github").get()
 // authRouter.route("/refresh").get(auth.refreshToken.bind(auth))
 // authRouter.route("/signout").post(user.handleSignOut)
 

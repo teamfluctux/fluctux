@@ -7,6 +7,9 @@ import {
 import { ApiError } from "@/utils/ApiError";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken"
+import dotenv from "dotenv";
+import { GithubAuth } from "@/services/auth/githubAuth.service";
+dotenv.config();
 
 export class AuthManager extends GoogleAuth {
   callbackGoogleAuth(req: Request, res: Response) {
