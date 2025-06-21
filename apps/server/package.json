@@ -23,6 +23,9 @@
   },
   "dependencies": {
     "@octokit/auth-oauth-app": "^9.0.1",
+    "@octokit/core": "^7.0.2",
+    "@octokit/oauth-app": "^8.0.1",
+    "@octokit/oauth-methods": "^6.0.0",
     "@octokit/rest": "^22.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",

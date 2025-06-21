@@ -1,33 +1,57 @@
-import { createOAuthAppAuth } from "@octokit/auth-oauth-app";
-import { Octokit } from "@octokit/rest";
+import { OAuthApp } from "@octokit/oauth-app";
+import {
+  exchangeWebFlowCode,
+  createDeviceCode,
+  exchangeDeviceCode,
+  checkToken,
+  refreshToken,
+  scopeToken,
+  resetToken,
+  deleteToken,
+  deleteAuthorization,
+} from "@octokit/oauth-methods";
+
 import dotenv from "dotenv";
-import { Request, Response } from "express";
 dotenv.config();
 
 export class GithubAuth {
-  private static CLIENT_ID = process.env.GITHUB_CLIENT_ID;
-  private static CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
-  private static REDIRECT_URI = process.env.GITHUB_AUTH_REDIRECT_URI;
+  private static GH_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+  private static GH_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+  private static GH_REDIRECT_URI = process.env.GITHUB_AUTH_REDIRECT_URI;
+  private static GH_STATE = process.env.GITHUB_STATE || "secureRandomState";
 
-  private static SCOPES = [];
+  private static GH_SCOPES = ["user:email", "read:user"];
 
-  private octoClient;
+  private octoClient: OAuthApp;
   constructor() {
-    this.octoClient = new Octokit({
-      authStrategy: createOAuthAppAuth,
-      auth: {
-        clientType: "oauth-app",
-        clientId: GithubAuth.CLIENT_ID,
-        clientSecret: GithubAuth.CLIENT_SECRET,
-      },
+    this.octoClient = new OAuthApp({
+      clientType: "oauth-app",
+      clientId: GithubAuth.GH_CLIENT_ID || "",
+      clientSecret: GithubAuth.GH_CLIENT_SECRET || "",
     });
   }
 
-  async requestGithubIdentity(req: Request, res: Response) {
-    await this.octoClient.request("GET https://github.com/login/oauth/authorize", {
-        client_id: GithubAuth.CLIENT_ID,
-        redirect_uri: GithubAuth.REDIRECT_URI,
-        scope: GithubAuth.SCOPES
-    })
+  generateGithubAuthUrl() {
+    const { url } = this.octoClient.getWebFlowAuthorizationUrl({
+      redirectUrl: GithubAuth.GH_REDIRECT_URI || "",
+      scopes: GithubAuth.GH_SCOPES || "",
+      state: GithubAuth.GH_STATE,
+      allowSignup: true,
+    });
+    return url;
+  }
+
+  async getGithubAuthTokens(authCode: string) {
+    const {
+      authentication: { token: accessToken },
+    } = await this.octoClient.createToken({
+      code: authCode,
+      redirectUrl: GithubAuth.GH_REDIRECT_URI || "",
+      state: GithubAuth.GH_STATE,
+    });
+
+    return {
+      idToken: accessToken,
+    };
   }
 }

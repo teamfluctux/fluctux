@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)?",
+        source: "/(.*)?", 
         headers: [
           {
             key: "X-DNS-Prefetch-Control",

@@ -6,14 +6,18 @@ import {
 } from "@/services/auth/cookie.service";
 import { ApiError } from "@/utils/ApiError";
 import { Request, Response } from "express";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { GithubAuth } from "@/services/auth/githubAuth.service";
 dotenv.config();
 
 export class AuthManager extends GoogleAuth {
-  callbackGoogleAuth(req: Request, res: Response) {
-    res.redirect(this.generateGoogleAuthUrl());
+  redirectGoogleAuth(req: Request, res: Response) {
+    return res.redirect(this.generateGoogleAuthUrl());
+  }
+
+  redirectGithubAuth(req: Request, res: Response) {
+    return res.redirect(this.generateGithubAuthUrl());
   }
 
   static clearProtectedCookies(_: Request, res: Response) {
@@ -29,9 +33,13 @@ export class AuthManager extends GoogleAuth {
       const { idToken, refreshToken } = await this.getGoogleAuthtokens(
         code as string
       );
-      const providerNameJWT = jwt.sign( {provider: AuthProviderCookieType.GOOGLE}, process.env.JWT_SECRET as string, {
-        expiresIn: "720h"
-      })
+      const providerNameJWT = jwt.sign(
+        { provider: AuthProviderCookieType.GOOGLE },
+        process.env.JWT_SECRET as string,
+        {
+          expiresIn: "720h",
+        }
+      );
       res.cookie(
         CookieService.PROVIDER_COOKIE.name,
         providerNameJWT,
@@ -49,13 +57,33 @@ export class AuthManager extends GoogleAuth {
       );
       res.redirect("http://localhost:3003/");
     } catch (error) {
-      console.log(error);
-      
       res.status(500).json({
-        error: new ApiError(500, "Error sign in user", "", [
+        error: new ApiError(500, "Error sign in user vai google", "", [
           ERROR.INTERNAL_SERVER_ERROR,
         ]),
       });
+    }
+  }
+
+  async handleSignInWithGithub(req: Request, res: Response) {
+    try {
+      const {code} = req.query
+      const {idToken} = await this.getGithubAuthTokens(code as string)
+      console.log("Token github", idToken);
+      
+      res.cookie(
+        CookieService.ID_TOKEN.name,
+        idToken,
+        CookieService.ID_TOKEN.cookie
+      )
+
+      res.redirect("http://localhost:3003/");
+    } catch (error) {
+      console.log(error);
+      
+      res.status(500).json({
+        error: new ApiError(500, "Error sign in user via github", "", [ERROR.INTERNAL_SERVER_ERROR, "Error accessing token from github"])
+      })
     }
   }
 
@@ -65,12 +93,12 @@ export class AuthManager extends GoogleAuth {
         case AuthProviderCookieType.GOOGLE:
           console.log("TOKEN REFRESHED VIA GOOGLE");
           const token = await this.getNewGoogleAuthIdToken(refreshToken);
-          return token
+          return token;
         default:
-          return null
+          return null;
       }
     } catch (error) {
-      return null
+      return null;
     }
   }
 }
