@@ -17,6 +17,7 @@ export class GithubAuth {
       clientType: "oauth-app",
       clientId: GithubAuth.GH_CLIENT_ID || "",
       clientSecret: GithubAuth.GH_CLIENT_SECRET || "",
+      redirectUrl: GithubAuth.GH_REDIRECT_URI || "",
     });
   }
 

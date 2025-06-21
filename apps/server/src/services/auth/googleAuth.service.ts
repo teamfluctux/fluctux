@@ -46,7 +46,7 @@ export class GoogleAuth extends GithubAuth {
   }
 
   protected async getNewGoogleAuthIdToken(refreshToken: string) {
-    this.oauthClient.setCredentials({ refresh_token: refreshToken });
+    this.oauthClient.setCredentials({ refresh_token: refreshToken, scope: GoogleAuth.SCOPES[0] });
     const tokens = await this.oauthClient.refreshAccessToken();
     return tokens.credentials.id_token;
   }
