@@ -1,3 +1,4 @@
+# MSG_WARNING: Not for use. Remove it in Future
 name: Build / Deploy - Vercel - Fluctux Severless
 
 env:
