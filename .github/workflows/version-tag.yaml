@@ -8,6 +8,7 @@ on:
 
 jobs:
   push-new-version-tag:
+    name: "Tagging New Version On Github"
     runs-on: ubuntu-latest
     permissions:
       contents: write 
@@ -16,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Tag New Version On Github
+      - name: Set up version tagging
         id: tag-version
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
