@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  publish:
+  push-new-version-tag:
     runs-on: ubuntu-latest
     permissions:
       contents: write 
