@@ -421,18 +421,15 @@ importers:
       eslint:
         specifier: ^9.21.0
         version: 9.21.0(jiti@2.4.2)
-      globals:
-        specifier: ^16.0.0
-        version: 16.0.0
+      jest:
+        specifier: ^30.0.3
+        version: 30.0.3(@types/node@22.15.17)(ts-node@10.9.2(@swc/core@1.11.20(@swc/helpers@0.5.15))(@types/node@22.15.17)(typescript@5.8.2))
       nodemon:
         specifier: ^3.1.9
         version: 3.1.9
       typescript:
         specifier: 5.8.2
         version: 5.8.2
-      typescript-eslint:
-        specifier: ^8.26.0
-        version: 8.26.0(eslint@9.21.0(jiti@2.4.2))(typescript@5.8.2)
 
   apps/web:
     dependencies:
