@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import { ApiError } from "@/utils/ApiError";
-import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
+import { ERROR } from "@/constants/http-status";
 import { getSession } from "@/lib/getSession";
 import { CookieService } from "@/services/auth/cookie.service";
 import { AuthManager } from "@/controllers";
 import { SessionDataType } from "@fluctux/types";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 export async function authenticateUser(
   req: Request,

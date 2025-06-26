@@ -1,5 +1,6 @@
 import { app } from "./app";
+import {config} from "@/config"
 
-app.listen(process.env.PORT, () => {
-  console.log(`server is listening on PORT-${process.env.PORT}`);
+app.listen(config.port, () => {
+  console.log(`server is listening on PORT-${config.port}`);
 });

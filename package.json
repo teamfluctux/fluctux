@@ -18,6 +18,8 @@
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^22.13.9",
     "autoprefixer": "^10.4.20",
+    "eslint-plugin-jest": "^29.0.1",
+    "jest": "^30.0.3",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "tailwindcss": "^3.4.17",
