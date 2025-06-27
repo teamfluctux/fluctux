@@ -27,6 +27,9 @@
     "clean": {
       "cache": false
     },
-    "test": {}
+    "test": {
+      "dependsOn": ["^test"],
+      "outputs": []
+    }
   }
 }

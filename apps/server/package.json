@@ -9,7 +9,9 @@
     "start": "node dist/server.cjs",
     "lint": "eslint src/**/*.ts",
     "build": "tsup",
-    "clean": "rm -rf node_modules .turbo && echo 'Cleanup complete!'"
+    "clean": "rm -rf node_modules .turbo && echo 'Cleanup complete!'",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@fluctux/eslint-config": "workspace:*",
