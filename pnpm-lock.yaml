@@ -33,8 +33,8 @@ importers:
         specifier: 2.3.0
         version: 2.3.0
       '@escape.tech/graphql-armor-cost-limit':
-        specifier: 2.4.0
-        version: 2.4.0
+        specifier: 2.4.2
+        version: 2.4.2
       '@escape.tech/graphql-armor-max-aliases':
         specifier: 2.6.0
         version: 2.6.0
@@ -1092,6 +1092,10 @@ packages:
     resolution: {integrity: sha512-iH/GUc7WNEukD2TKszx+e5MWuCpUuVfc1eS4mSvDpQ2ROA2lCJGqac6PxAC3A171bLqNk7IWlNOXxJ4qUPU1WA==}
     engines: {node: '>=18.0.0'}
 
+  '@envelop/core@5.3.0':
+    resolution: {integrity: sha512-xvUkOWXI8JsG2OOnqiI2tOkEc52wbmIqWORr7yGc8B8E53Oh1MMGGGck4mbR80s25LnHVzfNIiIlNkuDgZRuuA==}
+    engines: {node: '>=18.0.0'}
+
   '@envelop/instrumentation@1.0.0':
     resolution: {integrity: sha512-cxgkB66RQB95H3X27jlnxCRNTmPuSTgmBAq6/4n2Dtv4hsk4yz8FadA1ggmd0uZzvKqWD6CR+WFgTjhDqg7eyw==}
     engines: {node: '>=18.0.0'}
@@ -1102,6 +1106,10 @@ packages:
 
   '@envelop/types@5.2.0':
     resolution: {integrity: sha512-vCJY6URc8bK1O6p4zVRFpv/ASdyXvLM+Iqn2HP44UfTgEUQLyN4buwLawlkAv/KtzAL7VOeefpF2eKPWk7rHjg==}
+    engines: {node: '>=18.0.0'}
+
+  '@envelop/types@5.2.1':
+    resolution: {integrity: sha512-CsFmA3u3c2QoLDTfEpGr4t25fjMU31nyvse7IzWTvb0ZycuPjMjb0fjlheh+PbhBYb9YLugnT2uY6Mwcg1o+Zg==}
     engines: {node: '>=18.0.0'}
 
   '@esbuild/aix-ppc64@0.25.0':
@@ -1258,8 +1266,8 @@ packages:
     resolution: {integrity: sha512-k622KEnBgMXMXkwntCVmD3I9MDQjeJ0CjqeU2yV2Sh87MP9uf1QFVDeMUr9siGq9yUHTQojkHt3NN/TOh6gQWw==}
     engines: {node: '>=18.0.0'}
 
-  '@escape.tech/graphql-armor-cost-limit@2.4.0':
-    resolution: {integrity: sha512-B1s95ZFG1Xv4RtkQxpSe/tkFP2b0Cprvt8ZDnY7NddjRoI5kHy5aQt6n3g0erB9eMKXm17e0h+TcurMhVSTaPw==}
+  '@escape.tech/graphql-armor-cost-limit@2.4.2':
+    resolution: {integrity: sha512-Iw6xjH6QIW4cNDqHy6agsVHgEF74U91d2uEZzJ8tgs8KtkP+Jwxf1of11BFdpRDXebq7audBH9DpJDTonPB+gw==}
     engines: {node: '>=18.0.0'}
 
   '@escape.tech/graphql-armor-max-aliases@2.6.0':
@@ -3754,6 +3762,10 @@ packages:
 
   '@whatwg-node/promise-helpers@1.2.4':
     resolution: {integrity: sha512-daEUfaHbaMuAcor+FPAVK+pOCSzsAYhK6LN1y81EcakdqQEPQvjm74PTmfwfv8POg8pw4RyCv9LXB1e+mQDwqg==}
+    engines: {node: '>=16.0.0'}
+
+  '@whatwg-node/promise-helpers@1.3.2':
+    resolution: {integrity: sha512-Nst5JdK47VIl9UcGwtv2Rcgyn5lWtZ0/mhRQ4G8NN2isxpq2TO30iqHzmwoJycjWuyUfg3GFXqP/gFHXeV57IA==}
     engines: {node: '>=16.0.0'}
 
   '@whatwg-node/server-plugin-cookies@1.0.5':
@@ -8868,9 +8880,17 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.2.4
       tslib: 2.8.1
 
+  '@envelop/core@5.3.0':
+    dependencies:
+      '@envelop/instrumentation': 1.0.0
+      '@envelop/types': 5.2.1
+      '@whatwg-node/promise-helpers': 1.3.2
+      tslib: 2.8.1
+    optional: true
+
   '@envelop/instrumentation@1.0.0':
     dependencies:
-      '@whatwg-node/promise-helpers': 1.2.4
+      '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
   '@envelop/instruments@1.0.0':
@@ -8882,6 +8902,12 @@ snapshots:
     dependencies:
       '@whatwg-node/promise-helpers': 1.2.4
       tslib: 2.8.1
+
+  '@envelop/types@5.2.1':
+    dependencies:
+      '@whatwg-node/promise-helpers': 1.3.2
+      tslib: 2.8.1
+    optional: true
 
   '@esbuild/aix-ppc64@0.25.0':
     optional: true
@@ -8965,11 +8991,11 @@ snapshots:
       '@envelop/core': 5.2.1
       '@escape.tech/graphql-armor-types': 0.7.0
 
-  '@escape.tech/graphql-armor-cost-limit@2.4.0':
+  '@escape.tech/graphql-armor-cost-limit@2.4.2':
     dependencies:
       graphql: 16.10.0
     optionalDependencies:
-      '@envelop/core': 5.2.1
+      '@envelop/core': 5.3.0
       '@escape.tech/graphql-armor-types': 0.7.0
 
   '@escape.tech/graphql-armor-max-aliases@2.6.0':
@@ -11867,12 +11893,12 @@ snapshots:
 
   '@whatwg-node/cookie-store@0.2.3':
     dependencies:
-      '@whatwg-node/promise-helpers': 1.2.4
+      '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
   '@whatwg-node/disposablestack@0.0.6':
     dependencies:
-      '@whatwg-node/promise-helpers': 1.2.4
+      '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
   '@whatwg-node/events@0.1.2':
@@ -11887,11 +11913,15 @@ snapshots:
   '@whatwg-node/node-fetch@0.7.12':
     dependencies:
       '@whatwg-node/disposablestack': 0.0.6
-      '@whatwg-node/promise-helpers': 1.2.4
+      '@whatwg-node/promise-helpers': 1.3.2
       busboy: 1.6.0
       tslib: 2.8.1
 
   '@whatwg-node/promise-helpers@1.2.4':
+    dependencies:
+      tslib: 2.8.1
+
+  '@whatwg-node/promise-helpers@1.3.2':
     dependencies:
       tslib: 2.8.1
 
@@ -11906,7 +11936,7 @@ snapshots:
       '@envelop/instrumentation': 1.0.0
       '@whatwg-node/disposablestack': 0.0.6
       '@whatwg-node/fetch': 0.10.5
-      '@whatwg-node/promise-helpers': 1.2.4
+      '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
   '@whatwg-node/server@0.9.71':
