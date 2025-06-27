@@ -3,7 +3,6 @@ import { ApiError } from "@/utils/ApiError";
 import { ApiResponse } from "@/utils/ApiResponse";
 
 describe("ApiResponse Testing", () => {
-  it("It returns a successful API response includes properties such as status, message, success?, and data?.")
   let actualApiResponse: ApiResponse;
   beforeEach(() => {
     actualApiResponse = new ApiResponse(200, "OK");
