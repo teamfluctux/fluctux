@@ -1,6 +1,4 @@
 import { AuthManager } from "@/controllers";
-import { FxUser } from "@/controllers/user.controller";
-import { NextFunction, Request, Response } from "express";
 
 import { Router } from "express";
 

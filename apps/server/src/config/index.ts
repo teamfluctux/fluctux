@@ -1,1 +1,1 @@
-// Configs like auth config
+export * from "./config"

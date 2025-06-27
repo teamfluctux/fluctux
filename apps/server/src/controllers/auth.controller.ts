@@ -1,4 +1,4 @@
-import { ERROR, HTTPSuccessCodes } from "@/constants/http-status";
+import { ERROR } from "@/constants/http-status";
 import { GoogleAuth } from "@/services/auth";
 import {
   AuthProviderCookieType,
@@ -6,9 +6,7 @@ import {
 } from "@/services/auth/cookie.service";
 import { ApiError } from "@/utils/ApiError";
 import { Request, Response } from "express";
-import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { GithubAuth } from "@/services/auth/githubAuth.service";
 import { generateEncryptedJWTTokens } from "@/utils/generateEncryptedJWTToken";
 dotenv.config();
 
@@ -55,6 +53,8 @@ export class AuthManager extends GoogleAuth {
       );
       res.redirect("http://localhost:3003/");
     } catch (error) {
+      console.log(error);
+      
       res.status(500).json({
         error: new ApiError(500, "Error sign in user vai google", "", [
           ERROR.INTERNAL_SERVER_ERROR,
@@ -102,14 +102,19 @@ export class AuthManager extends GoogleAuth {
   async refreshToken(providerName: string, refreshToken: string) {
     try {
       switch (providerName) {
-        case AuthProviderCookieType.GOOGLE:
+        case AuthProviderCookieType.GOOGLE: {
+
           console.log("TOKEN REFRESHED VIA GOOGLE");
           const token = await this.getNewGoogleAuthIdToken(refreshToken);
           return token;
-        default:
+        }
+        default: {
           return null;
+        }
       }
     } catch (error) {
+      console.log(error);
+      
       return null;
     }
   }

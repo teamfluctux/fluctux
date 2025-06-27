@@ -1,18 +1,12 @@
 import express, { Request } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
 import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
-import { authenticateUser } from "./middlewares";
-import { AuthManager } from "./controllers";
-import { CookieService } from "./services/auth/cookie.service";
 
-dotenv.config();
+
 
 const NODE_ENV = process.env.NODE_ENV;
-const HOST = process.env.HOST;
-const PORT = process.env.PORT;
 
 const app = express();
 
