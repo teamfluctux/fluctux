@@ -6,7 +6,6 @@ import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { AppSidebar } from "@/components/core";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,8 +38,8 @@ export default function RootLayout({
               baseColor="var(--skeleton-base-color)"
               highlightColor="var(--skeleton-highlightColor)"
             >
-              <div className="bg-background-color_925C rounded overflow-hidden w-full h-full border border-border-color_1 grid grid-cols-[300px_1fr]">
-            <AppSidebar/>
+              <div className="bg-background-color_925C rounded overflow-hidden w-full h-full border border-border-color_1 ">
+
               {children}
               </div>
             </SkeletonTheme>

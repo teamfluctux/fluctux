@@ -14,6 +14,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        surface: {
+          indigo: {
+            bg: {
+              DEFAULT: "var(--surface-indigo-bg)",
+              active: "var(--surface-indigo-bg-active)"
+            },
+            border: {
+              DEFAULT: "var(--surface-indigo-border)",
+              active: "var(--surface-indigo-border-active)",
+            },
+            fg: {
+              DEFAULT: "var(--surface-indigo-fg)"
+            }
+          }
+        },
         fx_zinc: {
           950: "var(--color-zinc-950)",
           900: "var(--color-zinc-900)",
