@@ -2,14 +2,14 @@
   "extends": "@fluctux/typescript-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": ["src/*"]
-    },
+    ]
   },
   "include": [
     "**/*.ts",
