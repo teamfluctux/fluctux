@@ -17,6 +17,8 @@ importers:
       '@arcjet/next':
         specifier: ^1.0.0-alpha.34
         version: 1.0.0-alpha.34(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0))(next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+
+    
       '@blocknote/core':
         specifier: ^0.22.0
         version: 0.22.0(@types/hast@3.0.4)
@@ -154,7 +156,11 @@ importers:
         version: 8.9.5(socks@2.8.4)
       next-auth:
         specifier: ^4.24.11
+<<<<<<< HEAD
         version: 4.24.11(next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+=======
+        version: 4.24.11(next@15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+>>>>>>> db924da (add doc project)
       next-themes:
         specifier: ^0.4.4
         version: 0.4.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -327,6 +333,7 @@ importers:
         specifier: ^5
         version: 5.8.2
 
+<<<<<<< HEAD
   apps/doc:
     dependencies:
       next:
@@ -361,6 +368,8 @@ importers:
         specifier: ^5
         version: 5.8.2
 
+=======
+>>>>>>> db924da (add doc project)
   apps/main:
     dependencies:
       '@fluctux/hooks':
@@ -1633,24 +1642,30 @@ packages:
     resolution: {integrity: sha512-3fkKj25kEjsfObL6IlKPAlHYPq/oYwUkkQ03zsTTiDjD7vg/RxjdiLeCydqtxHZP0JgsXL3D/X5oAkMGzuUp/Q==}
     engines: {node: '>=12'}
 
+<<<<<<< HEAD
   '@napi-rs/wasm-runtime@0.2.11':
     resolution: {integrity: sha512-9DPkXtvHydrcOsopiYpUgPHpmj0HWZKMUnL2dZqpvC42lsratuBG06V5ipyno0fUek5VlFsNQ+AcFATSrJXgMA==}
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/env@15.2.1':
     resolution: {integrity: sha512-JmY0qvnPuS2NCWOz2bbby3Pe0VzdAQ7XpEB6uLIHmtXNfAsAO0KLQLkuAoc42Bxbo3/jMC3dcn9cdf+piCcG2Q==}
 
   '@next/env@15.3.2':
     resolution: {integrity: sha512-xURk++7P7qR9JG1jJtLzPzf0qEvqCN0A/T3DXf8IPMKo9/6FfjxtEffRJIIew/bIL4T3C2jLLqBor8B/zVlx6g==}
 
-  '@next/env@15.3.4':
-    resolution: {integrity: sha512-ZkdYzBseS6UjYzz6ylVKPOK+//zLWvD6Ta+vpoye8cW11AjiQjGYVibF0xuvT4L0iJfAPfZLFidaEzAOywyOAQ==}
+  '@next/eslint-plugin-next@15.2.1':
+    resolution: {integrity: sha512-6ppeToFd02z38SllzWxayLxjjNfzvc7Wm07gQOKSLjyASvKcXjNStZrLXMHuaWkhjqxe+cnhb2uzfWXm1VEj/Q==}
 
+<<<<<<< HEAD
   '@next/eslint-plugin-next@15.2.1':
     resolution: {integrity: sha512-6ppeToFd02z38SllzWxayLxjjNfzvc7Wm07gQOKSLjyASvKcXjNStZrLXMHuaWkhjqxe+cnhb2uzfWXm1VEj/Q==}
 
   '@next/eslint-plugin-next@15.3.4':
     resolution: {integrity: sha512-lBxYdj7TI8phbJcLSAqDt57nIcobEign5NYIKCiy0hXQhrUbTqLqOaSDi568U6vFg4hJfBdZYsG4iP/uKhCqgg==}
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-darwin-arm64@15.2.1':
     resolution: {integrity: sha512-aWXT+5KEREoy3K5AKtiKwioeblmOvFFjd+F3dVleLvvLiQ/mD//jOOuUcx5hzcO9ISSw4lrqtUPntTpK32uXXQ==}
     engines: {node: '>= 10'}
@@ -1663,12 +1678,15 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
+<<<<<<< HEAD
   '@next/swc-darwin-arm64@15.3.4':
     resolution: {integrity: sha512-z0qIYTONmPRbwHWvpyrFXJd5F9YWLCsw3Sjrzj2ZvMYy9NPQMPZ1NjOJh4ojr4oQzcGYwgJKfidzehaNa1BpEg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-darwin-x64@15.2.1':
     resolution: {integrity: sha512-E/w8ervu4fcG5SkLhvn1NE/2POuDCDEy5gFbfhmnYXkyONZR68qbUlJlZwuN82o7BrBVAw+tkR8nTIjGiMW1jQ==}
     engines: {node: '>= 10'}
@@ -1681,12 +1699,15 @@ packages:
     cpu: [x64]
     os: [darwin]
 
+<<<<<<< HEAD
   '@next/swc-darwin-x64@15.3.4':
     resolution: {integrity: sha512-Z0FYJM8lritw5Wq+vpHYuCIzIlEMjewG2aRkc3Hi2rcbULknYL/xqfpBL23jQnCSrDUGAo/AEv0Z+s2bff9Zkw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-linux-arm64-gnu@15.2.1':
     resolution: {integrity: sha512-gXDX5lIboebbjhiMT6kFgu4svQyjoSed6dHyjx5uZsjlvTwOAnZpn13w9XDaIMFFHw7K8CpBK7HfDKw0VZvUXQ==}
     engines: {node: '>= 10'}
@@ -1699,12 +1720,15 @@ packages:
     cpu: [arm64]
     os: [linux]
 
+<<<<<<< HEAD
   '@next/swc-linux-arm64-gnu@15.3.4':
     resolution: {integrity: sha512-l8ZQOCCg7adwmsnFm8m5q9eIPAHdaB2F3cxhufYtVo84pymwKuWfpYTKcUiFcutJdp9xGHC+F1Uq3xnFU1B/7g==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-linux-arm64-musl@15.2.1':
     resolution: {integrity: sha512-3v0pF/adKZkBWfUffmB/ROa+QcNTrnmYG4/SS+r52HPwAK479XcWoES2I+7F7lcbqc7mTeVXrIvb4h6rR/iDKg==}
     engines: {node: '>= 10'}
@@ -1717,12 +1741,15 @@ packages:
     cpu: [arm64]
     os: [linux]
 
+<<<<<<< HEAD
   '@next/swc-linux-arm64-musl@15.3.4':
     resolution: {integrity: sha512-wFyZ7X470YJQtpKot4xCY3gpdn8lE9nTlldG07/kJYexCUpX1piX+MBfZdvulo+t1yADFVEuzFfVHfklfEx8kw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-linux-x64-gnu@15.2.1':
     resolution: {integrity: sha512-RbsVq2iB6KFJRZ2cHrU67jLVLKeuOIhnQB05ygu5fCNgg8oTewxweJE8XlLV+Ii6Y6u4EHwETdUiRNXIAfpBww==}
     engines: {node: '>= 10'}
@@ -1735,12 +1762,15 @@ packages:
     cpu: [x64]
     os: [linux]
 
+<<<<<<< HEAD
   '@next/swc-linux-x64-gnu@15.3.4':
     resolution: {integrity: sha512-gEbH9rv9o7I12qPyvZNVTyP/PWKqOp8clvnoYZQiX800KkqsaJZuOXkWgMa7ANCCh/oEN2ZQheh3yH8/kWPSEg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-linux-x64-musl@15.2.1':
     resolution: {integrity: sha512-QHsMLAyAIu6/fWjHmkN/F78EFPKmhQlyX5C8pRIS2RwVA7z+t9cTb0IaYWC3EHLOTjsU7MNQW+n2xGXr11QPpg==}
     engines: {node: '>= 10'}
@@ -1753,12 +1783,15 @@ packages:
     cpu: [x64]
     os: [linux]
 
+<<<<<<< HEAD
   '@next/swc-linux-x64-musl@15.3.4':
     resolution: {integrity: sha512-Cf8sr0ufuC/nu/yQ76AnarbSAXcwG/wj+1xFPNbyNo8ltA6kw5d5YqO8kQuwVIxk13SBdtgXrNyom3ZosHAy4A==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-win32-arm64-msvc@15.2.1':
     resolution: {integrity: sha512-Gk42XZXo1cE89i3hPLa/9KZ8OuupTjkDmhLaMKFohjf9brOeZVEa3BQy1J9s9TWUqPhgAEbwv6B2+ciGfe54Vw==}
     engines: {node: '>= 10'}
@@ -1771,12 +1804,15 @@ packages:
     cpu: [arm64]
     os: [win32]
 
+<<<<<<< HEAD
   '@next/swc-win32-arm64-msvc@15.3.4':
     resolution: {integrity: sha512-ay5+qADDN3rwRbRpEhTOreOn1OyJIXS60tg9WMYTWCy3fB6rGoyjLVxc4dR9PYjEdR2iDYsaF5h03NA+XuYPQQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-win32-x64-msvc@15.2.1':
     resolution: {integrity: sha512-YjqXCl8QGhVlMR8uBftWk0iTmvtntr41PhG1kvzGp0sUP/5ehTM+cwx25hKE54J0CRnHYjSGjSH3gkHEaHIN9g==}
     engines: {node: '>= 10'}
@@ -1807,10 +1843,13 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
+<<<<<<< HEAD
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
+=======
+>>>>>>> db924da (add doc project)
   '@panva/hkdf@1.2.1':
     resolution: {integrity: sha512-6oclG6Y3PiDFcoyk8srjLfVKyMfVCKJ27JwNPViuXziFpmdz+MZnZN/aKY0JGXgYuO/VghU0jcOAZgWXZ1Dmrw==}
 
@@ -3113,9 +3152,12 @@ packages:
     resolution: {integrity: sha512-5CK3ZkVskSExf9YaXVMJ04F6Fb18HXKVZw8TMKVP7qOIvHGiBmT6YzWHqsQ3/PMNov2TzJ41ofRKX3zjR3G6Yg==}
     hasBin: true
 
+<<<<<<< HEAD
   '@tybys/wasm-util@0.9.0':
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
 
+=======
+>>>>>>> db924da (add doc project)
   '@types/bcrypt@5.0.2':
     resolution: {integrity: sha512-6atioO8Y75fNcbmj0G7UjI9lXN2pQ/IGJ2FWT4a/btd0Lk9lQalHLKhkgKVZ3r+spnmWUKfbMi1GEe9wyHQfNQ==}
 
@@ -3182,9 +3224,12 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
+<<<<<<< HEAD
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
+=======
+>>>>>>> db924da (add doc project)
   '@types/jsonwebtoken@9.0.9':
     resolution: {integrity: sha512-uoe+GxEuHbvy12OUQct2X9JenKM3qAscquYymuQN4fMWG9DBQtykrQEFcAbVACF7qaLw9BePSodUL0kquqBJpQ==}
 
@@ -3656,10 +3701,13 @@ packages:
   axios@1.7.9:
     resolution: {integrity: sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==}
 
+<<<<<<< HEAD
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
     engines: {node: '>= 0.4'}
 
+=======
+>>>>>>> db924da (add doc project)
   bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
 
@@ -3958,9 +4006,12 @@ packages:
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
+<<<<<<< HEAD
   damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
 
+=======
+>>>>>>> db924da (add doc project)
   data-uri-to-buffer@6.0.2:
     resolution: {integrity: sha512-7hvf7/GW8e86rW0ptuwS3OcBGDjIi6SZva7hCyWC0yYry2cOPmLIjXAUHI6DK2HsnwJd9ifmt57i8eV2n4YNpw==}
     engines: {node: '>= 14'}
@@ -4227,6 +4278,7 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
+<<<<<<< HEAD
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
 
@@ -4280,6 +4332,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
+=======
+>>>>>>> db924da (add doc project)
   eslint-plugin-only-warn@1.1.0:
     resolution: {integrity: sha512-2tktqUAT+Q3hCAU0iSf4xAN1k9zOpjK5WO8104mB0rT/dGhOa09582HN5HlbxNbPRZ0THV7nLGvzugcNOSjzfA==}
     engines: {node: '>=6'}
@@ -4428,6 +4482,7 @@ packages:
       picomatch:
         optional: true
 
+<<<<<<< HEAD
   fdir@6.4.6:
     resolution: {integrity: sha512-hiFoqpyZcfNm1yc4u8oWCf9A2c4D3QjCrks3zmoVKVxpQRzmPNar1hUJcBG2RQHvEVGDN+Jm81ZheVLAQMK6+w==}
     peerDependencies:
@@ -4436,6 +4491,8 @@ packages:
       picomatch:
         optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   figures@3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
     engines: {node: '>=8'}
@@ -5143,10 +5200,13 @@ packages:
   json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
 
+<<<<<<< HEAD
   json5@1.0.2:
     resolution: {integrity: sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==}
     hasBin: true
 
+=======
+>>>>>>> db924da (add doc project)
   jsonfile@6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
 
@@ -5183,6 +5243,7 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
+<<<<<<< HEAD
   language-subtag-registry@0.3.23:
     resolution: {integrity: sha512-0K65Lea881pHotoGEa5gDlMxt3pctLi2RplBb7Ezh4rRdLEOtgi7n4EwK9lamnUCkKBqaeKRVebTq6BAxSkpXQ==}
 
@@ -5190,6 +5251,8 @@ packages:
     resolution: {integrity: sha512-MbjN408fEndfiQXbFQ1vnd+1NoLDsnQW41410oQBXiyXDMYH5z505juWa4KUE1LqxRC7DgOgZDbKLxHIwm27hA==}
     engines: {node: '>=0.10'}
 
+=======
+>>>>>>> db924da (add doc project)
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -6857,9 +6920,12 @@ packages:
   sprintf-js@1.1.3:
     resolution: {integrity: sha512-Oo+0REFV59/rz3gfJNKQiBlwfHaSESl1pcGyABQsnnIfWOFt6JNj5gCog2U6MLZ//IGYD+nA8nI+mTShREReaA==}
 
+<<<<<<< HEAD
   stable-hash@0.0.5:
     resolution: {integrity: sha512-+L3ccpzibovGXFK+Ap/f8LOS0ahMrHTf3xu7mMLSpEGU0EO9ucaysSylKo9eRDFNhWve/y275iPmIZ4z39a9iA==}
 
+=======
+>>>>>>> db924da (add doc project)
   statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
@@ -6925,10 +6991,13 @@ packages:
     resolution: {integrity: sha512-uCC2VHvQRYu+lMh4My/sFNmF2klFymLX1wHJeXnbEJERpV/ZsVuonzerjfrGpIGF7LBVa1O7i9kjiWvJiFck8g==}
     engines: {node: '>=0.10.0'}
 
+<<<<<<< HEAD
   strip-bom@3.0.0:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
     engines: {node: '>=4'}
 
+=======
+>>>>>>> db924da (add doc project)
   strip-final-newline@2.0.0:
     resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
     engines: {node: '>=6'}
@@ -7706,7 +7775,11 @@ snapshots:
     dependencies:
       '@arcjet/sprintf': 1.0.0-alpha.34
 
+<<<<<<< HEAD
   '@arcjet/next@1.0.0-alpha.34(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0))(next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))':
+=======
+  '@arcjet/next@1.0.0-alpha.34(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0))(next@15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))':
+>>>>>>> db924da (add doc project)
     dependencies:
       '@arcjet/env': 1.0.0-alpha.34
       '@arcjet/headers': 1.0.0-alpha.34
@@ -7715,7 +7788,11 @@ snapshots:
       '@arcjet/protocol': 1.0.0-alpha.34
       '@arcjet/transport': 1.0.0-alpha.34(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0))
       arcjet: 1.0.0-alpha.34
+<<<<<<< HEAD
       next: 15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+=======
+      next: 15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+>>>>>>> db924da (add doc project)
     transitivePeerDependencies:
       - '@bufbuild/protobuf'
       - '@connectrpc/connect'
@@ -8600,6 +8677,7 @@ snapshots:
 
   '@n1ru4l/push-pull-async-iterable-iterator@3.2.0': {}
 
+<<<<<<< HEAD
   '@napi-rs/wasm-runtime@0.2.11':
     dependencies:
       '@emnapi/core': 1.4.3
@@ -8607,15 +8685,21 @@ snapshots:
       '@tybys/wasm-util': 0.9.0
     optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/env@15.2.1': {}
 
   '@next/env@15.3.2': {}
 
   '@next/env@15.3.4': {}
 
+<<<<<<< HEAD
   '@next/eslint-plugin-next@15.2.1':
     dependencies:
       fast-glob: 3.3.1
+=======
+  '@next/env@15.3.4': {}
+>>>>>>> db924da (add doc project)
 
   '@next/eslint-plugin-next@15.3.4':
     dependencies:
@@ -8627,63 +8711,84 @@ snapshots:
   '@next/swc-darwin-arm64@15.3.2':
     optional: true
 
+<<<<<<< HEAD
   '@next/swc-darwin-arm64@15.3.4':
     optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-darwin-x64@15.2.1':
     optional: true
 
   '@next/swc-darwin-x64@15.3.2':
     optional: true
 
+<<<<<<< HEAD
   '@next/swc-darwin-x64@15.3.4':
     optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-linux-arm64-gnu@15.2.1':
     optional: true
 
   '@next/swc-linux-arm64-gnu@15.3.2':
     optional: true
 
+<<<<<<< HEAD
   '@next/swc-linux-arm64-gnu@15.3.4':
     optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-linux-arm64-musl@15.2.1':
     optional: true
 
   '@next/swc-linux-arm64-musl@15.3.2':
     optional: true
 
+<<<<<<< HEAD
   '@next/swc-linux-arm64-musl@15.3.4':
     optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-linux-x64-gnu@15.2.1':
     optional: true
 
   '@next/swc-linux-x64-gnu@15.3.2':
     optional: true
 
+<<<<<<< HEAD
   '@next/swc-linux-x64-gnu@15.3.4':
     optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-linux-x64-musl@15.2.1':
     optional: true
 
   '@next/swc-linux-x64-musl@15.3.2':
     optional: true
 
+<<<<<<< HEAD
   '@next/swc-linux-x64-musl@15.3.4':
     optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-win32-arm64-msvc@15.2.1':
     optional: true
 
   '@next/swc-win32-arm64-msvc@15.3.2':
     optional: true
 
+<<<<<<< HEAD
   '@next/swc-win32-arm64-msvc@15.3.4':
     optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   '@next/swc-win32-x64-msvc@15.2.1':
     optional: true
 
@@ -8705,8 +8810,11 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
+<<<<<<< HEAD
   '@nolyfill/is-core-module@1.0.39': {}
 
+=======
+>>>>>>> db924da (add doc project)
   '@panva/hkdf@1.2.1': {}
 
   '@pkgjs/parseargs@0.11.0':
@@ -10221,11 +10329,14 @@ snapshots:
       semver: 7.6.2
       update-check: 1.5.4
 
+<<<<<<< HEAD
   '@tybys/wasm-util@0.9.0':
     dependencies:
       tslib: 2.8.1
     optional: true
 
+=======
+>>>>>>> db924da (add doc project)
   '@types/bcrypt@5.0.2':
     dependencies:
       '@types/node': 22.15.17
@@ -10316,6 +10427,16 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
+<<<<<<< HEAD
+=======
+  '@types/json5@0.0.29': {}
+
+  '@types/jsonwebtoken@9.0.10':
+    dependencies:
+      '@types/ms': 2.1.0
+      '@types/node': 22.15.17
+
+>>>>>>> db924da (add doc project)
   '@types/jsonwebtoken@9.0.9':
     dependencies:
       '@types/ms': 2.1.0
@@ -10894,8 +11015,11 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
+<<<<<<< HEAD
   axobject-query@4.1.0: {}
 
+=======
+>>>>>>> db924da (add doc project)
   bail@2.0.2: {}
 
   balanced-match@1.0.2: {}
@@ -11206,8 +11330,11 @@ snapshots:
 
   csstype@3.1.3: {}
 
+<<<<<<< HEAD
   damerau-levenshtein@1.0.8: {}
 
+=======
+>>>>>>> db924da (add doc project)
   data-uri-to-buffer@6.0.2: {}
 
   data-view-buffer@1.0.2:
@@ -11602,6 +11729,7 @@ snapshots:
     dependencies:
       eslint: 9.21.0(jiti@2.4.2)
 
+<<<<<<< HEAD
   eslint-import-resolver-node@0.3.9:
     dependencies:
       debug: 3.2.7
@@ -11684,6 +11812,8 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
+=======
+>>>>>>> db924da (add doc project)
   eslint-plugin-only-warn@1.1.0: {}
 
   eslint-plugin-react-hooks@5.2.0(eslint@9.21.0(jiti@2.4.2)):
@@ -11961,10 +12091,13 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.2
 
+<<<<<<< HEAD
   fdir@6.4.6(picomatch@4.0.2):
     optionalDependencies:
       picomatch: 4.0.2
 
+=======
+>>>>>>> db924da (add doc project)
   figures@3.2.0:
     dependencies:
       escape-string-regexp: 1.0.5
@@ -12730,10 +12863,13 @@ snapshots:
 
   is-buffer@2.0.5: {}
 
+<<<<<<< HEAD
   is-bun-module@2.0.0:
     dependencies:
       semver: 7.7.1
 
+=======
+>>>>>>> db924da (add doc project)
   is-callable@1.2.7: {}
 
   is-core-module@2.16.1:
@@ -12911,6 +13047,15 @@ snapshots:
     dependencies:
       minimist: 1.2.8
 
+<<<<<<< HEAD
+=======
+  json5@2.2.3: {}
+
+  json5@1.0.2:
+    dependencies:
+      minimist: 1.2.8
+
+>>>>>>> db924da (add doc project)
   jsonfile@6.1.0:
     dependencies:
       universalify: 2.0.1
@@ -12975,6 +13120,17 @@ snapshots:
     dependencies:
       language-subtag-registry: 0.3.23
 
+<<<<<<< HEAD
+=======
+  leven@3.1.0: {}
+
+  language-subtag-registry@0.3.23: {}
+
+  language-tags@1.0.9:
+    dependencies:
+      language-subtag-registry: 0.3.23
+
+>>>>>>> db924da (add doc project)
   levn@0.4.1:
     dependencies:
       prelude-ls: 1.2.1
@@ -13818,13 +13974,21 @@ snapshots:
 
   netmask@2.0.2: {}
 
+<<<<<<< HEAD
   next-auth@4.24.11(next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+=======
+  next-auth@4.24.11(next@15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+>>>>>>> db924da (add doc project)
     dependencies:
       '@babel/runtime': 7.26.9
       '@panva/hkdf': 1.2.1
       cookie: 0.7.2
       jose: 4.15.9
+<<<<<<< HEAD
       next: 15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+=======
+      next: 15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+>>>>>>> db924da (add doc project)
       oauth: 0.9.15
       openid-client: 5.7.1
       preact: 10.26.4
@@ -13883,6 +14047,31 @@ snapshots:
       '@next/swc-linux-x64-musl': 15.3.2
       '@next/swc-win32-arm64-msvc': 15.3.2
       '@next/swc-win32-x64-msvc': 15.3.2
+      sharp: 0.34.1
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+
+  next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      '@next/env': 15.3.4
+      '@swc/counter': 0.1.3
+      '@swc/helpers': 0.5.15
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001701
+      postcss: 8.4.31
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+      styled-jsx: 5.1.6(react@19.1.0)
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 15.3.4
+      '@next/swc-darwin-x64': 15.3.4
+      '@next/swc-linux-arm64-gnu': 15.3.4
+      '@next/swc-linux-arm64-musl': 15.3.4
+      '@next/swc-linux-x64-gnu': 15.3.4
+      '@next/swc-linux-x64-musl': 15.3.4
+      '@next/swc-win32-arm64-msvc': 15.3.4
+      '@next/swc-win32-x64-msvc': 15.3.4
       sharp: 0.34.1
     transitivePeerDependencies:
       - '@babel/core'
@@ -15225,6 +15414,15 @@ snapshots:
 
   stable-hash@0.0.5: {}
 
+<<<<<<< HEAD
+=======
+  stable-hash@0.0.5: {}
+
+  stack-utils@2.0.6:
+    dependencies:
+      escape-string-regexp: 2.0.0
+
+>>>>>>> db924da (add doc project)
   statuses@2.0.1: {}
 
   stop-iteration-iterator@1.1.0:
@@ -15321,8 +15519,11 @@ snapshots:
 
   strip-bom-string@1.0.0: {}
 
+<<<<<<< HEAD
   strip-bom@3.0.0: {}
 
+=======
+>>>>>>> db924da (add doc project)
   strip-final-newline@2.0.0: {}
 
   strip-json-comments@2.0.1: {}
