@@ -3,7 +3,6 @@ import { SvgSizeInSQR, SvgType } from "./type";
 
 export const FxFavSVGIcon: React.FC<SvgType> = ({
   size = SvgSizeInSQR.PRIMARY,
-
   className,
   color = "#5b66af",
   ...props

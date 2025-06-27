@@ -117,6 +117,11 @@ module.exports = {
         read_20: "20px",
         read_16: "16px",
       },
+      fontWeight: {
+        weight_450: "450",
+        weight_530: "530",
+        weight_550: "550",
+      },
       fontFamily: {
         geist_sans: ["var(--font-geist-sans)"],
         geist_mono: ["var(--font-geist-mono)"],

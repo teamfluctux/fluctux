@@ -1,6 +1,11 @@
 {
   "extends": "@fluctux/typescript-config/nextjs.json",
   "compilerOptions": {
+     "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "outDir": "dist",
     "lib": ["ES2024"],
     "target": "ES2024",

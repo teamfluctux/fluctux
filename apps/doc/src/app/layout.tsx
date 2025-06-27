@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "@fluctux/ui/globals";
+import { ThemeProvider } from "next-themes";
+import { Suspense } from "react";
+import { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { AppSidebar } from "@/components/core";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,8 +30,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} w-full h-screen overflow-hidden p-1.5`}
+      >
+        <ThemeProvider attribute="class">
+          <Suspense>
+            <SkeletonTheme
+              baseColor="var(--skeleton-base-color)"
+              highlightColor="var(--skeleton-highlightColor)"
+            >
+              <div className="bg-background-color_925C rounded overflow-hidden w-full h-full border border-border-color_1 grid grid-cols-[300px_1fr]">
+            <AppSidebar/>
+              {children}
+              </div>
+            </SkeletonTheme>
+          </Suspense>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -11,21 +11,19 @@
     "clean": "rm -rf node_modules .turbo .next && echo 'Cleanup complete!'"
   },
   "dependencies": {
-     "@fluctux/hooks": "workspace:*",
+    "@fluctux/hooks": "workspace:*",
     "@fluctux/ui": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "next": "^15.2.1"
   },
   "devDependencies": {
-        "@fluctux/eslint-config": "workspace:*",
+    "@fluctux/eslint-config": "workspace:*",
     "@fluctux/typescript-config": "workspace:*",
     "typescript": "^5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-
-      "tailwind-config": "workspace:*"
-  
+    "tailwind-config": "workspace:*"
   }
 }
