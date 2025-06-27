@@ -73,7 +73,7 @@ export const RecursiveNav = ({
                 {value?.lists?.map((item, j) => {
                   const listItemsPadding = (depth + 1) * INDENT_SIZE;
                   return (
-                    <div style={{ paddingLeft: `${listItemsPadding}px` }}>
+                    <div style={{ paddingLeft: `${listItemsPadding}px` }} key={item.slug}>
                       <Link
                         href={""}
                         className="w-fit flex justify-start items-center"

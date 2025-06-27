@@ -68,11 +68,14 @@ export const AppSidebar = ({ doctype }: { doctype: string }) => {
       <div className=" w-full px-5 mt-5 leading-10">
         {TopNavItems.map((item, i) => {
           return (
+            <React.Fragment key={i}>
+
             <ButtonWithIconBox
               slug={item.slug.toString()}
               label={item.label.toString()}
               icon={item.icon}
-            />
+              />
+              </React.Fragment>
           );
         })}
       </div>

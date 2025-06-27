@@ -12,19 +12,31 @@ export default async function Page({
 }) {
   const { visitorType, slug } = await params;
 
-  const filePath = `src/content/${visitorType}/${slug.join("/")}.mdx`;
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { content } = matter(fileContent);
-  const MdxComponent = await mdxToHtml(content);
+ try {
+   const filePath = `src/content/${visitorType}/${slug.join("/")}.mdx`;
+   console.log(filePath);
+   
+   const fileContent = fs.readFileSync(filePath, "utf-8");
+   const { content } = matter(fileContent);
+   const MdxComponent = await mdxToHtml(content);
+   
+   return (
+     <div className="border w-full h-full overflow-y-scroll grid grid-cols-[1fr_300px]">
+       <div className="w-full">
+         <article className="prose max-w-[600px] w-full mx-auto prose-gray dark:prose-invert ">
+           {MdxComponent}
+         </article>
+       </div>
+       <div className="w-full h-full sticky top-0 border"></div>
+     </div>
+   );
+ } catch (error) {
+  console.log(error);
   
   return (
-    <div className="border w-full h-full overflow-y-scroll grid grid-cols-[1fr_300px]">
-      <div className="w-full">
-        <article className="prose max-w-[600px] w-full mx-auto prose-gray dark:prose-invert ">
-          {MdxComponent}
-        </article>
-      </div>
-      <div className="w-full h-full sticky top-0 border"></div>
+    <div>
+      error
     </div>
-  );
+  )
+ }
 }
