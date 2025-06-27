@@ -4,7 +4,7 @@ import { ToggleGroup, ToggleGroupItem } from "@fluctux/ui";
 import Link from "next/link";
 import { DEVELOPER_DOC_NAV } from "@/constants/docs/developer.constant";
 import { RecursiveNav } from "./recursive-nav";
-import { Bookmark, History, LucideIcon } from "lucide-react";
+import { Bookmark, Headset, History, LucideIcon } from "lucide-react";
 import { IconType } from "@fluctux/types";
 import { ButtonWithIconBox } from "./button-with-iconbox";
 
@@ -19,12 +19,17 @@ const TopNavItems: { label: string; slug: string; icon: IconType }[] = [
     slug: "/changelog",
     icon: History,
   },
+  {
+    label: "Support",
+    slug: "support",
+    icon: Headset
+  }
 ];
 
-export const AppSidebar = ({ slug }: { slug: string }) => {
+export const AppSidebar = ({ doctype }: { doctype: string }) => {
   const DATA = DEVELOPER_DOC_NAV;
   return (
-    <div className="w-full h-full border-r border-border-color_1 bg-background-color_900C">
+    <aside className="w-full h-full border-r border-border-color_1 bg-background-color_900C">
       <div className="w-full h-fit px-5 py-4 flex justify-between items-center">
         <div className="flex justify-start items-center gap-2">
           <FxFavIcon size="sm" variant="theme" />
@@ -33,7 +38,7 @@ export const AppSidebar = ({ slug }: { slug: string }) => {
         <div>
           <ToggleGroup type="single" size="sm" variant={"outline"}>
             <ToggleGroupItem
-              data-state={`${slug === "user" && "on"}`}
+              data-state={`${doctype === "user" && "on"}`}
               value="bold"
               aria-label="Toggle bold"
             >
@@ -46,7 +51,7 @@ export const AppSidebar = ({ slug }: { slug: string }) => {
             </ToggleGroupItem>
             <ToggleGroupItem
               value="italic"
-              data-state={`${slug === "developer" && "on"}`}
+              data-state={`${doctype === "developer" && "on"}`}
               aria-label="Toggle italic"
               className="px-5"
             >
@@ -72,8 +77,8 @@ export const AppSidebar = ({ slug }: { slug: string }) => {
         })}
       </div>
       <div className="px-1.5 pt-1.5 mt-5">
-        <RecursiveNav data={DATA} />
+        <RecursiveNav data={DATA} docType={doctype} />
       </div>
-    </div>
+    </aside>
   );
 };

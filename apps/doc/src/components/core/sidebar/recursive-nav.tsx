@@ -9,9 +9,11 @@ const INDENT_SIZE = 15;
 export const RecursiveNav = ({
   data,
   depth = 0,
+  docType
 }: {
   data: DocNavType;
   depth?: number;
+  docType: string
 }) => {
   if (depth > 5) {
     throw new Error("Maximum depth of 5 exceeded");
@@ -35,7 +37,7 @@ export const RecursiveNav = ({
                 className=""
               >
                 <Link
-                  href={""}
+                  href={`/${docType}/${value.slug}`}
                   className="w-fit flex justify-start items-center"
                 >
                   <div
@@ -85,7 +87,7 @@ export const RecursiveNav = ({
                 })}
 
                 {value.group && Object.keys(value.group).length > 0 && (
-                  <RecursiveNav data={value?.group ?? {}} depth={depth + 1} />
+                  <RecursiveNav data={value?.group ?? {}} depth={depth + 1} docType={docType} />
                 )}
               </div>
             )}
