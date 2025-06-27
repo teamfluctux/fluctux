@@ -54,7 +54,7 @@ export class AuthManager extends GoogleAuth {
       res.redirect("http://localhost:3003/");
     } catch (error) {
       console.log(error);
-      
+
       res.status(500).json({
         error: new ApiError(500, "Error sign in user vai google", "", [
           ERROR.INTERNAL_SERVER_ERROR,
@@ -103,7 +103,6 @@ export class AuthManager extends GoogleAuth {
     try {
       switch (providerName) {
         case AuthProviderCookieType.GOOGLE: {
-
           console.log("TOKEN REFRESHED VIA GOOGLE");
           const token = await this.getNewGoogleAuthIdToken(refreshToken);
           return token;
@@ -114,7 +113,7 @@ export class AuthManager extends GoogleAuth {
       }
     } catch (error) {
       console.log(error);
-      
+
       return null;
     }
   }

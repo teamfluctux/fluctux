@@ -1,1 +1,1 @@
-export * from "./fx-logo"
+export * from "./fx-logo";

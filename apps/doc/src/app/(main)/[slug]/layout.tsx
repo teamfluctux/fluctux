@@ -12,13 +12,9 @@ export default async function Layout({
   const slug = (await params).slug;
 
   return (
-  
-
-   
-      <div className="w-full h-full grid grid-cols-[300px_1fr]">
-        <AppSidebar slug={slug} />
-        {children}
-      </div>
- 
+    <div className="w-full h-full grid grid-cols-[300px_1fr]">
+      <AppSidebar slug={slug} />
+      {children}
+    </div>
   );
 }

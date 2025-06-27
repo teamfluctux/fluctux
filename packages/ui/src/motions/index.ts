@@ -1,1 +1,1 @@
-export * from "./scale.motion"
+export * from "./scale.motion";

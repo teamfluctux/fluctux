@@ -40,9 +40,7 @@ export default function RootLayout({
               baseColor="var(--skeleton-base-color)"
               highlightColor="var(--skeleton-highlightColor)"
             >
-               <MainWrapper>
-              {children}
-               </MainWrapper>
+              <MainWrapper>{children}</MainWrapper>
             </SkeletonTheme>
           </Suspense>
         </ThemeProvider>

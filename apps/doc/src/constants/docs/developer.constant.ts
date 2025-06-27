@@ -16,7 +16,7 @@ export const DEVELOPER_DOC_NAV: DocNavType = {
     ],
     group: {
       "Hello world": {
-         type: "multiple",
+        type: "multiple",
         slug: "hello-world",
         lists: [
           {
@@ -30,7 +30,7 @@ export const DEVELOPER_DOC_NAV: DocNavType = {
         ],
         group: {
           hello: {
-             type: "multiple",
+            type: "multiple",
             slug: "hello",
             lists: [
               {
@@ -44,7 +44,7 @@ export const DEVELOPER_DOC_NAV: DocNavType = {
             ],
             group: {
               hello: {
-                 type: "multiple",
+                type: "multiple",
                 slug: "hello",
                 lists: [
                   {
@@ -58,7 +58,7 @@ export const DEVELOPER_DOC_NAV: DocNavType = {
                 ],
                 group: {
                   hello: {
-                     type: "multiple",
+                    type: "multiple",
                     slug: "hello",
                     lists: [
                       {
@@ -79,8 +79,8 @@ export const DEVELOPER_DOC_NAV: DocNavType = {
       },
     },
   },
-  "Test": {
-    type:"single",
-    slug: "test"
-  }
+  Test: {
+    type: "single",
+    slug: "test",
+  },
 };

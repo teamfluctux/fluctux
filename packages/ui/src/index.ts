@@ -39,6 +39,6 @@ export * from "./icons/facebook";
 export * from "./icons/slack";
 export * from "./icons/type";
 
-export * from "./motions"
+export * from "./motions";
 
 export * from "./hooks";
