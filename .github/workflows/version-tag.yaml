@@ -2,9 +2,8 @@
 name: Tag New Version
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    
 
 jobs:
   push-new-version-tag:
