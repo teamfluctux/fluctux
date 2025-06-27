@@ -18,16 +18,16 @@ module.exports = {
           indigo: {
             bg: {
               DEFAULT: "var(--surface-indigo-bg)",
-              active: "var(--surface-indigo-bg-active)"
+              active: "var(--surface-indigo-bg-active)",
             },
             border: {
               DEFAULT: "var(--surface-indigo-border)",
               active: "var(--surface-indigo-border-active)",
             },
             fg: {
-              DEFAULT: "var(--surface-indigo-fg)"
-            }
-          }
+              DEFAULT: "var(--surface-indigo-fg)",
+            },
+          },
         },
         fx_zinc: {
           950: "var(--color-zinc-950)",
@@ -54,7 +54,7 @@ module.exports = {
           200: "var(--color-indigo-200)",
           100: "var(--color-indigo-100)",
           50: "var(--color-indigo-50)",
-          "primary": "var(--color-indigo-600)",
+          primary: "var(--color-indigo-600)",
         },
         background: {
           indigo_primary: "var(--primary-color)",
