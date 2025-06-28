@@ -329,6 +329,9 @@ importers:
 
   apps/doc:
     dependencies:
+      '@fluctux/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       next:
         specifier: ^15.2.1
         version: 15.3.2(@babel/core@7.27.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
