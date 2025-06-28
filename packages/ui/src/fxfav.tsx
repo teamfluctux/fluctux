@@ -1,4 +1,4 @@
-"use client";
+
 import React from "react";
 import { SizeType } from "./type";
 import { FxFavSVGIcon } from "./icons/fav-icon";

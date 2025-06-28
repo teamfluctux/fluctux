@@ -1,10 +1,11 @@
-"use client";
-import React from "react";
-import { FxFavIcon, ToggleGroupItem, ToggleGroup } from "@fluctux/ui";
+"use client"
+import React, { SVGProps } from "react";
+import { FxFavIcon, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
+import { ToggleGroup, ToggleGroupItem } from "@fluctux/ui";
 import Link from "next/link";
 import { DEVELOPER_DOC_NAV } from "@/constants/docs/developer.constant";
 import { RecursiveNav } from "./recursive-nav";
-import { Bookmark, Headset, History } from "lucide-react";
+import { Bookmark, Headset, History, LucideIcon } from "lucide-react";
 import { IconType } from "@fluctux/types";
 import { ButtonWithIconBox } from "./button-with-iconbox";
 
@@ -22,8 +23,8 @@ const TopNavItems: { label: string; slug: string; icon: IconType }[] = [
   {
     label: "Support",
     slug: "support",
-    icon: Headset,
-  },
+    icon: Headset
+  }
 ];
 
 export const AppSidebar = ({ doctype }: { doctype: string }) => {
@@ -69,18 +70,20 @@ export const AppSidebar = ({ doctype }: { doctype: string }) => {
         {TopNavItems.map((item, i) => {
           return (
             <React.Fragment key={i}>
-              <ButtonWithIconBox
-                slug={item.slug.toString()}
-                label={item.label.toString()}
-                icon={item.icon}
+
+            <ButtonWithIconBox
+              slug={item.slug.toString()}
+              label={item.label.toString()}
+              icon={item.icon}
               />
-            </React.Fragment>
+              </React.Fragment>
           );
         })}
       </div>
       <div className="px-1.5 pt-1.5 mt-5">
-        <RecursiveNav data={DATA} docType={doctype} />
+        <RecursiveNav data={{}} docType={doctype} />
       </div>
     </aside>
   );
 };
+ 

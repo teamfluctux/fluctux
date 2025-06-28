@@ -1,7 +1,6 @@
 import React from "react";
-import { ThemeType } from "@fluctux/types";
+import { ThemeType, SizeType } from "@fluctux/types";
 type FxLogoCategoryType = "default" | "blackAnWhite";
-import { SizeType } from "@fluctux/ui";
 import Image from "next/image";
 
 type FxLogoAppearanceType = {

@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { FxButton } from "../fxbutton";
 import { LUCIDE_WORKSPACE_ICON_SIZE } from "../constant";

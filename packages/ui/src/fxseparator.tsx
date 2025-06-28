@@ -1,4 +1,4 @@
-"use client";
+
 import { SizeType } from "./type";
 import React from "react";
 

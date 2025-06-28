@@ -1,4 +1,4 @@
-"use client";
+
 import React from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { ROUNDED_VARIANTS } from "./constant";
