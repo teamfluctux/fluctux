@@ -1,3 +1,4 @@
+import React from "react";
 import type { SVGProps } from "react";
 export const Prettier = (props: SVGProps<SVGSVGElement>) => (
   <svg

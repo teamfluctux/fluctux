@@ -28,54 +28,7 @@ export const DEVELOPER_DOC_NAV: DocNavType = {
             slug: "set-up-environment",
           },
         ],
-        group: {
-          hello: {
-            type: "multiple",
-            slug: "hello",
-            lists: [
-              {
-                label: "Set up Environment",
-                slug: "set-up-environment",
-              },
-              {
-                label: "Set up Environment",
-                slug: "set-up-environment",
-              },
-            ],
-            group: {
-              hello: {
-                type: "multiple",
-                slug: "hello",
-                lists: [
-                  {
-                    label: "Set up Environment",
-                    slug: "set-up-environment",
-                  },
-                  {
-                    label: "Set up Environment",
-                    slug: "set-up-environment",
-                  },
-                ],
-                group: {
-                  hello: {
-                    type: "multiple",
-                    slug: "hello",
-                    lists: [
-                      {
-                        label: "Set up Environment",
-                        slug: "set-up-environment",
-                      },
-                      {
-                        label: "Set up Environment",
-                        slug: "set-up-environment",
-                      },
-                    ],
-                  },
-                },
-              },
-            },
-          },
-        },
+      
       },
     },
   },

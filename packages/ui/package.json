@@ -4,12 +4,13 @@
   "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": "./src/index.ts"
-  },
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsup --dts --external react --minify",
+    "build": "tsup --format cjs --dts --external react --minify",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",

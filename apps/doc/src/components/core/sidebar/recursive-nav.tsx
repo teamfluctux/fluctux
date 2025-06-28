@@ -13,7 +13,7 @@ export const RecursiveNav = ({
 }: {
   data: DocNavType;
   depth?: number;
-  docType: string
+  docType?: string
 }) => {
   if (depth > 5) {
     throw new Error("Maximum depth of 5 exceeded");
@@ -90,7 +90,7 @@ export const RecursiveNav = ({
                 })}
 
                 {value.group && Object.keys(value.group).length > 0 && (
-                  <RecursiveNav data={value?.group ?? {}} depth={depth + 1} docType={docType} />
+                  <RecursiveNav data={value?.group ?? {}} depth={depth + 1} />
                 )}
               </div>
             )}
