@@ -739,3 +739,15 @@ pre:has(.focused):hover span {
   font-size: clamp(40px, 5vw, 64px);
   line-height: 1.2;
 }
+
+.next-mdx-remote-codeblock code[data-theme*=" "],
+.next-mdx-remote-codeblock code[data-theme*=" "] span {
+  color: var(--shiki-light);
+}
+
+.dark {
+  .next-mdx-remote-codeblock code[data-theme*=" "],
+  .next-mdx-remote-codeblock code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+  }
+}

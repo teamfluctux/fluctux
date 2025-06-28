@@ -5,10 +5,8 @@ import { mdxToHtml } from "@fluctux/shared";
 
 export default async function Page({
   params,
-  children,
 }: {
   params: Promise<{ visitorType: string; slug: string[] }>;
-  children: React.ReactNode;
 }) {
   const { visitorType, slug } = await params;
 

@@ -45,7 +45,10 @@ export const RecursiveNav = ({
                   >
                     {key}
                     <div
-                      onClick={toggleExpansion}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        toggleExpansion()
+                      }}
                       className="flex-shrink-0 p-1 rounded-tiny hover:bg-background-color_750C group hover:ring-[1px] ring-fx_indigo-600 transition-colors"
                     >
                       <ChevronRight
@@ -59,7 +62,7 @@ export const RecursiveNav = ({
             ) : (
               <div style={{ paddingLeft: `${currentPaddingLeft}px` }}>
                 <Link
-                  href={""}
+                  href={`/${docType}/${value.slug}`}
                   className="w-fit flex justify-start items-center"
                 >
                   <div className="px-3 py-1 font-medium rounded w-fit text-workspace_2 hover:bg-background-color_800C text-text-color_2 hover:text-text-color_1">
@@ -75,7 +78,7 @@ export const RecursiveNav = ({
                   return (
                     <div style={{ paddingLeft: `${listItemsPadding}px` }} key={item.slug}>
                       <Link
-                        href={""}
+                        href={`/${docType}/${value.slug}/${item.slug}`}
                         className="w-fit flex justify-start items-center"
                       >
                         <div className="px-3 py-1 hover:bg-background-color_800C transition-colors text-text-color_2 hover:text-text-color_1 text-workspace_2 font-medium rounded w-fit ">

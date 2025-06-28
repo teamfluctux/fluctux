@@ -15,10 +15,10 @@
     "@fluctux/shared": "workspace:*",
     "@fluctux/ui": "workspace:*",
     "next": "^15.2.1",
-    "next-mdx-remote": "^5.0.0",
+  
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "shiki": "^3.7.0"
+    "react-dom": "^19.0.0"
+  
   },
   "devDependencies": {
     "@fluctux/eslint-config": "workspace:*",

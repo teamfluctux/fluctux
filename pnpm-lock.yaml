@@ -101,6 +101,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^2.8.2
         version: 2.8.2(react-redux@9.2.0(@types/react@19.1.0)(react@19.1.0)(redux@5.0.1))(react@19.1.0)
+      '@rehype-pretty/transformers':
+        specifier: ^0.13.2
+        version: 0.13.2
       '@shikijs/rehype':
         specifier: ^3.4.2
         version: 3.7.0
@@ -152,6 +155,9 @@ importers:
       next-auth:
         specifier: ^4.24.11
         version: 4.24.11(@auth/core@0.39.1)(next@15.3.4(@babel/core@7.27.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next-mdx-remote:
+        specifier: ^5.0.0
+        version: 5.0.0(@types/react@19.1.0)(acorn@8.15.0)(react@19.1.0)
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -182,9 +188,18 @@ importers:
       react-textarea-autosize:
         specifier: ^8.5.9
         version: 8.5.9(@types/react@19.1.0)(react@19.1.0)
+      rehype-pretty-code:
+        specifier: ^0.14.1
+        version: 0.14.1(shiki@3.7.0)
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
       sanitize-html:
         specifier: ^2.17.0
         version: 2.17.0
+      shiki:
+        specifier: ^3.6.0
+        version: 3.7.0
       sonner:
         specifier: ^2.0.5
         version: 2.0.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -338,18 +353,12 @@ importers:
       next:
         specifier: ^15.2.1
         version: 15.3.2(@babel/core@7.27.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      next-mdx-remote:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/react@19.1.0)(acorn@8.14.0)(react@19.1.0)
       react:
         specifier: ^19.0.0
         version: 19.1.0
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
-      shiki:
-        specifier: ^3.7.0
-        version: 3.7.0
     devDependencies:
       '@fluctux/eslint-config':
         specifier: workspace:*
@@ -643,27 +652,15 @@ importers:
       '@fluctux/ui':
         specifier: workspace:*
         version: link:../ui
-      '@rehype-pretty/transformers':
-        specifier: ^0.13.2
-        version: 0.13.2
       next:
         specifier: ^15.2.4
         version: 15.2.4(@babel/core@7.27.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      next-mdx-remote:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/react@19.1.0)(acorn@8.14.0)(react@19.1.0)
       react:
         specifier: ^19.0.0
         version: 19.1.0
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
-      rehype-pretty-code:
-        specifier: ^0.14.0
-        version: 0.14.0(shiki@3.7.0)
-      rehype-slug:
-        specifier: ^6.0.0
-        version: 6.0.0
     devDependencies:
       '@fluctux/eslint-config':
         specifier: workspace:*
@@ -672,8 +669,8 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       '@types/node':
-        specifier: ^22.14.0
-        version: 22.15.33
+        specifier: ^20
+        version: 20.19.1
       '@types/react':
         specifier: ^19.0.10
         version: 19.1.0
@@ -3610,6 +3607,9 @@ packages:
 
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
+
+  '@types/node@20.19.1':
+    resolution: {integrity: sha512-jJD50LtlD2dodAEO653i3YF04NWak6jN3ky+Ri3Em3mGR39/glWiboM/IePaRbgwSfqM1TpGXfAg8ohn/4dTgA==}
 
   '@types/node@22.15.33':
     resolution: {integrity: sha512-wzoocdnnpSxZ+6CjW4ADCK1jVmd1S/J3ArNWfn8FDDQtRm8dkDg7TA+mvek2wNrfCgwuZxqEOiB9B1XCJ6+dbw==}
@@ -7540,6 +7540,12 @@ packages:
     peerDependencies:
       shiki: ^1.3.0
 
+  rehype-pretty-code@0.14.1:
+    resolution: {integrity: sha512-IpG4OL0iYlbx78muVldsK86hdfNoht0z63AP7sekQNW2QOTmjxB7RbTO+rhIYNGRljgHxgVZoPwUl6bIC9SbjA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      shiki: ^1.0.0 || ^2.0.0 || ^3.0.0
+
   rehype-raw@7.0.0:
     resolution: {integrity: sha512-/aE8hCfKlQeA8LmyeyQvQF3eBiLRGNlfBJEvWH7ivp9sBqs7TNqBL5X3v157rM4IFETqDnIOO+z5M/biZbo9Ww==}
 
@@ -10077,9 +10083,9 @@ snapshots:
 
   '@marijn/find-cluster-break@1.0.2': {}
 
-  '@mdx-js/mdx@3.1.0(acorn@8.14.0)':
+  '@mdx-js/mdx@3.1.0(acorn@8.15.0)':
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       '@types/mdx': 2.0.13
@@ -10091,7 +10097,7 @@ snapshots:
       hast-util-to-jsx-runtime: 2.3.6
       markdown-extensions: 2.0.0
       recma-build-jsx: 1.0.0
-      recma-jsx: 1.0.0(acorn@8.14.0)
+      recma-jsx: 1.0.0(acorn@8.15.0)
       recma-stringify: 1.0.0
       rehype-recma: 1.0.0
       remark-mdx: 3.1.0
@@ -11796,7 +11802,7 @@ snapshots:
 
   '@types/estree-jsx@1.0.5':
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
 
   '@types/estree@1.0.6': {}
 
@@ -11903,6 +11909,10 @@ snapshots:
   '@types/minimatch@5.1.2': {}
 
   '@types/ms@2.1.0': {}
+
+  '@types/node@20.19.1':
+    dependencies:
+      undici-types: 6.21.0
 
   '@types/node@22.15.33':
     dependencies:
@@ -12323,6 +12333,10 @@ snapshots:
   acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:
       acorn: 8.14.0
+
+  acorn-jsx@5.3.2(acorn@8.15.0):
+    dependencies:
+      acorn: 8.15.0
 
   acorn-walk@8.3.4:
     dependencies:
@@ -13242,7 +13256,7 @@ snapshots:
   esast-util-from-js@2.0.1:
     dependencies:
       '@types/estree-jsx': 1.0.5
-      acorn: 8.14.0
+      acorn: 8.15.0
       esast-util-from-estree: 2.0.0
       vfile-message: 4.0.2
 
@@ -13464,7 +13478,7 @@ snapshots:
 
   estree-util-attach-comments@3.0.0:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
 
   estree-util-build-jsx@3.0.1:
     dependencies:
@@ -13477,7 +13491,7 @@ snapshots:
 
   estree-util-scope@1.0.0:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       devlop: 1.1.0
 
   estree-util-to-js@2.0.0:
@@ -13493,7 +13507,7 @@ snapshots:
 
   estree-walker@3.0.3:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
 
   esutils@2.0.3: {}
 
@@ -14172,7 +14186,7 @@ snapshots:
 
   hast-util-to-estree@3.1.3:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3
@@ -14221,7 +14235,7 @@ snapshots:
 
   hast-util-to-jsx-runtime@2.3.6:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       '@types/hast': 3.0.4
       '@types/unist': 3.0.3
       comma-separated-tokens: 2.0.3
@@ -15786,7 +15800,7 @@ snapshots:
 
   micromark-extension-mdx-expression@3.0.1:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       devlop: 1.1.0
       micromark-factory-mdx-expression: 2.0.3
       micromark-factory-space: 2.0.1
@@ -15797,7 +15811,7 @@ snapshots:
 
   micromark-extension-mdx-jsx@3.0.2:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       devlop: 1.1.0
       estree-util-is-identifier-name: 3.0.0
       micromark-factory-mdx-expression: 2.0.3
@@ -15814,7 +15828,7 @@ snapshots:
 
   micromark-extension-mdxjs-esm@3.0.0:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       devlop: 1.1.0
       micromark-core-commonmark: 2.0.3
       micromark-util-character: 2.1.1
@@ -15826,8 +15840,8 @@ snapshots:
 
   micromark-extension-mdxjs@3.0.0:
     dependencies:
-      acorn: 8.14.0
-      acorn-jsx: 5.3.2(acorn@8.14.0)
+      acorn: 8.15.0
+      acorn-jsx: 5.3.2(acorn@8.15.0)
       micromark-extension-mdx-expression: 3.0.1
       micromark-extension-mdx-jsx: 3.0.2
       micromark-extension-mdx-md: 2.0.0
@@ -15863,7 +15877,7 @@ snapshots:
 
   micromark-factory-mdx-expression@2.0.3:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       devlop: 1.1.0
       micromark-factory-space: 2.0.1
       micromark-util-character: 2.1.1
@@ -15979,7 +15993,7 @@ snapshots:
 
   micromark-util-events-to-acorn@2.0.3:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       '@types/unist': 3.0.3
       devlop: 1.1.0
       estree-util-visit: 2.0.0
@@ -16236,10 +16250,10 @@ snapshots:
     optionalDependencies:
       '@auth/core': 0.39.1
 
-  next-mdx-remote@5.0.0(@types/react@19.1.0)(acorn@8.14.0)(react@19.1.0):
+  next-mdx-remote@5.0.0(@types/react@19.1.0)(acorn@8.15.0)(react@19.1.0):
     dependencies:
       '@babel/code-frame': 7.27.1
-      '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
+      '@mdx-js/mdx': 3.1.0(acorn@8.15.0)
       '@mdx-js/react': 3.1.0(@types/react@19.1.0)(react@19.1.0)
       react: 19.1.0
       unist-util-remove: 3.1.1
@@ -16622,7 +16636,7 @@ snapshots:
       '@types/unist': 2.0.11
       character-entities-legacy: 3.0.0
       character-reference-invalid: 2.0.1
-      decode-named-character-reference: 1.0.2
+      decode-named-character-reference: 1.2.0
       is-alphanumerical: 2.0.1
       is-decimal: 2.0.1
       is-hexadecimal: 2.0.1
@@ -17139,13 +17153,13 @@ snapshots:
 
   recma-build-jsx@1.0.0:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       estree-util-build-jsx: 3.0.1
       vfile: 6.0.3
 
-  recma-jsx@1.0.0(acorn@8.14.0):
+  recma-jsx@1.0.0(acorn@8.15.0):
     dependencies:
-      acorn-jsx: 5.3.2(acorn@8.14.0)
+      acorn-jsx: 5.3.2(acorn@8.15.0)
       estree-util-to-js: 2.0.0
       recma-parse: 1.0.0
       recma-stringify: 1.0.0
@@ -17155,14 +17169,14 @@ snapshots:
 
   recma-parse@1.0.0:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       esast-util-from-js: 2.0.1
       unified: 11.0.5
       vfile: 6.0.3
 
   recma-stringify@1.0.0:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       estree-util-to-js: 2.0.0
       unified: 11.0.5
       vfile: 6.0.3
@@ -17275,6 +17289,16 @@ snapshots:
       unified: 11.0.5
       unist-util-visit: 5.0.0
 
+  rehype-pretty-code@0.14.1(shiki@3.7.0):
+    dependencies:
+      '@types/hast': 3.0.4
+      hast-util-to-string: 3.0.1
+      parse-numeric-range: 1.3.0
+      rehype-parse: 9.0.1
+      shiki: 3.7.0
+      unified: 11.0.5
+      unist-util-visit: 5.0.0
+
   rehype-raw@7.0.0:
     dependencies:
       '@types/hast': 3.0.4
@@ -17283,7 +17307,7 @@ snapshots:
 
   rehype-recma@1.0.0:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
       '@types/hast': 3.0.4
       hast-util-to-estree: 3.1.3
     transitivePeerDependencies:
