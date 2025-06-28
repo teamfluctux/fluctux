@@ -9,7 +9,7 @@
     "./globals": "./src/styles/globals.tsx"
   },
   "scripts": {
-    "dev": "tsc --watch ",
+    "dev": "tsup --dts --watch --external react --minify",
     "build": "tsup --dts --external react --minify",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",

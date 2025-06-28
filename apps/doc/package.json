@@ -15,17 +15,15 @@
     "@fluctux/shared": "workspace:*",
     "@fluctux/ui": "workspace:*",
     "next": "^15.2.1",
-  
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  
+    "react-dom": "^19.0.0",
+    "react-mdxutils": "^1.3.7"
   },
   "devDependencies": {
     "@fluctux/eslint-config": "workspace:*",
     "@fluctux/typescript-config": "workspace:*",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    
     "eslint": "^9",
     "tailwind-config": "workspace:*",
     "typescript": "^5"

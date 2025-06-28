@@ -79,7 +79,6 @@ export const mdxToHtml = async (content: string) => {
         const language = codeElement?.props?.["data-language"] ?? "bash";
         const Icon =
           GetIconByLanguage[language as FileType] ?? GetIconByLanguage["text"];
-          
         return (
           <div className="border overflow-hidden h-full w-full pt-0 my-[1.71429em] rounded-rounded_10C bg-background-color_925C border-border-color_1 next-mdx-remote-codeblock">
             <div className="h-[45px] w-full flex justify-center items-center gap-3 px-4 py-0.5">

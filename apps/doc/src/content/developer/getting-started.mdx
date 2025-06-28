@@ -97,7 +97,7 @@ const myElement = (
 ```js
 // This will cause an error
 const myElement = (
-  <p>I am a paragraph.</p> // [!code error]
+  <p>I am a paragraph.</p> // [!code --]
   <p>I am a paragraph too.</p> // [!code error]
 );
 ```
@@ -105,9 +105,10 @@ const myElement = (
 ✅ Alternative: Use a **Fragment** (`<> </>`)
 ```js
 const myElement = (
-  <> // [!code highlight]
-    <p>I am a paragraph.</p>
-    <p>I am a paragraph too.</p>
+  //[!code highlight:1] 
+  <> 
+    <p>I am a paragraph djklg lsjlkj lksdg lkdjglk sdlk glk glksd gksdjlk glksd glksd gjksdogj sdlkg sdlkg lksdgjlksdg dlg sdokg lk.</p> //[!code highlight] 
+    <p>I am a paragraph too. sjglksd glsdg ksdlgjksdlgjsdlkgjlk</p>
   </> // [!code highlight]
 );
 ```

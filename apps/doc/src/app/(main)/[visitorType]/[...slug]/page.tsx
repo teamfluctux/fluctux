@@ -19,14 +19,16 @@ export default async function Page({
    const MdxComponent = await mdxToHtml(content);
    
    return (
+    <>
      <div className=" w-full h-full overflow-y-scroll grid grid-cols-[1fr_300px]">
-       <div className=" max-w-[700px] w-full mx-auto px-3 py-14">
+       <div className=" max-w-[650px] w-full mx-auto px-3 py-14">
          <article className="prose  prose-gray dark:prose-invert ">
            {MdxComponent}
          </article>
        </div>
        <div className="w-full h-full sticky top-0"></div>
      </div>
+    </>
    );
  } catch (error) {
   console.log(error);

@@ -1,0 +1,14 @@
+pre code .remove::after {
+  content: "–";
+  color: var(--code-remove-color);
+  font-size: 13px;
+  position: absolute;
+  left: 0 !important;
+  min-width: 2.7rem;
+  text-align: center;
+  padding: 0px !important;
+  background-color: inherit;
+  backdrop-filter: blur(20px);
+  display: inline-block;
+  z-index: 10;
+}
