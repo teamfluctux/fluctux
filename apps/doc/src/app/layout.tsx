@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} w-full h-screen overflow-hidden p-1.5`}
+        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} dark:!bg-black !bg-white w-full h-screen overflow-hidden p-1.5`}
       >
         <ThemeProvider attribute="class">
           <Suspense>
