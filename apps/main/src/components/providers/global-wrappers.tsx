@@ -2,7 +2,6 @@
 import React from "react";
 import { store } from "@/redux/store";
 import { Provider } from "react-redux";
-import { SessionProvider } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { Toaster, ToasterProps } from "sonner";
 import { apolloClient } from "@/lib/apollo-client";
@@ -15,7 +14,7 @@ interface GlobalWrapperPropsType {
 export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
   const { theme = "system" } = useTheme();
   return (
-    <SessionProvider>
+
       <ApolloProvider client={apolloClient}>
         <Provider store={store}>
           {children}
@@ -27,6 +26,6 @@ export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
           />
         </Provider>
       </ApolloProvider>
-    </SessionProvider>
+ 
   );
 }

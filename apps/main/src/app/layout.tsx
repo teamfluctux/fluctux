@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-// import "./globals.css";
-import "@fluctux/ui/globals";
+import "./styles/global.css";
 import "./styles/workspace.style.css";
 import "./styles/editor.style.css";
 import "./styles/svg.style.css";
-import "./styles/auth.style.css";
 import "./styles/org.style.css";
-import "./styles/main.style.css";
 import "./styles/alert.style.css";
 import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";

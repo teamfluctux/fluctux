@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
-import "@fluctux/ui/globals";
-import "./globals.css";
+
+import "./styles/global.css";
 import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { ScaleMotion } from "@fluctux/ui";
 import { MainWrapper } from "@/components/core";
 
 const geistSans = Geist({
@@ -37,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} w-full h-screen overflow-hidden p-1.5`}
+        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} dark:!bg-black !bg-white w-full h-screen overflow-hidden p-1.5`}
       >
         <ThemeProvider attribute="class">
           <Suspense>

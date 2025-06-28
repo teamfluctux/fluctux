@@ -15,9 +15,9 @@ const nextConfig: NextConfig = {
         hostname: "images.pexels.com", // Correct hostname
         port: "", // Leave empty unless a specific port is needed
         pathname: "/**", // Use `/` followed by `**` to allow all subpaths
-      },
+      }, 
     ],
-  },
+  },  
 
   async headers() {
     return [
