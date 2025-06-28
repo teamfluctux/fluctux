@@ -592,14 +592,14 @@ pre code {
     content: "+";
     color: var(--code-add-color);
     background-color: var(--code-add-bg-color);
-    font-size: 18px;
+    font-size: 13px;
     position: sticky;
-    left: 0px !important;
+    left: 0px ;
     min-width: 2.7rem;
     text-align: center;
-    padding: 0px !important;
+    padding: 0px;
     background-color: inherit;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     display: inline-block;
     z-index: 10;
   }
@@ -607,8 +607,21 @@ pre code {
   .remove {
     background-color: var(--code-remove-bg-color);
     position: relative;
-    padding-left: 10px; 
-    
+  }
+
+  .remove::before {
+    content: "–";
+    color: var(--code-remove-color);
+    font-size: 13px;
+    position: sticky;
+    left: 0px;
+    min-width: 2.7rem;
+    text-align: center;
+    padding: 0px;
+    background-color: inherit;
+    backdrop-filter: blur(30px);
+    display: inline-block;
+    z-index: 10;
   }
 
   .warning {
@@ -638,7 +651,7 @@ pre code > *::before {
   padding-right: 1.1rem;
   color: var(--foreground-color-2);
   background-color: inherit;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   display: inline-block;
   font-size: 13px;
   z-index: 10;
