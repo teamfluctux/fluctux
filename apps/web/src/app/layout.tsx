@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
-import "@fluctux/ui/globals";
+import "./styles/global.css";
 import "./styles/docs.style.css";
 import "./styles/alert.style.css";
 import "./styles/landing-page.style.css";

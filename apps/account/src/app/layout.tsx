@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@fluctux/ui/globals";
+import "./styles/global.css";
 import "./styles/auth.style.css";
 import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";

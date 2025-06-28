@@ -30,8 +30,6 @@ export * from "./checkbox";
 export * from "./lib/utils";
 export * from "./lib/get-icons";
 
-export * from "./styles/globals";
-
 export * from "./icons/fav-icon";
 export * from "./icons/discord-icon";
 export * from "./icons/github-circle-icon";

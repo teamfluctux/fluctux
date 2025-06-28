@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
-import "@fluctux/ui/globals";
-import "./globals.css";
+
+import "./styles/global.css";
 import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { ScaleMotion } from "@fluctux/ui";
 import { MainWrapper } from "@/components/core";
 
 const geistSans = Geist({
