@@ -541,6 +541,10 @@ body {
   font-family: var(--font-jetbrains-mono);
 }
 
+.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-radius: 0px !important;
+}
+
 /* single code highlight */
 .light
   .prose
@@ -563,9 +567,8 @@ pre code {
   padding: 0px !important;
   border-radius: 0px !important;
   display: grid;
-  /* grid-template-columns: max-content; */
   width: 100%;
-  text-wrap: wrap;
+  text-wrap: nowrap;
   position: relative;
   font-family: var(--font-jetbrains-mono);
 
@@ -573,14 +576,9 @@ pre code {
     padding-inline: 20px;
   }
 
-  [data-highlighted-line] {
-    background-color: var(--background-color-800C);
-    border-left: 2px solid var(--color-purple-700);
-  }
-
   .highlighted {
-    background-color: #7e22ce40;
-    border-left: 2px solid var(--color-purple-700);
+    background-color: var(--surface-indigo-bg-active);
+    border-left: 2px solid var(--color-indigo-600);
   }
 
   .add {
@@ -647,8 +645,9 @@ pre code {
 }
 
 .dark pre code .highlighted-word {
-  background-color: var(--background-color-700C);
-  border: 1px solid var(--border-color-2);
+  border: 1px solid var(--surface-indigo-bg-active);
+  background-color: var(--surface-indigo-bg-active);
+
   padding: 1px;
   border-radius: 3px;
 }
@@ -743,11 +742,13 @@ pre:has(.focused):hover span {
 .next-mdx-remote-codeblock code[data-theme*=" "],
 .next-mdx-remote-codeblock code[data-theme*=" "] span {
   color: var(--shiki-light);
+  /* background-color: var(--shiki-light-bg) ; */
 }
 
 .dark {
   .next-mdx-remote-codeblock code[data-theme*=" "],
   .next-mdx-remote-codeblock code[data-theme*=" "] span {
     color: var(--shiki-dark);
+    /* background-color: var(--shiki-dark-bg); */
   }
 }

@@ -52,7 +52,7 @@ export const mdxToHtml = async (content: string) => {
     components: {
       a: ({ href, children, ...props }: AnchorProps) => {
         const className =
-          "text-blue-500 hover:text-blue-700 underline underline-offset-2 transition-colors";
+          "text-text-color_1 hover:text-text-color_2 underline underline-offset-2 transition-colors";
         if (href?.startsWith("/")) {
           return (
             <Link href={href} className={className} {...props}>
@@ -79,13 +79,14 @@ export const mdxToHtml = async (content: string) => {
         const language = codeElement?.props?.["data-language"] ?? "bash";
         const Icon =
           GetIconByLanguage[language as FileType] ?? GetIconByLanguage["text"];
+          
         return (
-          <div className="border h-full w-full p-1 pt-0 my-[1.71429em] rounded-[15px] bg-background-color_925C border-border-color_800C next-mdx-remote-codeblock">
-            <div className="h-[35px] w-full flex justify-center items-center gap-3 px-2 py-0.5">
+          <div className="border overflow-hidden h-full w-full pt-0 my-[1.71429em] rounded-rounded_10C bg-background-color_925C border-border-color_1 next-mdx-remote-codeblock">
+            <div className="h-[45px] w-full flex justify-center items-center gap-3 px-4 py-0.5">
               <div className="w-full flex justify-start items-center gap-5">
                 <div className="w-full flex justify-start items-center gap-1.5 ">
                   <Icon width={16} height={16} />
-                  <span className="text-text-color_2 text-read_3 font-medium">
+                  <span className="text-text-color_2 text-workspace_3 ">
                     {language}
                   </span>
                 </div>
@@ -94,7 +95,7 @@ export const mdxToHtml = async (content: string) => {
             </div>
             <pre
               {...props}
-              className="my-0 rounded-[10px] shadow dark:bg-background-color_900C bg-background-color_950C border-border-color_800C border"
+              className="my-0 border-t border-border-color_1 dark:bg-[var(--shiki-dark-bg)] light:var(--shiki-light-bg)"
             >
               {children}
             </pre>

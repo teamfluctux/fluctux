@@ -24,7 +24,7 @@ export const ButtonWithIconBox = ({
             className="text-text-color_4"
           />
         </div>
-        <span className="text-workspace_1 font-medium text-text-color_4">
+        <span className="text-workspace_1 font-medium text-text-color_4 hover:text-text-color_1">
           {label}
         </span>
       </Link>

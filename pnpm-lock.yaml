@@ -167,9 +167,6 @@ importers:
       react-hook-form:
         specifier: ^7.58.1
         version: 7.58.1(react@19.1.0)
-      react-icons:
-        specifier: ^5.5.0
-        version: 5.5.0(react@19.1.0)
       react-instantsearch:
         specifier: ^7.16.0
         version: 7.16.0(algoliasearch@5.29.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
