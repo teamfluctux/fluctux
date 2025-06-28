@@ -23,8 +23,13 @@ export * from "./switch";
 export * from "./fxonelist";
 export * from "./dropdown-menu";
 export * from "./navigation-menu";
+export * from "./toggle";
+export * from "./toggle-group";
 export * from "./checkbox";
+
 export * from "./lib/utils";
+export * from "./lib/get-icons";
+
 export * from "./styles/globals";
 
 export * from "./icons/fav-icon";
@@ -35,6 +40,9 @@ export * from "./icons/google-icon";
 export * from "./icons/twitter-icon";
 export * from "./icons/facebook";
 export * from "./icons/slack";
+export * from "./icons/code";
 export * from "./icons/type";
+
+export * from "./motions";
 
 export * from "./hooks";

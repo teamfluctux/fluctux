@@ -102,14 +102,46 @@
   --outline-offset-color: var(--color-zinc-300);
   --outline-border-color: var(--color-zinc-600);
 
-
   /* other colors */
-  --surface-indigo-bg: #171d3b80 ;
-  --surface-indigo-bg-active: #2f62ff3c ;
-  --surface-indigo-border: #5a7fff90 ;
-  --surface-indigo-border-active: #5b81feac ;
-  --surface-indigo-fg: #9eb1ff ;
-  
+  --surface-indigo-bg: #171d3b80;
+  --surface-indigo-bg-active: #2f62ff3c;
+  --surface-indigo-border: #5a7fff90;
+  --surface-indigo-border-active: #5b81feac;
+  --surface-indigo-fg: #9eb1ff;
+
+  /* shiki */
+  --twoslash-border-color: #8888;
+  --twoslash-underline-color: currentColor;
+  --twoslash-highlighted-border: #c37d0d50;
+  --twoslash-highlighted-bg: #c37d0d20;
+  --twoslash-popup-bg: #f8f8f8;
+  --twoslash-popup-color: inherit;
+  --twoslash-popup-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;
+  --twoslash-docs-color: #888;
+  --twoslash-docs-font: sans-serif;
+  --twoslash-code-font: inherit;
+  --twoslash-code-font-size: 1em;
+  --twoslash-matched-color: inherit;
+  --twoslash-unmatched-color: #888;
+  --twoslash-cursor-color: #8888;
+  --twoslash-error-color: #d45656;
+  --twoslash-error-bg: #d4565620;
+  --twoslash-warn-color: #c37d0d;
+  --twoslash-warn-bg: #c37d0d20;
+  --twoslash-tag-color: #3772cf;
+  --twoslash-tag-bg: #3772cf20;
+  --twoslash-tag-warn-color: var(--twoslash-warn-color);
+  --twoslash-tag-warn-bg: var(--twoslash-warn-bg);
+  --twoslash-tag-annotate-color: #1ba673;
+  --twoslash-tag-annotate-bg: #1ba67320;
+
+  --code-error-border: #f87171;
+  --code-error-background: #dc262648;
+
+  --code-add-color: #059669;
+  --code-remove-color: #dc2626;
+  --code-add-bg-color: #10b9812a;
+  --code-remove-bg-color: #ef44443a;
 }
 
 .dark {
@@ -151,6 +183,15 @@
   /* outline border */
   --outline-offset-color: var(--color-zinc-600);
   --outline-border-color: var(--color-zinc-300);
+
+  /* codeblock */
+  --code-error-border: #dc2626;
+  --code-error-background: #dc262648;
+
+  --code-add-color: #10b981;
+  --code-remove-color: #ef4444;
+  --code-add-bg-color: #10b9812a;
+  --code-remove-bg-color: #dc26262f;
 }
 
 html {
@@ -434,72 +475,6 @@ body {
   filter: invert(1);
 }
 
-.prose code::before,
-.prose code::after {
-  content: none; /* Remove the backtick or any unwanted content before the code */
-}
-
-/* Ensure the code block styling is applied without extra formatting */
-.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  background-color: #ffffff17;
-  padding: 2px 5px;
-  border-radius: 5px;
-  font-weight: inherit;
-  font-size: inherit;
-  color: inherit;
-  font-family: var(--font-jetbrains-mono);
-}
-
-/* single code highlight */
-.light
-  .prose
-  :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  background-color: #00000015;
-}
-
-pre {
-  padding: 20px 0px !important;
-}
-
-pre code {
-  background-color: transparent !important;
-  padding: 0px !important;
-  border-radius: 0px !important;
-  display: grid;
-
-  .line {
-    padding-inline: 20px;
-  }
-
-  .highlighted {
-    background-color: #ffffff24;
-    border-left: 2px solid var(--primary-color);
-  }
-
-  .add {
-    background-color: #00800030;
-  }
-
-  .remove {
-    background-color: #ff00003e;
-  }
-
-  .warning {
-    background-color: #ffc1073d;
-  }
-
-  .error {
-    border: 2px solid #dc3546;
-    background-color: #dc35463d;
-  }
-}
-
-.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  color: var(--link-color);
-  text-decoration: none;
-  font-weight: inherit;
-}
-
 .short-loader {
   animation: shortLoader 1s infinite ease-in-out;
 }
@@ -519,18 +494,17 @@ pre code {
 
 .scrollbar-hide {
   scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Opera */
 }
 
-
-.dark .main-header{
+.dark .main-header {
   background: #09090bb3;
 }
 
-.light .main-header{
+.light .main-header {
   background: #fafafabb;
 }
 
@@ -540,13 +514,254 @@ pre code {
   line-height: 1.2;
 }
 
-
 /* uses in design */
 .main_hero_heading_sync {
   font-size: clamp(35px, 5vw, 56px);
   line-height: 1.1;
 }
 
-.weight_450{
+.weight_450 {
   font-weight: 450;
+}
+
+/* MDX CONTENT STYLES */
+.prose code::before,
+.prose code::after {
+  content: none; /* Remove the backtick or any unwanted content before the code */
+}
+
+/* Ensure the code block styling is applied without extra formatting */
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background-color: var(--background-color-800C);
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-family: var(--font-jetbrains-mono);
+}
+
+.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-radius: 0px !important;
+}
+
+/* single code highlight */
+.light
+  .prose
+  :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background-color: var(--background-color-800C);
+}
+
+.light .codeblockwithouttypes .highlighted {
+  background-color: #7e22ce28;
+  border-left: 2px solid var(--color-indigo-600);
+}
+
+pre {
+  padding: 15px 0px !important;
+  font-family: var(--font-jetbrains-mono);
+}
+
+pre code {
+  counter-reset: step;
+  counter-increment: step 0;
+  background-color: transparent !important;
+  padding: 0px !important;
+  border-radius: 0px !important;
+  display: grid;
+  width: 100%;
+  text-wrap: nowrap;
+  position: relative;
+  font-family: var(--font-jetbrains-mono);
+
+  [data-line] {
+    padding-inline: 20px;
+    padding-left: 0px;
+  }
+
+  .highlighted {
+    background-color: var(--surface-indigo-bg-active);
+  }
+
+  .add {
+    background-color: var(--code-add-bg-color);
+    position: relative;
+  }
+
+  .add:before {
+    content: "+";
+    color: var(--code-add-color);
+    background-color: var(--code-add-bg-color);
+    font-size: 13px;
+    position: sticky;
+    left: 0px ;
+    min-width: 2.7rem;
+    text-align: center;
+    padding: 0px;
+    background-color: inherit;
+    backdrop-filter: blur(30px);
+    display: inline-block;
+    z-index: 10;
+  }
+
+  .remove {
+    background-color: var(--code-remove-bg-color);
+    position: relative;
+  }
+
+  .remove::before {
+    content: "–";
+    color: var(--code-remove-color);
+    font-size: 13px;
+    position: sticky;
+    left: 0px;
+    min-width: 2.7rem;
+    text-align: center;
+    padding: 0px;
+    background-color: inherit;
+    backdrop-filter: blur(30px);
+    display: inline-block;
+    z-index: 10;
+  }
+
+  .warning {
+    background-color: #ffc1073d;
+    border-left: none;
+  }
+
+  .error {
+    background-color: var(--code-error-background) !important;
+  }
+
+  .highlighted-word {
+    background-color: var(--background-color-800C);
+    border: 1px solid var(--border-color-1);
+    padding: 1px;
+    border-radius: 3px;
+  }
+}
+
+pre code > *::before {
+  counter-increment: step;
+  content: counter(step);
+  position: sticky;
+  left: 0;
+  min-width: 2.7rem;
+  text-align: right;
+  padding-right: 1.1rem;
+  color: var(--foreground-color-2);
+  background-color: inherit;
+  backdrop-filter: blur(30px);
+  display: inline-block;
+  font-size: 13px;
+  z-index: 10;
+}
+
+.dark pre code .highlighted-word {
+  border: 1px solid var(--surface-indigo-bg-active);
+  background-color: var(--surface-indigo-bg-active);
+
+  padding: 1px;
+  border-radius: 3px;
+}
+
+/* Apply blur to everything inside <pre> except for .focused elements */
+pre:has(.focused) span {
+  filter: blur(3px);
+  transition: filter 0.2s ease-in-out;
+}
+
+pre code .focused * {
+  filter: none !important;
+}
+pre code .focused {
+  filter: none !important;
+}
+
+/* Optional: On hover, remove the blur from everything */
+pre:has(.focused):hover span {
+  filter: none;
+}
+
+.codeblock .line {
+  padding: 0px 10px;
+}
+
+.codeblock pre {
+  height: 100%;
+  padding-top: 0px !important;
+}
+
+.codeblock code {
+  counter-reset: step;
+  counter-increment: step 0;
+  width: 100%;
+  display: grid;
+  /* grid-template-columns: max-content; */
+  text-wrap: wrap;
+}
+
+.codeblock code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.3rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115, 138, 148, 0.4);
+}
+
+.codeblock .shiki,
+.codeblock .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--github-default-background-color-2) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+.prose {
+  max-width: 100%;
+  min-width: 10px;
+}
+
+.heading_default {
+  line-height: 44px;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.prose :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-color: var(--border-color-1);
+}
+
+/* HEADING STYLES */
+/* uses in page titles */
+.fx_page_title {
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.2;
+}
+
+/* uses in design */
+.dheading_sync {
+  font-size: clamp(35px, 5vw, 56px);
+  line-height: 1.2;
+}
+
+/* uses in design */
+.super_dheading_sync {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.2;
+}
+
+.next-mdx-remote-codeblock code[data-theme*=" "],
+.next-mdx-remote-codeblock code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  /* background-color: var(--shiki-light-bg) ; */
+}
+
+.dark {
+  .next-mdx-remote-codeblock code[data-theme*=" "],
+  .next-mdx-remote-codeblock code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+    /* background-color: var(--shiki-dark-bg); */
+  }
 }

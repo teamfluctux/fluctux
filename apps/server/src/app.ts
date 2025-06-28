@@ -4,8 +4,6 @@ import cookieParser from "cookie-parser";
 import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
 
-
-
 const NODE_ENV = process.env.NODE_ENV;
 
 const app = express();

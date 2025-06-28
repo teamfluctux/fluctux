@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
@@ -11,17 +11,21 @@
     "clean": "rm -rf node_modules .turbo .next && echo 'Cleanup complete!'"
   },
   "dependencies": {
+    "@fluctux/hooks": "workspace:*",
+    "@fluctux/shared": "workspace:*",
+    "@fluctux/ui": "workspace:*",
+    "next": "^15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "^15.2.1"
+    "react-mdxutils": "^1.3.7"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
+    "@fluctux/eslint-config": "workspace:*",
+    "@fluctux/typescript-config": "workspace:*",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.3.4",
-    "@eslint/eslintrc": "^3"
+    "tailwind-config": "workspace:*",
+    "typescript": "^5"
   }
 }

@@ -14,6 +14,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        surface: {
+          indigo: {
+            bg: {
+              DEFAULT: "var(--surface-indigo-bg)",
+              active: "var(--surface-indigo-bg-active)",
+            },
+            border: {
+              DEFAULT: "var(--surface-indigo-border)",
+              active: "var(--surface-indigo-border-active)",
+            },
+            fg: {
+              DEFAULT: "var(--surface-indigo-fg)",
+            },
+          },
+        },
         fx_zinc: {
           950: "var(--color-zinc-950)",
           900: "var(--color-zinc-900)",
@@ -39,7 +54,7 @@ module.exports = {
           200: "var(--color-indigo-200)",
           100: "var(--color-indigo-100)",
           50: "var(--color-indigo-50)",
-          "primary": "var(--color-indigo-600)",
+          primary: "var(--color-indigo-600)",
         },
         background: {
           indigo_primary: "var(--primary-color)",
@@ -117,6 +132,11 @@ module.exports = {
         read_20: "20px",
         read_16: "16px",
       },
+      fontWeight: {
+        weight_450: "450",
+        weight_530: "530",
+        weight_550: "550",
+      },
       fontFamily: {
         geist_sans: ["var(--font-geist-sans)"],
         geist_mono: ["var(--font-geist-mono)"],
@@ -127,6 +147,10 @@ module.exports = {
         tiny: "5px",
         circle: "50%",
         tablet: "50px",
+        rounded_10C: "10px",
+        rounded_15C: "15px",
+        rounded_20C: "20px",
+        rounded_30C: "30px",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",

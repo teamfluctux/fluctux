@@ -10,11 +10,11 @@
     "build": "tsup --dts --external react --minify",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "clean": "rm -rf node_modules .turbo .next && echo 'Cleanup complete!'"
+    "clean": "rm -rf node_modules .turbo .next dist && echo 'Cleanup complete!'"
   },
   "dependencies": {
-    "@fluctux/ui": "workspace:*",
     "@fluctux/constants": "workspace:*",
+    "@fluctux/ui": "workspace:*",
     "next": "^15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -22,10 +22,10 @@
   "devDependencies": {
     "@fluctux/eslint-config": "workspace:*",
     "@fluctux/typescript-config": "workspace:*",
-    "tailwind-config": "workspace:*",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "eslint": "^9.21.0",
+    "tailwind-config": "workspace:*",
     "typescript": "^5.8.2"
   }
 }
