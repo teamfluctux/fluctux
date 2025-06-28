@@ -1,5 +1,7 @@
+"use client"
 import Image from "next/image";
 import styles from "./page.module.css";
+import {FxButton} from "@fluctux/ui"
 
 export default function Home() {
   return (
@@ -14,6 +16,7 @@ export default function Home() {
           priority
         />
         <ol>
+          <FxButton variant="surface_indigo">Hello world</FxButton>
           <li>
             Get started by editing <code>src/app/page.tsx</code>.
           </li>
