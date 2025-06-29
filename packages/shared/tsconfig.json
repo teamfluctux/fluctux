@@ -1,7 +1,7 @@
 {
   "extends": "@fluctux/typescript-config/nextjs.json",
   "compilerOptions": {
-     "plugins": [
+    "plugins": [
       {
         "name": "next"
       }
@@ -11,8 +11,6 @@
     "target": "ES2024",
     "incremental": false // Override default (true in nextjs.json) to avoid issues with declaration file generation in libraries
   },
-  "include": [
-   "src"
-  ],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }
