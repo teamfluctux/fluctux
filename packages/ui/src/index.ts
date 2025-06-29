@@ -29,7 +29,6 @@ export * from "./toggle-group";
 export * from "./checkbox";
 
 export * from "./lib/utils";
-export * from "./lib/get-icons";
 
 export * from "./icons/fav-icon";
 export * from "./icons/discord-icon";

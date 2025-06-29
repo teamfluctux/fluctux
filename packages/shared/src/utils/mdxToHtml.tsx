@@ -11,9 +11,12 @@ import rehypeSlug from "rehype-slug";
 import React, { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import { CopyCodeButton } from "../components/code";
-import { GetIconByLanguage } from "@fluctux/ui";
 import { FileType } from "@fluctux/types";
-import { ExternalLink} from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { GetIconByLanguage } from "./get-icons";
+
+
+
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
@@ -69,10 +72,9 @@ export const mdxToHtml = async (content: string) => {
             className={`${className} inline-flex`}
             {...props}
           >
-         
             {children}
-       
-            <ExternalLink size={14} className="pl-0.5"/>
+
+            <ExternalLink size={14} className="pl-0.5" />
           </a>
         );
       },
@@ -88,7 +90,7 @@ export const mdxToHtml = async (content: string) => {
             <div className="h-[45px] w-full flex justify-center items-center gap-3 px-4 py-0.5">
               <div className="w-full flex justify-start items-center gap-5">
                 <div className="w-full flex justify-start items-center gap-1.5 ">
-                  <Icon width={16} height={16} />
+                  {Icon && <Icon width={16} height={16} />}
                   <span className="text-text-color_2 text-workspace_3 ">
                     {language}
                   </span>
