@@ -28,7 +28,6 @@ export const DEVELOPER_DOC_NAV: DocNavType = {
             slug: "set-up-environment",
           },
         ],
-      
       },
     },
   },

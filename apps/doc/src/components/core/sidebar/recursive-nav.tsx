@@ -9,11 +9,11 @@ const INDENT_SIZE = 15;
 export const RecursiveNav = ({
   data,
   depth = 0,
-  docType
+  docType,
 }: {
   data: DocNavType;
   depth?: number;
-  docType?: string
+  docType?: string;
 }) => {
   if (depth > 5) {
     throw new Error("Maximum depth of 5 exceeded");
@@ -46,8 +46,8 @@ export const RecursiveNav = ({
                     {key}
                     <div
                       onClick={(e) => {
-                        e.preventDefault()
-                        toggleExpansion()
+                        e.preventDefault();
+                        toggleExpansion();
                       }}
                       className="flex-shrink-0 p-1 rounded-tiny hover:bg-background-color_750C group hover:ring-[1px] ring-fx_indigo-600 transition-colors"
                     >
@@ -76,7 +76,10 @@ export const RecursiveNav = ({
                 {value?.lists?.map((item, j) => {
                   const listItemsPadding = (depth + 1) * INDENT_SIZE;
                   return (
-                    <div style={{ paddingLeft: `${listItemsPadding}px` }} key={item.slug}>
+                    <div
+                      style={{ paddingLeft: `${listItemsPadding}px` }}
+                      key={item.slug}
+                    >
                       <Link
                         href={`/${docType}/${value.slug}/${item.slug}`}
                         className="w-fit flex justify-start items-center"

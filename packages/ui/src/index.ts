@@ -1,4 +1,4 @@
-"use client"
+"use client";
 export * from "./collapsible";
 export * from "./command";
 export * from "./constant";

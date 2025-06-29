@@ -1,4 +1,3 @@
-
 import { IconType } from "@fluctux/types";
 import { LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import Link from "next/link";

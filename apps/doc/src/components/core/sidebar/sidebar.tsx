@@ -1,4 +1,3 @@
-
 import React, { SVGProps } from "react";
 import { FxFavIcon, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { ToggleGroup, ToggleGroupItem } from "@fluctux/ui";
@@ -23,8 +22,8 @@ const TopNavItems: { label: string; slug: string; icon: IconType }[] = [
   {
     label: "Support",
     slug: "support",
-    icon: Headset
-  }
+    icon: Headset,
+  },
 ];
 
 export const AppSidebar = ({ doctype }: { doctype: string }) => {
@@ -70,13 +69,12 @@ export const AppSidebar = ({ doctype }: { doctype: string }) => {
         {TopNavItems.map((item, i) => {
           return (
             <React.Fragment key={i}>
-
-            <ButtonWithIconBox
-              slug={item.slug.toString()}
-              label={item.label.toString()}
-              icon={item.icon}
+              <ButtonWithIconBox
+                slug={item.slug.toString()}
+                label={item.label.toString()}
+                icon={item.icon}
               />
-              </React.Fragment>
+            </React.Fragment>
           );
         })}
       </div>
@@ -86,4 +84,3 @@ export const AppSidebar = ({ doctype }: { doctype: string }) => {
     </aside>
   );
 };
- 

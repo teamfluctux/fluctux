@@ -14,18 +14,16 @@ interface GlobalProvidersPropsType {
 export const GlobalProviders = ({ children }: GlobalProvidersPropsType) => {
   const { theme = "system" } = useTheme();
   return (
-
-      <ApolloProvider client={apolloClient}>
-        <Provider store={store}>
-          {children}
-          <Toaster
-            richColors
-            position="bottom-center"
-            theme={theme as ToasterProps["theme"]}
-            closeButton
-          />
-        </Provider>
-      </ApolloProvider>
- 
+    <ApolloProvider client={apolloClient}>
+      <Provider store={store}>
+        {children}
+        <Toaster
+          richColors
+          position="bottom-center"
+          theme={theme as ToasterProps["theme"]}
+          closeButton
+        />
+      </Provider>
+    </ApolloProvider>
   );
-}
+};

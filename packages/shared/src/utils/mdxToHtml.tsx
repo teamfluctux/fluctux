@@ -15,9 +15,6 @@ import { FileType } from "@fluctux/types";
 import { ExternalLink } from "lucide-react";
 import { GetIconByLanguage } from "./get-icons";
 
-
-
-
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
 

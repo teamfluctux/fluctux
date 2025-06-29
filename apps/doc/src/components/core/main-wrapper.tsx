@@ -1,4 +1,3 @@
-
 import React from "react";
 
 export const MainWrapper = ({ children }: { children: React.ReactNode }) => {

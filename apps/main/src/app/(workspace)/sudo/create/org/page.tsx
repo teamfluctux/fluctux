@@ -4,12 +4,7 @@ import {
   ORG_VISIBILITY_OPTIONS,
 } from "@fluctux/constants";
 import { OrgVisibilityType } from "@fluctux/types";
-import {
-  Checkbox,
-  FxButton,
-  FxInput,
-  FxSeparator,
-} from "@fluctux/ui";
+import { Checkbox, FxButton, FxInput, FxSeparator } from "@fluctux/ui";
 import { MailPlus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";

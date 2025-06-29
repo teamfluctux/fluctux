@@ -9,12 +9,7 @@ import {
   RESOURCES_ITEMS,
   WORK_MANAGEMENT_ITEMS,
 } from "@/constants/footer";
-import {
-  FacebookIcon,
-  FxFavIcon,
-  GithubIcon,
-  TwitterSVG,
-} from "@fluctux/ui";
+import { FacebookIcon, FxFavIcon, GithubIcon, TwitterSVG } from "@fluctux/ui";
 import Image from "next/image";
 import { ThemeToggler } from "./theme-toggler";
 
@@ -71,7 +66,7 @@ export const Footer = () => {
                 <TwitterSVG size={22} />
                 <FacebookIcon size={20} />
               </div>
-              <ThemeToggler  />
+              <ThemeToggler />
             </div>
           </div>
         </div>
