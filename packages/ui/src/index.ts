@@ -1,3 +1,4 @@
+"use client"
 export * from "./collapsible";
 export * from "./command";
 export * from "./constant";
@@ -42,5 +43,3 @@ export * from "./icons/code";
 export * from "./icons/type";
 
 export * from "./motions";
-
-export * from "./hooks";

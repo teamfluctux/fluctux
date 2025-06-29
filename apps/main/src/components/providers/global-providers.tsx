@@ -7,11 +7,11 @@ import { Toaster, ToasterProps } from "sonner";
 import { apolloClient } from "@/lib/apollo-client";
 import { ApolloProvider } from "@apollo/client";
 
-interface GlobalWrapperPropsType {
+interface GlobalProvidersPropsType {
   children: React.ReactNode;
 }
 
-export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
+export const GlobalProviders = ({ children }: GlobalProvidersPropsType) => {
   const { theme = "system" } = useTheme();
   return (
 

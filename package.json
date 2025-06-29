@@ -54,6 +54,7 @@
     "@firecms/neat": "^0.3.0",
     "@fluctux/constants": "workspace:*",
     "@fluctux/types": "workspace:*",
+    "@fluctux/ui": "workspace:*",
     "@fluctux/zod": "workspace:*",
     "@graphiql/toolkit": "^0.11.3",
     "@graphql-yoga/plugin-disable-introspection": "^2.14.5",

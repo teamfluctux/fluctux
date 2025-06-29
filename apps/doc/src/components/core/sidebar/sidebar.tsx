@@ -1,4 +1,4 @@
-"use client"
+
 import React, { SVGProps } from "react";
 import { FxFavIcon, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { ToggleGroup, ToggleGroupItem } from "@fluctux/ui";
@@ -81,7 +81,7 @@ export const AppSidebar = ({ doctype }: { doctype: string }) => {
         })}
       </div>
       <div className="px-1.5 pt-1.5 mt-5">
-        <RecursiveNav data={{}} docType={doctype} />
+        <RecursiveNav data={DATA} docType={doctype} />
       </div>
     </aside>
   );

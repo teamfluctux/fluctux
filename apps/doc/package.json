@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev --port 3080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@fluctux/hooks": "workspace:*",
-    "@fluctux/shared": "workspace:*",
     "@fluctux/ui": "workspace:*",
     "next": "^15.2.1",
     "react": "^19.0.0",

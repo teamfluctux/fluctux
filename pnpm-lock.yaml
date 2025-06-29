@@ -56,6 +56,9 @@ importers:
       '@fluctux/types':
         specifier: workspace:*
         version: link:packages/types
+      '@fluctux/ui':
+        specifier: workspace:*
+        version: link:packages/ui
       '@fluctux/zod':
         specifier: workspace:*
         version: link:packages/zod
@@ -341,9 +344,6 @@ importers:
       '@fluctux/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
-      '@fluctux/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@fluctux/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -649,9 +649,6 @@ importers:
       '@fluctux/constants':
         specifier: workspace:*
         version: link:../constants
-      '@fluctux/ui':
-        specifier: workspace:*
-        version: link:../ui
       next:
         specifier: ^15.2.4
         version: 15.2.4(@babel/core@7.27.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -716,6 +713,9 @@ importers:
       framer-motion:
         specifier: ^12.15.0
         version: 12.19.2(@emotion/is-prop-valid@0.8.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next-themes:
+        specifier: ^0.4.6
+        version: 0.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -16274,6 +16274,11 @@ snapshots:
       - '@types/react'
       - acorn
       - supports-color
+
+  next-themes@0.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   next-themes@0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
