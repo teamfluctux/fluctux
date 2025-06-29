@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": "./src/index.ts"
-  },
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsup --dts --minify",
