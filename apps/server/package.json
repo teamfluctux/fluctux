@@ -26,18 +26,19 @@
     "typescript": "5.8.2"
   },
   "dependencies": {
-    "bcrypt": "^5.1.1",
     "@octokit/auth-oauth-app": "^9.0.1",
     "@octokit/core": "^7.0.2",
     "@octokit/oauth-app": "^8.0.1",
     "@octokit/oauth-methods": "^6.0.0",
     "@octokit/rest": "^22.0.0",
+    "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "googleapis": "^150.0.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "8.9.5"
+    "mongoose": "8.9.5",
+    "redis": "^5.5.6"
   },
   "keywords": [],
   "author": "",
