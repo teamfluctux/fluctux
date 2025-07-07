@@ -11,7 +11,7 @@ import {
 } from "@/constants/footer";
 import { FacebookIcon, FxFavIcon, GithubIcon, TwitterSVG } from "@fluctux/ui";
 import Image from "next/image";
-import { ThemeToggler } from "./theme-toggler";
+import { ThemeToggler } from "@fluctux/shared";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
