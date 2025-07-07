@@ -189,6 +189,9 @@ importers:
       '@fluctux/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
+      '@fluctux/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@fluctux/ui':
         specifier: workspace:*
         version: link:../../packages/ui
