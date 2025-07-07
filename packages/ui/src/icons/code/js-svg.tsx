@@ -1,3 +1,4 @@
+import React from "react";
 import type { SVGProps } from "react";
 export const JavaScript = (props: SVGProps<SVGSVGElement>) => (
   <svg

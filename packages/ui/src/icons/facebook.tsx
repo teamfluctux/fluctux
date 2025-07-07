@@ -1,3 +1,4 @@
+import React from "react";
 import { SvgSizeInSQR, SvgType } from "./type";
 
 export const FacebookIcon: React.FC<SvgType> = ({

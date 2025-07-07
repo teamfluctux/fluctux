@@ -2,5 +2,7 @@
   "name": "tailwind-config",
   "version": "1.0.0",
   "description": "",
-  "files": ["tailwind.config.js"]
+  "files": [
+    "tailwind.config.js"
+  ]
 }

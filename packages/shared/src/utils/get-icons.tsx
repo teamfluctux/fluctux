@@ -20,7 +20,7 @@ import {
   Text,
   Turbo,
   TypeScript,
-} from "../icons/code";
+} from "@fluctux/ui";
 export const GetIconByLanguage: Record<
   FileType,
   React.ComponentType<SVGProps<SVGSVGElement>>

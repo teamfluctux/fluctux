@@ -1,3 +1,4 @@
+"use client";
 export * from "./collapsible";
 export * from "./command";
 export * from "./constant";
@@ -28,7 +29,6 @@ export * from "./toggle-group";
 export * from "./checkbox";
 
 export * from "./lib/utils";
-export * from "./lib/get-icons";
 
 export * from "./icons/fav-icon";
 export * from "./icons/discord-icon";
@@ -42,5 +42,3 @@ export * from "./icons/code";
 export * from "./icons/type";
 
 export * from "./motions";
-
-export * from "./hooks";

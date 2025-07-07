@@ -2,13 +2,8 @@
   "extends": "@fluctux/typescript-config/node.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
+    "outDir": "dist"
   },
-  "include": [
-    "."
-  ],
-  "exclude": [
-    "dist",
-    "build"
-  ]
+  "include": ["."],
+  "exclude": ["dist", "build"]
 }

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { cn, FadeFavLoading, useThemeSwitcher } from "@fluctux/ui";
+import { cn, FadeFavLoading } from "@fluctux/ui";
 import { PanelLeft, PanelLeftClose } from "lucide-react";
 import dynamic from "next/dynamic";
 import Skeleton from "react-loading-skeleton";
@@ -63,8 +63,6 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
       setSidebarSize(250); // Default value
     }
   }, []);
-
-  const { ThemeSwitcher } = useThemeSwitcher();
 
   if (sidebarSize === null)
     return (

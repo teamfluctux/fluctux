@@ -9,18 +9,12 @@ import {
   RESOURCES_ITEMS,
   WORK_MANAGEMENT_ITEMS,
 } from "@/constants/footer";
-import {
-  FacebookIcon,
-  FxFavIcon,
-  GithubIcon,
-  TwitterSVG,
-  useThemeSwitcher,
-} from "@fluctux/ui";
+import { FacebookIcon, FxFavIcon, GithubIcon, TwitterSVG } from "@fluctux/ui";
 import Image from "next/image";
+import { ThemeToggler } from "@fluctux/shared";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { ThemeSwitcher } = useThemeSwitcher();
   return (
     <footer className="w-full mt-auto">
       <div className=" border-t border-border-color_1 w-full fx-flex-center  pt-16 bg-background-color_950C">
@@ -72,7 +66,7 @@ export const Footer = () => {
                 <TwitterSVG size={22} />
                 <FacebookIcon size={20} />
               </div>
-              <ThemeSwitcher className="hover:bg-background-color_800C" />
+              <ThemeToggler />
             </div>
           </div>
         </div>
