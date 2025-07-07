@@ -2,12 +2,9 @@
   "name": "@fluctux/shared",
   "version": "0.1.0",
   "private": true,
-  "exports": {
-    ".": "./src/index.ts"
-  },
+  "main": "./src/index.ts",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsup --dts --external react --minify",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "clean": "rm -rf node_modules .turbo .next dist && echo 'Cleanup complete!'"
