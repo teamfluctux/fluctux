@@ -16,15 +16,15 @@ export const ButtonWithIconBox = ({
     <div className="w-full ">
       <Link
         href={`${slug}`}
-        className="flex justify-start items-center gap-3 w-full"
+        className="flex justify-start items-center gap-2 w-full"
       >
-        <div className="w-[30px] h-[30px] rounded-tiny border flex justify-center items-center border-border-color_2 bg-background-color_750C">
+        <div className="w-[23px] h-[22px] rounded-tiny border flex justify-center items-center border-border-color_2 bg-background-color_750C">
           <Icon
-            size={LUCIDE_WORKSPACE_ICON_SIZE}
+            size={16}
             className="text-text-color_4"
           />
         </div>
-        <span className="text-workspace_1 font-medium text-text-color_4 hover:text-text-color_1">
+        <span className="text-workspace_2 font-medium text-text-color_4 hover:text-text-color_1">
           {label}
         </span>
       </Link>
