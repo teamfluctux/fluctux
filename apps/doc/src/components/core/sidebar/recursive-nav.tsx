@@ -41,7 +41,7 @@ export const RecursiveNav = ({
                   className="w-fit flex justify-start items-center"
                 >
                   <div
-                    className={`rounded  text-workspace_2 hover:bg-background-color_800C transition-colors font-medium w-fit px-3 pr-1 py-1 flex justify-start items-center gap-2  ${isExpanded ? "text-text-color_4" : "text-text-color_2 hover:text-text-color_1"}`}
+                    className={`rounded  text-workspace_2 hover:bg-background-color_800C transition-colors font-medium w-fit px-3 pr-1 py-1 flex justify-start items-center gap-2  ${isExpanded ? "text-text-color_1" : "text-text-color_2 hover:text-text-color_1"}`}
                   >
                     {key}
                     <div
@@ -53,7 +53,7 @@ export const RecursiveNav = ({
                     >
                       <ChevronRight
                         size={14}
-                        className={`${isExpanded ? "rotate-90 text-text-color_4" : "text-text-color_2 group-hover:!text-text-color_1"} transition-all`}
+                        className={`${isExpanded ? "rotate-90 text-text-color_1" : "text-text-color_2 group-hover:!text-text-color_1"} transition-all`}
                       />
                     </div>
                   </div>

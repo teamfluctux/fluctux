@@ -2,6 +2,9 @@ import React from "react";
 import fs from "fs";
 import matter from "gray-matter";
 import { mdxToHtml } from "@fluctux/shared";
+import { generateTocFromMdx } from "react-mdxutils";
+import { ContentAside } from "./content-aside";
+
 
 export default async function Page({
   params,
@@ -20,19 +23,26 @@ export default async function Page({
 
     return (
       <>
-        <div className=" w-full h-full overflow-y-scroll grid grid-cols-[1fr_300px]">
-          <div className=" max-w-[650px] w-full mx-auto px-3 py-14">
+    
+        <div className=" w-full h-full overflow-y-auto scroll-smooth grid grid-cols-[1fr_320px]">
+          <div className="max-w-[650px] w-full mx-auto px-3 py-14 ">
+            <div className="w-full text-workspace_2 h-[50px] z-40 sticky top-0 bg-background-color_925C flex justify-start items-center gap-2 mb-6 font-weight_450">
+              <span>Getting Started</span>
+              <span>/</span>
+              <span>Hello world</span>
+            </div>
             <article className="prose  prose-gray dark:prose-invert ">
               {MdxComponent}
             </article>
           </div>
-          <div className="w-full h-full sticky top-0"></div>
+          <div className=" h-[calc(100vh-13px)] overflow-hidden sticky top-0">
+            <ContentAside matterContent={content} />
+          </div>
         </div>
+  
       </>
     );
   } catch (error) {
-    console.log(error);
-
     return <div>error</div>;
   }
 }

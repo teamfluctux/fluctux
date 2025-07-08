@@ -59,7 +59,7 @@ export const AppSidebar = ({ doctype }: { doctype: string }) => {
                 href={"/developer"}
                 className="flex justify-center items-center py-1"
               >
-                <span className="text-workspace_3 ">Developer</span>
+                <span className="text-workspace_3">Developer</span>
               </Link>
             </ToggleGroupItem>
           </ToggleGroup>
