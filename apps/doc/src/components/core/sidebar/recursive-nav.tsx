@@ -49,11 +49,11 @@ export const RecursiveNav = ({
                         e.preventDefault();
                         toggleExpansion();
                       }}
-                      className="flex-shrink-0 p-1 rounded-tiny hover:bg-background-color_750C group hover:ring-[1px] ring-fx_indigo-600 transition-colors"
+                      className="flex-shrink-0 p-1 rounded-tiny hover:bg-background-color_700C group hover:ring-[1px] ring-border-color_2 transition-colors"
                     >
                       <ChevronRight
                         size={14}
-                        className={`   ${isExpanded ? "rotate-90 text-text-color_4" : "text-text-color_2 group-hover:!text-text-color_1"} transition-all`}
+                        className={`${isExpanded ? "rotate-90 text-text-color_4" : "text-text-color_2 group-hover:!text-text-color_1"} transition-all`}
                       />
                     </div>
                   </div>
