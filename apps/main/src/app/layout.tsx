@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./styles/global.css";
+
+// import global style
+import "@fluctux/ui/styles/global.css";
+
 import "./styles/workspace.style.css";
 import "./styles/editor.style.css";
 import "./styles/svg.style.css";
