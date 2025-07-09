@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
 
   // TODO: for docker image. otherwise comment this
   output: "standalone",
+
+  redirects: async() => [
+    {
+      source: "/",
+      destination: "/user",
+      permanent: true
+    }
+  ]
 };
 
 export default nextConfig;

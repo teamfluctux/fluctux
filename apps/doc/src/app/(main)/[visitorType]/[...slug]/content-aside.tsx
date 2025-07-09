@@ -71,7 +71,7 @@ export const ContentAside = ({ toc, scrollToTopElement }: { toc: TocItem[] , scr
             />
           </FxButton>
         </div>
-        <div className="mt-5  w-full border-border-color_1 rounded-rounded_15C">
+        <div className="mt-3  w-full border-border-color_1 border-t border-b py-3">
           <p className="text-text-color_2 text-workspace_2 font-medium">Was this page helpful?</p>
           <div className="flex justify-start items-center gap-2 flex-shrink-0 mt-2">
 

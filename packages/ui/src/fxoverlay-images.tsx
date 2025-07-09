@@ -1,3 +1,4 @@
+// DEPRECATED: This file is deprecated and will be removed in the next major release. Use the new SHADCN PROVIDED Avatar component instead.
 import React from "react";
 interface FxOverlayImagesPropsType {
   images?: string[];
