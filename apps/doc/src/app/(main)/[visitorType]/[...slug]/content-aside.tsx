@@ -14,7 +14,7 @@ export const ContentAside = ({ toc, scrollToTopElement }: { toc: TocItem[] , scr
     asideRef,
   } = useActiveHeading(`${toc}`);
   return (
-    <aside>
+    <aside className="">
       <div className=" pt-16 pb-2">
         <p className="text-text-color_4 font-medium text-workspace_2 ">
           On this page
@@ -71,9 +71,9 @@ export const ContentAside = ({ toc, scrollToTopElement }: { toc: TocItem[] , scr
             />
           </FxButton>
         </div>
-        <div className="mt-5 border w-full p-3 border-border-color_1 rounded-rounded_15C ">
+        <div className="mt-5  w-full border-border-color_1 rounded-rounded_15C">
           <p className="text-text-color_2 text-workspace_2 font-medium">Was this page helpful?</p>
-          <div className="flex justify-start items-center gap-2 mt-3">
+          <div className="flex justify-start items-center gap-2 flex-shrink-0 mt-2">
 
           <FxButton variant="secondary" className="px-3 py-1 rounded flex justify-center items-center !text-workspace_2 font-medium text-text-color_2 hover:text-text-color_1 gap-1">
             <ThumbsUp size={16} />
