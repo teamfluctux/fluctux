@@ -2,11 +2,13 @@ import React from "react";
 import {
   FxButton,
   FxFavIcon,
+  FxGroupListItem,
   FxListItem,
   LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE,
   Popover,
   PopoverContent,
   PopoverTrigger,
+  Separator,
 } from "@fluctux/ui";
 import {
   ToggleGroup,
@@ -38,6 +40,7 @@ import { IconType } from "@fluctux/types";
 import { ButtonWithIconBox } from "./button-with-iconbox";
 import { DocNavCategory, getDocsByCategory } from "@/constants/docs";
 import { DocNavType } from "@/constants/docs/type";
+import { ThemeToggler } from "@fluctux/shared";
 const TopNavItems: { label: string; slug: string; icon: IconType }[] = [
   {
     label: "Bookmarks",
@@ -138,11 +141,9 @@ export const AppSidebar = ({
           </div>
         </div>
 
-
-            
-            <Popover>
+        <Popover>
           <PopoverTrigger asChild className="outline-none">
-           <FxButton
+            <FxButton
               variant="secondary"
               className="w-[30px] h-[30px] rounded flex justify-center items-center "
             >
@@ -153,10 +154,23 @@ export const AppSidebar = ({
             className="w-[200px] rounded h-fit bg-background-color_850C border border-border-color_1 p-1"
             align="end"
           >
+            <FxGroupListItem
+              groupLabel="Appearance"
+              classNames={{
+                labelClassName: "px-1 ",
+                childrenContainerClassName: "mt-1",
+              }}
+            >
+              <ThemeToggler />
+            </FxGroupListItem>
+            <Separator className="my-1 !bg-background-color_750C" />
             <Link href={"#"}>
-              <FxListItem label="Log out" icon={<LogIn size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE}/>} className="hover:!text-red-600 hover:!bg-background-color_750C w-full py-1 px-2 rounded-tiny"  />
+              <FxListItem
+                label="Log out"
+                icon={<LogIn size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />}
+                className="hover:!text-red-600 hover:!bg-background-color_750C w-full py-1 px-2 rounded-tiny"
+              />
             </Link>
-            
           </PopoverContent>
         </Popover>
       </div>
