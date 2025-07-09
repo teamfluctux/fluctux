@@ -1,15 +1,39 @@
 import React from "react";
-import { FxButton, FxFavIcon, LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE } from "@fluctux/ui";
+import {
+  FxButton,
+  FxFavIcon,
+  FxListItem,
+  LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@fluctux/ui";
 import {
   ToggleGroup,
   ToggleGroupItem,
   Avatar,
   AvatarFallback,
   AvatarImage,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
 } from "@fluctux/ui";
 import Link from "next/link";
 import { RecursiveNav } from "./recursive-nav";
-import { Bookmark, Headset, History, LucideIcon, Settings, Settings2 } from "lucide-react";
+import {
+  Bookmark,
+  Headset,
+  History,
+  LogIn,
+  LucideIcon,
+  Settings,
+  Settings2,
+} from "lucide-react";
 import { IconType } from "@fluctux/types";
 import { ButtonWithIconBox } from "./button-with-iconbox";
 import { DocNavCategory, getDocsByCategory } from "@/constants/docs";
@@ -100,18 +124,41 @@ export const AppSidebar = ({
       </div>
       <div className="w-full h-[60px] px-5 flex justify-between items-center">
         <div className="flex justify-start items-center gap-3 flex-shrink-0">
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="user" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div>
-          <p className="text-workspace_2 font-medium text-text-color_1">Nimul Islam Mahin</p>
-          <p className="text-workspace_3 text-text-color_3">nimulmahin@gmail.com</p>
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="user" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <div>
+            <p className="text-workspace_2 font-medium text-text-color_1">
+              Nimul Islam Mahin
+            </p>
+            <p className="text-workspace_3 text-text-color_3">
+              nimulmahin@gmail.com
+            </p>
+          </div>
         </div>
-        </div>
-        <FxButton variant="secondary" className="w-[30px] h-[30px] rounded flex justify-center items-center ">
-          <Settings2 size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE}/>
-        </FxButton>
+
+
+            
+            <Popover>
+          <PopoverTrigger asChild className="outline-none">
+           <FxButton
+              variant="secondary"
+              className="w-[30px] h-[30px] rounded flex justify-center items-center "
+            >
+              <Settings2 size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />
+            </FxButton>
+          </PopoverTrigger>
+          <PopoverContent
+            className="w-[200px] rounded h-fit bg-background-color_850C border border-border-color_1 p-1"
+            align="end"
+          >
+            <Link href={"#"}>
+              <FxListItem label="Log out" icon={<LogIn size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE}/>} className="hover:!text-red-600 hover:!bg-background-color_750C w-full py-1 px-2 rounded-tiny"  />
+            </Link>
+            
+          </PopoverContent>
+        </Popover>
       </div>
     </aside>
   );

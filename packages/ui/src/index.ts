@@ -28,6 +28,7 @@ export * from "./toggle";
 export * from "./toggle-group";
 export * from "./avatar";
 export * from "./checkbox";
+export * from "./fx-list-item";
 
 export * from "./lib/utils";
 
