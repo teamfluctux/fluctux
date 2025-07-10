@@ -6,28 +6,41 @@ export const useScrollToTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (containerRef.current) {
-        const scrollTop = containerRef.current.scrollTop;
-        setIsVisible(scrollTop > 300);
-      }
+      const scrollTop = containerRef.current
+        ? containerRef.current.scrollTop
+        : window.scrollY || document.documentElement.scrollTop;
+
+      setIsVisible(scrollTop > 300);
     };
 
-    const container = containerRef.current;
-    container?.addEventListener("scroll", handleScroll);
+    const target = containerRef.current;
 
-    return () => container?.removeEventListener("scroll", handleScroll);
+    if (target) {
+      target.addEventListener("scroll", handleScroll);
+    } else {
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (target) {
+        target.removeEventListener("scroll", handleScroll);
+      } else {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, []);
 
   const scrollToTop = () => {
-    containerRef.current?.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (containerRef.current) {
+      containerRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return {
     scrollToTop,
     isVisible,
-    containerRef
+    containerRef,
   };
 };

@@ -6,7 +6,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-    AlertDialog,
+  AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
@@ -82,40 +82,38 @@ export const Content = ({
   MdxComponent: string;
   toc: TocItem[];
 }) => {
-  const { containerRef, isVisible, scrollToTop } = useScrollToTop();
+  const { isVisible, scrollToTop } = useScrollToTop();
   return (
     <div
-      ref={containerRef}
       className=" w-full h-full flex justify-center items-start gap-7 pl-[320px]"
     >
       <div className="max-w-[650px] w-full px-3 pb-14 pt-28">
-        
         <article className="prose  prose-gray dark:prose-invert ">
           {MdxComponent}
         </article>
- <AlertDialog>
-              <AlertDialogTrigger className="w-full">
-                {" "}
-                <FxListItem
-                  label="Log out"
-                  icon={<LogIn size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />}
-                  className="hover:!text-red-600 hover:!bg-background-color_800C w-full py-1 px-2 rounded-tiny"
-                />
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction>Continue</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+        <AlertDialog>
+          <AlertDialogTrigger className="w-full">
+            {" "}
+            <FxListItem
+              label="Log out"
+              icon={<LogIn size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />}
+              className="hover:!text-red-600 hover:!bg-background-color_800C w-full py-1 px-2 rounded-tiny"
+            />
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction>Continue</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
         <div className="flex justify-center items-center gap-3 mt-16">
           <PaginationButton
             contentTitle="Getting Started"
