@@ -12,10 +12,9 @@ import { InfiniteHits } from "./infinite-hit";
 import {
   FxButton,
   FxCommandBox,
-  CommandKeyIcon,
-  SearchIcon,
 } from "@fluctux/ui";
 import { useToggleOpen } from "@fluctux/hooks";
+import { SearchIcon, User } from "lucide-react";
 
 export default function DocSearchComponent() {
   const { isOpen: isSearchBoxOpen, setOpen: setSearchBoxOpen } = useToggleOpen({
@@ -42,7 +41,7 @@ export default function DocSearchComponent() {
           <span className="text-text-color_3">Search documentation...</span>
         </div>
         <div className="fx-flex-cr pr-2 gap-1 desktop-doc-search">
-          <CommandKeyIcon width={15} height={15} />
+          <User width={15} height={15} />
           <span className="text-[13px] text-text-color_2">Ctrl+k</span>
         </div>
         <div className="hidden mobile-doc-search ">

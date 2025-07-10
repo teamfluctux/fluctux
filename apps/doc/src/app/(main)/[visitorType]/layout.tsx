@@ -13,7 +13,7 @@ export default async function Layout({
   const { visitorType } = await params;
   const data = getDocsByCategory[visitorType as DocNavCategory] || {};
   return (
-    <main className="w-full h-full grid grid-cols-[320px_1fr]">
+    <main className="w-full h-full ">
       <AppSidebar data={data} docType={visitorType}/>
       {children}
     </main>

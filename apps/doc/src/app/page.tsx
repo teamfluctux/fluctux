@@ -1,5 +1,4 @@
 import { AppSidebar } from "@/components/core";
-import { MainWrapper } from "@/components/core";
 
 export default function Home() {
   return (

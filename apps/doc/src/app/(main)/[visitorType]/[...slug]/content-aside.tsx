@@ -1,11 +1,24 @@
 "use client";
 import { FxButton, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
-import { CircleArrowUp, Edit, Edit2, SquarePen, ThumbsDown, ThumbsUp } from "lucide-react";
+import {
+  CircleArrowUp,
+  Edit,
+  Edit2,
+  SquarePen,
+  ThumbsDown,
+  ThumbsUp,
+} from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { generateTocFromMdx, TocItem, useActiveHeading } from "react-mdxutils";
-export const ContentAside = ({ toc, scrollToTopElement }: { toc: TocItem[] , scrollToTopElement?: React.ReactNode}) => {
-  
+export const ContentAside = ({
+  toc,
+  scrollToTopElement,
+}: {
+  toc: TocItem[];
+  scrollToTopElement?: React.ReactNode;
+}) => {
   const {
     activeHeading,
     handleActiveHeading,
@@ -13,15 +26,17 @@ export const ContentAside = ({ toc, scrollToTopElement }: { toc: TocItem[] , scr
     activeIndicatorRef,
     asideRef,
   } = useActiveHeading(`${toc}`);
+  const path_name = usePathname()
+  const main_content_path = path_name.replace(/#.*/, "").trim();
   return (
-    <aside className="">
-      <div className=" pt-16 pb-2">
+    <aside>
+      <div className="pb-2">
         <p className="text-text-color_4 font-medium text-workspace_2 ">
           On this page
         </p>
       </div>
       <ul
-        className="relative  max-h-[350px] h-full overflow-y-auto pl-0.5 pb-14 overflow-x-hidden hide-scrollbar"
+        className="relative max-h-[350px] h-full overflow-y-auto pl-0.5 pb-14 overflow-x-hidden hide-scrollbar"
         ref={asideRef}
       >
         {/* <div className="absolute w-[1px] z-[-1] bg-background-color_800C h-full left-0.5"></div> */}
@@ -58,31 +73,40 @@ export const ContentAside = ({ toc, scrollToTopElement }: { toc: TocItem[] , scr
       <div className="shadow-[0px_0px_50px_44px_var(--background)] h-[10px] w-full  relative z-10"></div>
       <div className="relative z-20 pt-5">
         <div className="flex justify-between items-center group">
+          <Link href={`${process.env.NEXT_PUBLIC_CONTENT_PATH}${main_content_path}.mdx`}>
           <FxButton
             variant="secondary"
             className="p-1 px-3 group rounded flex justify-center items-center gap-2 text-workspace_2"
-          >
+            >
             <span className="text-text-color_2 group-hover:text-text-color_1 transition-colors font-medium">
               Suggest Edits
             </span>
             <SquarePen
               size={16}
               className="text-text-color_4 group-hover:!text-text-color_1"
-            />
+              />
           </FxButton>
+              </Link>
         </div>
         <div className="mt-3  w-full py-3">
-          <p className="text-text-color_2 text-workspace_2 font-medium">Was this page helpful?</p>
+          <p className="text-text-color_2 text-workspace_2 font-medium">
+            Was this page helpful?
+          </p>
           <div className="flex justify-start items-center gap-2 flex-shrink-0 mt-2">
-
-          <FxButton variant="secondary" className="px-3 py-1 rounded flex justify-center items-center !text-workspace_2 font-medium text-text-color_2 hover:text-text-color_1 gap-1">
-            <ThumbsUp size={16} />
-            <span>Yes</span>
-          </FxButton>
-          <FxButton variant="secondary" className="px-3 py-1 rounded flex justify-center items-center !text-workspace_2 font-medium text-text-color_2 hover:text-text-color_1 gap-1">
-            <ThumbsDown size={16} />
-            <span>No</span>
-          </FxButton>
+            <FxButton
+              variant="secondary"
+              className="px-3 py-1 rounded flex justify-center items-center !text-workspace_2 font-medium text-text-color_2 hover:text-text-color_1 gap-1"
+            >
+              <ThumbsUp size={16} />
+              <span>Yes</span>
+            </FxButton>
+            <FxButton
+              variant="secondary"
+              className="px-3 py-1 rounded flex justify-center items-center !text-workspace_2 font-medium text-text-color_2 hover:text-text-color_1 gap-1"
+            >
+              <ThumbsDown size={16} />
+              <span>No</span>
+            </FxButton>
           </div>
         </div>
         {scrollToTopElement}

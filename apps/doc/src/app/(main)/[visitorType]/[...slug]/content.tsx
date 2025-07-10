@@ -6,6 +6,16 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+    AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  FxListItem,
 } from "@fluctux/ui";
 import {
   Bookmark,
@@ -15,6 +25,7 @@ import {
   FileText,
   Forward,
   Link2,
+  LogIn,
   LucideIcon,
 } from "lucide-react";
 import React from "react";
@@ -75,69 +86,36 @@ export const Content = ({
   return (
     <div
       ref={containerRef}
-      className=" w-full h-full overflow-y-auto scroll-smooth flex justify-center items-start gap-7"
+      className=" w-full h-full flex justify-center items-start gap-7 pl-[320px]"
     >
-      <div className="max-w-[650px] w-full px-3 py-14 ">
-        <div className="w-full h-[50px] z-40 sticky top-0 bg-background-color_950C mb-6 flex justify-between items-center">
-          <div className="w-full text-workspace_2 flex justify-start items-center gap-2  font-weight_450">
-            <span>Getting Started</span>
-            <span>/</span>
-            <span>Hello world</span>
-          </div>
-          <div className="flex justify-start items-center gap-2">
-            <FxButton
-              className="w-[28px] h-[28px] rounded flex justify-center items-center p-0"
-              variant="ghost_zinc"
-            >
-              <Bookmark size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />
-            </FxButton>
-
-            <Popover>
-              <PopoverTrigger asChild className="outline-none">
-                <FxButton
-                  className="px-3 h-[28px] rounded flex justify-center items-center gap-1 text-text-color_2 hover:text-text-color_1"
-                  variant="secondary"
-                >
-                  <span className="text-workspace_2 font-medium">Share</span>
-                  <Forward size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />
-                </FxButton>
-              </PopoverTrigger>
-              <PopoverContent
-                className="w-[200px] rounded h-fit bg-background-color_925C border border-border-color_1 p-1 leading-7"
-                align="end"
-              >
-                <FxButton size="sm" variant="ghost_zinc" className="w-full px-2 rounded-tiny justify-start text-text-color_2 hover:!text-text-color_1 hover:!bg-background-color_800C ">
-                  <Link2 size={LUCIDE_WORKSPACE_ICON_SIZE} />
-                  <span>Copy Link</span>
-                </FxButton>
-                <FxButton size="sm" variant="ghost_zinc" className="w-full px-2 rounded-tiny justify-start text-text-color_2 hover:!text-text-color_1 hover:!bg-background-color_800C ">
-                  <FileText size={LUCIDE_WORKSPACE_ICON_SIZE} />
-                  <span>Download PDF</span>
-                </FxButton>
-               
-              </PopoverContent>
-            </Popover>
-
-            <div className="flex-shrink-0 flex justify-end items-center gap-2 w-fit">
-              <FxButton
-                variant="secondary"
-                className="w-[28px] h-[28px] rounded  p-0"
-              >
-                <ChevronLeft size={LUCIDE_WORKSPACE_ICON_SIZE} />
-              </FxButton>
-              <FxButton
-                variant="secondary" 
-                className="w-[28px] h-[28px] rounded  p-0"
-              >
-                <ChevronRight size={LUCIDE_WORKSPACE_ICON_SIZE} />
-              </FxButton>
-            </div>
-          </div>
-        </div>
+      <div className="max-w-[650px] w-full px-3 pb-14 pt-28">
+        
         <article className="prose  prose-gray dark:prose-invert ">
           {MdxComponent}
         </article>
-
+ <AlertDialog>
+              <AlertDialogTrigger className="w-full">
+                {" "}
+                <FxListItem
+                  label="Log out"
+                  icon={<LogIn size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />}
+                  className="hover:!text-red-600 hover:!bg-background-color_800C w-full py-1 px-2 rounded-tiny"
+                />
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete
+                    your account and remove your data from our servers.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction>Continue</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
         <div className="flex justify-center items-center gap-3 mt-16">
           <PaginationButton
             contentTitle="Getting Started"
@@ -155,7 +133,7 @@ export const Content = ({
           />
         </div>
       </div>
-      <div className="w-[320px]  h-[calc(100vh-13px)] overflow-hidden sticky top-0 max-w-[300px]">
+      <div className="w-[320px] pt-28 h-screen overflow-hidden sticky top-0 max-w-[300px]">
         <ContentAside
           toc={toc}
           scrollToTopElement={
