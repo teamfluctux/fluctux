@@ -2,12 +2,19 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 interface ToggleOpenProps {
-  id?: string;
   shortcutKey?: string;
+  // a callback to be executed when the shortcut is triggered
+  onToggle?: (isOpen: boolean) => void;
+  // to know the current state from the external source (Redux in this case)
+  externalIsOpen?: boolean;
 }
 
-export const useToggleOpen = ({ id, shortcutKey }: ToggleOpenProps) => {
-  const [openStates, setOpenStates] = useState<Record<string, boolean>>({});
+export const useToggleOpen = ({
+  shortcutKey,
+  onToggle,
+  externalIsOpen,
+}: ToggleOpenProps) => {
+  const [openState, setOpenState] = useState<boolean>(false);
   const [openArray, setOpenArray] = useState<{ [key: string]: boolean }>({});
 
   const handleOpenArray = (openArrayId: string) => {
@@ -18,44 +25,31 @@ export const useToggleOpen = ({ id, shortcutKey }: ToggleOpenProps) => {
   };
 
   useEffect(() => {
-    if (!shortcutKey || !id) return;
+    if (!shortcutKey) return;
 
     const down = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setOpenStates((prev) => ({
-          ...prev,
-          [id]: false, // Set state to false for the specific ID
-        }));
+        // if redux integration is present, use the onToggle callback
+        onToggle ? onToggle(false) : setOpenState(false);
       }
 
       if (e.key === shortcutKey && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpenStates((prev) => ({
-          ...prev,
-          [id]: !prev[id], // Toggle state for the specific ID
-        }));
+        onToggle ? onToggle(!externalIsOpen) : setOpenState((prev) => !prev);
       }
     };
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, [shortcutKey, id]);
+  }, [shortcutKey, onToggle, externalIsOpen]);
 
   return {
-    isOpen: (id && !!openStates[id]) || false, // Get the state for the specific ID & convert to strict boolean
+    isOpen: openState,
     toggle: () => {
-      if (!id) return;
-      setOpenStates((prev) => ({
-        ...prev,
-        [id]: !prev[id],
-      }));
+      setOpenState((prev) => !prev);
     }, // toggle function
     setOpen: (state: boolean) => {
-      if (!id) return;
-      setOpenStates((prev) => ({
-        ...prev,
-        [id]: state,
-      }));
+      setOpenState(state);
     }, // state setter
     isOpenFromArray: (openArrayId: string) => {
       return openArray[openArrayId];

@@ -119,9 +119,9 @@ importers:
       nexus:
         specifier: ^1.3.0
         version: 1.3.0(graphql@16.11.0)
-      react-instantsearch:
-        specifier: ^7.16.0
-        version: 7.16.0(algoliasearch@5.29.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-redux:
+        specifier: ^9.2.0
+        version: 9.2.0(@types/react@19.1.0)(react@19.1.0)(redux@5.0.1)
       sanitize-html:
         specifier: ^2.17.0
         version: 2.17.0
@@ -652,6 +652,9 @@ importers:
       '@fluctux/constants':
         specifier: workspace:*
         version: link:../constants
+      '@fluctux/hooks':
+        specifier: workspace:*
+        version: link:../hooks
       '@rehype-pretty/transformers':
         specifier: ^0.13.2
         version: 0.13.2
@@ -673,6 +676,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
+      react-instantsearch:
+        specifier: ^7.16.0
+        version: 7.16.0(algoliasearch@5.29.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-redux:
         specifier: ^9.2.0
         version: 9.2.0(@types/react@19.1.0)(react@19.1.0)(redux@5.0.1)

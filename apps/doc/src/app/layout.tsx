@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Header } from "@/components/core";
+import ReduxProvider from "@/components/providers/redux-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,19 +39,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} `}
       >
-        <ThemeProvider attribute="class">
-          <Suspense>
-            <SkeletonTheme
-              baseColor="var(--skeleton-base-color)"
-              highlightColor="var(--skeleton-highlightColor)"
-            >
-              <Header/>
-          
-              {children}
-         
-            </SkeletonTheme>
-          </Suspense>
-        </ThemeProvider>
+        <ReduxProvider>
+          <ThemeProvider attribute="class">
+            <Suspense>
+              <SkeletonTheme
+                baseColor="var(--skeleton-base-color)"
+                highlightColor="var(--skeleton-highlightColor)"
+              >
+                <Header />
+
+                {children}
+              </SkeletonTheme>
+            </Suspense>
+          </ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

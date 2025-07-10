@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import {
   FxButton,
@@ -45,7 +46,8 @@ import { IconType } from "@fluctux/types";
 import { ButtonWithIconBox } from "./button-with-iconbox";
 import { DocNavCategory, getDocsByCategory } from "@/constants/docs";
 import { DocNavType } from "@/constants/docs/type";
-import { ThemeToggler } from "@fluctux/shared";
+import { GlobalSearch, setSearchBoxOpen, ThemeToggler } from "@fluctux/shared";
+import { useAppDispatch } from "@/hooks/redux.hook";
 const TopNavItems: { label: string; slug: string; icon: IconType }[] = [
   {
     label: "Bookmarks",
@@ -71,6 +73,15 @@ export const AppSidebar = ({
   data?: DocNavType;
   docType?: DocNavCategory;
 }) => {
+
+  const dispatch = useAppDispatch()
+
+  const handleOpenSearchBox = () => {
+    if(!setSearchBoxOpen) return
+    dispatch(setSearchBoxOpen(true))
+  }
+
+
   return (
     <aside className="w-[320px] fixed top-0 left-0 h-full border-r border-border-color_1 z-[45] bg-background-color_950C">
       <div className="w-full h-[calc(100vh-74px)] ">
@@ -115,6 +126,7 @@ export const AppSidebar = ({
             <Tooltip>
               <TooltipTrigger asChild>
                 <FxButton
+                  onClick={handleOpenSearchBox}
                   variant="secondary"
                   className="w-[30px] p-0 h-[30px] text-text-color_2 hover:!text-text-color_1"
                 >
@@ -129,6 +141,8 @@ export const AppSidebar = ({
                 </div>
               </TooltipContent>
             </Tooltip>
+
+            <GlobalSearch/>
           </div>
         </div>
 
