@@ -6,7 +6,6 @@ import { GithubIcon } from "@fluctux/ui";
 export const USER_DOC_NAV: DocNavType = {
   "Getting Started User": {
     type: "multiple",
-    slug: "getting-started",
     icon: <GithubIcon size={16}/>,
     lists: [
       {

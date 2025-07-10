@@ -6,6 +6,47 @@ import { useCallback, useMemo, useState } from "react";
 
 const INDENT_SIZE = 15;
 
+const FolderItem = ({
+  toggoleExpansionCallback,
+  expandFolder,
+  icon,
+  isExpanded,
+  label,
+}: {
+  toggoleExpansionCallback?: () => void;
+  expandFolder?: () => void;
+  icon?: React.ReactElement;
+  isExpanded: boolean;
+  label: string;
+}) => {
+  return (
+    <div
+      onClick={() => {
+        expandFolder?.();
+      }}
+      className={`rounded text-workspace_2 hover:bg-background-color_800C transition-colors font-medium w-fit px-3 pr-1 py-1 flex justify-start items-center gap-2  ${isExpanded ? "text-text-color_1" : "text-text-color_2 hover:text-text-color_1"}`}
+    >
+      <div className="flex justify-start items-center gap-2.5">
+        {icon && icon}
+        <span>{label}</span>
+      </div>
+      <div
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggoleExpansionCallback?.();
+        }}
+        className="flex-shrink-0 p-1 rounded-tiny hover:bg-background-color_700C group hover:ring-[1px] ring-border-color_2 transition-colors"
+      >
+        <ChevronRight
+          size={14}
+          className={`${isExpanded ? "rotate-90 text-text-color_1" : "text-text-color_2 group-hover:!text-text-color_1"} transition-all`}
+        />
+      </div>
+    </div>
+  );
+};
+
 export const RecursiveNav = ({
   data,
   depth = 0,
@@ -24,6 +65,9 @@ export const RecursiveNav = ({
   const toggleExpansion = useCallback(() => {
     setIsExpanded((prev) => !prev);
   }, []);
+  const expandFolder = useCallback(() => {
+    setIsExpanded(true);
+  }, []);
 
   return (
     <div>
@@ -36,35 +80,28 @@ export const RecursiveNav = ({
                 style={{ paddingLeft: `${currentPaddingLeft}px` }}
                 className="leading-6"
               >
-                <Link
-                  href={`/${docType}/${value.slug}`}
-                  className="w-fit flex justify-start items-center"
-                >
-                  <div
-                    className={`rounded  text-workspace_2 hover:bg-background-color_800C transition-colors font-medium w-fit px-3 pr-1 py-1 flex justify-start items-center gap-2  ${isExpanded ? "text-text-color_1" : "text-text-color_2 hover:text-text-color_1"}`}
+                {value.slug ? (
+                  <Link
+                    href={`/${docType}/${value.slug}`}
+                    className="w-fit flex justify-start items-center"
                   >
-                    <div className="flex justify-start items-center gap-2.5">
-
-                    {value.icon}
-                    <span>
-                    {key}
-
-                    </span>
-                    </div>
-                    <div
-                      onClick={(e) => {
-                        e.preventDefault();
-                        toggleExpansion();
-                      }}
-                      className="flex-shrink-0 p-1 rounded-tiny hover:bg-background-color_700C group hover:ring-[1px] ring-border-color_2 transition-colors"
-                    >
-                      <ChevronRight
-                        size={14}
-                        className={`${isExpanded ? "rotate-90 text-text-color_1" : "text-text-color_2 group-hover:!text-text-color_1"} transition-all`}
-                      />
-                    </div>
-                  </div>
-                </Link>
+                    <FolderItem
+                      icon={value.icon as React.ReactElement}
+                      isExpanded={isExpanded}
+                      label={key}
+                      expandFolder={expandFolder}
+                      toggoleExpansionCallback={toggleExpansion}
+                    />
+                  </Link>
+                ) : (
+                  <FolderItem
+                    icon={value.icon as React.ReactElement}
+                    isExpanded={isExpanded}
+                    label={key}
+                    expandFolder={expandFolder}
+                    toggoleExpansionCallback={toggleExpansion}
+                  />
+                )}
               </div>
             ) : (
               <div style={{ paddingLeft: `${currentPaddingLeft}px` }}>
@@ -74,11 +111,8 @@ export const RecursiveNav = ({
                 >
                   <div className="px-3 py-1 font-medium rounded w-fit text-workspace_2 hover:bg-background-color_800C text-text-color_2 hover:text-text-color_1 flex justify-start items-center gap-2">
                     <div className="flex justify-start items-center gap-2.5">
-
-                    {value.icon}
-                    <span>
-                    {key} - single
-                    </span>
+                      {value.icon}
+                      <span>{key} - single</span>
                     </div>
                   </div>
                 </Link>
@@ -99,12 +133,8 @@ export const RecursiveNav = ({
                       >
                         <div className="px-3 py-1 hover:bg-background-color_800C transition-colors text-text-color_2 hover:text-text-color_1 text-workspace_2 font-medium rounded w-fit ">
                           <div className="flex justify-start items-center gap-2.5">
-
-                          {item.icon}
-                          <span>
-                          {item.label}
-
-                          </span>
+                            {item.icon}
+                            <span>{item.label}</span>
                           </div>
                         </div>
                       </Link>
