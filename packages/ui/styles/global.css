@@ -194,6 +194,13 @@
   --code-remove-color: #ef4444;
   --code-add-bg-color: #10b9812a;
   --code-remove-bg-color: #dc26262f;
+
+  /* other colors */
+  --surface-indigo-bg: #171d3b80;
+  --surface-indigo-bg-active: #2f62ff3c;
+  --surface-indigo-border: #5a7fff90;
+  --surface-indigo-border-active: #5b81feac;
+  --surface-indigo-fg: #9eb1ff;
 }
 
 html {
