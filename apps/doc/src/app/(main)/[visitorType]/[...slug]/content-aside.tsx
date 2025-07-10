@@ -24,7 +24,7 @@ export const ContentAside = ({
     handleActiveHeading,
     headingListRefs,
     activeIndicatorRef,
-    asideRef,
+    asideRef
   } = useActiveHeading(`${toc}`);
   const path_name = usePathname()
   const main_content_path = path_name.replace(/#.*/, "").trim();
