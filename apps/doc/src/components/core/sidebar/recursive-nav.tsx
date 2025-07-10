@@ -34,7 +34,7 @@ export const RecursiveNav = ({
             {value.type === "multiple" ? (
               <div
                 style={{ paddingLeft: `${currentPaddingLeft}px` }}
-                className=""
+                className="leading-6"
               >
                 <Link
                   href={`/${docType}/${value.slug}`}
@@ -43,7 +43,14 @@ export const RecursiveNav = ({
                   <div
                     className={`rounded  text-workspace_2 hover:bg-background-color_800C transition-colors font-medium w-fit px-3 pr-1 py-1 flex justify-start items-center gap-2  ${isExpanded ? "text-text-color_1" : "text-text-color_2 hover:text-text-color_1"}`}
                   >
+                    <div className="flex justify-start items-center gap-2.5">
+
+                    {value.icon}
+                    <span>
                     {key}
+
+                    </span>
+                    </div>
                     <div
                       onClick={(e) => {
                         e.preventDefault();
@@ -65,14 +72,20 @@ export const RecursiveNav = ({
                   href={`/${docType}/${value.slug}`}
                   className="w-fit flex justify-start items-center"
                 >
-                  <div className="px-3 py-1 font-medium rounded w-fit text-workspace_2 hover:bg-background-color_800C text-text-color_2 hover:text-text-color_1">
+                  <div className="px-3 py-1 font-medium rounded w-fit text-workspace_2 hover:bg-background-color_800C text-text-color_2 hover:text-text-color_1 flex justify-start items-center gap-2">
+                    <div className="flex justify-start items-center gap-2.5">
+
+                    {value.icon}
+                    <span>
                     {key} - single
+                    </span>
+                    </div>
                   </div>
                 </Link>
               </div>
             )}
             {isExpanded && (
-              <div className=" ">
+              <div className="leading-6">
                 {value?.lists?.map((item, j) => {
                   const listItemsPadding = (depth + 1) * INDENT_SIZE;
                   return (
@@ -85,7 +98,14 @@ export const RecursiveNav = ({
                         className="w-fit flex justify-start items-center"
                       >
                         <div className="px-3 py-1 hover:bg-background-color_800C transition-colors text-text-color_2 hover:text-text-color_1 text-workspace_2 font-medium rounded w-fit ">
+                          <div className="flex justify-start items-center gap-2.5">
+
+                          {item.icon}
+                          <span>
                           {item.label}
+
+                          </span>
+                          </div>
                         </div>
                       </Link>
                     </div>

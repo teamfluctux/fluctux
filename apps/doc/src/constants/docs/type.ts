@@ -4,11 +4,11 @@ export interface DocNavType {
   [key: string]: {
     type: "multiple" | "single";
     slug: string;
-    icon?: React.ComponentType<SVGProps<SVGSVGElement>>;
+    icon?: React.ReactElement;
     lists?: {
       label: string;
       slug: string;
-      icon?: React.ComponentType<SVGProps<SVGSVGElement>>;
+      icon?: React.ReactElement;
     }[];
     group?: DocNavType;
   };

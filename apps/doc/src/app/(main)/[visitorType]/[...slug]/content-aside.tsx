@@ -55,7 +55,7 @@ export const ContentAside = ({ toc, scrollToTopElement }: { toc: TocItem[] , scr
           className="absolute transition-all !w-[2px] dark:bg-fx_zinc-50 bg-fx_zinc-950 h-[28px] !left-[1.5px] top-0 rounded-full z-10"
         ></div>
       </ul>
-      <div className="shadow-[0px_0px_50px_44px_var(--background-color-925C)] h-[10px] w-full  relative z-10"></div>
+      <div className="shadow-[0px_0px_50px_44px_var(--background)] h-[10px] w-full  relative z-10"></div>
       <div className="relative z-20 pt-5">
         <div className="flex justify-between items-center group">
           <FxButton
@@ -71,7 +71,7 @@ export const ContentAside = ({ toc, scrollToTopElement }: { toc: TocItem[] , scr
             />
           </FxButton>
         </div>
-        <div className="mt-3  w-full border-border-color_1 border-t border-b py-3">
+        <div className="mt-3  w-full py-3">
           <p className="text-text-color_2 text-workspace_2 font-medium">Was this page helpful?</p>
           <div className="flex justify-start items-center gap-2 flex-shrink-0 mt-2">
 

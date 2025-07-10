@@ -97,7 +97,7 @@ export const mdxToHtml = async (content: string) => {
             </div>
             <pre
               {...props}
-              className="my-0 border-t border-border-color_1 dark:bg-[var(--shiki-dark-bg)] light:var(--shiki-light-bg)"
+              className="my-0 border-t border-border-color_1 dark:bg-[var(--shiki-dark-bg)] bg-[var(--shiki-light-bg)]"
             >
               {children}
             </pre>

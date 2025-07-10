@@ -24,13 +24,13 @@ export const FxButton = ({
   ...props
 }: FxButtonProps) => {
   const buttonStyling = getButtonStyling(variant, size, disabled || loading);
-  const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
+  const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : ROUNDED_VARIANTS["primary"];
 
   return (
     <button
       disabled={disabled || loading}
       className={cn(
-        "transition-colors",
+        "transition-colors flex justify-center items-center gap-2 font-medium py-1 px-3",
         buttonStyling,
         roundedVariant,
         className

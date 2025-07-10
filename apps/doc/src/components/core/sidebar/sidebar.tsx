@@ -16,14 +16,9 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
 } from "@fluctux/ui";
 import Link from "next/link";
 import { RecursiveNav } from "./recursive-nav";
@@ -33,6 +28,7 @@ import {
   History,
   LogIn,
   LucideIcon,
+  Search,
   Settings,
   Settings2,
 } from "lucide-react";
@@ -63,11 +59,11 @@ export const AppSidebar = ({
   data,
   docType,
 }: {
-  data: DocNavType;
-  docType: DocNavCategory;
+  data?: DocNavType;
+  docType?: DocNavCategory;
 }) => {
   return (
-    <aside className="w-full h-full border-r border-border-color_1 bg-background-color_900C">
+    <aside className="w-full h-full border-r border-border-color_1 bg-background-color_925C ">
       <div className="w-full h-[calc(100vh-74px)] ">
         <div className="w-full h-fit px-5 py-4 flex justify-between items-center">
           <div className="flex justify-start items-center gap-2">
@@ -76,7 +72,12 @@ export const AppSidebar = ({
               Docs
             </h1>
           </div>
-          <div>
+          <FxButton size="sm" className="">
+            Sign in
+          </FxButton>
+        </div>
+        <div className=" px-5 flex justify-between items-center mt-5 rounded-rounded_10C  ">
+          <div className="flex-shrink-0">
             <ToggleGroup type="single" size="sm" variant={"outline"}>
               <ToggleGroupItem
                 data-state={`${docType === "user" && "on"}`}
@@ -105,22 +106,33 @@ export const AppSidebar = ({
               </ToggleGroupItem>
             </ToggleGroup>
           </div>
+
+          <Tooltip >
+            <TooltipTrigger asChild>
+              <FxButton
+                variant="secondary"
+                className="w-[30px] p-0 h-[30px] text-text-color_2 hover:!text-text-color_1"
+              >
+                <Search size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />
+              </FxButton>
+            </TooltipTrigger>
+            <TooltipContent variant="zinc_900">
+              <div>
+                Search{" "}
+                <span className="text-text-color_1 font-medium">
+                  Ctrl
+                </span>{" "}
+                +{" "}
+                <span className="text-text-color_1 font-medium">
+                  k
+                </span>
+              </div>
+            </TooltipContent>
+          </Tooltip>
         </div>
-        <div className=" w-full px-5 mt-5 leading-8">
-          {TopNavItems.map((item, i) => {
-            return (
-              <React.Fragment key={i}>
-                <ButtonWithIconBox
-                  slug={item.slug.toString()}
-                  label={item.label.toString()}
-                  icon={item.icon}
-                />
-              </React.Fragment>
-            );
-          })}
-        </div>
+
         {data && Object.keys(data).length > 0 && (
-          <div className="px-2 pt-1.5 mt-5">
+          <div className="px-2 pt-1.5 mt-2">
             <RecursiveNav data={data} docType={docType} />
           </div>
         )}
@@ -145,30 +157,25 @@ export const AppSidebar = ({
           <PopoverTrigger asChild className="outline-none">
             <FxButton
               variant="secondary"
-              className="w-[30px] h-[30px] rounded flex justify-center items-center "
+              className="w-[30px] h-[30px] p-0 "
             >
               <Settings2 size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />
             </FxButton>
           </PopoverTrigger>
           <PopoverContent
-            className="w-[200px] rounded h-fit bg-background-color_850C border border-border-color_1 p-1"
+            className="w-[200px] rounded h-fit bg-background-color_900C border border-border-color_1 p-1"
             align="end"
           >
-            <FxGroupListItem
-              groupLabel="Appearance"
-              classNames={{
-                labelClassName: "px-1 ",
-                childrenContainerClassName: "mt-1",
-              }}
-            >
+            <div className="  pl-3  p-1 text-text-color_4 flex justify-between items-center text-workspace_2 font-medium">
+              Theme
               <ThemeToggler />
-            </FxGroupListItem>
+            </div>
             <Separator className="my-1 !bg-background-color_750C" />
             <Link href={"#"}>
               <FxListItem
                 label="Log out"
                 icon={<LogIn size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />}
-                className="hover:!text-red-600 hover:!bg-background-color_750C w-full py-1 px-2 rounded-tiny"
+                className="hover:!text-red-600 hover:!bg-background-color_800C w-full py-1 px-2 rounded-tiny"
               />
             </Link>
           </PopoverContent>

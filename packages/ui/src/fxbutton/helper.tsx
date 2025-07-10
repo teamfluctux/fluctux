@@ -15,10 +15,10 @@ export interface ButtonStylingType {
 }
 
 export const buttonSizes: { [key in SizeType]: string } = {
-  sm: "py-1 px-3",
-  md: "py-2 px-4",
-  lg: "py-3 px-5",
-  xl: "py-3 px-10",
+  sm: "!text-workspace_2",
+  md: "!text-workspace_1",
+  lg: "!text-read_16",
+  xl: "!text-read_20",
 };
 
 export const buttonStyling: ButtonStylingType = {

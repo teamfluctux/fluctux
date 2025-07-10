@@ -1,11 +1,20 @@
 "use client";
-import { FxButton, LUCIDE_WORKSPACE_ICON_SIZE, LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE } from "@fluctux/ui";
+import {
+  FxButton,
+  LUCIDE_WORKSPACE_ICON_SIZE,
+  LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@fluctux/ui";
 import {
   Bookmark,
   ChevronLeft,
   ChevronRight,
   CircleArrowUp,
+  FileText,
   Forward,
+  Link2,
   LucideIcon,
 } from "lucide-react";
 import React from "react";
@@ -31,10 +40,12 @@ const PaginationButton = ({
   return (
     <Link className="w-full h-full" href={`/${slug}`}>
       <FxButton
-        className="w-full h-[70px] px-3 rounded group border border-border-color_1"
+        className="w-full h-[70px] !block px-4 rounded group border border-border-color_1  "
         variant="ghost_zinc"
       >
-        <div className={`flex items-center gap-1 ${position === "left" ? "justify-start" : "justify-start flex-row-reverse"} w-full`}>
+        <div
+          className={`flex items-center gap-1 ${position === "left" ? "justify-start" : "justify-start flex-row-reverse"} w-full`}
+        >
           <Icon
             size={17}
             className="text-text-color_2 group-hover:text-text-color_1"
@@ -49,7 +60,6 @@ const PaginationButton = ({
           {contentTitle}
         </p>
       </FxButton>
-     
     </Link>
   );
 };
@@ -65,48 +75,70 @@ export const Content = ({
   return (
     <div
       ref={containerRef}
-      className=" w-full h-full overflow-y-auto scroll-smooth grid grid-cols-[1fr_340px]"
+      className=" w-full h-full overflow-y-auto scroll-smooth flex justify-center items-start gap-7"
     >
-      <div className="max-w-[650px] w-full mx-auto px-3 py-14 ">
-        <div className="w-full h-[50px] z-40 sticky top-0 bg-background-color_925C mb-6 flex justify-between items-center">
+      <div className="max-w-[650px] w-full px-3 py-14 ">
+        <div className="w-full h-[50px] z-40 sticky top-0 bg-background-color_950C mb-6 flex justify-between items-center">
           <div className="w-full text-workspace_2 flex justify-start items-center gap-2  font-weight_450">
             <span>Getting Started</span>
             <span>/</span>
             <span>Hello world</span>
           </div>
           <div className="flex justify-start items-center gap-2">
-
-            <FxButton className="w-[28px] h-[28px] rounded flex justify-center items-center" variant="ghost_zinc">
-              <Bookmark size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE}/>
-            </FxButton>
-
-              <FxButton className="px-3 h-[28px] rounded flex justify-center items-center gap-1 text-text-color_2 hover:text-text-color_1" variant="secondary">
-                <span className="text-workspace_2 font-medium">Share</span>
-              <Forward  size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE}/>
-            </FxButton>
-
-          <div className="flex-shrink-0 flex justify-end items-center gap-2 w-fit">
             <FxButton
-              variant="secondary"
-              className="w-[28px] h-[28px] border rounded flex justify-center items-center"
+              className="w-[28px] h-[28px] rounded flex justify-center items-center p-0"
+              variant="ghost_zinc"
             >
-              <ChevronLeft size={LUCIDE_WORKSPACE_ICON_SIZE} />
+              <Bookmark size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />
             </FxButton>
-            <FxButton
-              variant="secondary"
-              className="w-[28px] h-[28px] border rounded flex justify-center items-center"
-            >
-              <ChevronRight size={LUCIDE_WORKSPACE_ICON_SIZE} />
-            </FxButton>
+
+            <Popover>
+              <PopoverTrigger asChild className="outline-none">
+                <FxButton
+                  className="px-3 h-[28px] rounded flex justify-center items-center gap-1 text-text-color_2 hover:text-text-color_1"
+                  variant="secondary"
+                >
+                  <span className="text-workspace_2 font-medium">Share</span>
+                  <Forward size={LUCIDE_WORKSPACE_SECONDARY_ICON_SIZE} />
+                </FxButton>
+              </PopoverTrigger>
+              <PopoverContent
+                className="w-[200px] rounded h-fit bg-background-color_925C border border-border-color_1 p-1 leading-7"
+                align="end"
+              >
+                <FxButton size="sm" variant="ghost_zinc" className="w-full px-2 rounded-tiny justify-start text-text-color_2 hover:!text-text-color_1 hover:!bg-background-color_800C ">
+                  <Link2 size={LUCIDE_WORKSPACE_ICON_SIZE} />
+                  <span>Copy Link</span>
+                </FxButton>
+                <FxButton size="sm" variant="ghost_zinc" className="w-full px-2 rounded-tiny justify-start text-text-color_2 hover:!text-text-color_1 hover:!bg-background-color_800C ">
+                  <FileText size={LUCIDE_WORKSPACE_ICON_SIZE} />
+                  <span>Download PDF</span>
+                </FxButton>
+               
+              </PopoverContent>
+            </Popover>
+
+            <div className="flex-shrink-0 flex justify-end items-center gap-2 w-fit">
+              <FxButton
+                variant="secondary"
+                className="w-[28px] h-[28px] rounded  p-0"
+              >
+                <ChevronLeft size={LUCIDE_WORKSPACE_ICON_SIZE} />
+              </FxButton>
+              <FxButton
+                variant="secondary" 
+                className="w-[28px] h-[28px] rounded  p-0"
+              >
+                <ChevronRight size={LUCIDE_WORKSPACE_ICON_SIZE} />
+              </FxButton>
+            </div>
           </div>
-              </div>
         </div>
         <article className="prose  prose-gray dark:prose-invert ">
           {MdxComponent}
         </article>
 
         <div className="flex justify-center items-center gap-3 mt-16">
-         
           <PaginationButton
             contentTitle="Getting Started"
             label="Previous"
@@ -121,10 +153,9 @@ export const Content = ({
             slug=""
             position="right"
           />
-
         </div>
       </div>
-      <div className=" h-[calc(100vh-13px)] overflow-hidden sticky top-0 max-w-[300px] w-full">
+      <div className="w-[320px]  h-[calc(100vh-13px)] overflow-hidden sticky top-0 max-w-[300px]">
         <ContentAside
           toc={toc}
           scrollToTopElement={
