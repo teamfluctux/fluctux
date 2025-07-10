@@ -29,39 +29,38 @@ export const GlobalSearch = () => {
   });
 
   return (
-    <div>
-      <FxCommandBox
-        open={isSearchBoxOpen}
-        className="max-w-[700px] h-[500px] w-full p-2"
+    <FxCommandBox
+      open={isSearchBoxOpen}
+      className="max-w-[700px] h-[500px] w-full p-2"
+    >
+      <FxButton
+        onClick={() => handleToggleSearchBoxOpenNClose(false)}
+        className="absolute right-[10px] top-[10px] z-10 text-text-color_2 font-medium text-[14px]"
+        variant="secondary"
+        size="sm"
+        radius="primary"
       >
-        <FxButton
-          onClick={() => handleToggleSearchBoxOpenNClose(false)}
-          className="absolute right-[10px] top-[10px] z-10 text-text-color_2 font-medium text-[14px]"
-          variant="secondary"
-          size="sm"
-          radius="primary"
-        >
-          esc
-        </FxButton>
-        <InstantSearch searchClient={""}>
-          <div className="w-full h-[50px] border-b border-border-color_1 sticky top-0 left-0 fx-flex-center flex-shrink-0">
-            <SearchBox
-              placeholder="Search documentation..."
-              autoFocus={true}
-              className="w-full"
-              classNames={{
-                form: "bg-transparent flex flex-row-reverse gap-2 w-full h-full pl-2 pr-2 border-none",
-                input:
-                  "bg-transparent w-full h-[45px] border-none outline-none fx-flex-cl pr-[35px]",
-                loadingIndicator: "hidden",
-                loadingIcon: "hidden",
-                reset: "hidden",
-              }}
-              submitIconComponent={() => <SearchIcon />}
-            />
-          </div>
+        esc
+      </FxButton>
+      <InstantSearch searchClient={""}>
+        <div className="w-full h-[50px] border-b border-border-color_1 sticky top-0 left-0 fx-flex-center flex-shrink-0">
+          <SearchBox
+            placeholder="Search documentation..."
+            autoFocus={true}
+            className="w-full"
+            classNames={{
+              form: "bg-transparent flex flex-row-reverse gap-2 w-full h-full pl-2 pr-2 border-none",
+              input:
+                "bg-transparent w-full h-[45px] border-none outline-none fx-flex-cl pr-[35px]",
+              loadingIndicator: "hidden",
+              loadingIcon: "hidden",
+              reset: "hidden",
+            }}
+            submitIconComponent={() => <SearchIcon />}
+          />
+        </div>
 
-          {/* <NoResultsBoundary fallback={<NoResults />}>
+        {/* <NoResultsBoundary fallback={<NoResults />}>
             <div className="w-full border-b border-border-color_1 sticky top-[50px] left-0 h-[70px] fx-flex-cl flex-shrink-0 z-10">
               <DocCustomRefinementList sortBy={["name"]} attribute="type" />
             </div>
@@ -71,8 +70,7 @@ export const GlobalSearch = () => {
               </div>
             </div>
           </NoResultsBoundary> */}
-        </InstantSearch>
-      </FxCommandBox>
-    </div>
+      </InstantSearch>
+    </FxCommandBox>
   );
 };

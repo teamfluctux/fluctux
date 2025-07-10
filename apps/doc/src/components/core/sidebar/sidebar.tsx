@@ -85,7 +85,7 @@ export const AppSidebar = ({
   return (
     <aside className="w-[320px] fixed top-0 left-0 h-full border-r border-border-color_1 z-[45] bg-background-color_950C">
       <div className="w-full h-[calc(100vh-74px)] ">
-        <div className="w-full h-fit px-5 py-4 flex justify-between items-center">
+        <div className="w-full h-[60px] px-5 flex justify-between items-center">
           <div className="flex justify-start items-center gap-2">
             <FxFavIcon size="sm" variant="theme" />
             <h1 className="text-read_16 font-semibold text-text-color_4">

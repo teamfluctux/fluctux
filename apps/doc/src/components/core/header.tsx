@@ -48,14 +48,14 @@ export const Header = () => {
                 </FxButton>
               </PopoverTrigger>
               <PopoverContent
-                className="w-[200px] rounded h-fit bg-background-color_925C border border-border-color_1 p-1 leading-7"
+                className="w-[200px] h-fit bg-background-color_925C border border-border-color_1 p-1 leading-7"
                 align="end"
               >
-                <FxButton size="sm" variant="ghost_zinc" className="w-full px-2 rounded-tiny justify-start text-text-color_2 hover:!text-text-color_1 hover:!bg-background-color_800C ">
+                <FxButton size="sm" variant="ghost_zinc" className="w-full rounded-tiny px-2 justify-start text-text-color_2 hover:!text-text-color_1 hover:!bg-background-color_800C ">
                   <Link2 size={LUCIDE_WORKSPACE_ICON_SIZE} />
                   <span>Copy Link</span>
                 </FxButton>
-                <FxButton size="sm" variant="ghost_zinc" className="w-full px-2 rounded-tiny justify-start text-text-color_2 hover:!text-text-color_1 hover:!bg-background-color_800C ">
+                <FxButton size="sm" variant="ghost_zinc" className="w-full rounded-tiny px-2 justify-start text-text-color_2 hover:!text-text-color_1 hover:!bg-background-color_800C ">
                   <FileText size={LUCIDE_WORKSPACE_ICON_SIZE} />
                   <span>Download PDF</span>
                 </FxButton>
