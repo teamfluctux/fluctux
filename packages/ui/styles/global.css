@@ -47,6 +47,7 @@
   --background-color-800C: var(--color-zinc-200);
   --background-color-850C: var(--color-zinc-250);
   --background-color-750C: var(--color-zinc-350);
+  --background-color-700C: var(--color-zinc-700);
 
   /* text & labels */
   --foreground: var(--color-zinc-950);
@@ -152,6 +153,7 @@
   --background-color-800C: var(--color-zinc-800);
   --background-color-850C: var(--color-zinc-850);
   --background-color-750C: var(--color-zinc-750);
+  --background-color-700C: var(--color-zinc-700);
 
   /* border */
   --border-color-1: var(--color-zinc-800);
@@ -200,7 +202,6 @@ html {
 
 body {
   color: var(--foreground);
-  background: var(--background);
   font-family: var(--font-geist-sans);
 }
 

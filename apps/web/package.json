@@ -13,9 +13,16 @@
   "dependencies": {
     "@fluctux/hooks": "workspace:*",
     "@fluctux/ui": "workspace:*",
+    "@fluctux/shared": "workspace:*",
     "next": "^15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "lucide-react": "^0.471.2",
+    "react-redux": "^9.2.0",
+    "react-loading-skeleton": "^3.5.0",
+    "react-hook-form": "^7.58.1",
+    "sonner": "^2.0.5",
+    "gray-matter": "^4.0.3",
     "swiper": "^11.2.6"
   },
   "devDependencies": {

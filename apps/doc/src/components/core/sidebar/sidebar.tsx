@@ -22,8 +22,8 @@ const TopNavItems: { label: string; slug: string; icon: IconType }[] = [
   {
     label: "Support",
     slug: "support",
-    icon: Headset
-  }
+    icon: Headset,
+  },
 ];
 
 export const AppSidebar = ({ doctype }: { doctype: string }) => {
@@ -65,17 +65,16 @@ export const AppSidebar = ({ doctype }: { doctype: string }) => {
           </ToggleGroup>
         </div>
       </div>
-      <div className=" w-full px-5 mt-5 leading-10">
+      <div className=" w-full px-5 mt-5 leading-8">
         {TopNavItems.map((item, i) => {
           return (
             <React.Fragment key={i}>
-
-            <ButtonWithIconBox
-              slug={item.slug.toString()}
-              label={item.label.toString()}
-              icon={item.icon}
+              <ButtonWithIconBox
+                slug={item.slug.toString()}
+                label={item.label.toString()}
+                icon={item.icon}
               />
-              </React.Fragment>
+            </React.Fragment>
           );
         })}
       </div>
