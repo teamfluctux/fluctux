@@ -94,7 +94,7 @@ export const SidebarBottom = () => {
                   </Avatar>
                 </div>
                 <div>
-                  <p>My Team</p>
+                  <p className="one-line-ellipsis">Another Team</p>
                   <p className="text-text-color_3 text-[10px] font-weight_450">200+ Members</p>
                 </div>
               </WorkSpaceLinkList>
@@ -107,7 +107,7 @@ export const SidebarBottom = () => {
             </p>
 
             <ul>
-              <WorkSpaceLinkList icon={UsersRound}>Students</WorkSpaceLinkList>
+              <WorkSpaceLinkList icon={UsersRound} slug="/orgid/students">Students</WorkSpaceLinkList>
               <WorkSpaceLinkList icon={PenLine}>Exams</WorkSpaceLinkList>
               <WorkSpaceLinkList icon={ListChecks}>Routines</WorkSpaceLinkList>
               <WorkSpaceLinkList icon={UserRoundCheck}>
