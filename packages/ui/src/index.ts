@@ -27,6 +27,7 @@ export * from "./navigation-menu";
 export * from "./toggle";
 export * from "./toggle-group";
 export * from "./checkbox";
+export * from "./avatar";
 
 export * from "./lib/utils";
 

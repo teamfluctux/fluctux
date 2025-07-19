@@ -97,9 +97,9 @@ export const WorkspaceSidebar = () => {
         {/* ==========================================================================
                                             Top sidebar
           ========================================================================== */}
-        <div className="w-full border-b border-border-color_1 h-[50px]">
+        <div className="w-full border-b border-border-color_1 h-fit">
           <div className="w-full p-2 fx-flex-between-ic">
-            <div className="fx-flex-cl gap-1">
+            <div className="flex justify-start items-center gap-2">
               <Popover onOpenChange={(open) => setIsCommandOpen(open)}>
                 <PopoverTrigger asChild>
                   <div
@@ -115,8 +115,10 @@ export const WorkspaceSidebar = () => {
                   {isCommandOpen && <DynamicSidebarCommandMenu />}
                 </PopoverContent>
               </Popover>
-
-              <h1 className="font-medium text-workspace_1">NI, Org</h1>
+              <div>
+              <h1 className="font-weight_450 text-[10px] text-text-color_2">NI, Org</h1>
+              <p className="one_line_ellipsis text-text-color_1 text-workspace_2 font-medium">Ni Mahins Team</p>
+              </div>
             </div>
             <FxButton
               variant="ghost_zinc"
