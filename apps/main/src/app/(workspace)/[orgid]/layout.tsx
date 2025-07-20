@@ -90,7 +90,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
       ========================================================================== */}
           <div
             ref={parentRef}
-            className={cn("w-full h-screen bg-background-color_900C relative")}
+            className={cn("w-full h-screen bg-background-color_925C relative")}
           >
             <div className="border-b border-border-color_1 w-full h-[40px] sticky top-0 fx-flex-center">
               {/* SIDEBAR TOGGLE BUTTON */}

@@ -143,6 +143,10 @@
   --code-remove-color: #dc2626;
   --code-add-bg-color: #10b9812a;
   --code-remove-bg-color: #ef44443a;
+
+
+  /* ag-grid */
+  --ag-background-color: var(--background-color-925C) ;
 }
 
 .dark {
@@ -350,6 +354,12 @@ body {
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-color) transparent;
     scrollbar-gutter: stable;
+  }
+
+  .custom-scrollbar-color {
+
+    scrollbar-color: var(--scrollbar-color) transparent;
+
   }
 
   .workspace-exclude-header {
@@ -766,3 +776,4 @@ pre:has(.focused):hover span {
     /* background-color: var(--shiki-dark-bg); */
   }
 }
+

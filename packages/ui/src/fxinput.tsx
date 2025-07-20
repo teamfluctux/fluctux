@@ -1,6 +1,7 @@
 import { SizeType } from "./type";
-import React from "react";
+import React, { forwardRef } from "react";
 import { ROUNDED_VARIANTS } from "./constant";
+
 interface FxInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   className?: string;
@@ -29,14 +30,18 @@ const inputSizes: { [key in SizeType]: string } = {
   xl: "p-4 ",
 };
 
-export function FxInput({
-  className,
-  variant,
-  radius,
-  size,
-  label = "Label",
-  ...props
-}: FxInputProps) {
+export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
+  (
+    {
+      className,
+      variant,
+      radius,
+      size,
+      label = "Label",
+      ...props
+    },
+    ref
+  ) =>  {
   const inputVariant = variant ? inputVariants[variant] : "";
   const inputSize = size ? inputSizes[size] : "";
   const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
@@ -44,6 +49,7 @@ export function FxInput({
   return variant === "outlineLabel" ? (
     <div className="w-full relative group">
       <input
+        ref={ref}
         className={`peer placeholder:!text-text-color_3 ${inputVariant} ${inputSize} ${roundedVariant} ${className} `}
         {...props}
         id={`${label.replace(" ", "-")}`}
@@ -61,4 +67,4 @@ export function FxInput({
       {...props}
     />
   );
-}
+})
