@@ -842,3 +842,7 @@ pre:has(.focused):hover span {
   }
 }
 
+.no-padding-cell{
+  padding: 0px 0px !important;
+  background-color: red !important;
+}

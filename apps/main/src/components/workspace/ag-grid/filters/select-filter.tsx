@@ -1,6 +1,8 @@
 import { CustomFilterDisplayProps, useGridFilterDisplay } from "ag-grid-react";
 import React from "react";
 import { IRowNode } from "ag-grid-community";
+import { Eclipse, SunDim } from "lucide-react";
+import { LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 
 interface DoesSelectFilterPassParams {
   model: string;
@@ -35,8 +37,8 @@ export const SelectFilterAgGrid = ({
   useGridFilterDisplay({});
 
   const options = [
-    { label: "Morning", value: "Morning" },
-    { label: "Day", value: "Day" },
+    { label: "Morning", value: "morning" },
+    { label: "Day", value: "day" },
   ];
 
   return (
@@ -52,7 +54,12 @@ export const SelectFilterAgGrid = ({
             onChange={() => onModelChange(option.value)}
             className="hidden peer"
           />
-          <div className="rounded-[3px] px-2 py-1.5 hover:bg-background-color_900C text-text-color_2 peer-checked:bg-background-color_800C peer-checked:text-text-color_1 font-medium">
+          <div className="rounded-[3px] flex justify-start items-center gap-2 px-2 py-1.5 hover:bg-background-color_900C text-text-color_2 peer-checked:bg-background-color_800C peer-checked:text-text-color_1 font-medium">
+            {option.value === "morning" ? (
+              <Eclipse size={LUCIDE_WORKSPACE_ICON_SIZE} />
+            ) : (
+              <SunDim size={LUCIDE_WORKSPACE_ICON_SIZE} />
+            )}
             {option.label}
           </div>
         </label>

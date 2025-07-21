@@ -11,6 +11,7 @@ import {
   TextFilterModule,
   CustomFilterModule,
   IRowNode,
+  CellStyleModule,
   ValidationModule,
 } from "ag-grid-community";
 
@@ -27,34 +28,7 @@ import {
   doesSelectFilterPass,
   SelectFilterAgGrid,
 } from "@/components/workspace/ag-grid/filters";
-
-type StudentShiftType = "morning" | "day" | "none";
-type StudentSection =
-  | "A"
-  | "B"
-  | "C"
-  | "D"
-  | "H"
-  | "J"
-  | "K"
-  | "L"
-  | "M"
-  | "N"
-  | "O"
-  | "P"
-  | "Q"
-  | "R";
-
-type Students = {
-  id: string;
-  name: string;
-  class: string;
-  shift?: StudentShiftType;
-  section?: StudentSection | string;
-  group?: string;
-  batchNo?: number;
-  [key: string]: string | undefined | number;
-};
+import { ShiftSelector } from "@/components/workspace/ag-grid/selectors/students-shift-selector";
 
 const generateStudents = (): any[] => {
   const shifts: StudentShiftType[] = ["morning", "day", "none"];
@@ -66,7 +40,7 @@ const generateStudents = (): any[] => {
     id: `30${i + 1}`,
     name: `Student ${i + 1}`,
     class: classes[i % classes.length],
-    shift: shifts[i % shifts.length]?.replace(/^\w/, (c) => c.toUpperCase()),
+    shift: shifts[i % shifts.length],
     section: sections[i % sections.length],
     group: groups[i % groups.length],
     batchNo: 100 + i,
@@ -92,6 +66,7 @@ export default function StudentsPage() {
       field: "name",
       // example of custom filter
       // filter: { component: UserRawNameFilter, doesFilterPass: doesFilterPass },
+        cellStyle: { color: "var(--foreground)", fontWeight: 500},
       filter: "agTextColumnFilter",
       filterParams: {
         buttons: ["reset"],
@@ -99,6 +74,11 @@ export default function StudentsPage() {
     },
     {
       field: "shift",
+      cellStyle: {padding: "0px 0px"},
+      cellRenderer: ShiftSelector,
+      cellRendererParams: {
+        availableShifts: ["morning", "day", "none"],
+      },
       filter: {
         component: SelectFilterAgGrid,
         doesFilterPass: doesSelectFilterPass,
@@ -114,7 +94,7 @@ export default function StudentsPage() {
   const customTheme = themeQuartz
     .withParams({
       backgroundColor: "transparent",
-      foregroundColor: "var(--foreground-color-1)",
+      foregroundColor: "var(--foreground-color-2)",
       headerTextColor: "var(--foreground-color-4)",
       headerBackgroundColor: "var(--background-color-850C)",
       oddRowBackgroundColor: "transparent",
@@ -180,31 +160,37 @@ export default function StudentsPage() {
           rowData={rowData}
           columnDefs={colDefs}
           onFilterOpened={(event) => {
-  const { column, api } = event;
-  const colId = column.getId();
+            const { column, api } = event;
+            const colId = column.getId();
 
-  api.getColumnFilterInstance(colId).then((filterInstance) => {
-    // Check if the filter instance exists and has the isFilterActive method
-    if (filterInstance && typeof filterInstance.isFilterActive === 'function') {
-      // Check if the filter is currently active for this column
-      if (filterInstance.isFilterActive()) {
-        // If active, clear the filter model
-        filterInstance.setModel(null);
-        // Notify the grid that the filters have changed, which will refresh the data
-        api.onFilterChanged();
-        alert("Filter cleared"); // Optional: Provide user feedback
-      }
-    } else {
-      console.warn(`Filter instance or isFilterActive method not found for column: ${colId}`);
-    }
-  });
-}}
+            api.getColumnFilterInstance(colId).then((filterInstance) => {
+              // Check if the filter instance exists and has the isFilterActive method
+              if (
+                filterInstance &&
+                typeof filterInstance.isFilterActive === "function"
+              ) {
+                // Check if the filter is currently active for this column
+                if (filterInstance.isFilterActive()) {
+                  // If active, clear the filter model
+                  filterInstance.setModel(null);
+                  // Notify the grid that the filters have changed, which will refresh the data
+                  api.onFilterChanged();
+                  alert("Filter cleared"); // Optional: Provide user feedback
+                }
+              } else {
+                console.warn(
+                  `Filter instance or isFilterActive method not found for column: ${colId}`
+                );
+              }
+            });
+          }}
           // to enable custom filter
           enableFilterHandlers={true}
           modules={[
             ClientSideRowModelModule,
             CsvExportModule,
             NumberFilterModule,
+            CellStyleModule,
             TextFilterModule,
             CustomFilterModule,
             ValidationModule,
