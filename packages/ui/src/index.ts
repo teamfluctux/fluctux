@@ -26,6 +26,7 @@ export * from "./dropdown-menu";
 export * from "./navigation-menu";
 export * from "./toggle";
 export * from "./toggle-group";
+export * from "./select";
 export * from "./checkbox";
 export * from "./avatar";
 

@@ -14,6 +14,16 @@ import {
   ValidationModule,
 } from "ag-grid-community";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@fluctux/ui"
+
 import { UserRawNameFilter } from "@/components/workspace/ag-grid/filters";
 
 interface DoesFilterPassParams {
@@ -154,7 +164,21 @@ export default function StudentsPage() {
   return (
     <div className="w-full">
       <div className="flex justify-between items-center text-workspace_2 h-[50px]">
-        hello
+        <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes">Grapes</SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+    </Select>
       </div>
       <div className="h-[calc(100vh-91px)]">
         <AgGridReact
