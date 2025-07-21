@@ -10,9 +10,9 @@ import {
   NumberFilterModule,
   TextFilterModule,
   CustomFilterModule,
-  IRowNode,
   CellStyleModule,
   ValidationModule,
+  ITextFilterParams,
 } from "ag-grid-community";
 
 import {
@@ -66,15 +66,15 @@ export default function StudentsPage() {
       field: "name",
       // example of custom filter
       // filter: { component: UserRawNameFilter, doesFilterPass: doesFilterPass },
-        cellStyle: { color: "var(--foreground)", fontWeight: 500},
+      cellStyle: { color: "var(--foreground)", fontWeight: 500 },
       filter: "agTextColumnFilter",
       filterParams: {
         buttons: ["reset"],
-      },
+      } as ITextFilterParams,
     },
     {
       field: "shift",
-      cellStyle: {padding: "0px 0px"},
+      cellStyle: { padding: "0px 0px" },
       cellRenderer: ShiftSelector,
       cellRendererParams: {
         availableShifts: ["morning", "day", "none"],
@@ -159,31 +159,6 @@ export default function StudentsPage() {
           theme={customTheme}
           rowData={rowData}
           columnDefs={colDefs}
-          onFilterOpened={(event) => {
-            const { column, api } = event;
-            const colId = column.getId();
-
-            api.getColumnFilterInstance(colId).then((filterInstance) => {
-              // Check if the filter instance exists and has the isFilterActive method
-              if (
-                filterInstance &&
-                typeof filterInstance.isFilterActive === "function"
-              ) {
-                // Check if the filter is currently active for this column
-                if (filterInstance.isFilterActive()) {
-                  // If active, clear the filter model
-                  filterInstance.setModel(null);
-                  // Notify the grid that the filters have changed, which will refresh the data
-                  api.onFilterChanged();
-                  alert("Filter cleared"); // Optional: Provide user feedback
-                }
-              } else {
-                console.warn(
-                  `Filter instance or isFilterActive method not found for column: ${colId}`
-                );
-              }
-            });
-          }}
           // to enable custom filter
           enableFilterHandlers={true}
           modules={[
