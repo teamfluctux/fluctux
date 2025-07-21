@@ -1,10 +1,41 @@
 import React, { useCallback, useRef } from "react";
-import type { IAfterGuiAttachedParams } from "ag-grid-community";
+import type { IAfterGuiAttachedParams, IRowNode } from "ag-grid-community";
 import type { CustomFilterDisplayProps } from "ag-grid-react";
 import { useGridFilterDisplay } from "ag-grid-react";
 import { FxInput } from "@fluctux/ui";
 
-export const UserRawNameFilter = ({
+interface DoesFullTextFilterPassParams {
+  model: string;
+  node: IRowNode;
+  handlerParams: {
+    getValue: (node: IRowNode) => any;
+  };
+}
+
+export const doesFullTextFilterPass: ({
+  model,
+  node,
+  handlerParams,
+}: DoesFullTextFilterPassParams) => boolean = ({
+  model,
+  node,
+  handlerParams,
+}: DoesFullTextFilterPassParams) => {
+  // make sure each word passes separately, ie search for firstname, lastname
+  let passed = true;
+  model
+    .toLowerCase()
+    .split(" ")
+    .forEach((filterWord) => {
+      const value = handlerParams.getValue(node);
+      if (value.toString().toLowerCase().indexOf(filterWord) < 0) {
+        passed = false;
+      }
+    });
+  return passed;
+};
+
+export const FullTextSearchFilter = ({
   model,
   onModelChange,
 }: CustomFilterDisplayProps) => {

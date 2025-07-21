@@ -22,17 +22,11 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@fluctux/ui"
-
-import { UserRawNameFilter } from "@/components/workspace/ag-grid/filters";
-
-interface DoesFilterPassParams {
-  model: string;
-  node: IRowNode;
-  handlerParams: {
-    getValue: (node: IRowNode) => any;
-  };
-}
+} from "@fluctux/ui";
+import {
+  doesSelectFilterPass,
+  SelectFilterAgGrid,
+} from "@/components/workspace/ag-grid/filters";
 
 type StudentShiftType = "morning" | "day" | "none";
 type StudentSection =
@@ -81,29 +75,6 @@ const generateStudents = (): any[] => {
   }));
 };
 
-const doesFilterPass: ({
-  model,
-  node,
-  handlerParams,
-}: DoesFilterPassParams) => boolean = ({
-  model,
-  node,
-  handlerParams,
-}: DoesFilterPassParams) => {
-  // make sure each word passes separately, ie search for firstname, lastname
-  let passed = true;
-  model
-    .toLowerCase()
-    .split(" ")
-    .forEach((filterWord) => {
-      const value = handlerParams.getValue(node);
-      if (value.toString().toLowerCase().indexOf(filterWord) < 0) {
-        passed = false;
-      }
-    });
-  return passed;
-};
-
 export default function StudentsPage() {
   // Row Data: The data to be displayed.
   const [rowData, setRowData] = useState<Students[]>(generateStudents);
@@ -119,9 +90,20 @@ export default function StudentsPage() {
     },
     {
       field: "name",
-      filter: { component: UserRawNameFilter, doesFilterPass: doesFilterPass },
+      // example of custom filter
+      // filter: { component: UserRawNameFilter, doesFilterPass: doesFilterPass },
+      filter: "agTextColumnFilter",
+      filterParams: {
+        buttons: ["reset"],
+      },
     },
-    { field: "shift" },
+    {
+      field: "shift",
+      filter: {
+        component: SelectFilterAgGrid,
+        doesFilterPass: doesSelectFilterPass,
+      },
+    },
     { field: "section" },
     { field: "group" },
     { field: "batchNo", filter: "agNumberColumnFilter" },
@@ -163,22 +145,32 @@ export default function StudentsPage() {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between items-center text-workspace_2 h-[50px]">
+      <div className="flex justify-between items-center text-workspace_2 h-[50px] px-2">
         <Select>
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Select a fruit" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            <SelectLabel>Fruits</SelectLabel>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
-            <SelectItem value="grapes">Grapes</SelectItem>
-            <SelectItem value="pineapple">Pineapple</SelectItem>
-          </SelectGroup>
-        </SelectContent>
-    </Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Fruits</SelectLabel>
+              <SelectItem value="apple" className="!text-text-color_4">
+                Apple
+              </SelectItem>
+              <SelectItem value="banana" className="!text-text-color_4">
+                Banana
+              </SelectItem>
+              <SelectItem value="blueberry" className="!text-text-color_4">
+                Blueberry
+              </SelectItem>
+              <SelectItem value="grapes" className="!text-text-color_4">
+                Grapes
+              </SelectItem>
+              <SelectItem value="pineapple" className="!text-text-color_4">
+                Pineapple
+              </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
       <div className="h-[calc(100vh-91px)]">
         <AgGridReact
@@ -187,6 +179,27 @@ export default function StudentsPage() {
           theme={customTheme}
           rowData={rowData}
           columnDefs={colDefs}
+          onFilterOpened={(event) => {
+  const { column, api } = event;
+  const colId = column.getId();
+
+  api.getColumnFilterInstance(colId).then((filterInstance) => {
+    // Check if the filter instance exists and has the isFilterActive method
+    if (filterInstance && typeof filterInstance.isFilterActive === 'function') {
+      // Check if the filter is currently active for this column
+      if (filterInstance.isFilterActive()) {
+        // If active, clear the filter model
+        filterInstance.setModel(null);
+        // Notify the grid that the filters have changed, which will refresh the data
+        api.onFilterChanged();
+        alert("Filter cleared"); // Optional: Provide user feedback
+      }
+    } else {
+      console.warn(`Filter instance or isFilterActive method not found for column: ${colId}`);
+    }
+  });
+}}
+          // to enable custom filter
           enableFilterHandlers={true}
           modules={[
             ClientSideRowModelModule,
