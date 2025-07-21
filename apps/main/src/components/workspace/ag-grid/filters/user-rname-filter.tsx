@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from "react";
 import type { IAfterGuiAttachedParams } from "ag-grid-community";
 import type { CustomFilterDisplayProps } from "ag-grid-react";
 import { useGridFilterDisplay } from "ag-grid-react";
-import { Input } from "@fluctux/ui";
+import { FxInput } from "@fluctux/ui";
 
 export const UserRawNameFilter = ({
   model,
@@ -25,9 +25,11 @@ export const UserRawNameFilter = ({
   });
 
   return (
-    <div className="p-1">
-      <Input
+    <div className="p-2">
+      <FxInput
+        variant="primary"
         ref={refInput}
+        radius="tiny"
         className="p-1 px-2"
         type="text"
         value={model || ""}
