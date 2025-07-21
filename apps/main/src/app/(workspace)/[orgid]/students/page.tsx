@@ -98,12 +98,14 @@ export default function StudentsPage() {
       field: "shift",
       cellStyle: { padding: "0px 0px" },
       cellRenderer: AgGridCellSelector,
+      // so that we can access availableValues in the cellRenderer component
       cellRendererParams: {
         availableValues: studentShifts,
       },
       filter: {
         component: SelectFilterAgGrid,
         doesFilterPass: doesSelectFilterPass,
+        // so that we can access availableValues in doesFilterPass
         filterParams: {
           availableValues: studentShifts,
         } as SelectFilterParams,
