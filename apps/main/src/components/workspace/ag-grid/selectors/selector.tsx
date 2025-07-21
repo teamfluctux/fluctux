@@ -14,17 +14,17 @@ import {
 // Define props for Cell Renderer
 interface ShiftSelectorProps extends ICellRendererParams {
   // AG Grid provides 'value' directly from the 'field' specified in colDefs
-  value: StudentShiftType;
+  value: string;
   // pass available options as a prop if they are dynamic
-  availableShifts?: StudentShiftType[];
+  availableValues?: string[];
 }
 
-export const ShiftSelector = React.forwardRef<any, ShiftSelectorProps>(
+export const AgGridCellSelector = React.forwardRef<any, ShiftSelectorProps>(
   (props, ref) => {
     // State to manage the selected value within the component
-    const [selectedValue, setSelectedValue] = useState<
-      StudentShiftType | undefined
-    >(props.value);
+    const [selectedValue, setSelectedValue] = useState<string | undefined>(
+      props.value
+    );
 
     useEffect(() => {
       setSelectedValue(props.value || "");
@@ -46,19 +46,15 @@ export const ShiftSelector = React.forwardRef<any, ShiftSelectorProps>(
     });
 
     const handleValueChange = (newValue: string) => {
-      const newShiftValue = newValue as StudentShiftType;
-      setSelectedValue(newShiftValue);
+      const newItemValue = newValue as string;
+      setSelectedValue(newItemValue);
 
       // Notify AG Grid of the change
       // This will update the underlying row data
-      props.setValue?.(newShiftValue);
+      props.setValue?.(newItemValue);
     };
 
-    const shiftsOptions: StudentShiftType[] = props.availableShifts || [
-      "morning",
-      "day",
-      "none",
-    ];
+    const shiftsOptions: string[] = props.availableValues || []
 
     return (
       <Select value={selectedValue || ""} onValueChange={handleValueChange}>

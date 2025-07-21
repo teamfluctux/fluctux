@@ -13,6 +13,8 @@ import {
   CellStyleModule,
   ValidationModule,
   ITextFilterParams,
+  ICellRendererParams,
+  IHeaderParams 
 } from "ag-grid-community";
 
 import {
@@ -28,12 +30,13 @@ import {
   doesSelectFilterPass,
   SelectFilterAgGrid,
 } from "@/components/workspace/ag-grid/filters";
-import { ShiftSelector } from "@/components/workspace/ag-grid/selectors/students-shift-selector";
+import { AgGridCellSelector } from "@/components/workspace/ag-grid/selectors/selector";
+import { Home } from "lucide-react";
 
 const generateStudents = (): any[] => {
   const shifts: StudentShiftType[] = ["morning", "day", "none"];
   const sections: StudentSection[] = ["A", "B", "C"];
-  const groups = ["Science", "Commerce", "Arts"];
+  const groups = [ "science", "commerce", "arts", "humanities", "vocational"]
   const classes = ["6", "7", "8", "9", "10"];
 
   return Array.from({ length: 20 }, (_, i) => ({
@@ -47,6 +50,18 @@ const generateStudents = (): any[] => {
     email: `student${i + 1}@school.edu`, // extra dynamic field
     phone: `01XXXXXXXX${i % 10}`, // extra dynamic field
   }));
+};
+
+const studentShifts = ["morning", "day", "none"]
+const STUDENTS_SUBJECT_GROUP = [ "science", "commerce", "arts", "humanities", "vocational"]
+
+const ShiftHeader: React.FC<IHeaderParams> = (props) => {
+  return (
+    <div className="flex justify-start items-center gap-2">
+      <Home />
+      {props.displayName}
+    </div>
+  );
 };
 
 export default function StudentsPage() {
@@ -74,10 +89,11 @@ export default function StudentsPage() {
     },
     {
       field: "shift",
+      headerComponent: ShiftHeader ,
       cellStyle: { padding: "0px 0px" },
-      cellRenderer: ShiftSelector,
+      cellRenderer: AgGridCellSelector,
       cellRendererParams: {
-        availableShifts: ["morning", "day", "none"],
+        availableValues: studentShifts,
       },
       filter: {
         component: SelectFilterAgGrid,
@@ -85,7 +101,13 @@ export default function StudentsPage() {
       },
     },
     { field: "section" },
-    { field: "group" },
+    { field: "group",
+       cellStyle: { padding: "0px 0px" },
+      cellRenderer: AgGridCellSelector,
+      cellRendererParams: {
+        availableValues: STUDENTS_SUBJECT_GROUP,
+      },
+     },
     { field: "batchNo", filter: "agNumberColumnFilter" },
     { field: "email" },
     { field: "phone" },
