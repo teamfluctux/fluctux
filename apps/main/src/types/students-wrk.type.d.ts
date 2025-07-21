@@ -11,3 +11,8 @@ type Students = {
   batchNo?: number;
   [key: string]: string | undefined | number;
 };
+
+
+interface SelectFilterParams {
+  availableValues: string[];
+}

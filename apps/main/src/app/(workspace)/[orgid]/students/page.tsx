@@ -14,7 +14,7 @@ import {
   ValidationModule,
   ITextFilterParams,
   ICellRendererParams,
-  IHeaderParams 
+  IHeaderParams,
 } from "ag-grid-community";
 
 import {
@@ -36,7 +36,7 @@ import { Home } from "lucide-react";
 const generateStudents = (): any[] => {
   const shifts: StudentShiftType[] = ["morning", "day", "none"];
   const sections: StudentSection[] = ["A", "B", "C"];
-  const groups = [ "science", "commerce", "arts", "humanities", "vocational"]
+  const groups = ["science", "commerce", "arts", "humanities", "vocational"];
   const classes = ["6", "7", "8", "9", "10"];
 
   return Array.from({ length: 20 }, (_, i) => ({
@@ -52,8 +52,14 @@ const generateStudents = (): any[] => {
   }));
 };
 
-const studentShifts = ["morning", "day", "none"]
-const STUDENTS_SUBJECT_GROUP = [ "science", "commerce", "arts", "humanities", "vocational"]
+const studentShifts = ["morning", "day", "none"];
+const STUDENTS_SUBJECT_GROUP = [
+  "science",
+  "commerce",
+  "arts",
+  "humanities",
+  "vocational",
+];
 
 const ShiftHeader: React.FC<IHeaderParams> = (props) => {
   return (
@@ -89,7 +95,6 @@ export default function StudentsPage() {
     },
     {
       field: "shift",
-      headerComponent: ShiftHeader ,
       cellStyle: { padding: "0px 0px" },
       cellRenderer: AgGridCellSelector,
       cellRendererParams: {
@@ -98,16 +103,20 @@ export default function StudentsPage() {
       filter: {
         component: SelectFilterAgGrid,
         doesFilterPass: doesSelectFilterPass,
+        filterParams: {
+          availableValues: studentShifts,
+        } as SelectFilterParams,
       },
     },
     { field: "section" },
-    { field: "group",
-       cellStyle: { padding: "0px 0px" },
+    {
+      field: "group",
+      cellStyle: { padding: "0px 0px" },
       cellRenderer: AgGridCellSelector,
       cellRendererParams: {
         availableValues: STUDENTS_SUBJECT_GROUP,
       },
-     },
+    },
     { field: "batchNo", filter: "agNumberColumnFilter" },
     { field: "email" },
     { field: "phone" },

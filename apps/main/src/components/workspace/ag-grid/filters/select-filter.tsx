@@ -1,7 +1,7 @@
 import { CustomFilterDisplayProps, useGridFilterDisplay } from "ag-grid-react";
 import React from "react";
-import { IRowNode } from "ag-grid-community";
-import { Eclipse, SunDim } from "lucide-react";
+import { ICellRendererParams, IRowNode } from "ag-grid-community";
+import { CircleOff, Eclipse, SunDim } from "lucide-react";
 import { LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 
 interface DoesSelectFilterPassParams {
@@ -33,13 +33,20 @@ export const doesSelectFilterPass: ({
 export const SelectFilterAgGrid = ({
   model,
   onModelChange,
+  colDef,
 }: CustomFilterDisplayProps) => {
-  useGridFilterDisplay({});
+  const availableValues =
+    (colDef?.filter.filterParams as SelectFilterParams)?.availableValues || [];
 
-  const options = [
-    { label: "Morning", value: "morning" },
-    { label: "Day", value: "day" },
-  ];
+  const options =
+    availableValues?.map((item) => ({
+      label: item.charAt(0).toUpperCase() + item.slice(1),
+      value: item.toLowerCase(),
+    })) || [];
+
+    console.log('colDef received by filter:', colDef);
+
+  useGridFilterDisplay({});
 
   return (
     <div className="p-2 space-y-2 w-[200px] bg-background-color_925C ">
@@ -57,7 +64,9 @@ export const SelectFilterAgGrid = ({
           <div className="rounded-[3px] flex justify-start items-center gap-2 px-2 py-1.5 hover:bg-background-color_900C text-text-color_2 peer-checked:bg-background-color_800C peer-checked:text-text-color_1 font-medium">
             {option.value === "morning" ? (
               <Eclipse size={LUCIDE_WORKSPACE_ICON_SIZE} />
-            ) : (
+            ) : option.value === "none" ? (
+              <CircleOff size={LUCIDE_WORKSPACE_ICON_SIZE} />)
+             :  (
               <SunDim size={LUCIDE_WORKSPACE_ICON_SIZE} />
             )}
             {option.label}
