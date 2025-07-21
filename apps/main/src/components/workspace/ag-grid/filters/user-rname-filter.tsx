@@ -1,9 +1,8 @@
 import React, { useCallback, useRef } from "react";
-
 import type { IAfterGuiAttachedParams } from "ag-grid-community";
 import type { CustomFilterDisplayProps } from "ag-grid-react";
 import { useGridFilterDisplay } from "ag-grid-react";
-import { FxInput } from "@fluctux/ui";
+import { Input } from "@fluctux/ui";
 
 export const UserRawNameFilter = ({
   model,
@@ -27,15 +26,16 @@ export const UserRawNameFilter = ({
 
   return (
     <div className="p-1">
-      <FxInput ref={refInput}
-      variant="secondary"
-      className="p-1 px-2"
+      <Input
+        ref={refInput}
+        className="p-1 px-2"
         type="text"
         value={model || ""}
         onChange={({ target: { value } }) =>
           onModelChange(value === "" ? null : value)
         }
-        placeholder="Search" />
+        placeholder="Search"
+      />
     </div>
   );
 };
