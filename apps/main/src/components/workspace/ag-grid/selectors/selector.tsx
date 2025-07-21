@@ -19,6 +19,7 @@ interface ShiftSelectorProps extends ICellRendererParams {
   availableValues?: string[];
 }
 
+// In cellrenderer we can access the value and availablesValues directly from props 
 export const AgGridCellSelector = React.forwardRef<any, ShiftSelectorProps>(
   (props, ref) => {
     // State to manage the selected value within the component

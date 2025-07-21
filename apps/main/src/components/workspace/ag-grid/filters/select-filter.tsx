@@ -3,6 +3,7 @@ import React from "react";
 import { ICellRendererParams, IRowNode } from "ag-grid-community";
 import { CircleOff, Eclipse, SunDim } from "lucide-react";
 import { LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
+import { getWorkSpaceHeaderMenuIcon } from "@/constants/workspace";
 
 interface DoesSelectFilterPassParams {
   model: string;
@@ -35,6 +36,7 @@ export const SelectFilterAgGrid = ({
   onModelChange,
   colDef,
 }: CustomFilterDisplayProps) => {
+  // In filterParams, we can pass the availableValues and can access it via colDef.filter.filterParams
   const availableValues =
     (colDef?.filter.filterParams as SelectFilterParams)?.availableValues || [];
 
@@ -44,35 +46,28 @@ export const SelectFilterAgGrid = ({
       value: item.toLowerCase(),
     })) || [];
 
-    console.log('colDef received by filter:', colDef);
-
-  useGridFilterDisplay({});
-
   return (
     <div className="p-2 space-y-2 w-[200px] bg-background-color_925C ">
-      {options.map((option) => (
-        <label key={option.value}>
-          <input
-            type="radio"
-            name="status-filter"
-            value={option.value}
-            checked={model === option.value}
-            // pass value to doesSelectFilterPass
-            onChange={() => onModelChange(option.value)}
-            className="hidden peer"
-          />
-          <div className="rounded-[3px] flex justify-start items-center gap-2 px-2 py-1.5 hover:bg-background-color_900C text-text-color_2 peer-checked:bg-background-color_800C peer-checked:text-text-color_1 font-medium">
-            {option.value === "morning" ? (
-              <Eclipse size={LUCIDE_WORKSPACE_ICON_SIZE} />
-            ) : option.value === "none" ? (
-              <CircleOff size={LUCIDE_WORKSPACE_ICON_SIZE} />)
-             :  (
-              <SunDim size={LUCIDE_WORKSPACE_ICON_SIZE} />
-            )}
-            {option.label}
-          </div>
-        </label>
-      ))}
+      {options.map((option) => {
+        const Icon = getWorkSpaceHeaderMenuIcon[option.value] || null;
+        return (
+          <label key={option.value}>
+            <input
+              type="radio"
+              name="status-filter"
+              value={option.value}
+              checked={model === option.value}
+              // pass value to doesSelectFilterPass
+              onChange={() => onModelChange(option.value)}
+              className="hidden peer"
+            />
+            <div className="rounded-[3px] flex justify-start items-center gap-2 px-2 py-1.5 hover:bg-background-color_900C text-text-color_2 peer-checked:bg-background-color_800C peer-checked:text-text-color_1 font-medium">
+              {Icon && <Icon size={LUCIDE_WORKSPACE_ICON_SIZE} />}
+              {option.label}
+            </div>
+          </label>
+        );
+      })}
 
       {/* Optional Clear Option */}
       <label>

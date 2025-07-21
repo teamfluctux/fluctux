@@ -52,6 +52,7 @@ const generateStudents = (): any[] => {
   }));
 };
 
+
 const studentShifts = ["morning", "day", "none"];
 const STUDENTS_SUBJECT_GROUP = [
   "science",
@@ -115,6 +116,13 @@ export default function StudentsPage() {
       cellRenderer: AgGridCellSelector,
       cellRendererParams: {
         availableValues: STUDENTS_SUBJECT_GROUP,
+      },
+      filter: {
+        component: SelectFilterAgGrid,
+        doesFilterPass: doesSelectFilterPass,
+        filterParams: {
+          availableValues: STUDENTS_SUBJECT_GROUP,
+        } as SelectFilterParams,
       },
     },
     { field: "batchNo", filter: "agNumberColumnFilter" },
