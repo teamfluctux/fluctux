@@ -27,11 +27,13 @@ import {
   SelectValue,
 } from "@fluctux/ui";
 import {
+  AZFilters,
   doesSelectFilterPass,
   SelectFilterAgGrid,
 } from "@/components/workspace/ag-grid/filters";
-import { AgGridCellSelector } from "@/components/workspace/ag-grid/selectors/selector";
-import { Home } from "lucide-react";
+import { AgGridCellSelector } from "@/components/workspace/ag-grid/components/selector";
+import { Clock } from "lucide-react";
+import { GridHeaderCustomMenu } from "@/components/workspace/ag-grid/components";
 
 const generateStudents = (): any[] => {
   const shifts: StudentShiftType[] = ["morning", "day", "none"];
@@ -52,7 +54,6 @@ const generateStudents = (): any[] => {
   }));
 };
 
-
 const studentShifts = ["morning", "day", "none"];
 const STUDENTS_SUBJECT_GROUP = [
   "science",
@@ -60,16 +61,8 @@ const STUDENTS_SUBJECT_GROUP = [
   "arts",
   "humanities",
   "vocational",
+  "none",
 ];
-
-const ShiftHeader: React.FC<IHeaderParams> = (props) => {
-  return (
-    <div className="flex justify-start items-center gap-2">
-      <Home />
-      {props.displayName}
-    </div>
-  );
-};
 
 export default function StudentsPage() {
   // Row Data: The data to be displayed.
@@ -96,6 +89,11 @@ export default function StudentsPage() {
     },
     {
       field: "shift",
+      headerComponent: GridHeaderCustomMenu,
+      headerComponentParams: {
+        icon: Clock,
+        children: AZFilters,
+      },
       cellStyle: { padding: "0px 0px" },
       cellRenderer: AgGridCellSelector,
       // so that we can access availableValues in the cellRenderer component

@@ -61,8 +61,8 @@ export const SelectFilterAgGrid = ({
               onChange={() => onModelChange(option.value)}
               className="hidden peer"
             />
-            <div className="rounded-[3px] flex justify-start items-center gap-2 px-2 py-1.5 hover:bg-background-color_900C text-text-color_2 peer-checked:bg-background-color_800C peer-checked:text-text-color_1 font-medium">
-              {Icon && <Icon size={LUCIDE_WORKSPACE_ICON_SIZE} />}
+            <div className="rounded-[3px] flex justify-start items-center gap-2 px-2 py-1.5 hover:bg-background-color_900C text-text-color_2 text-workspace_3 peer-checked:bg-background-color_800C peer-checked:text-text-color_1 font-medium">
+              {Icon && <Icon size={16} />}
               {option.label}
             </div>
           </label>
@@ -79,7 +79,7 @@ export const SelectFilterAgGrid = ({
           onChange={() => onModelChange(null)}
           className="hidden peer"
         />
-        <div className="rounded-[3px] px-2 py-1.5 hover:bg-background-color_900C text-text-color_2 peer-checked:bg-background-color_800C peer-checked:text-text-color_1 font-medium">
+        <div className="rounded-[3px] px-2 py-1.5 hover:bg-background-color_900C text-text-color_2 peer-checked:bg-background-color_800C  text-workspace_3 peer-checked:text-text-color_1 font-medium">
           All
         </div>
       </label>
