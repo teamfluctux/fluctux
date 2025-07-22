@@ -15,6 +15,8 @@ import {
   ITextFilterParams,
   ICellRendererParams,
   IHeaderParams,
+  GridApi,
+  IFilter,
 } from "ag-grid-community";
 
 import {
@@ -92,7 +94,41 @@ export default function StudentsPage() {
       headerComponent: GridHeaderCustomMenu,
       headerComponentParams: {
         icon: Clock,
-        children: AZFilters,
+
+        children: (params: IHeaderParams) => {
+  const [currentModel, setCurrentModel] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    (async () => {
+      const filter = await (params.api as GridApi).getColumnFilterInstance(params.column.getColId());
+      if (filter) {
+        const model = filter.getModel();
+        setCurrentModel(typeof model === "string" ? model : model?.toLowerCase?.() || null);
+      }
+    })();
+  }, [params.api, params.column]);
+
+  const onModelChange = async (value: string | null) => {
+    const filter = await (params.api as GridApi).getColumnFilterInstance(params.column.getColId());
+    if (filter) {
+      filter.setModel(value || null);
+      params.api.onFilterChanged();
+      setCurrentModel(value);
+    }
+  };
+
+  return (
+    <AZFilters
+      {...params}
+      model={currentModel}
+      onModelChange={onModelChange}
+      availableValues={studentShifts}
+    />
+  );
+}
+
+
+
       },
       cellStyle: { padding: "0px 0px" },
       cellRenderer: AgGridCellSelector,
