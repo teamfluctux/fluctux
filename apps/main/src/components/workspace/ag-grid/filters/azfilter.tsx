@@ -50,9 +50,11 @@ export const AZFilters: React.FC<AZFilterProps> = (props) => {
       >
         Sort Z <MoveRight size={16} /> A
       </AgGridMenuListButton>
-      <AgGridMenuListButton icon={Eraser} onClick={handleSort.clearSort}>
-        Clear sorting
-      </AgGridMenuListButton>
+      {currentSort !== null && (
+        <AgGridMenuListButton icon={Eraser} onClick={handleSort.clearSort}>
+          Clear sorting
+        </AgGridMenuListButton>
+      )}
     </div>
   );
 };
