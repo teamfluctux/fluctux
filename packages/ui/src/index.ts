@@ -29,6 +29,7 @@ export * from "./toggle-group";
 export * from "./select";
 export * from "./checkbox";
 export * from "./avatar";
+export * from "./context-menu";
 
 export * from "./lib/utils";
 

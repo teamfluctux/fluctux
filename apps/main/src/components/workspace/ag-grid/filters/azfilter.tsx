@@ -8,7 +8,7 @@ interface AZFilterProps extends IHeaderParams {
   setSort: (order: "asc" | "desc" | null) => void;
 }
 
-export const AZFilters: React.FC<AZFilterProps> = (props) => {
+export const AZFilter: React.FC<AZFilterProps> = (props) => {
   const { handleSort, currentSort } = useSorting(props);
 
   return (

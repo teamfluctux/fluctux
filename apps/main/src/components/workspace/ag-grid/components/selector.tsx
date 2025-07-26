@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useImperativeHandle, useRef } from "react";
-import { ICellRendererParams } from "ag-grid-community";
+import React, { useState, useEffect, useImperativeHandle, useRef, forwardRef } from "react";
+import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
 
 import {
   Select,
@@ -12,15 +12,15 @@ import {
 } from "@fluctux/ui";
 
 // Define props for Cell Renderer
-interface ShiftSelectorProps extends ICellRendererParams {
+type ShiftSelectorProps = {
   // AG Grid provides 'value' directly from the 'field' specified in colDefs
   value: string;
   // pass available options as a prop if they are dynamic
   availableValues?: string[];
-}
+} & ICellRendererParams;
 
-// In cellrenderer we can access the value and availablesValues directly from props 
-export const AgGridCellSelector = React.forwardRef<any, ShiftSelectorProps>(
+// In cellrenderer we can access the value and availablesValues directly from props
+export const AgGridCellSelector = forwardRef<Omit<ICellRendererComp, "getGui">, ShiftSelectorProps>(
   (props, ref) => {
     // State to manage the selected value within the component
     const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -55,7 +55,7 @@ export const AgGridCellSelector = React.forwardRef<any, ShiftSelectorProps>(
       props.setValue?.(newItemValue);
     };
 
-    const shiftsOptions: string[] = props.availableValues || []
+    const shiftsOptions: string[] = props.availableValues || [];
 
     return (
       <Select value={selectedValue || ""} onValueChange={handleValueChange}>

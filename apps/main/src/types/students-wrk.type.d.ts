@@ -9,7 +9,7 @@ type Students = {
   section?: StudentSection | string;
   group?: string;
   batchNo?: number;
-  [key: string]: string | undefined | number;
+  [key: string]: string | undefined | number | boolean;
 };
 
 

@@ -1,23 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { AgGridReact } from "ag-grid-react";
-import {
-  ColDef,
-  ClientSideRowModelModule,
-  CsvExportModule,
-  themeQuartz,
-  iconSetMaterial,
-  NumberFilterModule,
-  TextFilterModule,
-  CustomFilterModule,
-  CellStyleModule,
-  ValidationModule,
-  ITextFilterParams,
-  ICellRendererParams,
-  IHeaderParams,
-} from "ag-grid-community";
+import { ColDef, ITextFilterParams } from "ag-grid-community";
 
 import {
+  FxCommandBox,
   Select,
   SelectContent,
   SelectGroup,
@@ -27,13 +13,20 @@ import {
   SelectValue,
 } from "@fluctux/ui";
 import {
-  AZFilters,
+  AZFilter,
+  MostLeastFilter,
   doesSelectFilterPass,
   SelectFilterAgGrid,
 } from "@/components/workspace/ag-grid/filters";
 import { AgGridCellSelector } from "@/components/workspace/ag-grid/components/selector";
 import { Clock, GitBranch, IdCard, UserRound, UsersRound } from "lucide-react";
-import { GridHeaderCustomMenu } from "@/components/workspace/ag-grid/components";
+import {
+  BasicInputAgGrid,
+  EditCellAgGrid,
+  GridHeaderCustomMenu,
+} from "@/components/workspace/ag-grid/components";
+import { AgGridComponent } from "@/components/workspace/ag-grid";
+import { EditStudentAgGrid } from "@/components/workspace/ag-grid/components/student-wrk/edit-student";
 
 const generateStudents = (): any[] => {
   const shifts: StudentShiftType[] = ["morning", "day", "none"];
@@ -55,6 +48,7 @@ const generateStudents = (): any[] => {
 };
 
 const studentShifts = ["morning", "day", "none"];
+
 const STUDENTS_SUBJECT_GROUP = [
   "science",
   "commerce",
@@ -73,10 +67,16 @@ export default function StudentsPage() {
     {
       field: "id",
       headerComponent: GridHeaderCustomMenu,
+      cellStyle: { padding: "0px 0px" },
       headerComponentParams: {
         icon: IdCard,
-        children: AZFilters,
+        children: MostLeastFilter,
         doesShowFilter: true,
+      },
+      cellRenderer: EditCellAgGrid,
+      cellRendererParams: {
+        isEnableRightClickEdit: true,
+        contextMenuComp: <EditStudentAgGrid />,
       },
       filter: "agNumberColumnFilter",
       filterParams: {
@@ -88,7 +88,7 @@ export default function StudentsPage() {
       headerComponent: GridHeaderCustomMenu,
       headerComponentParams: {
         icon: UserRound,
-        children: AZFilters,
+        children: AZFilter,
         doesShowFilter: true,
       },
       // example of custom filter
@@ -104,7 +104,7 @@ export default function StudentsPage() {
       headerComponent: GridHeaderCustomMenu,
       headerComponentParams: {
         icon: Clock,
-        children: AZFilters,
+        children: AZFilter,
       },
       cellStyle: { padding: "0px 0px" },
       cellRenderer: AgGridCellSelector,
@@ -125,18 +125,18 @@ export default function StudentsPage() {
       field: "section",
       headerComponent: GridHeaderCustomMenu,
       headerComponentParams: {
-        icon: GitBranch ,
-        children: AZFilters
+        icon: GitBranch,
+        children: AZFilter,
       },
     },
     {
       field: "group",
       headerComponent: GridHeaderCustomMenu,
       headerComponentParams: {
-        icon: UsersRound  ,
-        children: AZFilters
+        icon: UsersRound,
+        children: AZFilter,
       },
-      
+
       cellStyle: { padding: "0px 0px" },
       cellRenderer: AgGridCellSelector,
       cellRendererParams: {
@@ -154,38 +154,6 @@ export default function StudentsPage() {
     { field: "email" },
     { field: "phone" },
   ]);
-
-  const customTheme = themeQuartz
-    .withParams({
-      backgroundColor: "transparent",
-      foregroundColor: "var(--foreground-color-2)",
-      headerTextColor: "var(--foreground-color-4)",
-      headerBackgroundColor: "var(--background-color-850C)",
-      oddRowBackgroundColor: "transparent",
-      headerColumnResizeHandleColor: "var(--background-color-700C)",
-      borderColor: "var(--border-color-1)",
-      fontSize: "14px",
-      columnBorder: { style: "solid", color: "var(--border-color-1)" },
-      wrapperBorder: false,
-      wrapperBorderRadius: 0,
-      rowHoverColor: "var(--background-color-900C)",
-      rangeSelectionBorderColor: "var(--primary-color)",
-      rangeSelectionBorderStyle: "solid",
-      menuBackgroundColor: "var(--background-color-900C)",
-      menuBorder: { style: "solid", color: "var(--border-color-1)" },
-      inputBackgroundColor: "var(--background-color-800C)",
-      buttonVerticalPadding: "5px",
-      buttonBackgroundColor: "var(--background-color-800C)",
-      buttonActiveBackgroundColor: "var(--surface-indigo-bg-active)",
-      buttonActiveBorder: {
-        style: "solid",
-        color: "var(--surface-indigo-bg-active)",
-      },
-      inputPlaceholderTextColor: "var(--foreground-color-3)",
-      pickerListBackgroundColor: "var(--background-color-900C)",
-      pickerButtonBackgroundColor: "var(--background-color-800C)",
-    })
-    .withPart(iconSetMaterial);
 
   return (
     <div className="w-full">
@@ -217,25 +185,9 @@ export default function StudentsPage() {
         </Select>
       </div>
       <div className="h-[calc(100vh-91px)]">
-        <AgGridReact
-          loading={false}
-          className="custom-scrollbar-color"
-          theme={customTheme}
-          rowData={rowData}
-          columnDefs={colDefs}
-          // to enable custom filter
-          enableFilterHandlers={true}
-          modules={[
-            ClientSideRowModelModule,
-            CsvExportModule,
-            NumberFilterModule,
-            CellStyleModule,
-            TextFilterModule,
-            CustomFilterModule,
-            ValidationModule,
-          ]}
-        />
+        <AgGridComponent rowData={rowData} colDefs={colDefs} />
       </div>
+    
     </div>
   );
 }
