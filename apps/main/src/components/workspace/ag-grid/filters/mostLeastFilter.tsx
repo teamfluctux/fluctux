@@ -9,8 +9,7 @@ interface AZFilterProps extends IHeaderParams {
 }
 
 export const AZFilters: React.FC<AZFilterProps> = (props) => {
-  const { handleSort, currentSort } = useSorting(props);
-
+  const {handleSort, currentSort} = useSorting(props)
   return (
     <div>
       <AgGridMenuListButton
@@ -18,14 +17,14 @@ export const AZFilters: React.FC<AZFilterProps> = (props) => {
         onClick={handleSort.sortAsc}
         active={currentSort === "asc"}
       >
-        Sort A <MoveRight size={16} /> Z
+        Most <MoveRight size={16} /> Least
       </AgGridMenuListButton>
       <AgGridMenuListButton
         icon={ArrowUpAZ}
         onClick={handleSort.sortDesc}
         active={currentSort === "desc"}
       >
-        Sort Z <MoveRight size={16} /> A
+        Least <MoveRight size={16} /> Most
       </AgGridMenuListButton>
       {currentSort !== null && (
         <AgGridMenuListButton icon={Eraser} onClick={handleSort.clearSort}>

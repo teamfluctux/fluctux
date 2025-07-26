@@ -32,7 +32,7 @@ import {
   SelectFilterAgGrid,
 } from "@/components/workspace/ag-grid/filters";
 import { AgGridCellSelector } from "@/components/workspace/ag-grid/components/selector";
-import { Clock } from "lucide-react";
+import { Clock, GitBranch, IdCard, UserRound, UsersRound } from "lucide-react";
 import { GridHeaderCustomMenu } from "@/components/workspace/ag-grid/components";
 
 const generateStudents = (): any[] => {
@@ -42,7 +42,7 @@ const generateStudents = (): any[] => {
   const classes = ["6", "7", "8", "9", "10"];
 
   return Array.from({ length: 20 }, (_, i) => ({
-    id: `30${i + 1}`,
+    id: parseInt(`30${i + 1}`),
     name: `Student ${i + 1}`,
     class: classes[i % classes.length],
     shift: shifts[i % shifts.length],
@@ -72,13 +72,25 @@ export default function StudentsPage() {
   const [colDefs, setColDefs] = useState<ColDef<Students>[]>([
     {
       field: "id",
-      filter: "agTextColumnFilter",
+      headerComponent: GridHeaderCustomMenu,
+      headerComponentParams: {
+        icon: IdCard,
+        children: AZFilters,
+        doesShowFilter: true,
+      },
+      filter: "agNumberColumnFilter",
       filterParams: {
         buttons: ["reset"],
       },
     },
     {
       field: "name",
+      headerComponent: GridHeaderCustomMenu,
+      headerComponentParams: {
+        icon: UserRound,
+        children: AZFilters,
+        doesShowFilter: true,
+      },
       // example of custom filter
       // filter: { component: UserRawNameFilter, doesFilterPass: doesFilterPass },
       cellStyle: { color: "var(--foreground)", fontWeight: 500 },
@@ -109,9 +121,22 @@ export default function StudentsPage() {
         } as SelectFilterParams,
       },
     },
-    { field: "section" },
+    {
+      field: "section",
+      headerComponent: GridHeaderCustomMenu,
+      headerComponentParams: {
+        icon: GitBranch ,
+        children: AZFilters
+      },
+    },
     {
       field: "group",
+      headerComponent: GridHeaderCustomMenu,
+      headerComponentParams: {
+        icon: UsersRound  ,
+        children: AZFilters
+      },
+      
       cellStyle: { padding: "0px 0px" },
       cellRenderer: AgGridCellSelector,
       cellRendererParams: {
