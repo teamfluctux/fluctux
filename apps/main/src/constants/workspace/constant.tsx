@@ -87,7 +87,7 @@ export const ACCOUNT_MENU_ITEMS = [
     icon: <CreditCard size={LUCIDE_WORKSPACE_ICON_SIZE} />,
   },
   {
-    label: "Settings",
+    label: "Account settings",
     slug: "#",
     icon: <Settings size={LUCIDE_WORKSPACE_ICON_SIZE} />,
   },

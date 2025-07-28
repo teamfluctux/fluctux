@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { ColDef, ITextFilterParams } from "ag-grid-community";
 
 import {
-  FxCommandBox,
   Select,
   SelectContent,
   SelectGroup,
@@ -20,13 +19,12 @@ import {
 } from "@/components/workspace/ag-grid/filters";
 import { AgGridCellSelector } from "@/components/workspace/ag-grid/components/selector";
 import { Clock, GitBranch, IdCard, UserRound, UsersRound } from "lucide-react";
-import {
-  BasicInputAgGrid,
-  EditCellAgGrid,
-  GridHeaderCustomMenu,
-} from "@/components/workspace/ag-grid/components";
 import { AgGridComponent } from "@/components/workspace/ag-grid";
-import { EditStudentAgGrid } from "@/components/workspace/ag-grid/components/student-wrk/edit-student";
+import {
+  EditCellListBtn,
+  GridHeaderCustomMenu,
+  ManageCellWithContextMenu,
+} from "@/components/workspace/ag-grid/components";
 
 const generateStudents = (): any[] => {
   const shifts: StudentShiftType[] = ["morning", "day", "none"];
@@ -58,7 +56,7 @@ const STUDENTS_SUBJECT_GROUP = [
   "none",
 ];
 
-export default function StudentsPage() {
+export default function StudentsListGrid() {
   // Row Data: The data to be displayed.
   const [rowData, setRowData] = useState<Students[]>(generateStudents);
 
@@ -73,10 +71,10 @@ export default function StudentsPage() {
         children: MostLeastFilter,
         doesShowFilter: true,
       },
-      cellRenderer: EditCellAgGrid,
+      cellRenderer: ManageCellWithContextMenu,
       cellRendererParams: {
         isEnableRightClickEdit: true,
-        contextMenuComp: <EditStudentAgGrid />,
+        contextMenuComp: <EditCellListBtn />,
       },
       filter: "agNumberColumnFilter",
       filterParams: {
@@ -187,7 +185,6 @@ export default function StudentsPage() {
       <div className="h-[calc(100vh-91px)]">
         <AgGridComponent rowData={rowData} colDefs={colDefs} />
       </div>
-    
     </div>
   );
 }

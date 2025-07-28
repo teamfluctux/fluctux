@@ -33,7 +33,7 @@ type EditCellAgGridType = {
   contextMenuComp: React.ReactNode
 } & ICellRendererParams;
 
-export const EditCellAgGrid = forwardRef<
+export const ManageCellWithContextMenu = forwardRef<
   Omit<ICellRendererComp, "getGui">,
   EditCellAgGridType
 >((props, ref) => {
