@@ -7,6 +7,7 @@ import {
   Layers,
   LayoutDashboard,
   ListChecks,
+  LucideIcon,
   Megaphone,
   PenLine,
   ReceiptText,
@@ -17,6 +18,59 @@ import Link from "next/link";
 import React from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@fluctux/ui";
+
+type WorkspaceListType = {
+  icon: LucideIcon;
+  label: string;
+  slug: string;
+  order: number;
+};
+
+// remove from here. now its temporary
+const WORKSPACELISTS: WorkspaceListType[] = [
+  {
+    icon: UsersRound,
+    label: "Students",
+    slug: "/orgid/students",
+    order: 1,
+  },
+  {
+    icon: PenLine,
+    label: "Exams",
+    slug: "/orgid/exams",
+    order: 4,
+  },
+  {
+    icon: ListChecks,
+    label: "Routines",
+    slug: "/orgid/routines",
+    order: 3,
+  },
+  {
+    icon: UserRoundCheck,
+    label: "Attendees",
+    slug: "/orgid/attendees",
+    order: 5,
+  },
+  {
+    icon: GraduationCap,
+    label: "Teachers",
+    slug: "/orgid/teachers",
+    order: 2,
+  },
+  {
+    icon: Megaphone,
+    label: "Notices",
+    slug: "/orgid/notices",
+    order: 6,
+  },
+  {
+    icon: ReceiptText,
+    label: "Forms",
+    slug: "/orgid/forms",
+    order: 7,
+  },
+];
 
 export const SidebarBottom = () => {
   return (
@@ -66,7 +120,9 @@ export const SidebarBottom = () => {
                 </div>
                 <div>
                   <p>My Team</p>
-                  <p className="text-text-color_3 text-[10px] font-weight_450">200+ Members</p>
+                  <p className="text-text-color_3 text-[10px] font-weight_450">
+                    200+ Members
+                  </p>
                 </div>
               </WorkSpaceLinkList>
               <WorkSpaceLinkList>
@@ -95,7 +151,9 @@ export const SidebarBottom = () => {
                 </div>
                 <div>
                   <p className="one-line-ellipsis">Another Team</p>
-                  <p className="text-text-color_3 text-[10px] font-weight_450">200+ Members</p>
+                  <p className="text-text-color_3 text-[10px] font-weight_450">
+                    200+ Members
+                  </p>
                 </div>
               </WorkSpaceLinkList>
             </ul>
@@ -107,17 +165,13 @@ export const SidebarBottom = () => {
             </p>
 
             <ul>
-              <WorkSpaceLinkList icon={UsersRound} slug="/orgid/students">Students</WorkSpaceLinkList>
-              <WorkSpaceLinkList icon={PenLine}>Exams</WorkSpaceLinkList>
-              <WorkSpaceLinkList icon={ListChecks}>Routines</WorkSpaceLinkList>
-              <WorkSpaceLinkList icon={UserRoundCheck}>
-                Attendees
-              </WorkSpaceLinkList>
-              <WorkSpaceLinkList icon={GraduationCap}>
-                Teachers
-              </WorkSpaceLinkList>
-              <WorkSpaceLinkList icon={Megaphone}>Notices</WorkSpaceLinkList>
-              <WorkSpaceLinkList icon={ReceiptText}>Forms</WorkSpaceLinkList>
+              {WORKSPACELISTS.map((item, index) => {
+                return (
+                  <WorkSpaceLinkList key={index} icon={item.icon} slug={`${item.slug}`}>
+                    {item.label}
+                  </WorkSpaceLinkList>
+                );
+              })}
             </ul>
           </div>
         </div>
