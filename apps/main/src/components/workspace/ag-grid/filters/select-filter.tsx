@@ -11,6 +11,7 @@ interface DoesSelectFilterPassParams {
   handlerParams: {
     getValue: (node: IRowNode) => any;
   };
+  availableValues: string[];
 }
 
 export const doesSelectFilterPass: ({
@@ -31,11 +32,8 @@ export const doesSelectFilterPass: ({
   return value?.toString().toLowerCase() === model.toLowerCase();
 };
 
-export const SelectFilterAgGrid = ({
-  model,
-  onModelChange,
-  colDef,
-}: CustomFilterDisplayProps) => {
+export const SelectFilterAgGrid = (props: CustomFilterDisplayProps) => {
+  const { colDef, model, onModelChange } = props;
   // In filterParams, we can pass the availableValues and can access it via colDef.filter.filterParams
   const availableValues =
     (colDef?.filter.filterParams as SelectFilterParams)?.availableValues || [];
