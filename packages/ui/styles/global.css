@@ -846,3 +846,11 @@ pre:has(.focused):hover span {
   padding: 0px 0px !important;
   background-color: red !important;
 }
+
+.shadow_border {
+  box-shadow: 0 0 0 1px #1b1b1b, inset 0 0 0 1px var(--background);
+}
+
+.react-loading-skeleton{
+  line-height: 1.5 !important;
+}

@@ -1,0 +1,8 @@
+.excel_loader {
+      box-shadow: 0 0 0 1px var(--background), inset 0 0 0 1px var(--border-color-1);
+    }
+    
+    .excel_loader_header {
+    box-shadow: 0 0 0 1px var(--background-color-900C), inset 0 0 0 1px var(--border-color-1);
+
+}

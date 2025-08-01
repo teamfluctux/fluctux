@@ -82,7 +82,7 @@ export const WorkspaceSidebar = () => {
       }}
       style={{ position: "unset" }}
       className={cn(
-        "overflow-hidden transition-all duration-500 bg-background-color_950C rnd-workspace-sidebar",
+        "overflow-hidden transition-all z-50 duration-500 bg-background-color_950C rnd-workspace-sidebar",
         isSidebarOpen ? "left-[0%_!important]" : "left-[-100%_!important]"
       )}
       onResize={(e, direction, ref, delta, position) => {
@@ -122,7 +122,7 @@ export const WorkspaceSidebar = () => {
             </div>
             <FxButton
               variant="ghost_zinc"
-              className="w-[25px] h-[25px] fx-flex-center rounded-tiny group"
+              className="w-[25px] h-[25px] fx-flex-center rounded-tiny group transition-none"
             >
               <Settings
                 className="text-text-svg_default group-hover:text-text-color_1 transition-colors"
@@ -193,7 +193,7 @@ export const WorkspaceSidebar = () => {
             <PopoverTrigger asChild>
               <div
                 className={cn(
-                  "fx-flex-cl w-full rounded-tiny hover:bg-background-color_900C gap-2 transition-colors cursor-pointer p-1",
+                  "fx-flex-cl w-full rounded hover:bg-background-color_900C gap-2 transition-colors cursor-pointer p-1",
                   isAccountMenuOpen ? "bg-background-color_800C" : ""
                 )}
               >

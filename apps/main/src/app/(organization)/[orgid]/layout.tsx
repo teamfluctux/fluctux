@@ -62,7 +62,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
     } else {
       setSidebarSize(250); // Default value
     }
-  }, []);
+  }, [parentRef]);
 
   if (sidebarSize === null)
     return (
@@ -80,9 +80,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
         value={{ parentRef, sidebarSize, setSidebarSize }}
       >
         <div
-          className={cn(
-            "flex justify-center items-center w-full overflow-hidden"
-          )}
+          className={cn("grid w-full grid-cols-[auto_1fr] bg-background-color_950C overflow-hidden")}
         >
           <WorkspaceSidebar />
           {/* ==========================================================================
@@ -90,7 +88,9 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
       ========================================================================== */}
           <div
             ref={parentRef}
-            className={cn("w-full h-screen bg-background-color_925C relative")}
+            className={cn(
+              `h-screen bg-background-color_925C relative w-full`
+            )}
           >
             <div className="border-b border-border-color_1 w-full h-[40px] sticky top-0 fx-flex-center">
               {/* SIDEBAR TOGGLE BUTTON */}
