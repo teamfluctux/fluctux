@@ -10,7 +10,7 @@ import { Clock, GitBranch, IdCard, UserRound, UsersRound } from "lucide-react";
 import { ColDef, ICellRendererParams, ITextFilterParams } from "ag-grid-community";
 
 import {
-  ViewStudentPopup,
+  ContextMenuForStudentIdCol,
   GridHeaderCustomMenu,
   ManageCellWithContextMenu,
 } from "@/components/workspace/ag-grid/components";
@@ -66,7 +66,7 @@ export const DynamicStudentGrid = () => {
       cellRenderer: ManageCellWithContextMenu,
       cellRendererParams: (props: ICellRendererParams) => ({
         isEnableRightClickEdit: true,
-        contextMenuComp: <ViewStudentPopup {...props} />,
+        contextMenuComp: <ContextMenuForStudentIdCol {...props} />,
       }),
       filter: "agNumberColumnFilter",
       filterParams: {

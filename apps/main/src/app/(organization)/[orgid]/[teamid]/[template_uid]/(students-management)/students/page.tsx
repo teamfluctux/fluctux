@@ -10,10 +10,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@fluctux/ui";
-import { ViewStudentPopupObserver } from "@/components/workspace/ag-grid/components/students-management/view-popup-comp";
+
 import dynamic from "next/dynamic";
 import Skeleton from "react-loading-skeleton";
 import { GridLoader } from "@/components/workspace/loader";
+import { ViewStudentPopupObserver } from "@/components/workspace/student-management";
 
 const DynamicStudentGrid = dynamic(
   () => import("./dynamic-grid").then((module) => module.DynamicStudentGrid),

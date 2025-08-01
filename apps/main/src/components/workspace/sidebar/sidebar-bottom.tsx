@@ -167,7 +167,7 @@ export const SidebarBottom = () => {
             <ul>
               {WORKSPACELISTS.map((item, index) => {
                 return (
-                  <WorkSpaceLinkList key={index} icon={item.icon} slug={`${item.slug}`}>
+                  <WorkSpaceLinkList key={index} icon={item.icon}>
                     {item.label}
                   </WorkSpaceLinkList>
                 );

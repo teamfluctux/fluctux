@@ -5,6 +5,7 @@ export const GridLoader = () => {
             {Array.from({ length: 10 }).map((item, i) => {
               return (
                 <div
+                key={i}
                   className={` ${i > 0 ? "w-[200px]" : "w-full"}  h-full excel_loader`}
                 >
                   <div className="w-full h-[50px] bg-background-color_900C excel_loader_header px-3 flex justify-center items-center">
@@ -12,7 +13,7 @@ export const GridLoader = () => {
                   </div>
                   {Array.from({ length: 15 }).map((item, i) => {
                     return (
-                      <div className="w-full h-[50px] excel_loader px-3 flex justify-center items-center">
+                      <div key={i} className="w-full h-[50px] excel_loader px-3 flex justify-center items-center">
                         <div className={`w-full`}>
                           <Skeleton height={20} />
                         </div>

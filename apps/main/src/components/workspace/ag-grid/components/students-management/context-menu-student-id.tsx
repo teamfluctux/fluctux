@@ -17,18 +17,17 @@ type ViewStudentPopupType = {
   icon?: keyof typeof editIcons;
 } & ICellRendererParams;
 
-export const ViewStudentPopup: React.FC<ViewStudentPopupType> = (props) => {
+export const ContextMenuForStudentIdCol: React.FC<ViewStudentPopupType> = (
+  props
+) => {
   const { label, icon, value } = props;
   const TempEditIcon = (icon && editIcons[icon]) || editIcons.edit_1;
-  
 
   return (
     <>
       <ContextMenuItem
         inset
-        onClick={() =>
-          studentManagementStore.setViewStudentPopup(true, value)
-        }
+        onClick={() => studentManagementStore.setViewStudentPopup(true, value)}
       >
         {label ?? "Edit Student"}
         <ContextMenuShortcut>
