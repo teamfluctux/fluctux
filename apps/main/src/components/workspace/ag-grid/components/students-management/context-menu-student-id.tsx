@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { ContextMenuItem, ContextMenuShortcut } from "@fluctux/ui";
-import { LucideIcon, SquarePen } from "lucide-react";
+import { Eye, LucideIcon, SquarePen } from "lucide-react";
 import { studentManagementStore } from "@/services/stores";
 import { observer } from "mobx-react";
 import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
@@ -22,16 +22,16 @@ export const ContextMenuForStudentIdCol: React.FC<ViewStudentPopupType> = (
 ) => {
   const { label, icon, value } = props;
   const TempEditIcon = (icon && editIcons[icon]) || editIcons.edit_1;
-
+  
   return (
     <>
       <ContextMenuItem
         inset
         onClick={() => studentManagementStore.setViewStudentPopup(true, value)}
       >
-        {label ?? "Edit Student"}
+        {label ?? "View Student"}
         <ContextMenuShortcut>
-          <TempEditIcon size={16} />
+          <Eye size={16} />
         </ContextMenuShortcut>
       </ContextMenuItem>
     </>

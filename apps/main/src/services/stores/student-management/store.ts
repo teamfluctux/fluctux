@@ -1,14 +1,18 @@
+import { StudentType } from "@fluctux/types";
 import { makeObservable, observable, action } from "mobx";
 
 class StudentManagementStore {
   isViewStudentPopup: boolean = false;
   student_id: string = "";
+  student_type: StudentType = "basic";
 
   constructor() {
     makeObservable(this, {
       isViewStudentPopup: observable,
       student_id: observable,
+      student_type: observable,
       setViewStudentPopup: action,
+      setStudentType: action,
     });
   }
 
@@ -17,8 +21,16 @@ class StudentManagementStore {
     this.isViewStudentPopup = value || false;
   }
 
-  get getStudentID(){
-    return this.student_id
+  setStudentType(value: StudentType) {
+    this.student_type = value;
+  }
+
+  get getStudentID() {
+    return this.student_id;
+  }
+
+  get getStudentType() {
+    return this.student_type;
   }
 }
 

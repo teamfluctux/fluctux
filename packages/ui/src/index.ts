@@ -30,6 +30,8 @@ export * from "./select";
 export * from "./checkbox";
 export * from "./avatar";
 export * from "./context-menu";
+export * from "./chart";
+export * from "./card";
 
 export * from "./lib/utils";
 

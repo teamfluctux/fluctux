@@ -14,17 +14,22 @@ import {
   Clock,
   Copy,
   CreditCard,
+  File,
   FileUser,
   Flag,
   GraduationCap,
   HeartHandshake,
+  Image,
   LayoutDashboard,
   LucideIcon,
   NotebookPen,
+  SquarePlay,
   UserRound,
   X,
 } from "lucide-react";
 import { observer } from "mobx-react";
+import { useCallback, useEffect, useRef } from "react";
+import { StudentDashboard } from "./dashboard";
 
 type StudentsAdminSidebarNavItemsType = {
   [key: string]: {
@@ -73,6 +78,23 @@ const STUDENTS_ADMIN_SIDEBAR_NAV_ITEMS: StudentsAdminSidebarNavItemsType = {
       icon: Award,
     },
   ],
+  "Media & Files": [
+    {
+      label: "Images",
+      slug: "",
+      icon: Image,
+    },
+    {
+      label: "Videos",
+      slug: "",
+      icon: SquarePlay,
+    },
+    {
+      label: "Other Files",
+      slug: "",
+      icon: File,
+    },
+  ],
   "Students Information": [
     {
       label: "Personal Details",
@@ -99,7 +121,20 @@ const STUDENTS_ADMIN_SIDEBAR_NAV_ITEMS: StudentsAdminSidebarNavItemsType = {
   ],
 };
 
+const StudentDashboardObserver = observer(() => {
+  useEffect(() => {
+    studentManagementStore.setStudentType("university");
+  }, []);
+  return (
+    <div className="w-full h-[5000px] p-3">
+      <StudentDashboard />
+    </div>
+  );
+});
+
 export const ViewStudentPopupObserver = observer(() => {
+  const popupBoxRef = useRef<HTMLDivElement | null>(null);
+
   return (
     <FxCommandBox
       open={studentManagementStore.isViewStudentPopup}
@@ -114,7 +149,7 @@ export const ViewStudentPopupObserver = observer(() => {
         <X size={LUCIDE_WORKSPACE_ICON_SIZE} />
       </FxButton>
 
-      <div className="w-full h-full overflow-y-auto">
+      <div className="w-full h-full overflow-y-auto" ref={popupBoxRef}>
         <div className="w-full">
           <div className="w-full h-fit relative border-b border-border-color_1">
             <div className="absolute w-[120px] h-[120px] bottom-5 left-8 rounded-rounded_10C border border-border-color_1 bg-background-color_800C "></div>
@@ -156,7 +191,7 @@ export const ViewStudentPopupObserver = observer(() => {
           </div>
         </div>
         <div className="grid grid-cols-[auto_1fr] w-full h-full sticky top-0">
-          <div className="w-[200px] p-2 h-full border-r border-border-color_1 sticky top-0 ">
+          <div className="w-[200px] p-2 h-[600px] border-r border-border-color_1 sticky top-0 overflow-y-auto hide-scrollbar ">
             {Object.entries(STUDENTS_ADMIN_SIDEBAR_NAV_ITEMS).map(
               ([key, value], i) => {
                 return (
@@ -168,6 +203,11 @@ export const ViewStudentPopupObserver = observer(() => {
                       {value.map((item, j) => {
                         return (
                           <WorkSpaceLinkList
+                            onClick={() => {
+                              popupBoxRef.current?.scrollIntoView({
+                                behavior: "smooth",
+                              });
+                            }}
                             icon={item.icon}
                             key={`${i}${j}-${item.slug}`}
                           >
@@ -183,7 +223,8 @@ export const ViewStudentPopupObserver = observer(() => {
           </div>
 
           {/* right side content */}
-          <div className="w-full h-[5000px]"></div>
+
+          <StudentDashboardObserver />
         </div>
       </div>
       {/* {studentManagementStore.getStudentID} */}

@@ -1,16 +1,18 @@
 import { Ban, LucideIcon } from "lucide-react";
 import Link, { LinkProps } from "next/link";
 
+type WorkSpaceLinkListProps = {
+  icon?: LucideIcon;
+  active?: boolean;
+  children?: React.ReactNode;
+} & React.LiHTMLAttributes<HTMLLIElement>;
+
 export const WorkSpaceLinkList = ({
   icon,
   children,
   active = false,
   ...props
-}: {
-  icon?: LucideIcon;
-  active?: boolean;
-  children?: React.ReactNode;
-}) => {
+}: WorkSpaceLinkListProps) => {
   const Icon = icon;
   return (
     <li
