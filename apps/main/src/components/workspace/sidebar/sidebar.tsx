@@ -16,13 +16,14 @@ import Link from "next/link";
 import {
   ACCOUNT_MENU_ITEMS,
   FIND_HELP_ITEMS,
-  ICON_DEFAULT_COLOR,
   WHATS_NEW_ITEMS,
 } from "@/constants/workspace";
 import { CommandMenuSkeleton, SidebarSkeletonLoading } from "./loading";
 import dynamic from "next/dynamic";
 import { useWorkspaceContext } from "@/context/workspace-context";
 import { useToggleOpen } from "@fluctux/hooks";
+import { mainSidebarStore } from "@/services/stores";
+import { observer } from "mobx-react";
 
 const DynamicSidebarBottom = dynamic(
   () =>
@@ -41,7 +42,7 @@ const DynamicSidebarCommandMenu = dynamic(
   }
 );
 
-export const WorkspaceSidebar = () => {
+export const WorkspaceSidebar = observer(() => {
   const { isOpen: isSidebarOpen, toggle: toggleSidebarOpen } = useToggleOpen({
     id: "workspace-sidebar-rnd",
   });
@@ -55,20 +56,23 @@ export const WorkspaceSidebar = () => {
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState<boolean | null>(
     null
   );
-  const { parentRef, sidebarSize, setSidebarSize } = useWorkspaceContext();
+  const { parentRef } = useWorkspaceContext();
 
   const saveWidth = useCallback(
     (width: string) => {
       localStorage.setItem("workspaceSidebarWidth", width);
     },
-    [sidebarSize]
+    [mainSidebarStore.getSidebarSize]
   );
 
   return (
     <Rnd
       minWidth={250}
       maxWidth={350}
-      size={{ width: sidebarSize?.toString() || "250px", height: "100%" }}
+      size={{
+        width: mainSidebarStore.getSidebarSize?.toString() || "250px",
+        height: "100%",
+      }}
       bounds="window"
       disableDragging={true}
       enableResizing={{
@@ -82,15 +86,15 @@ export const WorkspaceSidebar = () => {
       }}
       style={{ position: "unset" }}
       className={cn(
-        "overflow-hidden transition-all z-50 duration-500 bg-background-color_950C rnd-workspace-sidebar",
+        "overflow-hidden transition-all z-50 duration-500 bg-background-color_950C  rnd-workspace-sidebar",
         isSidebarOpen ? "left-[0%_!important]" : "left-[-100%_!important]"
       )}
       onResize={(e, direction, ref, delta, position) => {
         ref.style.transition = "none";
-        setSidebarSize(ref.offsetWidth);
+        mainSidebarStore.setSidebarSize(ref.offsetWidth);
       }}
       onResizeStop={(e, direction, ref, delta, position) => {
-        saveWidth(ref.style.width);
+        saveWidth(`${ref.offsetWidth}`);
       }}
     >
       <div className="w-full h-screen border-r border-border-color_1">
@@ -116,8 +120,12 @@ export const WorkspaceSidebar = () => {
                 </PopoverContent>
               </Popover>
               <div>
-              <h1 className="font-weight_450 text-[10px] text-text-color_2">NI, Org</h1>
-              <p className="one_line_ellipsis text-text-color_1 text-workspace_2 font-medium">Ni Mahins Team</p>
+                <h1 className="font-weight_450 text-[10px] text-text-color_2">
+                  NI, Org
+                </h1>
+                <p className="one_line_ellipsis text-text-color_1 text-workspace_2 font-medium">
+                  Ni Mahins Team
+                </p>
               </div>
             </div>
             <FxButton
@@ -246,4 +254,4 @@ export const WorkspaceSidebar = () => {
       </div>
     </Rnd>
   );
-};
+});

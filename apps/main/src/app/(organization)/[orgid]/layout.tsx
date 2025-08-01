@@ -6,6 +6,8 @@ import dynamic from "next/dynamic";
 import Skeleton from "react-loading-skeleton";
 import { workspaceContext } from "@/context/workspace-context";
 import { WorkspaceSidebar } from "@/components/workspace/sidebar";
+import { observer } from "mobx-react";
+import { mainSidebarStore } from "@/services/stores";
 
 interface WorkspaceLayoutProps {
   children: React.ReactNode;
@@ -47,24 +49,25 @@ const DynamicTaskBarAndTabs = dynamic(
   }
 );
 
-export default function Layout({ children }: WorkspaceLayoutProps) {
+const DynamicTaskBarObserver = observer(() => {
+  return mainSidebarStore.getSidebarSize !== null && <DynamicTaskBarAndTabs />;
+});
+
+const Layout = ({ children }: WorkspaceLayoutProps) => {
   // ==========================================================================
   //                                 Sidebar
   // ==========================================================================
-  const [sidebarSize, setSidebarSize] = useState<number | null>(null);
   const parentRef = useRef<HTMLDivElement | null>(null);
 
+  // simulating data seeding =========================
+  const [data, setData] = useState<string | null>(null);
   useEffect(() => {
-    // Load saved width from storage
-    const savedSize = localStorage.getItem("workspaceSidebarWidth");
-    if (savedSize) {
-      setSidebarSize(parseInt(savedSize, 10));
-    } else {
-      setSidebarSize(250); // Default value
-    }
-  }, [parentRef]);
+    setTimeout(() => {
+      setData("passed");
+    }, 1000);
+  }, []);
 
-  if (sidebarSize === null)
+  if (data !== "passed") {
     return (
       <>
         <div className="w-full h-screen fx-flex-center bg-background-color_950C">
@@ -72,15 +75,17 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
         </div>
       </>
     );
+  }
+  // ================data seeding end=================
 
   return (
     <>
       {/* for RND window tabs -> ./src/hooks/useTaskBar */}
-      <workspaceContext.Provider
-        value={{ parentRef, sidebarSize, setSidebarSize }}
-      >
+      <workspaceContext.Provider value={{ parentRef }}>
         <div
-          className={cn("grid w-full grid-cols-[auto_1fr] bg-background-color_950C overflow-hidden")}
+          className={cn(
+            "grid w-full grid-cols-[auto_1fr] bg-background-color_950C overflow-hidden"
+          )}
         >
           <WorkspaceSidebar />
           {/* ==========================================================================
@@ -88,9 +93,7 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
       ========================================================================== */}
           <div
             ref={parentRef}
-            className={cn(
-              `h-screen bg-background-color_925C relative w-full`
-            )}
+            className={cn(`h-screen bg-background-color_925C relative w-full`)}
           >
             <div className="border-b border-border-color_1 w-full h-[40px] sticky top-0 fx-flex-center">
               {/* SIDEBAR TOGGLE BUTTON */}
@@ -109,10 +112,12 @@ export default function Layout({ children }: WorkspaceLayoutProps) {
             {children}
 
             {/* taskbar uncomment this */}
-            {sidebarSize !== null && <DynamicTaskBarAndTabs />}
+            <DynamicTaskBarObserver />
           </div>
         </div>
       </workspaceContext.Provider>
     </>
   );
-}
+};
+
+export default Layout;

@@ -1,8 +1,7 @@
 import { CustomFilterDisplayProps, useGridFilterDisplay } from "ag-grid-react";
 import React from "react";
-import { ICellRendererParams, IRowNode } from "ag-grid-community";
-import { CircleOff, Eclipse, SunDim } from "lucide-react";
-import { LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
+import { IRowNode } from "ag-grid-community";
+
 import { getWorkSpaceHeaderMenuIcon } from "@/constants/workspace";
 
 interface DoesSelectFilterPassParams {

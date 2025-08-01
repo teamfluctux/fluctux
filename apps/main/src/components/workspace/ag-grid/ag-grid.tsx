@@ -1,7 +1,6 @@
 import React from "react";
 import { AgGridReact } from "ag-grid-react";
 import {
-  ColDef,
   ClientSideRowModelModule,
   CsvExportModule,
   themeQuartz,
@@ -11,9 +10,6 @@ import {
   CustomFilterModule,
   CellStyleModule,
   ValidationModule,
-  ITextFilterParams,
-  ICellRendererParams,
-  IHeaderParams,
   TooltipModule,
 } from "ag-grid-community";
 
