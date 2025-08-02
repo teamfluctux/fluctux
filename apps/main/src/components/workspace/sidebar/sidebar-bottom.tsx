@@ -1,4 +1,3 @@
-import { WorkSpaceLinkList } from "@/components/ui";
 import {
   Flag,
   GraduationCap,
@@ -17,7 +16,12 @@ import {
 import Link from "next/link";
 import React from "react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@fluctux/ui";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  WorkSpaceLinkList,
+} from "@fluctux/ui";
 
 type WorkspaceListType = {
   icon: LucideIcon;

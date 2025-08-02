@@ -1,5 +1,5 @@
-import { Ban, LucideIcon } from "lucide-react";
-import Link, { LinkProps } from "next/link";
+import React from "react";
+import { LucideIcon } from "lucide-react";
 
 type WorkSpaceLinkListProps = {
   icon?: LucideIcon;

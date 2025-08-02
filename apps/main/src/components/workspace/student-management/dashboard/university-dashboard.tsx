@@ -1,5 +1,5 @@
 import { FxButton, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
-import { Ellipsis, Tag } from "lucide-react";
+import { ChartColumn, Ellipsis, Tag } from "lucide-react";
 import React from "react";
 import { ChartAreaInteractive } from "../../charts";
 
@@ -41,7 +41,7 @@ export const UniversityDashboard = () => {
         <div className="w-full border border-border-color_1 bg-background-color_900C p-3 rounded-rounded_10C">
           <div className="flex justify-between items-center">
             <div className="flex justify-start items-center gap-2">
-              <Tag size={LUCIDE_WORKSPACE_ICON_SIZE} />
+              <ChartColumn size={LUCIDE_WORKSPACE_ICON_SIZE} />
               <p className="text-workspace_2 font-medium text-text-color_2">
                 Grade point Average
               </p>

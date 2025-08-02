@@ -101,7 +101,7 @@ export const WorkspaceSidebar = observer(() => {
         {/* ==========================================================================
                                             Top sidebar
           ========================================================================== */}
-        <div className="w-full border-b border-border-color_1 h-fit">
+        <div className="w-full h-fit">
           <div className="w-full p-2 fx-flex-between-ic">
             <div className="flex justify-start items-center gap-2">
               <Popover onOpenChange={(open) => setIsCommandOpen(open)}>

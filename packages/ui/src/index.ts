@@ -32,6 +32,8 @@ export * from "./avatar";
 export * from "./context-menu";
 export * from "./chart";
 export * from "./card";
+export * from "./object-list-array";
+export * from "./workspace-link-list";
 
 export * from "./lib/utils";
 

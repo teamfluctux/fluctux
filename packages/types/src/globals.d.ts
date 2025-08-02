@@ -23,3 +23,11 @@ export type FileType =
   | "npm"
   | "turbo"
   | "prettier";
+
+export type ObjectListArrayType = {
+  [key: string]: {
+    label: string;
+    slug: string;
+    icon: LucideIcon;
+  }[];
+};
