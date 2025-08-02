@@ -93,9 +93,9 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
       ========================================================================== */}
           <div
             ref={parentRef}
-            className={cn(`h-screen bg-background-color_925C relative w-full`)}
+            className={cn(`h-screen bg-background-color_925C relative w-full  overflow-y-auto`)}
           >
-            <div className="border-b border-border-color_1 w-full h-[40px] sticky top-0 fx-flex-center">
+            <div className="border-b border-border-color_1 w-full h-[40px] sticky z-[999] bg-background-color_925C top-0 fx-flex-center">
               {/* SIDEBAR TOGGLE BUTTON */}
               {/* <div
                 className="w-[30px] h-[30px] fx-flex-center rounded-[5px] absolute left-1 hover:bg-background-color_3 cursor-pointer z-[50] text-text-svg_default hover:text-text-color_1"

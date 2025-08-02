@@ -38,17 +38,23 @@ const WORKSPACELISTS: WorkspaceListType[] = [
     slug: "/orgid/students",
     order: 1,
   },
+    {
+    icon: GraduationCap,
+    label: "Courses",
+    slug: "/orgid/students",
+    order: 2,
+  },
   {
     icon: PenLine,
     label: "Exams",
     slug: "/orgid/exams",
-    order: 4,
+    order: 3,
   },
   {
     icon: ListChecks,
     label: "Routines",
     slug: "/orgid/routines",
-    order: 3,
+    order: 4,
   },
   {
     icon: UserRoundCheck,
@@ -60,19 +66,19 @@ const WORKSPACELISTS: WorkspaceListType[] = [
     icon: GraduationCap,
     label: "Teachers",
     slug: "/orgid/teachers",
-    order: 2,
+    order: 6,
   },
   {
     icon: Megaphone,
     label: "Notices",
     slug: "/orgid/notices",
-    order: 6,
+    order: 7,
   },
   {
     icon: ReceiptText,
     label: "Forms",
     slug: "/orgid/forms",
-    order: 7,
+    order: 8,
   },
 ];
 
