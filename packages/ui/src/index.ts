@@ -1,4 +1,5 @@
 "use client";
+// components
 export * from "./collapsible";
 export * from "./command";
 export * from "./constant";
@@ -32,11 +33,14 @@ export * from "./avatar";
 export * from "./context-menu";
 export * from "./chart";
 export * from "./card";
+export * from "./label";
 export * from "./object-list-array";
 export * from "./workspace-link-list";
 
+// utilities & libs
 export * from "./lib/utils";
 
+// icons
 export * from "./icons/fav-icon";
 export * from "./icons/discord-icon";
 export * from "./icons/github-circle-icon";
@@ -48,4 +52,5 @@ export * from "./icons/slack";
 export * from "./icons/code";
 export * from "./icons/type";
 
+// animations
 export * from "./motions";

@@ -7,7 +7,7 @@ import Skeleton from "react-loading-skeleton";
 import { workspaceContext } from "@/context/workspace-context";
 import { WorkspaceSidebar } from "@/components/workspace/sidebar";
 import { observer } from "mobx-react";
-import { mainSidebarStore } from "@/services/stores";
+import { mainSidebarStore, workspaceStore } from "@/services/stores";
 
 interface WorkspaceLayoutProps {
   children: React.ReactNode;
@@ -59,15 +59,16 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
   // ==========================================================================
   const parentRef = useRef<HTMLDivElement | null>(null);
 
-  // simulating data seeding =========================
-  const [data, setData] = useState<string | null>(null);
+  // // simulating data seeding =========================
+  // const [data, setData] = useState<string | null>(null);
   useEffect(() => {
+    workspaceStore.setLoadingWorkspace(true);
     setTimeout(() => {
-      setData("passed");
+      workspaceStore.setLoadingWorkspace(false);
     }, 1000);
   }, []);
 
-  if (data !== "passed") {
+  if (workspaceStore.isLoadingWorkspace) {
     return (
       <>
         <div className="w-full h-screen fx-flex-center bg-background-color_950C">
@@ -93,7 +94,9 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
       ========================================================================== */}
           <div
             ref={parentRef}
-            className={cn(`h-screen bg-background-color_925C relative w-full  overflow-y-auto`)}
+            className={cn(
+              `h-screen bg-background-color_925C relative w-full  overflow-y-auto`
+            )}
           >
             <div className="border-b border-border-color_1 w-full h-[40px] sticky z-[999] bg-background-color_925C top-0 fx-flex-center">
               {/* SIDEBAR TOGGLE BUTTON */}
@@ -120,4 +123,4 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
   );
 };
 
-export default Layout;
+export default observer(Layout);

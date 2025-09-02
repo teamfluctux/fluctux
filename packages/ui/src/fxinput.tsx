@@ -2,6 +2,10 @@ import { SizeType } from "./type";
 import React, { forwardRef } from "react";
 import { ROUNDED_VARIANTS } from "./constant";
 
+type FxInputClassNames = {
+  labelClassName?: string;
+};
+
 interface FxInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   className?: string;
@@ -9,6 +13,7 @@ interface FxInputProps
   radius?: keyof typeof ROUNDED_VARIANTS;
   size?: keyof typeof inputSizes;
   label?: string;
+  classNames?: FxInputClassNames;
 }
 
 type InputVariantType = "primary" | "secondary" | "outlineLabel" | "outline";
@@ -32,39 +37,34 @@ const inputSizes: { [key in SizeType]: string } = {
 
 export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
   (
-    {
-      className,
-      variant,
-      radius,
-      size,
-      label = "Label",
-      ...props
-    },
+    { className, variant, radius, size, label = "Label", classNames, ...props },
     ref
-  ) =>  {
-  const inputVariant = variant ? inputVariants[variant] : "";
-  const inputSize = size ? inputSizes[size] : "";
-  const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
+  ) => {
+    const inputVariant = variant ? inputVariants[variant] : "";
+    const inputSize = size ? inputSizes[size] : "";
+    const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
+    const { labelClassName } = classNames ?? {};
 
-  return variant === "outlineLabel" ? (
-    <div className="w-full relative group">
+    return variant === "outlineLabel" ? (
+      <div className="w-full relative group">
+        <input
+          ref={ref}
+          className={`peer placeholder:!text-text-color_3 ${inputVariant} ${inputSize} ${roundedVariant} ${className} `}
+          {...props}
+          id={`${label.replace(" ", "-")}`}
+        />
+        <label
+          htmlFor={`${label.replace(" ", "-")}`}
+          className={`absolute translate-y-[-50%] text-text-color_4 transition-colors peer-focus:text-[var(--primary-color)] left-[15px] bg-background-color_950C py-0 px-1 text-[14px] font-medium ${labelClassName ?? ""}`}
+        >
+          {label}
+        </label>
+      </div>
+    ) : (
       <input
-        ref={ref}
-        className={`peer placeholder:!text-text-color_3 ${inputVariant} ${inputSize} ${roundedVariant} ${className} `}
+        className={`transition-colors ${inputVariant} ${inputSize} ${roundedVariant} ${className}`}
         {...props}
-        id={`${label.replace(" ", "-")}`}
       />
-      <label
-        htmlFor={`${label.replace(" ", "-")}`}
-        className="absolute translate-y-[-50%] text-text-color_4 transition-colors peer-focus:text-[var(--primary-color)] left-[15px] bg-background-color_950C py-0 px-1 text-[14px] font-medium "
-      >
-        {label}
-      </label>
-    </div>
-  ) : (
-    <input
-      className={`transition-colors ${inputVariant} ${inputSize} ${roundedVariant} ${className}`}
-      {...props}
-    />
-  );
-})
+    );
+  }
+);

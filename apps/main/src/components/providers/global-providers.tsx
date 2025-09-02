@@ -1,29 +1,40 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { store } from "@/redux/store";
 import { Provider } from "react-redux";
 import { useTheme } from "next-themes";
 import { Toaster, ToasterProps } from "sonner";
 import { apolloClient } from "@/lib/apollo-client";
 import { ApolloProvider } from "@apollo/client";
+import { TopLoading } from "@fluctux/ui";
+import { observer } from "mobx-react";
+import { reaction } from "mobx";
+import { workspaceStore } from "@/services/stores";
 
 interface GlobalProvidersPropsType {
   children: React.ReactNode;
 }
 
+const TopLoadingObeserver = observer(() => {
+  if (workspaceStore.isTopLoading) return <TopLoading />;
+});
+
 export const GlobalProviders = ({ children }: GlobalProvidersPropsType) => {
   const { theme = "system" } = useTheme();
   return (
-    <ApolloProvider client={apolloClient}>
-      <Provider store={store}>
-        {children}
-        <Toaster
-          richColors
-          position="bottom-center"
-          theme={theme as ToasterProps["theme"]}
-          closeButton
-        />
-      </Provider>
-    </ApolloProvider>
+    <>
+      <TopLoadingObeserver />
+      <ApolloProvider client={apolloClient}>
+        <Provider store={store}>
+          {children}
+          <Toaster
+            richColors
+            position="bottom-center"
+            theme={theme as ToasterProps["theme"]}
+            closeButton
+          />
+        </Provider>
+      </ApolloProvider>
+    </>
   );
 };

@@ -77,17 +77,7 @@ export const TEAM_CATEGORIES = [
 
 export const ACCOUNT_MENU_ITEMS = [
   {
-    label: "Account",
-    slug: "#",
-    icon: <CircleUserRound size={LUCIDE_WORKSPACE_ICON_SIZE} />,
-  },
-  {
-    label: "Billing",
-    slug: "#",
-    icon: <CreditCard size={LUCIDE_WORKSPACE_ICON_SIZE} />,
-  },
-  {
-    label: "Account settings",
+    label: "settings",
     slug: "#",
     icon: <Settings size={LUCIDE_WORKSPACE_ICON_SIZE} />,
   },

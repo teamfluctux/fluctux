@@ -128,15 +128,6 @@ export const WorkspaceSidebar = observer(() => {
                 </p>
               </div>
             </div>
-            <FxButton
-              variant="ghost_zinc"
-              className="w-[25px] h-[25px] fx-flex-center rounded-tiny group transition-none"
-            >
-              <Settings
-                className="text-text-svg_default group-hover:text-text-color_1 transition-colors"
-                size={LUCIDE_WORKSPACE_ICON_SIZE}
-              />
-            </FxButton>
           </div>
         </div>
 

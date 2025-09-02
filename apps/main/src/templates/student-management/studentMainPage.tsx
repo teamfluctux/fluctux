@@ -24,7 +24,7 @@ const DynamicStudentGrid = dynamic(
   }
 );
 
-export default function StudentsListGrid() {
+export const StudentsListMainPage = () => {
   return (
     <div className="w-full ">
       <div className="flex justify-between items-center text-workspace_2 h-[50px] px-2">

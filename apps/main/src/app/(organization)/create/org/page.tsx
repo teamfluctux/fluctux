@@ -1,10 +1,18 @@
 "use client";
+import { workspaceStore } from "@/services/stores";
 import {
   ORG_PRIVACY_OPTIONS,
   ORG_VISIBILITY_OPTIONS,
 } from "@fluctux/constants";
 import { OrgVisibilityType } from "@fluctux/types";
-import { Checkbox, FxButton, FxInput, FxSeparator } from "@fluctux/ui";
+import {
+  Checkbox,
+  FxButton,
+  FxInput,
+  FxSeparator,
+  Label,
+  TopLoading,
+} from "@fluctux/ui";
 import { MailPlus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -112,17 +120,19 @@ export default function CreateOrgPage() {
     setCustomVisbilityCategoryType(type);
   };
 
-  const handleCreateOrg = async () => {
-    const response = await fetch("/api/user");
-    const data = await response.json();
-    toast.success(data.message);
+  const handleCreateOrg = () => {
+    // const response = await fetch("/api/user");
+    // const data = await response.json();
+    // toast.success(data.message);
+
+    workspaceStore.setIsTopLoading(true);
   };
 
   return (
-    <div className="w-full h-screen overflow-y-auto flex justify-center items-start ">
+    <div className="w-full h-screen overflow-y-auto flex justify-center items-start bg-background-color_950C">
       <div className="max-w-[350px] h-fit w-full my-auto py-24">
         <h1 className="text-read_25 font-medium text-center ">
-          Create a new organization
+          Create A New Organization
         </h1>
         <p className="text-workspace_3 text-text-color_2 text-center mt-2">
           Start by setting up your organization. This will be your workspace
@@ -144,9 +154,8 @@ export default function CreateOrgPage() {
           </div>
         </div>
         <FxSeparator gap="md" orientation="horizontal" />
-        <p className="text-workspace_2 font-medium text-text-color_4">
-          Visibility
-        </p>
+
+        <Label className="px-4">Visiblity</Label>
         <div className="w-full bg-background-color_925C p-2 px-0 rounded mt-1">
           <div className="flex justify-start items-center gap-1 border-b border-border-color_1 pb-2 px-2">
             {ORG_VISIBILITY_OPTIONS.map((option, i) => {
@@ -259,9 +268,7 @@ export default function CreateOrgPage() {
         </div>
         <FxSeparator gap="md" orientation="horizontal" />
         <div className=" w-full">
-          <p className="text-workspace_2 font-medium text-text-color_4">
-            Privacy
-          </p>
+          <Label className="px-4">Privacy</Label>
           <div className="flex justify-center items-center w-full mt-2">
             {ORG_PRIVACY_OPTIONS.map((option, i) => {
               const Icon = option.icon;
