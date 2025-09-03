@@ -1,12 +1,12 @@
 import { createClient } from "redis";
-import fs from "fs"
+import { config } from "src/config";
 const redisClient = await createClient({
-    // url: "",
-    // username: 'default', // use your Redis user. More info https://redis.io/docs/latest/operate/oss_and_stack/management/security/acl/
-    // password: 'secret', // use your password here
+    username: config.redis_username,
+    password: config.redis_pass,
     socket: {
-        host: 'localhost',
-        port: 6379,
+        host: config.redis_host,
+        port: config.redis_port,
+
         // tls: true,
         // key: fs.readFileSync('./redis_user_private.key'),
         // cert: fs.readFileSync('./redis_user.crt'),
