@@ -11,10 +11,10 @@ authRouter.route("/signin/google").get(auth.redirectGoogleAuth.bind(auth));
 authRouter
   .route("/callback/google")
   .get(auth.handleSignInWithGoogle.bind(auth));
-authRouter.route("/signin/github").get(auth.redirectGithubAuth.bind(auth));
-authRouter
-  .route("/callback/github")
-  .get(auth.handleSignInWithGithub.bind(auth));
+// authRouter.route("/signin/github").get(auth.redirectGithubAuth.bind(auth));
+// authRouter
+//   .route("/callback/github")
+//   .get(auth.handleSignInWithGithub.bind(auth));
 // authRouter.route("/refresh").get(auth.refreshToken.bind(auth))
 // authRouter.route("/signout").post(user.handleSignOut)
 

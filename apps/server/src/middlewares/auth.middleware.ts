@@ -18,7 +18,7 @@ export async function authenticateUser(
   const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
 
   // MSG_ERROR dont remove !refreshToken validation. for now its for testing for github only
-  if (!providerToken) {
+  if (!providerToken || !refreshToken) {
     console.log("refresh or provider token missing");
 
     res.status(401).json({

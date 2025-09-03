@@ -21,14 +21,6 @@ export const getSession = async (
           provider: providerToken,
         };
       }
-      case AuthProviderCookieType.GITHUB: {
-        const userDataFromGithub = await auth.getUserFromGithubToken(idToken);
-        console.log("userDataFromGithub", userDataFromGithub);
-        return {
-          user: userDataFromGithub,
-          provider: providerToken,
-        };
-      }
       default: {
         return null;
       }
