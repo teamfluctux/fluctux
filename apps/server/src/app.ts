@@ -3,7 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
-import { RedisService } from "./services/redis";
+import { RedisManager } from "./services/redis/redis";
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -32,8 +32,9 @@ app.get("/health", async (req: Request, res) => {
 });
 
 app.get("/redis", async (req, res) => {
-  const redis = new RedisService()
-  res.status(200).json({message: new ApiResponse(200, "Response from server for redis", redis.redisCheckConnection())})
+  const redis = new RedisManager()
+  const response = await redis.redisCheckConnection()
+  res.status(200).json({message: new ApiResponse(200, "Response from server for redis", response)})
 })
 
 export { app };
