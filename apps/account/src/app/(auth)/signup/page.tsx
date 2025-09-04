@@ -15,7 +15,6 @@ import { userZodSchema } from "@fluctux/zod";
 import Link from "next/link";
 import React from "react";
 import { z } from "zod";
-import AuthWrapper from "../auth-wrapper";
 
 export default function SignUpPage() {
   const { register, handleSubmit, errors } = useReactForm({
@@ -29,9 +28,9 @@ export default function SignUpPage() {
   };
 
   return (
-    <AuthWrapper>
+
       <div className="w-full">
-        <h1 className="text-[25px] text-center font-medium mb-6 black-white-gradient-bt">
+        <h1 className="text-[25px] text-center font-medium mb-5 black-white-gradient-bt">
           Signup to Fluctux
         </h1>
 
@@ -69,18 +68,10 @@ export default function SignUpPage() {
               className="w-full text-workspace_1 font-medium tracking-widest"
               type="password"
               variant="primary"
-              placeholder="••••••"
+              placeholder="••••••••"
               size="md"
               radius="primary"
             />
-            <div className="mt-1">
-              <Link
-                href={""}
-                className="fx-link-color hover:underline text-workspace_2"
-              >
-                Forget Password?
-              </Link>
-            </div>
 
             <FxButton
               type="submit"
@@ -97,16 +88,22 @@ export default function SignUpPage() {
         </form>
 
         <p className="text-text-color_2 text-[14px] mt-8">
-          By signing in, you agree to our{" "}
-          <Link href={""} className="text-[var(--link-color)] hover:underline">
+          By creating account, you agree to our{" "}
+          <Link
+            href={""}
+            className="text-text-color_1 hover:!text-text-color_4 transition-colors"
+          >
             Terms of Service
           </Link>{" "}
           and{" "}
-          <Link href={""} className="text-[var(--link-color)] hover:underline">
+          <Link
+            href={""}
+            className="text-text-color_1 hover:!text-text-color_4 transition-colors"
+          >
             Privacy Policy.
           </Link>
         </p>
       </div>
-    </AuthWrapper>
+  
   );
 }

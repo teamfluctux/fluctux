@@ -1,11 +1,12 @@
 "use client";
-import { ThemeToggler } from "@fluctux/shared";
+import { ScaleUpDown, ThemeToggler } from "@fluctux/shared";
 import { FxButton, FxFavIcon } from "@fluctux/ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
-export default function AuthWrapper({
+export default function AuthWrapperLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -20,10 +21,20 @@ export default function AuthWrapper({
           <ThemeToggler />
         </div>
 
-        <div className=" w-fit rounded-[8px] p-2 mb-2 bg-gradient-to-tr dark:from-[var(--background)] from-[#b7b7b7] dark:to-[#232323] to-[#ffffff] relative login-fx-logo-box mx-auto">
+        <div className=" w-fit rounded-[8px] p-2 mb-5 bg-gradient-to-tr dark:from-[var(--background)] from-[#b7b7b7] dark:to-[#232323] to-[#ffffff] relative login-fx-logo-box mx-auto ">
           <FxFavIcon size="sm" variant="theme" />
         </div>
-        {children}
+       <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={path_name} // 👈 triggers exit+enter
+            initial={{ opacity: 0, scale: 0.99, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.99, y: 20 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
       </div>
       <div className="fixed bottom-0 left-0 w-full h-[60px] bg-background-color_900C fx-flex-center z-10">
         {current_path === "login" || path_name === "/" ? (
@@ -49,7 +60,7 @@ export default function AuthWrapper({
             </p>
             <Link href={"/login"}>
               <FxButton
-                variant="primary"
+                variant="surface_indigo"
                 radius="tablet"
                 size="sm"
                 className="font-medium pl-[20px] pr-[20px] text-white text-workspace_1"
