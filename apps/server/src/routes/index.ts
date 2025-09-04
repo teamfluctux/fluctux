@@ -2,6 +2,7 @@ import { Request, Response, Router } from "express";
 import authRouter from "./auth.route";
 import { authenticateUser } from "@/middlewares";
 import { CookieService } from "@/services/auth/cookie.service";
+import { AuthManager } from "@/controllers";
 
 const router = Router();
 
@@ -17,6 +18,12 @@ router.get(
     if (!oldIdToken) {
       console.log("new id token", req.newIDToken);
       const newIDToken = req.newIDToken;
+
+      // if (!req.newIDToken) {
+      //   res.clearCookie(CookieService.ID_TOKEN.name);
+      //   res.clearCookie(CookieService.REFRESH_TOKEN.name);
+      //   res.clearCookie(CookieService.PROVIDER_COOKIE.name);
+      // }
       res.cookie(
         CookieService.ID_TOKEN.name,
         newIDToken,

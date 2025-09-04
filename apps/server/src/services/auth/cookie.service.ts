@@ -2,8 +2,6 @@ import { CookieOptions } from "express";
 
 export enum AuthProviderCookieType {
   GOOGLE = "google",
-  GITHUB = "github",
-  DISCORD = "discord",
 }
 
 type CookieType = {
@@ -20,19 +18,6 @@ export class CookieService {
       secure: true,
       sameSite: "lax",
       path: "/",
-      // MSG_WARNING for testing its now 1 min
-      maxAge: 1 * 60 * 1000,
-    },
-  };
-
-  static REFRESH_TOKEN_LOGOUT: CookieType = {
-    name: "refreshTokenLogout",
-    cookie: {
-      domain: process.env.COOKIE_DOMAIN,
-      httpOnly: true,
-      secure: true,
-      sameSite: "lax",
-      path: "/api/auth/logout",
       // MSG_WARNING for testing its now 1 min
       maxAge: 1 * 60 * 1000,
     },

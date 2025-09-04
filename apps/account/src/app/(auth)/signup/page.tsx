@@ -1,5 +1,6 @@
 "use client";
 
+import { Heading } from "@/components";
 import { useReactForm } from "@fluctux/hooks";
 import {
   DiscordIcon,
@@ -30,9 +31,9 @@ export default function SignUpPage() {
   return (
 
       <div className="w-full">
-        <h1 className="text-[25px] text-center font-medium mb-5 black-white-gradient-bt">
-          Signup to Fluctux
-        </h1>
+
+        <Heading text="Signup to Fluctux"/>
+      
 
         <FxButton
           className="w-full  flex justify-center items-center gap-2 group "

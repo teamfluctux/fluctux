@@ -68,12 +68,11 @@ export async function authenticateUser(
       newIdToken
     );
     const user: SessionDataType = {
-      _id: session?.user?.sub || "",
-      name: session?.user?.name || "",
-      email: session?.user?.email || "",
-      picture: session?.user?.picture || "",
-      role: "USER",
-      provider: session?.provider || "",
+      _id: session?.user?.sub ?? "",
+      name: session?.user?.name ?? "",
+      email: session?.user?.email ?? "",
+      picture: session?.user?.picture ?? "",
+      provider: session?.provider ?? "",
     };
 
     console.log("user saved in req after refreshing", user);
@@ -103,7 +102,6 @@ export async function authenticateUser(
     name: session?.user?.name || "",
     email: session?.user?.email || "",
     picture: session?.user?.picture || "",
-    role: "USER",
     provider: session?.provider || "",
   };
   console.log("user saved in req normally", user);

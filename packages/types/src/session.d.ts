@@ -5,5 +5,4 @@ export type SessionDataType = {
   email: string;
   apiVersion?: string;
   provider: string;
-  role: string;
 };

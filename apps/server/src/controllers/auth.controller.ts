@@ -10,26 +10,29 @@ import dotenv from "dotenv";
 import { generateEncryptedJWTTokens } from "@/utils/generateEncryptedJWTToken";
 dotenv.config();
 
-export class AuthManager extends GoogleAuth {
+export class AuthManager {
+  private google: GoogleAuth;
+  constructor() {
+    this.google = new GoogleAuth()
+  }
   redirectGoogleAuth(req: Request, res: Response) {
-    return res.redirect(this.generateGoogleAuthUrl());
+    return res.redirect(this.google.generateGoogleAuthUrl());
   }
 
   redirectGithubAuth(req: Request, res: Response) {
-    return res.redirect(this.generateGithubAuthUrl());
+    return res.redirect(this.google.generateGoogleAuthUrl());
   }
 
   static clearProtectedCookies(_: Request, res: Response) {
     res.clearCookie(CookieService.ID_TOKEN.name);
     res.clearCookie(CookieService.REFRESH_TOKEN.name);
     res.clearCookie(CookieService.PROVIDER_COOKIE.name);
-    res.clearCookie(CookieService.REFRESH_TOKEN_LOGOUT.name);
   }
 
   async handleSignInWithGoogle(req: Request, res: Response) {
     try {
       const { code } = req.query;
-      const { idToken, refreshToken } = await this.getGoogleAuthtokens(
+      const { idToken, refreshToken, accessToken } = await this.google.getGoogleAuthtokens(
         code as string
       );
       const providerNameJWT = generateEncryptedJWTTokens(
@@ -51,7 +54,7 @@ export class AuthManager extends GoogleAuth {
         refreshToken,
         CookieService.REFRESH_TOKEN.cookie
       );
-      res.redirect("http://localhost:3003/");
+      res.redirect("http://localhost:3000/");
     } catch (error) {
       console.log(error);
 
@@ -63,48 +66,48 @@ export class AuthManager extends GoogleAuth {
     }
   }
 
-  async handleSignInWithGithub(req: Request, res: Response) {
-    try {
-      const { code } = req.query;
-      const { idToken } = await this.getGithubAuthTokens(code as string);
-      console.log("Token github", idToken);
+  // async handleSignInWithGithub(req: Request, res: Response) {
+  //   try {
+  //     const { code } = req.query;
+  //     const { idToken } = await this.getGithubAuthTokens(code as string);
+  //     console.log("Token github", idToken);
 
-      const providerNameJWT = generateEncryptedJWTTokens(
-        { provider: AuthProviderCookieType.GITHUB },
-        { expiresIn: "720h" }
-      );
+  //     const providerNameJWT = generateEncryptedJWTTokens(
+  //       { provider: AuthProviderCookieType.GITHUB },
+  //       { expiresIn: "720h" }
+  //     );
 
-      res.cookie(
-        CookieService.ID_TOKEN.name,
-        idToken,
-        CookieService.ID_TOKEN.cookie
-      );
+  //     res.cookie(
+  //       CookieService.ID_TOKEN.name,
+  //       idToken,
+  //       CookieService.ID_TOKEN.cookie
+  //     );
 
-      res.cookie(
-        CookieService.PROVIDER_COOKIE.name,
-        providerNameJWT,
-        CookieService.PROVIDER_COOKIE.cookie
-      );
+  //     res.cookie(
+  //       CookieService.PROVIDER_COOKIE.name,
+  //       providerNameJWT,
+  //       CookieService.PROVIDER_COOKIE.cookie
+  //     );
 
-      res.redirect("http://localhost:3003/");
-    } catch (error) {
-      console.log(error);
+  //     res.redirect("http://localhost:3003/");
+  //   } catch (error) {
+  //     console.log(error);
 
-      res.status(500).json({
-        error: new ApiError(500, "Error sign in user via github", "", [
-          ERROR.INTERNAL_SERVER_ERROR,
-          "Error accessing token from github",
-        ]),
-      });
-    }
-  }
+  //     res.status(500).json({
+  //       error: new ApiError(500, "Error sign in user via github", "", [
+  //         ERROR.INTERNAL_SERVER_ERROR,
+  //         "Error accessing token from github",
+  //       ]),
+  //     });
+  //   }
+  // }
 
   async refreshToken(providerName: string, refreshToken: string) {
     try {
       switch (providerName) {
         case AuthProviderCookieType.GOOGLE: {
           console.log("TOKEN REFRESHED VIA GOOGLE");
-          const token = await this.getNewGoogleAuthIdToken(refreshToken);
+          const token = await this.google.getNewGoogleAuthIdToken(refreshToken);
           return token;
         }
         default: {

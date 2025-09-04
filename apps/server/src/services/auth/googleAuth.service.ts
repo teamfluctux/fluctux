@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import { GithubAuth } from "./githubAuth.service";
 dotenv.config();
 
-export class GoogleAuth extends GithubAuth {
+export class GoogleAuth {
   private static CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
   private static CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
   private static REDIRECT_URI = process.env.GOOGLE_AUTH_REDIRECT_URI;
@@ -16,7 +16,6 @@ export class GoogleAuth extends GithubAuth {
   private oauthClient;
 
   constructor() {
-    super();
     this.oauthClient = new google.auth.OAuth2({
       client_id: GoogleAuth.CLIENT_ID,
       client_secret: GoogleAuth.CLIENT_SECRET,
@@ -24,7 +23,7 @@ export class GoogleAuth extends GithubAuth {
     });
   }
 
-  protected generateGoogleAuthUrl() {
+   generateGoogleAuthUrl() {
     return this.oauthClient.generateAuthUrl({
       access_type: "offline",
       scope: GoogleAuth.SCOPES,
@@ -36,7 +35,7 @@ export class GoogleAuth extends GithubAuth {
     });
   }
 
-  protected async getGoogleAuthtokens(authCode: string) {
+   async getGoogleAuthtokens(authCode: string) {
     const { tokens } = await this.oauthClient.getToken(authCode);
     return {
       idToken: tokens.id_token,
@@ -45,7 +44,7 @@ export class GoogleAuth extends GithubAuth {
     };
   }
 
-  protected async getNewGoogleAuthIdToken(refreshToken: string) {
+   async getNewGoogleAuthIdToken(refreshToken: string) {
     this.oauthClient.setCredentials({
       refresh_token: refreshToken,
       scope: GoogleAuth.SCOPES[0],
