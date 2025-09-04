@@ -25,7 +25,7 @@ export class RedisService {
 
           return delay + jitter;
         },
-         connectTimeout: 10000, // in milliseconds
+        connectTimeout: 10000, // in milliseconds
 
         // tls: true,
         // key: fs.readFileSync('./redis_user_private.key'),
