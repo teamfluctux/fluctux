@@ -8,6 +8,7 @@ import {
   FxInput,
   FxSeparator,
   SlackIcon,
+  Label,
 } from "@fluctux/ui";
 import Link from "next/link";
 import React from "react";
@@ -19,13 +20,34 @@ export default function LoginPage() {
   return (
     <AuthWrapper>
       <div className=" w-full">
-        <h1 className="text-[25px] font-medium mb-5 black-white-gradient-bt">
+        <h1 className="text-[25px] font-medium text-center mb-6 black-white-gradient-bt">
           Login to Fluctux
         </h1>
+
         <>
-          <p className="text-text-color_2 font-medium text-workspace_1">
-            Email
+          <FxButton
+            onClick={() => {
+              router.push("http://localhost:5000/api/auth/signin/google");
+            }}
+            className="w-full  flex justify-center items-center gap-2 group"
+            variant="secondary"
+            size="md"
+            radius="primary"
+          >
+            <p className="font-medium text-text-color_2 text-workspace_1 transition-colors group-hover:text-text-color_1">
+              Login with Google
+            </p>
+            <GoogleIcon />
+          </FxButton>
+        </>
+
+        <FxSeparator orientation="horizontal" gap="xl">
+          <p className="text-text-color_2 bg-background-color_950C pl-2 pr-2 font-medium text-workspace_1">
+            Or
           </p>
+        </FxSeparator>
+        <>
+          <Label className="mb-2">Email</Label>
           <FxInput
             className="w-full text-workspace_1 font-medium"
             variant="primary"
@@ -33,24 +55,21 @@ export default function LoginPage() {
             placeholder="youremail@gmail.com"
             radius="primary"
           />
-          <p className="text-text-color_2 mt-3 font-medium text-workspace_1">
-            Password
-          </p>
+          <div className="flex justify-between items-center gap-3 mb-2 mt-4">
+            <Label className=" ">Password</Label>
+
+            <Link href={""}>
+              <Label className="fx-link-color hover:to-blue-800">Forget Password?</Label>
+            </Link>
+          </div>
           <FxInput
-            className="w-full text-workspace_1 font-medium"
+            className="w-full text-workspace_1 font-medium tracking-widest"
             type="password"
             variant="primary"
+            placeholder="••••••"
             size="md"
             radius="primary"
           />
-          <div className="mt-1">
-            <Link
-              href={""}
-              className="fx-link-color hover:underline text-workspace_2"
-            >
-              Forget Password?
-            </Link>
-          </div>
 
           <FxButton
             onClick={async () => {
@@ -75,56 +94,6 @@ export default function LoginPage() {
           >
             <p className="font-medium text-white text-workspace_1">Continue</p>
           </FxButton>
-        </>
-
-        <FxSeparator orientation="horizontal" gap="xl">
-          <p className="text-text-color_2 bg-background-color_950C pl-2 pr-2 font-medium text-workspace_1">
-            Or
-          </p>
-        </FxSeparator>
-
-        <>
-          <FxButton
-            onClick={() => {
-              router.push("http://localhost:5000/api/auth/signin/google");
-            }}
-            className="w-full  flex justify-center items-center gap-2 group"
-            variant="secondary"
-            size="md"
-            radius="primary"
-          >
-            <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-              Login with Google
-            </p>
-            <GoogleIcon />
-          </FxButton>
-          <div className="flex justify-center items-center gap-3 mt-3">
-            <FxButton
-              onClick={() => {
-                router.push("http://localhost:5000/api/auth/signin/github");
-              }}
-              className="w-full  flex justify-center items-center gap-2 group"
-              variant="secondary"
-              size="md"
-              radius="primary"
-            >
-              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-                Login with Github
-              </p>
-              <GithubIcon />
-            </FxButton>
-            <FxButton
-              className="w-full  flex justify-center items-center gap-2 group"
-              variant="secondary"
-              size="md"
-              radius="primary"
-            >
-              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-                Login with Slack
-              </p>
-              <SlackIcon width={25} height={25} />
-            </FxButton>
-          </div>
         </>
 
         <p className="text-text-color_2 text-[14px] mt-8">

@@ -15,12 +15,12 @@ export default function AuthWrapper({
 
   return (
     <section className="flex justify-center items-center w-full h-screen overflow-y-auto hide-scrollbar">
-      <div className="max-w-[450px] my-auto w-full p-3 pt-16 pb-24">
+      <div className="max-w-[400px] my-auto w-full p-3 pt-16 pb-24">
         <div className="w-fit fixed top-2 right-2">
           <ThemeToggler />
         </div>
 
-        <div className=" w-fit rounded-[8px] p-2 mb-2 bg-gradient-to-tr dark:from-[var(--background)] from-[#b7b7b7] dark:to-[#232323] to-[#ffffff] relative login-fx-logo-box">
+        <div className=" w-fit rounded-[8px] p-2 mb-2 bg-gradient-to-tr dark:from-[var(--background)] from-[#b7b7b7] dark:to-[#232323] to-[#ffffff] relative login-fx-logo-box mx-auto">
           <FxFavIcon size="sm" variant="theme" />
         </div>
         {children}
