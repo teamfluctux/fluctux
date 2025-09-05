@@ -115,7 +115,7 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
             {children}
 
             {/* taskbar uncomment this */}
-            <DynamicTaskBarObserver />
+            {/* <DynamicTaskBarObserver /> */}
           </div>
         </div>
       </workspaceContext.Provider>
