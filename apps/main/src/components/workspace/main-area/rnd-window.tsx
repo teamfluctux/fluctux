@@ -441,7 +441,7 @@ export const RndWindows = () => {
       {/* ==========================================================================
                                       Taskbar
             ========================================================================== */}
-      {/* <div
+      <div
         className={cn(
           "w-[100%] max-w-[500px] z-50 absolute bottom-[-57px] p-2 bg-transparent transition-all duration-300",
           allowIntelligentAutoHideTaskBar
@@ -554,7 +554,7 @@ export const RndWindows = () => {
                 }[] 
                  
                 */}
-                {/* {taskbarItems.map((item, i) => (
+               {taskbarItems.map((item, i) => (
                   <div
                     key={i}
                     onClick={() => {
@@ -578,11 +578,11 @@ export const RndWindows = () => {
             </Tooltip>
           </TooltipProvider>
 
-          <div className=" hover:bg-background-color_800C w-[40px] h-[40px] rounded-tiny relative fx-flex-center"> */}
-            {/* <div className="bottom_bar w-[25px] h-[4px] rounded-tablet bg-background-indigo_primary absolute bottom-0 left-[50%] translate-x-[-50%]"></div> */}
-          {/* </div>
+          {/* <div className=" hover:bg-background-color_800C w-[40px] h-[40px] rounded-tiny relative fx-flex-center"> 
+           <div className="bottom_bar w-[25px] h-[4px] rounded-tablet bg-background-indigo_primary absolute bottom-0 left-[50%] translate-x-[-50%]"></div> 
+         </div> */}
         </div>
-      </div> */} 
+      </div> 
     </>
   );
 };
