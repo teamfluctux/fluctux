@@ -4,8 +4,8 @@ import { ERROR } from "@/constants/http-status";
 import { getSession } from "@/lib/getSession";
 import { CookieService } from "@/services/auth/cookie.service";
 import { AuthManager } from "@/controllers";
-import { SessionDataType } from "@fluctux/types";
-import jwt from "jsonwebtoken";
+import { SessionDataType, UserSessionType } from "@fluctux/types";
+import { JWTManager } from "@/utils/jwt_manager";
 
 export async function authenticateUser(
   req: Request,
@@ -13,6 +13,7 @@ export async function authenticateUser(
   next: NextFunction
 ) {
   const auth = new AuthManager();
+  const jwtManager = new JWTManager(process.env.PROVIDER_NAME_JWT as string)
   const idToken = req.cookies[CookieService.ID_TOKEN.name];
   const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
   const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
@@ -31,9 +32,10 @@ export async function authenticateUser(
     return;
   }
 
-  const decryptedProviderToken = jwt.verify(
-    providerToken,
-    process.env.JWT_SECRET as string
+  const decryptedProviderToken = jwtManager.getDecryptedJWTValue(
+    {
+      token: providerToken,
+    }
   ) as { provider: string };
 
   if (!decryptedProviderToken) {
@@ -63,12 +65,10 @@ export async function authenticateUser(
     }
     console.log("new id token generated");
 
-    const session = await getSession(
-      decryptedProviderToken.provider,
-      newIdToken
-    );
+    const session = await getSession(decryptedProviderToken.provider, newIdToken) as UserSessionType;
+
     const user: SessionDataType = {
-      _id: session?.user?.sub ?? "",
+      sub: session?.user?.sub ?? "",
       name: session?.user?.name ?? "",
       email: session?.user?.email ?? "",
       picture: session?.user?.picture ?? "",
@@ -81,7 +81,7 @@ export async function authenticateUser(
     return next();
   }
 
-  const session = await getSession(decryptedProviderToken.provider, idToken);
+  const session = await getSession(decryptedProviderToken.provider, idToken) as UserSessionType;
   console.log("provider", decryptedProviderToken.provider);
   console.log("session", session);
 
@@ -98,12 +98,13 @@ export async function authenticateUser(
   }
 
   const user: SessionDataType = {
-    _id: session?.user?.sub || "",
-    name: session?.user?.name || "",
-    email: session?.user?.email || "",
-    picture: session?.user?.picture || "",
-    provider: session?.provider || "",
+    sub: session?.user?.sub ?? "",
+    name: session?.user?.name ?? "",
+    email: session?.user?.email ?? "",
+    picture: session?.user?.picture ?? "",
+    provider: session?.provider ?? "",
   };
+
   console.log("user saved in req normally", user);
 
   req.user = user;

@@ -1,4 +1,4 @@
-import { ERROR } from "@/constants/http-status";
+import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
 import { GoogleAuth } from "@/services/auth";
 import {
   AuthProviderCookieType,
@@ -7,7 +7,7 @@ import {
 import { ApiError } from "@/utils/ApiError";
 import { Request, Response } from "express";
 import dotenv from "dotenv";
-import { generateEncryptedJWTTokens } from "@/utils/generateEncryptedJWTToken";
+import { JWTManager } from "@/utils/jwt_manager";
 dotenv.config();
 
 export class AuthManager {
@@ -32,12 +32,33 @@ export class AuthManager {
   async handleSignInWithGoogle(req: Request, res: Response) {
     try {
       const { code } = req.query;
-      const { idToken, refreshToken, accessToken } = await this.google.getGoogleAuthtokens(
+      /**  check if code is in req
+       * if code not exist return unauthorized error
+*/
+      if (!code) res.status(500).json({
+        error: new ApiError(HTTPErrorCodes.UNAUTHORIZED, "Unauthorized access!", "", [
+          ERROR.UNAUTHORIZED_USER,
+        ]),
+      });
+
+      /**
+       * Get the idToken and refreshToken from google via passing the code
+       */
+      const { idToken, refreshToken } = await this.google.getGoogleAuthtokens(
         code as string
       );
-      const providerNameJWT = generateEncryptedJWTTokens(
-        { provider: AuthProviderCookieType.GOOGLE },
-        { expiresIn: "720h" }
+
+      /**
+       * Store the provider name to cookie
+       * it will help to refresh token manager to refresh specific token
+       * it will help to getSession on from specific provider
+       */
+      const jwtManager = new JWTManager(process.env.PROVIDER_NAME_JWT as string)
+      const providerNameJWT = jwtManager.generateEncryptedJWTTokens(
+        {
+          dataObject: { provider: AuthProviderCookieType.GOOGLE },
+          args: { expiresIn: "720h" }
+        }
       );
       res.cookie(
         CookieService.PROVIDER_COOKIE.name,
@@ -54,7 +75,7 @@ export class AuthManager {
         refreshToken,
         CookieService.REFRESH_TOKEN.cookie
       );
-      res.redirect("http://localhost:3000/");
+      res.redirect(`${process.env.ACCOUNT_WEB_BASE_URL}/?redirect=1`);
     } catch (error) {
       console.log(error);
 
