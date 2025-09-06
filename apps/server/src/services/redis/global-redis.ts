@@ -1,6 +1,6 @@
 import { RedisService } from "./redis.conf";
 
-export class RedisManager extends RedisService {
+export class GlobalRedis extends RedisService {
     async redisCheckConnection() {
         await this.connect()
         const response = await this.redisClient.ping();

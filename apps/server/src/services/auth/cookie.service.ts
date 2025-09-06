@@ -48,4 +48,17 @@ export class CookieService {
       maxAge: 1 * 60 * 1000,
     },
   };
+
+    static DEVICE_ID_COOKIE: CookieType = {
+    name: "deviceId",
+    cookie: {
+      domain: process.env.COOKIE_DOMAIN,
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+      // MSG_WARNING for testing its now 1 min
+      maxAge: 1 * 60 * 1000,
+    },
+  };
 }

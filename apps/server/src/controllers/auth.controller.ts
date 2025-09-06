@@ -8,7 +8,10 @@ import { ApiError } from "@/utils/ApiError";
 import { Request, Response } from "express";
 import dotenv from "dotenv";
 import { JWTManager } from "@/utils/jwt_manager";
-dotenv.config();
+import { v4 as uuidV4 } from "uuid"
+import { AuthRedis } from "@/services/redis/auth.redis";
+
+dotenv.config()
 
 export class AuthManager {
   private google: GoogleAuth;
@@ -53,28 +56,71 @@ export class AuthManager {
        * it will help to refresh token manager to refresh specific token
        * it will help to getSession on from specific provider
        */
+      if(!idToken || !refreshToken) {
+        res.status(HTTPErrorCodes.SERVICE_UNAVAILABLE).json({
+        error: new ApiError(HTTPErrorCodes.SERVICE_UNAVAILABLE, "Tokens not provided by google", "", [
+          ERROR.SERVICE_UNAVAILABLE,
+        ]),
+      });
+      }
+
       const jwtManager = new JWTManager(process.env.PROVIDER_NAME_JWT as string)
-      const providerNameJWT = jwtManager.generateEncryptedJWTTokens(
+      const encryptedProviderName = jwtManager.generateEncryptedJWTTokens(
         {
           dataObject: { provider: AuthProviderCookieType.GOOGLE },
           args: { expiresIn: "720h" }
         }
       );
+      const ecryptedRefreshToken = jwtManager.generateEncryptedJWTTokens({
+        dataObject: { refreshToken: refreshToken ?? ""  },
+        args: { expiresIn: "720h" },
+        secret: process.env.REFRESH_TOKEN_SECRET
+      })
+      const device_id = await uuidV4()
+      const encryptedDeviceIdToken = jwtManager.generateEncryptedJWTTokens({
+        dataObject: { deviceId: device_id },
+        args: { expiresIn: "720h" },
+        secret: process.env.DEVICE_TOKEN_SECRET
+      })
+
+      const encryptedIdToken = jwtManager.generateEncryptedJWTTokens({
+        dataObject: { idToken: idToken ?? "" },
+        secret: process.env.ID_TOKEN_JWT_SECRET,
+        args: { expiresIn: "5m" }
+
+      })
+
+      const redisClient = new AuthRedis()
+
+      redisClient.addAuthTokens({
+        refreshToken: ecryptedRefreshToken,
+        deviceIdToken: encryptedDeviceIdToken,
+        providerToken: encryptedProviderName
+      })
+
       res.cookie(
         CookieService.PROVIDER_COOKIE.name,
-        providerNameJWT,
+        encryptedProviderName,
         CookieService.PROVIDER_COOKIE.cookie
       );
       res.cookie(
         CookieService.ID_TOKEN.name,
-        idToken,
+        encryptedIdToken,
         CookieService.ID_TOKEN.cookie
       );
       res.cookie(
         CookieService.REFRESH_TOKEN.name,
-        refreshToken,
+        ecryptedRefreshToken,
         CookieService.REFRESH_TOKEN.cookie
       );
+      res.cookie(
+        CookieService.DEVICE_ID_COOKIE.name,
+        encryptedDeviceIdToken,
+        CookieService.DEVICE_ID_COOKIE.cookie
+      );
+
+
+
       res.redirect(`${process.env.ACCOUNT_WEB_BASE_URL}/?redirect=1`);
     } catch (error) {
       console.log(error);

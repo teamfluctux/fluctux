@@ -74,6 +74,7 @@
     "sanitize-html": "^2.17.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
+    "uuid": "^12.0.0",
     "vfile-reporter": "^8.1.1",
     "zod": "^3.25.67"
   }
