@@ -14,8 +14,8 @@ interface Config {
 export const config: Config = {
   port: Number(process.env.PORT) || 5000,
   nodeEnv: process.env.NODE_ENV || "development",
-  redis_host: process.env.REDIS_HOST || "",
+  redis_host: process.env.REDIS_HOST || "localhost",
   redis_username: process.env.REDIS_USERNAME || "default",
   redis_pass: process.env.REDIS_PASS || "default",
-  redis_port: Number(process.env.REDIS_PORT) || 0,
+  redis_port: Number(process.env.REDIS_PORT) || 6379,
 };
