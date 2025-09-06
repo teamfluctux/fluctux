@@ -1,2 +1,2 @@
 export * from "./global-redis"
-export * from "./auth-redis"
+export * from "./auth.redis"
