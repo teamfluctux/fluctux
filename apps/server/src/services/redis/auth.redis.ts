@@ -31,7 +31,7 @@ export class AuthRedis extends RedisService {
                 deviceIdToken,
             })
 
-            const responsehexpire = await this.redisClient.hpExpire(`${decryptedDeviceID?.deviceId}`, ["refreshToken", "providerToken", "deviceIdToken"], 3000)
+            const responsehexpire = await this.redisClient.hExpire(`${decryptedDeviceID?.deviceId}`, ['refreshToken', 'providerToken', 'deviceIdToken'],60 )
             console.log("expire", responsehexpire)
             await this.quit()
             return response

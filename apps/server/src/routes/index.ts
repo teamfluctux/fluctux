@@ -3,6 +3,7 @@ import authRouter from "./auth.route";
 import { authenticateUser } from "@/middlewares";
 import { CookieService } from "@/services/auth/cookie.service";
 import { AuthManager } from "@/controllers";
+import { JWTManager } from "@/utils/jwt_manager";
 
 const router = Router();
 
@@ -13,23 +14,44 @@ router.get(
   authenticateUser,
   async (req: Request, res: Response) => {
     const user = req.user;
-
-    const oldIdToken = req.cookies[CookieService.ID_TOKEN.name];
-    if (!oldIdToken) {
-      console.log("new id token", req.newIDToken);
-      const newIDToken = req.newIDToken;
-
-      // if (!req.newIDToken) {
-      //   res.clearCookie(CookieService.ID_TOKEN.name);
-      //   res.clearCookie(CookieService.REFRESH_TOKEN.name);
-      //   res.clearCookie(CookieService.PROVIDER_COOKIE.name);
-      // }
+    const newIDToken = req.newIDToken;
+    const newRefreshToken = req.newRefreshToken
+    const newDeviceIdToken = req.newDeviceIdToken
+    const newProviderToken = req.newProviderToken
+    if (newIDToken) {
+      console.log(newIDToken, "inside new id token")
       res.cookie(
         CookieService.ID_TOKEN.name,
         newIDToken,
         CookieService.ID_TOKEN.cookie
       );
     }
+
+    if (newProviderToken) {
+      res.cookie(
+        CookieService.PROVIDER_COOKIE.name,
+        newProviderToken,
+        CookieService.PROVIDER_COOKIE.cookie
+      );
+    }
+
+    if (newRefreshToken) {
+      res.cookie(
+        CookieService.REFRESH_TOKEN.name,
+        newRefreshToken,
+        CookieService.REFRESH_TOKEN.cookie
+      );
+    }
+
+    if (newDeviceIdToken) {
+      res.cookie(
+        CookieService.DEVICE_ID_COOKIE.name,
+        newDeviceIdToken,
+        CookieService.DEVICE_ID_COOKIE.cookie
+      );
+    }
+
+    console.log("hey user", user)
     res.status(200).json({ session: user });
   }
 );

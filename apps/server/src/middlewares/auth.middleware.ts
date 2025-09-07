@@ -18,10 +18,6 @@ export async function authenticateUser(
 
   // get idToken from cookies
   const idToken = req.cookies[CookieService.ID_TOKEN.name];
-  const decryptedIdToken = jwtManager.getDecryptedJWTValue({
-    token: idToken,
-    secret: process.env.ID_TOKEN_JWT_SECRET
-  })
 
   // get tokens from cookies
   const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
@@ -77,7 +73,7 @@ export async function authenticateUser(
   }
 
   // if not idtoken in req or idtoken is not valid then renew the idtoken 
-  if (!idToken || !decryptedIdToken.idToken) {
+  if (!idToken) {
     console.log("id token missing");
 
     // renew idToken
@@ -125,7 +121,7 @@ export async function authenticateUser(
     })
 
     const redisClient = new AuthRedis()
-// save tokens to redis
+    // save tokens to redis
     const redisResponse = redisClient.addOrUpdateAuthTokens({
       refreshToken: ecryptedRefreshToken,
       deviceIdToken: encryptedDeviceIdToken,
@@ -163,7 +159,12 @@ export async function authenticateUser(
     return next();
   }
 
-  const session = await getSession(decryptedProviderToken.provider, idToken) as UserSessionType;
+  const decryptedIdToken = jwtManager.getDecryptedJWTValue({
+    token: idToken,
+    secret: process.env.ID_TOKEN_JWT_SECRET
+  }) as {idToken: string}
+
+  const session = await getSession(decryptedProviderToken.provider, decryptedIdToken.idToken) as UserSessionType;
   console.log("provider", decryptedProviderToken.provider);
   console.log("session", session);
 

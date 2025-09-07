@@ -16,7 +16,7 @@ export class CookieService {
       domain: process.env.COOKIE_DOMAIN,
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "lax",
       path: "/",
       // MSG_WARNING for testing its now 1 min
       maxAge: 1 * 60 * 1000,
@@ -29,7 +29,7 @@ export class CookieService {
       domain: process.env.COOKIE_DOMAIN,
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "lax",
       path: "/",
       // MSG_WARNING for testing its now 20 SEC
       maxAge: 20 * 1000,
@@ -42,7 +42,7 @@ export class CookieService {
       domain: process.env.COOKIE_DOMAIN,
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "lax",
       path: "/",
       // MSG_WARNING for testing its now 1 min
       maxAge: 1 * 60 * 1000,
@@ -55,7 +55,7 @@ export class CookieService {
       domain: process.env.COOKIE_DOMAIN,
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "lax",
       path: "/",
       // MSG_WARNING for testing its now 1 min
       maxAge: 1 * 60 * 1000,

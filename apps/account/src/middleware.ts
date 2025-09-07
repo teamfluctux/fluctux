@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest, res: NextResponse) {
   const redirectStatus = url.searchParams.get("redirect")
   const refreshToken = req.cookies.get("refreshToken")
 
-  if (redirectStatus === "1") {
+  if (redirectStatus === "test") {
     return NextResponse.redirect(`${process.env.APP_BASE_URL}/?accessKey=123`)
   }
   // If user is NOT logged in and trying to access any route [excluded authorization pages], show & redirect to the login page instead
