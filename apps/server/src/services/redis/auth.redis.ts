@@ -2,7 +2,8 @@ import { JWTManager } from "@/utils/jwt_manager";
 import { RedisService } from "./redis.conf";
 
 export class AuthRedis extends RedisService {
-    async addAuthTokens({
+
+    async addOrUpdateAuthTokens({
         refreshToken,
         providerToken,
         deviceIdToken
@@ -13,30 +14,28 @@ export class AuthRedis extends RedisService {
     }) {
         try {
             await this.connect()
+
             const jwt = new JWTManager()
             const decryptedDeviceID = jwt.getDecryptedJWTValue({
                 token: deviceIdToken,
                 secret: `${process.env.DEVICE_TOKEN_SECRET}`
             })
 
-            if(!decryptedDeviceID) {
+            if (!decryptedDeviceID.deviceId) {
                 return null
             }
 
             const response = await this.redisClient.hSet(`${decryptedDeviceID?.deviceId}`, {
                 refreshToken,
                 providerToken,
-                deviceIdToken
+                deviceIdToken,
             })
 
-            const responsehexpire = await this.redisClient.hpExpire(`${decryptedDeviceID}`, [
-                providerToken, providerToken, deviceIdToken
-            ], 3000)
-
+            const responsehexpire = await this.redisClient.hpExpire(`${decryptedDeviceID?.deviceId}`, ["refreshToken", "providerToken", "deviceIdToken"], 3000)
             console.log("expire", responsehexpire)
-
             await this.quit()
             return response
+
         } catch (error) {
             return null
         }

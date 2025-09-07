@@ -92,7 +92,7 @@ export class AuthManager {
 
       const redisClient = new AuthRedis()
 
-      redisClient.addAuthTokens({
+      redisClient.addOrUpdateAuthTokens({
         refreshToken: ecryptedRefreshToken,
         deviceIdToken: encryptedDeviceIdToken,
         providerToken: encryptedProviderName
