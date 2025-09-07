@@ -31,6 +31,10 @@ export class AuthRedis extends RedisService {
                 deviceIdToken,
             })
 
+            /**
+             * record device id to database after login
+             * after log outs remove the deivce id from database
+             */
             const responsehexpire = await this.redisClient.hExpire(`${decryptedDeviceID?.deviceId}`, ['refreshToken', 'providerToken', 'deviceIdToken'],60 )
             console.log("expire", responsehexpire)
             await this.quit()

@@ -17,6 +17,7 @@ import { Heading } from "@/components";
 
 export default function LoginPage() {
   const router = useRouter();
+  
   return (
     <div className=" w-full">
       <Heading text=" Login to Fluctux" />
