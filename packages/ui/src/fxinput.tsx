@@ -13,6 +13,7 @@ interface FxInputProps
   radius?: keyof typeof ROUNDED_VARIANTS;
   size?: keyof typeof inputSizes;
   label?: string;
+  isError?: boolean
   classNames?: FxInputClassNames;
 }
 
@@ -37,7 +38,7 @@ const inputSizes: { [key in SizeType]: string } = {
 
 export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
   (
-    { className, variant, radius, size, label = "Label", classNames, ...props },
+    { className, variant, radius, size, label = "Label", classNames, isError = false, ...props },
     ref
   ) => {
     const inputVariant = variant ? inputVariants[variant] : "";
@@ -62,7 +63,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
       </div>
     ) : (
       <input
-        className={`transition-colors ${inputVariant} ${inputSize} ${roundedVariant} ${className}`}
+        className={`transition-colors ${inputVariant} ${inputSize} ${roundedVariant} ${className} ${isError && "ring-4 ring-red-600 ring-opacity-45 border border-red-600"}`}
         {...props}
       />
     );

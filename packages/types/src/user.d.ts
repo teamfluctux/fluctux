@@ -6,12 +6,12 @@ export interface UserType {
   email: string;
   username: string;
   password: string;
-  role: UserRoleType;
   status: UserStatusType;
   isVerified: boolean;
   provider: AuthProviderType;
   verify_code: string;
   verify_expiry: Date;
+  isPremium: boolean
   isPasswordCorrect(password: string): Promise<boolean>;
 }
 
@@ -36,11 +36,9 @@ export type DateOfBirthType = {
   visibility: VisibilityType;
 };
 
-export type AuthProviderType = "GOOGLE" | "GITHUB" | "DISCORD" | "CUSTOM";
+export type AuthProviderType = "GOOGLE" | "MANUAL";
 
 export type UserStatusType = "SUSPENDED" | "RESTRICTED" | "NORMAL";
-
-export type UserRoleType = "ADMIN" | "USER";
 
 export type SocialMediaType =
   | "FACEBOOK"

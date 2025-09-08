@@ -2,7 +2,6 @@ import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
 import { UserType } from "@fluctux/types";
 import {
-  UserRoleEnum,
   UserStatusEnum,
   AuthProviderEnum,
 } from "@fluctux/constants";
@@ -38,11 +37,6 @@ const user_schema: Schema<UserType> = new Schema(
       type: String,
       required: true,
     },
-    role: {
-      type: String,
-      enum: UserRoleEnum,
-      default: UserRoleEnum.USER,
-    },
     status: {
       type: String,
       enum: UserStatusEnum,
@@ -53,10 +47,14 @@ const user_schema: Schema<UserType> = new Schema(
       default: false,
       required: true,
     },
+    isPremium: {
+      type: Boolean,
+      default: false,
+    },
     provider: {
       type: String,
       enum: AuthProviderEnum,
-      default: AuthProviderEnum.CUSTOM,
+      default: AuthProviderEnum.MANUAL,
     },
     verify_code: {
       type: String,

@@ -15,6 +15,7 @@ export async function authenticateUser(
 ) {
   const auth = new AuthManager();
   const jwtManager = new JWTManager()
+  const redisAuthClient = new AuthRedis()
 
   // get idToken from cookies
   const idToken = req.cookies[CookieService.ID_TOKEN.name];
@@ -33,6 +34,13 @@ export async function authenticateUser(
   if (!providerToken || !refreshToken || !deviceIdToken) {
     console.log("refresh or provider token missing");
 
+    /**
+     * make database connection here,
+     * get the user id and remove all device ids
+     * and remove devices from redis
+     */
+
+    // await redisAuthClient.removeAuthTokens("")
     res.status(401).json({
       error: new ApiError(401, "Unauthorized access!", "", [
         ERROR.UNAUTHORIZED_USER,
@@ -120,9 +128,8 @@ export async function authenticateUser(
 
     })
 
-    const redisClient = new AuthRedis()
     // save tokens to redis
-    const redisResponse = redisClient.addOrUpdateAuthTokens({
+    const redisResponse = redisAuthClient.addOrUpdateAuthTokens({
       refreshToken: ecryptedRefreshToken,
       deviceIdToken: encryptedDeviceIdToken,
       providerToken: encryptedProviderName
@@ -162,7 +169,7 @@ export async function authenticateUser(
   const decryptedIdToken = jwtManager.getDecryptedJWTValue({
     token: idToken,
     secret: process.env.ID_TOKEN_JWT_SECRET
-  }) as {idToken: string}
+  }) as { idToken: string }
 
   const session = await getSession(decryptedProviderToken.provider, decryptedIdToken.idToken) as UserSessionType;
   console.log("provider", decryptedProviderToken.provider);

@@ -3,18 +3,14 @@
 import { Heading } from "@/components";
 import { useReactForm } from "@fluctux/hooks";
 import {
-  DiscordIcon,
-  GithubIcon,
-  GoogleIcon,
-  FxButton,
-  FxInput,
-  FxSeparator,
-  SlackIcon,
-  Label,
+    FxButton,
+    FxInput,
+    FxSeparator,
+    GoogleIcon,
+    Label
 } from "@fluctux/ui";
 import { userZodSchema } from "@fluctux/zod";
 import Link from "next/link";
-import React from "react";
 import { z } from "zod";
 
 export default function SignUpPage() {
@@ -70,7 +66,8 @@ export default function SignUpPage() {
               type="password"
               variant="primary"
               placeholder="••••••••"
-              size="md"
+                      size="md"
+                      required={true}
               radius="primary"
             />
 
