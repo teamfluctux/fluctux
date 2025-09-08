@@ -20,7 +20,9 @@ export default function LoginPage() {
         ZOD_SCHEMA: loginZodSchema,
     });
 
-    const onSubmit = (data: z.infer<typeof loginZodSchema>) => { };
+    const onSubmit = (data: z.infer<typeof loginZodSchema>) => {
+        window.alert(data.email)
+    };
 
     return (
         <div className=" w-full">
@@ -51,6 +53,7 @@ export default function LoginPage() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Label className="mb-2">Email</Label>
                 <FxInput
+                    isError={errors.email && true}
                     className="w-full text-workspace_1 font-medium"
                     variant="primary"
                     size="md"
@@ -58,6 +61,7 @@ export default function LoginPage() {
                     placeholder="youremail@gmail.com"
                     radius="primary"
                 />
+                {errors.email && <p>{errors.email.message}</p>}
                 <div className="flex justify-between items-center gap-3 mb-2 mt-4">
                     <Label className=" ">Password</Label>
 
@@ -72,6 +76,7 @@ export default function LoginPage() {
                     className="w-full text-workspace_1 font-medium tracking-widest "
                     type="password"
                     variant="primary"
+
                     {...register("password")}
                     placeholder="••••••••"
                     size="md"
