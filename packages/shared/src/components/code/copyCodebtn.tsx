@@ -9,7 +9,9 @@ export const CopyCodeButton = () => {
     // Find the closest <pre> element
     console.log("copied the code");
 
-    const wrapper = (e.currentTarget as  HTMLElement).closest("div[class*='border']");
+    const wrapper = (e.currentTarget as HTMLElement).closest(
+      "div[class*='border']"
+    );
     const pre = wrapper?.querySelector("pre");
     const code = pre?.innerText;
     console.log("code tag", code);

@@ -1,2 +1,2 @@
-export * from "./studentMainPage"
-export * from "./single_student"
+export * from "./studentMainPage";
+export * from "./single_student";

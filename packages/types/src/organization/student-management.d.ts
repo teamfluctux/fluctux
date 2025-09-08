@@ -1,4 +1,4 @@
-export type StudentType = "university" | "college" | "basic"
+export type StudentType = "university" | "college" | "basic";
 
 export type AreaConfig = {
   _id?: string;

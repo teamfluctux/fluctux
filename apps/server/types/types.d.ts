@@ -9,7 +9,6 @@ declare module "express" {
     newIDToken?: string;
     newRefreshToken?: string;
     newProviderToken?: string;
-    newDeviceIdToken?: string
-
+    newDeviceIdToken?: string;
   }
 }

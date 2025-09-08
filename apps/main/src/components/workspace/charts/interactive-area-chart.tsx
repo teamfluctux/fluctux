@@ -31,7 +31,7 @@ type ChartAreaInteractivePropsType = DefaultRechartTypes & {
   setSelectValue?: (val: any) => void;
   selectionData?: RechartSelectionDataType[];
   selectValuePlaceholder?: string;
-} ;
+};
 
 export function ChartAreaInteractive({
   chartConfig,
@@ -87,22 +87,31 @@ export function ChartAreaInteractive({
         >
           <AreaChart data={chartData}>
             <defs>
-              {
-                Object.entries(GradeLinearGradientShapeData).map(([key, value], i) => {
-                  return  <linearGradient key={i} id={`${key}`} x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor={value.stopColor_1}
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor={value.stopColor_2}
-                  stopOpacity={0.1}
-                />
-              </linearGradient>
-                })
-              }
+              {Object.entries(GradeLinearGradientShapeData).map(
+                ([key, value], i) => {
+                  return (
+                    <linearGradient
+                      key={i}
+                      id={`${key}`}
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop
+                        offset="5%"
+                        stopColor={value.stopColor_1}
+                        stopOpacity={0.8}
+                      />
+                      <stop
+                        offset="95%"
+                        stopColor={value.stopColor_2}
+                        stopOpacity={0.1}
+                      />
+                    </linearGradient>
+                  );
+                }
+              )}
             </defs>
             <CartesianGrid vertical={false} stroke="var(--border-color-1)" />
             <XAxis

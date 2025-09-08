@@ -1,10 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
 import { UserType } from "@fluctux/types";
-import {
-  UserStatusEnum,
-  AuthProviderEnum,
-} from "@fluctux/constants";
+import { UserStatusEnum, AuthProviderEnum } from "@fluctux/constants";
 import { UserBasicInfo } from "./userBasicInfo.model";
 import { UserAddress } from "./userAddress.model";
 

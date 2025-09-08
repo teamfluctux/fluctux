@@ -35,6 +35,6 @@ export const useSorting = (props: AZFilterProps) => {
     handleSort,
     currentSort,
     setSort,
-    column
+    column,
   };
 };

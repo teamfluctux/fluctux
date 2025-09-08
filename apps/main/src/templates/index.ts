@@ -1,1 +1,1 @@
-export * from "./student-management"
+export * from "./student-management";

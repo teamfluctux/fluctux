@@ -7,7 +7,11 @@ import {
 } from "@/components/workspace/ag-grid/filters";
 import { AgGridCellSelector } from "@/components/workspace/ag-grid/components/selector";
 import { Clock, GitBranch, IdCard, UserRound, UsersRound } from "lucide-react";
-import { ColDef, ICellRendererParams, ITextFilterParams } from "ag-grid-community";
+import {
+  ColDef,
+  ICellRendererParams,
+  ITextFilterParams,
+} from "ag-grid-community";
 
 import {
   ContextMenuForStudentIdCol,
@@ -46,7 +50,6 @@ const STUDENTS_SUBJECT_GROUP = [
   "vocational",
   "none",
 ];
-
 
 export const DynamicStudentGrid = () => {
   // Row Data: The data to be displayed.

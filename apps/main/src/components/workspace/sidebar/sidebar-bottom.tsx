@@ -38,7 +38,7 @@ const WORKSPACELISTS: WorkspaceListType[] = [
     slug: "/orgid/students",
     order: 1,
   },
-    {
+  {
     icon: GraduationCap,
     label: "Courses",
     slug: "/orgid/students",

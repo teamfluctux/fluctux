@@ -13,7 +13,7 @@ interface FxInputProps
   radius?: keyof typeof ROUNDED_VARIANTS;
   size?: keyof typeof inputSizes;
   label?: string;
-  isError?: boolean
+  isError?: boolean;
   classNames?: FxInputClassNames;
 }
 
@@ -38,7 +38,16 @@ const inputSizes: { [key in SizeType]: string } = {
 
 export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
   (
-    { className, variant, radius, size, label = "Label", classNames, isError = false, ...props },
+    {
+      className,
+      variant,
+      radius,
+      size,
+      label = "Label",
+      classNames,
+      isError = false,
+      ...props
+    },
     ref
   ) => {
     const inputVariant = variant ? inputVariants[variant] : "";

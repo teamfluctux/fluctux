@@ -14,9 +14,11 @@ export default async function TemplatePage({ params }: TemplateLayout) {
         <StudentsListMainPage />
       </>
     );
-  }else{
-    return <>
-    <p>Nothing</p>
-    </>
+  } else {
+    return (
+      <>
+        <p>Nothing</p>
+      </>
+    );
   }
 }

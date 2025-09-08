@@ -3,7 +3,11 @@ import { ChartColumn, Ellipsis, Tag } from "lucide-react";
 import React from "react";
 import { ChartAreaInteractive, ChartAreaLinear } from "../../charts";
 import { AreaDataType } from "@fluctux/types";
-import { GradeConfig, GradeChartAreas, GradeChartData } from "@/constants/workspace";
+import {
+  GradeConfig,
+  GradeChartAreas,
+  GradeChartData,
+} from "@/constants/workspace";
 import { GradeChatWithDate } from "./charts/grade-data-with-date";
 
 export const UniversityDashboard = () => {
@@ -76,7 +80,7 @@ export const UniversityDashboard = () => {
       </div>
 
       <div className="mt-3 h-[300px] pb-3">
-        <GradeChatWithDate/>
+        <GradeChatWithDate />
       </div>
     </div>
   );

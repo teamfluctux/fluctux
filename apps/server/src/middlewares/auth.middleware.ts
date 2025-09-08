@@ -14,8 +14,8 @@ export async function authenticateUser(
   next: NextFunction
 ) {
   const auth = new AuthManager();
-  const jwtManager = new JWTManager()
-  const redisAuthClient = new AuthRedis()
+  const jwtManager = new JWTManager();
+  const redisAuthClient = new AuthRedis();
 
   // get idToken from cookies
   const idToken = req.cookies[CookieService.ID_TOKEN.name];
@@ -23,7 +23,7 @@ export async function authenticateUser(
   // get tokens from cookies
   const refreshToken = req.cookies[CookieService.REFRESH_TOKEN.name];
   const providerToken = req.cookies[CookieService.PROVIDER_COOKIE.name];
-  const deviceIdToken = req.cookies[CookieService.DEVICE_ID_COOKIE.name]
+  const deviceIdToken = req.cookies[CookieService.DEVICE_ID_COOKIE.name];
 
   /**
    * if providertoken or
@@ -46,41 +46,45 @@ export async function authenticateUser(
         ERROR.UNAUTHORIZED_USER,
         "Missing or invalid refresh token",
         "Missing or invalid provider token",
-        "Missing or invalid deviceId Token"
+        "Missing or invalid deviceId Token",
       ]),
     });
     return;
   }
 
   // extracting value from encrypted jwt values
-  const decryptedProviderToken = jwtManager.getDecryptedJWTValue(
-    {
-      token: providerToken,
-      secret: process.env.PROVIDER_NAME_JWT
-    }
-  ) as { provider: string };
+  const decryptedProviderToken = jwtManager.getDecryptedJWTValue({
+    token: providerToken,
+    secret: process.env.PROVIDER_NAME_JWT,
+  }) as { provider: string };
 
   const decryptedRefreshToken = jwtManager.getDecryptedJWTValue({
     token: refreshToken,
-    secret: process.env.REFRESH_TOKEN_SECRET
-  }) as { refreshToken: string }
+    secret: process.env.REFRESH_TOKEN_SECRET,
+  }) as { refreshToken: string };
 
   const decryptedDeviceIdToken = jwtManager.getDecryptedJWTValue({
     token: deviceIdToken,
-    secret: process.env.DEVICE_TOKEN_SECRET
-  }) as { deviceId: string }
+    secret: process.env.DEVICE_TOKEN_SECRET,
+  }) as { deviceId: string };
 
   // if extracted values are not valid return to unauthorized
-  if (!decryptedProviderToken.provider || !decryptedRefreshToken.refreshToken || !decryptedDeviceIdToken.deviceId) {
+  if (
+    !decryptedProviderToken.provider ||
+    !decryptedRefreshToken.refreshToken ||
+    !decryptedDeviceIdToken.deviceId
+  ) {
     res.status(400).json({
-      error: new ApiError(HTTPErrorCodes.UNAUTHORIZED, "Unauthorized access!", "", [
-        ERROR.UNAUTHORIZED_USER,
-        "Invalid Tokens",
-      ]),
+      error: new ApiError(
+        HTTPErrorCodes.UNAUTHORIZED,
+        "Unauthorized access!",
+        "",
+        [ERROR.UNAUTHORIZED_USER, "Invalid Tokens"]
+      ),
     });
   }
 
-  // if not idtoken in req or idtoken is not valid then renew the idtoken 
+  // if not idtoken in req or idtoken is not valid then renew the idtoken
   if (!idToken) {
     console.log("id token missing");
 
@@ -94,60 +98,60 @@ export async function authenticateUser(
     if (!newIdToken) {
       res.status(400).json({
         error: new ApiError(400, "Invalid request", "", [
-          ERROR.INVALID_REQUEST
+          ERROR.INVALID_REQUEST,
         ]),
       });
       return;
     }
 
-
-
     // rotate jwt tokens
-    const encryptedProviderName = jwtManager.generateEncryptedJWTTokens(
-      {
-        dataObject: { provider: decryptedProviderToken.provider },
-        args: { expiresIn: "720h" },
-        secret: process.env.PROVIDER_NAME_JWT
-      }
-    );
+    const encryptedProviderName = jwtManager.generateEncryptedJWTTokens({
+      dataObject: { provider: decryptedProviderToken.provider },
+      args: { expiresIn: "720h" },
+      secret: process.env.PROVIDER_NAME_JWT,
+    });
     const ecryptedRefreshToken = jwtManager.generateEncryptedJWTTokens({
       dataObject: { refreshToken: decryptedRefreshToken.refreshToken ?? "" },
       args: { expiresIn: "720h" },
-      secret: process.env.REFRESH_TOKEN_SECRET
-    })
+      secret: process.env.REFRESH_TOKEN_SECRET,
+    });
     const encryptedDeviceIdToken = jwtManager.generateEncryptedJWTTokens({
       dataObject: { deviceId: decryptedDeviceIdToken.deviceId },
       args: { expiresIn: "720h" },
-      secret: process.env.DEVICE_TOKEN_SECRET
-    })
+      secret: process.env.DEVICE_TOKEN_SECRET,
+    });
 
     const encryptedIdToken = jwtManager.generateEncryptedJWTTokens({
       dataObject: { idToken: newIdToken ?? "" },
       secret: process.env.ID_TOKEN_JWT_SECRET,
-      args: { expiresIn: "5m" }
-
-    })
+      args: { expiresIn: "5m" },
+    });
 
     // save tokens to redis
     const redisResponse = redisAuthClient.addOrUpdateAuthTokens({
       refreshToken: ecryptedRefreshToken,
       deviceIdToken: encryptedDeviceIdToken,
-      providerToken: encryptedProviderName
-    })
+      providerToken: encryptedProviderName,
+    });
 
     if (!redisResponse) {
       res.status(HTTPErrorCodes.INTERNAL_SERVER_ERROR).json({
-        error: new ApiError(HTTPErrorCodes.INTERNAL_SERVER_ERROR, "Something went wrong!", "", [
-          ERROR.INTERNAL_SERVER_ERROR
-        ]),
+        error: new ApiError(
+          HTTPErrorCodes.INTERNAL_SERVER_ERROR,
+          "Something went wrong!",
+          "",
+          [ERROR.INTERNAL_SERVER_ERROR]
+        ),
       });
-      return
-
+      return;
     }
 
     console.log("new id token generated");
 
-    const session = await getSession(decryptedProviderToken.provider, newIdToken) as UserSessionType;
+    const session = (await getSession(
+      decryptedProviderToken.provider,
+      newIdToken
+    )) as UserSessionType;
 
     const user: SessionDataType = {
       sub: session?.user?.sub ?? "",
@@ -159,19 +163,22 @@ export async function authenticateUser(
 
     console.log("user saved in req after refreshing", user);
     req.newIDToken = encryptedIdToken;
-    req.newRefreshToken = ecryptedRefreshToken
-    req.newProviderToken = encryptedProviderName
-    req.newDeviceIdToken = encryptedDeviceIdToken
+    req.newRefreshToken = ecryptedRefreshToken;
+    req.newProviderToken = encryptedProviderName;
+    req.newDeviceIdToken = encryptedDeviceIdToken;
     req.user = user;
     return next();
   }
 
   const decryptedIdToken = jwtManager.getDecryptedJWTValue({
     token: idToken,
-    secret: process.env.ID_TOKEN_JWT_SECRET
-  }) as { idToken: string }
+    secret: process.env.ID_TOKEN_JWT_SECRET,
+  }) as { idToken: string };
 
-  const session = await getSession(decryptedProviderToken.provider, decryptedIdToken.idToken) as UserSessionType;
+  const session = (await getSession(
+    decryptedProviderToken.provider,
+    decryptedIdToken.idToken
+  )) as UserSessionType;
   console.log("provider", decryptedProviderToken.provider);
   console.log("session", session);
 

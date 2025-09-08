@@ -101,8 +101,7 @@ export const STUDENTS_ADMIN_SIDEBAR_NAV_ITEMS: StudentsAdminSidebarNavItemsType 
     ],
   };
 
-
-  // MSG_WARNING: temp constant =================== start
+// MSG_WARNING: temp constant =================== start
 export const GradeConfig = {
   gpa: {
     label: "GPA",

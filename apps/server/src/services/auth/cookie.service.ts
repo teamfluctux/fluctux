@@ -49,7 +49,7 @@ export class CookieService {
     },
   };
 
-    static DEVICE_ID_COOKIE: CookieType = {
+  static DEVICE_ID_COOKIE: CookieType = {
     name: "deviceId",
     cookie: {
       domain: process.env.COOKIE_DOMAIN,

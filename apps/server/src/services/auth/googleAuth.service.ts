@@ -23,7 +23,7 @@ export class GoogleAuth {
     });
   }
 
-   generateGoogleAuthUrl() {
+  generateGoogleAuthUrl() {
     return this.oauthClient.generateAuthUrl({
       access_type: "offline",
       scope: GoogleAuth.SCOPES,
@@ -35,7 +35,7 @@ export class GoogleAuth {
     });
   }
 
-   async getGoogleAuthtokens(authCode: string) {
+  async getGoogleAuthtokens(authCode: string) {
     const { tokens } = await this.oauthClient.getToken(authCode);
     return {
       idToken: tokens.id_token,
@@ -44,7 +44,7 @@ export class GoogleAuth {
     };
   }
 
-   async getNewGoogleAuthIdToken(refreshToken: string) {
+  async getNewGoogleAuthIdToken(refreshToken: string) {
     this.oauthClient.setCredentials({
       refresh_token: refreshToken,
       scope: GoogleAuth.SCOPES[0],

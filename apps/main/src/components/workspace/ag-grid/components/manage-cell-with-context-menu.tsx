@@ -30,7 +30,7 @@ import {
 
 type EditCellAgGridType = {
   isEnableRightClickEdit: boolean;
-  contextMenuComp: React.ReactNode
+  contextMenuComp: React.ReactNode;
 } & ICellRendererParams;
 
 export const ManageCellWithContextMenu = forwardRef<
@@ -38,11 +38,11 @@ export const ManageCellWithContextMenu = forwardRef<
   EditCellAgGridType
 >((props, ref) => {
   const { isEnableRightClickEdit, contextMenuComp } = props;
-//   useImperativeHandle(ref, () => ({
-//     refresh: () => {
-//       return true;
-//     },
-//   }));
+  //   useImperativeHandle(ref, () => ({
+  //     refresh: () => {
+  //       return true;
+  //     },
+  //   }));
 
   return (
     <div className="group">
@@ -51,9 +51,7 @@ export const ManageCellWithContextMenu = forwardRef<
           <ContextMenuTrigger className="!px-4 !w-full flex flex-grow justify-start items-center !h-full hover:bg-surface-indigo-bg  hover:text-surface-indigo-fg">
             {props.value}
           </ContextMenuTrigger>
-          <ContextMenuContent>
-            {contextMenuComp}
-          </ContextMenuContent>
+          <ContextMenuContent>{contextMenuComp}</ContextMenuContent>
         </ContextMenu>
       ) : (
         <div className="flex justify-between items-center ">

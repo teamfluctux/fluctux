@@ -20,16 +20,12 @@ import { z } from "zod";
 
 export default function LoginPage() {
   const router = useRouter();
-  const {register, handleSubmit, errors} = useReactForm({
-    ZOD_SCHEMA: loginZodSchema
-  })
+  const { register, handleSubmit, errors } = useReactForm({
+    ZOD_SCHEMA: loginZodSchema,
+  });
 
-  
-  const onSubmit = (data: z.infer<typeof loginZodSchema>) => {
-    
-    
-  };
-  
+  const onSubmit = (data: z.infer<typeof loginZodSchema>) => {};
+
   return (
     <div className=" w-full">
       <Heading text=" Login to Fluctux" />
@@ -67,7 +63,7 @@ export default function LoginPage() {
           radius="primary"
         />
         <div className="flex justify-between items-center gap-3 mb-2 mt-4">
-          <Label className=" " >Password</Label>
+          <Label className=" ">Password</Label>
 
           <Link href={"/"}>
             <Label className="text-text-color_1 hover:!text-text-color_4 transition-colors !cursor-pointer ">
@@ -80,7 +76,7 @@ export default function LoginPage() {
           className="w-full text-workspace_1 font-medium tracking-widest "
           type="password"
           variant="primary"
-               {...register("password")}
+          {...register("password")}
           placeholder="••••••••"
           size="md"
           radius="primary"

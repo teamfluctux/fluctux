@@ -1,2 +1,2 @@
-export * from "./airflow"
-export * from "./scaleUpDown"
+export * from "./airflow";
+export * from "./scaleUpDown";

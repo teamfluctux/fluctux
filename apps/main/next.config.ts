@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https", // Specify the protocol
-        hostname: "images.pexels.com", // Correct hostname 
+        hostname: "images.pexels.com", // Correct hostname
         port: "", // Leave empty unless a specific port is needed
         pathname: "/**", // Use `/` followed by `**` to allow all subpaths
       },

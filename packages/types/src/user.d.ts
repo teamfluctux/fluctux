@@ -11,7 +11,7 @@ export interface UserType {
   provider: AuthProviderType;
   verify_code: string;
   verify_expiry: Date;
-  isPremium: boolean
+  isPremium: boolean;
   isPasswordCorrect(password: string): Promise<boolean>;
 }
 

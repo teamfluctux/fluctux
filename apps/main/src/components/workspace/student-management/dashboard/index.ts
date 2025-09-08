@@ -1,2 +1,2 @@
-export * from "./university-dashboard"
-export * from "./student-dashboard"
+export * from "./university-dashboard";
+export * from "./student-dashboard";

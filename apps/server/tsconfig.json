@@ -3,9 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
-       "paths": {
+    "paths": {
       "@/*": ["src/*"]
-    },
+    }
   },
   "include": ["."],
   "exclude": ["dist", "build"]

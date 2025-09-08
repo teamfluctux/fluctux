@@ -24,7 +24,9 @@ export const AgGridMenuListButton = ({
         />
       )}
       <div className="flex justify-between items-center w-full">
-        <div className="flex justify-start items-center gap-2 flex-shrink-0">{children}</div>
+        <div className="flex justify-start items-center gap-2 flex-shrink-0">
+          {children}
+        </div>
         <div className=" flex-shrink-0">{active && <Check size={16} />}</div>
       </div>
     </button>

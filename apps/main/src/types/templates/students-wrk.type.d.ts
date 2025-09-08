@@ -12,7 +12,6 @@ type Students = {
   [key: string]: string | undefined | number | boolean;
 };
 
-
 interface SelectFilterParams {
   availableValues: string[];
 }

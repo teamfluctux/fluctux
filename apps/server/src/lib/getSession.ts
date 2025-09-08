@@ -3,8 +3,8 @@ import { AuthProviderCookieType } from "@/services/auth/cookie.service";
 
 type GetSessionReturnType = {
   user: unknown;
-  provider: string
-}
+  provider: string;
+};
 
 export const getSession = async (
   providerToken: string,
@@ -13,7 +13,7 @@ export const getSession = async (
   try {
     switch (providerToken) {
       case AuthProviderCookieType.GOOGLE: {
-        const googleAuth = new GoogleAuth()
+        const googleAuth = new GoogleAuth();
         const userDataFromGoogle =
           await googleAuth.getUserDataFromGoogleAuthToken(idToken);
         return {

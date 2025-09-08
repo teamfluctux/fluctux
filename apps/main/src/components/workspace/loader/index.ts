@@ -1,1 +1,1 @@
-export * from "./grid-loader"
+export * from "./grid-loader";

@@ -12,6 +12,6 @@ export type DefaultRechartTypes = {
 };
 
 export type RechartSelectionDataType = {
-  label: string,
-  value: string
-}
+  label: string;
+  value: string;
+};

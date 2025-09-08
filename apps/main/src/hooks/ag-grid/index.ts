@@ -1,1 +1,1 @@
-export * from "./useSorting"
+export * from "./useSorting";

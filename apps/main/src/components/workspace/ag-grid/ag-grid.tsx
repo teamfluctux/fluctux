@@ -63,7 +63,7 @@ export const AgGridComponent = ({
       modules={[
         ClientSideRowModelModule,
         CsvExportModule,
-         TooltipModule,
+        TooltipModule,
         NumberFilterModule,
         CellStyleModule,
         TextFilterModule,

@@ -554,7 +554,7 @@ export const RndWindows = () => {
                 }[] 
                  
                 */}
-               {taskbarItems.map((item, i) => (
+                {taskbarItems.map((item, i) => (
                   <div
                     key={i}
                     onClick={() => {
@@ -582,7 +582,7 @@ export const RndWindows = () => {
            <div className="bottom_bar w-[25px] h-[4px] rounded-tablet bg-background-indigo_primary absolute bottom-0 left-[50%] translate-x-[-50%]"></div> 
          </div> */}
         </div>
-      </div> 
+      </div>
     </>
   );
 };

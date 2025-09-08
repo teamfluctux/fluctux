@@ -22,7 +22,7 @@ export const ContextMenuForStudentIdCol: React.FC<ViewStudentPopupType> = (
 ) => {
   const { label, icon, value } = props;
   const TempEditIcon = (icon && editIcons[icon]) || editIcons.edit_1;
-  
+
   return (
     <>
       <ContextMenuItem

@@ -1,2 +1,2 @@
-export * from "./sigup.zod"
-export * from "./login.zod"
+export * from "./sigup.zod";
+export * from "./login.zod";

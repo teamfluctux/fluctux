@@ -31,7 +31,7 @@ export const BasicInputAgGrid = forwardRef<
       <input
         value={value}
         onChange={(e) => {
-          const newValue = e.target.value
+          const newValue = e.target.value;
           props.setValue?.(newValue);
           setValue(newValue);
         }}

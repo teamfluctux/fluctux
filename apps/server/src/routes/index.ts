@@ -15,11 +15,11 @@ router.get(
   async (req: Request, res: Response) => {
     const user = req.user;
     const newIDToken = req.newIDToken;
-    const newRefreshToken = req.newRefreshToken
-    const newDeviceIdToken = req.newDeviceIdToken
-    const newProviderToken = req.newProviderToken
+    const newRefreshToken = req.newRefreshToken;
+    const newDeviceIdToken = req.newDeviceIdToken;
+    const newProviderToken = req.newProviderToken;
     if (newIDToken) {
-      console.log(newIDToken, "inside new id token")
+      console.log(newIDToken, "inside new id token");
       res.cookie(
         CookieService.ID_TOKEN.name,
         newIDToken,
@@ -51,7 +51,7 @@ router.get(
       );
     }
 
-    console.log("hey user", user)
+    console.log("hey user", user);
     res.status(200).json({ session: user });
   }
 );

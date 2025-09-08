@@ -1,10 +1,8 @@
-
 import { RedisClientType } from "redis";
 import { createClient } from "redis";
 import { config } from "src/config";
 
 export class RedisService {
-
   protected redisClient: RedisClientType;
 
   constructor() {
@@ -15,7 +13,7 @@ export class RedisService {
       socket: {
         host: `${config.redis_host}`,
         port: Number(config.redis_port),
-        reconnectStrategy: retries => {
+        reconnectStrategy: (retries) => {
           // Generate a random jitter between 0 – 100 ms:
           const jitter = Math.floor(Math.random() * 100);
 
@@ -31,19 +29,24 @@ export class RedisService {
         // key: fs.readFileSync('./redis_user_private.key'),
         // cert: fs.readFileSync('./redis_user.crt'),
         // ca: [fs.readFileSync('./redis_ca.pem')]
-      }
-    })
+      },
+    });
 
-    this.redisClient.on("error", (err: any) => console.log("Redis Client Error", err))
-    this.redisClient.on("reconnecting", () => console.log("The client is about to try reconnecting after the connection was lost due to an error."))
-
+    this.redisClient.on("error", (err: any) =>
+      console.log("Redis Client Error", err)
+    );
+    this.redisClient.on("reconnecting", () =>
+      console.log(
+        "The client is about to try reconnecting after the connection was lost due to an error."
+      )
+    );
   }
 
   protected async connect() {
-    await this.redisClient.connect()
+    await this.redisClient.connect();
   }
 
   protected async quit() {
-    await this.redisClient.quit()
+    await this.redisClient.quit();
   }
 }

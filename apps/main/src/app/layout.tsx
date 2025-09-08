@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 // import global style
 import "@fluctux/ui/styles/global.css";
-import "./styles"
+import "./styles";
 import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";

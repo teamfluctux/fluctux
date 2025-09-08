@@ -32,9 +32,13 @@ app.get("/health", async (req: Request, res) => {
 });
 
 app.get("/redis", async (req, res) => {
-  const redis = new GlobalRedis()
-  const response = await redis.redisCheckConnection()
-  res.status(200).json({message: new ApiResponse(200, "Response from server for redis", response)})
-})
+  const redis = new GlobalRedis();
+  const response = await redis.redisCheckConnection();
+  res
+    .status(200)
+    .json({
+      message: new ApiResponse(200, "Response from server for redis", response),
+    });
+});
 
 export { app };

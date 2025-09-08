@@ -1,6 +1,7 @@
-import {z} from "zod"
+import { z } from "zod";
 
-export const signupZodSchema = z.object({
+export const signupZodSchema = z
+  .object({
     email: z.string().email("Invalid email"),
     password: z
       .string()
@@ -10,7 +11,8 @@ export const signupZodSchema = z.object({
       .string()
       .min(8, "Password must be at least 8 characters")
       .optional(),
-}).refine((data) => data.password === data.confirmPassword, {
+  })
+  .refine((data) => data.password === data.confirmPassword, {
     message: "Password do not match",
     path: ["confirmPassword"],
   });
