@@ -1,7 +1,7 @@
 import React from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 
 interface UseReactFormPropsType<T extends z.ZodTypeAny> {
   ZOD_SCHEMA: T;
@@ -10,12 +10,13 @@ interface UseReactFormPropsType<T extends z.ZodTypeAny> {
 export const useReactForm = <T extends z.ZodTypeAny>({
   ZOD_SCHEMA,
 }: UseReactFormPropsType<T>) => {
+    type FormData = z.infer<T> extends object ? z.infer<T> : FieldValues;
   const {
-    register,
-    handleSubmit,
+    register, 
+    handleSubmit, 
     setValue,
-    formState: { errors },
-  } = useForm<z.infer<T>>({
+    formState: { errors }, 
+  } = useForm<FormData>({
     resolver: zodResolver(ZOD_SCHEMA),
   });
 
