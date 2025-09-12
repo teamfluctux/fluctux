@@ -7,10 +7,10 @@ export interface UserType {
   username: string;
   password: string;
   status: UserStatusType;
-  isVerified: boolean;
+  isTempVerified: boolean;
   provider: AuthProviderType;
-  verify_code: string;
-  verify_expiry: Date;
+  temp_verify_code: string;
+  temp_verify_expiry: Date;
   isPremium: boolean;
   isPasswordCorrect(password: string): Promise<boolean>;
 }

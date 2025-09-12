@@ -17,11 +17,10 @@ const numberSchema: Schema<NumberType> = new Schema({
     required: true,
   },
   visibility: {
-    type: String,
-    enum: VisibilityEnum,
-    default: VisibilityEnum.PUBLIC,
-    required: true,
-  },
+        type: String,
+        enum: VisibilityEnum,
+        default: VisibilityEnum.PUBLIC,
+    }
 });
 
 const socialLinkSchema: Schema<SocialLinkType> = new Schema({
@@ -35,11 +34,10 @@ const socialLinkSchema: Schema<SocialLinkType> = new Schema({
     required: true,
   },
   visibility: {
-    type: String,
-    enum: VisibilityEnum,
-    default: VisibilityEnum.PUBLIC,
-    required: true,
-  },
+        type: String,
+        enum: VisibilityEnum,
+        default: VisibilityEnum.PUBLIC,
+    }
 });
 
 const dateOfBirthSchema: Schema<DateOfBirthType> = new Schema({
@@ -52,11 +50,10 @@ const dateOfBirthSchema: Schema<DateOfBirthType> = new Schema({
     required: true,
   },
   visibility: {
-    type: String,
-    enum: VisibilityEnum,
-    default: VisibilityEnum.PUBLIC,
-    required: true,
-  },
+        type: String,
+        enum: VisibilityEnum,
+        default: VisibilityEnum.PUBLIC,
+    }
 });
 
 const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({

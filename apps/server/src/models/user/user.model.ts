@@ -32,14 +32,13 @@ const user_schema: Schema<UserType> = new Schema(
     },
     password: {
       type: String,
-      required: true,
     },
     status: {
       type: String,
       enum: UserStatusEnum,
       default: UserStatusEnum.NORMAL,
     },
-    isVerified: {
+    isTempVerified: {
       type: Boolean,
       default: false,
       required: true,
@@ -51,12 +50,12 @@ const user_schema: Schema<UserType> = new Schema(
     provider: {
       type: String,
       enum: AuthProviderEnum,
-      default: AuthProviderEnum.MANUAL,
+      default: AuthProviderEnum.GOOGLE,
     },
-    verify_code: {
+    temp_verify_code: {
       type: String,
     },
-    verify_expiry: {
+    temp_verify_expiry: {
       type: Date,
     },
   },
@@ -75,6 +74,9 @@ user_schema.pre("save", async function (next) {
   next();
 });
 
+/**
+ * run after creating the database
+ */
 user_schema.post("save", async function (_, next) {
   const userBasicInfo = await UserBasicInfo.findOne({ user: this._id });
   const userAddress = await UserAddress.findOne({ user: this._id });
