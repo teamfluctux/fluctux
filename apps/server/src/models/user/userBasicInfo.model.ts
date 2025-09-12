@@ -37,6 +37,7 @@ const socialLinkSchema: Schema<SocialLinkType> = new Schema({
         type: String,
         enum: VisibilityEnum,
         default: VisibilityEnum.PUBLIC,
+        
     }
 });
 

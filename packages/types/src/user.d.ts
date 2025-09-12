@@ -2,7 +2,10 @@ import { Document } from "mongoose";
 
 export interface UserType {
   avatar: string;
-  name: string;
+  name: {
+    first_name: string,
+    last_name: string
+  };
   email: string;
   username: string;
   password: string;
