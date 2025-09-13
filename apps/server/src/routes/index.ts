@@ -2,7 +2,7 @@ import { Request, Response, Router } from "express";
 import authRouter from "./auth.route";
 import { authenticateUser } from "@/middlewares";
 import { CookieService } from "@/services/auth/cookie.service";
-import { AuthManager } from "@/controllers";
+import {AuthController} from "@/controllers";
 import { JWTManager } from "@/utils/jwt_manager";
 
 const router = Router();

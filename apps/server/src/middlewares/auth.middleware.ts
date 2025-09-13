@@ -3,17 +3,17 @@ import { ApiError } from "@/utils/ApiError";
 import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
 import { getSession } from "@/lib/getSession";
 import { CookieService } from "@/services/auth/cookie.service";
-import { AuthManager } from "@/controllers";
 import { SessionDataType, UserSessionType } from "@fluctux/types";
 import { JWTManager } from "@/utils/jwt_manager";
 import { AuthRedis } from "@/services/redis";
+import { AuthService } from "@/services/auth/auth.service";
 
 export async function authenticateUser(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const auth = new AuthManager();
+  const auth = new AuthService();
   const jwtManager = new JWTManager();
   const redisAuthClient = new AuthRedis();
 
@@ -52,7 +52,7 @@ export async function authenticateUser(
     return;
   }
 
-  // extracting value from encrypted jwt values
+  // extracting values from encrypted jwt values
   const decryptedProviderToken = jwtManager.getDecryptedJWTValue({
     token: providerToken,
     secret: process.env.PROVIDER_NAME_JWT,

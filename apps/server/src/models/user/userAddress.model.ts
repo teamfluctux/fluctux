@@ -2,7 +2,7 @@ import { AddressType } from "@fluctux/types";
 import { VisibilityEnum } from "@fluctux/constants";
 import mongoose, { Schema } from "mongoose";
 
-const address_schema: Schema<AddressType> = new Schema(
+const addressSchema: Schema<AddressType> = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
@@ -61,4 +61,4 @@ const address_schema: Schema<AddressType> = new Schema(
 
 export const UserAddress =
   (mongoose.models.UserAddress as mongoose.Model<AddressType>) ||
-  mongoose.model<AddressType>("UserAddress", address_schema);
+  mongoose.model<AddressType>("UserAddress", addressSchema);

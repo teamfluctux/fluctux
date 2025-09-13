@@ -21,7 +21,7 @@ const numberSchema: Schema<NumberType> = new Schema({
         enum: VisibilityEnum,
         default: VisibilityEnum.PUBLIC,
     }
-});
+}, {_id: false});
 
 const socialLinkSchema: Schema<SocialLinkType> = new Schema({
   link: {
@@ -39,7 +39,7 @@ const socialLinkSchema: Schema<SocialLinkType> = new Schema({
         default: VisibilityEnum.PUBLIC,
         
     }
-});
+}, {_id: false});
 
 const dateOfBirthSchema: Schema<DateOfBirthType> = new Schema({
   day_month: {
@@ -55,7 +55,7 @@ const dateOfBirthSchema: Schema<DateOfBirthType> = new Schema({
         enum: VisibilityEnum,
         default: VisibilityEnum.PUBLIC,
     }
-});
+}, {_id: false});
 
 const UserBasicInfoSchema: Schema<UserBasicInfoType> = new Schema({
   user: {

@@ -1,5 +1,5 @@
 export type SessionDataType = {
-  sub: string;
+  sub?: string;
   _id?: string;
   name: string;
   picture: string;

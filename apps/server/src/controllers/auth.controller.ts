@@ -13,7 +13,7 @@ import { AuthRedis } from "@/services/redis/auth.redis";
 
 dotenv.config();
 
-export class AuthManager {
+export class AuthController {
   private google: GoogleAuth;
   constructor() {
     this.google = new GoogleAuth();
@@ -24,12 +24,6 @@ export class AuthManager {
 
   redirectGithubAuth(req: Request, res: Response) {
     return res.redirect(this.google.generateGoogleAuthUrl());
-  }
-
-  static clearProtectedCookies(_: Request, res: Response) {
-    res.clearCookie(CookieService.ID_TOKEN.name);
-    res.clearCookie(CookieService.REFRESH_TOKEN.name);
-    res.clearCookie(CookieService.PROVIDER_COOKIE.name);
   }
 
   async handleSignInWithGoogle(req: Request, res: Response) {
@@ -93,7 +87,7 @@ export class AuthManager {
       const encryptedIdToken = jwtManager.generateEncryptedJWTTokens({
         dataObject: { idToken: idToken ?? "" },
         secret: process.env.ID_TOKEN_JWT_SECRET,
-        args: { expiresIn: "5m" },
+        args: { expiresIn: "20s" },
       });
 
       const redisClient = new AuthRedis();
@@ -173,22 +167,5 @@ export class AuthManager {
   //   }
   // }
 
-  async refreshToken(providerName: string, refreshToken: string) {
-    try {
-      switch (providerName) {
-        case AuthProviderCookieType.GOOGLE: {
-          console.log("TOKEN REFRESHED VIA GOOGLE");
-          const token = await this.google.getNewGoogleAuthIdToken(refreshToken);
-          return token;
-        }
-        default: {
-          return null;
-        }
-      }
-    } catch (error) {
-      console.log(error);
 
-      return null;
-    }
-  }
 }
