@@ -20,12 +20,9 @@ export class AuthRedis extends RedisService {
         secret: `${process.env.DEVICE_TOKEN_SECRET}`,
       });
 
-
-
       if (!decryptedDeviceID.deviceId) {
         return null;
       }
-
 
       const response = await this.redisClient.hSet(
         `${decryptedDeviceID?.deviceId}`,
@@ -37,14 +34,14 @@ export class AuthRedis extends RedisService {
       );
 
       // MSG_ERROR: ttl is showing -1 always fix it
-      const getRemainingTtlOfRefreshToken = await this.redisClient.hTTL(`${decryptedDeviceID?.deviceId}`, ["refreshToken"])
-      let ttl = getRemainingTtlOfRefreshToken?.[0] ?? 60;
+      // const getRemainingTtlOfRefreshToken = await this.redisClient.hTTL(`${decryptedDeviceID?.deviceId}`, ["refreshToken"])
+      // let ttl = getRemainingTtlOfRefreshToken?.[0] ?? 60;
 
-      // If Redis reports no TTL (-1) or key not found (-2), force fallback
-      if (!ttl || ttl < 0) {
-        ttl = 60;
-      }
-      console.log("Remaining Redis ttl refreshToken is ", getRemainingTtlOfRefreshToken?.[0], ttl)
+      // // If Redis reports no TTL (-1) or key not found (-2), force fallback
+      // if (!ttl || ttl < 0) {
+      //   ttl = 60;
+      // }
+      // console.log("Remaining Redis ttl refreshToken is ", getRemainingTtlOfRefreshToken?.[0], ttl)
       /**
        * record device id to database after login
        * after log outs remove the deivce id from database
@@ -52,7 +49,7 @@ export class AuthRedis extends RedisService {
       const responsehexpireAuthTokens = await this.redisClient.hExpire(
         `${decryptedDeviceID?.deviceId}`,
         ["refreshToken", "providerToken", "deviceIdToken"],
-         ttl
+        60
       );
 
       await this.quit();
