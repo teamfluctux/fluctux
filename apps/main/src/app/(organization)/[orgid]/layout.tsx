@@ -58,6 +58,7 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
   //                                 Sidebar
   // ==========================================================================
   const parentRef = useRef<HTMLDivElement | null>(null);
+  const masterRef = useRef<HTMLDivElement | null>(null);
 
   // // simulating data seeding =========================
   // const [data, setData] = useState<string | null>(null);
@@ -82,8 +83,9 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
   return (
     <>
       {/* for RND window tabs -> ./src/hooks/useTaskBar */}
-      <workspaceContext.Provider value={{ parentRef }}>
+      <workspaceContext.Provider value={{ parentRef, masterRef }}>
         <div
+        ref={masterRef}
           className={cn(
             "grid w-full grid-cols-[auto_1fr] bg-background-color_950C overflow-hidden"
           )}
@@ -95,10 +97,10 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
           <div
             ref={parentRef}
             className={cn(
-              `h-screen bg-background-color_925C relative w-full  overflow-y-auto`
+              `h-screen bg-background-color_925C relative w-full overflow-hidden`
             )}
           >
-            <div className="border-b border-border-color_1 w-full h-[40px] sticky z-[999] bg-background-color_925C top-0 fx-flex-center">
+            <div className="border-b border-border-color_1 w-full h-[40px] sticky z-40 bg-background-color_925C top-0 fx-flex-center">
               {/* SIDEBAR TOGGLE BUTTON */}
               {/* <div
                 className="w-[30px] h-[30px] fx-flex-center rounded-[5px] absolute left-1 hover:bg-background-color_3 cursor-pointer z-[50] text-text-svg_default hover:text-text-color_1"
@@ -115,7 +117,7 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
             {children}
 
             {/* taskbar uncomment this */}
-            {/* <DynamicTaskBarObserver /> */}
+            <DynamicTaskBarObserver />
           </div>
         </div>
       </workspaceContext.Provider>

@@ -21,6 +21,7 @@ export interface TabsRndType {
   slug?: string;
   label?: string;
   isMaximized?: boolean;
+  isMaximizedMd?: boolean;
 }
 
 export interface TabsStateType {

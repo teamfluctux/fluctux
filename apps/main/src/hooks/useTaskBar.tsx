@@ -5,6 +5,8 @@ import {
   TaskbarCategoriesType,
 } from "@fluctux/types";
 import { useWorkspaceContext } from "@/context/workspace-context";
+import { mainSidebarStore } from "@/services/stores";
+import { observer } from "mobx-react";
 
 export const useTaskBar = () => {
   const [showTaskBar, setShowTaskbar] = useState(false);
@@ -12,7 +14,7 @@ export const useTaskBar = () => {
     useState<boolean>(false);
   const [isDragStart, setIsDragStart] = useState(false);
   const [tabs, setTabs] = useState<TabsStateType>({});
-  const { parentRef, sidebarSize } = useWorkspaceContext();
+  const { parentRef, masterRef } = useWorkspaceContext();
 
   const updateTabInCategory = useCallback(
     (
@@ -92,7 +94,6 @@ export const useTaskBar = () => {
   useEffect(() => {
     if (!parentRef.current) return;
     const { offsetWidth, offsetHeight } = parentRef.current;
-    console.log(offsetWidth);
     setTabs((prevTabs) => {
       return Object.entries(prevTabs).reduce(
         (newTabs, [categorySlug, category]) => {
@@ -102,7 +103,14 @@ export const useTaskBar = () => {
               if (tab.isMaximized) {
                 return {
                   ...tab,
-                  size: { width: offsetWidth, height: offsetHeight },
+                  size: { width: (Number(masterRef.current?.offsetWidth) - Number(mainSidebarStore.getSidebarSize)), height: masterRef.current?.offsetHeight },
+                };
+              }
+
+               if (tab.isMaximizedMd) {
+                return {
+                  ...tab,
+                  size: { width: (Number(masterRef.current?.offsetWidth) - Number(mainSidebarStore.getSidebarSize)), height: tab.size?.height },
                 };
               }
 
@@ -138,7 +146,7 @@ export const useTaskBar = () => {
         {} as typeof prevTabs
       );
     });
-  }, [sidebarSize, parentRef]);
+  }, [ parentRef, mainSidebarStore.getSidebarSize, masterRef]);
 
   // const handleNewTab = (newTabs: TabsRndType) => {
   //     const existedTabs = tabs.find((tab) => tab.id === newTabs.id)

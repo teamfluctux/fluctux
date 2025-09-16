@@ -20,12 +20,13 @@ import {
 } from "lucide-react";
 import { TaskbarCategoriesType } from "@fluctux/types";
 import dynamic from "next/dynamic";
+import { observer } from "mobx-react";
 
 const DynamicRnd = dynamic(() => import("react-rnd").then((mod) => mod.Rnd), {
   ssr: false,
   loading: () => (
     <>
-      <div className="w-full h-full absolute z-20 top-0 fx-flex-center bg-background-color_950C">
+      <div className="w-full h-full absolute z-40 top-0 fx-flex-center bg-background-color_950C">
         <FadeFavLoading />
       </div>
     </>
@@ -47,7 +48,7 @@ const TASK_BAR_ITEMS = [
   },
 ];
 
-export const RndWindows = () => {
+export const RndWindows = observer(() => {
   const {
     showTaskBar,
     setShowTaskbar,
@@ -145,7 +146,7 @@ export const RndWindows = () => {
       <>
         <div
           className={cn(
-            "w-full h-full absolute hidden opacity-[20%] top-0 left-0 p-2 z-10",
+            "w-full h-full absolute hidden opacity-[20%] top-0 left-0 p-2 z-40",
             enabledFullWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -154,7 +155,7 @@ export const RndWindows = () => {
 
         <div
           className={cn(
-            "w-full h-1/2 absolute hidden opacity-[20%] top-0 left-0 z-10 p-2",
+            "w-full h-1/2 absolute hidden opacity-[20%] top-0 left-0 z-40 p-2",
             enabledTopWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -163,7 +164,7 @@ export const RndWindows = () => {
 
         <div
           className={cn(
-            "w-1/2 h-full absolute hidden opacity-[20%] top-0 left-0 z-10 p-2",
+            "w-1/2 h-full absolute hidden opacity-[20%] top-0 left-0 z-40 p-2",
             enabledLeftWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -172,7 +173,7 @@ export const RndWindows = () => {
 
         <div
           className={cn(
-            "w-1/2 h-full absolute hidden opacity-[20%] top-0 right-0 z-10 p-2",
+            "w-1/2 h-full absolute hidden opacity-[20%] top-0 right-0 z-40 p-2",
             enabledRightWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -181,7 +182,7 @@ export const RndWindows = () => {
 
         <div
           className={cn(
-            "w-full h-1/2 absolute hidden opacity-[20%] bottom-0 left-0 z-10 p-2",
+            "w-full h-1/2 absolute hidden opacity-[20%] bottom-0 left-0 z-40 p-2",
             enabledBottomWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -220,6 +221,9 @@ export const RndWindows = () => {
                       isMaximized:
                         ref.offsetWidth === parentRef.current?.offsetWidth &&
                         ref.offsetHeight === parentRef.current?.offsetHeight,
+                      isMaximizedMd:
+                        ref.offsetWidth === parentRef.current?.offsetWidth &&
+                        ref.offsetHeight !== parentRef.current?.offsetHeight,
                     });
                   }}
                   onResizeStop={(e, direction, ref, delta, pos) => {
@@ -300,6 +304,7 @@ export const RndWindows = () => {
                         },
                         position: { x: 0, y: 0 },
                         isMaximized: true,
+                        isMaximizedMd: false,
                       });
                     } else if (
                       d.y === 0 &&
@@ -316,6 +321,7 @@ export const RndWindows = () => {
                         },
                         position: { x: 0, y: 0 },
                         isMaximized: false,
+                        isMaximizedMd: true,
                       });
                     } else if (
                       d.x === 0 &&
@@ -332,6 +338,7 @@ export const RndWindows = () => {
                         },
                         position: { x: 0, y: 0 },
                         isMaximized: false,
+                        isMaximizedMd: false,
                       });
                     } else if (
                       d.y + d.node.offsetHeight ===
@@ -358,6 +365,7 @@ export const RndWindows = () => {
                               (parentRef.current?.offsetHeight || 500) / 2,
                           },
                           isMaximized: false,
+                          isMaximizedMd: true,
                         }
                       );
                     } else if (
@@ -381,6 +389,7 @@ export const RndWindows = () => {
                           y: 0,
                         },
                         isMaximized: false,
+                        isMaximizedMd: false,
                       });
                     }
                   }}
@@ -585,4 +594,4 @@ export const RndWindows = () => {
       </div>
     </>
   );
-};
+});

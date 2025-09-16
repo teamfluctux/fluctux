@@ -2,6 +2,7 @@ import { createContext, RefObject, useContext } from "react";
 
 interface WorkspaceContextType {
   parentRef: RefObject<HTMLDivElement | null>;
+  masterRef: RefObject<HTMLDivElement | null>;
 }
 
 export const workspaceContext = createContext<WorkspaceContextType | null>(
