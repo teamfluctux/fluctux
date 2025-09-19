@@ -1,11 +1,21 @@
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { action, makeObservable, observable } from "mobx";
 
+type DndType = {
+  id: UniqueIdentifier;
+  title: string;
+  items: {
+    id: UniqueIdentifier;
+    title: string;
+  }[];
+};
+
 class KanbanStore {
-    activeId: UniqueIdentifier = ""
+    activeId: UniqueIdentifier | null = null
     currentContainerID: UniqueIdentifier = ""
     showAddContainerModel: boolean = false
     showAddItemModel: boolean = false
+    containers:DndType[] = [] 
     constructor() {
         makeObservable(this, {
             activeId: observable,
@@ -15,11 +25,13 @@ class KanbanStore {
             showAddContainerModel: observable,
             showAddItemModel: observable,
             setShowAddItemModel: action,
-            setShowAddContainerModel: action
+            setShowAddContainerModel: action,
+            setContainers: action,
+            containers: observable
         })
     }
 
-    setActiveId(value: UniqueIdentifier) {
+    setActiveId(value: UniqueIdentifier | null) {
         this.activeId = value
     }
     setCurrentContainerID(value: UniqueIdentifier) {
@@ -32,6 +44,10 @@ class KanbanStore {
 
     setShowAddContainerModel(value: boolean) {
         this.showAddContainerModel = value
+    }
+
+    setContainers(value: DndType[]) {
+        this.containers = value
     }
 }
 

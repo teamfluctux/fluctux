@@ -4,6 +4,7 @@ import {
   DndContext,
   DragEndEvent,
   DragMoveEvent,
+  DragOverEvent,
   DragStartEvent,
   KeyboardSensor,
   PointerSensor,
@@ -16,12 +17,13 @@ import {
   SortableContext,
   sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { DndContainer } from "./DndContainer";
 import { DndItem } from "./DndItem";
 import { kanbanStore } from "@/services/stores";
 import { KanbanDndDataEnum } from "./constant";
 import { v4 as uuidV4 } from "uuid";
+import { observer } from "mobx-react";
 
 type DndType = {
   id: UniqueIdentifier;
@@ -32,13 +34,238 @@ type DndType = {
   }[];
 };
 
-export function KanbanTemplate() {
+export const KanbanTemplate = observer(() => {
   const data: DndType[] = [
     {
       id: `container-${uuidV4()}`,
       title: "Todo",
       items: [
         {
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Itfdhem 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Itedfhm 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Ifdhfdhem 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Itemdfghfh 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 1",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 2",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 3",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 4",
+        },{
+          id: `item-${uuidV4()}`,
+          title: "Item 5",
+        },{
           id: `item-${uuidV4()}`,
           title: "Item 1",
         },
@@ -54,7 +281,7 @@ export function KanbanTemplate() {
         },
       ],
     },
-     {
+    {
       id: `container-${uuidV4()}`,
       title: "Done",
       items: [
@@ -64,7 +291,7 @@ export function KanbanTemplate() {
         },
       ],
     },
-     {
+    {
       id: `container-${uuidV4()}`,
       title: "Custom",
       items: [
@@ -75,24 +302,31 @@ export function KanbanTemplate() {
       ],
     },
   ];
-  const [containers, setContainers] = useState<DndType[]>(data);
-  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
-  const [currentContainerID, setContainerID] = useState<UniqueIdentifier>();
-  const [containerName, setContainerName] = useState<string>("");
-  const [itemName, setItemName] = useState<string>("");
-  const [showAddContainerModel, setShowAddContainerModel] =
-    useState<boolean>(false);
-  const [showAddItemModel, setShowAddItemModel] = useState<boolean>(false);
 
-  const findKanbanDndValues = (id: UniqueIdentifier, type: KanbanDndDataEnum) => {
+  useEffect(() => {
+    kanbanStore.setContainers(data);
+  }, []);
+
+  //   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
+  //   const [currentContainerID, setContainerID] = useState<UniqueIdentifier>();
+  //   const [containerName, setContainerName] = useState<string>("");
+  //   const [itemName, setItemName] = useState<string>("");
+  //   const [showAddContainerModel, setShowAddContainerModel] =
+  //     useState<boolean>(false);
+  //   const [showAddItemModel, setShowAddItemModel] = useState<boolean>(false);
+
+  const findKanbanDndValues = (
+    id: UniqueIdentifier,
+    type: KanbanDndDataEnum
+  ) => {
     if (type === KanbanDndDataEnum.ITEM) {
-      return containers.find((container) =>
+      return kanbanStore.containers.find((container) =>
         container.items!.find((item) => item.id === id)
       );
     }
 
     if (type === KanbanDndDataEnum.CONTAINER) {
-      return containers.find((item) => item.id === id);
+      return kanbanStore.containers.find((item) => item.id === id);
     }
   };
 
@@ -108,62 +342,105 @@ export function KanbanTemplate() {
     kanbanStore.setActiveId(active.id);
   };
 
+  const handleOnDragOver = (e: DragOverEvent) => {
+  const { active, over } = e;
+
+  if (
+    !active.id.toString().includes(KanbanDndDataEnum.ITEM) ||
+    !over?.id.toString().includes(KanbanDndDataEnum.CONTAINER)
+  )
+    return;
+
+  const activeContainer = findKanbanDndValues(active.id, KanbanDndDataEnum.ITEM);
+  const overContainer = findKanbanDndValues(over.id, KanbanDndDataEnum.CONTAINER);
+
+  if (!activeContainer || !overContainer) return;
+
+  const activeContainerIndex = kanbanStore.containers.findIndex(
+    (c) => c.id === activeContainer.id
+  );
+  const overContainerIndex = kanbanStore.containers.findIndex(
+    (c) => c.id === overContainer.id
+  );
+
+  // If already in the target container, do nothing
+  if (activeContainerIndex === overContainerIndex) return;
+
+  const activeItemIndex = activeContainer.items!.findIndex((i) => i.id === active.id);
+
+  let newContainers = [...kanbanStore.containers];
+  const [removedItem] = newContainers[activeContainerIndex]!.items!.splice(
+    activeItemIndex,
+    1
+  );
+
+  newContainers[overContainerIndex]!.items!.push(removedItem!);
+  kanbanStore.setContainers(newContainers);
+};
+
+
   const handleOnDragMove = (e: DragMoveEvent) => {
     const { active, over } = e;
 
     // handle items sorting
-    if (
-      active.id.toString().includes(KanbanDndDataEnum.ITEM) &&
-      over?.id.toString().includes(KanbanDndDataEnum.ITEM) &&
-      active &&
-      over &&
-      active.id !== over.id
-    ) {
-      const activeContainer = findKanbanDndValues(active.id, KanbanDndDataEnum.ITEM);
-      const overContainer = findKanbanDndValues(over.id, KanbanDndDataEnum.ITEM);
+    // if (
+    //   active.id.toString().includes(KanbanDndDataEnum.ITEM) &&
+    //   over?.id.toString().includes(KanbanDndDataEnum.ITEM) &&
+    //   active &&
+    //   over &&
+    //   active.id !== over.id
+    // ) {
+    //   const activeContainer = findKanbanDndValues(
+    //     active.id,
+    //     KanbanDndDataEnum.ITEM
+    //   );
+    //   const overContainer = findKanbanDndValues(
+    //     over.id,
+    //     KanbanDndDataEnum.ITEM
+    //   );
 
-      if (!activeContainer || !overContainer) return;
-      //   find the index of active and over container
-      const activeContainerIndex = containers.findIndex(
-        (container) => container.id === activeContainer.id
-      );
-      const overContainerIndex = containers.findIndex(
-        (container) => container.id === overContainer.id
-      );
-      //   find the index of active and over item
-      const activeItemIndex = activeContainer.items!.findIndex(
-        (item) => item.id === active.id
-      );
-      const overItemIndex = overContainer.items!.findIndex(
-        (item) => item.id === over.id
-      );
+    //   if (!activeContainer || !overContainer) return;
+    //   //   find the index of active and over container
+    //   const activeContainerIndex = kanbanStore.containers.findIndex(
+    //     (container) => container.id === activeContainer.id
+    //   );
+    //   const overContainerIndex = kanbanStore.containers.findIndex(
+    //     (container) => container.id === overContainer.id
+    //   );
+    //   //   find the index of active and over item
+    //   const activeItemIndex = activeContainer.items!.findIndex(
+    //     (item) => item.id === active.id
+    //   );
+    //   const overItemIndex = overContainer.items!.findIndex(
+    //     (item) => item.id === over.id
+    //   );
 
-      // in the same container
-      if (activeContainerIndex === overContainerIndex) {
-        let newItems = [...containers];
-        newItems[activeContainerIndex]!.items! = arrayMove(
-          newItems[activeContainerIndex]?.items!,
-          activeItemIndex,
-          overItemIndex
-        );
+    //   // in the same container
+    //   if (activeContainerIndex === overContainerIndex) {
+    //     let newItems = [...kanbanStore.containers];
+    //     newItems[activeContainerIndex]!.items! = arrayMove(
+    //       newItems[activeContainerIndex]?.items!,
+    //       activeItemIndex,
+    //       overItemIndex
+    //     );
 
-        setContainers(newItems);
-      } else {
-        let newItems = [...containers];
-        const [removedItem] = newItems[activeContainerIndex]!.items!.splice(
-          activeItemIndex,
-          1
-        );
+    //     kanbanStore.setContainers(newItems);
+    //   } else {
+    //     let newItems = [...kanbanStore.containers];
+    //     const [removedItem] = newItems[activeContainerIndex]!.items!.splice(
+    //       activeItemIndex,
+    //       1
+    //     );
 
-        newItems[overContainerIndex]!.items!.splice(
-          overItemIndex,
-          0,
-          removedItem!
-        );
+    //     newItems[overContainerIndex]!.items!.splice(
+    //       overItemIndex,
+    //       0,
+    //       removedItem!
+    //     );
 
-        setContainers(newItems);
-      }
-    }
+    //     kanbanStore.setContainers(newItems);
+    //   }
+    // }
 
     // handling item drop into the container
     if (
@@ -173,16 +450,22 @@ export function KanbanTemplate() {
       over &&
       active.id !== over.id
     ) {
-      const activeContainer = findKanbanDndValues(active.id, KanbanDndDataEnum.ITEM);
-      const overContainer = findKanbanDndValues(over.id, KanbanDndDataEnum.CONTAINER);
+      const activeContainer = findKanbanDndValues(
+        active.id,
+        KanbanDndDataEnum.ITEM
+      );
+      const overContainer = findKanbanDndValues(
+        over.id,
+        KanbanDndDataEnum.CONTAINER
+      );
 
       if (!activeContainer || !overContainer) return;
 
       //   find the index of active and over container
-      const activeContainerIndex = containers.findIndex(
+      const activeContainerIndex = kanbanStore.containers.findIndex(
         (container) => container.id === activeContainer.id
       );
-      const overContainerIndex = containers.findIndex(
+      const overContainerIndex = kanbanStore.containers.findIndex(
         (container) => container.id === overContainer.id
       );
 
@@ -191,14 +474,14 @@ export function KanbanTemplate() {
         (item) => item.id === active.id
       );
 
-      let newItems = [...containers];
+      let newItems = [...kanbanStore.containers];
       const [removedItem] = newItems[activeContainerIndex]!.items!.splice(
         activeItemIndex,
         1
       );
 
       newItems[overContainerIndex]!.items!.push(removedItem!);
-      setContainers(newItems);
+      kanbanStore.setContainers(newItems);
     }
   };
 
@@ -213,16 +496,16 @@ export function KanbanTemplate() {
       active.id !== over.id
     ) {
       // Find the index of the active and over container
-      const activeContainerIndex = containers.findIndex(
+      const activeContainerIndex = kanbanStore.containers.findIndex(
         (container) => container.id === active.id
       );
-      const overContainerIndex = containers.findIndex(
+      const overContainerIndex = kanbanStore.containers.findIndex(
         (container) => container.id === over.id
       );
       // Swap the active and over container
-      let newItems = [...containers];
+      let newItems = [...kanbanStore.containers];
       newItems = arrayMove(newItems, activeContainerIndex, overContainerIndex);
-      setContainers(newItems);
+      kanbanStore.setContainers(newItems);
     }
 
     // Handling item Sorting
@@ -234,16 +517,22 @@ export function KanbanTemplate() {
       active.id !== over.id
     ) {
       // Find the active and over container
-      const activeContainer = findKanbanDndValues(active.id,KanbanDndDataEnum.ITEM);
-      const overContainer = findKanbanDndValues(over.id, KanbanDndDataEnum.ITEM);
+      const activeContainer = findKanbanDndValues(
+        active.id,
+        KanbanDndDataEnum.ITEM
+      );
+      const overContainer = findKanbanDndValues(
+        over.id,
+        KanbanDndDataEnum.ITEM
+      );
 
       // If the active or over container is not found, return
       if (!activeContainer || !overContainer) return;
       // Find the index of the active and over container
-      const activeContainerIndex = containers.findIndex(
+      const activeContainerIndex = kanbanStore.containers.findIndex(
         (container) => container.id === activeContainer.id
       );
-      const overContainerIndex = containers.findIndex(
+      const overContainerIndex = kanbanStore.containers.findIndex(
         (container) => container.id === overContainer.id
       );
       // Find the index of the active and over item
@@ -256,16 +545,16 @@ export function KanbanTemplate() {
 
       // In the same container
       if (activeContainerIndex === overContainerIndex) {
-        let newItems = [...containers];
+        let newItems = [...kanbanStore.containers];
         newItems[activeContainerIndex]!.items = arrayMove(
           newItems[activeContainerIndex]!.items,
           activeitemIndex,
           overitemIndex
         );
-        setContainers(newItems);
+        kanbanStore.setContainers(newItems);
       } else {
         // In different containers
-        let newItems = [...containers];
+        let newItems = [...kanbanStore.containers];
         const [removeditem] = newItems[activeContainerIndex]!.items.splice(
           activeitemIndex,
           1
@@ -275,7 +564,7 @@ export function KanbanTemplate() {
           0,
           removeditem!
         );
-        setContainers(newItems);
+        kanbanStore.setContainers(newItems);
       }
     }
 
@@ -288,16 +577,22 @@ export function KanbanTemplate() {
       active.id !== over.id
     ) {
       // find the active and over container
-      const activeContainer = findKanbanDndValues(active.id, KanbanDndDataEnum.ITEM);
-      const overContainer = findKanbanDndValues(over.id, KanbanDndDataEnum.CONTAINER);
+      const activeContainer = findKanbanDndValues(
+        active.id,
+        KanbanDndDataEnum.ITEM
+      );
+      const overContainer = findKanbanDndValues(
+        over.id,
+        KanbanDndDataEnum.CONTAINER
+      );
 
       if (!activeContainer || !overContainer) return;
 
       // find the index of the active and over container
-      const activeContainerIndex = containers.findIndex(
+      const activeContainerIndex = kanbanStore.containers.findIndex(
         (container) => container.id === activeContainer.id
       );
-      const overContainerIndex = containers.findIndex(
+      const overContainerIndex = kanbanStore.containers.findIndex(
         (container) => container.id === overContainer.id
       );
       // find the index of the active and over item
@@ -305,15 +600,15 @@ export function KanbanTemplate() {
         (item) => item.id === active.id
       );
 
-      let newItems = [...containers];
+      let newItems = [...kanbanStore.containers];
       const [removeditem] = newItems[activeContainerIndex]!.items.splice(
         activeitemIndex,
         1
       );
       newItems[overContainerIndex]!.items.push(removeditem!);
-      setContainers(newItems);
+      kanbanStore.setContainers(newItems);
     }
-    setActiveId(null);
+    kanbanStore.setActiveId(null);
   };
 
   return (
@@ -323,11 +618,14 @@ export function KanbanTemplate() {
           sensors={sensors}
           collisionDetection={closestCorners}
           onDragStart={handleOnDragStart}
+          onDragOver={handleOnDragOver}
           onDragMove={handleOnDragMove}
           onDragEnd={handleOnDragEnd}
         >
-          <SortableContext items={containers.map((contr) => contr.id)}>
-            {containers.map((contr) => {
+          <SortableContext
+            items={kanbanStore.containers.map((contr) => contr.id)}
+          >
+            {kanbanStore.containers.map((contr) => {
               return (
                 <DndContainer
                   id={contr.id}
@@ -359,4 +657,4 @@ export function KanbanTemplate() {
       </div>
     </div>
   );
-}
+});

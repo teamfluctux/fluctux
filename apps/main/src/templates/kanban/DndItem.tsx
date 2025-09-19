@@ -4,6 +4,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { KanbanDndDataEnum } from "./constant";
 import { FxButton, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { Plus } from "lucide-react";
+import React from "react";
 
 type DndItemType = {
   id: UniqueIdentifier;
@@ -15,7 +16,7 @@ type DndItemType = {
   assignees?: string; // it should be array
 };
 
-export const DndItem = ({
+export const DndItem = React.memo(({
   id,
   title,
   priority,
@@ -41,7 +42,7 @@ export const DndItem = ({
     <div
       ref={setNodeRef}
       {...attributes}
-      className={` border border-border-color_1 bg-background-color_925C hover:bg-background-color_900C overflow-hidden transition-colors rounded  w-full h-fit`}
+      className={`${isDragging && "!z-[9999999999999999999] !relative"} border border-border-color_1 bg-background-color_925C hover:bg-background-color_900C overflow-hidden transition-colors rounded  w-full h-fit`}
       style={{
         transition,
         transform: CSS.Translate.toString(transform),
@@ -57,4 +58,4 @@ export const DndItem = ({
       <div></div>
     </div>
   );
-};
+});

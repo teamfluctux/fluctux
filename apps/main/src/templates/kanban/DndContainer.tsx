@@ -65,7 +65,7 @@ export const DndContainer = ({ id, title, children }: ContainerType) => {
           </FxButton>
         </div>
       </div>
-      <div className="w-full rounded-rounded_15C border border-border-color_1 bg-background-color_950C p-2 h-[calc(100%-47px)]">
+      <div className="w-full rounded-rounded_15C border border-border-color_1 bg-background-color_950C p-2 h-[calc(100%-47px)] overflow-y-auto overflow-x-hidden">
         {children}
       </div>
     </div>
