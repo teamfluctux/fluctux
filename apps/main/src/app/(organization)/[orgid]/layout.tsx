@@ -15,7 +15,7 @@ interface WorkspaceLayoutProps {
 
 const DynamicTaskBarAndTabs = dynamic(
   () =>
-    import("@/components/workspace/main-area").then((mod) => mod.RndWindows),
+    import("@/components/workspace/rnd").then((mod) => mod.RndWindows),
   {
     ssr: false,
     loading: () => (
@@ -117,7 +117,7 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
             {children}
 
             {/* taskbar uncomment this */}
-            <DynamicTaskBarObserver />
+            {/* <DynamicTaskBarObserver /> */}
           </div>
         </div>
       </workspaceContext.Provider>

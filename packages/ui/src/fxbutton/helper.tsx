@@ -4,6 +4,7 @@ export type ButtonVariant =
   | "primary"
   | "secondary"
   | "ghost_zinc"
+  | "ghost_zinc_2"
   | "surface_indigo";
 
 export interface ButtonStylingType {
@@ -39,6 +40,11 @@ export const buttonStyling: ButtonStylingType = {
   ghost_zinc: {
     default: "cursor-pointer",
     hover: "hover:bg-background-color_900C hover:!text-text-color_1",
+    disabled: "!text-text-color_3 cursor-not-allowed !bg-transparent",
+  },
+  ghost_zinc_2: {
+    default: "cursor-pointer",
+    hover: "hover:bg-background-color_800C hover:!text-text-color_1",
     disabled: "!text-text-color_3 cursor-not-allowed !bg-transparent",
   },
   surface_indigo: {

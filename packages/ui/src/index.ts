@@ -15,6 +15,7 @@ export * from "./fxtextarea";
 export * from "./popover";
 export * from "./toploading";
 export * from "./fxsuggestion-input";
+export * from "./get-issues-iconset";
 export * from "./type";
 export * from "./fxbutton/button";
 export * from "./tooltip";

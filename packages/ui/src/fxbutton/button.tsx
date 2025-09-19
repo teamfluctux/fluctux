@@ -13,7 +13,7 @@ interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 }
 
-export const FxButton = ({
+export const FxButton = ({ 
   className,
   children,
   variant,
@@ -30,7 +30,7 @@ export const FxButton = ({
     <button
       disabled={disabled || loading}
       className={cn(
-        "transition-colors",
+        "transition-colors *:transition-colors flex justify-center items-center group",
         buttonStyling,
         roundedVariant,
         className

@@ -1,5 +1,5 @@
 import React from "react";
-import { StudentsListMainPage } from "@/templates";
+import { KanbanTemplate, StudentsListMainPage } from "@/templates";
 
 type TemplateLayout = {
   params: Promise<{ template_id: string }>;
@@ -8,13 +8,22 @@ type TemplateLayout = {
 export default async function TemplatePage({ params }: TemplateLayout) {
   const { template_id } = await params;
 
+  /**
+   * here perform database operation
+   * get the template type by template id via template_id variable
+   * currenty directly specifying the template type for testing purposes
+   */
   if (template_id === "students") {
     return (
       <>
         <StudentsListMainPage />
       </>
     );
-  } else {
+  } else if(template_id === "kanban") {
+    return <KanbanTemplate/>
+  } 
+  
+  else {
     return (
       <>
         <p>Nothing</p>

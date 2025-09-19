@@ -62,7 +62,7 @@ export const WorkspaceSidebar = observer(() => {
     (width: string) => {
       localStorage.setItem("workspaceSidebarWidth", width);
     },
-    [mainSidebarStore.getSidebarSize]
+    []
   );
 
   return (
