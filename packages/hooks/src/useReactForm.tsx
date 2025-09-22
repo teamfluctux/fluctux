@@ -10,12 +10,12 @@ interface UseReactFormPropsType<T extends z.ZodTypeAny> {
 export const useReactForm = <T extends z.ZodTypeAny>({
   ZOD_SCHEMA,
 }: UseReactFormPropsType<T>) => {
-    type FormData = z.infer<T> extends object ? z.infer<T> : FieldValues;
+  type FormData = z.infer<T> extends object ? z.infer<T> : FieldValues;
   const {
-    register, 
-    handleSubmit, 
+    register,
+    handleSubmit,
     setValue,
-    formState: { errors }, 
+    formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(ZOD_SCHEMA),
   });

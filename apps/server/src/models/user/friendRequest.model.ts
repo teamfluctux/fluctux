@@ -22,6 +22,7 @@ const friendRequestSchema: Schema<FriendRequestType> = new Schema(
   },
   {
     timestamps: true,
+    _id: false,
   }
 );
 

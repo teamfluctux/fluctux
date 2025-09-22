@@ -3,9 +3,7 @@ import React from "react";
 import { Draggable } from "./Draggable";
 import { Droppable } from "./Droppable";
 import { SortableItem } from "./Sortable";
-import {
-  SortableContext,
-} from "@dnd-kit/sortable";
+import { SortableContext } from "@dnd-kit/sortable";
 
 interface KanbanColumnProps {
   id: string;
@@ -18,16 +16,12 @@ export function KanbanColumn({ id, title, tasks }: KanbanColumnProps) {
     <div className="w-64 p-2">
       <h2 className="font-bold mb-2">{title}</h2>
       <Droppable id={id}>
-         <SortableContext
-                  items={tasks.map((t) => t.id)}
-                  
-                >
-
-        {tasks.map((task) => (
+        <SortableContext items={tasks.map((t) => t.id)}>
+          {tasks.map((task) => (
             <SortableItem key={task.id} id={task.id}>
-            <p className="text-black">{task.content}</p>
-          </SortableItem>
-        ))}
+              <p className="text-black">{task.content}</p>
+            </SortableItem>
+          ))}
         </SortableContext>
       </Droppable>
     </div>

@@ -10,7 +10,6 @@ env:
   # Docker
   DOCKER_ACCESS_TOKEN: ${{secrets.DOCKER_ACCESS_TOKEN}}
   DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-
   # Turbo
   TURBO_TEAM: ${{secrets.TURBO_TEAM}}
   TURBO_TOKEN: ${{secrets.TURBO_TOKEN}}
@@ -24,6 +23,11 @@ env:
   MONGO_URI: ${{ secrets.MONGO_URI }}
   # PLATFORMS
   BUILDX_PLATFORMS: linux/amd64, linux/arm64
+  # REDIS ENVS
+  REDIS_PASS: ${{secrets.REDIS_PASS}}
+  REDIS_USERNAME:  ${{secrets.REDIS_USERNAME}}
+  REDIS_HOST:  ${{secrets.REDIS_HOST}}
+  REDIS_PORT:  ${{secrets.REDIS_PORT}}
 
 jobs:
   base-setup:

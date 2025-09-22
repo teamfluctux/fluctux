@@ -23,7 +23,9 @@ export const WorkSpaceLinkList = ({
           ? "!text-surface-indigo-fg bg-surface-indigo-bg-active"
           : "hover:text-text-color_1 hover:bg-background-color_900C "
       } ${
-        disabled ? "cursor-not-allowed": "active:!border-surface-indigo-border-active"
+        disabled
+          ? "cursor-not-allowed"
+          : "active:!border-surface-indigo-border-active"
       }`}
       {...props}
     >

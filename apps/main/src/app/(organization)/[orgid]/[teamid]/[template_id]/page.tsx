@@ -19,11 +19,9 @@ export default async function TemplatePage({ params }: TemplateLayout) {
         <StudentsListMainPage />
       </>
     );
-  } else if(template_id === "kanban") {
-    return <KanbanTemplate/>
-  } 
-  
-  else {
+  } else if (template_id === "kanban") {
+    return <KanbanTemplate />;
+  } else {
     return (
       <>
         <p>Nothing</p>

@@ -1,2 +1,2 @@
 export * from "./student-management";
-export * from "./kanban"
+export * from "./kanban";

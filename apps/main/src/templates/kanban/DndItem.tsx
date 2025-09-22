@@ -16,46 +16,49 @@ type DndItemType = {
   assignees?: string; // it should be array
 };
 
-export const DndItem = React.memo(({
-  id,
-  title,
-  priority,
-  start_date,
-  due_date,
-  state,
-  assignees,
-}: DndItemType) => {
-  const {
-    setNodeRef,
-    transition,
-    transform,
-    listeners,
-    attributes,
-    isDragging,
-  } = useSortable({
+export const DndItem = React.memo(
+  ({
     id,
-    data: {
-      type: KanbanDndDataEnum.ITEM,
-    },
-  });
-  return (
-    <div
-      ref={setNodeRef}
-      {...attributes}
-      className={`${isDragging && "!z-[9999999999999999999] !relative"} border border-border-color_1 bg-background-color_925C hover:bg-background-color_900C overflow-hidden transition-colors rounded  w-full h-fit`}
-      style={{
-        transition,
-        transform: CSS.Translate.toString(transform),
-      }}
-    >
+    title,
+    priority,
+    start_date,
+    due_date,
+    state,
+    assignees,
+  }: DndItemType) => {
+    const {
+      setNodeRef,
+      transition,
+      transform,
+      listeners,
+      attributes,
+      isDragging,
+    } = useSortable({
+      id,
+      data: {
+        type: KanbanDndDataEnum.ITEM,
+      },
+    });
+    return (
       <div
-        className={`${isDragging && "!bg-background-color_800C transition-all !cursor-grabbing"} p-3 w-full h-full `}
-        {...listeners}
+        ref={setNodeRef}
+        {...attributes}
+        className={`${isDragging && "!z-[9999999999999999999] !relative"} border border-border-color_1 bg-background-color_925C hover:bg-background-color_900C overflow-hidden transition-colors rounded  w-full h-fit`}
+        style={{
+          transition,
+          transform: CSS.Translate.toString(transform),
+        }}
       >
-        <h4 className="font-medium text-workspace_1 cursor-default">{title}</h4>
-       
+        <div
+          className={`${isDragging && "!bg-background-color_800C transition-all !cursor-grabbing"} p-3 w-full h-full `}
+          {...listeners}
+        >
+          <h4 className="font-medium text-workspace_1 cursor-default">
+            {title}
+          </h4>
+        </div>
+        <div></div>
       </div>
-      <div></div>
-    </div>
-  );
-});
+    );
+  }
+);

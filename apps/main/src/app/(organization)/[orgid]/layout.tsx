@@ -14,8 +14,7 @@ interface WorkspaceLayoutProps {
 }
 
 const DynamicTaskBarAndTabs = dynamic(
-  () =>
-    import("@/components/workspace/rnd").then((mod) => mod.RndWindows),
+  () => import("@/components/workspace/rnd").then((mod) => mod.RndWindows),
   {
     ssr: false,
     loading: () => (
@@ -85,7 +84,7 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
       {/* for RND window tabs -> ./src/hooks/useTaskBar */}
       <workspaceContext.Provider value={{ parentRef, masterRef }}>
         <div
-        ref={masterRef}
+          ref={masterRef}
           className={cn(
             "grid w-full grid-cols-[auto_1fr] bg-background-color_950C overflow-hidden"
           )}

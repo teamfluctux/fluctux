@@ -11,44 +11,44 @@ type DndType = {
 };
 
 class KanbanStore {
-    activeId: UniqueIdentifier | null = null
-    currentContainerID: UniqueIdentifier = ""
-    showAddContainerModel: boolean = false
-    showAddItemModel: boolean = false
-    containers:DndType[] = [] 
-    constructor() {
-        makeObservable(this, {
-            activeId: observable,
-            currentContainerID: observable,
-            setActiveId: action,
-            setCurrentContainerID: action,
-            showAddContainerModel: observable,
-            showAddItemModel: observable,
-            setShowAddItemModel: action,
-            setShowAddContainerModel: action,
-            setContainers: action,
-            containers: observable
-        })
-    }
+  activeId: UniqueIdentifier | null = null;
+  currentContainerID: UniqueIdentifier = "";
+  showAddContainerModel: boolean = false;
+  showAddItemModel: boolean = false;
+  containers: DndType[] = [];
+  constructor() {
+    makeObservable(this, {
+      activeId: observable,
+      currentContainerID: observable,
+      setActiveId: action,
+      setCurrentContainerID: action,
+      showAddContainerModel: observable,
+      showAddItemModel: observable,
+      setShowAddItemModel: action,
+      setShowAddContainerModel: action,
+      setContainers: action,
+      containers: observable,
+    });
+  }
 
-    setActiveId(value: UniqueIdentifier | null) {
-        this.activeId = value
-    }
-    setCurrentContainerID(value: UniqueIdentifier) {
-        this.currentContainerID = value
-    }
+  setActiveId(value: UniqueIdentifier | null) {
+    this.activeId = value;
+  }
+  setCurrentContainerID(value: UniqueIdentifier) {
+    this.currentContainerID = value;
+  }
 
-    setShowAddItemModel(value: boolean) {
-        this.showAddItemModel = value
-    }
+  setShowAddItemModel(value: boolean) {
+    this.showAddItemModel = value;
+  }
 
-    setShowAddContainerModel(value: boolean) {
-        this.showAddContainerModel = value
-    }
+  setShowAddContainerModel(value: boolean) {
+    this.showAddContainerModel = value;
+  }
 
-    setContainers(value: DndType[]) {
-        this.containers = value
-    }
+  setContainers(value: DndType[]) {
+    this.containers = value;
+  }
 }
 
-export const kanbanStore = new KanbanStore()
+export const kanbanStore = new KanbanStore();

@@ -37,12 +37,10 @@ export const DndContainer = ({ id, title, children }: ContainerType) => {
     >
       <div className="w-full p-3 px-4 flex justify-between items-center">
         <div className="flex justify-start items-center gap-3">
-          <IssueIcon stateType="done" color="green"/>
-        <h3 className="text-read_16 font-medium">{title}</h3>
-
+          <IssueIcon stateType="done" color="green" />
+          <h3 className="text-read_16 font-medium">{title}</h3>
         </div>
         <div className="flex justify-end items-center gap-3">
-          
           <FxButton
             className="w-[24px] h-[24px] "
             variant="ghost_zinc_2"

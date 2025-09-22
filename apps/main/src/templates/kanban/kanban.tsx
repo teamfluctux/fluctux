@@ -43,229 +43,304 @@ export const KanbanTemplate = observer(() => {
         {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Itfdhem 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Itedfhm 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Ifdhfdhem 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Itemdfghfh 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 2",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 3",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 4",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 5",
-        },{
+        },
+        {
           id: `item-${uuidV4()}`,
           title: "Item 1",
         },
@@ -343,41 +418,48 @@ export const KanbanTemplate = observer(() => {
   };
 
   const handleOnDragOver = (e: DragOverEvent) => {
-  const { active, over } = e;
+    const { active, over } = e;
 
-  if (
-    !active.id.toString().includes(KanbanDndDataEnum.ITEM) ||
-    !over?.id.toString().includes(KanbanDndDataEnum.CONTAINER)
-  )
-    return;
+    if (
+      !active.id.toString().includes(KanbanDndDataEnum.ITEM) ||
+      !over?.id.toString().includes(KanbanDndDataEnum.CONTAINER)
+    )
+      return;
 
-  const activeContainer = findKanbanDndValues(active.id, KanbanDndDataEnum.ITEM);
-  const overContainer = findKanbanDndValues(over.id, KanbanDndDataEnum.CONTAINER);
+    const activeContainer = findKanbanDndValues(
+      active.id,
+      KanbanDndDataEnum.ITEM
+    );
+    const overContainer = findKanbanDndValues(
+      over.id,
+      KanbanDndDataEnum.CONTAINER
+    );
 
-  if (!activeContainer || !overContainer) return;
+    if (!activeContainer || !overContainer) return;
 
-  const activeContainerIndex = kanbanStore.containers.findIndex(
-    (c) => c.id === activeContainer.id
-  );
-  const overContainerIndex = kanbanStore.containers.findIndex(
-    (c) => c.id === overContainer.id
-  );
+    const activeContainerIndex = kanbanStore.containers.findIndex(
+      (c) => c.id === activeContainer.id
+    );
+    const overContainerIndex = kanbanStore.containers.findIndex(
+      (c) => c.id === overContainer.id
+    );
 
-  // If already in the target container, do nothing
-  if (activeContainerIndex === overContainerIndex) return;
+    // If already in the target container, do nothing
+    if (activeContainerIndex === overContainerIndex) return;
 
-  const activeItemIndex = activeContainer.items!.findIndex((i) => i.id === active.id);
+    const activeItemIndex = activeContainer.items!.findIndex(
+      (i) => i.id === active.id
+    );
 
-  let newContainers = [...kanbanStore.containers];
-  const [removedItem] = newContainers[activeContainerIndex]!.items!.splice(
-    activeItemIndex,
-    1
-  );
+    let newContainers = [...kanbanStore.containers];
+    const [removedItem] = newContainers[activeContainerIndex]!.items!.splice(
+      activeItemIndex,
+      1
+    );
 
-  newContainers[overContainerIndex]!.items!.push(removedItem!);
-  kanbanStore.setContainers(newContainers);
-};
-
+    newContainers[overContainerIndex]!.items!.push(removedItem!);
+    kanbanStore.setContainers(newContainers);
+  };
 
   const handleOnDragMove = (e: DragMoveEvent) => {
     const { active, over } = e;

@@ -6,7 +6,6 @@ type FxInputClassNames = {
   labelClassName?: string;
 };
 
-
 interface FxInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   className?: string;
@@ -16,7 +15,7 @@ interface FxInputProps
   label?: string;
   isError?: boolean;
   classNames?: FxInputClassNames;
-  errorMsg?: string | string[] ;
+  errorMsg?: string | string[];
 }
 
 type InputVariantType = "primary" | "secondary" | "outlineLabel" | "outline";
@@ -59,7 +58,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
     const { labelClassName } = classNames ?? {};
 
     return (
-      <> 
+      <>
         {variant === "outlineLabel" ? (
           <div className="w-full relative group">
             <input
@@ -87,7 +86,6 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
             <ul className="list-disc list-inside">
               {Array.isArray(errorMsg) ? (
                 errorMsg.map((item, i) => {
-                 
                   return (
                     <li key={`${item}${i}`} className="text-red-500">
                       {item}
@@ -95,9 +93,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
                   );
                 })
               ) : (
-                <p className="text-red-500">
-                  {errorMsg}
-                </p>
+                <p className="text-red-500">{errorMsg}</p>
               )}
             </ul>
           </div>

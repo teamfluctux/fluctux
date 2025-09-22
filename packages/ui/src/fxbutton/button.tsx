@@ -13,7 +13,7 @@ interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 }
 
-export const FxButton = ({ 
+export const FxButton = ({
   className,
   children,
   variant,

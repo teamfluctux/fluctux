@@ -2,7 +2,13 @@
 import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 
-export function Draggable({ id, children }: { id: string; children: React.ReactNode }) {
+export function Draggable({
+  id,
+  children,
+}: {
+  id: string;
+  children: React.ReactNode;
+}) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
 
   const style = transform
@@ -10,7 +16,13 @@ export function Draggable({ id, children }: { id: string; children: React.ReactN
     : undefined;
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners}  {...attributes} className="p-2 m-2 bg-white shadow rounded transition-all" >
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+      className="p-2 m-2 bg-white shadow rounded transition-all"
+    >
       {children}
     </div>
   );

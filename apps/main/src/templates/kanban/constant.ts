@@ -1,4 +1,4 @@
 export enum KanbanDndDataEnum {
-    CONTAINER = "container",
-    ITEM = "item"
+  CONTAINER = "container",
+  ITEM = "item",
 }

@@ -103,14 +103,24 @@ export const useTaskBar = () => {
               if (tab.isMaximized) {
                 return {
                   ...tab,
-                  size: { width: (Number(masterRef.current?.offsetWidth) - Number(mainSidebarStore.getSidebarSize)), height: masterRef.current?.offsetHeight },
+                  size: {
+                    width:
+                      Number(masterRef.current?.offsetWidth) -
+                      Number(mainSidebarStore.getSidebarSize),
+                    height: masterRef.current?.offsetHeight,
+                  },
                 };
               }
 
-               if (tab.isMaximizedMd) {
+              if (tab.isMaximizedMd) {
                 return {
                   ...tab,
-                  size: { width: (Number(masterRef.current?.offsetWidth) - Number(mainSidebarStore.getSidebarSize)), height: tab.size?.height },
+                  size: {
+                    width:
+                      Number(masterRef.current?.offsetWidth) -
+                      Number(mainSidebarStore.getSidebarSize),
+                    height: tab.size?.height,
+                  },
                 };
               }
 
@@ -146,7 +156,7 @@ export const useTaskBar = () => {
         {} as typeof prevTabs
       );
     });
-  }, [ parentRef, mainSidebarStore.getSidebarSize, masterRef]);
+  }, [parentRef, mainSidebarStore.getSidebarSize, masterRef]);
 
   // const handleNewTab = (newTabs: TabsRndType) => {
   //     const existedTabs = tabs.find((tab) => tab.id === newTabs.id)

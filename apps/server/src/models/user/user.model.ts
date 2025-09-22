@@ -17,7 +17,7 @@ const userSchema: Schema<UserType> = new Schema(
       },
       last_name: {
         type: String,
-      }
+      },
     },
     username: {
       type: String,
@@ -69,9 +69,9 @@ const userSchema: Schema<UserType> = new Schema(
 );
 
 // get full name
-userSchema.virtual("fullname").get(function() {
-  return this.name.first_name + " " + this.name.last_name
-})
+userSchema.virtual("fullname").get(function () {
+  return this.name.first_name + " " + this.name.last_name;
+});
 
 /**
  * hash the password before saving, if password is modified

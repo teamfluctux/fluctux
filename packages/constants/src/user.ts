@@ -13,7 +13,7 @@ export enum GenderEnum {
 
 export enum AuthProviderEnum {
   MANUAL = "MANUAL",
-  GOOGLE = "GOOGLE" 
+  GOOGLE = "GOOGLE",
 }
 
 export enum UserStatusEnum {

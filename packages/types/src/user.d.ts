@@ -3,8 +3,8 @@ import { Document } from "mongoose";
 export interface UserType {
   avatar: string;
   name: {
-    first_name: string,
-    last_name: string
+    first_name: string;
+    last_name: string;
   };
   email: string;
   username: string;
@@ -34,8 +34,7 @@ export type SocialLinkType = {
 };
 
 export type DateOfBirthType = {
-  day_month: string;
-  year: string;
+  date: Date
   visibility: VisibilityType;
 };
 
