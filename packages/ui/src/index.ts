@@ -17,7 +17,7 @@ export * from "./toploading";
 export * from "./fxsuggestion-input";
 export * from "./get-issues-iconset";
 export * from "./type";
-export * from "./fxbutton/button";
+export * from "./fxbutton";
 export * from "./tooltip";
 export * from "./alert-dialog";
 export * from "./inline-loading";

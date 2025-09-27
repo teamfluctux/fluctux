@@ -7,6 +7,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "../../packages/**/*.{js,ts,jsx,tsx,mdx}",
     "!../../packages/**/node_modules/**",
+    "./index.html",
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -40,6 +41,7 @@ module.exports = {
           300: "var(--color-zinc-300)",
           200: "var(--color-zinc-200)",
           100: "var(--color-zinc-100)",
+          75: "var(--color-zinc-75)",
           50: "var(--color-zinc-50)",
         },
         fx_indigo: {
@@ -123,6 +125,7 @@ module.exports = {
         read_25: "25px",
         read_20: "20px",
         read_16: "16px",
+        read_18: "18px",
       },
       fontWeight: {
         weight_450: "450",

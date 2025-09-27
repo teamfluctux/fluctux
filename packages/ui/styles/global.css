@@ -20,6 +20,7 @@
   --color-zinc-250: #dddddf;
   --color-zinc-200: #e4e4e7;
   --color-zinc-100: #f4f4f5;
+  --color-zinc-75: #f7f7f8;
   --color-zinc-50: #fafafa;
 
   /* INDIGO */
@@ -33,7 +34,6 @@
   --color-indigo-300: #a5b4fc;
   --color-indigo-200: #c7d2fe;
   --color-indigo-100: #e0e7ff;
-  --color-zinc-75: #f7f7f8;
   --color-indigo-50: #eef2ff;
 
   /* primary color */
@@ -109,6 +109,7 @@
   --surface-indigo-border: #5a7fff90;
   --surface-indigo-border-active: #5b81feac;
   --surface-indigo-fg: #9eb1ff;
+  --surface-indigo-fg-2: #d6e1ff;
 
   /* shiki */
   --twoslash-border-color: #8888;

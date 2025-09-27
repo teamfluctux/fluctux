@@ -13,7 +13,7 @@ import {
   Label,
   TopLoading,
 } from "@fluctux/ui";
-import { MailPlus } from "lucide-react";
+import { Home, MailPlus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { toast } from "sonner";
@@ -304,10 +304,13 @@ export default function CreateOrgPage() {
           <FxButton
             onClick={handleCreateOrg}
             variant="primary"
-            className="font-medium text-workspace_2 w-full py-2 rounded-tiny"
+            radius="tiny"
+            className=" w-full"
+          
           >
             Create Organization
           </FxButton>
+    
         </div>
       </div>
     </div>

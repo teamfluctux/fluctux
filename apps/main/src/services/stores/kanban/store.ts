@@ -16,10 +16,13 @@ class KanbanStore {
   showAddContainerModel: boolean = false;
   showAddItemModel: boolean = false;
   containers: DndType[] = [];
+  editMode: boolean = false
   constructor() {
     makeObservable(this, {
       activeId: observable,
       currentContainerID: observable,
+      editMode: observable,
+      toggleEditMode: action,
       setActiveId: action,
       setCurrentContainerID: action,
       showAddContainerModel: observable,
@@ -29,6 +32,10 @@ class KanbanStore {
       setContainers: action,
       containers: observable,
     });
+  }
+
+  toggleEditMode(value: boolean | null = null) {
+    this.editMode = value === null ? !this.editMode : value
   }
 
   setActiveId(value: UniqueIdentifier | null) {

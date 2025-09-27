@@ -23,18 +23,18 @@ export const FxButton = ({
   loading = false,
   ...props
 }: FxButtonProps) => {
-  const buttonStyling = getButtonStyling(variant, size, disabled || loading);
-  const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
+  const buttonStyling = getButtonStyling(
+    variant,
+    size,
+    disabled || loading
+  );
+  const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : ROUNDED_VARIANTS.primary;
 
   return (
     <button
       disabled={disabled || loading}
-      className={cn(
-        "transition-colors *:transition-colors flex justify-center items-center group",
-        buttonStyling,
-        roundedVariant,
-        className
-      )}
+      className={`
+        transition-colors *:transition-colors flex justify-center items-center group font-medium gap-2 ${buttonStyling} ${roundedVariant} ${className}`}
       {...props}
     >
       {children}

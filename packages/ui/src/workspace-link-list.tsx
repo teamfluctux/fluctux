@@ -18,7 +18,7 @@ export const WorkSpaceLinkList = ({
   const Icon = icon;
   return (
     <li
-      className={`text-workspace_2 cursor-pointer border border-transparent font-medium text-text-color_4 group flex justify-start items-center gap-2 px-2 py-1  rounded-tiny  ${
+      className={`text-workspace_2 select-none cursor-pointer border border-transparent font-medium text-text-color_4 group flex justify-start items-center gap-2 px-2 py-1  rounded-tiny  ${
         active
           ? "!text-surface-indigo-fg bg-surface-indigo-bg-active"
           : "hover:text-text-color_1 hover:bg-background-color_900C "

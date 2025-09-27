@@ -39,7 +39,7 @@ export default function AuthWrapperLayout({
       {path_name.split("/").length <= 2 && (
         <div className="fixed bottom-0 left-0 w-full h-[60px] bg-background-color_900C fx-flex-center z-10">
           {current_path === "login" || path_name === "/" ? (
-            <div className="flex justify-center items-center gap-2">
+            <div className="flex justify-center items-center gap-3">
               <p className="text-text-color_2 font-medium text-workspace_1">
                 New to Fluctux?
               </p>
@@ -47,8 +47,8 @@ export default function AuthWrapperLayout({
                 <FxButton
                   variant="secondary"
                   radius="tablet"
-                  size="sm"
-                  className="relative rgb-animation font-medium text-workspace_1"
+                
+                  className="relative rgb-animation !py-1.5"
                 >
                   Create Account
                 </FxButton>
@@ -63,8 +63,7 @@ export default function AuthWrapperLayout({
                 <FxButton
                   variant="surface_indigo"
                   radius="tablet"
-                  size="sm"
-                  className="font-medium pl-[20px] pr-[20px] text-white text-workspace_1"
+                  className="!py-1.5"
                 >
                   Login
                 </FxButton>

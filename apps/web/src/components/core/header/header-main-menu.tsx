@@ -179,12 +179,13 @@ export const HeaderMainMenu = () => {
                     </h3>
                     <FxButton
                       radius="primary"
-                      className="px-4 py-1 flex justify-center items-center gap-1"
+                      className="text-workspace_2 !py-1.5 !gap-1"
                     >
                       <DiscordIcon color="#ffffff" size={22} />
-                      <span className="text-workspace_1 font-medium text-fx_zinc-50">
+                 <span>
                         Join Discord
-                      </span>
+                 </span>
+                    
                     </FxButton>
                   </div>
                 </div>
