@@ -48,7 +48,7 @@ export const KanbanTemplate = () => {
       setActiveTask(active.data.current?.task);
       return;
     }
-  }
+  };
 
   const onDragOver = (event: DragOverEvent) => {
     const { active, over } = event;
@@ -69,7 +69,7 @@ export const KanbanTemplate = () => {
       setTasks((tasks) => {
         const activeTaskIndex = tasks.findIndex((task) => task.id === activeId);
         const overTaskIndex = tasks.findIndex((task) => task.id === overId);
-        tasks[activeTaskIndex]!.column_id = tasks[overTaskIndex]!.column_id
+        tasks[activeTaskIndex]!.column_id = tasks[overTaskIndex]!.column_id;
         return arrayMove(tasks, activeTaskIndex, overTaskIndex);
       });
     }
@@ -83,7 +83,7 @@ export const KanbanTemplate = () => {
         return arrayMove(tasks, activeIndex, activeIndex);
       });
     }
-  }
+  };
 
   const onDragEnd = (event: DragEndEvent) => {
     setActiveColumn(null);
@@ -92,25 +92,24 @@ export const KanbanTemplate = () => {
     if (!over) return;
     const activeColumnId = active.id;
     const overColumnId = over.id;
-    const activeColumn = over.data.current?.type === "column"
-    const activeTask = active.data.current?.type === "task"
+    const activeColumn = over.data.current?.type === "column";
+    const activeTask = active.data.current?.type === "task";
     const overColumn = over.data.current?.type === "column";
 
     if (activeColumnId === overColumnId) return;
     // change column positions
-    if(activeColumn && overColumn && !activeTask) {
-
+    if (activeColumn && overColumn && !activeTask) {
       setColumns((columns) => {
         const activeColumnIndex = columns.findIndex(
-        (col) => col.id === activeColumnId
-      );
-      const overColumnIndex = columns.findIndex(
-        (col) => col.id === overColumnId
-      );
-      return arrayMove(columns, activeColumnIndex, overColumnIndex);
-    });
-  }
-  }
+          (col) => col.id === activeColumnId
+        );
+        const overColumnIndex = columns.findIndex(
+          (col) => col.id === overColumnId
+        );
+        return arrayMove(columns, activeColumnIndex, overColumnIndex);
+      });
+    }
+  };
 
   return (
     <div>
@@ -135,14 +134,19 @@ export const KanbanTemplate = () => {
             })}
           </SortableContext>
           {createPortal(
-                    <DragOverlay >
-                        {activeColumn && (
-                            <KanbanColumn column={activeColumn} tasks={tasks.filter((task) => task.column_id === activeColumn.id)}/>
-                        )}
-                    {activeTask && <KanbanTask task={activeTask} />}
-                    </DragOverlay>,
-                    document.body
-                )}
+            <DragOverlay>
+              {activeColumn && (
+                <KanbanColumn
+                  column={activeColumn}
+                  tasks={tasks.filter(
+                    (task) => task.column_id === activeColumn.id
+                  )}
+                />
+              )}
+              {activeTask && <KanbanTask task={activeTask} />}
+            </DragOverlay>,
+            document.body
+          )}
         </DndContext>
       </div>
     </div>

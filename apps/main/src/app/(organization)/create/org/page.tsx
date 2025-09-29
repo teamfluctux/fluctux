@@ -306,11 +306,9 @@ export default function CreateOrgPage() {
             variant="primary"
             radius="tiny"
             className=" w-full"
-          
           >
             Create Organization
           </FxButton>
-    
         </div>
       </div>
     </div>

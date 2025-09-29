@@ -46,7 +46,7 @@ const socialLinkSchema: Schema<SocialLinkType> = new Schema(
 const dateOfBirthSchema: Schema<DateOfBirthType> = new Schema(
   {
     date: {
-      type: Date
+      type: Date,
     },
     visibility: {
       type: String,

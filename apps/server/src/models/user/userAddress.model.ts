@@ -51,12 +51,12 @@ const addressSchema: Schema<AddressType> = new Schema(
   { timestamps: true, _id: false }
 );
 
-addressSchema.virtual("getLocationOrdinates").get(function() {
+addressSchema.virtual("getLocationOrdinates").get(function () {
   return {
     long: this.longitude,
-    lat: this.latitude
-  }
-})
+    lat: this.latitude,
+  };
+});
 
 export const UserAddress =
   (mongoose.models.UserAddress as mongoose.Model<AddressType>) ||

@@ -3,8 +3,7 @@ export const COLUMN_DATA = [
   { id: "col-2", title: "In Progress" },
   { id: "col-3", title: "Review" },
   { id: "col-4", title: "Done" },
-]
-
+];
 
 export const TASKS_DATA = [
   {
@@ -47,4 +46,4 @@ export const TASKS_DATA = [
     due_date: "2025-10-06",
     column_id: "col-4",
   },
-]
+];

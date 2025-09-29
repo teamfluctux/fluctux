@@ -47,7 +47,6 @@ export default function AuthWrapperLayout({
                 <FxButton
                   variant="secondary"
                   radius="tablet"
-                
                   className="relative rgb-animation !py-1.5"
                 >
                   Create Account

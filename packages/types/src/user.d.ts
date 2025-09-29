@@ -34,7 +34,7 @@ export type SocialLinkType = {
 };
 
 export type DateOfBirthType = {
-  date: Date
+  date: Date;
   visibility: VisibilityType;
 };
 

@@ -182,10 +182,7 @@ export const HeaderMainMenu = () => {
                       className="text-workspace_2 !py-1.5 !gap-1"
                     >
                       <DiscordIcon color="#ffffff" size={22} />
-                 <span>
-                        Join Discord
-                 </span>
-                    
+                      <span>Join Discord</span>
                     </FxButton>
                   </div>
                 </div>

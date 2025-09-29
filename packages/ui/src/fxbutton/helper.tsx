@@ -30,7 +30,6 @@ export const buttonStyling: ButtonStylingType = {
     hover: "hover:bg-fx_indigo-700 hover:text-text-color_4",
     disabled:
       "text-text-color_2 !cursor-not-allowed bg-fx_indigo-800 border border-border-color_1",
-
   },
   secondary: {
     default:
@@ -38,40 +37,35 @@ export const buttonStyling: ButtonStylingType = {
     hover: "hover:bg-background-color_800C hover:text-text-color_1",
     disabled:
       "text-text-color_3 !cursor-not-allowed bg-background-color_900C border border-background-color_900C",
-
   },
   ghost_zinc: {
     default: "cursor-pointer text-text-color_2",
     hover: "hover:bg-background-color_900C hover:text-text-color_1",
     disabled: "text-text-color_3 !cursor-not-allowed bg-transparent",
-
   },
   ghost_zinc_2: {
     default: "cursor-pointer text-text-color_2",
     hover: "hover:bg-background-color_800C hover:!text-text-color_1",
     disabled: "text-text-color_3 !cursor-not-allowed bg-transparent",
-
   },
   surface_indigo: {
     default:
       "bg-[var(--surface-indigo-bg)] border border-[var(--surface-indigo-border)] text-[var(--surface-indigo-fg)] active:bg-[var(--surface-indigo-bg-active)] active:border-[var(--surface-indigo-border-active)] cursor-pointer",
     hover: "hover:border-[var(--surface-indigo-border-active)]",
     disabled: "opacity-50 !cursor-not-allowed",
-
   },
   surface_indigo_2: {
     default:
       "bg-[var(--surface-indigo-bg)] border border-[var(--surface-indigo-border)] text-[var(--surface-indigo-fg-2)] active:bg-[var(--surface-indigo-bg-active)] active:border-[var(--surface-indigo-border-active)] cursor-pointer",
     hover: "hover:border-[var(--surface-indigo-border-active)]",
     disabled: "opacity-50 !cursor-not-allowed",
-
   },
 };
 
 export const getButtonStyling = (
   variant?: ButtonVariant,
   size?: SizeType,
-  disabled: boolean = false,
+  disabled: boolean = false
 ) => {
   const tempVariant =
     (variant && buttonStyling[variant]) || buttonStyling["primary"];

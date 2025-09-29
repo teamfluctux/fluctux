@@ -18,9 +18,7 @@ export const HeaderAuthBlock = () => {
     <div>
       <div className="rounded overflow-hidden h-[35px] flex  justify-center items-center">
         <FxButton className="!pl-4 !pr-2 h-full rounded-tr-none rounded-br-none text-workspace_2">
-        
-            Sign up
-       
+          Sign up
         </FxButton>
         <Popover>
           <PopoverTrigger asChild className="outline-none">

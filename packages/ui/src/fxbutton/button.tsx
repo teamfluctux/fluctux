@@ -23,12 +23,10 @@ export const FxButton = ({
   loading = false,
   ...props
 }: FxButtonProps) => {
-  const buttonStyling = getButtonStyling(
-    variant,
-    size,
-    disabled || loading
-  );
-  const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : ROUNDED_VARIANTS.primary;
+  const buttonStyling = getButtonStyling(variant, size, disabled || loading);
+  const roundedVariant = radius
+    ? ROUNDED_VARIANTS[radius]
+    : ROUNDED_VARIANTS.primary;
 
   return (
     <button

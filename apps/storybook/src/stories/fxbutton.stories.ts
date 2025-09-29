@@ -1,34 +1,32 @@
-import {FxButton, buttonSizes, buttonStyling} from "@fluctux/ui"
+import { FxButton, buttonSizes, buttonStyling } from "@fluctux/ui";
 import "@fluctux/ui/styles/global.css";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 const meta = {
-  title: 'FxButton',
+  title: "FxButton",
   component: FxButton,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered',
+    layout: "centered",
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
 
   argTypes: {
-    variant: {control: "select", "options": [...Object.keys(buttonStyling)]},
-    size: {control: "select", "options": [...Object.keys(buttonSizes)]},
-  }
-
+    variant: { control: "select", options: [...Object.keys(buttonStyling)] },
+    size: { control: "select", options: [...Object.keys(buttonSizes)] },
+  },
 } satisfies Meta<typeof FxButton>;
 
-export default meta
+export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-    args: {
-        children: "Button",
-        variant: "primary",
-        radius: "primary",
-
-    }
-}
+  args: {
+    children: "Button",
+    variant: "primary",
+    radius: "primary",
+  },
+};
