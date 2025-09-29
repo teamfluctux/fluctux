@@ -21,6 +21,7 @@ import { createPortal } from "react-dom";
 import { KanbanTask } from "./Task";
 
 export const KanbanTemplate = () => {
+  // TODO: use mobx
   const [columns, setColumns] = useState<KanbanColumnType[]>(COLUMN_DATA);
   const [activeColumn, setActiveColumn] = useState<KanbanColumnType | null>(
     null
@@ -35,7 +36,7 @@ export const KanbanTemplate = () => {
 
   const columnId = useMemo(() => columns.map((column) => column.id), [columns]);
 
-  function onDragStart(event: DragStartEvent) {
+  const onDragStart = (event: DragStartEvent) => {
     const { active } = event;
 
     // setting active draggable item
@@ -49,7 +50,7 @@ export const KanbanTemplate = () => {
     }
   }
 
-  function onDragOver(event: DragOverEvent) {
+  const onDragOver = (event: DragOverEvent) => {
     const { active, over } = event;
     if (!over) return;
 
@@ -84,18 +85,23 @@ export const KanbanTemplate = () => {
     }
   }
 
-  function onDragEnd(event: DragEndEvent) {
+  const onDragEnd = (event: DragEndEvent) => {
     setActiveColumn(null);
     setActiveTask(null);
     const { active, over } = event;
     if (!over) return;
     const activeColumnId = active.id;
     const overColumnId = over.id;
+    const activeColumn = over.data.current?.type === "column"
+    const activeTask = active.data.current?.type === "task"
+    const overColumn = over.data.current?.type === "column";
 
     if (activeColumnId === overColumnId) return;
     // change column positions
-    setColumns((columns) => {
-      const activeColumnIndex = columns.findIndex(
+    if(activeColumn && overColumn && !activeTask) {
+
+      setColumns((columns) => {
+        const activeColumnIndex = columns.findIndex(
         (col) => col.id === activeColumnId
       );
       const overColumnIndex = columns.findIndex(
@@ -103,6 +109,7 @@ export const KanbanTemplate = () => {
       );
       return arrayMove(columns, activeColumnIndex, overColumnIndex);
     });
+  }
   }
 
   return (
@@ -130,7 +137,7 @@ export const KanbanTemplate = () => {
           {createPortal(
                     <DragOverlay >
                         {activeColumn && (
-                            <KanbanColumn column={activeColumn}/>
+                            <KanbanColumn column={activeColumn} tasks={tasks.filter((task) => task.column_id === activeColumn.id)}/>
                         )}
                     {activeTask && <KanbanTask task={activeTask} />}
                     </DragOverlay>,

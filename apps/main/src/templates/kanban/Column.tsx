@@ -36,12 +36,12 @@ export const KanbanColumn = (props: KanbanColumnPropsType) => {
               <div className="h-[40px] flex justify-between items-center group relative overflow-hidden">
                 <div className="flex justify-start items-center gap-3 w-fit">
                   
-                  <h3 className="text-text-color_1 text-workspace_1 font-medium relative left-3 group-hover:left-7 transition-all">
+                  <h3 className="text-text-color_1 text-workspace_1 opacity-40 font-medium relative left-3 group-hover:left-7 transition-all">
                     {column.title}
                   </h3>
                 </div>
               </div>
-              <div className="h-[calc(100%-40px)] w-full p-2 pb-0 rounded-rounded_15C border border-border-color_1 bg-background-color_950C overflow-y-auto overflow-x-hidden">
+              <div className="h-[calc(100%-40px)] w-full p-2 pb-0 rounded-rounded_15C bg-background-surface-indigo border-border-surface-indigo border overflow-y-auto overflow-x-hidden">
               </div>
             </div>
   }
