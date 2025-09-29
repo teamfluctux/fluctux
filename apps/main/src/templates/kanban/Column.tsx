@@ -37,6 +37,7 @@ export const KanbanColumn = (props: KanbanColumnPropsType) => {
     transform: CSS.Transform.toString(transform),
   };
 
+  // use placeholder to avoid layout overlapping or flickering.
   if (isDragging) {
     return (
       <div
@@ -60,7 +61,7 @@ export const KanbanColumn = (props: KanbanColumnPropsType) => {
     <div
       ref={setNodeRef}
       style={style}
-      className="w-full min-w-[320px] max-w-[320px]  h-full"
+      className="w-full min-w-[330px] max-w-[330px]  h-full"
     >
       <div className="h-[40px] flex justify-between items-center group relative overflow-hidden">
         <div className="flex justify-start items-center gap-3 w-fit">

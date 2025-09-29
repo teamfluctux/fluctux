@@ -32,6 +32,7 @@ export const KanbanTask = observer(({ task }: KanbanTaskPropsType) => {
     transform: CSS.Transform.toString(transform),
   };
 
+  // use placeholder to avoid layout overlapping or flickering.
   if (isDragging) {
     return (
       <div
