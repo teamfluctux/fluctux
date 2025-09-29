@@ -60,9 +60,8 @@ module.exports = {
         },
         background: {
           indigo_primary: "var(--primary-color)",
-          transparent: {
-            indigo_1: "var(--indigo-transparent-1st)",
-            indigo_2: "var(--indigo-transparent-2nd)",
+          surface: {
+            indigo: "var(--surface-indigo-bg)"
           },
           color_950C: "var(--background)",
           color_925C: "var(--background-color-925C)",
@@ -76,10 +75,17 @@ module.exports = {
           color_1: "var(--border-color-1)",
           color_2: "var(--border-color-2)",
           primary_indigo: "var(--primary-color)",
+          surface: {
+            indigo: "var(--surface-indigo-border)"
+          }
         },
         text: {
           indigo: {
             color_1: "var(--primary-color)",
+          },
+          surface: {
+            indigo_1: "var(--surface-indigo-fg)",
+            indigo_2: "var(--surface-indigo-fg-2)"
           },
           color_1: "var(--foreground)",
           color_2: "var(--foreground-color-2)",
