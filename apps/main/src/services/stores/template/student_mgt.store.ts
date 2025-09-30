@@ -1,12 +1,14 @@
 import { StudentType } from "@fluctux/types";
 import { makeObservable, observable, action } from "mobx";
+import { TemplateStore } from "./store";
 
-class StudentManagementStore {
+class StudentManagementStore extends TemplateStore {
   isViewStudentPopup: boolean = false;
   student_id: string = "";
   student_type: StudentType = "basic";
 
   constructor() {
+    super()
     makeObservable(this, {
       isViewStudentPopup: observable,
       student_id: observable,

@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 
-class TemplateStore {
+export class TemplateStore {
   template_type: string = "";
   constructor() {
     makeObservable(this, {
@@ -13,3 +13,6 @@ class TemplateStore {
     this.template_type = type;
   }
 }
+
+
+export const templateStore = new TemplateStore()

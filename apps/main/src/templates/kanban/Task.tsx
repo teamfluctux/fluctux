@@ -1,10 +1,12 @@
 "use client";
-import { kanbanStore } from "@/services/stores";
+
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 import { observer } from "mobx-react";
 import { CSS } from "@dnd-kit/utilities";
 import { KanbanTaskType } from "@/types";
+import { kanbanStore } from "@/services/stores/template";
+
 
 type KanbanTaskPropsType = {
   task: KanbanTaskType;
