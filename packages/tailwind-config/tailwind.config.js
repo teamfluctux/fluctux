@@ -7,6 +7,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "../../packages/**/*.{js,ts,jsx,tsx,mdx}",
     "!../../packages/**/node_modules/**",
+    "./index.html",
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -40,6 +41,7 @@ module.exports = {
           300: "var(--color-zinc-300)",
           200: "var(--color-zinc-200)",
           100: "var(--color-zinc-100)",
+          75: "var(--color-zinc-75)",
           50: "var(--color-zinc-50)",
         },
         fx_indigo: {
@@ -58,9 +60,8 @@ module.exports = {
         },
         background: {
           indigo_primary: "var(--primary-color)",
-          transparent: {
-            indigo_1: "var(--indigo-transparent-1st)",
-            indigo_2: "var(--indigo-transparent-2nd)",
+          surface: {
+            indigo: "var(--surface-indigo-bg)"
           },
           color_950C: "var(--background)",
           color_925C: "var(--background-color-925C)",
@@ -74,10 +75,17 @@ module.exports = {
           color_1: "var(--border-color-1)",
           color_2: "var(--border-color-2)",
           primary_indigo: "var(--primary-color)",
+          surface: {
+            indigo: "var(--surface-indigo-border)"
+          }
         },
         text: {
           indigo: {
             color_1: "var(--primary-color)",
+          },
+          surface: {
+            indigo_1: "var(--surface-indigo-fg)",
+            indigo_2: "var(--surface-indigo-fg-2)"
           },
           color_1: "var(--foreground)",
           color_2: "var(--foreground-color-2)",
@@ -85,15 +93,6 @@ module.exports = {
           color_4: "var(--foreground-color-4)",
           svg_default: "var(--svg-default-color)",
           color_default_white: "var(--color-zinc-50)",
-        },
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        chart: {
-          1: "hsl(var(--chart-1))",
-          2: "hsl(var(--chart-2))",
-          3: "hsl(var(--chart-3))",
-          4: "hsl(var(--chart-4))",
-          5: "hsl(var(--chart-5))",
         },
       },
       animation: {
@@ -132,6 +131,7 @@ module.exports = {
         read_25: "25px",
         read_20: "20px",
         read_16: "16px",
+        read_18: "18px",
       },
       fontWeight: {
         weight_450: "450",

@@ -1,23 +1,23 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
 import { UserType } from "@fluctux/types";
-import {
-  UserRoleEnum,
-  UserStatusEnum,
-  AuthProviderEnum,
-} from "@fluctux/constants";
+import { UserStatusEnum, AuthProviderEnum } from "@fluctux/constants";
 import { UserBasicInfo } from "./userBasicInfo.model";
 import { UserAddress } from "./userAddress.model";
 
-const user_schema: Schema<UserType> = new Schema(
+const userSchema: Schema<UserType> = new Schema(
   {
     avatar: {
       type: String,
       required: true,
     },
     name: {
-      type: String,
-      required: true,
+      first_name: {
+        type: String,
+      },
+      last_name: {
+        type: String,
+      },
     },
     username: {
       type: String,
@@ -36,32 +36,30 @@ const user_schema: Schema<UserType> = new Schema(
     },
     password: {
       type: String,
-      required: true,
-    },
-    role: {
-      type: String,
-      enum: UserRoleEnum,
-      default: UserRoleEnum.USER,
     },
     status: {
       type: String,
       enum: UserStatusEnum,
       default: UserStatusEnum.NORMAL,
     },
-    isVerified: {
+    isTempVerified: {
       type: Boolean,
       default: false,
       required: true,
     },
+    isPremium: {
+      type: Boolean,
+      default: false,
+    },
     provider: {
       type: String,
       enum: AuthProviderEnum,
-      default: AuthProviderEnum.CUSTOM,
+      default: AuthProviderEnum.GOOGLE,
     },
-    verify_code: {
+    temp_verify_code: {
       type: String,
     },
-    verify_expiry: {
+    temp_verify_expiry: {
       type: Date,
     },
   },
@@ -70,17 +68,25 @@ const user_schema: Schema<UserType> = new Schema(
   }
 );
 
+// get full name
+userSchema.virtual("fullname").get(function () {
+  return this.name.first_name + " " + this.name.last_name;
+});
+
 /**
  * hash the password before saving, if password is modified
  */
-user_schema.pre("save", async function (next) {
+userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });
 
-user_schema.post("save", async function (_, next) {
+/**
+ * run after creating the database
+ */
+userSchema.post("save", async function (_, next) {
   const userBasicInfo = await UserBasicInfo.findOne({ user: this._id });
   const userAddress = await UserAddress.findOne({ user: this._id });
 
@@ -108,10 +114,10 @@ user_schema.post("save", async function (_, next) {
 });
 
 // custom method for password validation
-user_schema.methods.isPasswordCorrect = async function (password: string) {
+userSchema.methods.isPasswordCorrect = async function (password: string) {
   return await bcrypt.compare(password, this.password);
 };
 
 export const User =
   (mongoose.models.User as mongoose.Model<UserType>) ||
-  mongoose.model<UserType>("User", user_schema);
+  mongoose.model<UserType>("User", userSchema);

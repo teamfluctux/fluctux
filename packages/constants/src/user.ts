@@ -12,10 +12,8 @@ export enum GenderEnum {
 }
 
 export enum AuthProviderEnum {
+  MANUAL = "MANUAL",
   GOOGLE = "GOOGLE",
-  GITHUB = "GITHUB",
-  DISCORD = "DISCORD",
-  CUSTOM = "CUSTOM",
 }
 
 export enum UserStatusEnum {

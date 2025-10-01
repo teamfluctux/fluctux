@@ -1,31 +1,23 @@
-import { AuthManager } from "@/controllers";
+import { GoogleAuth } from "@/services/auth";
 import { AuthProviderCookieType } from "@/services/auth/cookie.service";
 
-interface UserSession {
+type GetSessionReturnType = {
   user: unknown;
   provider: string;
-}
+};
 
 export const getSession = async (
   providerToken: string,
   idToken: string
-): Promise<UserSession | null> => {
-  const auth = new AuthManager();
+): Promise<GetSessionReturnType | null> => {
   try {
     switch (providerToken) {
       case AuthProviderCookieType.GOOGLE: {
+        const googleAuth = new GoogleAuth();
         const userDataFromGoogle =
-          await auth.getUserDataFromGoogleAuthToken(idToken);
+          await googleAuth.getUserDataFromGoogleAuthToken(idToken);
         return {
           user: userDataFromGoogle,
-          provider: providerToken,
-        };
-      }
-      case AuthProviderCookieType.GITHUB: {
-        const userDataFromGithub = await auth.getUserFromGithubToken(idToken);
-        console.log("userDataFromGithub", userDataFromGithub);
-        return {
-          user: userDataFromGithub,
           provider: providerToken,
         };
       }

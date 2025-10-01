@@ -32,9 +32,6 @@ export default function GlobalWrappers({ children }: GlobalWrapperPropsType) {
 
   return (
     <>
-      <p>
-        Testing: {user?.email} {user?.name}
-      </p>
       {children}
       <Toaster
         richColors

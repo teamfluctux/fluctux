@@ -5,6 +5,7 @@ export enum CustomErrorEnums {
   "USER_NOT_FOUND" = "USER_NOT_FOUND",
   "INVALID_REQUEST" = "INVALID_REQUEST",
   "NOT_ACCEPTABLE" = "NOT_ACCEPTABLE",
+  "SERVICE_UNAVAILABLE" = "SERVICE_UNAVAILABLE",
 }
 
 export enum HTTPErrorCodes {
@@ -62,6 +63,11 @@ export const ERROR: {
     message:
       "There might be a technical issue. We are working on resolving it. Please try again later.",
     statusCode: HTTPErrorCodes.INTERNAL_SERVER_ERROR,
+  },
+  [CustomErrorEnums.SERVICE_UNAVAILABLE]: {
+    title: "Service unavailable for a reason.",
+    message: "There might be a technical issue or client issue.",
+    statusCode: HTTPErrorCodes.SERVICE_UNAVAILABLE,
   },
   [CustomErrorEnums.UNAUTHORIZED_USER]: {
     title: "Unauthorized Access",

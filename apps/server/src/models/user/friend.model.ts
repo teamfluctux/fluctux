@@ -19,6 +19,7 @@ const friend_schema: Schema<FriendType> = new Schema(
      * createdAt -> friends since
      */
     timestamps: true,
+    _id: false,
   }
 );
 

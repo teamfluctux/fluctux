@@ -2,16 +2,19 @@ import { Document } from "mongoose";
 
 export interface UserType {
   avatar: string;
-  name: string;
+  name: {
+    first_name: string;
+    last_name: string;
+  };
   email: string;
   username: string;
   password: string;
-  role: UserRoleType;
   status: UserStatusType;
-  isVerified: boolean;
+  isTempVerified: boolean;
   provider: AuthProviderType;
-  verify_code: string;
-  verify_expiry: Date;
+  temp_verify_code: string;
+  temp_verify_expiry: Date;
+  isPremium: boolean;
   isPasswordCorrect(password: string): Promise<boolean>;
 }
 
@@ -31,16 +34,13 @@ export type SocialLinkType = {
 };
 
 export type DateOfBirthType = {
-  day_month: string;
-  year: string;
+  date: Date;
   visibility: VisibilityType;
 };
 
-export type AuthProviderType = "GOOGLE" | "GITHUB" | "DISCORD" | "CUSTOM";
+export type AuthProviderType = "GOOGLE" | "MANUAL";
 
 export type UserStatusType = "SUSPENDED" | "RESTRICTED" | "NORMAL";
-
-export type UserRoleType = "ADMIN" | "USER";
 
 export type SocialMediaType =
   | "FACEBOOK"

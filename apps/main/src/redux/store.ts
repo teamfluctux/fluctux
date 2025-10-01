@@ -1,9 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import docPaginateReducer from "./pagination/docPaginateSlice";
+
 export const store = configureStore({
-  reducer: {
-    docPaginate: docPaginateReducer,
-  },
+  reducer: {},
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

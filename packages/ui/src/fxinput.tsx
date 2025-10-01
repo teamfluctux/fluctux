@@ -1,6 +1,11 @@
 import { SizeType } from "./type";
-import React from "react";
+import React, { forwardRef } from "react";
 import { ROUNDED_VARIANTS } from "./constant";
+
+type FxInputClassNames = {
+  labelClassName?: string;
+};
+
 interface FxInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   className?: string;
@@ -8,6 +13,9 @@ interface FxInputProps
   radius?: keyof typeof ROUNDED_VARIANTS;
   size?: keyof typeof inputSizes;
   label?: string;
+  isError?: boolean;
+  classNames?: FxInputClassNames;
+  errorMsg?: string | string[];
 }
 
 type InputVariantType = "primary" | "secondary" | "outlineLabel" | "outline";
@@ -29,36 +37,68 @@ const inputSizes: { [key in SizeType]: string } = {
   xl: "p-4 ",
 };
 
-export function FxInput({
-  className,
-  variant,
-  radius,
-  size,
-  label = "Label",
-  ...props
-}: FxInputProps) {
-  const inputVariant = variant ? inputVariants[variant] : "";
-  const inputSize = size ? inputSizes[size] : "";
-  const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
+export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
+  (
+    {
+      className,
+      variant,
+      radius,
+      size,
+      label = "Label",
+      classNames,
+      isError = false,
+      errorMsg,
+      ...props
+    },
+    ref
+  ) => {
+    const inputVariant = variant ? inputVariants[variant] : "";
+    const inputSize = size ? inputSizes[size] : "";
+    const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
+    const { labelClassName } = classNames ?? {};
 
-  return variant === "outlineLabel" ? (
-    <div className="w-full relative group">
-      <input
-        className={`peer placeholder:!text-text-color_3 ${inputVariant} ${inputSize} ${roundedVariant} ${className} `}
-        {...props}
-        id={`${label.replace(" ", "-")}`}
-      />
-      <label
-        htmlFor={`${label.replace(" ", "-")}`}
-        className="absolute translate-y-[-50%] text-text-color_4 transition-colors peer-focus:text-[var(--primary-color)] left-[15px] bg-background-color_950C py-0 px-1 text-[14px] font-medium "
-      >
-        {label}
-      </label>
-    </div>
-  ) : (
-    <input
-      className={`transition-colors ${inputVariant} ${inputSize} ${roundedVariant} ${className}`}
-      {...props}
-    />
-  );
-}
+    return (
+      <>
+        {variant === "outlineLabel" ? (
+          <div className="w-full relative group">
+            <input
+              ref={ref}
+              className={`peer placeholder:!text-text-color_3 ${inputVariant} ${inputSize} ${roundedVariant} ${className} `}
+              {...props}
+              id={`${label.replace(" ", "-")}`}
+            />
+            <label
+              htmlFor={`${label.replace(" ", "-")}`}
+              className={`absolute translate-y-[-50%] text-text-color_4 transition-colors peer-focus:text-[var(--primary-color)] left-[15px] bg-background-color_950C py-0 px-1 text-[14px] font-medium ${labelClassName ?? ""}`}
+            >
+              {label}
+            </label>
+          </div>
+        ) : (
+          <input
+            ref={ref}
+            className={`transition-colors ${inputVariant} ${inputSize} ${roundedVariant} ${className} ${isError && "ring-4 !ring-red-500 !ring-opacity-45 border !border-red-600"}`}
+            {...props}
+          />
+        )}
+        {isError && (
+          <div className="mt-2 text-workspace_2">
+            <ul className="list-disc list-inside">
+              {Array.isArray(errorMsg) ? (
+                errorMsg.map((item, i) => {
+                  return (
+                    <li key={`${item}${i}`} className="text-red-500">
+                      {item}
+                    </li>
+                  );
+                })
+              ) : (
+                <p className="text-red-500">{errorMsg}</p>
+              )}
+            </ul>
+          </div>
+        )}
+      </>
+    );
+  }
+);

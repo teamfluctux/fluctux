@@ -1,0 +1,41 @@
+"use client";
+import React, { useState } from "react";
+import { ContextMenuItem, ContextMenuShortcut } from "@fluctux/ui";
+import { Eye, LucideIcon, SquarePen } from "lucide-react";
+import { studentManagementStore } from "@/services/stores/template";
+import { observer } from "mobx-react";
+import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
+
+type EditIconType = "edit_1" | "edit_2" | "edit_3"
+
+const editIcons: { [key in EditIconType]: LucideIcon } = {
+  edit_1: SquarePen,
+  edit_2: SquarePen,
+  edit_3: SquarePen,
+};
+
+type ViewStudentPopupType = {
+  label?: string;
+  icon?: keyof typeof editIcons;
+} & ICellRendererParams;
+
+export const ContextMenuForStudentIdCol: React.FC<ViewStudentPopupType> = (
+  props
+) => {
+  const { label, icon, value } = props;
+  const TempEditIcon = (icon && editIcons[icon]) || editIcons.edit_1;
+
+  return (
+    <>
+      <ContextMenuItem
+        inset
+        onClick={() => studentManagementStore.setViewStudentPopup(true, value)}
+      >
+        {label ?? "View Student"}
+        <ContextMenuShortcut>
+          <Eye size={16} />
+        </ContextMenuShortcut>
+      </ContextMenuItem>
+    </>
+  );
+};

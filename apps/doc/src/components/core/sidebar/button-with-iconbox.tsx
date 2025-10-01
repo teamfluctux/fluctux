@@ -19,10 +19,7 @@ export const ButtonWithIconBox = ({
         className="flex justify-start items-center gap-2 w-full"
       >
         <div className="w-[23px] h-[22px] rounded-tiny border flex justify-center items-center border-border-color_2 bg-background-color_750C">
-          <Icon
-            size={16}
-            className="text-text-color_4"
-          />
+          <Icon size={16} className="text-text-color_4" />
         </div>
         <span className="text-workspace_2 font-medium text-text-color_4 hover:text-text-color_1">
           {label}

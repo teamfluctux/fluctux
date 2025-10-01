@@ -25,7 +25,7 @@ export const CommandMenu = () => {
           )}
         >
           <ul className="p-2" onMouseLeave={() => setIsOrgItemHover(false)}>
-            <p className="text-workspace_3 text-text-color_3 font-medium ">
+            <p className="text-workspace_3 text-text-color_3 px-2 font-medium ">
               Organizations
             </p>
             <li

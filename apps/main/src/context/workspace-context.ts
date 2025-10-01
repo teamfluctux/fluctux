@@ -2,8 +2,7 @@ import { createContext, RefObject, useContext } from "react";
 
 interface WorkspaceContextType {
   parentRef: RefObject<HTMLDivElement | null>;
-  sidebarSize: number | null;
-  setSidebarSize: (size: number | null) => void;
+  masterRef: RefObject<HTMLDivElement | null>;
 }
 
 export const workspaceContext = createContext<WorkspaceContextType | null>(

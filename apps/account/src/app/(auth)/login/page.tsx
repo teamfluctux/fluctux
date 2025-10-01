@@ -1,143 +1,115 @@
 "use client";
 
-import {
-  DiscordIcon,
-  GithubIcon,
-  GoogleIcon,
-  FxButton,
-  FxInput,
-  FxSeparator,
-  SlackIcon,
-} from "@fluctux/ui";
+import { Heading } from "@/components";
+import { LOGIN_EMAIL_ERRORS } from "@fluctux/constants";
+import { useReactForm } from "@fluctux/hooks";
+import { FxButton, FxInput, FxSeparator, GoogleIcon, Label } from "@fluctux/ui";
+import { loginZodSchema } from "@fluctux/zod";
 import Link from "next/link";
-import React from "react";
-import AuthWrapper from "../auth-wrapper";
 import { useRouter } from "next/navigation";
+import { z } from "zod";
 
 export default function LoginPage() {
   const router = useRouter();
+  const { register, handleSubmit, errors } = useReactForm({
+    ZOD_SCHEMA: loginZodSchema,
+  });
+
+  const onSubmit = (data: z.infer<typeof loginZodSchema>) => {
+    window.alert(data.email);
+  };
+
+  const handleCheckPasswordStrength = (value: string) => {};
+
   return (
-    <AuthWrapper>
-      <div className=" w-full">
-        <h1 className="text-[25px] font-medium mb-5 black-white-gradient-bt">
-          Login to Fluctux
-        </h1>
-        <>
-          <p className="text-text-color_2 font-medium text-workspace_1">
-            Email
+    <div className=" w-full">
+      <Heading text=" Login to Fluctux" />
+
+      <>
+        <FxButton
+          onClick={() => {
+            router.push("http://localhost:5000/api/auth/signin/google");
+          }}
+          className="w-full  flex justify-center items-center gap-2 group"
+          variant="secondary"
+          size="md"
+          radius="primary"
+        >
+          <p className="font-medium text-text-color_2 text-workspace_1 transition-colors group-hover:text-text-color_1">
+            Login with Google
           </p>
-          <FxInput
-            className="w-full text-workspace_1 font-medium"
-            variant="primary"
-            size="md"
-            placeholder="youremail@gmail.com"
-            radius="primary"
-          />
-          <p className="text-text-color_2 mt-3 font-medium text-workspace_1">
-            Password
-          </p>
-          <FxInput
-            className="w-full text-workspace_1 font-medium"
-            type="password"
-            variant="primary"
-            size="md"
-            radius="primary"
-          />
-          <div className="mt-1">
-            <Link
-              href={""}
-              className="fx-link-color hover:underline text-workspace_2"
-            >
-              Forget Password?
-            </Link>
-          </div>
+          <GoogleIcon />
+        </FxButton>
+      </>
 
-          <FxButton
-            onClick={async () => {
-              const res = await fetch("http://localhost:5000/api/auth/csrf");
-              const { csrfToken } = await res.json();
-
-              await fetch("http://localhost:5000/api/auth/signin", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  csrfToken,
-                  provider: "google",
-                }),
-              });
-            }}
-            className="w-full mt-5"
-            variant="primary"
-            size="md"
-            radius="primary"
-          >
-            <p className="font-medium text-white text-workspace_1">Continue</p>
-          </FxButton>
-        </>
-
-        <FxSeparator orientation="horizontal" gap="xl">
-          <p className="text-text-color_2 bg-background-color_950C pl-2 pr-2 font-medium text-workspace_1">
-            Or
-          </p>
-        </FxSeparator>
-
-        <>
-          <FxButton
-            onClick={() => {
-              router.push("http://localhost:5000/api/auth/signin/google");
-            }}
-            className="w-full  flex justify-center items-center gap-2 group"
-            variant="secondary"
-            size="md"
-            radius="primary"
-          >
-            <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-              Login with Google
-            </p>
-            <GoogleIcon />
-          </FxButton>
-          <div className="flex justify-center items-center gap-3 mt-3">
-            <FxButton
-              onClick={() => {
-                router.push("http://localhost:5000/api/auth/signin/github");
-              }}
-              className="w-full  flex justify-center items-center gap-2 group"
-              variant="secondary"
-              size="md"
-              radius="primary"
-            >
-              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-                Login with Github
-              </p>
-              <GithubIcon />
-            </FxButton>
-            <FxButton
-              className="w-full  flex justify-center items-center gap-2 group"
-              variant="secondary"
-              size="md"
-              radius="primary"
-            >
-              <p className="font-medium text-text-color_2 text-workspace_1 group-hover:text-text-color_1">
-                Login with Slack
-              </p>
-              <SlackIcon width={25} height={25} />
-            </FxButton>
-          </div>
-        </>
-
-        <p className="text-text-color_2 text-[14px] mt-8">
-          By signing in, you agree to our{" "}
-          <Link href={""} className="fx-link-color hover:underline">
-            Terms of Service
-          </Link>{" "}
-          and{" "}
-          <Link href={""} className="fx-link-color hover:underline">
-            Privacy Policy.
-          </Link>
+      <FxSeparator orientation="horizontal" gap="xl">
+        <p className="text-text-color_2 bg-background-color_950C pl-2 pr-2 font-medium text-workspace_1">
+          Or
         </p>
-      </div>
-    </AuthWrapper>
+      </FxSeparator>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Label className="mb-2">Email</Label>
+        <FxInput
+          isError={errors.email && true}
+          className="w-full text-workspace_1 font-medium"
+          variant="primary"
+          {...register("email")}
+          size="md"
+          required
+          placeholder="youremail@gmail.com"
+          radius="primary"
+          errorMsg={LOGIN_EMAIL_ERRORS}
+        />
+
+        <div className="flex justify-between items-center gap-3 mb-2 mt-4">
+          <Label className=" ">Password</Label>
+
+          <Link href={"/"}>
+            <Label className="text-text-color_1 hover:!text-text-color_4 transition-colors !cursor-pointer ">
+              Forget Password?
+            </Label>
+          </Link>
+        </div>
+        <FxInput
+          isError={errors.password && true}
+          className="w-full text-workspace_1 font-medium tracking-widest "
+          type="password"
+          required
+          variant="primary"
+          {...register("password")}
+          placeholder="••••••••"
+          size="md"
+          errorMsg={errors.password?.message}
+          radius="primary"
+        />
+
+        <FxButton
+          type="submit"
+          className="w-full mt-5"
+          variant="primary"
+          size="md"
+          radius="primary"
+        >
+          <p className="font-medium text-white text-workspace_1">Continue</p>
+        </FxButton>
+      </form>
+
+      <p className="text-text-color_2 text-[14px] mt-8">
+        By signing in, you agree to our{" "}
+        <Link
+          href={""}
+          className="text-text-color_1 hover:!text-text-color_4 transition-colors"
+        >
+          Terms of Service
+        </Link>{" "}
+        and{" "}
+        <Link
+          href={""}
+          className="text-text-color_1 hover:!text-text-color_4 transition-colors"
+        >
+          Privacy Policy.
+        </Link>
+      </p>
+    </div>
   );
 }

@@ -7,7 +7,7 @@
       }
     ],
     "outDir": "dist",
-    "lib": ["ES2024"],
+    "lib": ["ES2024", "DOM"],
     "target": "ES2024",
     "incremental": false // Override default (true in nextjs.json) to avoid issues with declaration file generation in libraries
   },

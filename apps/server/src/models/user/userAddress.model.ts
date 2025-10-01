@@ -2,7 +2,7 @@ import { AddressType } from "@fluctux/types";
 import { VisibilityEnum } from "@fluctux/constants";
 import mongoose, { Schema } from "mongoose";
 
-const address_schema: Schema<AddressType> = new Schema(
+const addressSchema: Schema<AddressType> = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
@@ -11,42 +11,34 @@ const address_schema: Schema<AddressType> = new Schema(
 
     city: {
       type: String,
-      required: true,
     },
 
     country: {
       type: String,
-      required: true,
     },
 
     country_code: {
       type: String,
-      required: true,
     },
 
     latitude: {
       type: Number,
-      required: true,
     },
 
     longitude: {
       type: Number,
-      required: true,
     },
 
     postal_code: {
       type: String,
-      required: true,
     },
 
     state: {
       type: String,
-      required: true,
     },
 
     street: {
       type: String,
-      required: true,
     },
 
     visibility: {
@@ -56,9 +48,16 @@ const address_schema: Schema<AddressType> = new Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true, _id: false }
 );
+
+addressSchema.virtual("getLocationOrdinates").get(function () {
+  return {
+    long: this.longitude,
+    lat: this.latitude,
+  };
+});
 
 export const UserAddress =
   (mongoose.models.UserAddress as mongoose.Model<AddressType>) ||
-  mongoose.model<AddressType>("UserAddress", address_schema);
+  mongoose.model<AddressType>("UserAddress", addressSchema);

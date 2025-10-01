@@ -1,9 +1,14 @@
 export type SessionDataType = {
-  _id: string;
+  sub?: string;
+  _id?: string;
   name: string;
   picture: string;
   email: string;
   apiVersion?: string;
   provider: string;
-  role: string;
+};
+
+export type UserSessionType = {
+  user: SessionDataType;
+  provider: string;
 };

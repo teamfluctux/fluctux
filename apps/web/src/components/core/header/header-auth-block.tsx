@@ -17,14 +17,12 @@ export const HeaderAuthBlock = () => {
   return (
     <div>
       <div className="rounded overflow-hidden h-[35px] flex  justify-center items-center">
-        <FxButton className="pl-4 pr-2 h-full  ">
-          <span className="text-fx_zinc-50 font-medium text-workspace_1">
-            Sign up
-          </span>
+        <FxButton className="!pl-4 !pr-2 h-full rounded-tr-none rounded-br-none text-workspace_2">
+          Sign up
         </FxButton>
         <Popover>
           <PopoverTrigger asChild className="outline-none">
-            <FxButton className="group h-full px-1">
+            <FxButton className=" h-full !px-1 rounded-tl-none rounded-bl-none">
               <ChevronDown
                 size={LUCIDE_WORKSPACE_ICON_SIZE}
                 className="text-text-color_default_white"
@@ -36,7 +34,7 @@ export const HeaderAuthBlock = () => {
             align="end"
           >
             <Link href={"#"}>
-              <li className="text-workspace_1 font-medium text-text-color_1 cursor-pointer px-2 h-full flex justify-start items-center  rounded-tiny list-none hover:bg-background-color_800C transition-colors">
+              <li className="text-workspace_2 font-medium text-text-color_1 cursor-pointer px-2 h-full flex justify-start items-center  rounded-tiny list-none hover:bg-background-color_800C transition-colors">
                 Login
               </li>
             </Link>

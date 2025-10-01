@@ -1,1 +1,2 @@
-export * from "./demo";
+export * from "./framer-motion";
+export * from "./code";
