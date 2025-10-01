@@ -6,13 +6,14 @@ import { FxButton, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { Ellipsis, GripVertical, PlusIcon } from "lucide-react";
 import { KanbanTask } from "./Task";
 import { useMemo } from "react";
+import { observer } from "mobx-react";
 
 type KanbanColumnPropsType = {
   column: KanbanColumnType;
   tasks?: KanbanTaskType[];
 };
 
-export const KanbanColumn = (props: KanbanColumnPropsType) => {
+export const KanbanColumn = observer((props: KanbanColumnPropsType) => {
   const { column, tasks } = props;
   const {
     setNodeRef,
@@ -104,4 +105,4 @@ export const KanbanColumn = (props: KanbanColumnPropsType) => {
       </div>
     </div>
   );
-};
+});

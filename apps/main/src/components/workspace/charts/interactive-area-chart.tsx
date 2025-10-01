@@ -24,7 +24,6 @@ import {
 import { DefaultRechartTypes, RechartSelectionDataType } from "@fluctux/types";
 import { GradeLinearGradientShapeData } from "@/constants/workspace";
 
-export const description = "An interactive area chart";
 
 type ChartAreaInteractivePropsType = DefaultRechartTypes & {
   selectValue?: any;

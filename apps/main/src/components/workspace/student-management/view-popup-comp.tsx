@@ -1,4 +1,5 @@
-import { studentManagementStore } from "@/services/stores";
+"use client"
+import { studentManagementStore } from "@/services/stores/template";
 import {
   FxButton,
   FxCommandBox,

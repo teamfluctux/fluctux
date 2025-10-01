@@ -65,13 +65,13 @@ export function ChartAreaLinear({
             />
 
             {AreaData.map((item, i) => {
-              const { fill, fillOpacity, stroke } = item.config;
+              const { fillOpacity, stroke } = item.config;
               return (
                 <Area
                   key={i}
                   dataKey={`${item.key}`} // mobile demo
                   type="linear"
-                  fill={fill ?? "var(--color-desktop)"}
+                  fill={ "var(--color-desktop)"}
                   stroke={stroke ?? "var(--color-desktop)"}
                   fillOpacity={fillOpacity ?? 0.4}
                 />

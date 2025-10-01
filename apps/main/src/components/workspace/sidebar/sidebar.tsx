@@ -59,7 +59,9 @@ export const WorkspaceSidebar = observer(() => {
   const { parentRef } = useWorkspaceContext();
 
   const saveWidth = useCallback((width: string) => {
-    localStorage.setItem("workspaceSidebarWidth", width);
+    if (typeof window !== "undefined" && window.localStorage) {
+      localStorage.setItem("workspaceSidebarWidth", width);
+    }
   }, []);
 
   return (

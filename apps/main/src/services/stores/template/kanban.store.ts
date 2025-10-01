@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
 import { TemplateStore } from "./store";
 import { KanbanColumnType, KanbanTaskType } from "@/types";
 
@@ -8,11 +8,13 @@ class KanbanStore extends TemplateStore {
   editMode: boolean = false
   activeColumn: KanbanColumnType | null = null
   activeTask: KanbanTaskType | null = null
+  isOverAColumn: boolean = false
 
   constructor() {
     super()
     makeObservable(this, {
       columns: observable,
+      isOverAColumn: observable,
       activeColumn: observable,
       activeTask: observable,
       tasks: observable,
@@ -22,6 +24,7 @@ class KanbanStore extends TemplateStore {
       setActiveTask: action,
       setTasks: action,
       toggleEditMode: action,
+      setIsOverAColumn: action,
     })
   }
 
@@ -29,11 +32,15 @@ class KanbanStore extends TemplateStore {
     this.columns = value
   }
 
-  setActiveColumn(value: KanbanColumnType) {
+  setIsOverAColumn(value: boolean) {
+    this.isOverAColumn = value
+  }
+
+  setActiveColumn(value: KanbanColumnType | null) {
     this.activeColumn = value
   }
 
-  setActiveTask(value: KanbanTaskType) {
+  setActiveTask(value: KanbanTaskType | null) {
     this.activeTask = value
   }
 

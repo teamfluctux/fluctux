@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import { ContextMenuItem, ContextMenuShortcut } from "@fluctux/ui";
 import { Eye, LucideIcon, SquarePen } from "lucide-react";
-import { studentManagementStore } from "@/services/stores";
+import { studentManagementStore } from "@/services/stores/template";
 import { observer } from "mobx-react";
 import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
+
+type EditIconType = "edit_1" | "edit_2" | "edit_3"
 
 const editIcons: { [key in EditIconType]: LucideIcon } = {
   edit_1: SquarePen,

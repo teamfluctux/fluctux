@@ -33,11 +33,13 @@ class MainSidebarStore {
   }
 
   private loadSidebarSizeFromLocalStorage() {
-    const savedSize = localStorage.getItem("workspaceSidebarWidth");
-    if (savedSize) {
-      this.setSidebarSize(parseInt(savedSize, 10));
-    } else {
-      this.setSidebarSize(250);
+    if (typeof window !== "undefined" && window.localStorage) {
+      const savedSize = localStorage.getItem("workspaceSidebarWidth");
+      if (savedSize) {
+        this.setSidebarSize(parseInt(savedSize, 10));
+      } else {
+        this.setSidebarSize(250);
+      }
     }
   }
 }
