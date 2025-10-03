@@ -16,7 +16,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@chromatic-com/storybook"),
     getAbsolutePath("@storybook/addon-docs"),
     getAbsolutePath("@storybook/addon-a11y"),
-    getAbsolutePath("@storybook/addon-vitest"),
+    getAbsolutePath("@storybook/addon-vitest")
   ],
   framework: {
     name: "@storybook/react-vite",
@@ -27,7 +27,7 @@ const config: StorybookConfig = {
       server: {
         fs: {
           // allow importing from the monorepo root
-          allow: ["../../"],
+          allow: ["../../", ".."],
         },
       },
     });
