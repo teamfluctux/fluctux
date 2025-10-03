@@ -93,7 +93,7 @@ export const SidebarBottom = () => {
               Dashboard
             </WorkSpaceLinkList>
             <WorkSpaceLinkList icon={Layers}>Views</WorkSpaceLinkList>
-            <WorkSpaceLinkList icon={Layers} active>
+            <WorkSpaceLinkList icon={Inbox} active>
               Inbox
             </WorkSpaceLinkList>
           </ul>

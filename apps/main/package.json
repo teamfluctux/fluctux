@@ -20,6 +20,7 @@
     "@fluctux/ui": "workspace:*",
     "ag-grid-community": "^34.0.2",
     "ag-grid-react": "^34.0.2",
+    "frimousse": "^0.3.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.471.2",
     "mobx": "^6.13.7",

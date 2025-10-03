@@ -25,6 +25,7 @@ import { kanbanStore } from "@/services/stores/template";
 export const KanbanTemplate = observer(() => {
   // TODO: use mobx
 
+
   useEffect(() => {
     if (kanbanStore.activeColumn || kanbanStore.activeTask) return;
     kanbanStore.setColumns(COLUMN_DATA);

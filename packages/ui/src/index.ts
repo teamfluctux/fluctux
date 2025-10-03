@@ -13,6 +13,8 @@ export * from "./fxpopup-radio";
 export * from "./fxseparator";
 export * from "./fxtextarea";
 export * from "./popover";
+export * from "./emoji-picker";
+export * from "./emoji-popover";
 export * from "./toploading";
 export * from "./fxsuggestion-input";
 export * from "./get-issues-iconset";

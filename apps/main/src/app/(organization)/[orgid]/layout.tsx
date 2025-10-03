@@ -8,6 +8,7 @@ import { workspaceContext } from "@/context/workspace-context";
 import { WorkspaceSidebar } from "@/components/workspace/sidebar";
 import { observer } from "mobx-react";
 import { mainSidebarStore, workspaceStore } from "@/services/stores";
+import { KanbanPopup } from "@/components/workspace/kanban";
 
 interface WorkspaceLayoutProps {
   children: React.ReactNode;
@@ -114,6 +115,8 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
             </div>
 
             {children}
+
+            <KanbanPopup/>
 
             {/* taskbar uncomment this */}
             {/* <DynamicTaskBarObserver /> */}
