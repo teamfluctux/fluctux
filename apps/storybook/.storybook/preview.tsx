@@ -18,6 +18,21 @@ const preview: Preview = {
       light: { ...themes.normal, appBg: "#fafafa" },
     },
   },
+  // for custom themeprovider
+   globalTypes: {
+    theme: {
+      name: "Theme",
+      description: "Global theme for components",
+      defaultValue: "light",
+      toolbar: {
+        icon: "circlehollow",
+        items: [
+          { value: "light", title: "Light Theme" },
+          { value: "dark", title: "Dark Theme" },
+        ],
+      },
+    },
+  },
 };
 
 export default preview;
