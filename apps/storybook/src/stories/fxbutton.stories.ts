@@ -1,5 +1,5 @@
 import { FxButton, ROUNDED_VARIANTS, buttonSizes, buttonStyling } from "@fluctux/ui";
-import "@fluctux/ui/styles/global.css";
+
 import type { Meta, StoryObj } from "@storybook/react-vite";
 const meta = {
   title: "FxButton",

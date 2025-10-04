@@ -47,7 +47,7 @@ export const KanbanColumn = observer((props: KanbanColumnPropsType) => {
         className="w-full min-w-[350px] max-w-[350px]  h-full"
       >
         <div className="h-[40px] flex justify-between items-center group relative overflow-hidden">
-          <div className="flex justify-start items-center w-fit gap-2 ">
+          <div className="flex justify-start items-center w-fit gap-2 opacity-40">
       <IssueIcon stateType={`${column.type}`} size={19}  />
           <h3 className="text-text-color_1 text-workspace_1 font-medium ">
             {column.title}
