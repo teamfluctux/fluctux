@@ -20,6 +20,7 @@ export * from "./fxsuggestion-input";
 export * from "./get-issues-iconset";
 export * from "./type";
 export * from "./fxbutton";
+export * from "./combobox";
 export * from "./tooltip";
 export * from "./alert-dialog";
 export * from "./inline-loading";
