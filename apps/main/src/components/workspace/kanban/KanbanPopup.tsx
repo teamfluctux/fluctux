@@ -9,7 +9,7 @@ import {
   AvatarImage,
   Avatar,
   ButtonVariant,
-  ViewLabelsWithOverlap
+  ViewLabelsWithOverlap,
 } from "@fluctux/ui";
 import React, { useState } from "react";
 
@@ -19,7 +19,8 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { TbAlertOctagonFilled } from "react-icons/tb";
 import { ComboBoxCheckbox } from "./ComboBoxCheckbox";
 import { FaCircle } from "react-icons/fa6";
-import { IconBase } from "react-icons/lib";
+import { IconBase, IconBaseProps } from "react-icons/lib";
+import { MdLabelOutline } from "react-icons/md";
 
 const EXISTED_KBN_TEMPLATES_METAINFO: ComboboxDataType[] = [
   { value: "react", label: "React", icon: TbAlertOctagonFilled, image: "" },
@@ -66,7 +67,6 @@ const EXISTED_MEMBERS: ComboboxDataType[] = [
   },
 ];
 
-
 const EXISTED_TASK_LABELS: ComboboxDataType[] = [
   {
     value: "feature",
@@ -112,9 +112,86 @@ const EXISTED_TASK_LABELS: ComboboxDataType[] = [
   },
 ];
 
+const EXISTED_TASK_STATUS: ComboboxDataType[] = [
+  { label: "Todo", value: "todo" },
+  { label: "Backlog", value: "backlog" },
+  { label: "Done", value: "done" },
+  { label: "In Progress", value: "in_progress" },
+  { label: "Cancel", value: "cancel" },
+];
+
+type ViewLabelPropsType = {
+  label: string;
+  emoji?: string;
+  emojiClassname?: string;
+  icon?: typeof IconBase;
+  iconClassname?: string;
+  image?: string;
+  avatarClassname?: string;
+  avatarFallback?: React.ReactNode;
+  fallbackLabel?: React.ReactNode;
+  className?: string;
+  leftNodeClassname?: string;
+  rightIcon?: typeof IconBase;
+  rightIconClassname?: string;
+  rightNode?: React.ReactNode;
+};
+
+export const ViewLabel = ({
+  label,
+  emoji,
+  icon,
+  emojiClassname,
+  iconClassname,
+  image,
+  avatarClassname,
+  avatarFallback,
+  fallbackLabel,
+  className,
+  rightIcon,
+  rightNode,
+  rightIconClassname,
+  leftNodeClassname,
+}: ViewLabelPropsType) => {
+  const Icon = icon;
+  const RightIcon = rightIcon;
+  return (
+    <div
+      className={`flex w-full items-center group ${RightIcon ? "justify-between" : "justify-center"} ${className}`}
+    >
+      <div
+        className={`flex justify-center items-center w-fit gap-1.5 ${leftNodeClassname}`}
+      >
+        {!emoji && Icon && <Icon className={`${iconClassname}`} />}
+        {
+          !Icon && emoji &&
+        <span className={`${emojiClassname}`}>{emoji}</span>
+        }
+        {image && (
+          <Avatar
+            className={`w-[20px] h-[20px] border border-border-color_1 outline-none ${avatarClassname}`}
+          >
+            <AvatarImage src={`${image}`} alt={`${label}`} />
+
+            <AvatarFallback>{avatarFallback ?? "CN"}</AvatarFallback>
+          </Avatar>
+        )}
+        <span>{label ?? fallbackLabel ?? "Undefined"}</span>
+      </div>
+      {!rightNode && RightIcon && (
+        <RightIcon className={`${rightIconClassname}`} />
+      )}
+      {!RightIcon && rightNode && rightNode}
+    </div>
+  );
+};
+
 export const KanbanPopup = () => {
   const [kanbanTemplateMetaInfo, setKanbanTemplateInfo] =
     React.useState<ComboboxDataType>({ ...EXISTED_KBN_TEMPLATES_METAINFO[0]! });
+  const [taskStatus, setTaskStatus] = useState<ComboboxDataType>({
+    ...EXISTED_TASK_STATUS[0]!,
+  });
 
   const [taskLabels, setTaskLabels] = useState<ComboboxDataType[]>([]);
   const [assignees, setAssignees] = useState<ComboboxDataType[]>([]);
@@ -135,7 +212,6 @@ export const KanbanPopup = () => {
     });
   };
 
-  
   const handleAssigneesChecked = (value: string) => {
     setAssignees((prev) => {
       const exists = prev.find((item) => item.value === value);
@@ -152,6 +228,22 @@ export const KanbanPopup = () => {
     });
   };
 
+  const handleTaskIdChecked = (value: string) => {
+    setKanbanTemplateInfo(
+      EXISTED_KBN_TEMPLATES_METAINFO.find(
+        (combo) => combo.value === value
+      ) as ComboboxDataType
+    );
+  };
+
+  const handleTaskStatusChecked = (value: string) => {
+    setTaskStatus(
+      EXISTED_TASK_STATUS.find(
+        (status) => status.value === value
+      ) as ComboboxDataType
+    );
+  };
+
   return (
     <FxCommandBox
       open={true}
@@ -162,13 +254,7 @@ export const KanbanPopup = () => {
         <div className="flex justify-between items-center w-full h-full">
           <div className="flex justify-start items-center gap-2 w-fit flex-shrink-0">
             <ComboBox
-              onComboDataSelect={(value) => {
-                setKanbanTemplateInfo(
-                  EXISTED_KBN_TEMPLATES_METAINFO.find(
-                    (combo) => combo.value === value
-                  ) as ComboboxDataType
-                );
-              }}
+              onComboDataSelect={handleTaskIdChecked}
               currentValue={kanbanTemplateMetaInfo.value}
               data={EXISTED_KBN_TEMPLATES_METAINFO}
               isCloseOnSelectItem={true}
@@ -177,16 +263,16 @@ export const KanbanPopup = () => {
                   variant="secondary"
                   size="sm"
                   radius="tiny"
-                  className="w-fit max-w-[120px] !gap-1.5 justify-between flex-shrink-0 !px-2 "
+                  className="w-fit max-w-[120px] justify-between flex-shrink-0 !px-2 "
                 >
-                  <div>
-                    {/* emoji here. emoji of kanban template */}
-                    <IssueIcon stateType="todo" />
-                  </div>
-                  <p className="one-line-ellipsis w-full">
-                    {kanbanTemplateMetaInfo?.label ?? "Undefined"}
-                  </p>
-                  <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  <ViewLabel
+                    label={kanbanTemplateMetaInfo.label}
+                    leftNodeClassname="!gap-[2px]"
+                    icon={kanbanTemplateMetaInfo.icon as typeof IconBase}
+                    rightNode={
+                      <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    }
+                  />
                 </FxButton>
               }
             />
@@ -225,19 +311,33 @@ export const KanbanPopup = () => {
 
       <div className="w-full px-3 flex justify-between items-center h-[50px]">
         <div className="flex justify-start gap-2 items-center">
-          <FxButton
-            variant="secondary"
-            role="combobox"
-            size="sm"
-            radius="tiny"
-            className="w-fit justify-between flex-shrink-0 !px-2 !py-1 "
-          >
-            Nothing
-          </FxButton>
+          <ComboBox
+            onComboDataSelect={handleTaskStatusChecked}
+            currentValue={taskStatus.value}
+            data={EXISTED_TASK_STATUS}
+            isCloseOnSelectItem={true}
+            popoverTriggerComponent={
+              <FxButton
+                variant="secondary"
+                role="combobox"
+                size="sm"
+                radius="tiny"
+                className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 ${taskStatus.label && "text-text-color_4"}`}
+              >
+                <ViewLabel
+                
+                  label={taskStatus.label}
+                  leftNodeClassname="!gap-[2px]"
+                />
+              </FxButton>
+            }
+          />
+
           <ComboBoxCheckbox
             data={EXISTED_TASK_LABELS}
             checkedItems={taskLabels}
             onComboDataChecked={handleLabelChecked}
+            searchPlaceholder="Search Labels..."
             popoverTriggerComponent={
               <FxButton
                 variant={"secondary"}
@@ -246,6 +346,11 @@ export const KanbanPopup = () => {
                 className={`w-fit flex-shrink-0 !px-2 !py-1 ${taskLabels.length > 0 && "text-text-color_4"}`}
               >
                 <ViewLabelsWithOverlap
+                  initialPlaceholder={
+                    <div>
+                      <MdLabelOutline size={16} />
+                    </div>
+                  }
                   data={taskLabels}
                 />
               </FxButton>
@@ -257,6 +362,7 @@ export const KanbanPopup = () => {
             data={EXISTED_MEMBERS}
             checkedItems={assignees}
             onComboDataChecked={handleAssigneesChecked}
+            searchPlaceholder="Search Members..."
             popoverTriggerComponent={
               <FxButton
                 variant={"secondary"}
@@ -268,10 +374,12 @@ export const KanbanPopup = () => {
                   data={assignees}
                   iconOrImageContainerClassname="!-space-x-2"
                   shortViewTextForMultipleLabels="Assginees"
-                  initialPlaceholder={<div className="flex justify-start items-center gap-1 text-workspace_3 font-medium text-text-color_2 hover:text-text-color_1">
-<FaRegCircleUser size={16}/>
-<span>Asignee</span>
-                  </div>}
+                  initialPlaceholder={
+                    <div className="flex justify-start items-center gap-1 text-workspace_3 font-medium text-text-color_2 hover:text-text-color_1">
+                      <FaRegCircleUser size={16} />
+                      <span>Asignee</span>
+                    </div>
+                  }
                 />
               </FxButton>
             }

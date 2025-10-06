@@ -39,7 +39,7 @@ export const ViewLabelsWithOverlap = ({
           <div className="flex justify-center items-center gap-2">
             <div>
               <div
-                className={`flex -space-x-1.5 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:ring-2 ${iconOrImageContainerClassname}`}
+                className={`flex -space-x-1.5  ${iconOrImageContainerClassname}`}
               >
                 {data.map((task, i) => {
                   const Icon = task.icon;
@@ -47,7 +47,7 @@ export const ViewLabelsWithOverlap = ({
                     return (
                       <Avatar
                         key={task.label}
-                        className={`w-[20px] h-[20px] border-border-color_1 border outline-none ${!task.image ? "!w-fit !h-fit !p-0 !bg-transparent border-none" : " "} ${avatarClassname}`}
+                        className={`w-[20px] h-[20px] border-border-color_1 !ring-0 border outline-none ${!task.image ? "!w-fit !h-fit !p-0 !bg-transparent border-none" : " "} ${avatarClassname}`}
                       >
                         {task.image ? (
                           <AvatarImage
