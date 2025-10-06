@@ -10,17 +10,14 @@ import {
   PopoverTrigger,
   PopoverContent,
   cn,
+  AvatarImage,
+  AvatarFallback,
+  ComboboxDataType,
 } from "./";
 import { IconBase } from "react-icons/lib";
 import { CheckIcon } from "lucide-react";
 import { Avatar } from "@radix-ui/react-avatar";
-export type ComboboxDataType = {
-  value: string;
-  label: string;
-  icon?: typeof IconBase | null;
-  iconClassName?: string;
-  image?: string;
-};
+
 
 type ComboBoxPropsType = {
   popoverTriggerComponent: React.ReactNode;
@@ -38,15 +35,20 @@ export const ComboBox = ({
   isCloseOnSelectItem = true,
   onComboDataSelect,
   searchPlaceholder,
-
   showSearchBox = true,
   data: combos,
 }: ComboBoxPropsType) => {
   const [open, setOpen] = React.useState(false);
 
-  const handleComboItemSelect = (currentValue: string) => {
-    onComboDataSelect?.(currentValue);
-  };
+  const handleComboItemSelect = React.useCallback(
+    (selectedValue: string) => {
+      onComboDataSelect?.(selectedValue);
+      if (isCloseOnSelectItem) {
+        setOpen(false)
+      }
+    },
+    [onComboDataSelect, isCloseOnSelectItem]
+  );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -77,7 +79,10 @@ export const ComboBox = ({
                       {Icon ? (
                         <Icon className={`${combo.iconClassName}`} />
                       ) : combo.image ? (
-                        <Avatar className="border w-[20px] h-[20px]" />
+                        <Avatar className="border w-[20px] h-[20px]">
+                          <AvatarImage src={`${combo.image}`} alt="i" />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
                       ) : (
                         ""
                       )}
