@@ -17,6 +17,7 @@ import {
 import { IconBase } from "react-icons/lib";
 import { CheckIcon } from "lucide-react";
 import { Avatar } from "@radix-ui/react-avatar";
+import { PopoverContentProps } from "@radix-ui/react-popover";
 
 
 type ComboBoxPropsType = {
@@ -27,6 +28,7 @@ type ComboBoxPropsType = {
   currentValue: string;
   showSearchBox?: boolean;
   searchPlaceholder?: string;
+  popoverProps?: PopoverContentProps
 };
 
 export const ComboBox = ({
@@ -37,6 +39,7 @@ export const ComboBox = ({
   searchPlaceholder,
   showSearchBox = true,
   data: combos,
+  popoverProps
 }: ComboBoxPropsType) => {
   const [open, setOpen] = React.useState(false);
 
@@ -56,6 +59,7 @@ export const ComboBox = ({
       <PopoverContent
         align="start"
         className="w-[200px] p-0 z-[9992] bg-background-color_900C border border-border-color_1"
+        {...popoverProps}
       >
         <Command>
           {showSearchBox && (

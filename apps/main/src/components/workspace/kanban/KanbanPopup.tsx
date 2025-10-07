@@ -10,17 +10,27 @@ import {
   Avatar,
   ButtonVariant,
   ViewLabelsWithOverlap,
+  ComboBoxCheckbox,
 } from "@fluctux/ui";
 import React, { useState } from "react";
+import {
+  MdSignalCellular1Bar,
+  MdSignalCellular2Bar,
+  MdSignalCellular3Bar,
+  MdSignalCellular4Bar,
+} from "react-icons/md";
+import { LuOctagonAlert } from "react-icons/lu";
+import { CgBorderStyleDashed } from "react-icons/cg";
 
 import { ComboboxDataType } from "@fluctux/ui";
 import { ChevronsUpDownIcon, X } from "lucide-react";
 import { FaRegCircleUser } from "react-icons/fa6";
-import { TbAlertOctagonFilled } from "react-icons/tb";
-import { ComboBoxCheckbox } from "./ComboBoxCheckbox";
+import { TbAlertHexagonFilled, TbAlertOctagonFilled } from "react-icons/tb";
+
 import { FaCircle } from "react-icons/fa6";
 import { IconBase, IconBaseProps } from "react-icons/lib";
 import { MdLabelOutline } from "react-icons/md";
+import { Calendar } from "./calender";
 
 const EXISTED_KBN_TEMPLATES_METAINFO: ComboboxDataType[] = [
   { value: "react", label: "React", icon: TbAlertOctagonFilled, image: "" },
@@ -120,6 +130,37 @@ const EXISTED_TASK_STATUS: ComboboxDataType[] = [
   { label: "Cancel", value: "cancel" },
 ];
 
+const PRIORITY_DATA: ComboboxDataType[] = [
+  {
+    label: "Urgent",
+    value: "urgent",
+    icon: TbAlertHexagonFilled,
+    iconClassName: "text-red-600",
+  },
+  {
+    label: "High",
+    value: "high",
+    icon: MdSignalCellular4Bar,
+  },
+  {
+    label: "Medium",
+    value: "medium",
+    icon: MdSignalCellular3Bar,
+  },
+  {
+    label: "Low",
+    value: "low",
+    icon: MdSignalCellular2Bar,
+    iconClassName: "text-yellow-500",
+  },
+
+  {
+    label: "No priority",
+    value: "no_priority",
+    icon: CgBorderStyleDashed,
+  },
+];
+
 type ViewLabelPropsType = {
   label: string;
   emoji?: string;
@@ -163,10 +204,7 @@ export const ViewLabel = ({
         className={`flex justify-center items-center w-fit gap-1.5 ${leftNodeClassname}`}
       >
         {!emoji && Icon && <Icon className={`${iconClassname}`} />}
-        {
-          !Icon && emoji &&
-        <span className={`${emojiClassname}`}>{emoji}</span>
-        }
+        {!Icon && emoji && <span className={`${emojiClassname}`}>{emoji}</span>}
         {image && (
           <Avatar
             className={`w-[20px] h-[20px] border border-border-color_1 outline-none ${avatarClassname}`}
@@ -195,6 +233,17 @@ export const KanbanPopup = () => {
 
   const [taskLabels, setTaskLabels] = useState<ComboboxDataType[]>([]);
   const [assignees, setAssignees] = useState<ComboboxDataType[]>([]);
+  const [priority, setPriority] = useState<ComboboxDataType>({
+    ...PRIORITY_DATA[PRIORITY_DATA.length - 1]!,
+  });
+
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
+  const handleSelectTaskPriority = (value: string) => {
+    setPriority(
+      PRIORITY_DATA.find((status) => status.value === value) as ComboboxDataType
+    );
+  };
 
   const handleLabelChecked = (value: string) => {
     setTaskLabels((prev) => {
@@ -228,7 +277,7 @@ export const KanbanPopup = () => {
     });
   };
 
-  const handleTaskIdChecked = (value: string) => {
+  const handleSelectTaskId = (value: string) => {
     setKanbanTemplateInfo(
       EXISTED_KBN_TEMPLATES_METAINFO.find(
         (combo) => combo.value === value
@@ -236,7 +285,7 @@ export const KanbanPopup = () => {
     );
   };
 
-  const handleTaskStatusChecked = (value: string) => {
+  const handleSelectTaskStatus = (value: string) => {
     setTaskStatus(
       EXISTED_TASK_STATUS.find(
         (status) => status.value === value
@@ -247,14 +296,14 @@ export const KanbanPopup = () => {
   return (
     <FxCommandBox
       open={true}
-      className="max-w-[800px] w-full max-h-[500px] h-full "
+      className="max-w-[800px] w-full max-h-[700px] h-full "
       containerClasses="!bg-background-color_925C "
     >
       <div className="w-full h-[40px] border-b border-border-color_1 px-1 ">
         <div className="flex justify-between items-center w-full h-full">
           <div className="flex justify-start items-center gap-2 w-fit flex-shrink-0">
             <ComboBox
-              onComboDataSelect={handleTaskIdChecked}
+              onComboDataSelect={handleSelectTaskId}
               currentValue={kanbanTemplateMetaInfo.value}
               data={EXISTED_KBN_TEMPLATES_METAINFO}
               isCloseOnSelectItem={true}
@@ -302,19 +351,30 @@ export const KanbanPopup = () => {
           placeholder="Issue Title"
           className="text-read_20 font-medium outline-none border-none w-full bg-transparent px-4 pb-3 pt-3 placeholder:text-text-color_3"
         />
-        <textarea
+        {/* <textarea
           name="issue_content"
           className="w-full resize-none border-none outline-none bg-transparent px-4 text-text-color_4 py-3 text-workspace_1 placeholder:text-text-color_3"
           placeholder="Description..."
-        ></textarea>
+        ></textarea> */}
+         <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+           
+            className="rounded-lg border "
+          />
       </div>
 
       <div className="w-full px-3 flex justify-between items-center h-[50px]">
         <div className="flex justify-start gap-2 items-center">
           <ComboBox
-            onComboDataSelect={handleTaskStatusChecked}
+            onComboDataSelect={handleSelectTaskStatus}
             currentValue={taskStatus.value}
             data={EXISTED_TASK_STATUS}
+            popoverProps={{
+              align: "start",
+              side: "top",
+            }}
             isCloseOnSelectItem={true}
             popoverTriggerComponent={
               <FxButton
@@ -325,7 +385,6 @@ export const KanbanPopup = () => {
                 className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 ${taskStatus.label && "text-text-color_4"}`}
               >
                 <ViewLabel
-                
                   label={taskStatus.label}
                   leftNodeClassname="!gap-[2px]"
                 />
@@ -338,6 +397,10 @@ export const KanbanPopup = () => {
             checkedItems={taskLabels}
             onComboDataChecked={handleLabelChecked}
             searchPlaceholder="Search Labels..."
+            popoverProps={{
+              align: "start",
+              side: "top",
+            }}
             popoverTriggerComponent={
               <FxButton
                 variant={"secondary"}
@@ -363,6 +426,10 @@ export const KanbanPopup = () => {
             checkedItems={assignees}
             onComboDataChecked={handleAssigneesChecked}
             searchPlaceholder="Search Members..."
+            popoverProps={{
+              align: "start",
+              side: "top",
+            }}
             popoverTriggerComponent={
               <FxButton
                 variant={"secondary"}
@@ -385,6 +452,36 @@ export const KanbanPopup = () => {
             }
             isCloseOnCheckItemForSingleData={true}
           />
+
+          <ComboBox
+            onComboDataSelect={handleSelectTaskPriority}
+            currentValue={priority.value}
+            data={PRIORITY_DATA}
+            isCloseOnSelectItem={true}
+            showSearchBox={false}
+            popoverProps={{
+              align: "start",
+              side: "top",
+            }}
+            popoverTriggerComponent={
+              <FxButton
+                variant="secondary"
+                role="combobox"
+                size="sm"
+                radius="tiny"
+                className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 ${priority.label && "text-text-color_4"}`}
+              >
+                <ViewLabel
+                  label={priority.label}
+                  icon={priority.icon as typeof IconBase}
+                  iconClassname={`${priority.iconClassName} text-[16px]`}
+                  leftNodeClassname="!gap-1"
+                />
+              </FxButton>
+            }
+          />
+
+         
         </div>
       </div>
 

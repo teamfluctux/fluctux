@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import {
   Command,
@@ -18,7 +17,9 @@ import {
   AvatarFallback,
   FxButton,
   ComboboxDataType,
-} from "@fluctux/ui";
+} from "./";
+import { PopoverContentProps } from "@radix-ui/react-popover";
+
 
 type ComboBoxCheckboxPropsType = {
   popoverTriggerComponent: React.ReactNode;
@@ -29,6 +30,7 @@ type ComboBoxCheckboxPropsType = {
   checkedItems: ComboboxDataType[]
   searchPlaceholder?: string;
   iconSize?: string
+  popoverProps?: PopoverContentProps
 };
 
 export const ComboBoxCheckbox = ({
@@ -39,7 +41,8 @@ export const ComboBoxCheckbox = ({
   showSearchBox = true,
   searchPlaceholder,
   checkedItems: comboCheckedData,
-  iconSize
+  iconSize,
+  popoverProps
 }: ComboBoxCheckboxPropsType) => {
   const [open, setOpen] = useState(false);
 
@@ -60,6 +63,8 @@ export const ComboBoxCheckbox = ({
       <PopoverContent
         align="start"
         className="w-[200px] p-0 z-[9992] bg-background-color_900C border border-border-color_1"
+        {...popoverProps}
+      
       >
         <Command>
           {showSearchBox && <CommandInput placeholder={`${searchPlaceholder ? searchPlaceholder : "Search..."}`} />}
