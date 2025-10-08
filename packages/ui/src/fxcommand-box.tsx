@@ -19,7 +19,7 @@ export function FxCommandBox({
       open={open}
       className={`bg-transparent !ring-0 border-none p-[0px] z-[9991] ${className}`}
     >
-      <div 
+      <div
         className={`border border-border-color_1 rounded-[10px] bg-background-color_900C h-full w-full relative overflow-hidden ${containerClasses}`}
       >
         {children}

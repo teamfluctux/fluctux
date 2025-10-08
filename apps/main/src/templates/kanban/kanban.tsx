@@ -25,7 +25,6 @@ import { kanbanStore } from "@/services/stores/template";
 export const KanbanTemplate = observer(() => {
   // TODO: use mobx
 
-
   useEffect(() => {
     if (kanbanStore.activeColumn || kanbanStore.activeTask) return;
     kanbanStore.setColumns(COLUMN_DATA);
@@ -72,7 +71,7 @@ export const KanbanTemplate = observer(() => {
 
     if (!activeTask) return;
 
-     // drop a task over another task
+    // drop a task over another task
     if (activeTask && overATask) {
       const activeTaskIndex = kanbanStore.tasks.findIndex(
         (task) => task.id === activeId
@@ -87,8 +86,7 @@ export const KanbanTemplate = observer(() => {
       );
     }
 
-    
-      // drop a task over another column
+    // drop a task over another column
     if (activeTask && overColumn) {
       const activeIndex = kanbanStore.tasks.findIndex(
         (task) => task.id === activeId
@@ -98,7 +96,6 @@ export const KanbanTemplate = observer(() => {
         arrayMove(kanbanStore.tasks, activeIndex, activeIndex)
       );
     }
-
   };
 
   const onDragEnd = (event: DragEndEvent) => {

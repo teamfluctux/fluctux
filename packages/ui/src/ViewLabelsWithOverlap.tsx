@@ -1,11 +1,6 @@
 import { IconBase } from "react-icons/lib";
 import React from "react";
-import {
-AvatarFallback,
-Avatar,
-AvatarImage
-} from "./avatar"
-
+import { AvatarFallback, Avatar, AvatarImage } from "./avatar";
 
 export type ViewLabelsWithOverlapDataType = {
   value: string;

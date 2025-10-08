@@ -116,7 +116,7 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
 
             {children}
 
-            <KanbanPopup/>
+            <KanbanPopup />
 
             {/* taskbar uncomment this */}
             {/* <DynamicTaskBarObserver /> */}

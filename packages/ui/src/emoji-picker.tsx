@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react"
+import React from "react";
 import {
   type EmojiPickerListCategoryHeaderProps,
   type EmojiPickerListEmojiProps,
@@ -15,7 +15,7 @@ function EmojiPicker({
   ...props
 }: React.ComponentProps<typeof EmojiPickerPrimitive.Root>) {
   return (
-    <EmojiPickerPrimitive.Root  
+    <EmojiPickerPrimitive.Root
       className={cn(
         "bg-background-color_900C text-text-color_2 isolate border border-border-color_1 flex h-full w-fit flex-col overflow-hidden rounded-md",
         className
@@ -32,7 +32,10 @@ function EmojiPickerSearch({
 }: React.ComponentProps<typeof EmojiPickerPrimitive.Search>) {
   return (
     <div
-      className={cn("flex h-9 items-center gap-2 border-b border-border-color_1 px-3 bg-background-color_925C ", className)}
+      className={cn(
+        "flex h-9 items-center gap-2 border-b border-border-color_1 px-3 bg-background-color_925C ",
+        className
+      )}
       data-slot="emoji-picker-search-wrapper"
     >
       <SearchIcon className="size-4 shrink-0 opacity-50" />
@@ -110,35 +113,32 @@ function EmojiPickerContent({
         No emoji found.
       </EmojiPickerPrimitive.Empty>
       <EmojiPickerPrimitive.List
-      data-slot="emoji-picker-list"
-       className="select-none pb-1"
-  components={{
-    
-    Row: EmojiPickerRow,
-     CategoryHeader: EmojiPickerCategoryHeader,
-    Emoji: ({ emoji, ...props }) => {
-      return (
-    <button
-      {...props}
-      className={cn(
-        "relative flex cursor-pointer aspect-square size-8 items-center justify-center overflow-hidden rounded-md text-read_18 data-[active]:bg-neutral-100/80 dark:data-[active]:bg-neutral-800/80 group",
-        className
-      )}
-    >
-      {/* Blur background, shown only on hover */}
-      <span
-        className="absolute inset-0 hidden group-hover:flex items-center justify-center text-[2.5em] blur-lg saturate-200 opacity-80 pointer-events-none"
-      >
-        {emoji.emoji}
-      </span>
+        data-slot="emoji-picker-list"
+        className="select-none pb-1"
+        components={{
+          Row: EmojiPickerRow,
+          CategoryHeader: EmojiPickerCategoryHeader,
+          Emoji: ({ emoji, ...props }) => {
+            return (
+              <button
+                {...props}
+                className={cn(
+                  "relative flex cursor-pointer aspect-square size-8 items-center justify-center overflow-hidden rounded-md text-read_18 data-[active]:bg-neutral-100/80 dark:data-[active]:bg-neutral-800/80 group",
+                  className
+                )}
+              >
+                {/* Blur background, shown only on hover */}
+                <span className="absolute inset-0 hidden group-hover:flex items-center justify-center text-[2.5em] blur-lg saturate-200 opacity-80 pointer-events-none">
+                  {emoji.emoji}
+                </span>
 
-      {/* Main emoji */}
-      <span className="relative z-10">{emoji.emoji}</span>
-    </button>
-      );
-    },
-  }}
-/>
+                {/* Main emoji */}
+                <span className="relative z-10">{emoji.emoji}</span>
+              </button>
+            );
+          },
+        }}
+      />
       {/* <EmojiPickerPrimitive.List
         className="select-none pb-1"
         components={{

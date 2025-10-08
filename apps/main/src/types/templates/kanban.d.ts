@@ -8,11 +8,11 @@ type KanbanTaskType = {
   start_date?: string;
   due_date?: string;
   column_id: UniqueIdentifier;
-  issue_type: IssueIconStateType
+  issue_type: IssueIconStateType;
 };
 
 type KanbanColumnType = {
   id: UniqueIdentifier;
   title: string;
-  type: IssueIconStateType
+  type: IssueIconStateType;
 };

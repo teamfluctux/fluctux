@@ -1,1 +1,1 @@
-export * from "./KanbanPopup"
+export * from "./KanbanPopup";

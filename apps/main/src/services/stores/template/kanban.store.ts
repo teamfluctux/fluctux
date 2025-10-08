@@ -3,15 +3,15 @@ import { TemplateStore } from "./store";
 import { KanbanColumnType, KanbanTaskType } from "@/types";
 
 class KanbanStore extends TemplateStore {
-  columns: KanbanColumnType[] = []
-  tasks: KanbanTaskType[] = []
-  editMode: boolean = false
-  activeColumn: KanbanColumnType | null = null
-  activeTask: KanbanTaskType | null = null
-  isOverAColumn: boolean = false
+  columns: KanbanColumnType[] = [];
+  tasks: KanbanTaskType[] = [];
+  editMode: boolean = false;
+  activeColumn: KanbanColumnType | null = null;
+  activeTask: KanbanTaskType | null = null;
+  isOverAColumn: boolean = false;
 
   constructor() {
-    super()
+    super();
     makeObservable(this, {
       columns: observable,
       isOverAColumn: observable,
@@ -25,33 +25,32 @@ class KanbanStore extends TemplateStore {
       setTasks: action,
       toggleEditMode: action,
       setIsOverAColumn: action,
-    })
+    });
   }
 
   setColumns(value: KanbanColumnType[]) {
-    this.columns = value
+    this.columns = value;
   }
 
   setIsOverAColumn(value: boolean) {
-    this.isOverAColumn = value
+    this.isOverAColumn = value;
   }
 
   setActiveColumn(value: KanbanColumnType | null) {
-    this.activeColumn = value
+    this.activeColumn = value;
   }
 
   setActiveTask(value: KanbanTaskType | null) {
-    this.activeTask = value
+    this.activeTask = value;
   }
 
   setTasks(value: KanbanTaskType[]) {
-    this.tasks = value
+    this.tasks = value;
   }
 
   toggleEditMode(value: boolean | null = null) {
-    this.editMode = value !== null ? value : !this.editMode
+    this.editMode = value !== null ? value : !this.editMode;
   }
-
 }
 
-export const kanbanStore = new KanbanStore()
+export const kanbanStore = new KanbanStore();

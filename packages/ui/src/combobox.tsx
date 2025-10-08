@@ -19,7 +19,6 @@ import { CheckIcon } from "lucide-react";
 import { Avatar } from "@radix-ui/react-avatar";
 import { PopoverContentProps } from "@radix-ui/react-popover";
 
-
 type ComboBoxPropsType = {
   popoverTriggerComponent: React.ReactNode;
   isCloseOnSelectItem?: boolean;
@@ -28,7 +27,7 @@ type ComboBoxPropsType = {
   currentValue: string;
   showSearchBox?: boolean;
   searchPlaceholder?: string;
-  popoverProps?: PopoverContentProps
+  popoverProps?: PopoverContentProps;
 };
 
 export const ComboBox = ({
@@ -39,7 +38,7 @@ export const ComboBox = ({
   searchPlaceholder,
   showSearchBox = true,
   data: combos,
-  popoverProps
+  popoverProps,
 }: ComboBoxPropsType) => {
   const [open, setOpen] = React.useState(false);
 
@@ -47,7 +46,7 @@ export const ComboBox = ({
     (selectedValue: string) => {
       onComboDataSelect?.(selectedValue);
       if (isCloseOnSelectItem) {
-        setOpen(false)
+        setOpen(false);
       }
     },
     [onComboDataSelect, isCloseOnSelectItem]

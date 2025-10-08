@@ -23,15 +23,13 @@ export const GlobalProviders = ({ children }: GlobalProvidersPropsType) => {
     <>
       <TopLoadingObeserver />
       <ApolloProvider client={apolloClient}>
-       
-          {children}
-          <Toaster
-            richColors
-            position="bottom-center"
-            theme={theme as ToasterProps["theme"]}
-            closeButton
-          />
-    
+        {children}
+        <Toaster
+          richColors
+          position="bottom-center"
+          theme={theme as ToasterProps["theme"]}
+          closeButton
+        />
       </ApolloProvider>
     </>
   );

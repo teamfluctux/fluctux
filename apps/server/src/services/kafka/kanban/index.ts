@@ -1,1 +1,1 @@
-export * from "./kanban.kafka"
+export * from "./kanban.kafka";

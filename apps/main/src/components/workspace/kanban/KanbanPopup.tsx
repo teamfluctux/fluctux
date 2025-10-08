@@ -349,20 +349,23 @@ export const KanbanPopup = () => {
         <input
           name="issue_title"
           placeholder="Issue Title"
-          className="text-read_20 font-medium outline-none border-none w-full bg-transparent px-4 pb-3 pt-3 placeholder:text-text-color_3"
+          className="text-read_20 font-medium  outline-none border-none w-full bg-transparent px-4 pb-3 pt-3 placeholder:text-text-color_3"
         />
+
+        {/* TODO: uncomment this textarea */}
         {/* <textarea
           name="issue_content"
           className="w-full resize-none border-none outline-none bg-transparent px-4 text-text-color_4 py-3 text-workspace_1 placeholder:text-text-color_3"
           placeholder="Description..."
         ></textarea> */}
-         <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-           
-            className="rounded-lg border "
-          />
+
+        <Calendar
+          mode="single"
+          defaultMonth={date}
+          numberOfMonths={2}
+          selected={date}
+          onSelect={setDate}
+        />
       </div>
 
       <div className="w-full px-3 flex justify-between items-center h-[50px]">
@@ -480,8 +483,6 @@ export const KanbanPopup = () => {
               </FxButton>
             }
           />
-
-         
         </div>
       </div>
 

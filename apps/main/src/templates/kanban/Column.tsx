@@ -48,10 +48,10 @@ export const KanbanColumn = observer((props: KanbanColumnPropsType) => {
       >
         <div className="h-[40px] flex justify-between items-center group relative overflow-hidden">
           <div className="flex justify-start items-center w-fit gap-2 opacity-40">
-      <IssueIcon stateType={`${column.type}`} size={19}  />
-          <h3 className="text-text-color_1 text-workspace_1 font-medium ">
-            {column.title}
-          </h3>
+            <IssueIcon stateType={`${column.type}`} size={19} />
+            <h3 className="text-text-color_1 text-workspace_1 font-medium ">
+              {column.title}
+            </h3>
           </div>
         </div>
         <div className="h-[calc(100%-40px)] w-full p-2 pb-0 rounded-rounded_15C bg-background-surface-indigo border-border-surface-indigo border overflow-y-auto overflow-x-hidden"></div>
@@ -77,10 +77,10 @@ export const KanbanColumn = observer((props: KanbanColumnPropsType) => {
             <GripVertical size={LUCIDE_WORKSPACE_ICON_SIZE} />
           </FxButton>
           <div className="flex justify-start items-center gap-2 relative left-3 group-hover:left-7 transition-all">
-      <IssueIcon stateType={`${column.type}`} size={19}  />
-          <h3 className="text-text-color_1 text-workspace_1 font-medium">
-            {column.title}
-          </h3>
+            <IssueIcon stateType={`${column.type}`} size={19} />
+            <h3 className="text-text-color_1 text-workspace_1 font-medium">
+              {column.title}
+            </h3>
           </div>
         </div>
         <div className="w-fit justify-end items-center gap-2 flex pr-3 flex-shrink-0">

@@ -24,7 +24,6 @@ import {
 import { DefaultRechartTypes, RechartSelectionDataType } from "@fluctux/types";
 import { GradeLinearGradientShapeData } from "@/constants/workspace";
 
-
 type ChartAreaInteractivePropsType = DefaultRechartTypes & {
   selectValue?: any;
   setSelectValue?: (val: any) => void;

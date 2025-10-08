@@ -8,7 +8,7 @@ class StudentManagementStore extends TemplateStore {
   student_type: StudentType = "basic";
 
   constructor() {
-    super()
+    super();
     makeObservable(this, {
       isViewStudentPopup: observable,
       student_id: observable,

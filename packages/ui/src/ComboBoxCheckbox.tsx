@@ -20,17 +20,16 @@ import {
 } from "./";
 import { PopoverContentProps } from "@radix-ui/react-popover";
 
-
 type ComboBoxCheckboxPropsType = {
   popoverTriggerComponent: React.ReactNode;
   isCloseOnCheckItemForSingleData?: boolean;
   onComboDataChecked: (value: string) => void;
   data: ComboboxDataType[];
   showSearchBox?: boolean;
-  checkedItems: ComboboxDataType[]
+  checkedItems: ComboboxDataType[];
   searchPlaceholder?: string;
-  iconSize?: string
-  popoverProps?: PopoverContentProps
+  iconSize?: string;
+  popoverProps?: PopoverContentProps;
 };
 
 export const ComboBoxCheckbox = ({
@@ -42,7 +41,7 @@ export const ComboBoxCheckbox = ({
   searchPlaceholder,
   checkedItems: comboCheckedData,
   iconSize,
-  popoverProps
+  popoverProps,
 }: ComboBoxCheckboxPropsType) => {
   const [open, setOpen] = useState(false);
 
@@ -53,8 +52,6 @@ export const ComboBoxCheckbox = ({
         setOpen(false);
       }
     }
-
- 
   };
 
   return (
@@ -64,17 +61,19 @@ export const ComboBoxCheckbox = ({
         align="start"
         className="w-[200px] p-0 z-[9992] bg-background-color_900C border border-border-color_1"
         {...popoverProps}
-      
       >
         <Command>
-          {showSearchBox && <CommandInput placeholder={`${searchPlaceholder ? searchPlaceholder : "Search..."}`} />}
+          {showSearchBox && (
+            <CommandInput
+              placeholder={`${searchPlaceholder ? searchPlaceholder : "Search..."}`}
+            />
+          )}
           <CommandList>
-            <CommandEmpty >
-                <span className="!text-text-color_3 text-workspace_2 font-medium">
+            <CommandEmpty>
+              <span className="!text-text-color_3 text-workspace_2 font-medium">
                 Not Found
-
-                </span>
-                </CommandEmpty>
+              </span>
+            </CommandEmpty>
             <CommandGroup>
               {combos.map((combo) => {
                 const Icon = combo.icon;
@@ -92,7 +91,15 @@ export const ComboBoxCheckbox = ({
                         value={combo.value}
                       />
                       <div className="flex justify-start items-center gap-2">
-                        {Icon && <Icon className={`${combo.iconClassName} `} style={{width: `${iconSize ?? "10px"}`, height: `${iconSize ?? "10px"}`}} />}
+                        {Icon && (
+                          <Icon
+                            className={`${combo.iconClassName} `}
+                            style={{
+                              width: `${iconSize ?? "10px"}`,
+                              height: `${iconSize ?? "10px"}`,
+                            }}
+                          />
+                        )}
                         {combo.image && (
                           <Avatar className="border w-[20px] h-[20px]">
                             <AvatarImage src={`${combo.image}`} alt="i" />

@@ -54,4 +54,3 @@ export const TASKS_DATA: KanbanTaskType[] = [
     issue_type: "done",
   },
 ];
-

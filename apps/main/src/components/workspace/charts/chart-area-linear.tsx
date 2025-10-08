@@ -71,7 +71,7 @@ export function ChartAreaLinear({
                   key={i}
                   dataKey={`${item.key}`} // mobile demo
                   type="linear"
-                  fill={ "var(--color-desktop)"}
+                  fill={"var(--color-desktop)"}
                   stroke={stroke ?? "var(--color-desktop)"}
                   fillOpacity={fillOpacity ?? 0.4}
                 />

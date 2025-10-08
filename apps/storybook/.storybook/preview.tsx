@@ -19,7 +19,7 @@ const preview: Preview = {
     },
   },
   // for custom themeprovider
-   globalTypes: {
+  globalTypes: {
     theme: {
       name: "Theme",
       description: "Global theme for components",
