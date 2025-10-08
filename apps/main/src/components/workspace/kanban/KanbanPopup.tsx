@@ -31,6 +31,7 @@ import { FaCircle } from "react-icons/fa6";
 import { IconBase, IconBaseProps } from "react-icons/lib";
 import { MdLabelOutline } from "react-icons/md";
 import { Calendar } from "./calender";
+import { KanbanCalender } from "./kanban-calender";
 
 const EXISTED_KBN_TEMPLATES_METAINFO: ComboboxDataType[] = [
   { value: "react", label: "React", icon: TbAlertOctagonFilled, image: "" },
@@ -237,7 +238,7 @@ export const KanbanPopup = () => {
     ...PRIORITY_DATA[PRIORITY_DATA.length - 1]!,
   });
 
-  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
 
   const handleSelectTaskPriority = (value: string) => {
     setPriority(
@@ -359,13 +360,8 @@ export const KanbanPopup = () => {
           placeholder="Description..."
         ></textarea> */}
 
-        <Calendar
-          mode="single"
-          defaultMonth={date}
-          numberOfMonths={2}
-          selected={date}
-          onSelect={setDate}
-        />
+<KanbanCalender/>
+      
       </div>
 
       <div className="w-full px-3 flex justify-between items-center h-[50px]">
