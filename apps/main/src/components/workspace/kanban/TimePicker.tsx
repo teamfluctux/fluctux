@@ -1,6 +1,8 @@
+// this component is currently in development
 "use client";
 import React from "react";
 import {motion, useMotionValue} from "framer-motion"
+import { FxButton } from "@fluctux/ui";
 
 type TimeValue = { hours: number; minutes: number; ampm?: "AM" | "PM" };
 type TimePickerProps = {
@@ -245,8 +247,11 @@ export default function TimePicker({
 
   return (
     <div
-      className={`flex items-center gap-3 border border-border-color_1 rounded p-2 bg-background-color_900C ${className ?? ""}`}
+      className={` border border-border-color_1 rounded-rounded_10C p-2 bg-background-color_900C ${className ?? ""}`}
     >
+
+        <div className="flex items-center gap-3">
+
       <Column
         items={hoursArr}
         index={hourIndex}
@@ -300,6 +305,13 @@ export default function TimePicker({
           </button>
         </div>
       )}
+
+      </div>
+      <div className="mt-2">
+        <FxButton className="w-full text-workspace_2 !py-1.5" size="md" radius="tiny" >
+            Set Time
+        </FxButton>
+      </div>
     </div>
   );
 }

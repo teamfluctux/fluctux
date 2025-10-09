@@ -52,7 +52,6 @@ export const KanbanCalender = () => {
           />
           </div>
 
-        <TimePicker hour24={false}/>
       </div>
       <Calendar
         mode="single"
