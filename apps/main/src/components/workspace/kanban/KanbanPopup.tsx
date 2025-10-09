@@ -238,8 +238,6 @@ export const KanbanPopup = () => {
     ...PRIORITY_DATA[PRIORITY_DATA.length - 1]!,
   });
 
-
-
   const handleSelectTaskPriority = (value: string) => {
     setPriority(
       PRIORITY_DATA.find((status) => status.value === value) as ComboboxDataType
@@ -360,8 +358,7 @@ export const KanbanPopup = () => {
           placeholder="Description..."
         ></textarea> */}
 
-<KanbanCalender/>
-      
+        <KanbanCalender />
       </div>
 
       <div className="w-full px-3 flex justify-between items-center h-[50px]">
