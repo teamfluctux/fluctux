@@ -13,6 +13,7 @@ export * from "./fxpopup-radio";
 export * from "./fxseparator";
 export * from "./fxtextarea";
 export * from "./popover";
+export * from "./hover-card";
 export * from "./emoji-picker";
 export * from "./ViewLabelsWithOverlap";
 export * from "./emoji-popover";

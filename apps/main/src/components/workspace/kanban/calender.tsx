@@ -7,7 +7,6 @@ import {
   ChevronRightIcon,
 } from "lucide-react";
 import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "./hover-card";
 import { Button, buttonVariants, cn, Popover, PopoverContent, PopoverTrigger } from "@fluctux/ui";
 import { FaCircle } from "react-icons/fa6";
 
@@ -220,7 +219,7 @@ function CalendarDayButton({
       <FaCircle size={8} className="absolute top-0 right-0 text-text-indigo-color_1 hover:scale-125 cursor-pointer" />
 
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-[200px] min-h-[200px] h-full bg-background-color_900C rounded border border-border-color_1 z-[9991]">
+      <PopoverContent align="start" className="w-[200px] min-h-[200px] h-full bg-background-color_900C rounded border border-border-color_1 z-[99996]">
           
       </PopoverContent>
       </Popover>

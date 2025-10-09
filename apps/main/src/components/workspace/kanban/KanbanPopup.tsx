@@ -11,6 +11,9 @@ import {
   ButtonVariant,
   ViewLabelsWithOverlap,
   ComboBoxCheckbox,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
 } from "@fluctux/ui";
 import React, { useState } from "react";
 import {
@@ -19,19 +22,22 @@ import {
   MdSignalCellular3Bar,
   MdSignalCellular4Bar,
 } from "react-icons/md";
+import { LuLayoutPanelTop } from "react-icons/lu";
 import { LuOctagonAlert } from "react-icons/lu";
 import { CgBorderStyleDashed } from "react-icons/cg";
-
+import { CiCalendarDate } from "react-icons/ci";
 import { ComboboxDataType } from "@fluctux/ui";
-import { ChevronsUpDownIcon, X } from "lucide-react";
+import { ChevronDown, ChevronsUpDownIcon, X } from "lucide-react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { TbAlertHexagonFilled, TbAlertOctagonFilled } from "react-icons/tb";
-
+import { TbCalendarDue } from "react-icons/tb";
 import { FaCircle } from "react-icons/fa6";
 import { IconBase, IconBaseProps } from "react-icons/lib";
 import { MdLabelOutline } from "react-icons/md";
 import { Calendar } from "./calender";
 import { KanbanCalender } from "./kanban-calender";
+import { IoMdAdd } from "react-icons/io";
+import { IoIosSave } from "react-icons/io";
 
 const EXISTED_KBN_TEMPLATES_METAINFO: ComboboxDataType[] = [
   { value: "react", label: "React", icon: TbAlertOctagonFilled, image: "" },
@@ -177,6 +183,8 @@ type ViewLabelPropsType = {
   rightIcon?: typeof IconBase;
   rightIconClassname?: string;
   rightNode?: React.ReactNode;
+  leftIconSize?: number;
+  rightIconSize?: number;
 };
 
 export const ViewLabel = ({
@@ -194,6 +202,8 @@ export const ViewLabel = ({
   rightNode,
   rightIconClassname,
   leftNodeClassname,
+  leftIconSize = 18,
+  rightIconSize = 18,
 }: ViewLabelPropsType) => {
   const Icon = icon;
   const RightIcon = rightIcon;
@@ -204,7 +214,9 @@ export const ViewLabel = ({
       <div
         className={`flex justify-center items-center w-fit gap-1.5 ${leftNodeClassname}`}
       >
-        {!emoji && Icon && <Icon className={`${iconClassname}`} />}
+        {!emoji && Icon && (
+          <Icon className={`${iconClassname}`} size={leftIconSize} />
+        )}
         {!Icon && emoji && <span className={`${emojiClassname}`}>{emoji}</span>}
         {image && (
           <Avatar
@@ -218,7 +230,7 @@ export const ViewLabel = ({
         <span>{label ?? fallbackLabel ?? "Undefined"}</span>
       </div>
       {!rightNode && RightIcon && (
-        <RightIcon className={`${rightIconClassname}`} />
+        <RightIcon className={`${rightIconClassname}`} size={rightIconSize} />
       )}
       {!RightIcon && rightNode && rightNode}
     </div>
@@ -294,8 +306,8 @@ export const KanbanPopup = () => {
 
   return (
     <FxCommandBox
-      open={true}
-      className="max-w-[800px] w-full max-h-[700px] h-full "
+      open={false}
+      className="max-w-[800px] w-full max-h-[500px] h-full "
       containerClasses="!bg-background-color_925C "
     >
       <div className="w-full h-[40px] border-b border-border-color_1 px-1 ">
@@ -333,7 +345,7 @@ export const KanbanPopup = () => {
             </div>
           </div>
 
-          <div className="w-fit flex-shrink-0 flex justify-end items-center pr-1">
+          <div className="w-fit flex-shrink-0 flex justify-end items-center pr-1 gap-2">
             <FxButton
               variant="ghost_zinc_2"
               className="!w-[25px] !h-[25px] !p-0"
@@ -344,7 +356,7 @@ export const KanbanPopup = () => {
           </div>
         </div>
       </div>
-      <div className="h-[calc(100%-140px)] w-full">
+      <div className="h-[calc(100%-185px)] w-full">
         <input
           name="issue_title"
           placeholder="Issue Title"
@@ -352,17 +364,15 @@ export const KanbanPopup = () => {
         />
 
         {/* TODO: uncomment this textarea */}
-        {/* <textarea
+        <textarea
           name="issue_content"
-          className="w-full resize-none border-none outline-none bg-transparent px-4 text-text-color_4 py-3 text-workspace_1 placeholder:text-text-color_3"
+          className="w-full resize-none outline-none h-[calc(100%-55px)] bg-transparent px-4 text-text-color_4 py-3 text-workspace_1 placeholder:text-text-color_3"
           placeholder="Description..."
-        ></textarea> */}
-
-        <KanbanCalender />
+        ></textarea>
       </div>
 
-      <div className="w-full px-3 flex justify-between items-center h-[50px]">
-        <div className="flex justify-start gap-2 items-center">
+      <div className="w-full px-3 py-3 flex justify-center items-end h-[95px]">
+        <div className="flex justify-start gap-2 items-center w-full flex-wrap">
           <ComboBox
             onComboDataSelect={handleSelectTaskStatus}
             currentValue={taskStatus.value}
@@ -476,15 +486,116 @@ export const KanbanPopup = () => {
               </FxButton>
             }
           />
+
+
+
+          <Popover>
+            <PopoverTrigger asChild className="outline-none">
+              <FxButton
+                variant="secondary"
+                role="combobox"
+                size="sm"
+                radius="tiny"
+                className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 `}
+              >
+                <ViewLabel
+                  label="Start Date"
+                  icon={CiCalendarDate}
+                  leftIconSize={18}
+                />
+              </FxButton>
+            </PopoverTrigger>
+            <PopoverContent
+              className="!bg-transparent !z-[99992]"
+              align="start"
+              side="top"
+            >
+              <KanbanCalender />
+            </PopoverContent>
+          </Popover>
+
+          <Popover>
+            <PopoverTrigger asChild className="outline-none">
+              <FxButton
+                variant="secondary"
+                role="combobox"
+                size="sm"
+                radius="tiny"
+                className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 `}
+              >
+                <ViewLabel
+                  label="Due Date"
+                  icon={TbCalendarDue}
+                  leftIconSize={16}
+                />
+              </FxButton>
+            </PopoverTrigger>
+            <PopoverContent
+              className="!bg-transparent !z-[99992]"
+              align="start"
+              side="top"
+            >
+              <KanbanCalender />
+            </PopoverContent>
+          </Popover>
+
+          <FxButton
+            variant="secondary"
+            role="combobox"
+            size="sm"
+            radius="tiny"
+            className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 `}
+          >
+            <ViewLabel
+              label="Add Parent"
+              icon={LuLayoutPanelTop}
+              leftIconSize={16}
+            />
+          </FxButton>
         </div>
       </div>
 
       <div className="border-t border-border-color_1 h-[50px] w-full flex justify-between items-center">
-        <div></div>
         <div className="px-2.5">
-          <FxButton className="!text-workspace_2 !py-1" radius="tiny">
+          <FxButton
+            className="!text-workspace_2 !py-0 h-[30px] !px-2 !gap-1"
+            variant="secondary"
+            radius="tiny"
+          >
+            <IoMdAdd size={18} />
+            Add Sub Issue
+          </FxButton>
+        </div>
+        <div className="px-2.5 flex justify-center items-center">
+          <FxButton
+            className="!text-workspace_2 !py-0 h-[30px] rounded-tr-none rounded-br-none pr-1 !pl-3"
+            radius="tiny"
+          >
             Create Issue
           </FxButton>
+          <Popover>
+            <PopoverTrigger asChild className="outline-none">
+              <FxButton className=" !px-1 !pr-2 rounded-tl-none rounded-bl-none h-[30px]">
+                <ChevronDown
+                  size={LUCIDE_WORKSPACE_ICON_SIZE}
+                  className="text-text-color_default_white"
+                />
+              </FxButton>
+            </PopoverTrigger>
+            <PopoverContent
+              className="w-[130px]  h-fit  border border-border-color_1 p-1 !z-[99992]"
+              align="end"
+            >
+              <FxButton
+                variant="ghost_zinc_2"
+                className="w-full !text-workspace_2 !justify-start !gap-1 h-[25px] !px-1"
+                radius="tiny"
+              >
+                <IoIosSave size={16} />
+                Draft
+              </FxButton>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
     </FxCommandBox>
