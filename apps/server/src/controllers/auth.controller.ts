@@ -119,6 +119,7 @@ export class AuthController {
         CookieService.DEVICE_ID_COOKIE.cookie
       );
 
+      // for saving cookies from server to account app to main app 
       res.redirect(`${process.env.ACCOUNT_WEB_BASE_URL}/?redirect=1`);
     } catch (error) {
       console.log(error);
