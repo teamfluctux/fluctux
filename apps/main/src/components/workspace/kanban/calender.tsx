@@ -7,7 +7,14 @@ import {
   ChevronRightIcon,
 } from "lucide-react";
 import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker";
-import { Button, buttonVariants, cn, Popover, PopoverContent, PopoverTrigger } from "@fluctux/ui";
+import {
+  Button,
+  buttonVariants,
+  cn,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@fluctux/ui";
 import { FaCircle } from "react-icons/fa6";
 
 function Calendar({
@@ -212,40 +219,42 @@ function CalendarDayButton({
 
   return (
     <div className="relative ">
-      {
-        isMatched &&
-         <Popover>
-      <PopoverTrigger asChild>
-      <FaCircle size={8} className="absolute top-0 right-0 text-text-indigo-color_1 hover:scale-125 cursor-pointer" />
-
-      </PopoverTrigger>
-      <PopoverContent align="start" className="w-[200px] min-h-[200px] h-full bg-background-color_900C rounded border border-border-color_1 z-[99996]">
-          
-      </PopoverContent>
-      </Popover>
-      }
-        <Button
-          ref={ref}
-          variant="ghost"
-          size="icon"
-          data-day={day.date.toLocaleDateString()}
-          data-selected-single={
-            modifiers.selected &&
-            !modifiers.range_start &&
-            !modifiers.range_end &&
-            !modifiers.range_middle
-          }
-          data-range-start={modifiers.range_start}
-          data-range-end={modifiers.range_end}
-          data-range-middle={modifiers.range_middle}
-          className={cn(
-            "data-[selected-single=true]:bg-background-indigo_primary  data-[selected-single=true]:text-text-color_default_white data-[range-middle=true]:bg-blue-500 data-[range-middle=true]:text-red-600 data-[range-start=true]:bg-red-600 data-[range-start=true]:text-pink-600 flex aspect-square h-auto w-full min-w-[--cell-size] flex-col gap-1 font-normal leading-none data-[range-end=true]:rounded-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-1 [&>span]:text-xs [&>span]:opacity-70 !rounded-[50px] ",
-            defaultClassNames.day,
-            isMatched && "bg-surface-indigo-bg-active",
-            className
-          )}
-          {...props}
-        />
+      {isMatched && (
+        <Popover>
+          <PopoverTrigger asChild>
+            <FaCircle
+              size={8}
+              className="absolute top-0 right-0 text-text-indigo-color_1 hover:scale-125 cursor-pointer"
+            />
+          </PopoverTrigger>
+          <PopoverContent
+            align="start"
+            className="w-[200px] min-h-[200px] h-full bg-background-color_900C rounded border border-border-color_1 z-[99996]"
+          ></PopoverContent>
+        </Popover>
+      )}
+      <Button
+        ref={ref}
+        variant="ghost"
+        size="icon"
+        data-day={day.date.toLocaleDateString()}
+        data-selected-single={
+          modifiers.selected &&
+          !modifiers.range_start &&
+          !modifiers.range_end &&
+          !modifiers.range_middle
+        }
+        data-range-start={modifiers.range_start}
+        data-range-end={modifiers.range_end}
+        data-range-middle={modifiers.range_middle}
+        className={cn(
+          "data-[selected-single=true]:bg-background-indigo_primary  data-[selected-single=true]:text-text-color_default_white data-[range-middle=true]:bg-blue-500 data-[range-middle=true]:text-red-600 data-[range-start=true]:bg-red-600 data-[range-start=true]:text-pink-600 flex aspect-square h-auto w-full min-w-[--cell-size] flex-col gap-1 font-normal leading-none data-[range-end=true]:rounded-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-1 [&>span]:text-xs [&>span]:opacity-70 !rounded-[50px] ",
+          defaultClassNames.day,
+          isMatched && "bg-surface-indigo-bg-active",
+          className
+        )}
+        {...props}
+      />
     </div>
   );
 }

@@ -487,8 +487,6 @@ export const KanbanPopup = () => {
             }
           />
 
-
-
           <Popover>
             <PopoverTrigger asChild className="outline-none">
               <FxButton

@@ -1,7 +1,7 @@
 // this component is currently in development
 "use client";
 import React from "react";
-import {motion, useMotionValue} from "framer-motion"
+import { motion, useMotionValue } from "framer-motion";
 import { FxButton } from "@fluctux/ui";
 
 type TimeValue = { hours: number; minutes: number; ampm?: "AM" | "PM" };
@@ -95,8 +95,7 @@ function Column<T>({
         dragElastic={0.2}
         onDragEnd={handleDragEnd}
         animate={{ y: -index * itemHeight + centerOffset * itemHeight }}
-       transition={{ type: "tween", duration: 0.15 }}
-    
+        transition={{ type: "tween", duration: 0.15 }}
       >
         {items.map((it, i) => {
           const isSelected = i === index;
@@ -117,7 +116,6 @@ function Column<T>({
     </div>
   );
 }
-
 
 // Main TimePicker
 export default function TimePicker({
@@ -249,67 +247,72 @@ export default function TimePicker({
     <div
       className={` border border-border-color_1 rounded-rounded_10C p-2 bg-background-color_900C ${className ?? ""}`}
     >
+      <div className="flex items-center gap-3">
+        <Column
+          items={hoursArr}
+          index={hourIndex}
+          onWheel={hourOnWheel}
+          setIndex={setHourIndex}
+          ariaLabel="Hours"
+          renderItem={(h) => (
+            <div style={{ width: "100%", textAlign: "center" }}>
+              {format2(h)}
+            </div>
+          )}
+          visible={visibleItems}
+        />
 
-        <div className="flex items-center gap-3">
+        <div className="text-workspace_2 font-medium">:</div>
 
-      <Column
-        items={hoursArr}
-        index={hourIndex}
-        onWheel={hourOnWheel}
-        setIndex={setHourIndex}
-        ariaLabel="Hours"
-        renderItem={(h) => (
-          <div style={{ width: "100%", textAlign: "center" }}>{format2(h)}</div>
-        )}
-        visible={visibleItems}
-      />
+        <Column
+          items={minutesArr}
+          index={minuteIndex}
+          onWheel={minuteOnWheel}
+          setIndex={setMinuteIndex}
+          ariaLabel="Minutes"
+          renderItem={(m) => (
+            <div style={{ width: "100%", textAlign: "center" }}>
+              {format2(m)}
+            </div>
+          )}
+          visible={visibleItems}
+        />
 
-      <div className="text-workspace_2 font-medium">:</div>
-
-      <Column
-        items={minutesArr}
-        index={minuteIndex}
-        onWheel={minuteOnWheel}
-        setIndex={setMinuteIndex}
-        ariaLabel="Minutes"
-        renderItem={(m) => (
-          <div style={{ width: "100%", textAlign: "center" }}>{format2(m)}</div>
-        )}
-        visible={visibleItems}
-      />
-
-      {!hour24 && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 6,
-            marginLeft: 8,
-          }}
-        >
-          <button
-            onMouseDown={(e) => e.preventDefault()}
-            onClick={onAMPMClick("AM")}
-            aria-pressed={selectedAMPM === "AM"}
-            className={`px-2 py-0 rounded-tiny text-workspace_3 transition-colors font-medium border border-transparent ${selectedAMPM === "AM" ? "bg-surface-indigo-bg-active text-surface-indigo-fg  border-surface-indigo-border-active" : "text-gray-400"}`}
+        {!hour24 && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+              marginLeft: 8,
+            }}
           >
-            AM
-          </button>
-          <button
-            onMouseDown={(e) => e.preventDefault()}
-            onClick={onAMPMClick("PM")}
-            aria-pressed={selectedAMPM === "PM"}
-            className={`px-2 py-0 rounded-tiny text-workspace_3 transition-colors font-medium border border-transparent ${selectedAMPM === "PM" ? "bg-surface-indigo-bg-active text-surface-indigo-fg  border-surface-indigo-border-active" : "text-gray-400"}`}
-          >
-            PM
-          </button>
-        </div>
-      )}
-
+            <button
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={onAMPMClick("AM")}
+              aria-pressed={selectedAMPM === "AM"}
+              className={`px-2 py-0 rounded-tiny text-workspace_3 transition-colors font-medium border border-transparent ${selectedAMPM === "AM" ? "bg-surface-indigo-bg-active text-surface-indigo-fg  border-surface-indigo-border-active" : "text-gray-400"}`}
+            >
+              AM
+            </button>
+            <button
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={onAMPMClick("PM")}
+              aria-pressed={selectedAMPM === "PM"}
+              className={`px-2 py-0 rounded-tiny text-workspace_3 transition-colors font-medium border border-transparent ${selectedAMPM === "PM" ? "bg-surface-indigo-bg-active text-surface-indigo-fg  border-surface-indigo-border-active" : "text-gray-400"}`}
+            >
+              PM
+            </button>
+          </div>
+        )}
       </div>
       <div className="mt-2">
-        <FxButton className="w-full text-workspace_2 !py-1.5" size="md" radius="tiny" >
-            Set Time
+        <FxButton
+          className="w-full text-workspace_2 !py-1.5"
+          size="md"
+          radius="tiny"
+        >
+          Set Time
         </FxButton>
       </div>
     </div>
