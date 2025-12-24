@@ -73,10 +73,6 @@ export const WORK_MANAGEMENT_ITEMS: FooterListType[] = [
     label: "Projects",
     slug: "",
   },
-  {
-    label: "Wave",
-    slug: "",
-  },
 ];
 
 interface FooterMenusType {

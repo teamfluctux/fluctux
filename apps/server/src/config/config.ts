@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-interface Config {
+interface ConfigType {
   port: number;
   nodeEnv: string;
   redis_host: string;
@@ -11,7 +11,7 @@ interface Config {
   redis_port: number;
 }
 
-export const config: Config = {
+export const Config: ConfigType = {
   port: Number(process.env.PORT) || 5000,
   nodeEnv: process.env.NODE_ENV || "development",
   redis_host: process.env.REDIS_HOST || "localhost",

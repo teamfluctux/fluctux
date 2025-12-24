@@ -1,5 +1,10 @@
-import { FxButton, buttonSizes, buttonStyling } from "@fluctux/ui";
-import "@fluctux/ui/styles/global.css";
+import {
+  FxButton,
+  ROUNDED_VARIANTS,
+  buttonSizes,
+  buttonStyling,
+} from "@fluctux/ui";
+
 import type { Meta, StoryObj } from "@storybook/react-vite";
 const meta = {
   title: "FxButton",
@@ -16,6 +21,9 @@ const meta = {
   argTypes: {
     variant: { control: "select", options: [...Object.keys(buttonStyling)] },
     size: { control: "select", options: [...Object.keys(buttonSizes)] },
+    radius: { control: "select", options: [...Object.keys(ROUNDED_VARIANTS)] },
+    disabled: { control: "boolean" },
+    loading: { control: "boolean" },
   },
 } satisfies Meta<typeof FxButton>;
 

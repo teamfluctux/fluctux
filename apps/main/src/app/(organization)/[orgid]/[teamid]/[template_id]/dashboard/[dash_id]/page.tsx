@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { StudentDashboard } from "@/components/workspace/student-management";
 import React from "react";
 

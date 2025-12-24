@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { studentManagementStore } from "@/services/stores/template";
 import {
   FxButton,

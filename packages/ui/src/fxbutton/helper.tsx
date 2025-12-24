@@ -26,8 +26,9 @@ export const buttonSizes: { [key in SizeType]: string } = {
 export const buttonStyling: ButtonStylingType = {
   primary: {
     default:
-      "bg-background-indigo_primary cursor-pointer border-none text-text-color_default_white active:bg-fx_indigo-500 active:!text-text-color_1",
-    hover: "hover:bg-fx_indigo-700 hover:text-text-color_4",
+      "bg-background-indigo_primary cursor-pointer border-none text-text-color_default_white active:bg-fx_indigo-500 active:!text-text-color_default_white",
+    hover:
+      "hover:bg-fx_indigo-700 dark:hover:text-text-color_4 hover:text-text-color_default_white",
     disabled:
       "text-text-color_2 !cursor-not-allowed bg-fx_indigo-800 border border-border-color_1",
   },

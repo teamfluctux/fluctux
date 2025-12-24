@@ -14,5 +14,4 @@ export class TemplateStore {
   }
 }
 
-
-export const templateStore = new TemplateStore()
+export const templateStore = new TemplateStore();

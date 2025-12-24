@@ -20,6 +20,7 @@
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
     "eslint": "^9.21.0",
     "jest": "^30.0.3",
     "nodemon": "^3.1.9",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "@octokit/auth-oauth-app": "^9.0.1",
+    "@fluctux/logger": "workspace:*",
     "@octokit/core": "^7.0.2",
     "@octokit/oauth-app": "^8.0.1",
     "@octokit/oauth-methods": "^6.0.0",
@@ -37,7 +39,9 @@
     "express": "^5.1.0",
     "googleapis": "^150.0.1",
     "jsonwebtoken": "^9.0.2",
+    "kafkajs": "^2.2.4",
     "mongoose": "8.9.5",
+    "morgan": "^1.10.1",
     "redis": "^5.5.6"
   },
   "keywords": [],

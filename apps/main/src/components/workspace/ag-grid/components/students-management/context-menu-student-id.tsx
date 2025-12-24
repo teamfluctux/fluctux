@@ -6,7 +6,7 @@ import { studentManagementStore } from "@/services/stores/template";
 import { observer } from "mobx-react";
 import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
 
-type EditIconType = "edit_1" | "edit_2" | "edit_3"
+type EditIconType = "edit_1" | "edit_2" | "edit_3";
 
 const editIcons: { [key in EditIconType]: LucideIcon } = {
   edit_1: SquarePen,

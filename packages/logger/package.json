@@ -1,0 +1,29 @@
+{
+  "name": "@fluctux/logger",
+  "version": "1.0.0",
+  "description": "Shared Logger",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsup --dts --minify",
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit",
+    "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
+  },
+  "devDependencies": {
+    "@fluctux/eslint-config": "workspace:*",
+    "@fluctux/typescript-config": "workspace:*",
+    "eslint": "^9.21.0",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "winston": "^3.18.3"
+  },
+  "license": "ISC"
+}

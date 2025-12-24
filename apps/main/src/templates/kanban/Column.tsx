@@ -2,7 +2,7 @@
 import { KanbanColumnType, KanbanTaskType } from "@/types";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { FxButton, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
+import { FxButton, IssueIcon, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { Ellipsis, GripVertical, PlusIcon } from "lucide-react";
 import { KanbanTask } from "./Task";
 import { useMemo } from "react";
@@ -44,11 +44,12 @@ export const KanbanColumn = observer((props: KanbanColumnPropsType) => {
       <div
         ref={setNodeRef}
         style={style}
-        className="w-full min-w-[330px] max-w-[330px]  h-full"
+        className="w-full min-w-[350px] max-w-[350px]  h-full"
       >
         <div className="h-[40px] flex justify-between items-center group relative overflow-hidden">
-          <div className="flex justify-start items-center gap-3 w-fit">
-            <h3 className="text-text-color_1 text-workspace_1 opacity-40 font-medium relative left-3 group-hover:left-7 transition-all">
+          <div className="flex justify-start items-center w-fit gap-2 opacity-40">
+            <IssueIcon stateType={`${column.type}`} size={19} />
+            <h3 className="text-text-color_1 text-workspace_1 font-medium ">
               {column.title}
             </h3>
           </div>
@@ -62,7 +63,7 @@ export const KanbanColumn = observer((props: KanbanColumnPropsType) => {
     <div
       ref={setNodeRef}
       style={style}
-      className="w-full min-w-[330px] max-w-[330px]  h-full"
+      className="w-full min-w-[350px] max-w-[350px]  h-full"
     >
       <div className="h-[40px] flex justify-between items-center group relative overflow-hidden">
         <div className="flex justify-start items-center gap-3 w-fit">
@@ -75,9 +76,12 @@ export const KanbanColumn = observer((props: KanbanColumnPropsType) => {
           >
             <GripVertical size={LUCIDE_WORKSPACE_ICON_SIZE} />
           </FxButton>
-          <h3 className="text-text-color_1 text-workspace_1 font-medium relative left-3 group-hover:left-7 transition-all">
-            {column.title}
-          </h3>
+          <div className="flex justify-start items-center gap-2 relative left-3 group-hover:left-7 transition-all">
+            <IssueIcon stateType={`${column.type}`} size={19} />
+            <h3 className="text-text-color_1 text-workspace_1 font-medium">
+              {column.title}
+            </h3>
+          </div>
         </div>
         <div className="w-fit justify-end items-center gap-2 flex pr-3 flex-shrink-0">
           <FxButton
