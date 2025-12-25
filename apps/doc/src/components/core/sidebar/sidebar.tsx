@@ -29,7 +29,7 @@ const TopNavItems: { label: string; slug: string; icon: IconType }[] = [
 export const AppSidebar = ({ doctype }: { doctype: string }) => {
   const DATA = DEVELOPER_DOC_NAV;
   return (
-    <aside className="w-full h-full border-r border-border-color_1 bg-background-color_900C">
+    <aside className="w-full h-full border-r border-border-color_1 ">
       <div className="w-full h-fit px-5 py-4 flex justify-between items-center">
         <div className="flex justify-start items-center gap-2">
           <FxFavIcon size="sm" variant="theme" />

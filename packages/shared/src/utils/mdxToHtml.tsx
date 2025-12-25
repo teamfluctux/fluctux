@@ -53,7 +53,7 @@ export const mdxToHtml = async (content: string) => {
     components: {
       a: ({ href, children, ...props }: AnchorProps) => {
         const className =
-          "text-text-color_1 hover:text-text-color_2 underline underline-offset-2 decoration-text-color_1 hover:decoration-fx_indigo-600 transition-colors";
+          "text-text-color_1 hover:text-text-color_2 underline underline-offset-2 decoration-text-color_1 transition-colors hover:decoration-text-color_2";
         if (href?.startsWith("/")) {
           return (
             <Link href={href} className={className} {...props}>
@@ -65,13 +65,13 @@ export const mdxToHtml = async (content: string) => {
           <a
             href={href}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer group"
             className={`${className} inline-flex`}
             {...props}
           >
             {children}
 
-            <ExternalLink size={14} className="pl-0.5" />
+            <ExternalLink size={14} className="pl-0.5 group-hover:!text-blue-600" />
           </a>
         );
       },

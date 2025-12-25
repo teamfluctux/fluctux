@@ -12,7 +12,6 @@ export default async function Layout({
 
   return (
     <main className="w-full h-full grid grid-cols-[320px_1fr]">
-      <AppSidebar doctype={visitorType} />
       {children}
     </main>
   );

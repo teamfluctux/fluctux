@@ -20,7 +20,7 @@ export default async function Page({
 
     return (
       <>
-        <div className=" w-full h-full overflow-y-scroll grid grid-cols-[1fr_300px]">
+        <div className=" w-full h-full grid grid-cols-[1fr_300px]">
           <div className=" max-w-[650px] w-full mx-auto px-3 py-14">
             <article className="prose  prose-gray dark:prose-invert ">
               {MdxComponent}
