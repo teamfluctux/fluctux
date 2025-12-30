@@ -28,6 +28,6 @@ export type ObjectListArrayType = {
   [key: string]: {
     label: string;
     slug: string;
-    icon: LucideIcon;
+    icon?: LucideIcon;
   }[];
 };

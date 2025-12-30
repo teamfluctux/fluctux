@@ -28,6 +28,7 @@ type ComboBoxPropsType = {
   showSearchBox?: boolean;
   searchPlaceholder?: string;
   popoverProps?: PopoverContentProps;
+  popoverClassName?: string
 };
 
 export const ComboBox = ({
@@ -38,6 +39,7 @@ export const ComboBox = ({
   searchPlaceholder,
   showSearchBox = true,
   data: combos,
+  popoverClassName,
   popoverProps,
 }: ComboBoxPropsType) => {
   const [open, setOpen] = React.useState(false);
@@ -57,7 +59,7 @@ export const ComboBox = ({
       <PopoverTrigger asChild>{popoverTriggerComponent}</PopoverTrigger>
       <PopoverContent
         align="start"
-        className="w-[200px] p-0 z-[9992] bg-background-color_900C border border-border-color_1"
+        className={`w-[200px] p-0 z-[9992] border-background-color_750C bg-background-color_850C border ${popoverClassName}`}
         {...popoverProps}
       >
         <Command>
@@ -73,7 +75,7 @@ export const ComboBox = ({
                 const Icon = combo.icon;
                 return (
                   <CommandItem
-                    className="hover:bg-background-color_800C transition-colors text-text-color_4 hover:!text-text-color_1 justify-between"
+                    className="hover:bg-background-color_750C transition-colors text-text-color_4 hover:!text-text-color_1 justify-between"
                     key={combo.value}
                     value={combo.value}
                     onSelect={handleComboItemSelect}

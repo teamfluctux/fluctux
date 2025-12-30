@@ -1,5 +1,5 @@
-import { AppSidebar } from "@/components/core";
 import React from "react";
+import { DocWrapper } from "./DocWrapper";
 
 export default async function Layout({
   params,
@@ -11,8 +11,8 @@ export default async function Layout({
   const { visitorType } = await params;
 
   return (
-    <main className="w-full h-full grid grid-cols-[320px_1fr]">
+    <DocWrapper visitorType={visitorType}>
       {children}
-    </main>
+    </DocWrapper>
   );
 }

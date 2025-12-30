@@ -16,11 +16,14 @@ export interface ButtonStylingType {
   };
 }
 
-export const buttonSizes: { [key in SizeType]: string } = {
-  sm: "py-1 px-3 text-workspace_3",
-  md: "py-2 px-4 text-workspace_1",
-  lg: "py-3 px-5 text-read_16",
-  xl: "py-3.5 px-6 text-read_18",
+type ButtonSizeType = SizeType | "md_2"
+
+export const buttonSizes: { [key in ButtonSizeType]: string } = {
+  sm: "h-7 px-3 text-workspace_3",
+  md: "h-9 px-4 text-workspace_1",
+  md_2: "h-8 px-4 text-workspace_1",
+  lg: "h-12 px-5 text-read_16",
+  xl: "h-14 px-6 text-read_18",
 };
 
 export const buttonStyling: ButtonStylingType = {
@@ -65,7 +68,7 @@ export const buttonStyling: ButtonStylingType = {
 
 export const getButtonStyling = (
   variant?: ButtonVariant,
-  size?: SizeType,
+  size?: ButtonSizeType,
   disabled: boolean = false
 ) => {
   const tempVariant =

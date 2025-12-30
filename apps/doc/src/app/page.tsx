@@ -1,10 +1,7 @@
-import { AppSidebar } from "@/components/core";
-import { MainWrapper } from "@/components/core";
+import React from "react";
 
-export default function Home() {
-  return (
-    <div className="w-full h-full grid grid-cols-[300px_1fr]">
-      
-    </div>
-  );
-}
+const page = () => {
+  return <div>Home page</div>;
+};
+
+export default page;

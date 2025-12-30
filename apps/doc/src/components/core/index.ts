@@ -1,2 +1,3 @@
 export * from "./sidebar";
-export * from "./main-wrapper";
+export * from "./MainContentWrapper";
+export * from "./AsideRightComp";

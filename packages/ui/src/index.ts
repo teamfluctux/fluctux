@@ -24,6 +24,7 @@ export * from "./get-issues-iconset";
 export * from "./ComboBoxCheckbox";
 export * from "./type";
 export * from "./fxbutton";
+export * from "./accordion";
 export * from "./combobox";
 export * from "./tooltip";
 export * from "./alert-dialog";

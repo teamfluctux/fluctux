@@ -6,7 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { AppSidebar, MainWrapper } from "@/components/core";
+import { AsideRightComp, DocAppSidebar, MainContentWrapper } from "@/components/core";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable}`}
+        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} overflow-x-hidden`}
       >
         <ThemeProvider attribute="class">
           <Suspense>
@@ -44,10 +44,10 @@ export default function RootLayout({
               baseColor="var(--skeleton-base-color)"
               highlightColor="var(--skeleton-highlightColor)"
             >
-              <div className="w-full h-full grid grid-cols-[320px_1fr]">
-
-              <AppSidebar doctype="user" />
-              {children}
+              <div className="max-w-[1400px] w-full mx-auto border-x border-border-color_1  flex justify-between items-start ">
+                <DocAppSidebar />
+                <MainContentWrapper>{children}</MainContentWrapper>
+                <AsideRightComp/>
               </div>
             </SkeletonTheme>
           </Suspense>
