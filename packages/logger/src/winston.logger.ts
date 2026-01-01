@@ -47,11 +47,11 @@ export class CustomLogger {
   public logger: CustomLoggerType;
   public loggerOptions: LoggerOptions;
   public customFormat: any;
-  constructor(origin: string) {
+  constructor(origin?: string) {
     this.origin = origin;
     this.customFormat = format.printf(
       ({ level, message, timestamp, label }) => {
-        return `${timestamp} | ORIGIN: ${this.origin} | [${level}] : ${label ? `${label} => ` : ""}${message}`;
+        return `${timestamp} | ${origin ? `ORIGIN: ${this.origin} | `: ""}[${level}] : ${label ? `${label} => ` : ""}${message}`;
       }
     );
 

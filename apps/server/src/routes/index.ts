@@ -1,13 +1,21 @@
 import { Request, Response, Router } from "express";
-import authRouter from "./auth.route";
 import { authenticateUser } from "@/middlewares";
 import { CookieService } from "@/services/auth/cookie.service";
+
+// Routers import
+import authRouter from "./auth.route";
 import kanbanRouter from "./kanban.route";
+import userRouter from "./user.route"
 
 const router = Router();
 
+// configure all routes
 router.use("/auth", authRouter);
 router.use("/kanban", kanbanRouter);
+router.use("/users", userRouter);
+
+
+
 
 router.get(
   "/protected",

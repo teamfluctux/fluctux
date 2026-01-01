@@ -5,6 +5,7 @@ import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
 import { GlobalRedis } from "./services/redis/global-redis";
 import { morganRequestLogger } from "./middlewares/morgan.middleware";
+import { db } from "./lib";
 
 const app = express();
 
