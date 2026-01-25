@@ -4,11 +4,22 @@ import {
 } from "@/services/auth/cookie.service";
 import { GoogleAuth } from "./googleAuth.service";
 import { Request, Response } from "express";
+import { GithubAuth } from "./githubAuth.service";
 
 export class AuthService {
-  private google: GoogleAuth;
+  protected google: GoogleAuth;
+  protected github: GithubAuth;
   constructor() {
     this.google = new GoogleAuth();
+    this.github = new GithubAuth();
+  }
+
+  GoogleAuth() {
+    return this.google;
+  }
+
+  GithubAuth() {
+    return this.github;
   }
 
   static clearProtectedCookies(_: Request, res: Response) {

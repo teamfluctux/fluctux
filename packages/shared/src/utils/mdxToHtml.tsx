@@ -71,7 +71,10 @@ export const mdxToHtml = async (content: string) => {
           >
             {children}
 
-            <ExternalLink size={14} className="pl-0.5 group-hover:!text-blue-600" />
+            <ExternalLink
+              size={14}
+              className="pl-0.5 group-hover:!text-blue-600"
+            />
           </a>
         );
       },

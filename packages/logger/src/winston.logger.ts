@@ -40,10 +40,8 @@ const customLevels = {
 
 addColors(customLevels.colors);
 
-
-
 export class CustomLogger {
-  public origin: string | undefined= undefined;
+  public origin: string | undefined = undefined;
   public logger: CustomLoggerType;
   public loggerOptions: LoggerOptions;
   public customFormat: any;

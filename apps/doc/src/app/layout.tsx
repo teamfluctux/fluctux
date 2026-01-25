@@ -45,9 +45,8 @@ export default function RootLayout({
               highlightColor="var(--skeleton-highlightColor)"
             >
               <div className="w-full h-full grid grid-cols-[320px_1fr]">
-
-              <AppSidebar doctype="user" />
-              {children}
+                <AppSidebar doctype="user" />
+                {children}
               </div>
             </SkeletonTheme>
           </Suspense>

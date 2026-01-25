@@ -3,7 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
-import { GlobalRedis } from "./services/redis/global-redis";
+import { GlobalRedis } from "./services/redis";
 import { morganRequestLogger } from "./middlewares/morgan.middleware";
 
 const app = express();
@@ -31,8 +31,11 @@ app.get("/health", async (req: Request, res) => {
 app.get("/redis", async (req, res) => {
   const redis = new GlobalRedis();
   const response = await redis.redisCheckConnection();
+
   res.status(200).json({
-    message: new ApiResponse(200, "Response from server for redis", response),
+    message: new ApiResponse(200, "Response from server for redis", {
+      response
+    }),
   });
 });
 

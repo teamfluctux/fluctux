@@ -1,23 +1,17 @@
 import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
-import { GoogleAuth } from "@/services/auth";
 import {
   AuthProviderCookieType,
   CookieService,
 } from "@/services/auth/cookie.service";
 import { ApiError } from "@/utils/ApiError";
 import { Request, Response } from "express";
-import dotenv from "dotenv";
+import "dotenv/config";
 import { JWTManager } from "@/utils/jwt_manager";
 import { v4 as uuidV4 } from "uuid";
-import { AuthRedis } from "@/services/redis/auth.redis";
+import { AuthRedisService } from "@/services/redis/auth.redis";
+import { AuthService } from "@/services/auth/auth.service";
 
-dotenv.config();
-
-export class AuthController {
-  private google: GoogleAuth;
-  constructor() {
-    this.google = new GoogleAuth();
-  }
+export class AuthController extends AuthService {
   redirectGoogleAuth(req: Request, res: Response) {
     return res.redirect(this.google.generateGoogleAuthUrl());
   }
@@ -29,6 +23,7 @@ export class AuthController {
   async handleSignInWithGoogle(req: Request, res: Response) {
     try {
       const { code } = req.query;
+
       /**  check if code is in req
        * if code not exist return unauthorized error
        */
@@ -42,17 +37,15 @@ export class AuthController {
           ),
         });
 
-      /**
-       * Get the idToken and refreshToken from google via passing the code
-       */
+      // Get the idToken and refreshToken from google via passing the code
       const { idToken, refreshToken } = await this.google.getGoogleAuthtokens(
         code as string
       );
 
       /**
-       * Store the provider name to cookie
+       * Store the provider name in the cookie
        * it will help to refresh token manager to refresh specific token
-       * it will help to getSession on from specific provider
+       * it will help to getSession from specific provider
        */
       if (!idToken || !refreshToken) {
         res.status(HTTPErrorCodes.SERVICE_UNAVAILABLE).json({
@@ -65,9 +58,12 @@ export class AuthController {
         });
       }
 
+      // jwt instance
       const jwtManager = new JWTManager(
         process.env.PROVIDER_NAME_JWT as string
       );
+
+      // encrypt tokens ===============================================
       const encryptedProviderName = jwtManager.generateEncryptedJWTTokens({
         dataObject: { provider: AuthProviderCookieType.GOOGLE },
         args: { expiresIn: "720h" },
@@ -77,6 +73,8 @@ export class AuthController {
         args: { expiresIn: "720h" },
         secret: process.env.REFRESH_TOKEN_SECRET,
       });
+
+      // create unique device id
       const device_id = await uuidV4();
       const encryptedDeviceIdToken = jwtManager.generateEncryptedJWTTokens({
         dataObject: { deviceId: device_id },
@@ -89,8 +87,10 @@ export class AuthController {
         secret: process.env.ID_TOKEN_JWT_SECRET,
         args: { expiresIn: "20s" },
       });
+      // encrypt tokens end ================================================
 
-      const redisClient = new AuthRedis();
+      // store necessary tokens on redis
+      const redisClient = new AuthRedisService();
 
       redisClient.addOrUpdateAuthTokens({
         refreshToken: ecryptedRefreshToken,
@@ -98,6 +98,7 @@ export class AuthController {
         providerToken: encryptedProviderName,
       });
 
+      // send cookies to the user
       res.cookie(
         CookieService.PROVIDER_COOKIE.name,
         encryptedProviderName,
@@ -119,7 +120,7 @@ export class AuthController {
         CookieService.DEVICE_ID_COOKIE.cookie
       );
 
-      // for saving cookies from server to account app to main app
+      // for saving cookies from server to account app to main app through redirect
       res.redirect(`${process.env.ACCOUNT_WEB_BASE_URL}/?redirect=1`);
     } catch (error) {
       console.log(error);

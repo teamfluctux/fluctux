@@ -5,7 +5,7 @@ import { getSession } from "@/lib/getSession";
 import { CookieService } from "@/services/auth/cookie.service";
 import { SessionDataType, UserSessionType } from "@fluctux/types";
 import { JWTManager } from "@/utils/jwt_manager";
-import { AuthRedis } from "@/services/redis";
+import { AuthRedisService } from "@/services/redis";
 import { AuthService } from "@/services/auth/auth.service";
 
 export async function authenticateUser(
@@ -13,9 +13,9 @@ export async function authenticateUser(
   res: Response,
   next: NextFunction
 ) {
-  const auth = new AuthService();
   const jwtManager = new JWTManager();
-  const redisAuthClient = new AuthRedis();
+  const redisAuthClient = new AuthRedisService();
+  const auth = new AuthService();
 
   // get idToken from cookies
   const idToken = req.cookies[CookieService.ID_TOKEN.name];
