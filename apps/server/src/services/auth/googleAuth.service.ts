@@ -1,7 +1,5 @@
 import { google } from "googleapis";
-import dotenv from "dotenv";
-import { GithubAuth } from "./githubAuth.service";
-dotenv.config();
+import "dotenv/config";
 
 export class GoogleAuth {
   private static CLIENT_ID = process.env.GOOGLE_CLIENT_ID;

@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
 import { GoogleAuth } from "@/services/auth";
 import {
@@ -6,12 +7,11 @@ import {
 } from "@/services/auth/cookie.service";
 import { ApiError } from "@/utils/ApiError";
 import { Request, Response } from "express";
-import dotenv from "dotenv";
 import { JWTManager } from "@/utils/jwt_manager";
 import { v4 as uuidV4 } from "uuid";
 import { AuthRedis } from "@/services/redis/auth.redis";
 
-dotenv.config();
+
 
 export class AuthController {
   private google: GoogleAuth;

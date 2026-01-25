@@ -7,7 +7,7 @@ import { Request, Response } from "express";
 const logger = new CustomLogger("user.controller.ts").logger
 
 const getUsers = db.select().from(User).prepare("getUsers")
-const createUser = async () => {
+const createNewUser = async () => {
     return await db.insert(User).values({
         city: "Dhaka",
         name: "Nimul Islam Mahin"
@@ -22,7 +22,7 @@ export class FxUser {
 
     async createUser(req: Request, res: Response) {
         try {
-            const result = await createUser()
+            const result = await createNewUser()
             logger.info("result is", result)
             res.status(201).json({ message: "OK" });
         } catch (error) {

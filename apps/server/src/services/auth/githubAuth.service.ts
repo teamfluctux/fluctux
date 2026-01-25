@@ -1,7 +1,6 @@
 import { OAuthApp } from "@octokit/oauth-app";
+import "dotenv/config";
 
-import dotenv from "dotenv";
-dotenv.config();
 
 export class GithubAuth {
   private static GH_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
