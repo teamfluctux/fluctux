@@ -1,7 +1,7 @@
 import {
   createLogger,
   format,
-  LoggerOptions,
+  LoggerOptions as LoggerOptionsType,
   transports,
   addColors,
   Logger,
@@ -40,33 +40,26 @@ const customLevels = {
 
 addColors(customLevels.colors);
 
-export class CustomLogger {
-  public origin: string | undefined = undefined;
-  public logger: CustomLoggerType;
-  public loggerOptions: LoggerOptions;
-  public customFormat: any;
-  constructor(origin: string) {
-    this.origin = origin;
-    this.customFormat = format.printf(
-      ({ level, message, timestamp, label }) => {
-        return `${timestamp} | ORIGIN: ${this.origin} | [${level}] : ${label ? `${label} => ` : ""}${message}`;
-      }
-    );
-
-    this.loggerOptions = {
-      level: "info",
-      levels: customLevels.levels,
-      format: format.combine(
-        format.timestamp({
-          format: "DD-MM-YYYY HH:mm:ss",
-        }),
-        format.json(),
-        format.colorize(),
-        this.customFormat
-      ),
-      transports: [new transports.Console()],
-    };
-
-    this.logger = createLogger(this.loggerOptions) as CustomLoggerType;
+const CustomLoggerFormat = format.printf(
+  ({ level, message, timestamp, label }) => {
+    return `${timestamp} | [${level}] : ${label ? `${label} => ` : ""}${message}`;
   }
-}
+);
+
+const LoggerOptions: LoggerOptionsType = {
+  level: "info",
+  levels: customLevels.levels,
+  format: format.combine(
+    format.timestamp({
+      format: "DD-MM-YYYY HH:mm:ss",
+    }),
+    format.json(),
+    format.colorize(),
+    CustomLoggerFormat
+  ),
+  transports: [new transports.Console()],
+};
+
+export const logger = createLogger(LoggerOptions) as CustomLoggerType;
+
+

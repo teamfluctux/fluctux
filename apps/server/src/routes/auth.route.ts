@@ -1,16 +1,15 @@
-import { AuthController } from "@/controllers";
+import { authController } from "@/controllers";
 
 import { Router } from "express";
 
 const authRouter = Router();
-const auth = new AuthController();
 
 // dont make handleSignIN an arrow function in the class to solve function undefined error as it causes unecessary function creation on each instantiated
 // using bind and arrow wrapper is negligible in perfomance
-authRouter.route("/signin/google").get(auth.redirectGoogleAuth.bind(auth));
+authRouter.route("/signin/google").get(authController.redirectGoogleAuth.bind(authController));
 authRouter
   .route("/callback/google")
-  .get(auth.handleSignInWithGoogle.bind(auth));
+  .get(authController.handleSignInWithGoogle.bind(authController));
 // authRouter.route("/signin/github").get(auth.redirectGithubAuth.bind(auth));
 // authRouter
 //   .route("/callback/github")

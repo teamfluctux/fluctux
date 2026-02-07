@@ -6,12 +6,12 @@ import {
 import { ApiError } from "@/utils/ApiError";
 import { Request, Response } from "express";
 import "dotenv/config";
-import { JWTManager } from "@/utils/jwt_manager";
+import { jwtManager } from "@/utils/jwt_manager";
 import { v4 as uuidV4 } from "uuid";
-import { AuthRedisService } from "@/services/redis/auth.redis";
 import { AuthService } from "@/services/auth/auth.service";
+import { authRedisService } from "@/services/redis";
 
-export class AuthController extends AuthService {
+class AuthController extends AuthService {
   redirectGoogleAuth(req: Request, res: Response) {
     return res.redirect(this.google.generateGoogleAuthUrl());
   }
@@ -58,15 +58,11 @@ export class AuthController extends AuthService {
         });
       }
 
-      // jwt instance
-      const jwtManager = new JWTManager(
-        process.env.PROVIDER_NAME_JWT as string
-      );
-
       // encrypt tokens ===============================================
       const encryptedProviderName = jwtManager.generateEncryptedJWTTokens({
         dataObject: { provider: AuthProviderCookieType.GOOGLE },
         args: { expiresIn: "720h" },
+        secret: process.env.PROVIDER_NAME_JWT as string
       });
       const ecryptedRefreshToken = jwtManager.generateEncryptedJWTTokens({
         dataObject: { refreshToken: refreshToken ?? "" },
@@ -90,9 +86,8 @@ export class AuthController extends AuthService {
       // encrypt tokens end ================================================
 
       // store necessary tokens on redis
-      const redisClient = new AuthRedisService();
 
-      redisClient.addOrUpdateAuthTokens({
+      authRedisService.addOrUpdateAuthTokens({
         refreshToken: ecryptedRefreshToken,
         deviceIdToken: encryptedDeviceIdToken,
         providerToken: encryptedProviderName,
@@ -169,3 +164,5 @@ export class AuthController extends AuthService {
   //   }
   // }
 }
+
+export const authController = new AuthController()

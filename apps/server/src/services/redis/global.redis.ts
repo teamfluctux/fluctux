@@ -1,6 +1,6 @@
 import { RedisService } from "./redis.service";
 
-export class GlobalRedis extends RedisService {
+class GlobalRedisService extends RedisService {
   async redisCheckConnection() {
     await this.connectRedis();
     const response = await this.pingRedis();
@@ -9,3 +9,6 @@ export class GlobalRedis extends RedisService {
     return response;
   }
 }
+
+export const globalRedisService = new GlobalRedisService()
+

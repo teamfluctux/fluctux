@@ -1,1 +1,1 @@
-export class FxUser {}
+class FxUser {}

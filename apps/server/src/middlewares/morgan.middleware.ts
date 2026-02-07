@@ -1,8 +1,6 @@
 import { Config } from "@/config";
-import { CustomLogger } from "@fluctux/logger";
+import { logger } from "@fluctux/logger";
 import morgan from "morgan";
-
-const logger = new CustomLogger("morgan.middleware").logger;
 
 export const morganRequestLogger = () => {
   return morgan(

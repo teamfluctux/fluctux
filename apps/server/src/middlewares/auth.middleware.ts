@@ -4,18 +4,15 @@ import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
 import { getSession } from "@/lib/getSession";
 import { CookieService } from "@/services/auth/cookie.service";
 import { SessionDataType, UserSessionType } from "@fluctux/types";
-import { JWTManager } from "@/utils/jwt_manager";
-import { AuthRedisService } from "@/services/redis";
-import { AuthService } from "@/services/auth/auth.service";
+import { jwtManager } from "@/utils/jwt_manager";
+import { authService } from "@/services/auth/auth.service";
+import { authRedisService } from "@/services/redis";
 
 export async function authenticateUser(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const jwtManager = new JWTManager();
-  const redisAuthClient = new AuthRedisService();
-  const auth = new AuthService();
 
   // get idToken from cookies
   const idToken = req.cookies[CookieService.ID_TOKEN.name];
@@ -89,7 +86,7 @@ export async function authenticateUser(
     console.log("id token missing");
 
     // renew idToken
-    const newIdToken = await auth.refreshToken(
+    const newIdToken = await authService.refreshToken(
       decryptedProviderToken.provider,
       decryptedRefreshToken.refreshToken
     );
@@ -117,7 +114,7 @@ export async function authenticateUser(
     });
     const encryptedDeviceIdToken = jwtManager.generateEncryptedJWTTokens({
       dataObject: { deviceId: decryptedDeviceIdToken.deviceId },
-      args: { expiresIn: "720h" },
+      args: { expiresIn: "720h" },                                                 
       secret: process.env.DEVICE_TOKEN_SECRET,
     });
 
@@ -128,7 +125,7 @@ export async function authenticateUser(
     });
 
     // save tokens to redis
-    const redisResponse = redisAuthClient.addOrUpdateAuthTokens({
+    const redisResponse = authRedisService.addOrUpdateAuthTokens({
       refreshToken: ecryptedRefreshToken,
       deviceIdToken: encryptedDeviceIdToken,
       providerToken: encryptedProviderName,
