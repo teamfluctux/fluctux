@@ -8,7 +8,7 @@ type JWTPayloadDataType = JwtPayload & {
   idToken?: string;
 };
 
-export class JWTManager {
+class JWTManager {
   private secret: string;
   constructor(secretKey?: string) {
     this.secret = secretKey ?? "";
@@ -44,3 +44,6 @@ export class JWTManager {
     ) as JWTPayloadDataType;
   };
 }
+
+
+export const jwtManager = new JWTManager()

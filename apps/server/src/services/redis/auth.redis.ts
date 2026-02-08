@@ -1,7 +1,7 @@
-import { JWTManager } from "@/utils/jwt_manager";
-import { RedisService } from "./redis.conf";
+import { jwtManager } from "@/utils/jwt_manager";
+import { RedisService } from "./redis.service";
 
-export class AuthRedis extends RedisService {
+class AuthRedisService extends RedisService {
   async addOrUpdateAuthTokens({
     refreshToken,
     providerToken,
@@ -12,10 +12,9 @@ export class AuthRedis extends RedisService {
     deviceIdToken: string;
   }) {
     try {
-      await this.connect();
-
-      const jwt = new JWTManager();
-      const decryptedDeviceID = jwt.getDecryptedJWTValue({
+      await this.connectRedis();
+  
+      const decryptedDeviceID = jwtManager.getDecryptedJWTValue({
         token: deviceIdToken,
         secret: `${process.env.DEVICE_TOKEN_SECRET}`,
       });
@@ -52,26 +51,30 @@ export class AuthRedis extends RedisService {
         60
       );
 
-      await this.quit();
       return response;
     } catch (error) {
       return null;
+    } finally {
+      await this.quitRedis();
     }
   }
 
   async removeAuthTokens(deviceID: string) {
     try {
-      await this.connect();
+      await this.connectRedis();
       const response = await this.redisClient.hExpire(
         deviceID,
         ["refreshToken", "providerToken", "deviceIdToken"],
         0
       );
-      await this.quit();
-
       return response;
     } catch (error) {
       return null;
+    } finally {
+      await this.quitRedis();
     }
   }
 }
+
+
+export const authRedisService = new AuthRedisService()
