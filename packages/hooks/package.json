@@ -16,16 +16,15 @@
     "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
   },
   "devDependencies": {
-    "@fluctux/eslint-config": "workspace:*",
-    "@fluctux/typescript-config": "workspace:*",
     "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "eslint": "^9.21.0",
-    "typescript": "^5.8.2"
+    "@types/react-dom": "^19.0.4"
   },
   "dependencies": {
-    "react": "^19.0.0",
     "react-hook-form": "^7.58.1",
+    "@hookform/resolvers": "^3.10.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }
 }

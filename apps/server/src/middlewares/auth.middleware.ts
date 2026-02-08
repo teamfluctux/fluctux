@@ -13,7 +13,6 @@ export async function authenticateUser(
   res: Response,
   next: NextFunction
 ) {
-
   // get idToken from cookies
   const idToken = req.cookies[CookieService.ID_TOKEN.name];
 
@@ -114,7 +113,7 @@ export async function authenticateUser(
     });
     const encryptedDeviceIdToken = jwtManager.generateEncryptedJWTTokens({
       dataObject: { deviceId: decryptedDeviceIdToken.deviceId },
-      args: { expiresIn: "720h" },                                                 
+      args: { expiresIn: "720h" },
       secret: process.env.DEVICE_TOKEN_SECRET,
     });
 

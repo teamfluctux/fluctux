@@ -6,7 +6,9 @@ const authRouter = Router();
 
 // dont make handleSignIN an arrow function in the class to solve function undefined error as it causes unecessary function creation on each instantiated
 // using bind and arrow wrapper is negligible in perfomance
-authRouter.route("/signin/google").get(authController.redirectGoogleAuth.bind(authController));
+authRouter
+  .route("/signin/google")
+  .get(authController.redirectGoogleAuth.bind(authController));
 authRouter
   .route("/callback/google")
   .get(authController.handleSignInWithGoogle.bind(authController));

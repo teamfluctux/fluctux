@@ -45,5 +45,4 @@ class JWTManager {
   };
 }
 
-
-export const jwtManager = new JWTManager()
+export const jwtManager = new JWTManager();

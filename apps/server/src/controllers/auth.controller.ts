@@ -62,7 +62,7 @@ class AuthController extends AuthService {
       const encryptedProviderName = jwtManager.generateEncryptedJWTTokens({
         dataObject: { provider: AuthProviderCookieType.GOOGLE },
         args: { expiresIn: "720h" },
-        secret: process.env.PROVIDER_NAME_JWT as string
+        secret: process.env.PROVIDER_NAME_JWT as string,
       });
       const ecryptedRefreshToken = jwtManager.generateEncryptedJWTTokens({
         dataObject: { refreshToken: refreshToken ?? "" },
@@ -165,4 +165,4 @@ class AuthController extends AuthService {
   // }
 }
 
-export const authController = new AuthController()
+export const authController = new AuthController();

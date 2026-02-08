@@ -15,12 +15,7 @@
     "check-types": "tsc --noEmit",
     "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
   },
-  "devDependencies": {
-    "lucide-react": "^0.471.2",
-    "@fluctux/eslint-config": "workspace:*",
-    "@fluctux/typescript-config": "workspace:*",
-    "@turbo/gen": "^2.4.4",
-    "eslint": "^9.21.0",
-    "typescript": "^5.8.2"
+  "peerDependencies": {
+    "lucide-react": "^0.471.2"
   }
 }

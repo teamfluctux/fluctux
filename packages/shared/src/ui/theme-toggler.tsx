@@ -58,7 +58,7 @@ export const ThemeToggler = () => {
           );
         })}
         <span
-          className="bg-background-color_800C border border-border-color_2 absolute left-0 rounded-full w-[30px] h-[30px] transition-all"
+          className="bg-background-color_800C pointer-events-none border border-border-color_2 absolute left-0 rounded-full w-[30px] h-[30px] transition-all"
           style={{
             transform: `translateX(${activeIndex * 100}%)`,
           }}
