@@ -7,7 +7,7 @@ export * from "./constant";
 export * from "./dialog";
 export * from "./fxbadge";
 export * from "./fxcommand-box";
-export * from "./fxfav";
+export * from "./fxfav"; 
 export * from "./fxinput";
 export * from "./fxoverlay-images";
 export * from "./fxpopup-radio";

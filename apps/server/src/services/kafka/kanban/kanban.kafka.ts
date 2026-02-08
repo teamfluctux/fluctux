@@ -1,6 +1,6 @@
 import { ApiResponse } from "@/utils/ApiResponse";
 import { KafkaService } from "../kafka";
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
 import { ApiError } from "@/utils/ApiError";
 

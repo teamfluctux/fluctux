@@ -3,7 +3,7 @@ import {
   CookieService,
 } from "@/services/auth/cookie.service";
 import { GoogleAuth } from "./googleAuth.service";
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import { GithubAuth } from "./githubAuth.service";
 
 export class AuthService {

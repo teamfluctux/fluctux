@@ -1,6 +1,7 @@
 import { google } from "googleapis";
 import dotenv from "dotenv";
 import { GithubAuth } from "./githubAuth.service";
+import type { TokenPayload } from "google-auth-library";
 dotenv.config();
 
 export class GoogleAuth {
@@ -17,21 +18,21 @@ export class GoogleAuth {
 
   constructor() {
     this.oauthClient = new google.auth.OAuth2({
-      client_id: GoogleAuth.CLIENT_ID,
-      client_secret: GoogleAuth.CLIENT_SECRET,
-      redirectUri: GoogleAuth.REDIRECT_URI,
+      client_id: GoogleAuth.CLIENT_ID!,
+      client_secret: GoogleAuth.CLIENT_SECRET!,
+      redirectUri: GoogleAuth.REDIRECT_URI!,
     });
   }
 
   generateGoogleAuthUrl() {
     return this.oauthClient.generateAuthUrl({
       access_type: "offline",
-      scope: GoogleAuth.SCOPES,
+      scope: GoogleAuth.SCOPES!,
       include_granted_scopes: true,
       // it will display the consent screen to the user
       prompt: "consent",
       // MSG_WARNING: redirect_uri is must. otherwise will throw error
-      redirect_uri: GoogleAuth.REDIRECT_URI,
+      redirect_uri: GoogleAuth.REDIRECT_URI!,
     });
   }
 
@@ -47,13 +48,14 @@ export class GoogleAuth {
   async getNewGoogleAuthIdToken(refreshToken: string) {
     this.oauthClient.setCredentials({
       refresh_token: refreshToken,
-      scope: GoogleAuth.SCOPES[0],
+      scope: GoogleAuth.SCOPES[0]!,
     });
     const tokens = await this.oauthClient.refreshAccessToken();
     return tokens.credentials.id_token;
   }
 
-  async getUserDataFromGoogleAuthToken(idToken: string) {
+
+  async getUserDataFromGoogleAuthToken(idToken: string): Promise<TokenPayload | undefined>{
     const data = await this.oauthClient.verifyIdToken({
       idToken,
     });

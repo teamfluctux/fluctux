@@ -4,7 +4,7 @@ import {
   CookieService,
 } from "@/services/auth/cookie.service";
 import { ApiError } from "@/utils/ApiError";
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import "dotenv/config";
 import { jwtManager } from "@/utils/jwt_manager";
 import { v4 as uuidV4 } from "uuid";
@@ -67,20 +67,20 @@ class AuthController extends AuthService {
       const ecryptedRefreshToken = jwtManager.generateEncryptedJWTTokens({
         dataObject: { refreshToken: refreshToken ?? "" },
         args: { expiresIn: "720h" },
-        secret: process.env.REFRESH_TOKEN_SECRET,
-      });
+        secret: process.env.REFRESH_TOKEN_SECRET!,
+      }) ;
 
       // create unique device id
       const device_id = await uuidV4();
       const encryptedDeviceIdToken = jwtManager.generateEncryptedJWTTokens({
         dataObject: { deviceId: device_id },
         args: { expiresIn: "720h" },
-        secret: process.env.DEVICE_TOKEN_SECRET,
+        secret: process.env.DEVICE_TOKEN_SECRET!,
       });
 
       const encryptedIdToken = jwtManager.generateEncryptedJWTTokens({
         dataObject: { idToken: idToken ?? "" },
-        secret: process.env.ID_TOKEN_JWT_SECRET,
+        secret: process.env.ID_TOKEN_JWT_SECRET!,
         args: { expiresIn: "20s" },
       });
       // encrypt tokens end ================================================

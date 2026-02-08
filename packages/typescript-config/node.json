@@ -1,26 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Nodejs Library",
+  "extends": "./base.json",
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "lib": ["ES2024"],
-    "forceConsistentCasingInFileNames": true,
-    "incremental": true,
-    "module": "preserve",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "moduleResolution": "bundler",
-    "noImplicitAny": true,
-    "outDir": "dist",
-    "removeComments": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "esnext"
   },
   "exclude": ["dist", "build", "node_modules"]
 }
