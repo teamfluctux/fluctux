@@ -3,15 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": {
+     ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    
+    },
+    "./package.json": "./package.json"
+  },
   "sideEffects": false,
-  "files": [
-    "dist/**"
-  ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsup --format esm,cjs --dts --external react --minify",
+    "build": "tsdown",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
@@ -21,8 +27,7 @@
     "@turbo/gen": "^2.4.4",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "next": "^15.2.4",
-    "tailwind-config": "workspace:*"
+    "next": "^15.2.4"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -53,6 +58,7 @@
     "next": "^15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+       "next-themes": "^0.4.6",
     "lucide-react": "^0.471.2",
     "react-icons": "^5.5.0"
   }

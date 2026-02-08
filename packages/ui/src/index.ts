@@ -1,5 +1,6 @@
 "use client";
 // components
+export * from "./theme-toggler"
 export * from "./collapsible";
 export * from "./command";
 export * from "./constant";

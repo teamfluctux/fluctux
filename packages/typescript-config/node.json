@@ -5,9 +5,10 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "lib": ["ES2024"],
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
-    "module": "esnext",
+    "module": "preserve",
     "paths": {
       "@/*": ["./src/*"]
     },
@@ -19,7 +20,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES2022"
+    "target": "esnext"
   },
-  "exclude": ["./dist", "./build", "./node_modules"]
+  "exclude": ["dist", "build", "node_modules"]
 }

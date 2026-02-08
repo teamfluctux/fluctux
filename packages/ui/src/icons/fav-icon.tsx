@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgSizeInSQR, SvgType } from "./type";
+import { SvgSizeInSQR, type SvgType } from "./type";
 
 export const FxFavSVGIcon: React.FC<SvgType> = ({
   size = SvgSizeInSQR.PRIMARY,

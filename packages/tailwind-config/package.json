@@ -1,8 +1,14 @@
 {
-  "name": "tailwind-config",
+  "name": "@fluctux/tailwind-config",
   "version": "1.0.0",
   "description": "",
-  "files": [
-    "tailwind.config.js"
-  ]
+  "private": true,
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "tailwind.config.js",
+  "exports": {
+    "./index.css": "./index.css",
+    "./postcss.config.js": "./postcss.config.js"
+  }
 }

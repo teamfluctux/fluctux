@@ -1,4 +1,5 @@
-"use client";
+'use client'
+
 import { motion, AnimatePresence } from "framer-motion";
 import { easeOut } from "framer-motion";
 

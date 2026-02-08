@@ -16,7 +16,7 @@ export function FxCommandBox({
 }: FxCommandBoxProps) {
   return (
     <CommandDialog
-      open={open}
+      open={open ?? false}
       className={`bg-transparent !ring-0 border-none p-[0px] z-[9991] ${className}`}
     >
       <div

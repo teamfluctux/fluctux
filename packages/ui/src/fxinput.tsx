@@ -1,4 +1,4 @@
-import { SizeType } from "./type";
+import type { SizeType } from "./type";
 import React, { forwardRef } from "react";
 import { ROUNDED_VARIANTS } from "./constant";
 

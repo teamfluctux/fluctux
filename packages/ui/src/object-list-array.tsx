@@ -1,5 +1,5 @@
 import React from "react";
-import { ObjectListArrayType } from "@fluctux/types";
+import type { ObjectListArrayType } from "@fluctux/types";
 import { WorkSpaceLinkList } from "./workspace-link-list";
 export const ObjectListArray = ({ data }: { data: ObjectListArrayType }) => {
   return (

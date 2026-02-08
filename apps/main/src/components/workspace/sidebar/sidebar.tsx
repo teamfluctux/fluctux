@@ -108,7 +108,7 @@ export const WorkspaceSidebar = observer(() => {
                   <div
                     className={cn(
                       "w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-tiny",
-                      isCommandOpen ? "border" : ""
+                      isCommandOpen ? "border border-surface-indigo-border-active !bg-surface-indigo-bg-active" : ""
                     )}
                   >
                     <FxFavIcon customSize={15} variant="theme" />

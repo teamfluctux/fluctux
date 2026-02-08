@@ -16,9 +16,9 @@ import {
   AvatarImage,
   AvatarFallback,
   FxButton,
-  ComboboxDataType,
+  type ComboboxDataType,
 } from "./";
-import { PopoverContentProps } from "@radix-ui/react-popover";
+import type { PopoverContentProps } from "@radix-ui/react-popover";
 
 type ComboBoxCheckboxPropsType = {
   popoverTriggerComponent: React.ReactNode;

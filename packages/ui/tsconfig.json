@@ -2,9 +2,6 @@
   "extends": "@fluctux/typescript-config/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
-    "jsx": "react",
-    "lib": ["esnext", "dom"]
   },
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "include": ["src"],
 }

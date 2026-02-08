@@ -1,6 +1,6 @@
 import React from "react";
 import { ROUNDED_VARIANTS } from "./constant";
-import { SizeType } from "./type";
+import type { SizeType } from "./type";
 
 interface FxTextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {

@@ -1,5 +1,6 @@
-import { FileType } from "@fluctux/types";
-import { SVGProps } from "react";
+"use client"
+import type { FileType } from "@fluctux/types";
+import type { SVGProps } from "react";
 import {
   Bash,
   C,
