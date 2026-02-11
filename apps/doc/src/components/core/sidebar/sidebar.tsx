@@ -1,11 +1,12 @@
-import React, { SVGProps } from "react";
+"use client"
+import React, { type SVGProps } from "react";
 import { FxFavIcon, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { ToggleGroup, ToggleGroupItem } from "@fluctux/ui";
 import Link from "next/link";
 import { DEVELOPER_DOC_NAV } from "@/constants/docs/developer.constant";
 import { RecursiveNav } from "./recursive-nav";
-import { Bookmark, Headset, History, LucideIcon } from "lucide-react";
-import { IconType } from "@fluctux/types";
+import { Bookmark, Headset, History, type LucideIcon } from "lucide-react";
+import type { IconType } from "@fluctux/types";
 import { ButtonWithIconBox } from "./button-with-iconbox";
 
 const TopNavItems: { label: string; slug: string; icon: IconType }[] = [

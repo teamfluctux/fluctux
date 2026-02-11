@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 
 import { cn } from "./lib/utils";
 
-import { DialogProps } from "./type";
+import type { DialogProps } from "./type";
 import { Dialog, DialogContent, DialogOverlay } from "./dialog";
 
 const Command = React.forwardRef<

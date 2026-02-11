@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 
 // import global style
-import "@fluctux/ui/styles/global.css";
+import "@fluctux/tailwind-config/index.css"
 
 import "./styles/docs.style.css";
 import "./styles/alert.style.css";
@@ -16,7 +16,6 @@ import GlobalClientProvider from "@/components/providers/global-client-providers
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { ThemeProvider } from "next-themes";
 import { Footer, Header } from "@/components/core";
 
 const geistSans = Geist({
@@ -48,20 +47,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable}`}
       >
-        <ThemeProvider attribute="class">
-          <Suspense>
-            <GlobalClientProvider>
-              <SkeletonTheme
-                baseColor="var(--skeleton-base-color)"
-                highlightColor="var(--skeleton-highlightColor)"
-              >
-                <Header />
-                {children}
-                <Footer />
-              </SkeletonTheme>
-            </GlobalClientProvider>
-          </Suspense>
-        </ThemeProvider>
+        <Suspense>
+          <GlobalClientProvider>
+            <SkeletonTheme
+              baseColor="var(--skeleton-base-color)"
+              highlightColor="var(--skeleton-highlightColor)"
+            >
+              <Header />
+              {children}
+              <Footer />
+            </SkeletonTheme>
+          </GlobalClientProvider>
+        </Suspense>
       </body>
     </html>
   );

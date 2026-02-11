@@ -1,4 +1,4 @@
-import { RadiusType } from "./type";
+import type { RadiusType } from "./type";
 
 export const ROUNDED_VARIANTS: { [key in RadiusType]: string } = {
   primary: "rounded-[8px]",

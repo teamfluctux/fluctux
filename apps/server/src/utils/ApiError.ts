@@ -1,11 +1,11 @@
-import { ApiErrorType } from "@fluctux/types";
+import { type ApiErrorType } from "@fluctux/types";
 
 export class ApiError extends Error implements ApiErrorType {
   status: number;
   success?: boolean;
   errors?: unknown[];
-  message: string;
-  stack?: string | undefined;
+  override message: string;
+  override stack?: string;
 
   constructor(
     status: number,

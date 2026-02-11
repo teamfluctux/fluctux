@@ -1,7 +1,7 @@
 import { KanbanKafkaService } from "@/services/kafka";
 import { Router } from "express";
 
-const kanbanRouter = Router();
+const kanbanRouter: Router = Router();
 
 const kanbanKafkaService = new KanbanKafkaService();
 

@@ -13,7 +13,7 @@ class AuthRedisService extends RedisService {
   }) {
     try {
       await this.connectRedis();
-  
+
       const decryptedDeviceID = jwtManager.getDecryptedJWTValue({
         token: deviceIdToken,
         secret: `${process.env.DEVICE_TOKEN_SECRET}`,
@@ -76,5 +76,4 @@ class AuthRedisService extends RedisService {
   }
 }
 
-
-export const authRedisService = new AuthRedisService()
+export const authRedisService = new AuthRedisService();

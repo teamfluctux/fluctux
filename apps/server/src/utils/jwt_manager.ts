@@ -1,4 +1,4 @@
-import { JwtPayload, SignOptions, VerifyOptions } from "jsonwebtoken";
+import type { JwtPayload, SignOptions, VerifyOptions } from "jsonwebtoken";
 import jwt from "jsonwebtoken";
 
 type JWTPayloadDataType = JwtPayload & {
@@ -14,7 +14,7 @@ class JWTManager {
     this.secret = secretKey ?? "";
   }
 
-  generateEncryptedJWTTokens = ({
+  generateEncryptedJWTTokens = ({ 
     dataObject,
     secret,
     args,
@@ -45,5 +45,4 @@ class JWTManager {
   };
 }
 
-
-export const jwtManager = new JWTManager()
+export const jwtManager = new JWTManager();

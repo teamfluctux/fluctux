@@ -1,4 +1,4 @@
-import { SizeType } from "./type";
+import type { SizeType } from "./type";
 import React from "react";
 
 type OrientationType = "vertical" | "horizontal";

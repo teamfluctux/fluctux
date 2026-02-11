@@ -15,6 +15,7 @@
     "@fluctux/ui": "workspace:*",
     "@fluctux/shared": "workspace:*",
     "@fluctux/hooks": "workspace:*",
+    "next-themes": "^0.4.6",
     "lucide-react": "^0.471.2",
     "react-redux": "^9.2.0",
     "react-loading-skeleton": "^3.5.0",
@@ -26,12 +27,7 @@
     "next": "15.3.2"
   },
   "devDependencies": {
-    "@fluctux/eslint-config": "workspace:*",
-    "@fluctux/typescript-config": "workspace:*",
-    "tailwind-config": "workspace:*",
-    "typescript": "^5",
     "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9"
+    "@types/react-dom": "^19"
   }
 }

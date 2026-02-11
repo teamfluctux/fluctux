@@ -1,4 +1,4 @@
-import { ApiResponseType } from "@fluctux/types";
+import { type ApiResponseType } from "@fluctux/types";
 
 export class ApiResponse implements ApiResponseType {
   status: number;

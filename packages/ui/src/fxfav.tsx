@@ -1,5 +1,5 @@
 import React from "react";
-import { SizeType } from "./type";
+import type { SizeType } from "./type";
 import { FxFavSVGIcon } from "./icons/fav-icon";
 
 interface FxFavIconPropsType {

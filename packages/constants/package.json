@@ -2,25 +2,25 @@
   "name": "@fluctux/constants",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**"
-  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsup --dts --minify",
+    "dev": "tsdown --watch",
+    "build": "tsdown",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
   },
-  "devDependencies": {
-    "lucide-react": "^0.471.2",
-    "@fluctux/eslint-config": "workspace:*",
-    "@fluctux/typescript-config": "workspace:*",
-    "@turbo/gen": "^2.4.4",
-    "eslint": "^9.21.0",
-    "typescript": "^5.8.2"
+  "peerDependencies": {
+    "lucide-react": "^0.471.2"
   }
 }

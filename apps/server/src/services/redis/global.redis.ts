@@ -10,5 +10,4 @@ class GlobalRedisService extends RedisService {
   }
 }
 
-export const globalRedisService = new GlobalRedisService()
-
+export const globalRedisService = new GlobalRedisService();

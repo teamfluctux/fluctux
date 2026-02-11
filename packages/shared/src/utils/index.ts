@@ -1,1 +1,1 @@
-export * from "./mdxToHtml";
+export * from "./get-icons";

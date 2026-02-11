@@ -1,4 +1,4 @@
-import { SizeType } from "../type";
+import type { SizeType } from "../type";
 
 export type ButtonVariant =
   | "primary"

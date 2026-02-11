@@ -8,14 +8,14 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import rehypeSlug from "rehype-slug";
-import React, { ComponentPropsWithoutRef } from "react";
+import React, { type ComponentProps, type ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import { CopyCodeButton } from "../components/code";
-import { FileType } from "@fluctux/types";
+import type { FileType } from "@fluctux/types";
 import { ExternalLink } from "lucide-react";
 import { GetIconByLanguage } from "./get-icons";
 
-type AnchorProps = ComponentPropsWithoutRef<"a">;
+type AnchorProps = ComponentPropsWithoutRef<"a"> 
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
 
 type CodeElementProps = {
@@ -51,19 +51,19 @@ export const mdxToHtml = async (content: string) => {
       },
     },
     components: {
-      a: ({ href, children, ...props }: AnchorProps) => {
+      a: ({ href, children, ...props }: AnchorProps ) => {
         const className =
           "text-text-color_1 hover:text-text-color_2 underline underline-offset-2 decoration-text-color_1 transition-colors hover:decoration-text-color_2";
-        if (href?.startsWith("/")) {
+        if (typeof href === "string" && href.startsWith("/")) {
           return (
-            <Link href={href} className={className} {...props}>
+            <Link href={href} className={className}>
               {children}
             </Link>
           );
         }
         return (
           <a
-            href={href}
+            href={typeof href === "string" ? href : undefined}
             target="_blank"
             rel="noopener noreferrer group"
             className={`${className} inline-flex`}

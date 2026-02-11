@@ -1,5 +1,5 @@
 import React from "react";
-import { IconBase, IconBaseProps } from "react-icons/lib";
+import { IconBase, type IconBaseProps } from "react-icons/lib";
 import { MdCancel } from "react-icons/md";
 import { GoCheckCircleFill } from "react-icons/go";
 import { FiCircle } from "react-icons/fi";

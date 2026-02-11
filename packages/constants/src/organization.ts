@@ -5,7 +5,7 @@ import {
   UsersRound,
   type LucideIcon,
 } from "lucide-react";
-import { OrgVisibilityType } from "@fluctux/types";
+import { type OrgVisibilityType } from "@fluctux/types";
 
 export enum OrgMemberStatusEnum {
   NORMAL = "NORMAL",

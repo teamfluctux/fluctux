@@ -1,9 +1,9 @@
-import { NextFunction, Request, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { ApiError } from "@/utils/ApiError";
 import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
 import { getSession } from "@/lib/getSession";
 import { CookieService } from "@/services/auth/cookie.service";
-import { SessionDataType, UserSessionType } from "@fluctux/types";
+import type { SessionDataType, UserSessionType } from "@fluctux/types";
 import { jwtManager } from "@/utils/jwt_manager";
 import { authService } from "@/services/auth/auth.service";
 import { authRedisService } from "@/services/redis";
@@ -13,7 +13,6 @@ export async function authenticateUser(
   res: Response,
   next: NextFunction
 ) {
-
   // get idToken from cookies
   const idToken = req.cookies[CookieService.ID_TOKEN.name];
 
@@ -52,17 +51,17 @@ export async function authenticateUser(
   // extracting values from encrypted jwt values
   const decryptedProviderToken = jwtManager.getDecryptedJWTValue({
     token: providerToken,
-    secret: process.env.PROVIDER_NAME_JWT,
+    secret: process.env.PROVIDER_NAME_JWT!,
   }) as { provider: string };
 
   const decryptedRefreshToken = jwtManager.getDecryptedJWTValue({
     token: refreshToken,
-    secret: process.env.REFRESH_TOKEN_SECRET,
+    secret: process.env.REFRESH_TOKEN_SECRET!,
   }) as { refreshToken: string };
 
   const decryptedDeviceIdToken = jwtManager.getDecryptedJWTValue({
     token: deviceIdToken,
-    secret: process.env.DEVICE_TOKEN_SECRET,
+    secret: process.env.DEVICE_TOKEN_SECRET!,
   }) as { deviceId: string };
 
   // if extracted values are not valid return to unauthorized
@@ -105,22 +104,22 @@ export async function authenticateUser(
     const encryptedProviderName = jwtManager.generateEncryptedJWTTokens({
       dataObject: { provider: decryptedProviderToken.provider },
       args: { expiresIn: "720h" },
-      secret: process.env.PROVIDER_NAME_JWT,
+      secret: process.env.PROVIDER_NAME_JWT!,
     });
     const ecryptedRefreshToken = jwtManager.generateEncryptedJWTTokens({
       dataObject: { refreshToken: decryptedRefreshToken.refreshToken ?? "" },
       args: { expiresIn: "720h" },
-      secret: process.env.REFRESH_TOKEN_SECRET,
+      secret: process.env.REFRESH_TOKEN_SECRET!,
     });
     const encryptedDeviceIdToken = jwtManager.generateEncryptedJWTTokens({
       dataObject: { deviceId: decryptedDeviceIdToken.deviceId },
-      args: { expiresIn: "720h" },                                                 
-      secret: process.env.DEVICE_TOKEN_SECRET,
+      args: { expiresIn: "720h" },
+      secret: process.env.DEVICE_TOKEN_SECRET!,
     });
 
     const encryptedIdToken = jwtManager.generateEncryptedJWTTokens({
       dataObject: { idToken: newIdToken ?? "" },
-      secret: process.env.ID_TOKEN_JWT_SECRET,
+      secret: process.env.ID_TOKEN_JWT_SECRET!,
       args: { expiresIn: "5m" },
     });
 
@@ -169,7 +168,7 @@ export async function authenticateUser(
 
   const decryptedIdToken = jwtManager.getDecryptedJWTValue({
     token: idToken,
-    secret: process.env.ID_TOKEN_JWT_SECRET,
+    secret: process.env.ID_TOKEN_JWT_SECRET!,
   }) as { idToken: string };
 
   const session = (await getSession(

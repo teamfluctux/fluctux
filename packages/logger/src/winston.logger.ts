@@ -61,5 +61,3 @@ const LoggerOptions: LoggerOptionsType = {
 };
 
 export const logger = createLogger(LoggerOptions) as CustomLoggerType;
-
-
