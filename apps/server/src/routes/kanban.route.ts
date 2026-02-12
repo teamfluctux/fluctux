@@ -5,8 +5,9 @@ const kanbanRouter: Router = Router();
 
 const kanbanKafkaService = new KanbanKafkaService();
 
+// =============== VERSION: v1 ===================
 kanbanRouter
-  .route("/create-kanban")
+  .route("/v1/create-kanban")
   .post(kanbanKafkaService.createTopic.bind(kanbanKafkaService));
 
 export default kanbanRouter;

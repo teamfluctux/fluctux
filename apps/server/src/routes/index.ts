@@ -1,14 +1,22 @@
 import { type Request, type Response, Router,  } from "express";
-import authRouter from "./auth.route";
 import { authenticateUser } from "@/middlewares";
 import { CookieService } from "@/services/auth/cookie.service";
+
+// =============== Router imports =======================
+import authRouter from "./auth.route";
 import kanbanRouter from "./kanban.route";
+import userRouter from "./user.route"
+// ======================================================
 
 const router: Router = Router();
 
+// =============== Router Implementations ===============
 router.use("/auth", authRouter);
 router.use("/kanban", kanbanRouter);
+router.use("/user", userRouter)
+// ======================================================
 
+// ============== Global Routes =========================
 router.get(
   "/protected",
   authenticateUser,
