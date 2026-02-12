@@ -21,8 +21,9 @@ app.use(cookieParser());
 // MORGAN
 app.use(morganRequestLogger());
 
-// ============== ALL API ROUTES STARTS HERE =================
+// ============== API ROUTES =================
 app.use("/api", router);
+// ==========================================
 
 app.get("/health", async (req: Request, res) => {
   res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });

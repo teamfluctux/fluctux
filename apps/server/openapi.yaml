@@ -1,0 +1,281 @@
+openapi: 3.1.0
+info:
+  title: Fluctux API
+  description: |
+    Fluctux API powers the Fluctux platform by providing secure and scalable endpoints for managing users, organizations, teams and collaborative workflows. It enables developers and services to interact with Fluctux resources, manage organizational structures, and automate platform operations efficiently.
+    The API is designed to support multi-tenant environments, role-based access control, and extensible integrations, allowing seamless communication between applications and the Fluctux ecosystem.
+  version: 1.0.0
+  contact:
+    email: fluctuxapp@gmail.com
+    name: Team Fluctux
+    url: https://fluctux.com/contact
+  license:
+    name: AGPL-3.0
+    url: https://github.com/teamfluctux/fluctux/blob/main/LICENSE
+servers:
+  - url: https://{subdomain}.fluctux.com/api
+    description: Production API
+    variables:
+      subdomain:
+        default: api
+  - url: http://localhost:{port}/api
+    description: Development API
+    variables:
+      port:
+        enum:
+          - "5000"
+        default: "5000"
+components:
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        message:
+          type: string
+        data:
+          oneOf:
+            - type: object
+            - type: number
+            - type: array
+            - type: string
+            - type: boolean
+            - type: "null"
+        success:
+          type: boolean
+    ApiError:
+      type: object
+      properties:
+        status:
+          type: integer
+        success:
+          type: boolean
+        errors:
+          type: array
+        message:
+          type: string
+        stack:
+          type: string
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: cookie
+      name: session_token
+      description: JWT token stored in HTTP-only cookie, validated against Redis session store
+
+paths:
+  /user/v1/create:
+    post:
+      summary: Create User
+      description: Gets payload from the internal server api and create user. If user uses OAuth to create account this api will hit immediately after successful token response from OAuth application. Otherwise in Manual account creation user have to face verification process to confirm their email after creating via this api.
+      deprecated: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                  example: Jhone doe
+                avatar:
+                  type: string
+                  format: uri
+                cover_img:
+                  type: string
+                  format: uri
+                email:
+                  type: string
+                  format: email
+                  maxLength: 100
+                  example: jhondoe@gmail.com
+                username:
+                  type: string
+                  example: jhondoe_2345
+                password:
+                  type: string
+                  format: password
+                  minLength: 8
+                  maxLength: 30
+                account_provider:
+                  type: string
+                  enum:
+                    - "GOOGLE"
+                    - "GITHUB"
+                    - "MANUAL"
+                    - "DISCORD"
+                  example: "GOOGLE"
+              required:
+                - email
+                - password
+                - account_provider
+      responses:
+        "201":
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "400":
+          description: If required fields are not given
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "500":
+          description: If anything goes wrong in the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+  /user/v1/public/profile/{username}:
+    get:
+      summary: Public profile details
+      description: Get user public profile details via username
+      deprecated: false
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+          example: jhondoe_2345
+          description: Get the specific user via username
+      
+      responses:
+        "200":
+          description: User fetched success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+
+        "400":
+          description: "User not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "401":
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "500":
+          description: If anything goes wrong in the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+  /user/v1/me:
+    get:
+      deprecated: false
+  /user/v1/update/avatar:
+    post:
+      summary: Update user profile picture
+      description: Get the username then validate the jwt tokens and update the profile picture
+      deprecated: false
+      security:
+        - sessionAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                avatar:
+                  type: string
+                  format: binary
+                  description: Avatar image file (JPEG, PNG, GIF, WebP). Max size 5MB. Will be cropped to 500x500px.
+              required:
+                - avatar
+            encoding:
+              cover:
+                contentType: image/jpeg, image/png, image/gif, image/webp
+      responses:
+        "200":
+          description: Updated successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "400":
+          description: Image url not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "401":
+          description: Unauthorized user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "500":
+          description: If anything goes wrong in the server
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+  /user/v1/update/cover-image:
+    post:
+      deprecated: false
+  /user/v1/verify/email:
+    patch:
+      deprecated: false
+  /user/v1/verify/email/send-code:
+    patch:
+      deprecated: false
+  /user/v1/update/profile:
+    patch:
+      deprecated: false
+  /user/v1/delete/account:
+    post:
+      deprecated: false
+  /org/v1/create:
+    post:
+      deprecated: false
+  /org/v1/update/avatar:
+    post:
+      deprecated: false
+  /org/v1/update/cover-image:
+    post:
+      deprecated: false
+  /org/v1/update/profile:
+    patch:
+      deprecated: false
+  /org/v1/delete:
+    post:
+      deprecated: false
+  /org/v1/public/profile/{org_uri}:
+    get:
+      deprecated: false
+  /org/v1/admin/profile:
+    get:
+      deprecated: false
+  /org/v1/request/member/join:
+    post:
+      deprecated: false
+  /org/v1/accept/member/join:
+    patch:
+      deprecated: false
+  /org/v1/request/team/join:
+    post:
+      deprecated: false
+  /org/v1/accept/team/join:
+    patch:
+      deprecated: false
+  /org/v1/public/all:
+    get:
+      deprecated: false
+  /org/v1/update/settings/security:
+    patch:
+      deprecated: false
+
