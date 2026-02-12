@@ -1,6 +1,5 @@
 import { google } from "googleapis";
 import dotenv from "dotenv";
-import { GithubAuth } from "./githubAuth.service";
 import type { TokenPayload } from "google-auth-library";
 dotenv.config();
 

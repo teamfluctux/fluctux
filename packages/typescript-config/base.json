@@ -12,7 +12,7 @@
     "declarationMap": true,
     "lib": ["ES2024"],
     "module": "preserve",
-    "exactOptionalPropertyTypes": true,
+    "exactOptionalPropertyTypes": false,
     "moduleDetection": "force",
     "noUnusedParameters": true,
     "moduleResolution": "bundler",

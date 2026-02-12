@@ -1,11 +1,9 @@
-import { SessionDataType } from "@fluctux/types";
-
-export type TokenProvidersType = "google" | "manual";
+import { UserSessionType } from "@fluctux/types";
 
 declare module "express" {
   // Inject additional properties on express.Request
   interface Request {
-    user?: SessionDataType ;
+    user?: UserSessionType ;
     newIDToken?: string;
     newRefreshToken?: string;
     newProviderToken?: string;

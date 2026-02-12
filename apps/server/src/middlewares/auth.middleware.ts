@@ -3,7 +3,7 @@ import { ApiError } from "@/utils/ApiError";
 import { ERROR, HTTPErrorCodes } from "@/constants/http-status";
 import { getSession } from "@/lib/getSession";
 import { CookieService } from "@/services/auth/cookie.service";
-import type { SessionDataType, UserSessionType } from "@fluctux/types";
+import type { UserSessionType } from "@fluctux/types";
 import { jwtManager } from "@/utils/jwt_manager";
 import { authService } from "@/services/auth/auth.service";
 import { authRedisService } from "@/services/redis";
@@ -149,12 +149,12 @@ export async function authenticateUser(
       newIdToken
     )) as UserSessionType;
 
-    const user: SessionDataType = {
-      sub: session?.user?.sub ?? "",
-      name: session?.user?.name ?? "",
-      email: session?.user?.email ?? "",
-      picture: session?.user?.picture ?? "",
-      provider: session?.provider ?? "",
+    const user: UserSessionType = {
+      sub: session?.sub,
+      name: session?.name,
+      email: session?.email,
+      picture: session?.picture,
+      provider: session?.provider,
     };
 
     console.log("user saved in req after refreshing", user);
@@ -190,12 +190,12 @@ export async function authenticateUser(
     return;
   }
 
-  const user: SessionDataType = {
-    sub: session?.user?.sub ?? "",
-    name: session?.user?.name ?? "",
-    email: session?.user?.email ?? "",
-    picture: session?.user?.picture ?? "",
-    provider: session?.provider ?? "",
+  const user: UserSessionType = {
+    sub: session?.sub,
+    name: session?.name,
+    email: session?.email,
+    picture: session?.picture,
+    provider: session?.provider,
   };
 
   console.log("user saved in req normally", user);

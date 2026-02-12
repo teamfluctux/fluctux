@@ -28,6 +28,7 @@ app.get("/health", async (req: Request, res) => {
   res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });
 });
 
+// for testing
 app.get("/redis", async (req, res) => {
   const response = await globalRedisService.redisCheckConnection();
 
