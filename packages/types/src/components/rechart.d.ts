@@ -6,7 +6,7 @@ export type DefaultRechartTypes = {
   XAxisKey: string;
   chartData?: any[];
   graphChartFooter?: null;
-  AreaData:[];
+  AreaData: [];
 };
 
 export type RechartSelectionDataType = {

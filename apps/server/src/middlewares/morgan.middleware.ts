@@ -16,7 +16,9 @@ export const morganRequestLogger = () => {
     },
     {
       skip(req, res) {
-        return res.statusCode < (BaseConfig.nodeEnv === "production" ? 400 : 300);
+        return (
+          res.statusCode < (BaseConfig.nodeEnv === "production" ? 400 : 300)
+        );
       },
       stream: {
         write: (message) => {

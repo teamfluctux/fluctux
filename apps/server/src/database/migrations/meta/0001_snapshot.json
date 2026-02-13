@@ -112,23 +112,17 @@
         "app_user_user_id_unique": {
           "name": "app_user_user_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "user_id"
-          ]
+          "columns": ["user_id"]
         },
         "app_user_email_unique": {
           "name": "app_user_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         },
         "app_user_username_unique": {
           "name": "app_user_username_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "username"
-          ]
+          "columns": ["username"]
         }
       },
       "policies": {},
@@ -140,21 +134,12 @@
     "public.user_account_provider_enum": {
       "name": "user_account_provider_enum",
       "schema": "public",
-      "values": [
-        "GOOGLE",
-        "GITHUB",
-        "DISCORD",
-        "MANUAL"
-      ]
+      "values": ["GOOGLE", "GITHUB", "DISCORD", "MANUAL"]
     },
     "public.user_account_status_enum": {
       "name": "user_account_status_enum",
       "schema": "public",
-      "values": [
-        "NORMAL",
-        "SUSPENDED",
-        "RESTRICTED"
-      ]
+      "values": ["NORMAL", "SUSPENDED", "RESTRICTED"]
     }
   },
   "schemas": {},

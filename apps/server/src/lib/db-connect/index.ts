@@ -1,2 +1,2 @@
-export * from "./mongo.connect"
-export * from "./pg.connect"
+export * from "./mongo.connect";
+export * from "./pg.connect";

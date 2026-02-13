@@ -1,1 +1,1 @@
-export * from "./rechart"
+export * from "./rechart";
