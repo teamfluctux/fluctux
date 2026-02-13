@@ -63,11 +63,5 @@
     "tsup": "^8.5.0",
     "turbo": "^2.5.4",
     "typescript": "^5.8.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "^19.2.14",
-      "@types/react-dom": "^19.2.3"
-    }
   }
 }
