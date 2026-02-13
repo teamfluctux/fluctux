@@ -29,7 +29,6 @@
     "tsx": "^4.20.3"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.0.2",
     "@octokit/auth-oauth-app": "^9.0.1",
     "@octokit/core": "^7.0.2",
     "@octokit/oauth-app": "^8.0.1",

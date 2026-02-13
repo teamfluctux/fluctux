@@ -13,7 +13,7 @@ app.use(
     origin: "http://localhost:3003",
     credentials: true,
   })
-); // NO NEED AS WE ARE USING NGINX -> UBUNTU
+); // NO NEED IF USING NGINX -> UBUNTU
 app.use(express.json({ limit: "500kb" }));
 app.use(express.urlencoded({ extended: true, limit: "500kb" }));
 app.use(cookieParser());
@@ -23,7 +23,6 @@ app.use(morganRequestLogger());
 
 // ============== API ROUTES =================
 app.use("/api", router);
-// ==========================================
 
 app.get("/health", async (req: Request, res) => {
   res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });
@@ -39,7 +38,6 @@ app.get("/redis", async (req, res) => {
     }),
   });
 });
-
-// ========================API ROUTES ENDS HERE============================
+// =========API ROUTES ENDS HERE===============
 
 export { app };
