@@ -1,4 +1,4 @@
-import { Config } from "@/config";
+import { BaseConfig } from "@/config";
 import { logger } from "@fluctux/logger";
 import morgan from "morgan";
 
@@ -16,7 +16,7 @@ export const morganRequestLogger = () => {
     },
     {
       skip(req, res) {
-        return res.statusCode < (Config.nodeEnv === "production" ? 400 : 300);
+        return res.statusCode < (BaseConfig.nodeEnv === "production" ? 400 : 300);
       },
       stream: {
         write: (message) => {
@@ -26,7 +26,7 @@ export const morganRequestLogger = () => {
           const logLevel =
             statusNumber >= 300 && statusNumber <= 399 ? "warn" : "error";
           const logMessage = `[${method}:${url}] Status: ${status} | Length: ${content_length} | Time: ${response_time} ms`;
-          if (Config.nodeEnv !== "production") {
+          if (BaseConfig.nodeEnv !== "production") {
             logger.log(`${logLevel}`, logMessage);
           }
         },

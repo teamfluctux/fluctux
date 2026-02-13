@@ -1,4 +1,4 @@
-import { Config } from "@/config";
+import { RedisConfig } from "@/config";
 import { type RedisClientType } from "redis";
 import { createClient } from "redis";
 
@@ -14,12 +14,12 @@ export abstract class RedisService {
 
     if (!RedisService.client) {
       RedisService.client = createClient({
-        username: `${Config.redis_username}`,
-        password: `${Config.redis_pass}`,
+        username: `${RedisConfig.REDIS_USERNAME}`,
+        password: `${RedisConfig.REDIS_PASS}`,
         disableOfflineQueue: true, // disable queuing data when connection is down.
         socket: {
-          host: `${Config.redis_host}`,
-          port: Number(Config.redis_port),
+          host: `${RedisConfig.REDIS_HOST}`,
+          port: Number(RedisConfig.REDIS_PORT),
           reconnectStrategy: (retries) => {
             // Generate a random jitter between 0 – 100 ms:
             const jitter = Math.floor(Math.random() * 100);
