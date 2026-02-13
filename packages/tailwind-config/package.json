@@ -8,6 +8,7 @@
   ],
   "main": "tailwind.config.js",
   "exports": {
+    ".": "./tailwind.config.js",
     "./index.css": "./index.css",
     "./postcss.config.js": "./postcss.config.js"
   }

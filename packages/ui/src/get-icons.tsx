@@ -1,4 +1,3 @@
-"use client"
 import type { FileType } from "@fluctux/types";
 import type { SVGProps } from "react";
 import {
@@ -21,7 +20,7 @@ import {
   Text,
   Turbo,
   TypeScript,
-} from "@fluctux/ui";
+} from "./icons/code";
 export const GetIconByLanguage: Record<
   FileType,
   React.ComponentType<SVGProps<SVGSVGElement>>

@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "main": "./dist/index.js",
-    "module": "./dist/index.js",
-    "type": "module",
+  "module": "./dist/index.js",
+  "type": "module",
   "types": "./dist/index.d.ts",
   "exports": {
-     ".": {
+    ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
@@ -27,21 +27,17 @@
     "@rehype-pretty/transformers": "^0.13.2",
     "shiki": "^3.6.0",
     "@shikijs/rehype": "^3.4.2",
-    "@shikijs/transformers": "^3.4.2",
-    "framer-motion": "^12.15.0"
+    "@shikijs/transformers": "^3.4.2"
   },
   "devDependencies": {
-    "@types/react": "^19.0.10",
-      "@fluctux/ui": "workspace:*",
-    "@types/react-dom": "^19.0.4",
-    "next": "^15.2.4"
+    "@types/react": "^19.2.14",
+    "@fluctux/ui": "workspace:*",
+    "next": "^16.1.6"
   },
   "peerDependencies": {
-    "next": "^15.2.4",
+    "next": "^16.1.6",
     "@fluctux/ui": "workspace:*",
     "lucide-react": "^0.471.2",
-    "next-themes": "^0.4.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.2.4"
   }
 }

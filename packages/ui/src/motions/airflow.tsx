@@ -1,9 +1,8 @@
-'use client'
 import { motion, AnimatePresence } from "framer-motion";
 
 interface AirFlowTextProps {
   children: string | React.ReactNode;
-  keyIndex?: string;
+  keyIndex?: number;
   className?: string;
   initialY?: number;
   animateY?: number;
@@ -12,7 +11,7 @@ interface AirFlowTextProps {
   delay?: number;
 }
 
-export const ScaleUpDown = ({
+export const AirFlowText = ({
   children,
   keyIndex,
   className,
@@ -22,9 +21,6 @@ export const ScaleUpDown = ({
   duration,
   delay,
 }: AirFlowTextProps) => {
-  const dur = duration ?? 0.5;
-  const del = delay ?? 0;
-
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -33,7 +29,7 @@ export const ScaleUpDown = ({
           opacity: 0,
           y: initialY ?? -20,
           filter: "blur(5px)",
-          scale: 0.9,
+          scale: 0.8,
         }}
         animate={{
           opacity: 1,
@@ -45,12 +41,20 @@ export const ScaleUpDown = ({
           opacity: 0,
           y: exitY ?? 10,
           filter: "blur(4px)",
-          scale: 0.9,
+          scale: 0.8,
         }}
         transition={{
-          opacity: { duration: dur, ease: "easeOut", delay: del },
-          y: { duration: dur, ease: "easeOut", delay: del },
-          scale: { duration: dur, ease: "easeOut", delay: del },
+          opacity: {
+            duration: duration ?? 0.8,
+            ease: "easeOut",
+            delay: delay ?? 0,
+          },
+          y: { duration: duration ?? 0.8, ease: "easeOut", delay: delay ?? 0 },
+          scale: {
+            duration: duration ?? 0.8,
+            ease: "easeOut",
+            delay: delay ?? 0,
+          },
         }}
         className="text-read_16 text-text-color_2 mt-1"
       >
