@@ -59,7 +59,7 @@ class AuthRedisService extends RedisService {
     }
   }
 
-  async removeAuthTokens(deviceID: string) {
+  async removeAuthTokens(deviceID: string): Promise<{} | null> {
     try {
       await this.connectRedis();
       const response = await this.redisClient.hExpire(
