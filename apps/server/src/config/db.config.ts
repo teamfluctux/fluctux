@@ -1,3 +1,5 @@
+import "dotenv/config"
+
 interface PGDBConfigType {
     HOST: string
     PORT: number
@@ -14,4 +16,5 @@ export const PGDBConfig: PGDBConfigType = {
     DATABASE: process.env.PG_DATABASE!,
 }
 
-export const PGDB_CONNECTION_URI=`postgresql://[${PGDBConfig.USERNAME}]:${PGDBConfig.PASSWORD}@${PGDBConfig.HOST}:${PGDBConfig.PORT}/${PGDBConfig.DATABASE}`
+export const PGDB_CONNECTION_URI =
+`postgresql://${PGDBConfig.USERNAME}:${PGDBConfig.PASSWORD}@${PGDBConfig.HOST}:${PGDBConfig.PORT}/${PGDBConfig.DATABASE}`;

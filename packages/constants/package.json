@@ -8,6 +8,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "require": "./dist/index.js",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
@@ -19,8 +20,5 @@
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
-  },
-  "peerDependencies": {
-    "lucide-react": "^0.471.2"
   }
 }

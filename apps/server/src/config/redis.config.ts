@@ -1,3 +1,5 @@
+import "dotenv/config"
+
 interface RedisConfigType {
     REDIS_HOST: string;
     REDIS_PASS: string;

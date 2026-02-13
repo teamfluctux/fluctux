@@ -1,14 +1,12 @@
-import { AreaDataType } from "./organization";
-
 export type DefaultRechartTypes = {
   graphTitle?: string;
   graphtDesc?: string;
   chartContainerClassName?: string;
-  chartConfig: ChartConfig;
+  chartConfig: null;
   XAxisKey: string;
   chartData?: any[];
-  graphChartFooter?: React.ReactNode;
-  AreaData: AreaDataType[];
+  graphChartFooter?: null;
+  AreaData:[];
 };
 
 export type RechartSelectionDataType = {
