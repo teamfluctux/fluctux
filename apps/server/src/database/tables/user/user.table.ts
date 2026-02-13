@@ -7,7 +7,6 @@ import { timestamps } from "../helper"
 export const PG_USER_ACCOUNT_PROVIDER_E = pgEnum("user_account_provider_enum", USER_ACCOUNT_PROVIDER_VALUES)
 export const PG_USER_ACCOUNT_STATUS_E = pgEnum("user_account_status_enum", USER_ACCOUNT_STATUS_VALUES)
 
-
 export const app_user = pgTable("app_user", {
     user_id: t.uuid().primaryKey().$defaultFn(uuidv4).notNull().unique(),
     name: t.varchar({ length: 100 }).notNull(),
