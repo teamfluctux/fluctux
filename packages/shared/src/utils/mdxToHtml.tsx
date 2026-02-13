@@ -1,4 +1,4 @@
-import { compileMDX } from "next-mdx-remote/rsc";
+import { compileMDX, CompileMDXResult } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import {
   transformerNotationHighlight,
@@ -8,14 +8,13 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import rehypeSlug from "rehype-slug";
-import React, { type ComponentProps, type ComponentPropsWithoutRef } from "react";
+import React, { type ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
-import { CopyCodeButton } from "../components/code";
 import type { FileType } from "@fluctux/types";
 import { ExternalLink } from "lucide-react";
-import { GetIconByLanguage } from "./get-icons";
+import { GetIconByLanguage, CopyCodeButton } from "@fluctux/ui";
 
-type AnchorProps = ComponentPropsWithoutRef<"a"> 
+type AnchorProps = ComponentPropsWithoutRef<"a"> & {children: React.ReactNode}
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
 
 type CodeElementProps = {
@@ -24,7 +23,7 @@ type CodeElementProps = {
   ["data-language"]?: string;
 };
 
-export const mdxToHtml = async (content: string) => {
+export const mdxToHtml= async (content: string) => {
   const { content: MdxComponent } = await compileMDX({
     source: content,
     options: {

@@ -1,5 +1,3 @@
-"use client"
-import React from "react";
 import type { ThemeType, SizeType } from "@fluctux/types";
 type FxLogoCategoryType = "default" | "blackAnWhite";
 import Image from "next/image";
