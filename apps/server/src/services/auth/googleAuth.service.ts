@@ -53,8 +53,9 @@ export class GoogleAuth {
     return tokens.credentials.id_token;
   }
 
-
-  async getUserDataFromGoogleAuthToken(idToken: string): Promise<TokenPayload | undefined>{
+  async getUserDataFromGoogleAuthToken(
+    idToken: string
+  ): Promise<TokenPayload | undefined> {
     const data = await this.oauthClient.verifyIdToken({
       idToken,
     });

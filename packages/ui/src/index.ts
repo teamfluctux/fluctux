@@ -1,19 +1,19 @@
 "use client";
 // components
-export * from "./theme-toggler"
-export * from "./copyCodebtn"
-export * from "./get-icons"
-export * from "./fx-logo"
-export * from "./input-group"
-export * from "./input"
-export * from "./textarea"
+export * from "./theme-toggler";
+export * from "./copyCodebtn";
+export * from "./get-icons";
+export * from "./fx-logo";
+export * from "./input-group";
+export * from "./input";
+export * from "./textarea";
 export * from "./collapsible";
 export * from "./command";
 export * from "./constant";
 export * from "./dialog";
 export * from "./fxbadge";
 export * from "./fxcommand-box";
-export * from "./fxfav"; 
+export * from "./fxfav";
 export * from "./fxinput";
 export * from "./fxoverlay-images";
 export * from "./fxpopup-radio";

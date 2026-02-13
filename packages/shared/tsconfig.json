@@ -1,7 +1,7 @@
 {
   "extends": "@fluctux/typescript-config/nextjs.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "dist"
     // Override default (true in nextjs.json) to avoid issues with declaration file generation in libraries
   },
   "include": ["src"],

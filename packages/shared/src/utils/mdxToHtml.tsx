@@ -14,7 +14,9 @@ import type { FileType } from "@fluctux/types";
 import { ExternalLink } from "lucide-react";
 import { GetIconByLanguage, CopyCodeButton } from "@fluctux/ui";
 
-type AnchorProps = ComponentPropsWithoutRef<"a"> & {children: React.ReactNode}
+type AnchorProps = ComponentPropsWithoutRef<"a"> & {
+  children: React.ReactNode;
+};
 type PreTagProps = ComponentPropsWithoutRef<"pre">;
 
 type CodeElementProps = {
@@ -23,7 +25,7 @@ type CodeElementProps = {
   ["data-language"]?: string;
 };
 
-export const mdxToHtml= async (content: string) => {
+export const mdxToHtml = async (content: string) => {
   const { content: MdxComponent } = await compileMDX({
     source: content,
     options: {
@@ -50,7 +52,7 @@ export const mdxToHtml= async (content: string) => {
       },
     },
     components: {
-      a: ({ href, children, ...props }: AnchorProps ) => {
+      a: ({ href, children, ...props }: AnchorProps) => {
         const className =
           "text-text-color_1 hover:text-text-color_2 underline underline-offset-2 decoration-text-color_1 transition-colors hover:decoration-text-color_2";
         if (typeof href === "string" && href.startsWith("/")) {

@@ -5,7 +5,7 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
-    },
+    }
   },
   "exclude": ["dist", "build", "node_modules"]
 }

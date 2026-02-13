@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgSizeInSQR,type  SvgType } from "./type";
+import { SvgSizeInSQR, type SvgType } from "./type";
 
 export const SlackIcon: React.FC<SvgType> = ({
   size = SvgSizeInSQR.PRIMARY,

@@ -13,15 +13,15 @@ export const getSession = async (
         const googleAuth = new GoogleAuth();
         const userDataFromGoogle: TokenPayload | undefined =
           await googleAuth.getUserDataFromGoogleAuthToken(idToken);
-        if (!userDataFromGoogle) return null
+        if (!userDataFromGoogle) return null;
         const user: UserSessionType = {
           sub: userDataFromGoogle.sub,
           email: userDataFromGoogle?.email,
           name: userDataFromGoogle?.name,
           picture: userDataFromGoogle?.picture,
-          provider: providerToken
-        }
-        return user
+          provider: providerToken,
+        };
+        return user;
       }
       default: {
         return null;

@@ -1,2 +1,2 @@
 export * from "./scale.motion";
-export * from "./airflow"
+export * from "./airflow";

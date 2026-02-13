@@ -1,11 +1,11 @@
-import { type Request, type Response, Router,  } from "express";
+import { type Request, type Response, Router } from "express";
 import { authenticateUser } from "@/middlewares";
 import { CookieService } from "@/services/auth/cookie.service";
 
 // =============== Router imports =======================
 import authRouter from "./auth.route";
 import kanbanRouter from "./kanban.route";
-import userRouter from "./user.route"
+import userRouter from "./user.route";
 // ======================================================
 
 const router: Router = Router();
@@ -13,7 +13,7 @@ const router: Router = Router();
 // =============== Router Implementations ===============
 router.use("/auth", authRouter);
 router.use("/kanban", kanbanRouter);
-router.use("/user", userRouter)
+router.use("/user", userRouter);
 // ======================================================
 
 // ============== Global Routes =========================

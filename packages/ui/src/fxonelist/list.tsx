@@ -1,7 +1,11 @@
 import React from "react";
 import { ROUNDED_VARIANTS } from "../constant";
 import { cn } from "../lib/utils";
-import { getOneListStyling, oneListSize, type OneListVariantType } from "./helper";
+import {
+  getOneListStyling,
+  oneListSize,
+  type OneListVariantType,
+} from "./helper";
 
 interface FxOneListPropsType {
   children: React.ReactNode;

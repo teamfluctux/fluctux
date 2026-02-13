@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { type SVGProps } from "react";
 import { FxFavIcon, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { ToggleGroup, ToggleGroupItem } from "@fluctux/ui";

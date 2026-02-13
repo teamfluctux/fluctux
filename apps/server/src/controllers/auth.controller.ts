@@ -68,7 +68,7 @@ class AuthController extends AuthService {
         dataObject: { refreshToken: refreshToken ?? "" },
         args: { expiresIn: "720h" },
         secret: process.env.REFRESH_TOKEN_SECRET!,
-      }) ;
+      });
 
       // create unique device id
       const device_id = await uuidV4();

@@ -14,7 +14,7 @@ class JWTManager {
     this.secret = secretKey ?? "";
   }
 
-  generateEncryptedJWTTokens = ({ 
+  generateEncryptedJWTTokens = ({
     dataObject,
     secret,
     args,

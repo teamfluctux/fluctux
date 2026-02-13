@@ -1,4 +1,4 @@
-import {type ZodFormattedError } from "zod";
+import { type ZodFormattedError } from "zod";
 
 // Flatten and format the error messages
 export const getFormattedZodErrors = <T>(error: ZodFormattedError<T>) => {
