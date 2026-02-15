@@ -45,11 +45,11 @@ class AuthRedisService extends RedisService {
        * record device id to database after login
        * after log outs remove the deivce id from database
        */
-      const responsehexpireAuthTokens = await this.redisClient.hExpire(
-        `${decryptedDeviceID?.deviceId}`,
-        ["refreshToken", "providerToken", "deviceIdToken"],
-        60
-      );
+      // const responsehexpireAuthTokens = await this.redisClient.hExpire(
+      //   `${decryptedDeviceID?.deviceId}`,
+      //   ["refreshToken", "providerToken", "deviceIdToken"],
+      //   60
+      // );
 
       return response;
     } catch (error) {

@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "tsx watch src/index.ts --port 5000",
     "start": "node dist/index.cjs",
-    "lint": "eslint src/**/*.ts",
+    "check:lint": "eslint . --cache --cache-location node_modules/.cache/eslint/ --max-warnings 1000",
+    "fix:lint": "eslint . --cache --cache-location node_modules/.cache/eslint/ --fix --max-warnings=1000",
+    "check:types": "tsc --noEmit",
     "build": "tsup",
     "clean": "rm -rf node_modules .turbo && echo 'Cleanup complete!'",
     "test": "jest",

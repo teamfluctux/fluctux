@@ -39,7 +39,7 @@ export abstract class RedisService {
         },
       });
 
-      RedisService.client.on("error", (err: any) =>
+      RedisService.client.on("error", (err: unknown) =>
         console.log("Redis Client Error", err)
       );
 
