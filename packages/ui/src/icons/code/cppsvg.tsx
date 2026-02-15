@@ -1,4 +1,3 @@
-import React from "react";
 import type { SVGProps } from "react";
 export const Cpp = (props: SVGProps<SVGSVGElement>) => (
   <svg

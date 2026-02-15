@@ -1,3 +1,6 @@
+import type { SVGProps } from "react";
+import type { LucideIcon } from "lucide-react";
+
 export type SizeType = "sm" | "md" | "lg" | "xl";
 
 export type ThemeType = "dark" | "light";

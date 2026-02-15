@@ -2,7 +2,6 @@ import React from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { ROUNDED_VARIANTS } from "./constant";
 import { FxButton } from "./fxbutton";
-import type { OrgVisibilityType } from "@fluctux/types";
 
 interface ItemType {
   label?: string;

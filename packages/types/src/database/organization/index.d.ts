@@ -1,1 +1,1 @@
-export * from "./org"
+export type * from "./org";

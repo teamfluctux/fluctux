@@ -1,1 +1,1 @@
-export * from "./database.constant"
+export * from "./database.constant";

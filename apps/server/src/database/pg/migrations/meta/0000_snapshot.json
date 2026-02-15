@@ -1,11 +1,11 @@
 {
-  "id": "b0f05dba-8c04-427b-a229-b271ad345c6d",
+  "id": "c62d03bb-fbd9-4353-8188-30d3372e3426",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.app_user": {
-      "name": "app_user",
+    "public.app_users": {
+      "name": "app_users",
       "schema": "",
       "columns": {
         "user_id": {
@@ -135,16 +135,12 @@
         "user_id_unique": {
           "name": "user_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "user_id"
-          ]
+          "columns": ["user_id"]
         },
-        "app_user_email_unique": {
-          "name": "app_user_email_unique",
+        "app_users_email_unique": {
+          "name": "app_users_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         }
       },
       "policies": {},
@@ -240,16 +236,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "org_teams_team_org_organization_org_id_fk": {
-          "name": "org_teams_team_org_organization_org_id_fk",
+        "org_teams_team_org_organizations_org_id_fk": {
+          "name": "org_teams_team_org_organizations_org_id_fk",
           "tableFrom": "org_teams",
-          "tableTo": "organization",
-          "columnsFrom": [
-            "team_org"
-          ],
-          "columnsTo": [
-            "org_id"
-          ],
+          "tableTo": "organizations",
+          "columnsFrom": ["team_org"],
+          "columnsTo": ["org_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -259,17 +251,15 @@
         "org_teams_team_id_unique": {
           "name": "org_teams_team_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "team_id"
-          ]
+          "columns": ["team_id"]
         }
       },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.organization": {
-      "name": "organization",
+    "public.organizations": {
+      "name": "organizations",
       "schema": "",
       "columns": {
         "org_id": {
@@ -278,8 +268,8 @@
           "primaryKey": true,
           "notNull": true
         },
-        "admin": {
-          "name": "admin",
+        "org_admin": {
+          "name": "org_admin",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -407,28 +397,22 @@
         }
       },
       "foreignKeys": {
-        "organization_admin_app_user_user_id_fk": {
-          "name": "organization_admin_app_user_user_id_fk",
-          "tableFrom": "organization",
-          "tableTo": "app_user",
-          "columnsFrom": [
-            "admin"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+        "organizations_org_admin_app_users_user_id_fk": {
+          "name": "organizations_org_admin_app_users_user_id_fk",
+          "tableFrom": "organizations",
+          "tableTo": "app_users",
+          "columnsFrom": ["org_admin"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "organization_org_id_unique": {
-          "name": "organization_org_id_unique",
+        "organizations_org_id_unique": {
+          "name": "organizations_org_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "org_id"
-          ]
+          "columns": ["org_id"]
         }
       },
       "policies": {},
@@ -440,48 +424,27 @@
     "public.user_account_provider_enum": {
       "name": "user_account_provider_enum",
       "schema": "public",
-      "values": [
-        "GOOGLE",
-        "GITHUB",
-        "DISCORD",
-        "MANUAL"
-      ]
+      "values": ["GOOGLE", "GITHUB", "DISCORD", "MANUAL"]
     },
     "public.user_account_status_enum": {
       "name": "user_account_status_enum",
       "schema": "public",
-      "values": [
-        "NORMAL",
-        "SUSPENDED",
-        "RESTRICTED"
-      ]
+      "values": ["NORMAL", "SUSPENDED", "RESTRICTED"]
     },
     "public.org_status_enum": {
       "name": "org_status_enum",
       "schema": "public",
-      "values": [
-        "NORMAL",
-        "SUSPENDED",
-        "RESTRICTED"
-      ]
+      "values": ["NORMAL", "SUSPENDED", "RESTRICTED"]
     },
     "public.org_visibility_enum": {
       "name": "org_visibility_enum",
       "schema": "public",
-      "values": [
-        "PUBLIC",
-        "PRIVATE",
-        "CONNECTIONS",
-        "CUSTOM"
-      ]
+      "values": ["PUBLIC", "PRIVATE", "CONNECTIONS", "CUSTOM"]
     },
     "public.org_team_visibility_enum": {
       "name": "org_team_visibility_enum",
       "schema": "public",
-      "values": [
-        "PUBLIC",
-        "PRIVATE"
-      ]
+      "values": ["PUBLIC", "PRIVATE"]
     }
   },
   "schemas": {},

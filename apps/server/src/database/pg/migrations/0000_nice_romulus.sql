@@ -3,7 +3,7 @@ CREATE TYPE "public"."user_account_status_enum" AS ENUM('NORMAL', 'SUSPENDED', '
 CREATE TYPE "public"."org_status_enum" AS ENUM('NORMAL', 'SUSPENDED', 'RESTRICTED');--> statement-breakpoint
 CREATE TYPE "public"."org_visibility_enum" AS ENUM('PUBLIC', 'PRIVATE', 'CONNECTIONS', 'CUSTOM');--> statement-breakpoint
 CREATE TYPE "public"."org_team_visibility_enum" AS ENUM('PUBLIC', 'PRIVATE');--> statement-breakpoint
-CREATE TABLE "app_user" (
+CREATE TABLE "app_users" (
 	"user_id" uuid PRIMARY KEY NOT NULL,
 	"name" varchar(100) NOT NULL,
 	"avatar" varchar(500),
@@ -21,7 +21,7 @@ CREATE TABLE "app_user" (
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"deleted_at" timestamp,
 	CONSTRAINT "user_id_unique" UNIQUE("user_id"),
-	CONSTRAINT "app_user_email_unique" UNIQUE("email")
+	CONSTRAINT "app_users_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
 CREATE TABLE "org_teams" (
@@ -41,9 +41,9 @@ CREATE TABLE "org_teams" (
 	CONSTRAINT "org_teams_team_id_unique" UNIQUE("team_id")
 );
 --> statement-breakpoint
-CREATE TABLE "organization" (
+CREATE TABLE "organizations" (
 	"org_id" uuid PRIMARY KEY NOT NULL,
-	"admin" uuid NOT NULL,
+	"org_admin" uuid NOT NULL,
 	"org_avatar" varchar(500),
 	"org_cover_img" varchar(500),
 	"org_name" varchar(200) NOT NULL,
@@ -60,10 +60,10 @@ CREATE TABLE "organization" (
 	"updated_at" timestamp,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"deleted_at" timestamp,
-	CONSTRAINT "organization_org_id_unique" UNIQUE("org_id")
+	CONSTRAINT "organizations_org_id_unique" UNIQUE("org_id")
 );
 --> statement-breakpoint
-ALTER TABLE "org_teams" ADD CONSTRAINT "org_teams_team_org_organization_org_id_fk" FOREIGN KEY ("team_org") REFERENCES "public"."organization"("org_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "organization" ADD CONSTRAINT "organization_admin_app_user_user_id_fk" FOREIGN KEY ("admin") REFERENCES "public"."app_user"("user_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
-CREATE UNIQUE INDEX "username_index" ON "app_user" USING btree ("username");--> statement-breakpoint
-CREATE UNIQUE INDEX "org_uri_unique_index" ON "organization" USING btree ("org_uri");
+ALTER TABLE "org_teams" ADD CONSTRAINT "org_teams_team_org_organizations_org_id_fk" FOREIGN KEY ("team_org") REFERENCES "public"."organizations"("org_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "organizations" ADD CONSTRAINT "organizations_org_admin_app_users_user_id_fk" FOREIGN KEY ("org_admin") REFERENCES "public"."app_users"("user_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+CREATE UNIQUE INDEX "username_index" ON "app_users" USING btree ("username");--> statement-breakpoint
+CREATE UNIQUE INDEX "org_uri_unique_index" ON "organizations" USING btree ("org_uri");

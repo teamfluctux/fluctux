@@ -12,12 +12,11 @@ import {
   cn,
   AvatarImage,
   AvatarFallback,
-  ComboboxDataType,
+  type ComboboxDataType,
 } from "./";
-import { IconBase } from "react-icons/lib";
 import { CheckIcon } from "lucide-react";
 import { Avatar } from "@radix-ui/react-avatar";
-import { PopoverContentProps } from "@radix-ui/react-popover";
+import { type PopoverContentProps } from "@radix-ui/react-popover";
 
 type ComboBoxPropsType = {
   popoverTriggerComponent: React.ReactNode;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Command,
   CommandInput,
@@ -9,13 +9,11 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  cn,
   Avatar,
   Label,
   Checkbox,
   AvatarImage,
   AvatarFallback,
-  FxButton,
   type ComboboxDataType,
 } from "./";
 import type { PopoverContentProps } from "@radix-ui/react-popover";

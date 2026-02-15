@@ -12,11 +12,27 @@
         "storybook-static/**"
       ]
     },
-    "lint": {
-      "dependsOn": ["^lint"]
+    "check": {
+      "dependsOn": ["check:lint", "check:types"]
     },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+    "check:lint": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.md"],
+      "outputs": ["node_modules/.cache/eslint/**"]
+    },
+    "check:types": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.md"],
+      "outputs": []
+    },
+    "fix": {
+      "cache": false,
+      "dependsOn": ["fix:lint"]
+    },
+    "fix:lint": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.md"],
+      "outputs": ["node_modules/.cache/eslint/**"]
     },
     "start": {
       "dependsOn": ["^build"],

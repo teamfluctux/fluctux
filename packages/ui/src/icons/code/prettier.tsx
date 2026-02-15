@@ -1,11 +1,10 @@
-import React from "react";
 import type { SVGProps } from "react";
 export const Prettier = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 32 32"
-    stroke-linecap="round"
-    stroke-width="1.33"
+    strokeLinecap="round"
+    strokeWidth="1.33"
     {...props}
   >
     <title>file_type_prettier</title>

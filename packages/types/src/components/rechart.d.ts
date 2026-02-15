@@ -4,7 +4,7 @@ export type DefaultRechartTypes = {
   chartContainerClassName?: string;
   chartConfig: null;
   XAxisKey: string;
-  chartData?: any[];
+  chartData?: unknown[];
   graphChartFooter?: null;
   AreaData: [];
 };

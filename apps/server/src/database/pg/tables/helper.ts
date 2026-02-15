@@ -6,4 +6,4 @@ export const timestamps = {
   deleted_at: t.timestamp(),
 };
 
-export const isDeleted = t.boolean().notNull().default(false)
+export const isDeleted = t.boolean().notNull().default(false);

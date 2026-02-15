@@ -1,4 +1,3 @@
-import React from "react";
 import { FxFavIcon } from "./fxfav";
 
 export const FadeFavLoading = () => {

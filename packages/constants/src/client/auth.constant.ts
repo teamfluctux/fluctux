@@ -1,3 +1,4 @@
+// -- Client Login page
 export const LOGIN_EMAIL_ERRORS: string[] = [
   "Please enter a valid email address",
   "Email must include '@'",

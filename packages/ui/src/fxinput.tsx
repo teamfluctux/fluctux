@@ -102,3 +102,5 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
     );
   }
 );
+
+FxInput.displayName = "FxInput";
