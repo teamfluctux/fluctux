@@ -5,3 +5,5 @@ export const timestamps = {
   created_at: t.timestamp().defaultNow().notNull(),
   deleted_at: t.timestamp(),
 };
+
+export const isDeleted = t.boolean().notNull().default(false)
