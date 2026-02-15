@@ -1,4 +1,4 @@
-import { compileMDX, CompileMDXResult } from "next-mdx-remote/rsc";
+import { compileMDX } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import {
   transformerNotationHighlight,
