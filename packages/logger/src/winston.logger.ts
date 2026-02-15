@@ -1,10 +1,12 @@
+import type {
+  LoggerOptions as LoggerOptionsType,
+  Logger
+} from "winston";
 import {
   createLogger,
   format,
-  LoggerOptions as LoggerOptionsType,
   transports,
-  addColors,
-  Logger,
+  addColors
 } from "winston";
 import { npm } from "winston/lib/winston/config";
 
