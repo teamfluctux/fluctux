@@ -1,4 +1,4 @@
-import express, { type Request, type Express } from "express";
+import express, { type Express } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import router from "@/routes/index";
@@ -24,12 +24,12 @@ app.use(morganRequestLogger());
 // ============== API ROUTES =================
 app.use("/api", router);
 
-app.get("/health", async (req: Request, res) => {
+app.get("/health", async (_, res) => {
   res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });
 });
 
 // for testing
-app.get("/redis", async (req, res) => {
+app.get("/redis", async (_ , res) => {
   const response = await globalRedisService.redisCheckConnection();
 
   res.status(200).json({
