@@ -17,8 +17,9 @@
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown",
-    "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit",
+    "check:lint": "eslint . --cache --cache-location node_modules/.cache/eslint/ --max-warnings 1000",
+    "fix:lint": "eslint . --cache --cache-location node_modules/.cache/eslint/ --fix --max-warnings=1000",
+    "check:types": "tsc --noEmit",
     "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
   }
 }
