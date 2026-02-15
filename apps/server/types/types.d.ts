@@ -1,4 +1,4 @@
-import { UserSessionType } from "@fluctux/types";
+import type { UserSessionType } from "@fluctux/types";
 
 declare module "express" {
   // Inject additional properties on express.Request
