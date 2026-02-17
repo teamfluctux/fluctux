@@ -20,7 +20,12 @@ export const ORG_VISIBILITY_VALUES = [
 ] as const;
 export const ORG_STATUS_VALUES = ["NORMAL", "SUSPENDED", "RESTRICTED"] as const;
 export const ORG_TEAM_VISILITY_VALUES = ["PUBLIC", "PRIVATE"] as const;
-export const ORG_MEMBER_ROLE_VALUES = ["FOLLOWER", "MANAGER", "TEAM"] as const;
+export const ORG_MEMBER_ROLE_VALUES = [
+  "FOLLOWER",
+  "MANAGER",
+  "CONTRIBUTOR",
+  "ADMIN",
+] as const;
 export const ORG_MEMBER_STATUS_VALUES = [
   "NOMRAL",
   "RESTRICTED",
@@ -28,3 +33,4 @@ export const ORG_MEMBER_STATUS_VALUES = [
   "PENDING",
   "REJECTED",
 ] as const;
+export const ORG_TEAM_STATUS_VALUES = ["DRAFT", "PUBLISHED"] as const;

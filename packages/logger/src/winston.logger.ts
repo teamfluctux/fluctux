@@ -1,13 +1,5 @@
-import type {
-  LoggerOptions as LoggerOptionsType,
-  Logger
-} from "winston";
-import {
-  createLogger,
-  format,
-  transports,
-  addColors
-} from "winston";
+import type { LoggerOptions as LoggerOptionsType, Logger } from "winston";
+import { createLogger, format, transports, addColors } from "winston";
 import { npm } from "winston/lib/winston/config";
 
 type LogMetadata = {

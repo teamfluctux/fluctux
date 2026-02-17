@@ -29,7 +29,7 @@ app.get("/health", async (_, res) => {
 });
 
 // for testing
-app.get("/redis", async (_ , res) => {
+app.get("/redis", async (_, res) => {
   const response = await globalRedisService.redisCheckConnection();
 
   res.status(200).json({

@@ -1,4 +1,4 @@
-import { pgTable, pgEnum, uniqueIndex } from "drizzle-orm/pg-core";
+import { uniqueIndex, pgTable, pgEnum } from "drizzle-orm/pg-core";
 import * as t from "drizzle-orm/pg-core";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -19,15 +19,12 @@ export const PG_USER_ACCOUNT_STATUS_E = pgEnum(
 export const app_users = pgTable(
   "app_users",
   {
-    user_id: t
+    _id: t
       .uuid()
       .primaryKey()
       .$defaultFn(uuidv4)
       .notNull()
       .unique("user_id_unique"),
-    name: t.varchar({ length: 100 }).notNull(),
-    avatar: t.varchar({ length: 500 }),
-    cover_img: t.varchar({ length: 500 }),
     email: t.varchar({ length: 100 }).notNull().unique(),
     username: t.varchar({ length: 30 }).notNull(),
     password: t.varchar({ length: 30 }).notNull(),
@@ -39,5 +36,7 @@ export const app_users = pgTable(
     is_deleted: isDeleted,
     ...timestamps,
   },
-  (table) => [uniqueIndex("username_index").on(table.username)]
+  // unq -> unique
+  // i -> index
+  (table) => [uniqueIndex("unq_usr_uname_i").on(table.username)]
 );
