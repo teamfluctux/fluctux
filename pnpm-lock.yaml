@@ -114,6 +114,9 @@ importers:
       eslint-plugin-jest:
         specifier: ^29.0.1
         version: 29.0.1(@typescript-eslint/eslint-plugin@8.55.0(@typescript-eslint/parser@8.55.0(eslint@9.36.0(jiti@2.6.1))(typescript@5.8.3))(eslint@9.36.0(jiti@2.6.1))(typescript@5.8.3))(eslint@9.36.0(jiti@2.6.1))(jest@30.0.3(@types/node@22.15.33)(esbuild-register@3.6.0(esbuild@0.25.5))(ts-node@10.9.2(@swc/core@1.11.20)(@types/node@22.15.33)(typescript@5.8.3)))(typescript@5.8.3)
+      husky:
+        specifier: ^9.1.7
+        version: 9.1.7
       jest:
         specifier: ^30.0.3
         version: 30.0.3(@types/node@22.15.33)(esbuild-register@3.6.0(esbuild@0.25.5))(ts-node@10.9.2(@swc/core@1.11.20)(@types/node@22.15.33)(typescript@5.8.3))
@@ -6471,6 +6474,11 @@ packages:
   human-signals@2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
+
+  husky@9.1.7:
+    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   hyperformula@3.0.1:
     resolution: {integrity: sha512-SFH8fOPtL7uHnYhVrd6u0g0Jp2UQyDprcRfdQh5dmLgwtCg397J3QkwGCCWuQi17WRWF1Z2+gB44WO8h+DK7dA==}
@@ -16790,6 +16798,8 @@ snapshots:
       - supports-color
 
   human-signals@2.1.0: {}
+
+  husky@9.1.7: {}
 
   hyperformula@3.0.1:
     dependencies:
