@@ -1,6 +1,9 @@
 /.vscode
 /node_modules
 ./dist
+/.next
+/.turbo
+/.husky
 
 *.env
 .env.*
