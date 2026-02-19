@@ -64,10 +64,12 @@ const Configuration: UserConfig = {
         },
       },
     },
+    "commitlint-plugin-tense",
   ],
   rules: {
     "subject-check-noemoji": [2, "always"],
     "check-breaking-change": [2, "always"],
+    "tense/subject-tense": [2, "always"],
     "type-enum": [
       RuleConfigSeverity.Error,
       "always",

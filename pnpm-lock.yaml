@@ -123,6 +123,9 @@ importers:
       commitizen:
         specifier: ^4.3.1
         version: 4.3.1(@types/node@22.15.33)(typescript@5.8.3)
+      commitlint-plugin-tense:
+        specifier: ^1.0.9
+        version: 1.0.9(@commitlint/lint@20.4.2)
       conventional-changelog-conventionalcommits:
         specifier: ^9.1.0
         version: 9.1.0
@@ -1279,6 +1282,10 @@ packages:
 
   '@commitlint/load@20.4.0':
     resolution: {integrity: sha512-Dauup/GfjwffBXRJUdlX/YRKfSVXsXZLnINXKz0VZkXdKDcaEILAi9oflHGbfydonJnJAbXEbF3nXPm9rm3G6A==}
+    engines: {node: '>=v18'}
+
+  '@commitlint/message@19.8.1':
+    resolution: {integrity: sha512-+PMLQvjRXiU+Ae0Wc+p99EoGEutzSXFVwQfa3jRNUZLNW5odZAyseb92OSBTKCu+9gGZiJASt76Cj3dLTtcTdg==}
     engines: {node: '>=v18'}
 
   '@commitlint/message@20.4.0':
@@ -5310,6 +5317,11 @@ packages:
     engines: {node: '>= 12'}
     hasBin: true
 
+  commitlint-plugin-tense@1.0.9:
+    resolution: {integrity: sha512-5hpXeXU6T7QPgMGHozlBQSzMwcK208giFiKub3NxtzPMFBwzoLdBHRQoqQyhRBQO55A1ygEvwPNE7ZT1UyGxiQ==}
+    peerDependencies:
+      '@commitlint/lint': '>=7.6.0'
+
   compare-func@2.0.0:
     resolution: {integrity: sha512-zHig5N+tPWARooBnb0Zx1MFcdfpyJrfTJ3Y5L+IFvUm8rM74hHz66z0gw0x4tijh5CorKkKUCnW82R2vmpeCRA==}
 
@@ -6144,6 +6156,10 @@ packages:
 
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
+
+  fast-tag-pos@2.0.0:
+    resolution: {integrity: sha512-BdT2WMan25s8x5obDInSy1twqAKzeqHQ7T6fbowICcIUANoCRlhWUPn1e7r4Me2Jz3tNFT71MIZf2hIn0tUrag==}
+    engines: {node: '>=0'}
 
   fast-uri@3.1.0:
     resolution: {integrity: sha512-iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==}
@@ -11172,6 +11188,8 @@ snapshots:
       - '@types/node'
       - typescript
 
+  '@commitlint/message@19.8.1': {}
+
   '@commitlint/message@20.4.0': {}
 
   '@commitlint/parse@20.4.1':
@@ -15605,6 +15623,12 @@ snapshots:
       - '@types/node'
       - typescript
 
+  commitlint-plugin-tense@1.0.9(@commitlint/lint@20.4.2):
+    dependencies:
+      '@commitlint/lint': 20.4.2
+      '@commitlint/message': 19.8.1
+      fast-tag-pos: 2.0.0
+
   compare-func@2.0.0:
     dependencies:
       array-ify: 1.0.0
@@ -16623,6 +16647,8 @@ snapshots:
   fast-json-stable-stringify@2.1.0: {}
 
   fast-levenshtein@2.0.6: {}
+
+  fast-tag-pos@2.0.0: {}
 
   fast-uri@3.1.0: {}
 
