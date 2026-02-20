@@ -12,7 +12,7 @@ export const org_teams = pgTable("org_teams", {
   _id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
   team_org: t
     .uuid("team_org")
-    .references(() => organizations._id)
+    .references(() => organizations._id, {onDelete: "cascade"})
     .notNull(),
   team_name: t.varchar({ length: 200 }).notNull(),
   team_desc: t.varchar({ length: 500 }),

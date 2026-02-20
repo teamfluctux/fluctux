@@ -9,7 +9,7 @@ export const user_addresses = pgTable(
   "user_addresses",
   {
     _id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
-    user: t.uuid().references(() => app_users._id),
+    user: t.uuid().references(() => app_users._id, {onDelete: "cascade"}),
     country: t.varchar({ length: 100 }),
     city: t.varchar({ length: 100 }),
     street_address: t.text(),

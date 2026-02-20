@@ -9,7 +9,7 @@ export const user_contacts = pgTable(
   "user_contacts",
   {
     _id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
-    user: t.uuid().references(() => app_users._id),
+    user: t.uuid().references(() => app_users._id, {onDelete: "cascade"}),
     number: t.varchar({ length: 20 }).array(),
     email: t.varchar({ length: 80 }).array(),
     links: t.text().array(),

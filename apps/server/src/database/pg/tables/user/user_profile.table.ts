@@ -12,7 +12,7 @@ export const user_profiles = pgTable(
     _id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
     user: t
       .uuid()
-      .references(() => app_users._id)
+      .references(() => app_users._id, {onDelete: "cascade"})
       .notNull(),
     name: t.varchar({ length: 50 }).notNull(),
     avatar: t.text(),
@@ -30,5 +30,6 @@ export const user_profiles = pgTable(
       "chk_usr_cvi_c_len",
       sql`LENGTH(${table.cover_img}) < ${sql.raw(`${IMAGE_URL_LENGTH}`)}`
     ),
+    
   ]
 );

@@ -28,7 +28,7 @@ export const organizations = pgTable(
     _id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
     created_by: t
       .uuid()
-      .references(() => app_users._id)
+      .references(() => app_users._id, { onDelete: "cascade" })
       .notNull(),
     org_name: t.varchar({ length: 100 }).notNull(),
     org_desc: t.varchar({ length: 500 }),
