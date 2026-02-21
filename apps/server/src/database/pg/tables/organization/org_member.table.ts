@@ -22,11 +22,11 @@ export const org_members = pgTable("org_members", {
   _id: t.uuid().primaryKey().notNull().$defaultFn(uuidv4),
   user: t
     .uuid()
-    .references(() => app_users._id, {onDelete: "cascade"})
+    .references(() => app_users._id, { onDelete: "cascade" })
     .notNull(),
   organization: t
     .uuid()
-    .references(() => organizations._id, {onDelete: "cascade"})
+    .references(() => organizations._id, { onDelete: "cascade" })
     .notNull(),
   memb_role: PG_ORG_MEMB_ROLE_E().notNull().default("FOLLOWER"),
   memb_status: PG_ORG_MEMB_STATUS_E().notNull().default("NOMRAL"),
