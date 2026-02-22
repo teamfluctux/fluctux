@@ -25,9 +25,5 @@ export const user_contacts = pgTable(
       "chk_links_len",
       sql`array_length(${table.links}, 1) <= ${sql.raw("3")}`
     ),
-    check(
-      "chk_links_c_len",
-      sql`(SELECT BOOL_AND(LENGTH(link) <= 300) FROM unnest(${table.links}) AS link)`
-    ), // error! max length 300 chars
   ]
 );
