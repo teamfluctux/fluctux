@@ -3,8 +3,10 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
-import { morganRequestLogger } from "./middlewares";
+import { errorHandlerMiddleware, morganRequestLogger } from "./middlewares";
 import { globalRedisService } from "./services/redis";
+import { ApiError } from "./utils";
+import { ERROR } from "./constants/http-status";
 
 const app: Express = express();
 
@@ -13,19 +15,20 @@ app.use(
     origin: "http://localhost:3003",
     credentials: true,
   })
-); // NO NEED IF USING NGINX -> UBUNTU
+);
 app.use(express.json({ limit: "500kb" }));
 app.use(express.urlencoded({ extended: true, limit: "500kb" }));
 app.use(cookieParser());
 
-// MORGAN
+// -- Morgan
 app.use(morganRequestLogger());
 
 // ============== API ROUTES =================
 app.use("/api", router);
 
-app.get("/health", async (_, res) => {
-  res.status(200).json({ message: new ApiResponse(200, "Server is healthy") });
+app.get("/", async (_, res) => {
+  throw new ApiError(ERROR.UNAUTHORIZED_USER)
+  // res.status(200).json( new ApiResponse(200, "Server is healthy"));
 });
 
 // for testing
@@ -39,5 +42,9 @@ app.get("/redis", async (_, res) => {
   });
 });
 // =========API ROUTES ENDS HERE===============
+
+// -- Error Handler
+app.use(errorHandlerMiddleware)
+
 
 export { app };

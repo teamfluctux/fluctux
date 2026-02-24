@@ -28,14 +28,7 @@ class AuthController extends AuthService {
        * if code not exist return unauthorized error
        */
       if (!code)
-        res.status(500).json({
-          error: new ApiError(
-            HTTPErrorCodes.UNAUTHORIZED,
-            "Unauthorized access!",
-            "",
-            [ERROR.UNAUTHORIZED_USER]
-          ),
-        });
+         throw new ApiError(ERROR.UNAUTHORIZED_USER)
 
       // Get the idToken and refreshToken from google via passing the code
       const { idToken, refreshToken } = await this.google.getGoogleAuthtokens(
@@ -48,14 +41,7 @@ class AuthController extends AuthService {
        * it will help to getSession from specific provider
        */
       if (!idToken || !refreshToken) {
-        res.status(HTTPErrorCodes.SERVICE_UNAVAILABLE).json({
-          error: new ApiError(
-            HTTPErrorCodes.SERVICE_UNAVAILABLE,
-            "Tokens not provided by google",
-            "",
-            [ERROR.SERVICE_UNAVAILABLE]
-          ),
-        });
+        throw new ApiError(ERROR.SERVICE_UNAVAILABLE)
       }
 
       // encrypt tokens ===============================================
@@ -120,11 +106,7 @@ class AuthController extends AuthService {
     } catch (error) {
       console.log(error);
 
-      res.status(500).json({
-        error: new ApiError(500, "Error sign in user vai google", "", [
-          ERROR.INTERNAL_SERVER_ERROR,
-        ]),
-      });
+      throw new Error()
     }
   }
 
