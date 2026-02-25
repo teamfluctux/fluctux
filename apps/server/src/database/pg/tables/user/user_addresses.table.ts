@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { check, pgTable } from "drizzle-orm/pg-core";
 import * as t from "drizzle-orm/pg-core";
 import { app_users } from "./user.table";
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 
 export const user_addresses = pgTable(
   "user_addresses",
@@ -24,3 +24,11 @@ export const user_addresses = pgTable(
     ), // max 500 chars
   ]
 );
+
+
+export const userContactRelations = relations(user_addresses, ({ one }) => ({
+  user: one(app_users, {
+    fields: [user_addresses.user],
+    references: [app_users._id],
+  }),
+}));

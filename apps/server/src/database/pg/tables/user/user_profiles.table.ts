@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { check, pgTable } from "drizzle-orm/pg-core";
 import * as t from "drizzle-orm/pg-core";
 import { app_users } from "./user.table";
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import { IMAGE_URL_LENGTH } from "../constant";
 
 export const user_profiles = pgTable(
@@ -33,4 +33,9 @@ export const user_profiles = pgTable(
   ]
 );
 
-
+export const userProfileRelations = relations(user_profiles, ({ one }) => ({
+	user: one(app_users, {
+		fields: [user_profiles.user],
+		references: [app_users._id],
+	}),
+}));

@@ -7,16 +7,18 @@ import type { ApiErrorType } from "@fluctux/types"
 import type { NextFunction, Request, Response } from "express"
 
 export const errorHandlerMiddleware = (err: Error | ApiError, req: Request, res: Response, next: NextFunction) => {
-    let error = err
+    let error: ApiError 
 
-    if (!(error instanceof ApiError)) {
-        const message = error.message || "Something went wrong"
-        error = new ApiError({ ...ERROR.INTERNAL_SERVER_ERROR, message }, error.stack)
+    if(err instanceof ApiError) {
+        error = err
+    }else {   
+        const message = err.message || "Something went wrong"
+        error = new ApiError({ ...ERROR.INTERNAL_SERVER_ERROR, message }, err.stack)
     }
 
-    const status = error instanceof ApiError ? error.status : 500
+    const status = error.status
     const response: ApiErrorType = {
-        ...(error instanceof ApiError && error.error) as (typeof ERROR)[keyof typeof ERROR],
+        ...error.error,
         ...(BaseConfig.NODE_ENV === "development" ? { stack: error.stack } : {})
     }
 

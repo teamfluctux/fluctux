@@ -27,8 +27,7 @@ app.use(morganRequestLogger());
 app.use("/api", router);
 
 app.get("/", async (_, res) => {
-  throw new ApiError(ERROR.UNAUTHORIZED_USER)
-  // res.status(200).json( new ApiResponse(200, "Server is healthy"));
+  res.status(200).json(new ApiResponse(200, "Server is healthy"));
 });
 
 // for testing

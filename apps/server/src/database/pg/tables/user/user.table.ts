@@ -6,6 +6,10 @@ import {
   USER_ACCOUNT_PROVIDER_VALUES,
 } from "@fluctux/constants";
 import { isDeleted, timestamps } from "../helper";
+import { relations } from "drizzle-orm";
+import { user_profiles } from "./user_profiles.table";
+import { user_contacts } from "./user_contacts.table";
+import { user_addresses } from "./user_addresses.table";
 
 export const PG_USER_ACCOUNT_PROVIDER_E = pgEnum(
   "user_account_provider_enum",
@@ -40,3 +44,10 @@ export const app_users = pgTable(
   // i -> index
   (table) => [uniqueIndex("unq_usr_uname_i").on(table.username)]
 );
+
+
+export const userRelations = relations(app_users, ({one}) => ({
+  user_profile: one(user_profiles),
+  user_contacts: one(user_contacts),
+  user_addresses: one(user_addresses)
+}))
