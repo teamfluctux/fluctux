@@ -39,6 +39,7 @@ export enum CustomErrorEnums {
   "LOOP_DETECTED" = "LOOP_DETECTED",
   "NOT_EXTENDED" = "NOT_EXTENDED",
   "NETWORK_AUTHENTICATION_REQUIRED" = "NETWORK_AUTHENTICATION_REQUIRED",
+  // custom error codes
   "UNAUTHORIZED_USER" = "UNAUTHORIZED_USER",
   "USER_NOT_FOUND" = "USER_NOT_FOUND",
   "INVALID_REQUEST" = "INVALID_REQUEST"
@@ -312,12 +313,14 @@ export const ERROR: {
     status:
       HTTPErrorCodes[CustomErrorEnums.NETWORK_AUTHENTICATION_REQUIRED],
   },
+  // custom error codes
   [CustomErrorEnums.USER_NOT_FOUND]: {
     title: "User Not Found",
     message: "The user you are looking for does not exist.",
     status: HTTPErrorCodes[CustomErrorEnums.BAD_REQUEST],
     code: CustomHTTPErrorCodes.USER_NOT_FOUND,
-  }, [CustomErrorEnums.INVALID_REQUEST]: {
+  },
+  [CustomErrorEnums.INVALID_REQUEST]: {
     title: "Invalid Request",
     message: "The request made is invalid.",
     status: HTTPErrorCodes[CustomErrorEnums.BAD_REQUEST],
