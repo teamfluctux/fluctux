@@ -5,30 +5,27 @@ import { v4 as uuidv4 } from "uuid";
 import { app_users } from "../user";
 import {
   ORG_STATUS_VALUES,
-  ORG_TEAM_VISILITY_VALUES,
   ORG_VISIBILITY_VALUES,
 } from "@fluctux/constants";
 import { isDeleted, timestamps } from "../helper";
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import { CATEGORY_LENGTH, IMAGE_URL_LENGTH, TAG_LENGTH } from "../constant";
+import { org_members } from "./org_member.table";
+import { org_teams } from "./org_team.table";
 
 export const PG_ORG_VISIBILITY_E = pgEnum(
   "org_visibility_enum",
   ORG_VISIBILITY_VALUES
 );
 export const PG_ORG_STATUS_E = pgEnum("org_status_enum", ORG_STATUS_VALUES);
-export const PG_TEAM_VISIBILITY = pgEnum(
-  "org_team_visibility_enum",
-  ORG_TEAM_VISILITY_VALUES
-);
 
 export const organizations = pgTable(
   "organizations",
   {
-    _id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
+    id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
     created_by: t
       .uuid()
-      .references(() => app_users._id, { onDelete: "cascade" })
+      .references(() => app_users.id, { onDelete: "cascade" })
       .notNull(),
     org_name: t.varchar({ length: 100 }).notNull(),
     org_desc: t.varchar({ length: 500 }),
@@ -56,3 +53,8 @@ export const organizations = pgTable(
     ),
   ]
 );
+
+export const orgRelations = relations(organizations, ({many}) => ({
+  org_members: many(org_members),
+  org_teams: many(org_teams)
+}))

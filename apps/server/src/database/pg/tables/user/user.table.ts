@@ -23,7 +23,7 @@ export const PG_USER_ACCOUNT_STATUS_E = pgEnum(
 export const app_users = pgTable(
   "app_users",
   {
-    _id: t
+    id: t
       .uuid()
       .primaryKey()
       .$defaultFn(uuidv4)
@@ -48,6 +48,6 @@ export const app_users = pgTable(
 
 export const userRelations = relations(app_users, ({one}) => ({
   user_profile: one(user_profiles),
-  user_contacts: one(user_contacts),
-  user_addresses: one(user_addresses)
+  user_contact: one(user_contacts),
+  user_address: one(user_addresses)
 }))

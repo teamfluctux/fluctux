@@ -9,10 +9,10 @@ import { IMAGE_URL_LENGTH } from "../constant";
 export const user_profiles = pgTable(
   "user_profiles",
   {
-    _id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
-    user: t
+    id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
+    app_user: t
       .uuid()
-      .references(() => app_users._id, { onDelete: "cascade" })
+      .references(() => app_users.id, { onDelete: "cascade" })
       .notNull(),
     name: t.varchar({ length: 50 }).notNull(),
     avatar: t.text(),
@@ -34,8 +34,8 @@ export const user_profiles = pgTable(
 );
 
 export const userProfileRelations = relations(user_profiles, ({ one }) => ({
-	user: one(app_users, {
-		fields: [user_profiles.user],
-		references: [app_users._id],
+	app_user: one(app_users, {
+		fields: [user_profiles.app_user],
+		references: [app_users.id],
 	}),
 }));

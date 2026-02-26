@@ -90,9 +90,9 @@ export enum HTTPErrorCodes {
 
 // Custom error codes (X0000)
 export enum CustomHTTPErrorCodes {
-  "USER_NOT_FOUND" = 10001,
-  "UNAUTHORIZED_USER" = 10002,
-  "INVALID_REQUEST" = 10003,
+  "USER_NOT_FOUND" = 1000,
+  "UNAUTHORIZED_USER" = 1001,
+  "INVALID_REQUEST" = 1002,
 }
 
 export const ERROR: {

@@ -5,8 +5,8 @@ import router from "@/routes/index";
 import { ApiResponse } from "./utils/ApiResponse";
 import { errorHandlerMiddleware, morganRequestLogger } from "./middlewares";
 import { globalRedisService } from "./services/redis";
-import { ApiError } from "./utils";
-import { ERROR } from "./constants/http-status";
+import { pgDb } from "./lib/db-connect";
+
 
 const app: Express = express();
 
@@ -27,7 +27,34 @@ app.use(morganRequestLogger());
 app.use("/api", router);
 
 app.get("/", async (_, res) => {
-  res.status(200).json(new ApiResponse(200, "Server is healthy"));
+  // -- For Testing purpose
+  let data
+  try {
+     data = await pgDb.query.app_users.findFirst({
+      columns: {
+        id: true,
+        username: true,
+        email: true,
+        created_at: true,
+        account_status: true,
+        account_provider: true
+      },
+      with: {
+        user_profile: {
+          columns: {
+            id: true,
+            name: true,
+            avatar: true,
+            cover_img: true,
+          }
+        },
+        
+      }
+    })
+  } catch (error) {
+      console.log("err")
+  }
+  res.status(200).json(new ApiResponse(200, "Server is healthy", data));
 });
 
 // for testing

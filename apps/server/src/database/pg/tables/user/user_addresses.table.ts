@@ -8,8 +8,8 @@ import { relations, sql } from "drizzle-orm";
 export const user_addresses = pgTable(
   "user_addresses",
   {
-    _id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
-    user: t.uuid().references(() => app_users._id, { onDelete: "cascade" }),
+    id: t.uuid().primaryKey().unique().notNull().$defaultFn(uuidv4),
+    app_user: t.uuid().references(() => app_users.id, { onDelete: "cascade" }),
     country: t.varchar({ length: 100 }),
     city: t.varchar({ length: 100 }),
     street_address: t.text(),
@@ -27,8 +27,8 @@ export const user_addresses = pgTable(
 
 
 export const userContactRelations = relations(user_addresses, ({ one }) => ({
-  user: one(app_users, {
-    fields: [user_addresses.user],
-    references: [app_users._id],
+  app_user: one(app_users, {
+    fields: [user_addresses.app_user],
+    references: [app_users.id],
   }),
 }));

@@ -1,5 +1,5 @@
 {
-  "id": "0980418f-14a3-4852-88e4-02000ba1b1a3",
+  "id": "79142ae6-a479-4896-bd9d-510d18d96878",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -8,8 +8,8 @@
       "name": "organizations",
       "schema": "",
       "columns": {
-        "_id": {
-          "name": "_id",
+        "id": {
+          "name": "id",
           "type": "uuid",
           "primaryKey": true,
           "notNull": true
@@ -137,15 +137,15 @@
         }
       },
       "foreignKeys": {
-        "organizations_created_by_app_users__id_fk": {
-          "name": "organizations_created_by_app_users__id_fk",
+        "organizations_created_by_app_users_id_fk": {
+          "name": "organizations_created_by_app_users_id_fk",
           "tableFrom": "organizations",
           "tableTo": "app_users",
           "columnsFrom": [
             "created_by"
           ],
           "columnsTo": [
-            "_id"
+            "id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -153,11 +153,11 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "organizations__id_unique": {
-          "name": "organizations__id_unique",
+        "organizations_id_unique": {
+          "name": "organizations_id_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "_id"
+            "id"
           ]
         }
       },
@@ -178,8 +178,8 @@
       "name": "org_teams",
       "schema": "",
       "columns": {
-        "_id": {
-          "name": "_id",
+        "id": {
+          "name": "id",
           "type": "uuid",
           "primaryKey": true,
           "notNull": true
@@ -272,15 +272,15 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "org_teams_team_org_organizations__id_fk": {
-          "name": "org_teams_team_org_organizations__id_fk",
+        "org_teams_team_org_organizations_id_fk": {
+          "name": "org_teams_team_org_organizations_id_fk",
           "tableFrom": "org_teams",
           "tableTo": "organizations",
           "columnsFrom": [
             "team_org"
           ],
           "columnsTo": [
-            "_id"
+            "id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -288,11 +288,11 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "org_teams__id_unique": {
-          "name": "org_teams__id_unique",
+        "org_teams_id_unique": {
+          "name": "org_teams_id_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "_id"
+            "id"
           ]
         }
       },
@@ -304,14 +304,14 @@
       "name": "org_members",
       "schema": "",
       "columns": {
-        "_id": {
-          "name": "_id",
+        "id": {
+          "name": "id",
           "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
-        "user": {
-          "name": "user",
+        "app_user": {
+          "name": "app_user",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -367,28 +367,28 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "org_members_user_app_users__id_fk": {
-          "name": "org_members_user_app_users__id_fk",
+        "org_members_app_user_app_users_id_fk": {
+          "name": "org_members_app_user_app_users_id_fk",
           "tableFrom": "org_members",
           "tableTo": "app_users",
           "columnsFrom": [
-            "user"
+            "app_user"
           ],
           "columnsTo": [
-            "_id"
+            "id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "org_members_organization_organizations__id_fk": {
-          "name": "org_members_organization_organizations__id_fk",
+        "org_members_organization_organizations_id_fk": {
+          "name": "org_members_organization_organizations_id_fk",
           "tableFrom": "org_members",
           "tableTo": "organizations",
           "columnsFrom": [
             "organization"
           ],
           "columnsTo": [
-            "_id"
+            "id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -404,8 +404,8 @@
       "name": "app_users",
       "schema": "",
       "columns": {
-        "_id": {
-          "name": "_id",
+        "id": {
+          "name": "id",
           "type": "uuid",
           "primaryKey": true,
           "notNull": true
@@ -514,7 +514,7 @@
           "name": "user_id_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "_id"
+            "id"
           ]
         },
         "app_users_email_unique": {
@@ -533,14 +533,14 @@
       "name": "user_addresses",
       "schema": "",
       "columns": {
-        "_id": {
-          "name": "_id",
+        "id": {
+          "name": "id",
           "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
-        "user": {
-          "name": "user",
+        "app_user": {
+          "name": "app_user",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
@@ -597,15 +597,15 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_addresses_user_app_users__id_fk": {
-          "name": "user_addresses_user_app_users__id_fk",
+        "user_addresses_app_user_app_users_id_fk": {
+          "name": "user_addresses_app_user_app_users_id_fk",
           "tableFrom": "user_addresses",
           "tableTo": "app_users",
           "columnsFrom": [
-            "user"
+            "app_user"
           ],
           "columnsTo": [
-            "_id"
+            "id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -613,11 +613,11 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "user_addresses__id_unique": {
-          "name": "user_addresses__id_unique",
+        "user_addresses_id_unique": {
+          "name": "user_addresses_id_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "_id"
+            "id"
           ]
         }
       },
@@ -634,14 +634,14 @@
       "name": "user_contacts",
       "schema": "",
       "columns": {
-        "_id": {
-          "name": "_id",
+        "id": {
+          "name": "id",
           "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
-        "user": {
-          "name": "user",
+        "app_user": {
+          "name": "app_user",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
@@ -686,15 +686,15 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_contacts_user_app_users__id_fk": {
-          "name": "user_contacts_user_app_users__id_fk",
+        "user_contacts_app_user_app_users_id_fk": {
+          "name": "user_contacts_app_user_app_users_id_fk",
           "tableFrom": "user_contacts",
           "tableTo": "app_users",
           "columnsFrom": [
-            "user"
+            "app_user"
           ],
           "columnsTo": [
-            "_id"
+            "id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -702,11 +702,11 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "user_contacts__id_unique": {
-          "name": "user_contacts__id_unique",
+        "user_contacts_id_unique": {
+          "name": "user_contacts_id_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "_id"
+            "id"
           ]
         }
       },
@@ -731,14 +731,14 @@
       "name": "user_profiles",
       "schema": "",
       "columns": {
-        "_id": {
-          "name": "_id",
+        "id": {
+          "name": "id",
           "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
-        "user": {
-          "name": "user",
+        "app_user": {
+          "name": "app_user",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -783,15 +783,15 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_profiles_user_app_users__id_fk": {
-          "name": "user_profiles_user_app_users__id_fk",
+        "user_profiles_app_user_app_users_id_fk": {
+          "name": "user_profiles_app_user_app_users_id_fk",
           "tableFrom": "user_profiles",
           "tableTo": "app_users",
           "columnsFrom": [
-            "user"
+            "app_user"
           ],
           "columnsTo": [
-            "_id"
+            "id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -799,11 +799,11 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "user_profiles__id_unique": {
-          "name": "user_profiles__id_unique",
+        "user_profiles_id_unique": {
+          "name": "user_profiles_id_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "_id"
+            "id"
           ]
         }
       },
@@ -841,20 +841,20 @@
         "CUSTOM"
       ]
     },
-    "public.org_team_visibility_enum": {
-      "name": "org_team_visibility_enum",
-      "schema": "public",
-      "values": [
-        "PUBLIC",
-        "PRIVATE"
-      ]
-    },
     "public.tm_status_enm": {
       "name": "tm_status_enm",
       "schema": "public",
       "values": [
         "DRAFT",
         "PUBLISHED"
+      ]
+    },
+    "public.org_team_visibility_enum": {
+      "name": "org_team_visibility_enum",
+      "schema": "public",
+      "values": [
+        "PUBLIC",
+        "PRIVATE"
       ]
     },
     "public.org_member_role_enum": {
