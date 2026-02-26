@@ -34,4 +34,3 @@ export const userContactRelations = relations(user_contacts, ({ one }) => ({
     references: [app_users.id],
   }),
 }));
-

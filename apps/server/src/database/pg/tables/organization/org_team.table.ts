@@ -4,7 +4,10 @@ import * as t from "drizzle-orm/pg-core";
 import { v4 as uuidv4 } from "uuid";
 import { isDeleted, timestamps } from "../helper";
 import { CATEGORY_LENGTH } from "../constant";
-import { ORG_TEAM_STATUS_VALUES, ORG_TEAM_VISILITY_VALUES } from "@fluctux/constants";
+import {
+  ORG_TEAM_STATUS_VALUES,
+  ORG_TEAM_VISILITY_VALUES,
+} from "@fluctux/constants";
 import { relations } from "drizzle-orm";
 
 export const PG_TEAM_STATUS_E = pgEnum("tm_status_enm", ORG_TEAM_STATUS_VALUES);
@@ -31,9 +34,9 @@ export const org_teams = pgTable("org_teams", {
   ...timestamps,
 });
 
-export const orgTeamRelations = relations(org_teams, ({one}) => ({
+export const orgTeamRelations = relations(org_teams, ({ one }) => ({
   team_org: one(organizations, {
     fields: [org_teams.team_org],
-    references: [organizations.id]
-  })
-}))
+    references: [organizations.id],
+  }),
+}));

@@ -9,7 +9,7 @@ export class ApiResponse implements ApiResponseType {
     public title: string = ""
   ) {
     this.status = status;
-    this.title = title
+    this.title = title;
     this.message = message;
     this.data = data;
     this.success = success;

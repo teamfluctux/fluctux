@@ -45,9 +45,8 @@ export const app_users = pgTable(
   (table) => [uniqueIndex("unq_usr_uname_i").on(table.username)]
 );
 
-
-export const userRelations = relations(app_users, ({one}) => ({
+export const userRelations = relations(app_users, ({ one }) => ({
   user_profile: one(user_profiles),
   user_contact: one(user_contacts),
-  user_address: one(user_addresses)
-}))
+  user_address: one(user_addresses),
+}));

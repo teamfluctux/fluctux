@@ -42,7 +42,7 @@ export enum CustomErrorEnums {
   // custom error codes
   "UNAUTHORIZED_USER" = "UNAUTHORIZED_USER",
   "USER_NOT_FOUND" = "USER_NOT_FOUND",
-  "INVALID_REQUEST" = "INVALID_REQUEST"
+  "INVALID_REQUEST" = "INVALID_REQUEST",
 }
 
 export enum HTTPErrorCodes {
@@ -100,7 +100,7 @@ export const ERROR: {
     title: string;
     message: string;
     status: number;
-    code?: number
+    code?: number;
   };
 } = {
   [CustomErrorEnums.BAD_REQUEST]: {
@@ -110,7 +110,8 @@ export const ERROR: {
   },
   [CustomErrorEnums.UNAUTHORIZED]: {
     title: "Unauthorized",
-    message: "You are not authorized to access this resource. Please log in or check your permissions.",
+    message:
+      "You are not authorized to access this resource. Please log in or check your permissions.",
     status: HTTPErrorCodes[CustomErrorEnums.UNAUTHORIZED],
   },
   [CustomErrorEnums.PAYMENT_REQUIRED]: {
@@ -243,8 +244,7 @@ export const ERROR: {
   [CustomErrorEnums.REQUEST_HEADER_FIELDS_TOO_LARGE]: {
     title: "Request Header Fields Too Large",
     message: "The request header fields are too large.",
-    status:
-      HTTPErrorCodes[CustomErrorEnums.REQUEST_HEADER_FIELDS_TOO_LARGE],
+    status: HTTPErrorCodes[CustomErrorEnums.REQUEST_HEADER_FIELDS_TOO_LARGE],
   },
   [CustomErrorEnums.UNAVAILABLE_FOR_LEGAL_REASONS]: {
     title: "Unavailable For Legal Reasons",
@@ -310,8 +310,7 @@ export const ERROR: {
   [CustomErrorEnums.NETWORK_AUTHENTICATION_REQUIRED]: {
     title: "Network Authentication Required",
     message: "Network authentication is required to access this resource.",
-    status:
-      HTTPErrorCodes[CustomErrorEnums.NETWORK_AUTHENTICATION_REQUIRED],
+    status: HTTPErrorCodes[CustomErrorEnums.NETWORK_AUTHENTICATION_REQUIRED],
   },
   // custom error codes
   [CustomErrorEnums.USER_NOT_FOUND]: {
@@ -324,12 +323,13 @@ export const ERROR: {
     title: "Invalid Request",
     message: "The request made is invalid.",
     status: HTTPErrorCodes[CustomErrorEnums.BAD_REQUEST],
-    code: CustomHTTPErrorCodes.INVALID_REQUEST
+    code: CustomHTTPErrorCodes.INVALID_REQUEST,
   },
   [CustomErrorEnums.UNAUTHORIZED_USER]: {
     title: "Unauthorized User",
-    message: "You do not have permission to perform this action. Please ensure you are logged in with the correct account.",
+    message:
+      "You do not have permission to perform this action. Please ensure you are logged in with the correct account.",
     status: HTTPErrorCodes[CustomErrorEnums.UNAUTHORIZED],
     code: CustomHTTPErrorCodes.UNAUTHORIZED_USER,
-  }
+  },
 };

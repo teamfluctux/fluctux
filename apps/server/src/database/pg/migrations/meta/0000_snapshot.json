@@ -141,12 +141,8 @@
           "name": "organizations_created_by_app_users_id_fk",
           "tableFrom": "organizations",
           "tableTo": "app_users",
-          "columnsFrom": [
-            "created_by"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["created_by"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -156,9 +152,7 @@
         "organizations_id_unique": {
           "name": "organizations_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "policies": {},
@@ -276,12 +270,8 @@
           "name": "org_teams_team_org_organizations_id_fk",
           "tableFrom": "org_teams",
           "tableTo": "organizations",
-          "columnsFrom": [
-            "team_org"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["team_org"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -291,9 +281,7 @@
         "org_teams_id_unique": {
           "name": "org_teams_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "policies": {},
@@ -371,12 +359,8 @@
           "name": "org_members_app_user_app_users_id_fk",
           "tableFrom": "org_members",
           "tableTo": "app_users",
-          "columnsFrom": [
-            "app_user"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["app_user"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -384,12 +368,8 @@
           "name": "org_members_organization_organizations_id_fk",
           "tableFrom": "org_members",
           "tableTo": "organizations",
-          "columnsFrom": [
-            "organization"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["organization"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -513,16 +493,12 @@
         "user_id_unique": {
           "name": "user_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         },
         "app_users_email_unique": {
           "name": "app_users_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         }
       },
       "policies": {},
@@ -601,12 +577,8 @@
           "name": "user_addresses_app_user_app_users_id_fk",
           "tableFrom": "user_addresses",
           "tableTo": "app_users",
-          "columnsFrom": [
-            "app_user"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["app_user"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -616,9 +588,7 @@
         "user_addresses_id_unique": {
           "name": "user_addresses_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "policies": {},
@@ -690,12 +660,8 @@
           "name": "user_contacts_app_user_app_users_id_fk",
           "tableFrom": "user_contacts",
           "tableTo": "app_users",
-          "columnsFrom": [
-            "app_user"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["app_user"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -705,9 +671,7 @@
         "user_contacts_id_unique": {
           "name": "user_contacts_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "policies": {},
@@ -787,12 +751,8 @@
           "name": "user_profiles_app_user_app_users_id_fk",
           "tableFrom": "user_profiles",
           "tableTo": "app_users",
-          "columnsFrom": [
-            "app_user"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["app_user"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -802,9 +762,7 @@
         "user_profiles_id_unique": {
           "name": "user_profiles_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "policies": {},
@@ -825,77 +783,42 @@
     "public.org_status_enum": {
       "name": "org_status_enum",
       "schema": "public",
-      "values": [
-        "NORMAL",
-        "SUSPENDED",
-        "RESTRICTED"
-      ]
+      "values": ["NORMAL", "SUSPENDED", "RESTRICTED"]
     },
     "public.org_visibility_enum": {
       "name": "org_visibility_enum",
       "schema": "public",
-      "values": [
-        "PUBLIC",
-        "PRIVATE",
-        "CONNECTIONS",
-        "CUSTOM"
-      ]
+      "values": ["PUBLIC", "PRIVATE", "CONNECTIONS", "CUSTOM"]
     },
     "public.tm_status_enm": {
       "name": "tm_status_enm",
       "schema": "public",
-      "values": [
-        "DRAFT",
-        "PUBLISHED"
-      ]
+      "values": ["DRAFT", "PUBLISHED"]
     },
     "public.org_team_visibility_enum": {
       "name": "org_team_visibility_enum",
       "schema": "public",
-      "values": [
-        "PUBLIC",
-        "PRIVATE"
-      ]
+      "values": ["PUBLIC", "PRIVATE"]
     },
     "public.org_member_role_enum": {
       "name": "org_member_role_enum",
       "schema": "public",
-      "values": [
-        "FOLLOWER",
-        "MANAGER",
-        "CONTRIBUTOR",
-        "ADMIN"
-      ]
+      "values": ["FOLLOWER", "MANAGER", "CONTRIBUTOR", "ADMIN"]
     },
     "public.org_member_status_enum": {
       "name": "org_member_status_enum",
       "schema": "public",
-      "values": [
-        "NOMRAL",
-        "RESTRICTED",
-        "BLOCKED",
-        "PENDING",
-        "REJECTED"
-      ]
+      "values": ["NOMRAL", "RESTRICTED", "BLOCKED", "PENDING", "REJECTED"]
     },
     "public.user_account_provider_enum": {
       "name": "user_account_provider_enum",
       "schema": "public",
-      "values": [
-        "GOOGLE",
-        "GITHUB",
-        "DISCORD",
-        "MANUAL"
-      ]
+      "values": ["GOOGLE", "GITHUB", "DISCORD", "MANUAL"]
     },
     "public.user_account_status_enum": {
       "name": "user_account_status_enum",
       "schema": "public",
-      "values": [
-        "NORMAL",
-        "SUSPENDED",
-        "RESTRICTED"
-      ]
+      "values": ["NORMAL", "SUSPENDED", "RESTRICTED"]
     }
   },
   "schemas": {},

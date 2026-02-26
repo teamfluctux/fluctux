@@ -13,7 +13,7 @@ export class KanbanKafkaService extends KafkaService {
         .status(201)
         .json({ message: new ApiResponse(201, "Kafka topic created") });
     } catch (error) {
-       throw new ApiError(ERROR.UNAUTHORIZED_USER)
+      throw new ApiError(ERROR.UNAUTHORIZED_USER);
     }
   }
 }

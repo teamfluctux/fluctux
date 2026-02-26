@@ -35,14 +35,13 @@ export const org_members = pgTable("org_members", {
   ...timestamps,
 });
 
-
-export const orgMemberRelations = relations(org_members, ({one}) => ({
+export const orgMemberRelations = relations(org_members, ({ one }) => ({
   app_user: one(app_users, {
     fields: [org_members.app_user],
-    references: [app_users.id]
+    references: [app_users.id],
   }),
   organization: one(organizations, {
     fields: [org_members.organization],
-    references: [organizations.id]
-  })
-}))
+    references: [organizations.id],
+  }),
+}));

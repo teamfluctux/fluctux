@@ -32,8 +32,8 @@ const customLevels = {
   },
 };
 
-export type CustomLogLevels = keyof typeof customLevels.levels
-export type CustomLogColors = keyof typeof customLevels.colors
+export type CustomLogLevels = keyof typeof customLevels.levels;
+export type CustomLogColors = keyof typeof customLevels.colors;
 
 addColors(customLevels.colors);
 
@@ -48,7 +48,10 @@ const LoggerOptions: LoggerOptionsType = {
   levels: customLevels.levels,
   format: format.combine(
     format.timestamp({
-      format: process.env.NODE_ENV === "development" ? "HH:mm:ss": "DD-MM-YYYY HH:mm:ss",
+      format:
+        process.env.NODE_ENV === "development"
+          ? "HH:mm:ss"
+          : "DD-MM-YYYY HH:mm:ss",
     }),
     format.json(),
     format.colorize(),

@@ -25,7 +25,6 @@ export const user_addresses = pgTable(
   ]
 );
 
-
 export const userContactRelations = relations(user_addresses, ({ one }) => ({
   app_user: one(app_users, {
     fields: [user_addresses.app_user],

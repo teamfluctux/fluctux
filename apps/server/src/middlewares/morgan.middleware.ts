@@ -6,27 +6,37 @@ export const morganRequestLogger = () => {
   return morgan(
     function (tokens, req, res) {
       return [
-        tokens.method?.(req, res), 
+        tokens.method?.(req, res),
         tokens.url?.(req, res),
         tokens.status?.(req, res),
         tokens.res?.(req, res, "content-length"),
-        tokens["response-time"]?.(req, res), 
+        tokens["response-time"]?.(req, res),
         tokens["remote-addr"]?.(req, res),
         "ms",
-      ].join("="); 
-    }, 
+      ].join("=");
+    },
     {
-      skip(req, res) { 
-        return BaseConfig.NODE_ENV === "production"
+      skip(req, res) {
+        return BaseConfig.NODE_ENV === "production";
       },
       stream: {
         write: (message) => {
-          const [method, url, status, content_length, response_time, remote_addr] =
-            message.split("=");
-    
+          const [
+            method,
+            url,
+            status,
+            content_length,
+            response_time,
+            remote_addr,
+          ] = message.split("=");
+
           const statusNumber = Number(status);
           const logLevel: CustomLogLevels =
-            statusNumber <= 300 ? "success" : statusNumber >= 300 && statusNumber <= 399 ? "warn" : "error";
+            statusNumber <= 300
+              ? "success"
+              : statusNumber >= 300 && statusNumber <= 399
+                ? "warn"
+                : "error";
           const logMessage = `[${method}:${url}] Status: ${status} | Length: ${content_length} | ${remote_addr} | Time: ${response_time} ms`;
           if (BaseConfig.NODE_ENV !== "production") {
             logger.log(`${logLevel}`, logMessage);

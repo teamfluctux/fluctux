@@ -3,10 +3,7 @@ import { check } from "drizzle-orm/pg-core";
 import * as t from "drizzle-orm/pg-core";
 import { v4 as uuidv4 } from "uuid";
 import { app_users } from "../user";
-import {
-  ORG_STATUS_VALUES,
-  ORG_VISIBILITY_VALUES,
-} from "@fluctux/constants";
+import { ORG_STATUS_VALUES, ORG_VISIBILITY_VALUES } from "@fluctux/constants";
 import { isDeleted, timestamps } from "../helper";
 import { relations, sql } from "drizzle-orm";
 import { CATEGORY_LENGTH, IMAGE_URL_LENGTH, TAG_LENGTH } from "../constant";
@@ -54,7 +51,7 @@ export const organizations = pgTable(
   ]
 );
 
-export const orgRelations = relations(organizations, ({many}) => ({
+export const orgRelations = relations(organizations, ({ many }) => ({
   org_members: many(org_members),
-  org_teams: many(org_teams)
-}))
+  org_teams: many(org_teams),
+}));

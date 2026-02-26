@@ -1,12 +1,12 @@
 import { type ApiErrorType } from "@fluctux/types";
-import { type ERROR } from "@/constants/http-status"
+import { type ERROR } from "@/constants/http-status";
 
 export class ApiError extends Error implements ApiErrorType {
   public success?: boolean;
-  public status: number
+  public status: number;
   constructor(
     public error: (typeof ERROR)[keyof typeof ERROR],
-    override stack?: string,
+    override stack?: string
   ) {
     super(error.message);
     this.status = error.status;

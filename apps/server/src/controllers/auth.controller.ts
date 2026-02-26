@@ -27,8 +27,7 @@ class AuthController extends AuthService {
       /**  check if code is in req
        * if code not exist return unauthorized error
        */
-      if (!code)
-         throw new ApiError(ERROR.UNAUTHORIZED_USER)
+      if (!code) throw new ApiError(ERROR.UNAUTHORIZED_USER);
 
       // Get the idToken and refreshToken from google via passing the code
       const { idToken, refreshToken } = await this.google.getGoogleAuthtokens(
@@ -41,7 +40,7 @@ class AuthController extends AuthService {
        * it will help to getSession from specific provider
        */
       if (!idToken || !refreshToken) {
-        throw new ApiError(ERROR.SERVICE_UNAVAILABLE)
+        throw new ApiError(ERROR.SERVICE_UNAVAILABLE);
       }
 
       // encrypt tokens ===============================================
@@ -106,7 +105,7 @@ class AuthController extends AuthService {
     } catch (error) {
       console.log(error);
 
-      throw new Error()
+      throw new Error();
     }
   }
 

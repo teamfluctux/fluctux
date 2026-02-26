@@ -8,7 +8,9 @@ async function main() {
   await seed(pgDb, { app_users: table.app_users }, { count: 10 });
 
   // 2. fetch the inserted user IDs
-  const users = await pgDb.select({ id: table.app_users.id }).from(table.app_users);
+  const users = await pgDb
+    .select({ id: table.app_users.id })
+    .from(table.app_users);
 
   // 3. manually insert child tables
   await pgDb.insert(table.user_profiles).values(
@@ -28,7 +30,9 @@ async function main() {
     }))
   );
 
-  const orgs = await pgDb.select({ id: table.organizations.id }).from(table.organizations);
+  const orgs = await pgDb
+    .select({ id: table.organizations.id })
+    .from(table.organizations);
 
   await pgDb.insert(table.org_members).values(
     users.map((u, i) => ({

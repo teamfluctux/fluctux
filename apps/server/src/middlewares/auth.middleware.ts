@@ -38,8 +38,7 @@ export async function authenticateUser(
 
     // await redisAuthClient.removeAuthTokens("")
 
-    throw new ApiError(ERROR.UNAUTHORIZED_USER)
-
+    throw new ApiError(ERROR.UNAUTHORIZED_USER);
   }
 
   // extracting values from encrypted jwt values
@@ -64,7 +63,7 @@ export async function authenticateUser(
     !decryptedRefreshToken.refreshToken ||
     !decryptedDeviceIdToken.deviceId
   ) {
-    throw new ApiError(ERROR.UNAUTHORIZED_USER)
+    throw new ApiError(ERROR.UNAUTHORIZED_USER);
   }
 
   // if not idtoken in req or idtoken is not valid then renew the idtoken
@@ -79,7 +78,7 @@ export async function authenticateUser(
 
     // if idToken is not created or returned correctly return invalid request
     if (!newIdToken) {
-      throw new ApiError(ERROR.INVALID_REQUEST)
+      throw new ApiError(ERROR.INVALID_REQUEST);
     }
 
     // rotate jwt tokens
@@ -113,7 +112,7 @@ export async function authenticateUser(
     });
 
     if (!redisResponse) {
-      throw new Error()
+      throw new Error();
     }
 
     console.log("new id token generated");
@@ -155,7 +154,7 @@ export async function authenticateUser(
   if (!session) {
     console.log("session missing");
 
-    throw new ApiError(ERROR.UNAUTHORIZED_USER)
+    throw new ApiError(ERROR.UNAUTHORIZED_USER);
   }
 
   const user: UserSessionType = {
