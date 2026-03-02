@@ -7,9 +7,15 @@
     "**/*.css"
   ],
   "main": "tailwind.config.js",
+  "scripts": {
+    "build:tailwind": "tailwindcss -i ./index.css -o ./backup.css"
+  },
   "exports": {
     ".": "./tailwind.config.js",
     "./index.css": "./index.css",
     "./postcss.config.js": "./postcss.config.js"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^3.4.17"
   }
 }
