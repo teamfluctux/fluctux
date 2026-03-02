@@ -10,3 +10,12 @@ declare module "express" {
     newDeviceIdToken?: string;
   }
 }
+
+export type AsyncFnReturnType<
+  DataType = unknown,
+  ErrorType = unknown,
+> = Promise<{
+  data?: DataType | null;
+  message?: string | null;
+  error?: ErrorType | Error | null;
+}>;
