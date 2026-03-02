@@ -7,6 +7,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const reset_sql_file_path = path.join(__dirname, "reset.db.sql");
 
+let admin = false;
+
+process.argv.forEach((val) => {
+  if (val === "--admin") {
+    admin = true;
+  }
+});
+
+if (!admin)
+  throw new Error(
+    "Dangerous action: use --admin to confirm administrative privileges."
+  );
+
 if (process.env.NODE_ENV === "production") {
   console.error("❌ Database reset is disabled in production.");
   process.exit(1);
