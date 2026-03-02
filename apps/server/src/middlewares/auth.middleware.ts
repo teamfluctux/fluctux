@@ -105,14 +105,17 @@ export async function authenticateUser(
     });
 
     // save tokens to redis
-    const redisResponse = authRedisService.addOrUpdateAuthTokens({
+    const redisResponse = await authRedisService.addOrUpdateAuthTokens({
       refreshToken: ecryptedRefreshToken,
       deviceIdToken: encryptedDeviceIdToken,
       providerToken: encryptedProviderName,
     });
 
-    if (!redisResponse) {
-      throw new Error();
+    if (redisResponse.error) {
+      throw new ApiError({
+        ...ERROR.INVALID_TOKEN,
+        message: redisResponse.message.toString(),
+      });
     }
 
     console.log("new id token generated");

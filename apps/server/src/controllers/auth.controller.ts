@@ -72,11 +72,18 @@ class AuthController extends AuthService {
 
       // store necessary tokens on redis
 
-      authRedisService.addOrUpdateAuthTokens({
+      const redisResponse = await authRedisService.addOrUpdateAuthTokens({
         refreshToken: ecryptedRefreshToken,
         deviceIdToken: encryptedDeviceIdToken,
         providerToken: encryptedProviderName,
       });
+
+      if (redisResponse.error) {
+        throw new ApiError({
+          ...ERROR.INVALID_TOKEN,
+          message: redisResponse.message.toString(),
+        });
+      }
 
       // send cookies to the user
       res.cookie(

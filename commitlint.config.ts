@@ -90,7 +90,7 @@ const Configuration: UserConfig = {
     "header-trim": [RuleConfigSeverity.Error, "never"],
     "subject-case": [RuleConfigSeverity.Error, "always", ["lower-case"]],
     "subject-empty": [RuleConfigSeverity.Error, "never"],
-    "subject-max-length": [RuleConfigSeverity.Error, "always", 50],
+    "subject-max-length": [RuleConfigSeverity.Error, "always", 70],
     "scope-case": [RuleConfigSeverity.Error, "always", ["lower-case"]],
     "scope-delimiter-style": [RuleConfigSeverity.Error, "always", [","]],
     "body-case": [RuleConfigSeverity.Error, "always", ["sentence-case"]],

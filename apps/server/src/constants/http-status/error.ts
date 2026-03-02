@@ -1,4 +1,11 @@
 export enum CustomErrorEnums {
+  "UNAUTHORIZED_USER" = "UNAUTHORIZED_USER",
+  "USER_NOT_FOUND" = "USER_NOT_FOUND",
+  "INVALID_REQUEST" = "INVALID_REQUEST",
+  "INVALID_TOKEN" = "INVALID_TOKEN",
+}
+
+export enum HttpErrorEnums {
   "BAD_REQUEST" = "BAD_REQUEST",
   "UNAUTHORIZED" = "UNAUTHORIZED",
   "PAYMENT_REQUIRED" = "PAYMENT_REQUIRED",
@@ -39,297 +46,301 @@ export enum CustomErrorEnums {
   "LOOP_DETECTED" = "LOOP_DETECTED",
   "NOT_EXTENDED" = "NOT_EXTENDED",
   "NETWORK_AUTHENTICATION_REQUIRED" = "NETWORK_AUTHENTICATION_REQUIRED",
-  // custom error codes
-  "UNAUTHORIZED_USER" = "UNAUTHORIZED_USER",
-  "USER_NOT_FOUND" = "USER_NOT_FOUND",
-  "INVALID_REQUEST" = "INVALID_REQUEST",
 }
 
-export enum HTTPErrorCodes {
-  "BAD_REQUEST" = 400,
-  "UNAUTHORIZED" = 401,
-  "PAYMENT_REQUIRED" = 402,
-  "FORBIDDEN" = 403,
-  "NOT_FOUND" = 404,
-  "METHOD_NOT_ALLOWED" = 405,
-  "NOT_ACCEPTABLE" = 406,
-  "PROXY_AUTHENTICATION_REQUIRED" = 407,
-  "REQUEST_TIMEOUT" = 408,
-  "CONFLICT" = 409,
-  "GONE" = 410,
-  "LENGTH_REQUIRED" = 411,
-  "PRECONDITION_FAILED" = 412,
-  "PAYLOAD_TOO_LARGE" = 413,
-  "URI_TOO_LONG" = 414,
-  "UNSUPPORTED_MEDIA_TYPE" = 415,
-  "RANGE_NOT_SATISFIABLE" = 416,
-  "EXPECTATION_FAILED" = 417,
-  "IM_A_TEAPOT" = 418,
-  "MISDIRECTED_REQUEST" = 421,
-  "UNPROCESSABLE_ENTITY" = 422,
-  "LOCKED" = 423,
-  "FAILED_DEPENDENCY" = 424,
-  "TOO_EARLY" = 425,
-  "UPGRADE_REQUIRED" = 426,
-  "PRECONDITION_REQUIRED" = 428,
-  "TOO_MANY_REQUESTS" = 429,
-  "REQUEST_HEADER_FIELDS_TOO_LARGE" = 431,
-  "UNAVAILABLE_FOR_LEGAL_REASONS" = 451,
-  "INTERNAL_SERVER_ERROR" = 500,
-  "NOT_IMPLEMENTED" = 501,
-  "BAD_GATEWAY" = 502,
-  "SERVICE_UNAVAILABLE" = 503,
-  "GATEWAY_TIMEOUT" = 504,
-  "HTTP_VERSION_NOT_SUPPORTED" = 505,
-  "VARIANT_ALSO_NEGOTIATES" = 506,
-  "INSUFFICIENT_STORAGE" = 507,
-  "LOOP_DETECTED" = 508,
-  "NOT_EXTENDED" = 510,
-  "NETWORK_AUTHENTICATION_REQUIRED" = 511,
-}
+export const HTTPErrorCodes: Record<HttpErrorEnums, number> = {
+  [HttpErrorEnums.BAD_REQUEST]: 400,
+  [HttpErrorEnums.UNAUTHORIZED]: 401,
+  [HttpErrorEnums.PAYMENT_REQUIRED]: 402,
+  [HttpErrorEnums.FORBIDDEN]: 403,
+  [HttpErrorEnums.NOT_FOUND]: 404,
+  [HttpErrorEnums.METHOD_NOT_ALLOWED]: 405,
+  [HttpErrorEnums.NOT_ACCEPTABLE]: 406,
+  [HttpErrorEnums.PROXY_AUTHENTICATION_REQUIRED]: 407,
+  [HttpErrorEnums.REQUEST_TIMEOUT]: 408,
+  [HttpErrorEnums.CONFLICT]: 409,
+  [HttpErrorEnums.GONE]: 410,
+  [HttpErrorEnums.LENGTH_REQUIRED]: 411,
+  [HttpErrorEnums.PRECONDITION_FAILED]: 412,
+  [HttpErrorEnums.PAYLOAD_TOO_LARGE]: 413,
+  [HttpErrorEnums.URI_TOO_LONG]: 414,
+  [HttpErrorEnums.UNSUPPORTED_MEDIA_TYPE]: 415,
+  [HttpErrorEnums.RANGE_NOT_SATISFIABLE]: 416,
+  [HttpErrorEnums.EXPECTATION_FAILED]: 417,
+  [HttpErrorEnums.IM_A_TEAPOT]: 418,
+  [HttpErrorEnums.MISDIRECTED_REQUEST]: 421,
+  [HttpErrorEnums.UNPROCESSABLE_ENTITY]: 422,
+  [HttpErrorEnums.LOCKED]: 423,
+  [HttpErrorEnums.FAILED_DEPENDENCY]: 424,
+  [HttpErrorEnums.TOO_EARLY]: 425,
+  [HttpErrorEnums.UPGRADE_REQUIRED]: 426,
+  [HttpErrorEnums.PRECONDITION_REQUIRED]: 428,
+  [HttpErrorEnums.TOO_MANY_REQUESTS]: 429,
+  [HttpErrorEnums.REQUEST_HEADER_FIELDS_TOO_LARGE]: 431,
+  [HttpErrorEnums.UNAVAILABLE_FOR_LEGAL_REASONS]: 451,
+  [HttpErrorEnums.INTERNAL_SERVER_ERROR]: 500,
+  [HttpErrorEnums.NOT_IMPLEMENTED]: 501,
+  [HttpErrorEnums.BAD_GATEWAY]: 502,
+  [HttpErrorEnums.SERVICE_UNAVAILABLE]: 503,
+  [HttpErrorEnums.GATEWAY_TIMEOUT]: 504,
+  [HttpErrorEnums.HTTP_VERSION_NOT_SUPPORTED]: 505,
+  [HttpErrorEnums.VARIANT_ALSO_NEGOTIATES]: 506,
+  [HttpErrorEnums.INSUFFICIENT_STORAGE]: 507,
+  [HttpErrorEnums.LOOP_DETECTED]: 508,
+  [HttpErrorEnums.NOT_EXTENDED]: 510,
+  [HttpErrorEnums.NETWORK_AUTHENTICATION_REQUIRED]: 511,
+};
 
 // Custom error codes (X0000)
-export enum CustomHTTPErrorCodes {
-  "USER_NOT_FOUND" = 1000,
-  "UNAUTHORIZED_USER" = 1001,
-  "INVALID_REQUEST" = 1002,
-}
+export const CustomHTTPErrorCodes: Record<CustomErrorEnums, number> = {
+  [CustomErrorEnums.USER_NOT_FOUND]: 1000,
+  [CustomErrorEnums.UNAUTHORIZED_USER]: 1001,
+  [CustomErrorEnums.INVALID_REQUEST]: 1002,
+  [CustomErrorEnums.INVALID_TOKEN]: 1003,
+};
 
 export const ERROR: {
-  [key in CustomErrorEnums]: {
+  [key in CustomErrorEnums | HttpErrorEnums]: {
     title: string;
     message: string;
     status: number;
     code?: number;
   };
 } = {
-  [CustomErrorEnums.BAD_REQUEST]: {
+  [HttpErrorEnums.BAD_REQUEST]: {
     title: "Bad Request",
     message: "The request cannot be processed due to client error.",
-    status: HTTPErrorCodes[CustomErrorEnums.BAD_REQUEST],
+    status: HTTPErrorCodes.BAD_REQUEST,
   },
-  [CustomErrorEnums.UNAUTHORIZED]: {
+  [HttpErrorEnums.UNAUTHORIZED]: {
     title: "Unauthorized",
     message:
       "You are not authorized to access this resource. Please log in or check your permissions.",
-    status: HTTPErrorCodes[CustomErrorEnums.UNAUTHORIZED],
+    status: HTTPErrorCodes.UNAUTHORIZED,
   },
-  [CustomErrorEnums.PAYMENT_REQUIRED]: {
+  [HttpErrorEnums.PAYMENT_REQUIRED]: {
     title: "Payment Required",
     message: "Payment is required to access this resource.",
-    status: HTTPErrorCodes[CustomErrorEnums.PAYMENT_REQUIRED],
+    status: HTTPErrorCodes.PAYMENT_REQUIRED,
   },
-  [CustomErrorEnums.FORBIDDEN]: {
+  [HttpErrorEnums.FORBIDDEN]: {
     title: "Forbidden",
     message: "You do not have permission to access this resource.",
-    status: HTTPErrorCodes[CustomErrorEnums.FORBIDDEN],
+    status: HTTPErrorCodes.FORBIDDEN,
   },
-  [CustomErrorEnums.NOT_FOUND]: {
+  [HttpErrorEnums.NOT_FOUND]: {
     title: "Not Found",
     message: "The requested resource could not be found.",
-    status: HTTPErrorCodes[CustomErrorEnums.NOT_FOUND],
+    status: HTTPErrorCodes.NOT_FOUND,
   },
-  [CustomErrorEnums.METHOD_NOT_ALLOWED]: {
+  [HttpErrorEnums.METHOD_NOT_ALLOWED]: {
     title: "Method Not Allowed",
     message: "The HTTP method used is not allowed for this resource.",
-    status: HTTPErrorCodes[CustomErrorEnums.METHOD_NOT_ALLOWED],
+    status: HTTPErrorCodes.METHOD_NOT_ALLOWED,
   },
-  [CustomErrorEnums.NOT_ACCEPTABLE]: {
+  [HttpErrorEnums.NOT_ACCEPTABLE]: {
     title: "Not Acceptable",
     message: "The request made is not acceptable.",
-    status: HTTPErrorCodes[CustomErrorEnums.NOT_ACCEPTABLE],
+    status: HTTPErrorCodes.NOT_ACCEPTABLE,
   },
-  [CustomErrorEnums.PROXY_AUTHENTICATION_REQUIRED]: {
+  [HttpErrorEnums.PROXY_AUTHENTICATION_REQUIRED]: {
     title: "Proxy Authentication Required",
     message: "Proxy authentication is required to access this resource.",
-    status: HTTPErrorCodes[CustomErrorEnums.PROXY_AUTHENTICATION_REQUIRED],
+    status: HTTPErrorCodes.PROXY_AUTHENTICATION_REQUIRED,
   },
-  [CustomErrorEnums.REQUEST_TIMEOUT]: {
+  [HttpErrorEnums.REQUEST_TIMEOUT]: {
     title: "Request Timeout",
     message: "The request took too long to process.",
-    status: HTTPErrorCodes[CustomErrorEnums.REQUEST_TIMEOUT],
+    status: HTTPErrorCodes.REQUEST_TIMEOUT,
   },
-  [CustomErrorEnums.CONFLICT]: {
+  [HttpErrorEnums.CONFLICT]: {
     title: "Conflict",
     message: "The request conflicts with the current state of the server.",
-    status: HTTPErrorCodes[CustomErrorEnums.CONFLICT],
+    status: HTTPErrorCodes.CONFLICT,
   },
-  [CustomErrorEnums.GONE]: {
+  [HttpErrorEnums.GONE]: {
     title: "Gone",
     message: "The requested resource is no longer available.",
-    status: HTTPErrorCodes[CustomErrorEnums.GONE],
+    status: HTTPErrorCodes.GONE,
   },
-  [CustomErrorEnums.LENGTH_REQUIRED]: {
+  [HttpErrorEnums.LENGTH_REQUIRED]: {
     title: "Length Required",
     message: "The request did not specify the length of its content.",
-    status: HTTPErrorCodes[CustomErrorEnums.LENGTH_REQUIRED],
+    status: HTTPErrorCodes.LENGTH_REQUIRED,
   },
-  [CustomErrorEnums.PRECONDITION_FAILED]: {
+  [HttpErrorEnums.PRECONDITION_FAILED]: {
     title: "Precondition Failed",
     message: "One or more preconditions in the request headers failed.",
-    status: HTTPErrorCodes[CustomErrorEnums.PRECONDITION_FAILED],
+    status: HTTPErrorCodes.PRECONDITION_FAILED,
   },
-  [CustomErrorEnums.PAYLOAD_TOO_LARGE]: {
+  [HttpErrorEnums.PAYLOAD_TOO_LARGE]: {
     title: "Payload Too Large",
     message: "The request payload is too large to process.",
-    status: HTTPErrorCodes[CustomErrorEnums.PAYLOAD_TOO_LARGE],
+    status: HTTPErrorCodes.PAYLOAD_TOO_LARGE,
   },
-  [CustomErrorEnums.URI_TOO_LONG]: {
+  [HttpErrorEnums.URI_TOO_LONG]: {
     title: "URI Too Long",
     message: "The request URI is too long to process.",
-    status: HTTPErrorCodes[CustomErrorEnums.URI_TOO_LONG],
+    status: HTTPErrorCodes.URI_TOO_LONG,
   },
-  [CustomErrorEnums.UNSUPPORTED_MEDIA_TYPE]: {
+  [HttpErrorEnums.UNSUPPORTED_MEDIA_TYPE]: {
     title: "Unsupported Media Type",
     message: "The media type of the request is not supported.",
-    status: HTTPErrorCodes[CustomErrorEnums.UNSUPPORTED_MEDIA_TYPE],
+    status: HTTPErrorCodes.UNSUPPORTED_MEDIA_TYPE,
   },
-  [CustomErrorEnums.RANGE_NOT_SATISFIABLE]: {
+  [HttpErrorEnums.RANGE_NOT_SATISFIABLE]: {
     title: "Range Not Satisfiable",
     message: "The requested range cannot be satisfied.",
-    status: HTTPErrorCodes[CustomErrorEnums.RANGE_NOT_SATISFIABLE],
+    status: HTTPErrorCodes.RANGE_NOT_SATISFIABLE,
   },
-  [CustomErrorEnums.EXPECTATION_FAILED]: {
+  [HttpErrorEnums.EXPECTATION_FAILED]: {
     title: "Expectation Failed",
     message: "The server cannot meet the requirements of the Expect header.",
-    status: HTTPErrorCodes[CustomErrorEnums.EXPECTATION_FAILED],
+    status: HTTPErrorCodes.EXPECTATION_FAILED,
   },
-  [CustomErrorEnums.IM_A_TEAPOT]: {
+  [HttpErrorEnums.IM_A_TEAPOT]: {
     title: "I'm a Teapot",
     message: "The server refuses to brew coffee because it is a teapot.",
-    status: HTTPErrorCodes[CustomErrorEnums.IM_A_TEAPOT],
+    status: HTTPErrorCodes.IM_A_TEAPOT,
   },
-  [CustomErrorEnums.MISDIRECTED_REQUEST]: {
+  [HttpErrorEnums.MISDIRECTED_REQUEST]: {
     title: "Misdirected Request",
     message:
       "The request was directed at a server that is not able to produce a response.",
-    status: HTTPErrorCodes[CustomErrorEnums.MISDIRECTED_REQUEST],
+    status: HTTPErrorCodes.MISDIRECTED_REQUEST,
   },
-  [CustomErrorEnums.UNPROCESSABLE_ENTITY]: {
+  [HttpErrorEnums.UNPROCESSABLE_ENTITY]: {
     title: "Unprocessable Entity",
     message: "The request was well-formed but contains semantic errors.",
-    status: HTTPErrorCodes[CustomErrorEnums.UNPROCESSABLE_ENTITY],
+    status: HTTPErrorCodes.UNPROCESSABLE_ENTITY,
   },
-  [CustomErrorEnums.LOCKED]: {
+  [HttpErrorEnums.LOCKED]: {
     title: "Locked",
     message: "The resource is locked and cannot be accessed.",
-    status: HTTPErrorCodes[CustomErrorEnums.LOCKED],
+    status: HTTPErrorCodes.LOCKED,
   },
-  [CustomErrorEnums.FAILED_DEPENDENCY]: {
+  [HttpErrorEnums.FAILED_DEPENDENCY]: {
     title: "Failed Dependency",
     message: "The request failed due to failure of a previous request.",
-    status: HTTPErrorCodes[CustomErrorEnums.FAILED_DEPENDENCY],
+    status: HTTPErrorCodes.FAILED_DEPENDENCY,
   },
-  [CustomErrorEnums.TOO_EARLY]: {
+  [HttpErrorEnums.TOO_EARLY]: {
     title: "Too Early",
     message:
       "The server is unwilling to process a request that might be replayed.",
-    status: HTTPErrorCodes[CustomErrorEnums.TOO_EARLY],
+    status: HTTPErrorCodes.TOO_EARLY,
   },
-  [CustomErrorEnums.UPGRADE_REQUIRED]: {
+  [HttpErrorEnums.UPGRADE_REQUIRED]: {
     title: "Upgrade Required",
     message: "The client should switch to a different protocol.",
-    status: HTTPErrorCodes[CustomErrorEnums.UPGRADE_REQUIRED],
+    status: HTTPErrorCodes.UPGRADE_REQUIRED,
   },
-  [CustomErrorEnums.PRECONDITION_REQUIRED]: {
+  [HttpErrorEnums.PRECONDITION_REQUIRED]: {
     title: "Precondition Required",
     message: "The request must be conditional.",
-    status: HTTPErrorCodes[CustomErrorEnums.PRECONDITION_REQUIRED],
+    status: HTTPErrorCodes.PRECONDITION_REQUIRED,
   },
-  [CustomErrorEnums.TOO_MANY_REQUESTS]: {
+  [HttpErrorEnums.TOO_MANY_REQUESTS]: {
     title: "Too Many Requests",
     message: "You have sent too many requests in a given amount of time.",
-    status: HTTPErrorCodes[CustomErrorEnums.TOO_MANY_REQUESTS],
+    status: HTTPErrorCodes.TOO_MANY_REQUESTS,
   },
-  [CustomErrorEnums.REQUEST_HEADER_FIELDS_TOO_LARGE]: {
+  [HttpErrorEnums.REQUEST_HEADER_FIELDS_TOO_LARGE]: {
     title: "Request Header Fields Too Large",
     message: "The request header fields are too large.",
-    status: HTTPErrorCodes[CustomErrorEnums.REQUEST_HEADER_FIELDS_TOO_LARGE],
+    status: HTTPErrorCodes.REQUEST_HEADER_FIELDS_TOO_LARGE,
   },
-  [CustomErrorEnums.UNAVAILABLE_FOR_LEGAL_REASONS]: {
+  [HttpErrorEnums.UNAVAILABLE_FOR_LEGAL_REASONS]: {
     title: "Unavailable For Legal Reasons",
     message: "The resource is unavailable for legal reasons.",
-    status: HTTPErrorCodes[CustomErrorEnums.UNAVAILABLE_FOR_LEGAL_REASONS],
+    status: HTTPErrorCodes.UNAVAILABLE_FOR_LEGAL_REASONS,
   },
-  [CustomErrorEnums.INTERNAL_SERVER_ERROR]: {
+  [HttpErrorEnums.INTERNAL_SERVER_ERROR]: {
     title: "Something went wrong",
     message:
       "There might be a technical issue. We are working on resolving it. Please try again later.",
-    status: HTTPErrorCodes[CustomErrorEnums.INTERNAL_SERVER_ERROR],
+    status: HTTPErrorCodes.INTERNAL_SERVER_ERROR,
   },
-  [CustomErrorEnums.NOT_IMPLEMENTED]: {
+  [HttpErrorEnums.NOT_IMPLEMENTED]: {
     title: "Not Implemented",
     message:
       "The server does not support the functionality required to fulfill the request.",
-    status: HTTPErrorCodes[CustomErrorEnums.NOT_IMPLEMENTED],
+    status: HTTPErrorCodes.NOT_IMPLEMENTED,
   },
-  [CustomErrorEnums.BAD_GATEWAY]: {
+  [HttpErrorEnums.BAD_GATEWAY]: {
     title: "Bad Gateway",
     message:
       "The server received an invalid response from the upstream server.",
-    status: HTTPErrorCodes[CustomErrorEnums.BAD_GATEWAY],
+    status: HTTPErrorCodes.BAD_GATEWAY,
   },
-  [CustomErrorEnums.SERVICE_UNAVAILABLE]: {
+  [HttpErrorEnums.SERVICE_UNAVAILABLE]: {
     title: "Service unavailable for a reason.",
     message: "There might be a technical issue or client issue.",
-    status: HTTPErrorCodes[CustomErrorEnums.SERVICE_UNAVAILABLE],
+    status: HTTPErrorCodes.SERVICE_UNAVAILABLE,
   },
-  [CustomErrorEnums.GATEWAY_TIMEOUT]: {
+  [HttpErrorEnums.GATEWAY_TIMEOUT]: {
     title: "Gateway Timeout",
     message:
       "The server did not receive a timely response from the upstream server.",
-    status: HTTPErrorCodes[CustomErrorEnums.GATEWAY_TIMEOUT],
+    status: HTTPErrorCodes.GATEWAY_TIMEOUT,
   },
-  [CustomErrorEnums.HTTP_VERSION_NOT_SUPPORTED]: {
+  [HttpErrorEnums.HTTP_VERSION_NOT_SUPPORTED]: {
     title: "HTTP Version Not Supported",
     message: "The HTTP version used in the request is not supported.",
-    status: HTTPErrorCodes[CustomErrorEnums.HTTP_VERSION_NOT_SUPPORTED],
+    status: HTTPErrorCodes.HTTP_VERSION_NOT_SUPPORTED,
   },
-  [CustomErrorEnums.VARIANT_ALSO_NEGOTIATES]: {
+  [HttpErrorEnums.VARIANT_ALSO_NEGOTIATES]: {
     title: "Variant Also Negotiates",
     message: "The server has an internal configuration error.",
-    status: HTTPErrorCodes[CustomErrorEnums.VARIANT_ALSO_NEGOTIATES],
+    status: HTTPErrorCodes.VARIANT_ALSO_NEGOTIATES,
   },
-  [CustomErrorEnums.INSUFFICIENT_STORAGE]: {
+  [HttpErrorEnums.INSUFFICIENT_STORAGE]: {
     title: "Insufficient Storage",
     message:
       "The server is unable to store the representation needed to complete the request.",
-    status: HTTPErrorCodes[CustomErrorEnums.INSUFFICIENT_STORAGE],
+    status: HTTPErrorCodes.INSUFFICIENT_STORAGE,
   },
-  [CustomErrorEnums.LOOP_DETECTED]: {
+  [HttpErrorEnums.LOOP_DETECTED]: {
     title: "Loop Detected",
     message:
       "The server detected an infinite loop while processing the request.",
-    status: HTTPErrorCodes[CustomErrorEnums.LOOP_DETECTED],
+    status: HTTPErrorCodes.LOOP_DETECTED,
   },
-  [CustomErrorEnums.NOT_EXTENDED]: {
+  [HttpErrorEnums.NOT_EXTENDED]: {
     title: "Not Extended",
     message: "Further extensions to the request are required.",
-    status: HTTPErrorCodes[CustomErrorEnums.NOT_EXTENDED],
+    status: HTTPErrorCodes.NOT_EXTENDED,
   },
-  [CustomErrorEnums.NETWORK_AUTHENTICATION_REQUIRED]: {
+  [HttpErrorEnums.NETWORK_AUTHENTICATION_REQUIRED]: {
     title: "Network Authentication Required",
     message: "Network authentication is required to access this resource.",
-    status: HTTPErrorCodes[CustomErrorEnums.NETWORK_AUTHENTICATION_REQUIRED],
+    status: HTTPErrorCodes.NETWORK_AUTHENTICATION_REQUIRED,
   },
   // custom error codes
   [CustomErrorEnums.USER_NOT_FOUND]: {
     title: "User Not Found",
     message: "The user you are looking for does not exist.",
-    status: HTTPErrorCodes[CustomErrorEnums.BAD_REQUEST],
+    status: HTTPErrorCodes.BAD_REQUEST,
     code: CustomHTTPErrorCodes.USER_NOT_FOUND,
   },
   [CustomErrorEnums.INVALID_REQUEST]: {
     title: "Invalid Request",
     message: "The request made is invalid.",
-    status: HTTPErrorCodes[CustomErrorEnums.BAD_REQUEST],
+    status: HTTPErrorCodes.BAD_REQUEST,
     code: CustomHTTPErrorCodes.INVALID_REQUEST,
   },
   [CustomErrorEnums.UNAUTHORIZED_USER]: {
     title: "Unauthorized User",
     message:
       "You do not have permission to perform this action. Please ensure you are logged in with the correct account.",
-    status: HTTPErrorCodes[CustomErrorEnums.UNAUTHORIZED],
+    status: HTTPErrorCodes.UNAUTHORIZED,
+    code: CustomHTTPErrorCodes.UNAUTHORIZED_USER,
+  },
+  [CustomErrorEnums.INVALID_TOKEN]: {
+    title: "Invalid Token",
+    message:
+      "The provided token is invalid, malformed, expired, or has been tampered with.",
+    status: HTTPErrorCodes.BAD_REQUEST,
     code: CustomHTTPErrorCodes.UNAUTHORIZED_USER,
   },
 };
