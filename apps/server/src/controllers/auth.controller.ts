@@ -27,15 +27,7 @@ class AuthController extends AuthService {
       /**  check if code is in req
        * if code not exist return unauthorized error
        */
-      if (!code)
-        res.status(500).json({
-          error: new ApiError(
-            HTTPErrorCodes.UNAUTHORIZED,
-            "Unauthorized access!",
-            "",
-            [ERROR.UNAUTHORIZED_USER]
-          ),
-        });
+      if (!code) throw new ApiError(ERROR.UNAUTHORIZED_USER);
 
       // Get the idToken and refreshToken from google via passing the code
       const { idToken, refreshToken } = await this.google.getGoogleAuthtokens(
@@ -48,14 +40,7 @@ class AuthController extends AuthService {
        * it will help to getSession from specific provider
        */
       if (!idToken || !refreshToken) {
-        res.status(HTTPErrorCodes.SERVICE_UNAVAILABLE).json({
-          error: new ApiError(
-            HTTPErrorCodes.SERVICE_UNAVAILABLE,
-            "Tokens not provided by google",
-            "",
-            [ERROR.SERVICE_UNAVAILABLE]
-          ),
-        });
+        throw new ApiError(ERROR.SERVICE_UNAVAILABLE);
       }
 
       // encrypt tokens ===============================================
@@ -87,11 +72,18 @@ class AuthController extends AuthService {
 
       // store necessary tokens on redis
 
-      authRedisService.addOrUpdateAuthTokens({
+      const redisResponse = await authRedisService.addOrUpdateAuthTokens({
         refreshToken: ecryptedRefreshToken,
         deviceIdToken: encryptedDeviceIdToken,
         providerToken: encryptedProviderName,
       });
+
+      if (redisResponse.error) {
+        throw new ApiError({
+          ...ERROR.INVALID_TOKEN,
+          message: redisResponse.message.toString(),
+        });
+      }
 
       // send cookies to the user
       res.cookie(
@@ -120,11 +112,7 @@ class AuthController extends AuthService {
     } catch (error) {
       console.log(error);
 
-      res.status(500).json({
-        error: new ApiError(500, "Error sign in user vai google", "", [
-          ERROR.INTERNAL_SERVER_ERROR,
-        ]),
-      });
+      throw new Error();
     }
   }
 

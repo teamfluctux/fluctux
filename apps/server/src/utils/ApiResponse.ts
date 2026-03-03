@@ -1,18 +1,15 @@
 import { type ApiResponseType } from "@fluctux/types";
 
 export class ApiResponse implements ApiResponseType {
-  status: number;
-  message: string;
-  data?: unknown;
-  success?: boolean;
-
   constructor(
-    status: number,
-    message: string,
-    data: unknown = null,
-    success: boolean = status < 400
+    public status: number,
+    public message: string,
+    public data: unknown = null,
+    public success: boolean = status < 400,
+    public title: string = ""
   ) {
     this.status = status;
+    this.title = title;
     this.message = message;
     this.data = data;
     this.success = success;

@@ -1,32 +1,44 @@
-import { Config } from "@/config";
-import { logger } from "@fluctux/logger";
+import { BaseConfig } from "@/config";
+import { logger, type CustomLogLevels } from "@fluctux/logger";
 import morgan from "morgan";
 
 export const morganRequestLogger = () => {
   return morgan(
     function (tokens, req, res) {
       return [
-        tokens.method(req, res),
-        tokens.url(req, res),
-        tokens.status(req, res),
-        tokens.res(req, res, "content-length"),
-        tokens["response-time"](req, res),
+        tokens.method?.(req, res),
+        tokens.url?.(req, res),
+        tokens.status?.(req, res),
+        tokens.res?.(req, res, "content-length"),
+        tokens["response-time"]?.(req, res),
+        tokens["remote-addr"]?.(req, res),
         "ms",
       ].join("=");
     },
     {
       skip(req, res) {
-        return res.statusCode < (Config.nodeEnv === "production" ? 400 : 300);
+        return BaseConfig.NODE_ENV === "production";
       },
       stream: {
         write: (message) => {
-          const [method, url, status, content_length, response_time] =
-            message.split("=");
+          const [
+            method,
+            url,
+            status,
+            content_length,
+            response_time,
+            remote_addr,
+          ] = message.split("=");
+
           const statusNumber = Number(status);
-          const logLevel =
-            statusNumber >= 300 && statusNumber <= 399 ? "warn" : "error";
-          const logMessage = `[${method}:${url}] Status: ${status} | Length: ${content_length} | Time: ${response_time} ms`;
-          if (Config.nodeEnv !== "production") {
+          const logLevel: CustomLogLevels =
+            statusNumber <= 300
+              ? "success"
+              : statusNumber >= 300 && statusNumber <= 399
+                ? "warn"
+                : "error";
+          const logMessage = `[${method}:${url}] Status: ${status} | Length: ${content_length} | ${remote_addr} | Time: ${response_time} ms`;
+          if (BaseConfig.NODE_ENV !== "production") {
             logger.log(`${logLevel}`, logMessage);
           }
         },

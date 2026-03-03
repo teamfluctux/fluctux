@@ -1,11 +1,5 @@
-import {
-  createLogger,
-  format,
-  LoggerOptions as LoggerOptionsType,
-  transports,
-  addColors,
-  Logger,
-} from "winston";
+import type { LoggerOptions as LoggerOptionsType, Logger } from "winston";
+import { createLogger, format, transports, addColors } from "winston";
 import { npm } from "winston/lib/winston/config";
 
 type LogMetadata = {
@@ -38,6 +32,9 @@ const customLevels = {
   },
 };
 
+export type CustomLogLevels = keyof typeof customLevels.levels;
+export type CustomLogColors = keyof typeof customLevels.colors;
+
 addColors(customLevels.colors);
 
 const CustomLoggerFormat = format.printf(
@@ -51,7 +48,10 @@ const LoggerOptions: LoggerOptionsType = {
   levels: customLevels.levels,
   format: format.combine(
     format.timestamp({
-      format: "DD-MM-YYYY HH:mm:ss",
+      format:
+        process.env.NODE_ENV === "development"
+          ? "HH:mm:ss"
+          : "DD-MM-YYYY HH:mm:ss",
     }),
     format.json(),
     format.colorize(),

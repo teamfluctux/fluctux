@@ -1,4 +1,3 @@
-import React from "react";
 import type { SizeType } from "./type";
 import { FxFavSVGIcon } from "./icons/fav-icon";
 

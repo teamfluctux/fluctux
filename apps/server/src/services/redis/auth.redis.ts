@@ -1,5 +1,6 @@
 import { jwtManager } from "@/utils/jwt_manager";
 import { RedisService } from "./redis.service";
+import type { AsyncFnReturnType } from "types/types";
 
 class AuthRedisService extends RedisService {
   async addOrUpdateAuthTokens({
@@ -10,7 +11,7 @@ class AuthRedisService extends RedisService {
     refreshToken: string;
     providerToken: string;
     deviceIdToken: string;
-  }) {
+  }): AsyncFnReturnType {
     try {
       await this.connectRedis();
 
@@ -20,7 +21,7 @@ class AuthRedisService extends RedisService {
       });
 
       if (!decryptedDeviceID.deviceId) {
-        return null;
+        return { error: true, message: "Invalid device id token." };
       }
 
       const response = await this.redisClient.hSet(
@@ -45,21 +46,21 @@ class AuthRedisService extends RedisService {
        * record device id to database after login
        * after log outs remove the deivce id from database
        */
-      const responsehexpireAuthTokens = await this.redisClient.hExpire(
-        `${decryptedDeviceID?.deviceId}`,
-        ["refreshToken", "providerToken", "deviceIdToken"],
-        60
-      );
+      // const responsehexpireAuthTokens = await this.redisClient.hExpire(
+      //   `${decryptedDeviceID?.deviceId}`,
+      //   ["refreshToken", "providerToken", "deviceIdToken"],
+      //   60
+      // );
 
-      return response;
+      return { message: response.toString() };
     } catch (error) {
-      return null;
+      return { error, message: "Something went wrong in redis operation." };
     } finally {
       await this.quitRedis();
     }
   }
 
-  async removeAuthTokens(deviceID: string): Promise<{} | null> {
+  async removeAuthTokens(deviceID: string): AsyncFnReturnType {
     try {
       await this.connectRedis();
       const response = await this.redisClient.hExpire(
@@ -67,9 +68,9 @@ class AuthRedisService extends RedisService {
         ["refreshToken", "providerToken", "deviceIdToken"],
         0
       );
-      return response;
+      return { message: response.toString() };
     } catch (error) {
-      return null;
+      return { error, message: "Something went wrong in redis operation." };
     } finally {
       await this.quitRedis();
     }

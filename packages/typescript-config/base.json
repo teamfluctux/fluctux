@@ -26,6 +26,7 @@
     "skipLibCheck": true,
     "target": "esnext",
     "tsBuildInfoFile": ".turbo/tsconfig.tsbuildinfo",
-    "verbatimModuleSyntax": false
-  }
+    "verbatimModuleSyntax": true
+  },
+  "exclude": ["dist", "build", "node_modules"]
 }

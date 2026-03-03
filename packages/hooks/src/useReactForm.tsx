@@ -1,7 +1,6 @@
-import React from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldValues, useForm } from "react-hook-form";
+import { type FieldValues, useForm } from "react-hook-form";
 
 interface UseReactFormPropsType<T extends z.ZodTypeAny> {
   ZOD_SCHEMA: T;

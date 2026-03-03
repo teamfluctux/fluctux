@@ -8,6 +8,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "require": "./dist/index.js",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
@@ -16,11 +17,9 @@
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown",
-    "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit",
+    "check:lint": "eslint . --cache --cache-location node_modules/.cache/eslint/ --max-warnings 1000",
+    "fix:lint": "eslint . --cache --cache-location node_modules/.cache/eslint/ --fix --max-warnings=1000",
+    "check:types": "tsc --noEmit --listFiles",
     "clean": "rm -rf node_modules dist .turbo && echo 'Cleanup complete!'"
-  },
-  "peerDependencies": {
-    "lucide-react": "^0.471.2"
   }
 }

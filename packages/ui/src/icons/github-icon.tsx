@@ -33,7 +33,7 @@ export const GithubIcon: React.FC<SvgType> = ({
         stroke="none"
         strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         {" "}
         <g

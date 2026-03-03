@@ -1,4 +1,4 @@
-import { UserSessionType } from "@fluctux/types";
+import type { UserSessionType } from "@fluctux/types";
 
 declare module "express" {
   // Inject additional properties on express.Request
@@ -12,10 +12,10 @@ declare module "express" {
 }
 
 export type AsyncFnReturnType<
-  DataType = unknown,
-  ErrorType = unknown,
+  GDataType = unknown,
+  GErrorType = unknown,
 > = Promise<{
-  data?: DataType | null;
-  message?: string | null;
-  error?: ErrorType | Error | null;
+  data?: GDataType | null;
+  message: string;
+  error?: GErrorType | Error | null;
 }>;

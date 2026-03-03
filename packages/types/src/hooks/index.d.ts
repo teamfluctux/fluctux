@@ -1,1 +1,1 @@
-export * from "./use-task-bar";
+export * from "./use-task-bar.d.ts";

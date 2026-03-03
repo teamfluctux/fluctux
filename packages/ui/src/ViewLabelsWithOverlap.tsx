@@ -58,6 +58,8 @@ export const ViewLabelsWithOverlap = ({
                       </Avatar>
                     );
                   }
+
+                  return null;
                 })}
               </div>
             </div>

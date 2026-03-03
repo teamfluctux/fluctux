@@ -37,15 +37,8 @@ export async function authenticateUser(
      */
 
     // await redisAuthClient.removeAuthTokens("")
-    res.status(401).json({
-      error: new ApiError(401, "Unauthorized access!", "", [
-        ERROR.UNAUTHORIZED_USER,
-        "Missing or invalid refresh token",
-        "Missing or invalid provider token",
-        "Missing or invalid deviceId Token",
-      ]),
-    });
-    return;
+
+    throw new ApiError(ERROR.UNAUTHORIZED_USER);
   }
 
   // extracting values from encrypted jwt values
@@ -70,14 +63,7 @@ export async function authenticateUser(
     !decryptedRefreshToken.refreshToken ||
     !decryptedDeviceIdToken.deviceId
   ) {
-    res.status(400).json({
-      error: new ApiError(
-        HTTPErrorCodes.UNAUTHORIZED,
-        "Unauthorized access!",
-        "",
-        [ERROR.UNAUTHORIZED_USER, "Invalid Tokens"]
-      ),
-    });
+    throw new ApiError(ERROR.UNAUTHORIZED_USER);
   }
 
   // if not idtoken in req or idtoken is not valid then renew the idtoken
@@ -92,12 +78,7 @@ export async function authenticateUser(
 
     // if idToken is not created or returned correctly return invalid request
     if (!newIdToken) {
-      res.status(400).json({
-        error: new ApiError(400, "Invalid request", "", [
-          ERROR.INVALID_REQUEST,
-        ]),
-      });
-      return;
+      throw new ApiError(ERROR.INVALID_REQUEST);
     }
 
     // rotate jwt tokens
@@ -124,22 +105,17 @@ export async function authenticateUser(
     });
 
     // save tokens to redis
-    const redisResponse = authRedisService.addOrUpdateAuthTokens({
+    const redisResponse = await authRedisService.addOrUpdateAuthTokens({
       refreshToken: ecryptedRefreshToken,
       deviceIdToken: encryptedDeviceIdToken,
       providerToken: encryptedProviderName,
     });
 
-    if (!redisResponse) {
-      res.status(HTTPErrorCodes.INTERNAL_SERVER_ERROR).json({
-        error: new ApiError(
-          HTTPErrorCodes.INTERNAL_SERVER_ERROR,
-          "Something went wrong!",
-          "",
-          [ERROR.INTERNAL_SERVER_ERROR]
-        ),
+    if (redisResponse.error) {
+      throw new ApiError({
+        ...ERROR.INVALID_TOKEN,
+        message: redisResponse.message.toString(),
       });
-      return;
     }
 
     console.log("new id token generated");
@@ -181,13 +157,7 @@ export async function authenticateUser(
   if (!session) {
     console.log("session missing");
 
-    res.status(401).json({
-      error: new ApiError(401, "Unauthorized access!", "", [
-        ERROR.UNAUTHORIZED_USER,
-        "Invalid session",
-      ]),
-    });
-    return;
+    throw new ApiError(ERROR.UNAUTHORIZED_USER);
   }
 
   const user: UserSessionType = {
