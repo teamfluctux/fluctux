@@ -11,7 +11,7 @@
     "build:tailwind": "tailwindcss -i ./index.css -o ./backup.css"
   },
   "exports": {
-    ".": "./tailwind.config.js",
+    "./tailwind.config.js": "./tailwind.config.js",
     "./index.css": "./index.css",
     "./postcss.config.js": "./postcss.config.js"
   },

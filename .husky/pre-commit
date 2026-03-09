@@ -1,4 +1,4 @@
 pnpm format
 pnpm i --filter "./packages/tailwind-config"
-pnpm --filter "./packages/tailwind-config" run build:tailwind
+
 git add -A .
