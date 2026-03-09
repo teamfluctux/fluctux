@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 // import global style
-import "@fluctux/ui/styles/global.css";
+import "@fluctux/tailwind-config/index.css";
 
 import "./styles/auth.style.css";
 import { ThemeProvider } from "next-themes";

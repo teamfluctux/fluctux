@@ -1,6 +1,5 @@
 "use client";
-import { ThemeToggler } from "@fluctux/shared";
-import { FxButton, FxFavIcon } from "@fluctux/ui";
+import { FxButton, FxFavIcon, ThemeToggler } from "@fluctux/ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";

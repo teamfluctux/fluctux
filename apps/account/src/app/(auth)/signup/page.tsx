@@ -3,16 +3,16 @@
 import { Heading } from "@/components";
 import { useReactForm } from "@fluctux/hooks";
 import { FxButton, FxInput, FxSeparator, GoogleIcon, Label } from "@fluctux/ui";
-import { userZodSchema } from "@fluctux/zod";
+import { signupZodSchema } from "@fluctux/zod";
 import Link from "next/link";
 import { z } from "zod";
 
 export default function SignUpPage() {
   const { register, handleSubmit, errors } = useReactForm({
-    ZOD_SCHEMA: userZodSchema,
+    ZOD_SCHEMA: signupZodSchema,
   });
 
-  const onSubmit = (data: z.infer<typeof userZodSchema>) => {
+  const onSubmit = (data: z.infer<typeof signupZodSchema>) => {
     console.log(data.fname);
     console.log(data.lname);
     console.log(data.email);
