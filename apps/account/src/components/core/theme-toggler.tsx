@@ -40,7 +40,7 @@ export const ThemeToggler = () => {
     }
   };
   return (
-    <div className="fx-flex-center w-fit rounded-[50px] border border-border-color_1 p-[2px]">
+    <div className="fx-flex-center w-fit rounded-tablet border border-border-color_1 p-[2px]">
       <ul className="fx-flex-center w-fit relative">
         {THEME_ICONS.map((item, i) => {
           const Icon = item.icon;
@@ -48,7 +48,7 @@ export const ThemeToggler = () => {
             <li
               onClick={() => handleChangeAppearanceMode(i)}
               key={i}
-              className={`z-[1] cursor-pointer group rounded-[50%] flex-shrink-0 w-[30px] h-[30px]  fx-flex-center   ${activeIndex === i ? " text-text-color_1" : "text-text-icon_default"} `}
+              className={`z-1 cursor-pointer group rounded-circle shrink-0 w-[30px] h-[30px]  fx-flex-center   ${activeIndex === i ? " text-text-color_1" : "text-text-icon_default"} `}
             >
               <Icon
                 size={18}

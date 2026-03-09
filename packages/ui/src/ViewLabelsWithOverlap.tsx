@@ -42,7 +42,7 @@ export const ViewLabelsWithOverlap = ({
                     return (
                       <Avatar
                         key={task.label}
-                        className={`w-[20px] h-[20px] border-border-color_1 !ring-0 border outline-none ${!task.image ? "!w-fit !h-fit !p-0 !bg-transparent border-none" : " "} ${avatarClassname}`}
+                        className={`w-[20px] h-[20px] border-border-color_1 ring-0! border outline-hidden ${!task.image ? "w-fit! h-fit! p-0! bg-transparent! border-none" : " "} ${avatarClassname}`}
                       >
                         {task.image ? (
                           <AvatarImage

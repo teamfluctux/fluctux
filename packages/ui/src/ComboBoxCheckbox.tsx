@@ -57,7 +57,7 @@ export const ComboBoxCheckbox = ({
       <PopoverTrigger asChild>{popoverTriggerComponent}</PopoverTrigger>
       <PopoverContent
         align="start"
-        className="w-[200px] p-0 z-[9992] bg-background-color_900C border border-border-color_1"
+        className="w-[200px] p-0 z-9992 bg-background-color_900C border border-border-color_1"
         {...popoverProps}
       >
         <Command>
@@ -68,7 +68,7 @@ export const ComboBoxCheckbox = ({
           )}
           <CommandList>
             <CommandEmpty>
-              <span className="!text-text-color_3 text-workspace_2 font-medium">
+              <span className="text-text-color_3! text-workspace_2 font-medium">
                 Not Found
               </span>
             </CommandEmpty>
@@ -78,9 +78,9 @@ export const ComboBoxCheckbox = ({
                 return (
                   <Label
                     key={combo.value}
-                    className="hover:bg-background-color_800C transition-colors text-text-color_4 hover:!text-text-color_1 justify-start items-center gap-2 rounded-tiny"
+                    className="hover:bg-background-color_800C transition-colors text-text-color_4 hover:text-text-color_1! justify-start items-center gap-2 rounded-tiny"
                   >
-                    <CommandItem className="!bg-transparent rounded-none">
+                    <CommandItem className="bg-transparent! rounded-none">
                       <Checkbox
                         checked={comboCheckedData.some(
                           (data) => data.value === combo.value

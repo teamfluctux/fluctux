@@ -14,7 +14,7 @@ interface FxSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
 type FxSeparatorSizeType = SizeType | "tiny";
 
 const sepOrnAttributes: { [key in OrientationType]: string } = {
-  vertical: "w-full rotate-[90deg]",
+  vertical: "w-full rotate-90",
   horizontal: "w-full",
 };
 
@@ -54,7 +54,7 @@ export function FxSeparator({
           width: size && `${size}`,
         }}
       />
-      <div className="absolute bg-transparent z-[1]">{children}</div>
+      <div className="absolute bg-transparent z-1">{children}</div>
     </div>
   );
 }

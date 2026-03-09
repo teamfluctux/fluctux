@@ -46,18 +46,18 @@ export const GridHeaderCustomMenu: React.FC<GridHeaderProps> = (props) => {
         {doesShowFilter && (
           <button
             onClick={(e) => showFilter(e.currentTarget)}
-            className="flex items-center gap-2 text-text-color_2 flex-shrink-0 hover:bg-background-color_800C w-[25px] h-[25px] justify-center rounded-tiny hover:text-text-color_1"
+            className="flex items-center gap-2 text-text-color_2 shrink-0 hover:bg-background-color_800C w-[25px] h-[25px] justify-center rounded-tiny hover:text-text-color_1"
           >
             <BiFilterAlt />
           </button>
         )}
         <Popover>
           <PopoverTrigger asChild>
-            <button className="flex items-center gap-2 text-text-color_2 flex-shrink-0 hover:bg-background-color_800C w-[25px] h-[25px] justify-center rounded-tiny hover:text-text-color_1">
+            <button className="flex items-center gap-2 text-text-color_2 shrink-0 hover:bg-background-color_800C w-[25px] h-[25px] justify-center rounded-tiny hover:text-text-color_1">
               <ChevronDown size={16} />
             </button>
           </PopoverTrigger>
-          <PopoverContent className="w-fit !shadow-lg" align="end">
+          <PopoverContent className="w-fit shadow-lg!" align="end">
             <div className="p-1.5 border border-border-color_1 rounded-tiny bg-background-color_925C w-[200px]">
               {children && typeof children === "function"
                 ? children(props)

@@ -14,7 +14,7 @@ export const AgGridMenuListButton = ({
   const Icon = icon || null;
   return (
     <button
-      className={`w-full px-2 py-1 rounded-[3px] text-workspace_3 hover:bg-background-color_800C group font-medium text-text-color_2 flex justify-start items-center gap-2 hover:text-text-color_1 transition-colors ${className} ${active && "!text-text-color_1"}`}
+      className={`w-full px-2 py-1 rounded-[3px] text-workspace_3 hover:bg-background-color_800C group font-medium text-text-color_2 flex justify-start items-center gap-2 hover:text-text-color_1 transition-colors ${className} ${active && "text-text-color_1!"}`}
       {...props}
     >
       {Icon && (
@@ -24,10 +24,10 @@ export const AgGridMenuListButton = ({
         />
       )}
       <div className="flex justify-between items-center w-full">
-        <div className="flex justify-start items-center gap-2 flex-shrink-0">
+        <div className="flex justify-start items-center gap-2 shrink-0">
           {children}
         </div>
-        <div className=" flex-shrink-0">{active && <Check size={16} />}</div>
+        <div className=" shrink-0">{active && <Check size={16} />}</div>
       </div>
     </button>
   );

@@ -20,7 +20,7 @@ export default function AuthWrapperLayout({
         <div className="w-fit fixed top-2 right-2">
           <ThemeToggler />
         </div>
-        <div className=" w-fit rounded-[8px] p-2 mb-5 bg-gradient-to-tr dark:from-[var(--background)] from-[#b7b7b7] dark:to-[#232323] to-[#ffffff] relative login-fx-logo-box mx-auto ">
+        <div className=" w-fit rounded-[8px] p-2 mb-5 bg-linear-to-tr dark:from-(--background) from-[#b7b7b7] dark:to-[#232323] to-[#ffffff] relative login-fx-logo-box mx-auto ">
           <FxFavIcon size="sm" variant="theme" />
         </div>
         <AnimatePresence mode="wait">
@@ -47,7 +47,7 @@ export default function AuthWrapperLayout({
                 <FxButton
                   variant="secondary"
                   radius="tablet"
-                  className="relative rgb-animation !py-1.5"
+                  className="relative rgb-animation py-1.5!"
                 >
                   Create Account
                 </FxButton>
@@ -62,7 +62,7 @@ export default function AuthWrapperLayout({
                 <FxButton
                   variant="surface_indigo"
                   radius="tablet"
-                  className="!py-1.5"
+                  className="py-1.5!"
                 >
                   Login
                 </FxButton>
@@ -71,7 +71,7 @@ export default function AuthWrapperLayout({
           )}
         </div>
       )}
-      {/* <div className="absolute inset-0 -z-10 h-full w-full bg-[var(--background)] [background:radial-gradient(125%_125%_at_50%_10%,var(--background)_40%,#6aeeae1b_100%)]"></div> */}
+      {/* <div className="absolute inset-0 -z-10 h-full w-full bg-(--background) [background:radial-gradient(125%_125%_at_50%_10%,var(--background)_40%,#6aeeae1b_100%)]"></div> */}
     </section>
   );
 }

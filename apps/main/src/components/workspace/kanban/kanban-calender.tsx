@@ -36,7 +36,7 @@ export const KanbanCalender = () => {
           <FxInput
             id="date"
             value={value}
-            className="px-2 py-1 w-full !text-workspace_1"
+            className="px-2 py-1 w-full text-workspace_1!"
             placeholder="June 01, 2025"
             variant="outline"
             label="Define your date"

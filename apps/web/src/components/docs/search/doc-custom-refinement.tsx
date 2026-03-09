@@ -28,7 +28,7 @@ export default function DocCustomRefinementList(props: UseRefinementListProps) {
         {items.map((item) => (
           <li
             key={item.label}
-            className={`${item.isRefined ? "fx-third-bg text-[var(--foreground)]" : "fx-label-color"} font-medium p-2  pt-1 pb-1 rounded-[5px] flex-shrink-0`}
+            className={`${item.isRefined ? "fx-third-bg text-(--foreground)" : "fx-label-color"} font-medium p-2  pt-1 pb-1 rounded-tiny shrink-0`}
           >
             <label className="cursor-pointer flex flex-col justify-center items-start">
               <input
@@ -39,7 +39,7 @@ export default function DocCustomRefinementList(props: UseRefinementListProps) {
               />
               <div className="fx-flex-cl gap-2">
                 <div
-                  className={`w-[30px] h-[30px] rounded-[5px] border fx-border-color fx-flex-center ${item.isRefined && "fx-primary-purple-transparent-bg border-none"} flex-shrink-0`}
+                  className={`w-[30px] h-[30px] rounded-tiny border fx-border-color fx-flex-center ${item.isRefined && "fx-primary-purple-transparent-bg border-none"} shrink-0`}
                 >
                   {item.value === "user" ? <UserIcon /> : <CodeIcon />}
                 </div>
@@ -48,12 +48,12 @@ export default function DocCustomRefinementList(props: UseRefinementListProps) {
                     <span>
                       {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
                     </span>
-                    <span className="p-[1px] w-[25px] h-[25px] text-[13px] rounded-[50px] border fx-border-color flex-shrink-0 fx-flex-center text-[var(--primary-color)] ">
+                    <span className="p-px w-[25px] h-[25px] text-workspace_3 rounded-tablet border fx-border-color shrink-0 fx-flex-center text-(--primary-color) ">
                       {" "}
                       {item.count}
                     </span>
                   </div>
-                  <span className="text-[13px] fx-sec-label-color">
+                  <span className="text-workspace_3 fx-sec-label-color">
                     {item.value === "user"
                       ? "Search as User"
                       : "Search as Developer"}

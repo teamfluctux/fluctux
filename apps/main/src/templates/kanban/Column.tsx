@@ -71,7 +71,7 @@ export const KanbanColumn = observer((props: KanbanColumnPropsType) => {
             {...attributes}
             {...listeners}
             variant="ghost_zinc_2"
-            className={`!w-[23px] !h-[23px] cursor-grab !p-0 absolute transition-all left-[-100%] group-hover:!left-0 top-1/2 -translate-y-1/2`}
+            className={`w-[23px]! h-[23px]! cursor-grab p-0! absolute transition-all -left-full group-hover:left-0! top-1/2 -translate-y-1/2`}
             radius="tiny"
           >
             <GripVertical size={LUCIDE_WORKSPACE_ICON_SIZE} />
@@ -83,17 +83,17 @@ export const KanbanColumn = observer((props: KanbanColumnPropsType) => {
             </h3>
           </div>
         </div>
-        <div className="w-fit justify-end items-center gap-2 flex pr-3 flex-shrink-0">
+        <div className="w-fit justify-end items-center gap-2 flex pr-3 shrink-0">
           <FxButton
             variant="ghost_zinc_2"
-            className={`!w-[23px] !h-[23px] !p-0  `}
+            className={`w-[23px]! h-[23px]! p-0!  `}
             radius="tiny"
           >
             <Ellipsis size={LUCIDE_WORKSPACE_ICON_SIZE} />
           </FxButton>
           <FxButton
             variant="ghost_zinc_2"
-            className={`!w-[23px] !h-[23px]  !p-0  `}
+            className={`w-[23px]! h-[23px]!  p-0!  `}
             radius="tiny"
           >
             <PlusIcon size={LUCIDE_WORKSPACE_ICON_SIZE} />

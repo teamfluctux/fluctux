@@ -24,7 +24,7 @@ export const CommandMenuSkeleton = () => {
       <div className="border-t border-border-color_1 pt-2  px-2">
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -33,7 +33,7 @@ export const CommandMenuSkeleton = () => {
         </div>
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -42,7 +42,7 @@ export const CommandMenuSkeleton = () => {
         </div>
         <div className="flex justify-start items-center gap-2 mb-2">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -54,7 +54,7 @@ export const CommandMenuSkeleton = () => {
       <div className="border-t border-border-color_1 pt-2 px-2">
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -63,7 +63,7 @@ export const CommandMenuSkeleton = () => {
         </div>
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}

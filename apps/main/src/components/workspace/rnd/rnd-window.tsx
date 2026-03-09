@@ -146,7 +146,7 @@ export const RndWindows = observer(() => {
       <>
         <div
           className={cn(
-            "w-full h-full absolute hidden opacity-[20%] top-0 left-0 p-2 z-40",
+            "w-full h-full absolute hidden opacity-20 top-0 left-0 p-2 z-40",
             enabledFullWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -155,7 +155,7 @@ export const RndWindows = observer(() => {
 
         <div
           className={cn(
-            "w-full h-1/2 absolute hidden opacity-[20%] top-0 left-0 z-40 p-2",
+            "w-full h-1/2 absolute hidden opacity-20 top-0 left-0 z-40 p-2",
             enabledTopWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -164,7 +164,7 @@ export const RndWindows = observer(() => {
 
         <div
           className={cn(
-            "w-1/2 h-full absolute hidden opacity-[20%] top-0 left-0 z-40 p-2",
+            "w-1/2 h-full absolute hidden opacity-20 top-0 left-0 z-40 p-2",
             enabledLeftWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -173,7 +173,7 @@ export const RndWindows = observer(() => {
 
         <div
           className={cn(
-            "w-1/2 h-full absolute hidden opacity-[20%] top-0 right-0 z-40 p-2",
+            "w-1/2 h-full absolute hidden opacity-20 top-0 right-0 z-40 p-2",
             enabledRightWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -182,7 +182,7 @@ export const RndWindows = observer(() => {
 
         <div
           className={cn(
-            "w-full h-1/2 absolute hidden opacity-[20%] bottom-0 left-0 z-40 p-2",
+            "w-full h-1/2 absolute hidden opacity-20 bottom-0 left-0 z-40 p-2",
             enabledBottomWindow && "animate-fadeUpWinPlaceHolder flex"
           )}
         >
@@ -452,7 +452,7 @@ export const RndWindows = observer(() => {
             ========================================================================== */}
       <div
         className={cn(
-          "w-[100%] max-w-[500px] z-50 absolute bottom-[-57px] p-2 bg-transparent transition-all duration-300",
+          "w-full max-w-[500px] z-50 absolute bottom-[-57px] p-2 bg-transparent transition-all duration-300",
           allowIntelligentAutoHideTaskBar
             ? showTaskBar && "bottom-0 "
             : "bottom-0"
@@ -496,7 +496,7 @@ export const RndWindows = observer(() => {
               <TooltipContent
                 align="start"
                 sideOffset={15}
-                className="z-[52] bg-background-color_800C fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]"
+                className="z-52 bg-background-color_800C fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]"
               >
                 {taskbarItems.map((item, i) => (
                   <div
@@ -551,7 +551,7 @@ export const RndWindows = observer(() => {
               <TooltipContent
                 align="start"
                 sideOffset={15}
-                className="z-[52] bg-background-color_800C fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]"
+                className="z-52 bg-background-color_800C fx-flex-between-ic gap-1 p-1 w-fit h-[150px] border border-border-color_2 rounded-[8px_!important]"
               >
                 {/* 
                 DATA STRUCTURE FOR TASKBAR ITEMS

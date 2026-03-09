@@ -36,7 +36,7 @@ export function InfiniteHits({
         {Object.keys(groupedHits).map((title, i) => (
           <React.Fragment key={i}>
             <div
-              className={`pl-3 text-[16px] font-medium ${i === 0 ? "mt-2" : "mt-7"}`}
+              className={`pl-3 text-read_16 font-medium ${i === 0 ? "mt-2" : "mt-7"}`}
             >
               {title
                 .replace(/^\d+-/, "")

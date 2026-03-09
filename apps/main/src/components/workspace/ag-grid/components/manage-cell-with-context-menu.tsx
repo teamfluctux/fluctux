@@ -48,7 +48,7 @@ export const ManageCellWithContextMenu = forwardRef<
     <div className="group">
       {isEnableRightClickEdit ? (
         <ContextMenu>
-          <ContextMenuTrigger className="!px-4 !w-full flex flex-grow justify-start items-center !h-full hover:bg-surface-indigo-bg  hover:text-surface-indigo-fg">
+          <ContextMenuTrigger className="px-4! w-full! flex grow justify-start items-center h-full! hover:bg-surface-indigo-bg  hover:text-surface-indigo-fg">
             {props.value}
           </ContextMenuTrigger>
           <ContextMenuContent>{contextMenuComp}</ContextMenuContent>

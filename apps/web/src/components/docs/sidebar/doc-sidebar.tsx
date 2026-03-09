@@ -150,7 +150,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
   return (
     <>
       <aside
-        className={`w-[250px] h-screen sticky top-0 bg-background-color_950C flex-shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}
+        className={`w-[250px] h-screen sticky top-0 bg-background-color_950C shrink-0 doc-aside-nav transition-all duration-150 ease-out ${isDocAsideOpen ? "left-0" : " doc-aside-nav-off"}`}
       >
         <div
           onClick={docAsideToggleOpen}
@@ -171,7 +171,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             className="w-full fx-flex-cl gap-2 p-2 mb-3 "
             radius="primary"
           >
-            <div className="p-2 rounded-[5px]">
+            <div className="p-2 rounded-tiny">
               <FxFavIcon size="sm" variant="default" />
             </div>
             <div className="text-left">
@@ -187,16 +187,16 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             align="start"
             classNames={{
               button:
-                "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full bg-background-color_900C sticky top-[0px] z-[20] font-medium",
+                "fx-flex-cl rounded-[8px] gap-2 mb-3 p-2 w-full bg-background-color_900C sticky top-0 z-20 font-medium",
               activeLabel:
-                "hover:bg-[var(--background-color-800C)_!important] bg-[var(--background-color-800C)]",
+                "hover:bg-[var(--background-color-800C)_!important] bg-(--background-color-800C)",
               label:
-                "w-full fx-secondary-hover-bg p-2 hover:bg-[transparent] group",
+                "w-full fx-secondary-hover-bg p-2 hover:bg-transparent group",
               layout: "w-[230px] p-[0px_!important] overflow-hidden",
               labelIconContainer:
-                " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] group-hover:border group-hover:border-border-primary_indigo transition",
+                " p-2 rounded-tiny bg-(--indigo-transparent-1st) group-hover:border group-hover:border-border-primary_indigo transition",
               buttonSvgContainer:
-                " p-2 rounded-[5px] bg-[var(--indigo-transparent-1st)] ",
+                " p-2 rounded-tiny bg-(--indigo-transparent-1st) ",
             }}
             alignItems="vertical"
             buttonType="modern"
@@ -206,7 +206,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
             showDescInButton={true}
           />
 
-          <div className="w-full p-1 mb-3 border-border-color_1 rounded-[5px] backdrop-blur-md z-[15] sticky top-[60px] fx-flex-cl gap-2">
+          <div className="w-full p-1 mb-3 border-border-color_1 rounded-tiny backdrop-blur-md z-15 sticky top-[60px] fx-flex-cl gap-2">
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -233,7 +233,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                 <div key={i}>
                   {navItem.type === "dir" ? (
                     <button
-                      className={`font-medium text-workspace_1 relative z-[2] hover:bg-background-color_900C transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] text-text-color_2 ${isOpenFromArray(`${i}`) && "text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important] "}`}
+                      className={`font-medium text-workspace_1 relative z-2 hover:bg-background-color_900C transition w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-tiny text-text-color_2 ${isOpenFromArray(`${i}`) && "text-[var(--foreground)_!important]"} ${path_name.includes(navItem.path.split("/").slice(-1).toString()) && "text-[var(--primary-color)_!important] "}`}
                       onClick={() => handleOpenArray(`${i}`)}
                     >
                       <span>
@@ -255,7 +255,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                       }}
                     >
                       <button
-                        className={` text-workspace_1 hover:bg-background-color_900C transition hover:text-[var(--foreground)] w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-[5px] font-medium text-text-color_2 ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "bg-background-color_900C  text-[var(--primary-color)_!important]"}`}
+                        className={` text-workspace_1 hover:bg-background-color_900C transition hover:text-(--foreground) w-full fx-flex-between-ic p-1 pl-2 pr-2 rounded-tiny font-medium text-text-color_2 ${path_name.endsWith(`${navItem.name.replace(".mdx", "")}`) && "bg-background-color_900C  text-[var(--primary-color)_!important]"}`}
                       >
                         <span>
                           {navItem.name
@@ -272,10 +272,10 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                     // if there are type=file don't show this else show
                     navItem.type === "dir" && (
                       <div
-                        className={`ml-2 text-[15px] pl-2 flex relative flex-col border-l border-border-color_1 text-text-color_2  transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
+                        className={`ml-2 text-workspace_1 pl-2 flex relative flex-col border-l border-border-color_1 text-text-color_2  transition-all duration-150 ease-in-out ${isOpenFromArray(`${i}`) ? "max-h-full pt-2 pb-2  opacity-100" : "max-h-0 h-0 opacity-0 pt-0 pb-0"} overflow-hidden origin-top `}
                       >
                         <div
-                          className={`absolute z-[5] w-full  bg-gradient-to-t from-[var(--background)] to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}
+                          className={`absolute z-5 w-full  bg-linear-to-t from-(--background) to-transparent transition-all duration-700  bottom-0 origin-bottom h-full ${isOpenFromArray(`${i}`) ? "scale-y-0 h-0" : "scale-y-100"}`}
                         ></div>
                         {navItem.docNavTreeList?.map((navTreeItem, j) => {
                           const slug = `/docs/${navTreeItem.path.replace("src/content/docs/", "").replace(".mdx", "")}`;
@@ -286,7 +286,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                                 lessons.current[slug] = el;
                               }}
                               href={slug}
-                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50 text-workspace_1 font-medium  hover:text-fx_zinc-950 relative hover:bg-background-color_900C transition rounded-[5px] ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-text-indigo-color_1 bg-background-color_900C font-medium hover:text-[var(--primary-color)_!important]"}`}
+                              className={`p-1 pl-3 pr-0 dark:hover:text-fx_zinc-50 text-workspace_1 font-medium  hover:text-fx_zinc-950 relative hover:bg-background-color_900C transition rounded-tiny ${path_name.endsWith(`${navTreeItem.name.replace(".mdx", "")}`) && "text-text-indigo-color_1 bg-background-color_900C font-medium hover:text-[var(--primary-color)_!important]"}`}
                               onClick={(e) => {
                                 path_name === slug && e.preventDefault();
                                 localStorage.setItem(lessonKey, slug);
@@ -302,7 +302,7 @@ export default function DocSidebar({ docType, data }: DocSidebarPropsType) {
                               {path_name.endsWith(
                                 `${navTreeItem.name.replace(".mdx", "")}`
                               ) && (
-                                <span className="absolute transition left-[-0px] top-[50%] translate-y-[-50%] h-[16px] w-[3.5px] bg-background-indigo_primary z-10 rounded-[50px] "></span>
+                                <span className="absolute transition left-0 top-[50%] translate-y-[-50%] h-[16px] w-[3.5px] bg-background-indigo_primary z-10 rounded-tablet "></span>
                               )}
                             </Link>
                           );

@@ -35,19 +35,19 @@ export const StudentsListMainPage = () => {
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Fruits</SelectLabel>
-              <SelectItem value="apple" className="!text-text-color_4">
+              <SelectItem value="apple" className="text-text-color_4!">
                 Apple
               </SelectItem>
-              <SelectItem value="banana" className="!text-text-color_4">
+              <SelectItem value="banana" className="text-text-color_4!">
                 Banana
               </SelectItem>
-              <SelectItem value="blueberry" className="!text-text-color_4">
+              <SelectItem value="blueberry" className="text-text-color_4!">
                 Blueberry
               </SelectItem>
-              <SelectItem value="grapes" className="!text-text-color_4">
+              <SelectItem value="grapes" className="text-text-color_4!">
                 Grapes
               </SelectItem>
-              <SelectItem value="pineapple" className="!text-text-color_4">
+              <SelectItem value="pineapple" className="text-text-color_4!">
                 Pineapple
               </SelectItem>
             </SelectGroup>

@@ -51,13 +51,13 @@ export const HeroTabs = () => {
   );
 
   return (
-    <div className="w-full px-[1px]">
+    <div className="w-full px-px">
       <div>
         <div className=" left-1/2 -translate-x-1/2 w-fit relative h-[35px] pb-[0.4rem] flex justify-center items-center">
           {/* chrome tab */}
           <div
             ref={chromeTabRef}
-            className="w-[100px] left-0 h-full transition-all duration-500 absolute bg-gradient-to-t dark:from-fx_indigo-900 from-fx_indigo-400 dark:via-fx_indigo-900 via-fx_indigo-400 dark:to-fx_indigo-600 to-fx_indigo-300 backdrop-blur-3xl bottom-0 -z-10 rounded-t-[10px] chrome_tab "
+            className="w-[100px] left-0 h-full transition-all duration-500 absolute bg-linear-to-t dark:from-fx_indigo-900 from-fx_indigo-400 dark:via-fx_indigo-900 via-fx_indigo-400 dark:to-fx_indigo-600 to-fx_indigo-300 backdrop-blur-3xl bottom-0 -z-10 rounded-t-rounded_10C chrome_tab "
           ></div>
 
           {HERO_WORKSPACE_SLIDER_TYPE.map((item, i) => {
@@ -84,10 +84,10 @@ export const HeroTabs = () => {
         </div>
       </div>
 
-      <div className="w-full h-[650px] p-2 rounded-[25px] bg-gradient-to-t from-background-color_850C via-background-color_850C dark:to-fx_indigo-950 to-fx_indigo-300 hero_workspace_box relative">
-        <div className="absolute w-full h-[8px] bg-gradient-to-r from-transparent via-background-color_850C  to-transparent top-0 left-0"></div>
-        <div className=" w-[600px] absolute -z-10 left-[50%] -translate-x-1/2 -top-[110px] h-[600px] rounded-t-[50%] bg-background-indigo_primary  blur-[150px] opacity-35"></div>
-        <div className="w-full h-full bg-background-color_925C overflow-hidden rounded-[20px] border border-border-color_1">
+      <div className="w-full h-[650px] p-2 rounded-[25px] bg-linear-to-t from-background-color_850C via-background-color_850C dark:to-fx_indigo-950 to-fx_indigo-300 hero_workspace_box relative">
+        <div className="absolute w-full h-[8px] bg-linear-to-r from-transparent via-background-color_850C  to-transparent top-0 left-0"></div>
+        <div className=" w-[600px] absolute -z-10 left-[50%] -translate-x-1/2 -top-[110px] h-[600px] rounded-t-circle bg-background-indigo_primary  blur-[150px] opacity-35"></div>
+        <div className="w-full h-full bg-background-color_925C overflow-hidden rounded-rounded_20C border border-border-color_1">
           <Swiper
             onSwiper={(swiper) => {
               swiperRef.current = swiper;

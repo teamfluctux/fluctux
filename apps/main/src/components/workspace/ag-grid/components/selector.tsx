@@ -67,7 +67,7 @@ export const AgGridCellSelector = forwardRef<
 
   return (
     <Select value={selectedValue || ""} onValueChange={handleValueChange}>
-      <SelectTrigger className="!w-full !bg-transparent !border-none !h-full !px-4 hover:!bg-background-color_800C !ring-0 !outline-none  !rounded-none">
+      <SelectTrigger className="w-full! bg-transparent! border-none! h-full! px-4! hover:!bg-background-color_800C ring-0! outline-hidden!  rounded-none!">
         <SelectValue placeholder="Select" />
       </SelectTrigger>
       <SelectContent className="!bg-background-color_900C">
@@ -76,7 +76,7 @@ export const AgGridCellSelector = forwardRef<
             <SelectItem
               key={shift}
               value={shift}
-              className="!text-text-color_4"
+              className="text-text-color_4!"
             >
               {shift.replace(/^\w/, (c) => c.toUpperCase())}
             </SelectItem>

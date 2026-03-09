@@ -16,7 +16,7 @@ const fetcher = async (graphQLParams: any) => {
 
 export default function DocGraphiQl() {
   return (
-    <div className="h-screen pt-[64px]">
+    <div className="h-screen workspace-exclude-header">
       <GraphiQL className="h-screen" fetcher={fetcher} />
     </div>
   );

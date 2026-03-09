@@ -7,7 +7,7 @@ export const SidebarSkeletonLoading = () => {
       <div className="mb-1">
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -17,7 +17,7 @@ export const SidebarSkeletonLoading = () => {
 
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -27,7 +27,7 @@ export const SidebarSkeletonLoading = () => {
 
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -39,7 +39,7 @@ export const SidebarSkeletonLoading = () => {
       <div className="mb-1">
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -49,7 +49,7 @@ export const SidebarSkeletonLoading = () => {
 
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -59,7 +59,7 @@ export const SidebarSkeletonLoading = () => {
 
         <div className="flex justify-start items-center gap-2 mb-1">
           <Skeleton
-            className="flex-shrink-0"
+            className="shrink-0"
             width={16}
             height={16}
             borderRadius={"5px"}
@@ -73,7 +73,7 @@ export const SidebarSkeletonLoading = () => {
           <Skeleton width={222} height={16} borderRadius={"50px"} />
           <div className=" border-border-color_1 flex justify-start items-center gap-2">
             <Skeleton
-              className="flex-shrink-0"
+              className="shrink-0"
               width={16}
               height={16}
               borderRadius={"5px"}
@@ -82,7 +82,7 @@ export const SidebarSkeletonLoading = () => {
           </div>
           <div className=" border-border-color_1 flex justify-start items-center gap-2">
             <Skeleton
-              className="flex-shrink-0"
+              className="shrink-0"
               width={16}
               height={16}
               borderRadius={"5px"}
@@ -91,7 +91,7 @@ export const SidebarSkeletonLoading = () => {
           </div>
           <div className=" border-border-color_1 flex justify-start items-center gap-2">
             <Skeleton
-              className="flex-shrink-0"
+              className="shrink-0"
               width={16}
               height={16}
               borderRadius={"5px"}
@@ -103,7 +103,7 @@ export const SidebarSkeletonLoading = () => {
           <Skeleton width={222} height={16} borderRadius={"50px"} />
           <div className=" border-border-color_1 flex justify-start items-center gap-2">
             <Skeleton
-              className="flex-shrink-0"
+              className="shrink-0"
               width={16}
               height={16}
               borderRadius={"5px"}
@@ -112,7 +112,7 @@ export const SidebarSkeletonLoading = () => {
           </div>
           <div className=" border-border-color_1 flex justify-start items-center gap-2">
             <Skeleton
-              className="flex-shrink-0"
+              className="shrink-0"
               width={16}
               height={16}
               borderRadius={"5px"}
@@ -121,7 +121,7 @@ export const SidebarSkeletonLoading = () => {
           </div>
           <div className=" border-border-color_1 flex justify-start items-center gap-2">
             <Skeleton
-              className="flex-shrink-0"
+              className="shrink-0"
               width={16}
               height={16}
               borderRadius={"5px"}

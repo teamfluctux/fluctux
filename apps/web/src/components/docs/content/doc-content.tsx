@@ -87,14 +87,14 @@ export default function DocContent({ data }: DocContentPropsType) {
                     localStorage.setItem(lessonKey, path_name);
                   }}
                 >
-                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C transition-colors duration-150 fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left flex-shrink-0 gap-2">
+                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C transition-colors duration-150 fx-rounded p-3 pt-0 pb-0 fx-flex-cl text-left shrink-0 gap-2">
                     <div className="fx-flex-cl">
                       <RightArrowIcon className="rotate-180" />
-                      <p className="text-text-color_2 font-medium text-[15px]">
+                      <p className="text-text-color_2 font-medium text-workspace_1">
                         Previous
                       </p>
                     </div>
-                    <p className=" font-medium text-[16px] one-line-ellipsis">
+                    <p className=" font-medium text-read_16 one-line-ellipsis">
                       {prev?.name
                         .replace(/^\d+-/, "")
                         .replace(/-/g, " ")
@@ -113,14 +113,14 @@ export default function DocContent({ data }: DocContentPropsType) {
                     localStorage.setItem(lessonKey, path_name);
                   }}
                 >
-                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C transition-colors duration-150 fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right flex-shrink-0 gap-2">
+                  <div className="w-full doc-paginate-btn h-[80px] border-none hover:bg-background-color_900C transition-colors duration-150 fx-rounded p-3 pt-0 pb-0 fx-flex-cr text-right shrink-0 gap-2">
                     <div className="fx-flex-cr">
-                      <p className="text-text-color_2 font-medium text-[15px]">
+                      <p className="text-text-color_2 font-medium text-workspace_1">
                         Next
                       </p>
                       <RightArrowIcon />
                     </div>
-                    <p className=" font-medium text-[16px] one-line-ellipsis">
+                    <p className=" font-medium text-read_16 one-line-ellipsis">
                       {next?.name
                         .replace(/^\d+-/, "")
                         .replace(/-/g, " ")
@@ -135,10 +135,10 @@ export default function DocContent({ data }: DocContentPropsType) {
             {data !== "404: Not Found" && (
               <div className="w-full mt-5 border fx-rounded border-border-color_1 p-3 fx-flex-between-ic gap-3 edit-page-github">
                 <div className="max-w-[500px] w-full">
-                  <h4 className="text-text-color_1 text-[16px] font-medium">
+                  <h4 className="text-text-color_1 text-read_16 font-medium">
                     Edit this page on Github?
                   </h4>
-                  <p className="text-text-color_2 text-[14px] font-medium pt-2">
+                  <p className="text-text-color_2 text-workspace_2 font-medium pt-2">
                     If you find any mistakes or areas that need updating, feel
                     free to edit and contribute improvements to the
                     documentation!
@@ -164,21 +164,21 @@ export default function DocContent({ data }: DocContentPropsType) {
 
             {data !== "404: Not Found" && (
               <div className="w-full fx-flex-center mt-5">
-                <div className="border border-border-color_1 rounded-[50px] p-1 gap-2 fx-flex-center w-fit bg-background-color_900C">
-                  <span className="text-text-color_2 text-[14px] font-medium ml-2">
+                <div className="border border-border-color_1 rounded-tablet p-1 gap-2 fx-flex-center w-fit bg-background-color_900C">
+                  <span className="text-text-color_2 text-workspace_2 font-medium ml-2">
                     Was this helpful?
                   </span>
                   <div className="fx-flex-center w-fit">
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
+                    <span className="rounded-circle w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
                       <StarFaceIcon />
                     </span>
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
+                    <span className="rounded-circle w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
                       <SmileIcon />
                     </span>
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
+                    <span className="rounded-circle w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
                       <SadIcon />
                     </span>
-                    <span className="rounded-[50%] w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
+                    <span className="rounded-circle w-[35px] h-[35px] fx-flex-center cursor-pointer hover:bg-background-color_800C">
                       <AngryIcon />
                     </span>
                   </div>
@@ -189,7 +189,7 @@ export default function DocContent({ data }: DocContentPropsType) {
         </div>
 
         <aside
-          className={`w-[220px] sticky top-0 h-screen flex-shrink-0 text-[15px] doc-on-this-page-aside ${isDocOnPageOpen && "doc-onthispage-aside-open"}`}
+          className={`w-[220px] sticky top-0 h-screen shrink-0 text-workspace_1 doc-on-this-page-aside ${isDocOnPageOpen && "doc-onthispage-aside-open"}`}
         >
           <div
             onClick={toggleDocOnPageOpen}

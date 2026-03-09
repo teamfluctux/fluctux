@@ -21,7 +21,7 @@ const DynamicTaskBarAndTabs = dynamic(
     loading: () => (
       <div
         className={cn(
-          "w-[100%] max-w-[500px] z-50 absolute bottom-0 p-2 bg-transparent transition-all duration-300 overflow-hidden"
+          "w-full max-w-[500px] z-50 absolute bottom-0 p-2 bg-transparent transition-all duration-300 overflow-hidden"
         )}
       >
         <div className="w-full h-[50px] rounded-tiny backdrop-blur-lg p-1 fx-flex-cl gap-1 overflow-hidden ">
@@ -103,7 +103,7 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
             <div className="border-b border-border-color_1 w-full h-[40px] sticky z-40 bg-background-color_925C top-0 fx-flex-center">
               {/* SIDEBAR TOGGLE BUTTON */}
               {/* <div
-                className="w-[30px] h-[30px] fx-flex-center rounded-[5px] absolute left-1 hover:bg-background-color_3 cursor-pointer z-[50] text-text-svg_default hover:text-text-color_1"
+                className="w-[30px] h-[30px] fx-flex-center rounded-tiny absolute left-1 hover:bg-background-color_3 cursor-pointer z-50 text-text-svg_default hover:text-text-color_1"
                 onClick={toggleSidebarOpen}
               >
                 {isSidebarOpen ? (

@@ -38,7 +38,7 @@ function EmojiPickerSearch({
     >
       <SearchIcon className="size-4 shrink-0 opacity-50" />
       <EmojiPickerPrimitive.Search
-        className="outline-hidden !outline-none !ring-0 placeholder:text-text-color_3 flex h-10 w-full rounded-md bg-transparent py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+        className="outline-hidden outline-hidden! ring-0! placeholder:text-text-color_3 flex h-10 w-full rounded-md bg-transparent py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50"
         data-slot="emoji-picker-search"
         {...props}
       />
@@ -63,7 +63,7 @@ function EmojiPickerEmoji({
     <button
       {...props}
       className={cn(
-        "data-[active]:bg-red-500 flex size-7 items-center justify-center rounded-sm text-workspace_2",
+        "data-active:bg-red-500 flex size-7 items-center justify-center rounded-sm text-workspace_2",
         className
       )}
       data-slot="emoji-picker-emoji"
@@ -121,7 +121,7 @@ function EmojiPickerContent({
               <button
                 {...props}
                 className={cn(
-                  "relative flex cursor-pointer aspect-square size-8 items-center justify-center overflow-hidden rounded-md text-read_18 data-[active]:bg-neutral-100/80 dark:data-[active]:bg-neutral-800/80 group",
+                  "relative flex cursor-pointer aspect-square size-8 items-center justify-center overflow-hidden rounded-md text-read_18 data-active:bg-neutral-100/80 dark:data-active:bg-neutral-800/80 group",
                   className
                 )}
               >
