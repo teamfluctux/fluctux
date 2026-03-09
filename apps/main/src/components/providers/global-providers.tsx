@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Toaster, ToasterProps } from "sonner";
+import { Toaster, ToasterProps } from "@fluctux/next-mod-package";
 import { apolloClient } from "@/lib/apollo-client";
 import { ApolloProvider } from "@apollo/client";
 import { TopLoading } from "@fluctux/ui";
