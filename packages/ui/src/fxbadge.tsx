@@ -19,23 +19,23 @@ type BadgeVariantTypes =
 
 const badgeVariants: { [key in BadgeVariantTypes]: string } = {
   primary:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] border-none bg-[var(--primary-color)] text-white font-medium",
+    "pl-2 pr-2 rounded-rounded_20C border text-[12px] border-none bg-(--primary-color) text-white font-medium",
   secondary:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] fx-border-color fx-label-color",
+    "pl-2 pr-2 rounded-rounded_20C border text-[12px] fx-border-color fx-label-color",
   purple:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] border-[var(--badge-primary-purple-border)] bg-[var(--badge-primary-purple-bg)] text-[var(--badge-primary-purple-fg)] font-medium",
+    "pl-2 pr-2 rounded-rounded_20C border text-[12px] border-(--badge-primary-purple-border) bg-(--badge-primary-purple-bg) text-(--badge-primary-purple-fg) font-medium",
   lolipop:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] border-[var(--badge-green-border)] bg-[var(--badge-green-bg)] text-[var(--badge-green-fg)]",
+    "pl-2 pr-2 rounded-rounded_20C border text-[12px] border-(--badge-green-border) bg-(--badge-green-bg) text-(--badge-green-fg)",
   lolipopPurple:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] border-[var(--badge-purple-border)] bg-[var(--badge-purple-bg)] text-[var(--badge-purple-fg)]",
+    "pl-2 pr-2 rounded-rounded_20C border text-[12px] border-(--badge-purple-border) bg-(--badge-purple-bg) text-(--badge-purple-fg)",
   lolipopPink:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] border-[var(--badge-pink-border)] bg-[var(--badge-pink-bg)] text-[var(--badge-pink-fg)]",
+    "pl-2 pr-2 rounded-rounded_20C border text-[12px] border-(--badge-pink-border) bg-(--badge-pink-bg) text-(--badge-pink-fg)",
   kitkat:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] fx-border-color fx-secondary-bg text-[var(--badge-green-fg)]",
+    "pl-2 pr-2 rounded-rounded_20C border text-[12px] fx-border-color fx-secondary-bg text-(--badge-green-fg)",
   kitkatPurple:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] fx-border-color fx-secondary-bg text-[var(--badge-purple-fg)]",
+    "pl-2 pr-2 rounded-rounded_20C border text-[12px] fx-border-color fx-secondary-bg text-(--badge-purple-fg)",
   kitkatPink:
-    "pl-2 pr-2 rounded-[20px] border text-[12px] fx-border-color fx-secondary-bg text-[var(--badge-pink-fg)]",
+    "pl-2 pr-2 rounded-rounded_20C border text-[12px] fx-border-color fx-secondary-bg text-(--badge-pink-fg)",
 };
 
 export function FxBadge({

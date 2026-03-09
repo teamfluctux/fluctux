@@ -22,7 +22,7 @@ export const ViewStudentPopupObserver = observer(() => {
       <FxButton
         onClick={() => studentManagementStore.setViewStudentPopup(false, "")}
         variant="secondary"
-        className="absolute top-3 right-3 w-[30px] h-[30px] rounded flex z-[3] justify-center items-center"
+        className="absolute top-3 right-3 w-[30px] h-[30px] rounded flex z-3 justify-center items-center"
       >
         <X size={LUCIDE_WORKSPACE_ICON_SIZE} />
       </FxButton>
@@ -71,7 +71,7 @@ export const ViewStudentPopupObserver = observer(() => {
 
         <div className="flex w-full ">
           {/* Sidebar */}
-          <div className="w-[200px] sticky top-0 h-[600px] flex-shrink-0 p-2 self-start  border-r border-border-color_1 overflow-y-auto hide-scrollbar">
+          <div className="w-[200px] sticky top-0 h-[600px] shrink-0 p-2 self-start  border-r border-border-color_1 overflow-y-auto hide-scrollbar">
             <ObjectListArray data={STUDENTS_ADMIN_SIDEBAR_NAV_ITEMS} />
           </div>
 

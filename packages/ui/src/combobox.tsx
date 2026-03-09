@@ -56,7 +56,7 @@ export const ComboBox = ({
       <PopoverTrigger asChild>{popoverTriggerComponent}</PopoverTrigger>
       <PopoverContent
         align="start"
-        className="w-[200px] p-0 z-[9992] bg-background-color_900C border border-border-color_1"
+        className="w-[200px] p-0 z-9992 bg-background-color_900C border border-border-color_1"
         {...popoverProps}
       >
         <Command>
@@ -72,7 +72,7 @@ export const ComboBox = ({
                 const Icon = combo.icon;
                 return (
                   <CommandItem
-                    className="hover:bg-background-color_800C transition-colors text-text-color_4 hover:!text-text-color_1 justify-between"
+                    className="hover:bg-background-color_800C transition-colors text-text-color_4 hover:text-text-color_1! justify-between"
                     key={combo.value}
                     value={combo.value}
                     onSelect={handleComboItemSelect}

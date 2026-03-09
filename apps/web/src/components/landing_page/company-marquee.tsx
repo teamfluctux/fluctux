@@ -40,7 +40,7 @@ const BLACK_COMPANY_LOGOS = [
 export const CompanyMarquee = () => {
   return (
     <div className="fx-layout-max-1200 mx-auto py-5">
-      <div className="w-full flex-shrink-0 mx-auto">
+      <div className="w-full shrink-0 mx-auto">
         <h2 className="text-read_20 font-medium text-center">
           Powering the Next Generation of Teamwork
         </h2>

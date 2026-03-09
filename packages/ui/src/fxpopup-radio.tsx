@@ -114,7 +114,7 @@ export function FxPopupRadio({
                 {items.find((item) => item.value === selectedValue)?.label}
               </p>
               {showDescInButton && (
-                <span className="text-text-color_2 one-line-ellipsis text-[13px]">
+                <span className="text-text-color_2 one-line-ellipsis text-workspace_3">
                   {items.find((item) => item.value === selectedValue)?.desc}
                 </span>
               )}
@@ -123,7 +123,7 @@ export function FxPopupRadio({
         ) : (
           <div className="leading-5">
             <p className="text-red-600 font-medium">No items to display</p>
-            <span className="text-text-color_900C text-[14px]">
+            <span className="text-text-color_900C text-workspace_2">
               FxPopupRadio
             </span>
           </div>
@@ -143,7 +143,7 @@ export function FxPopupRadio({
                     >
                       {item.svg && (
                         <div
-                          className={`w-[40px] h-[40px] rounded-[50%] border border-border-color_1 fx-flex-center flex-shrink-0 ${classNames.labelIconContainer}`}
+                          className={`w-[40px] h-[40px] rounded-circle border border-border-color_1 fx-flex-center shrink-0 ${classNames.labelIconContainer}`}
                         >
                           {item.svg}
                         </div>
@@ -152,7 +152,7 @@ export function FxPopupRadio({
                         <div className="flex justify-center items-start flex-col">
                           {item.label && (
                             <span
-                              className={`font-medium text-workspace_1 ${selectedValue === item.value ? "text-[var(--foreground)]" : "text-text-color_4"} `}
+                              className={`font-medium text-workspace_1 ${selectedValue === item.value ? "text-(--foreground)" : "text-text-color_4"} `}
                             >
                               {item.label}
                             </span>

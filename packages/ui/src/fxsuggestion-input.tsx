@@ -23,7 +23,7 @@ export function FxSuggestionInput({
             {filteredSuggestions?.map((Suggestion: string, index: number) => (
               <li
                 key={Suggestion}
-                className={`px-4 py-2 hover:fx-third-bg cursor-pointer fx-label-color hover:text-[var(--foreground)] ${index === activeIndex && "fx-third-bg text-[var(--foreground)_!important]"}`}
+                className={`px-4 py-2 hover:fx-third-bg cursor-pointer fx-label-color hover:text-(--foreground) ${index === activeIndex && "fx-third-bg text-[var(--foreground)_!important]"}`}
                 onClick={() => handleSelectSuggestion(Suggestion)}
               >
                 {Suggestion}

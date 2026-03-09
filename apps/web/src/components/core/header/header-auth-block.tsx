@@ -17,12 +17,12 @@ export const HeaderAuthBlock = () => {
   return (
     <div>
       <div className="rounded overflow-hidden h-[35px] flex  justify-center items-center">
-        <FxButton className="!pl-4 !pr-2 h-full rounded-tr-none rounded-br-none text-workspace_2">
+        <FxButton className="pl-4! pr-2! h-full rounded-tr-none rounded-br-none text-workspace_2">
           Sign up
         </FxButton>
         <Popover>
-          <PopoverTrigger asChild className="outline-none">
-            <FxButton className=" h-full !px-1 rounded-tl-none rounded-bl-none">
+          <PopoverTrigger asChild className="outline-hidden">
+            <FxButton className=" h-full px-1! rounded-tl-none rounded-bl-none">
               <ChevronDown
                 size={LUCIDE_WORKSPACE_ICON_SIZE}
                 className="text-text-color_default_white"

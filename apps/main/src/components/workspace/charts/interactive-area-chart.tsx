@@ -45,7 +45,7 @@ export function ChartAreaInteractive({
   graphtDesc,
 }: ChartAreaInteractivePropsType) {
   return (
-    <Card className="pt-0 !bg-transparent">
+    <Card className="pt-0 bg-transparent!">
       <CardHeader className="flex items-center gap-2 space-y-0 border-b border-border-color_1 py-5 sm:flex-row">
         <div className="grid flex-1 gap-1">
           <CardTitle>{graphTitle ?? "Area Chart - Interactive"}</CardTitle>
@@ -62,7 +62,7 @@ export function ChartAreaInteractive({
             >
               <SelectValue placeholder={`${selectValuePlaceholder}`} />
             </SelectTrigger>
-            <SelectContent className="rounded !z-[99999999999]">
+            <SelectContent className="rounded z-99999999999!">
               {selectionData?.map((item, i) => {
                 return (
                   <SelectItem

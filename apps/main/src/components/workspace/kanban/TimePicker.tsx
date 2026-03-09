@@ -308,7 +308,7 @@ export default function TimePicker({
       </div>
       <div className="mt-2">
         <FxButton
-          className="w-full text-workspace_2 !py-1.5"
+          className="w-full text-workspace_2 py-1.5!"
           size="md"
           radius="tiny"
         >

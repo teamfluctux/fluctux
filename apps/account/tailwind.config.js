@@ -1,2 +1,2 @@
-const config = require('tailwind-config/tailwind.config.js')
+import config from "@fluctux/tailwind-config/tailwind.config"
 module.exports = config

@@ -43,7 +43,7 @@ export default function DocSearchComponent() {
         </div>
         <div className="fx-flex-cr pr-2 gap-1 desktop-doc-search">
           <CommandKeyIcon width={15} height={15} />
-          <span className="text-[13px] text-text-color_2">Ctrl+k</span>
+          <span className="text-workspace_3 text-text-color_2">Ctrl+k</span>
         </div>
         <div className="hidden mobile-doc-search ">
           <SearchIcon />
@@ -56,7 +56,7 @@ export default function DocSearchComponent() {
       >
         <FxButton
           onClick={() => setSearchBoxOpen(false)}
-          className="absolute right-[10px] top-[10px] z-10 text-text-color_2 font-medium text-[14px]"
+          className="absolute right-[10px] top-[10px] z-10 text-text-color_2 font-medium text-workspace_2"
           variant="secondary"
           size="sm"
           radius="primary"
@@ -64,7 +64,7 @@ export default function DocSearchComponent() {
           esc
         </FxButton>
         <InstantSearch searchClient={searchAlgolia} indexName={DOC_INDEX_NAME}>
-          <div className="w-full h-[50px] border-b border-border-color_1 sticky top-0 left-0 fx-flex-center flex-shrink-0">
+          <div className="w-full h-[50px] border-b border-border-color_1 sticky top-0 left-0 fx-flex-center shrink-0">
             <SearchBox
               placeholder="Search documentation..."
               autoFocus={true}
@@ -72,7 +72,7 @@ export default function DocSearchComponent() {
               classNames={{
                 form: "bg-transparent flex flex-row-reverse gap-2 w-full h-full pl-2 pr-2 border-none",
                 input:
-                  "bg-transparent w-full h-[45px] border-none outline-none fx-flex-cl pr-[35px]",
+                  "bg-transparent w-full h-[45px] border-none outline-hidden fx-flex-cl pr-[35px]",
                 loadingIndicator: "hidden",
                 loadingIcon: "hidden",
                 reset: "hidden",
@@ -82,7 +82,7 @@ export default function DocSearchComponent() {
           </div>
 
           <NoResultsBoundary fallback={<NoResults />}>
-            <div className="w-full border-b border-border-color_1 sticky top-[50px] left-0 h-[70px] fx-flex-cl flex-shrink-0 z-10">
+            <div className="w-full border-b border-border-color_1 sticky top-[50px] left-0 h-[70px] fx-flex-cl shrink-0 z-10">
               <DocCustomRefinementList sortBy={["name"]} attribute="type" />
             </div>
             <div className="h-full">

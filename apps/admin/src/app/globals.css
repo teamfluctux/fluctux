@@ -1,6 +1,168 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-surface-indigo-bg: var(--surface-indigo-bg);
+  --color-surface-indigo-bg-active: var(--surface-indigo-bg-active);
+
+  --color-surface-indigo-border: var(--surface-indigo-border);
+  --color-surface-indigo-border-active: var(--surface-indigo-border-active);
+
+  --color-surface-indigo-fg: var(--surface-indigo-fg);
+
+  --color-fx_zinc-50: var(--color-zinc-50);
+  --color-fx_zinc-75: var(--color-zinc-75);
+  --color-fx_zinc-100: var(--color-zinc-100);
+  --color-fx_zinc-200: var(--color-zinc-200);
+  --color-fx_zinc-300: var(--color-zinc-300);
+  --color-fx_zinc-400: var(--color-zinc-400);
+  --color-fx_zinc-500: var(--color-zinc-500);
+  --color-fx_zinc-600: var(--color-zinc-600);
+  --color-fx_zinc-700: var(--color-zinc-700);
+  --color-fx_zinc-800: var(--color-zinc-800);
+  --color-fx_zinc-900: var(--color-zinc-900);
+  --color-fx_zinc-950: var(--color-zinc-950);
+
+  --color-fx_indigo-50: var(--color-indigo-50);
+  --color-fx_indigo-100: var(--color-indigo-100);
+  --color-fx_indigo-200: var(--color-indigo-200);
+  --color-fx_indigo-300: var(--color-indigo-300);
+  --color-fx_indigo-400: var(--color-indigo-400);
+  --color-fx_indigo-500: var(--color-indigo-500);
+  --color-fx_indigo-600: var(--color-indigo-600);
+  --color-fx_indigo-700: var(--color-indigo-700);
+  --color-fx_indigo-800: var(--color-indigo-800);
+  --color-fx_indigo-900: var(--color-indigo-900);
+  --color-fx_indigo-950: var(--color-indigo-950);
+  --color-fx_indigo-primary: var(--color-indigo-600);
+
+  --color-background-indigo_primary: var(--primary-color);
+
+  --color-background-surface-indigo: var(--surface-indigo-bg);
+
+  --color-background-color_950C: var(--background);
+  --color-background-color_925C: var(--background-color-925C);
+  --color-background-color_900C: var(--background-color-900C);
+  --color-background-color_800C: var(--background-color-800C);
+  --color-background-color_850C: var(--background-color-850C);
+  --color-background-color_750C: var(--background-color-750C);
+  --color-background-color_700C: var(--background-color-700C);
+
+  --color-border-color_1: var(--border-color-1);
+  --color-border-color_2: var(--border-color-2);
+  --color-border-primary_indigo: var(--primary-color);
+
+  --color-border-surface-indigo: var(--surface-indigo-border);
+
+  --color-text-indigo-color_1: var(--primary-color);
+
+  --color-text-surface-indigo_1: var(--surface-indigo-fg);
+  --color-text-surface-indigo_2: var(--surface-indigo-fg-2);
+
+  --color-text-color_1: var(--foreground);
+  --color-text-color_2: var(--foreground-color-2);
+  --color-text-color_3: var(--foreground-color-3);
+  --color-text-color_4: var(--foreground-color-4);
+  --color-text-svg_default: var(--svg-default-color);
+  --color-text-color_default_white: var(--color-zinc-50);
+
+  --animate-fadeLogoLoading: fadeLogoLoading 2s infinite;
+  --animate-scaleUp: scaleUp 0.3s ease-out forwards;
+  --animate-fadeUpWinPlaceHolder: fadeUpWinPlaceHolder 0.3s ease-out forwards;
+  --animate-fadeUp: fadeUp 0.3s ease-out forwards;
+  --animate-spin-gradient: rotate360 2s linear infinite;
+
+  --text-workspace_1: 15px;
+  --text-workspace_2: 14px;
+  --text-workspace_3: 13px;
+  --text-read_25: 25px;
+  --text-read_20: 20px;
+  --text-read_16: 16px;
+  --text-read_18: 18px;
+
+  --font-weight-weight_450: 450;
+  --font-weight-weight_530: 530;
+  --font-weight-weight_550: 550;
+
+  --font-geist_sans: var(--font-geist-sans);
+  --font-geist_mono: var(--font-geist-mono);
+  --font-jetbrains_mono: var(--font-jetbrains-mono);
+
+  --radius: 8px;
+  --radius-tiny: 5px;
+  --radius-circle: 50%;
+  --radius-tablet: 50px;
+  --radius-rounded_10C: 10px;
+  --radius-rounded_15C: 15px;
+  --radius-rounded_20C: 20px;
+  --radius-rounded_30C: 30px;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  @keyframes rotate360 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes fadeLogoLoading {
+    0%,
+    100% {
+      opacity: 100%;
+    }
+    50% {
+      opacity: 30%;
+    }
+  }
+  @keyframes scaleUp {
+    0% {
+      transform: scale(0.9);
+      opacity: 0%;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 100%;
+    }
+  }
+  @keyframes fadeUpWinPlaceHolder {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 20%;
+    }
+  }
+  @keyframes fadeUp {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 /* Light Mode (Default) */
 :root {

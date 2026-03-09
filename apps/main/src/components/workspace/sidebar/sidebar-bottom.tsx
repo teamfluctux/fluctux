@@ -6,7 +6,7 @@ import {
   Layers,
   LayoutDashboard,
   ListChecks,
-  LucideIcon,
+  type LucideIcon,
   Megaphone,
   PenLine,
   ReceiptText,
@@ -105,7 +105,7 @@ export const SidebarBottom = () => {
 
             <ul>
               <WorkSpaceLinkList>
-                <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
+                <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 data-[slot=avatar]:*:ring-2 data-[slot=avatar]:*:grayscale">
                   <Avatar className="w-[25px] h-[25px]">
                     <AvatarImage
                       src="https://github.com/shadcn.png"
@@ -136,7 +136,7 @@ export const SidebarBottom = () => {
                 </div>
               </WorkSpaceLinkList>
               <WorkSpaceLinkList>
-                <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
+                <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 data-[slot=avatar]:*:ring-2 data-[slot=avatar]:*:grayscale">
                   <Avatar className="w-[25px] h-[25px]">
                     <AvatarImage
                       src="https://github.com/shadcn.png"

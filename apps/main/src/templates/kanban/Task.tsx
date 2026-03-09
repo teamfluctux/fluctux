@@ -41,7 +41,7 @@ export const KanbanTask = observer(({ task }: KanbanTaskPropsType) => {
       <div
         ref={setNodeRef}
         style={style}
-        className={`h-[100px] w-full bg-background-surface-indigo border-border-surface-indigo !cursor-grabbing  border  rounded mb-2`}
+        className={`h-[100px] w-full bg-background-surface-indigo border-border-surface-indigo cursor-grabbing!  border  rounded mb-2`}
       ></div>
     );
   }
@@ -52,7 +52,7 @@ export const KanbanTask = observer(({ task }: KanbanTaskPropsType) => {
       {...listeners}
       {...attributes}
       style={style}
-      className={`h-[100px] w-full bg-background-color_925C border border-border-color_1 rounded mb-2 ${isDragging ? "!cursor-grabbing" : "!cursor-default"}`}
+      className={`h-[100px] w-full bg-background-color_925C border border-border-color_1 rounded mb-2 ${isDragging ? "cursor-grabbing!" : "cursor-default!"}`}
     >
       <div className="p-3 h-fit flex justify-start items-center gap-2 group">
         <IssueIcon stateType={`${task.issue_type}`} size={18} />

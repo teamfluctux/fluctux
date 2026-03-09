@@ -3,16 +3,16 @@
 import { Heading } from "@/components";
 import { useReactForm } from "@fluctux/hooks";
 import { FxButton, FxInput, FxSeparator, GoogleIcon, Label } from "@fluctux/ui";
-import { userZodSchema } from "@fluctux/zod";
+import { signupZodSchema } from "@fluctux/zod";
 import Link from "next/link";
 import { z } from "zod";
 
 export default function SignUpPage() {
   const { register, handleSubmit, errors } = useReactForm({
-    ZOD_SCHEMA: userZodSchema,
+    ZOD_SCHEMA: signupZodSchema,
   });
 
-  const onSubmit = (data: z.infer<typeof userZodSchema>) => {
+  const onSubmit = (data: z.infer<typeof signupZodSchema>) => {
     console.log(data.fname);
     console.log(data.lname);
     console.log(data.email);
@@ -35,7 +35,7 @@ export default function SignUpPage() {
       </FxButton>
 
       <FxSeparator orientation="horizontal" gap="xl">
-        <p className="text-text-color_2 bg-[var(--background)] font-medium pl-2 pr-2 text-workspace_1">
+        <p className="text-text-color_2 bg-(--background) font-medium pl-2 pr-2 text-workspace_1">
           Or
         </p>
       </FxSeparator>
@@ -74,18 +74,18 @@ export default function SignUpPage() {
         </>
       </form>
 
-      <p className="text-text-color_2 text-[14px] mt-8">
+      <p className="text-text-color_2 text-workspace_2 mt-8">
         By creating account, you agree to our{" "}
         <Link
           href={""}
-          className="text-text-color_1 hover:!text-text-color_4 transition-colors"
+          className="text-text-color_1 hover:text-text-color_4! transition-colors"
         >
           Terms of Service
         </Link>{" "}
         and{" "}
         <Link
           href={""}
-          className="text-text-color_1 hover:!text-text-color_4 transition-colors"
+          className="text-text-color_1 hover:text-text-color_4! transition-colors"
         >
           Privacy Policy.
         </Link>

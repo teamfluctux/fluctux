@@ -74,7 +74,7 @@ export const mdxToHtml = async (content: string) => {
 
             <ExternalLink
               size={14}
-              className="pl-0.5 group-hover:!text-blue-600"
+              className="pl-0.5 group-hover:text-blue-600!"
             />
           </a>
         );
@@ -101,7 +101,7 @@ export const mdxToHtml = async (content: string) => {
             </div>
             <pre
               {...props}
-              className="my-0 border-t border-border-color_1 dark:bg-[var(--shiki-dark-bg)] light:var(--shiki-light-bg)"
+              className="my-0 border-t border-border-color_1 dark:bg-(--shiki-dark-bg) light:var(--shiki-light-bg)"
             >
               {children}
             </pre>

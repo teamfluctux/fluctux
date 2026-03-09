@@ -16,7 +16,7 @@ export default function Error({
           <SettingsErrorIcon width={60} height={60} />
         </div>
         <div className="w-full mt-5">
-          <h1 className="text-center w-full font-medium text-[25px]">
+          <h1 className="text-center w-full font-medium text-read_25">
             This page isn&apos;t available at the moment
           </h1>
           <p className="text-text-color_2 text-center w-full mt-2">

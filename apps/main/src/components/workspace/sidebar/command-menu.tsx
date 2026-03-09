@@ -20,7 +20,7 @@ export const CommandMenu = () => {
       <div className="w-fit border-border-color_1 overflow-hidden bg-background-color_950C border rounded h-[400px] fx-flex-center">
         <div
           className={cn(
-            "hover:bg-background-color_900C w-[200px]  flex-shrink-0  border-border-color_1 h-full",
+            "hover:bg-background-color_900C w-[200px]  shrink-0  border-border-color_1 h-full",
             isOrgItemHover ? "border-r" : "border-none"
           )}
         >

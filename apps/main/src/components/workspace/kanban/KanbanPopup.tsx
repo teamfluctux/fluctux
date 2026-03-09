@@ -220,7 +220,7 @@ export const ViewLabel = ({
         {!Icon && emoji && <span className={`${emojiClassname}`}>{emoji}</span>}
         {image && (
           <Avatar
-            className={`w-[20px] h-[20px] border border-border-color_1 outline-none ${avatarClassname}`}
+            className={`w-[20px] h-[20px] border border-border-color_1 outline-hidden ${avatarClassname}`}
           >
             <AvatarImage src={`${image}`} alt={`${label}`} />
 
@@ -312,7 +312,7 @@ export const KanbanPopup = () => {
     >
       <div className="w-full h-[40px] border-b border-border-color_1 px-1 ">
         <div className="flex justify-between items-center w-full h-full">
-          <div className="flex justify-start items-center gap-2 w-fit flex-shrink-0">
+          <div className="flex justify-start items-center gap-2 w-fit shrink-0">
             <ComboBox
               onComboDataSelect={handleSelectTaskId}
               currentValue={kanbanTemplateMetaInfo.value}
@@ -323,11 +323,11 @@ export const KanbanPopup = () => {
                   variant="secondary"
                   size="sm"
                   radius="tiny"
-                  className="w-fit max-w-[120px] justify-between flex-shrink-0 !px-2 "
+                  className="w-fit max-w-[120px] justify-between shrink-0 px-2! "
                 >
                   <ViewLabel
                     label={kanbanTemplateMetaInfo.label}
-                    leftNodeClassname="!gap-[2px]"
+                    leftNodeClassname="gap-[2px]!"
                     icon={kanbanTemplateMetaInfo.icon as typeof IconBase}
                     rightNode={
                       <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -338,17 +338,17 @@ export const KanbanPopup = () => {
             />
 
             <span className="text-text-color_2">/</span>
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <h2 className="text-text-color_1 font-medium text-workspace_2">
                 New Issue
               </h2>
             </div>
           </div>
 
-          <div className="w-fit flex-shrink-0 flex justify-end items-center pr-1 gap-2">
+          <div className="w-fit shrink-0 flex justify-end items-center pr-1 gap-2">
             <FxButton
               variant="ghost_zinc_2"
-              className="!w-[25px] !h-[25px] !p-0"
+              className="w-[25px]! h-[25px]! p-0!"
               radius="tiny"
             >
               <X size={LUCIDE_WORKSPACE_ICON_SIZE} />
@@ -360,13 +360,13 @@ export const KanbanPopup = () => {
         <input
           name="issue_title"
           placeholder="Issue Title"
-          className="text-read_20 font-medium  outline-none border-none w-full bg-transparent px-4 pb-3 pt-3 placeholder:text-text-color_3"
+          className="text-read_20 font-medium  outline-hidden border-none w-full bg-transparent px-4 pb-3 pt-3 placeholder:text-text-color_3"
         />
 
         {/* TODO: uncomment this textarea */}
         <textarea
           name="issue_content"
-          className="w-full resize-none outline-none h-[calc(100%-55px)] bg-transparent px-4 text-text-color_4 py-3 text-workspace_1 placeholder:text-text-color_3"
+          className="w-full resize-none outline-hidden h-[calc(100%-55px)] bg-transparent px-4 text-text-color_4 py-3 text-workspace_1 placeholder:text-text-color_3"
           placeholder="Description..."
         ></textarea>
       </div>
@@ -388,11 +388,11 @@ export const KanbanPopup = () => {
                 role="combobox"
                 size="sm"
                 radius="tiny"
-                className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 ${taskStatus.label && "text-text-color_4"}`}
+                className={`w-fit justify-between shrink-0 px-2! py-1! ${taskStatus.label && "text-text-color_4"}`}
               >
                 <ViewLabel
                   label={taskStatus.label}
-                  leftNodeClassname="!gap-[2px]"
+                  leftNodeClassname="gap-[2px]!"
                 />
               </FxButton>
             }
@@ -412,7 +412,7 @@ export const KanbanPopup = () => {
                 variant={"secondary"}
                 size="sm"
                 radius="tiny"
-                className={`w-fit flex-shrink-0 !px-2 !py-1 ${taskLabels.length > 0 && "text-text-color_4"}`}
+                className={`w-fit shrink-0 px-2! py-1! ${taskLabels.length > 0 && "text-text-color_4"}`}
               >
                 <ViewLabelsWithOverlap
                   initialPlaceholder={
@@ -441,11 +441,11 @@ export const KanbanPopup = () => {
                 variant={"secondary"}
                 size="sm"
                 radius="tiny"
-                className={`w-fit flex-shrink-0 !px-2 !py-1 ${assignees.length > 0 && "text-text-color_4"}`}
+                className={`w-fit shrink-0 px-2! py-1! ${assignees.length > 0 && "text-text-color_4"}`}
               >
                 <ViewLabelsWithOverlap
                   data={assignees}
-                  iconOrImageContainerClassname="!-space-x-2"
+                  iconOrImageContainerClassname="-space-x-2!"
                   shortViewTextForMultipleLabels="Assginees"
                   initialPlaceholder={
                     <div className="flex justify-start items-center gap-1 text-workspace_3 font-medium text-text-color_2 hover:text-text-color_1">
@@ -475,26 +475,26 @@ export const KanbanPopup = () => {
                 role="combobox"
                 size="sm"
                 radius="tiny"
-                className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 ${priority.label && "text-text-color_4"}`}
+                className={`w-fit justify-between shrink-0 px-2! py-1! ${priority.label && "text-text-color_4"}`}
               >
                 <ViewLabel
                   label={priority.label}
                   icon={priority.icon as typeof IconBase}
-                  iconClassname={`${priority.iconClassName} text-[16px]`}
-                  leftNodeClassname="!gap-1"
+                  iconClassname={`${priority.iconClassName} text-read_16`}
+                  leftNodeClassname="gap-1!"
                 />
               </FxButton>
             }
           />
 
           <Popover>
-            <PopoverTrigger asChild className="outline-none">
+            <PopoverTrigger asChild className="outline-hidden">
               <FxButton
                 variant="secondary"
                 role="combobox"
                 size="sm"
                 radius="tiny"
-                className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 `}
+                className={`w-fit justify-between shrink-0 px-2! py-1! `}
               >
                 <ViewLabel
                   label="Start Date"
@@ -504,7 +504,7 @@ export const KanbanPopup = () => {
               </FxButton>
             </PopoverTrigger>
             <PopoverContent
-              className="!bg-transparent !z-[99992]"
+              className="bg-transparent! z-99992!"
               align="start"
               side="top"
             >
@@ -513,13 +513,13 @@ export const KanbanPopup = () => {
           </Popover>
 
           <Popover>
-            <PopoverTrigger asChild className="outline-none">
+            <PopoverTrigger asChild className="outline-hidden">
               <FxButton
                 variant="secondary"
                 role="combobox"
                 size="sm"
                 radius="tiny"
-                className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 `}
+                className={`w-fit justify-between shrink-0 px-2! py-1! `}
               >
                 <ViewLabel
                   label="Due Date"
@@ -529,7 +529,7 @@ export const KanbanPopup = () => {
               </FxButton>
             </PopoverTrigger>
             <PopoverContent
-              className="!bg-transparent !z-[99992]"
+              className="bg-transparent! z-99992!"
               align="start"
               side="top"
             >
@@ -542,7 +542,7 @@ export const KanbanPopup = () => {
             role="combobox"
             size="sm"
             radius="tiny"
-            className={`w-fit justify-between flex-shrink-0 !px-2 !py-1 `}
+            className={`w-fit justify-between shrink-0 px-2! py-1! `}
           >
             <ViewLabel
               label="Add Parent"
@@ -556,7 +556,7 @@ export const KanbanPopup = () => {
       <div className="border-t border-border-color_1 h-[50px] w-full flex justify-between items-center">
         <div className="px-2.5">
           <FxButton
-            className="!text-workspace_2 !py-0 h-[30px] !px-2 !gap-1"
+            className="text-workspace_2! py-0! h-[30px] px-2! gap-1!"
             variant="secondary"
             radius="tiny"
           >
@@ -566,14 +566,14 @@ export const KanbanPopup = () => {
         </div>
         <div className="px-2.5 flex justify-center items-center">
           <FxButton
-            className="!text-workspace_2 !py-0 h-[30px] rounded-tr-none rounded-br-none pr-1 !pl-3"
+            className="text-workspace_2! py-0! h-[30px] rounded-tr-none rounded-br-none pr-1 pl-3!"
             radius="tiny"
           >
             Create Issue
           </FxButton>
           <Popover>
-            <PopoverTrigger asChild className="outline-none">
-              <FxButton className=" !px-1 !pr-2 rounded-tl-none rounded-bl-none h-[30px]">
+            <PopoverTrigger asChild className="outline-hidden">
+              <FxButton className=" px-1! pr-2! rounded-tl-none rounded-bl-none h-[30px]">
                 <ChevronDown
                   size={LUCIDE_WORKSPACE_ICON_SIZE}
                   className="text-text-color_default_white"
@@ -581,12 +581,12 @@ export const KanbanPopup = () => {
               </FxButton>
             </PopoverTrigger>
             <PopoverContent
-              className="w-[130px]  h-fit  border border-border-color_1 p-1 !z-[99992]"
+              className="w-[130px]  h-fit  border border-border-color_1 p-1 z-99992!"
               align="end"
             >
               <FxButton
                 variant="ghost_zinc_2"
-                className="w-full !text-workspace_2 !justify-start !gap-1 h-[25px] !px-1"
+                className="w-full text-workspace_2! justify-start! gap-1! h-[25px] px-1!"
                 radius="tiny"
               >
                 <IoIosSave size={16} />

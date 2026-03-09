@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "type": "module",
   "sideEffects": [
     "**/*.css"
   ],
   "main": "tailwind.config.js",
   "scripts": {
-    "build:tailwind": "tailwindcss -i ./index.css -o ./backup.css"
+    "build:tailwind": "npx @tailwindcss/cli -i ./index.css -o ./backup.css"
   },
   "exports": {
-    ".": "./tailwind.config.js",
     "./index.css": "./index.css",
     "./postcss.config.js": "./postcss.config.js"
   },

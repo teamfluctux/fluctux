@@ -67,7 +67,7 @@ const ResourcesListItemWithImage = ({
   return (
     <Link href={`${href}`} className="h-full w-fit">
       <div className="w-[220px] relative h-full border-r border-border-color_1 transition-colors hover:bg-background-color_900C group">
-        <div className="absolute opacity-0 group-hover:opacity-100 transition-all duration-300 inset-0 h-full w-full bg-transparent bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_14px] [&>div]:absolute [&>div]:left-0 [&>div]:right-0 [&>div]:top-0 [&>div]:-z-10 [&>div]:m-auto [&>div]:h-[310px] [&>div]:w-[310px] [&>div]:rounded-full [&>div]:opacity-20 [&>div]:blur-[100px]" />
+        <div className="absolute opacity-0 group-hover:opacity-100 transition-all duration-300 inset-0 h-full w-full bg-transparent bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[14px_14px] [&>div]:absolute [&>div]:left-0 [&>div]:right-0 [&>div]:top-0 [&>div]:-z-10 [&>div]:m-auto [&>div]:h-[310px] [&>div]:w-[310px] [&>div]:rounded-full [&>div]:opacity-20 [&>div]:blur-[100px]" />
 
         <div className="p-3 pl-5 relative z-10">
           <h3 className="font-medium text-workspace_1">{label}</h3>
@@ -76,14 +76,14 @@ const ResourcesListItemWithImage = ({
           </p>
         </div>
 
-        <div className="w-[200px] h-[180px] bg-background-color_900C pt-1 pl-1 z-10 absolute bottom-0 right-0 border-t border-l rounded-tl-[8px] border-border-color_1">
+        <div className="w-[200px] h-[180px] bg-background-color_900C pt-1 pl-1 z-10 absolute bottom-0 right-0 border-t border-l rounded-tl-lg border-border-color_1">
           <div className="w-full h-full bg-background-color_925C rounded-tl-tiny overflow-hidden">
             <Image
               src={`${image}`}
               width={500}
               height={500}
               alt={`${label}`}
-              className="object-cover object-left-top w-full h-full"
+              className="object-cover object-top-left w-full h-full"
             />
           </div>
         </div>
@@ -118,7 +118,7 @@ export const HeaderMainMenu = () => {
             <NavigationMenuContent>
               <div className="w-[900px] h-fit p-2">
                 <div className="w-full h-[280px] bg-background-color_925C rounded overflow-hidden flex justify-center items-center">
-                  <div className="flex justify-start items-center h-full flex-shrink-0">
+                  <div className="flex justify-start items-center h-full shrink-0">
                     <ResourcesListItemWithImage
                       href="#"
                       label="Fluctux Developers"
@@ -133,9 +133,9 @@ export const HeaderMainMenu = () => {
                     />
                   </div>
 
-                  <div className="w-[220px] h-full flex-shrink-0 overflow-y-auto border-r border-border-color_1 scrollbar-hide">
+                  <div className="w-[220px] h-full shrink-0 overflow-y-auto border-r border-border-color_1 scrollbar-hide">
                     <div className="relative h-[40px] w-full flex justify-start items-center">
-                      <div className="w-full h-full absolute left-0 top-0 border-solid box-border border-b border-border-color_1 bg-[image:repeating-linear-gradient(315deg,_var(--border-color-1)_0,_var(--border-color-1)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-1)]/5 md:block dark:[--pattern-fg:var(--border-color-1)]/10"></div>
+                      <div className="w-full h-full absolute left-0 top-0 border-solid box-border border-b border-border-color_1 bg-[repeating-linear-gradient(315deg,var(--border-color-1)_0,var(--border-color-1)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] bg-fixed [--pattern-fg:var(--border-color-1)]/5 md:block dark:[--pattern-fg:var(--border-color-1)]/10"></div>
                       <h3 className="text-workspace_1 px-5 font-medium text-text-color_2 relative z-10">
                         Explore
                       </h3>
@@ -151,7 +151,7 @@ export const HeaderMainMenu = () => {
 
                   <div className="w-full h-full overflow-y-auto scrollbar-hide">
                     <div className="relative h-[40px] w-full flex justify-start items-center">
-                      <div className="w-full h-full absolute left-0 top-0 border-solid box-border border-b border-border-color_1 bg-[image:repeating-linear-gradient(315deg,_var(--border-color-1)_0,_var(--border-color-1)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--border-color-1)]/5 md:block dark:[--pattern-fg:var(--border-color-1)]/10"></div>
+                      <div className="w-full h-full absolute left-0 top-0 border-solid box-border border-b border-border-color_1 bg-[repeating-linear-gradient(315deg,var(--border-color-1)_0,var(--border-color-1)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] bg-fixed [--pattern-fg:var(--border-color-1)]/5 md:block dark:[--pattern-fg:var(--border-color-1)]/10"></div>
                       <h3 className="text-workspace_1 px-5 font-medium text-text-color_2 relative z-10">
                         Company
                       </h3>
@@ -179,7 +179,7 @@ export const HeaderMainMenu = () => {
                     </h3>
                     <FxButton
                       radius="primary"
-                      className="text-workspace_2 !py-1.5 !gap-1"
+                      className="text-workspace_2 py-1.5! gap-1!"
                     >
                       <DiscordIcon color="#ffffff" size={22} />
                       <span>Join Discord</span>

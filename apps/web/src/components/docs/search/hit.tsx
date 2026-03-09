@@ -20,11 +20,11 @@ export default function Hit({ hit }: HitProps) {
       <Link href={`/docs/${hit.slug}`} className="w-full">
         <li className="w-full p-4 pt-3 pb-3 fx-third-bg fx-rounded fx-flex-between-ic gap-2  font-medium hover:bg-background-color_800C group">
           <div className="fx-flex-cl gap-4">
-            <div className="flex-shrink-0 w-[30px] h-[30px] border rounded-[5px] fx-flex-center fx-border-color">
+            <div className="shrink-0 w-[30px] h-[30px] border rounded-tiny fx-flex-center fx-border-color">
               <GridIcon width={15} height={15} />
             </div>
             <div>
-              <p className="text-[13px] pb-1 fx-sec-label-color group-hover:fx-label-color">
+              <p className="text-workspace_3 pb-1 fx-sec-label-color group-hover:fx-label-color">
                 {hit.slug.split("/")[0]?.replace(/^\w/, (c) => c.toUpperCase())}{" "}
                 /{" "}
                 {hit.slug
@@ -33,10 +33,10 @@ export default function Hit({ hit }: HitProps) {
                   .replace(/-/g, " ")
                   .replace(/^\w/, (c) => c.toUpperCase())}
               </p>
-              <div className="fx-label-color group-hover:text-[var(--foreground)] text-[15px]">
+              <div className="fx-label-color group-hover:text-(--foreground) text-workspace_1">
                 <Highlight
                   classNames={{
-                    highlighted: "bg-transparent text-[var(--primary-color)]",
+                    highlighted: "bg-transparent text-(--primary-color)",
                   }}
                   attribute="label"
                   hit={hit}

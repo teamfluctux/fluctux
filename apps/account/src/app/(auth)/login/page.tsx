@@ -65,7 +65,7 @@ export default function LoginPage() {
           <Label className=" ">Password</Label>
 
           <Link href={"/"}>
-            <Label className="text-text-color_1 hover:!text-text-color_4 transition-colors !cursor-pointer ">
+            <Label className="text-text-color_1 hover:text-text-color_4! transition-colors cursor-pointer! ">
               Forget Password?
             </Label>
           </Link>
@@ -94,18 +94,18 @@ export default function LoginPage() {
         </FxButton>
       </form>
 
-      <p className="text-text-color_2 text-[14px] mt-8">
+      <p className="text-text-color_2 text-workspace_2 mt-8">
         By signing in, you agree to our{" "}
         <Link
           href={""}
-          className="text-text-color_1 hover:!text-text-color_4 transition-colors"
+          className="text-text-color_1 hover:text-text-color_4! transition-colors"
         >
           Terms of Service
         </Link>{" "}
         and{" "}
         <Link
           href={""}
-          className="text-text-color_1 hover:!text-text-color_4 transition-colors"
+          className="text-text-color_1 hover:text-text-color_4! transition-colors"
         >
           Privacy Policy.
         </Link>

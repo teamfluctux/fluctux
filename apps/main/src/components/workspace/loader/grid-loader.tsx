@@ -2,7 +2,7 @@ import Skeleton from "react-loading-skeleton";
 
 export const GridLoader = () => {
   return (
-    <div className=" w-full overflow-hidden grid  grid-flow-col grid-cols-[300px_repeat(auto-fill,_200px)]">
+    <div className=" w-full overflow-hidden grid  grid-flow-col grid-cols-[300px_repeat(auto-fill,200px)]">
       {Array.from({ length: 10 }).map((item, i) => {
         return (
           <div

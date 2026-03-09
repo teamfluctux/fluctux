@@ -109,7 +109,7 @@ export const WorkspaceSidebar = observer(() => {
                     className={cn(
                       "w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-tiny",
                       isCommandOpen
-                        ? "border border-surface-indigo-border-active !bg-surface-indigo-bg-active"
+                        ? "border border-surface-indigo-border-active bg-surface-indigo-bg-active!"
                         : ""
                     )}
                   >
@@ -145,7 +145,7 @@ export const WorkspaceSidebar = observer(() => {
             <PopoverTrigger asChild>
               <div
                 className={cn(
-                  "rounded-circle flex-shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C transition-colors cursor-pointer",
+                  "rounded-circle shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C transition-colors cursor-pointer",
                   isWhatsNewMenuOpen
                     ? "bg-background-color_800C text-text-color_1"
                     : ""
@@ -201,7 +201,7 @@ export const WorkspaceSidebar = observer(() => {
                   src={"/placeholder_img.png"}
                   width={500}
                   height={500}
-                  className="w-[35px] flex-shrink-0 overflow-hidden cursor-pointer h-[35px]  rounded-tiny object-cover object-center border border-border-color_1 "
+                  className="w-[35px] shrink-0 overflow-hidden cursor-pointer h-[35px]  rounded-tiny object-cover object-center border border-border-color_1 "
                   alt="profile-image"
                 />
                 <div className="fx-flex-between-ic w-full">
