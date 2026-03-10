@@ -1,0 +1,32 @@
+{
+  "name": "e-commerce-admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "clean": "rm -rf node_modules .turbo .next && echo 'Cleanup complete!'"
+  },
+  "dependencies": {
+    "react-loading-skeleton": "^3.5.0",
+    "next-themes": "^0.4.6",
+    "sonner": "^2.0.5",
+    "recharts": "^3.1.0",
+    "lucide-react": "^0.471.2",
+    "@fluctux/hooks": "workspace:*",
+    "@fluctux/ui": "workspace:*",
+    "@algolia/client-common": "^5.29.0",
+    "@apollo/client": "^3.13.8",
+    "mobx": "^6.13.7",
+    "mobx-react": "^9.2.0",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
+  }
+}
