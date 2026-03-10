@@ -1,3 +1,4 @@
+import { Sidebar } from "@/components";
 import React from "react";
 
 type LayoutPropsType = {
@@ -5,5 +6,10 @@ type LayoutPropsType = {
 };
 
 export default function Layout({ children }: LayoutPropsType) {
-  return <div>{children}</div>;
+  return <div className="flex justify-start items-start">
+    <Sidebar/>
+    <div>
+    {children}
+    </div>
+    </div>;
 }

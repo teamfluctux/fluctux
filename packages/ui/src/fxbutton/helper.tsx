@@ -51,14 +51,14 @@ export const buttonStyling: ButtonStylingType = {
   },
   surface_indigo: {
     default:
-      "bg-(--surface-indigo-bg) border border-(--surface-indigo-border) text-(--surface-indigo-fg) active:bg-(--surface-indigo-bg-active) active:border-(--surface-indigo-border-active) cursor-pointer",
-    hover: "hover:border-(--surface-indigo-border-active)",
+      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active cursor-pointer text-surface-indigo-fg",
+    hover: "hover:inset-ring-surface-indigo-border-active",
     disabled: "opacity-50 cursor-not-allowed!",
   },
   surface_indigo_2: {
     default:
-      "bg-(--surface-indigo-bg) border border-(--surface-indigo-border) text-(--surface-indigo-fg-2) active:bg-(--surface-indigo-bg-active) active:border-(--surface-indigo-border-active) cursor-pointer",
-    hover: "hover:border-(--surface-indigo-border-active)",
+      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active cursor-pointer text-surface-indigo-fg-2",
+    hover: "hover:inset-ring-surface-indigo-border-active",
     disabled: "opacity-50 cursor-not-allowed!",
   },
 };

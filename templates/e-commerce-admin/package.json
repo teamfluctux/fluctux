@@ -26,6 +26,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@fluctux/tailwind-config": "workspace:*",
     "@types/react": "^19",
     "@types/react-dom": "^19"
   }
