@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@turbo/gen": "^2.4.4",
+    "@fluctux/tailwind-config": "workspace:*",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "next": "^16.1.6"
