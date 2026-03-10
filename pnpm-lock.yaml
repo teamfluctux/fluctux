@@ -96,9 +96,6 @@ importers:
       '@fluctux/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
-      '@fluctux/tailwind-config':
-        specifier: workspace:*
-        version: link:packages/tailwind-config
       '@fluctux/types':
         specifier: workspace:*
         version: link:packages/types
@@ -110,7 +107,7 @@ importers:
         version: 4.2.1
       '@tailwindcss/typography':
         specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@4.2.1)
+        version: 0.5.16
       '@types/jest':
         specifier: ^30.0.0
         version: 30.0.0
@@ -141,18 +138,9 @@ importers:
       jest:
         specifier: ^30.0.3
         version: 30.0.3(@types/node@22.15.33)(esbuild-register@3.6.0(esbuild@0.25.5))(ts-node@10.9.2(@swc/core@1.11.20)(@types/node@22.15.33)(typescript@5.8.3))
-      postcss:
-        specifier: ^8.5.6
-        version: 8.5.6
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
-      tailwindcss:
-        specifier: ^4.2.1
-        version: 4.2.1
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.2.1)
       ts-jest:
         specifier: ^29.4.0
         version: 29.4.0(@babel/core@7.28.4)(@jest/transform@30.0.2)(@jest/types@30.0.1)(babel-jest@30.0.2(@babel/core@7.28.4))(esbuild@0.25.5)(jest-util@30.0.2)(jest@30.0.3(@types/node@22.15.33)(esbuild-register@3.6.0(esbuild@0.25.5))(ts-node@10.9.2(@swc/core@1.11.20)(@types/node@22.15.33)(typescript@5.8.3)))(typescript@5.8.3)
@@ -211,6 +199,9 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
     devDependencies:
+      '@fluctux/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -251,6 +242,9 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
     devDependencies:
+      '@fluctux/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -300,6 +294,9 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
     devDependencies:
+      '@fluctux/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -418,6 +415,9 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
     devDependencies:
+      '@fluctux/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -673,6 +673,9 @@ importers:
         specifier: ^11.2.6
         version: 11.2.6
     devDependencies:
+      '@fluctux/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -787,10 +790,16 @@ importers:
         version: 16.1.6(@babel/core@7.28.4)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
   packages/tailwind-config:
-    dependencies:
+    devDependencies:
+      postcss:
+        specifier: ^8.5.6
+        version: 8.5.6
       tailwindcss:
-        specifier: ^3.4.17
-        version: 3.4.17(ts-node@10.9.2(@swc/core@1.11.20)(@types/node@24.0.6)(typescript@5.8.3))
+        specifier: ^4.2.1
+        version: 4.2.1
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.2.1)
 
   packages/types:
     devDependencies:
@@ -893,6 +902,9 @@ importers:
         specifier: ^2.6.0
         version: 2.6.0
     devDependencies:
+      '@fluctux/tailwind-config':
+        specifier: workspace:*
+        version: link:../tailwind-config
       '@turbo/gen':
         specifier: ^2.4.4
         version: 2.4.4(@swc/core@1.11.20)(@types/node@24.0.6)(typescript@5.8.3)
@@ -14231,13 +14243,12 @@ snapshots:
       postcss: 8.5.6
       tailwindcss: 4.2.1
 
-  '@tailwindcss/typography@0.5.16(tailwindcss@4.2.1)':
+  '@tailwindcss/typography@0.5.16':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.2.1
 
   '@tanstack/react-virtual@3.13.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
