@@ -51,6 +51,7 @@ export * from "./card";
 export * from "./label";
 export * from "./object-list-array";
 export * from "./workspace-link-list";
+export * from "./workspace-list";
 
 // utilities & libs
 export * from "./lib/utils";
