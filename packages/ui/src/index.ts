@@ -37,7 +37,6 @@ export * from "./alert-dialog";
 export * from "./inline-loading";
 export * from "./fade-fav-loading";
 export * from "./switch";
-export * from "./fxonelist";
 export * from "./dropdown-menu";
 export * from "./navigation-menu";
 export * from "./toggle";
