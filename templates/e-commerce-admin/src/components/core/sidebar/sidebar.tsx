@@ -1,5 +1,5 @@
 import React from "react";
 
 export const Sidebar = () => {
-  return <div></div>;
+  return <div className="w-full h-screen "></div>;
 };
