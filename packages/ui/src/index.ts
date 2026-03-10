@@ -51,6 +51,7 @@ export * from "./label";
 export * from "./object-list-array";
 export * from "./workspace-link-list";
 export * from "./workspace-list";
+export * from "./fx-popover";
 
 // utilities & libs
 export * from "./lib/utils";

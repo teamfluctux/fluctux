@@ -22,7 +22,6 @@ import {
   AvatarImage,
   WorkSpaceLinkList,
   WorkSpaceList,
-  FxOneList,
 } from "@fluctux/ui";
 
 type WorkspaceListType = {

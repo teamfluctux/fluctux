@@ -1,4 +1,4 @@
-import { createContext, RefObject, useContext } from "react";
+import { createContext, type RefObject, useContext } from "react";
 
 interface WorkspaceContextType {
   parentRef: RefObject<HTMLDivElement | null>;

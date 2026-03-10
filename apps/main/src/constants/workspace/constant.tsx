@@ -74,37 +74,3 @@ export const TEAM_CATEGORIES = [
   "Data Science",
   "Business",
 ];
-
-export const ACCOUNT_MENU_ITEMS = [
-  {
-    label: "settings",
-    slug: "#",
-    icon: <Settings size={LUCIDE_WORKSPACE_ICON_SIZE} />,
-  },
-];
-
-export const FIND_HELP_ITEMS = [
-  {
-    label: "Docs",
-    slug: "#",
-    icon: <BookOpen size={LUCIDE_WORKSPACE_ICON_SIZE} />,
-  },
-  {
-    label: "Shortcuts",
-    slug: "#",
-    icon: <SquareSlash size={LUCIDE_WORKSPACE_ICON_SIZE} />,
-  },
-  {
-    label: "Support",
-    slug: "#",
-    icon: <HeartHandshake size={LUCIDE_WORKSPACE_ICON_SIZE} />,
-  },
-];
-
-export const WHATS_NEW_ITEMS = [
-  {
-    label: "Changelog",
-    slug: "#",
-    icon: <Logs size={LUCIDE_WORKSPACE_ICON_SIZE} />,
-  },
-];

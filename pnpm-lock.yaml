@@ -117,9 +117,6 @@ importers:
       '@types/node':
         specifier: ^22.14.0
         version: 22.15.33
-      autoprefixer:
-        specifier: ^10.4.21
-        version: 10.4.21(postcss@8.5.6)
       commitlint-plugin-tense:
         specifier: ^1.0.9
         version: 1.0.9(@commitlint/lint@20.4.2)

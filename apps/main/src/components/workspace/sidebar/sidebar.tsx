@@ -1,26 +1,28 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Rnd } from "react-rnd";
 import {
   cn,
-  FxButton,
   FxFavIcon,
   LUCIDE_WORKSPACE_ICON_SIZE,
   Popover,
   PopoverContent,
   PopoverTrigger,
+  FxPopover,
+  type PopoverMenuDataType,
 } from "@fluctux/ui";
-import { CircleHelp, LogOut, Settings, X } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 import {
-  ACCOUNT_MENU_ITEMS,
-  FIND_HELP_ITEMS,
-  WHATS_NEW_ITEMS,
-} from "@/constants/workspace";
+  BookOpen,
+  CircleHelp,
+  HeartHandshake,
+  LogOutIcon,
+  Logs,
+  Settings,
+  SquareSlash,
+} from "lucide-react";
+import Image from "next/image";
 import { CommandMenuSkeleton, SidebarSkeletonLoading } from "./loading";
 import dynamic from "next/dynamic";
-import { useWorkspaceContext } from "@/context/workspace-context";
 import { useToggleOpen } from "@fluctux/hooks";
 import { mainSidebarStore } from "@/services/stores";
 import { observer } from "mobx-react";
@@ -42,21 +44,69 @@ const DynamicSidebarCommandMenu = dynamic(
   }
 );
 
+const ACCOUNT_MENU: PopoverMenuDataType = {
+  Account: {
+    data: [
+      {
+        label: "Settings",
+        icon: Settings,
+      },
+    ],
+  },
+  "Log out": {
+    data: [
+      {
+        label: "Log out",
+        slug: "log-out",
+        status: "DANGER",
+        effectType: "SOFT",
+        showStatusHoverEffect: true,
+        icon: LogOutIcon,
+      },
+    ],
+  },
+};
+
+export const HELPS_MENU_ITEMS: PopoverMenuDataType = {
+  Resources: {
+    data: [
+      {
+        label: "Docs",
+        slug: "#",
+        icon: BookOpen,
+      },
+      {
+        label: "Shortcuts",
+        slug: "#",
+        icon: SquareSlash,
+      },
+      {
+        label: "Support",
+        slug: "#",
+        icon: HeartHandshake,
+      },
+    ],
+  },
+  Changelog: {
+    label: "Whats New?",
+    data: [
+      {
+        label: "Changelog",
+        slug: "#",
+        icon: Logs,
+      },
+    ],
+  },
+};
+
 export const WorkspaceSidebar = observer(() => {
-  const { isOpen: isSidebarOpen, toggle: toggleSidebarOpen } = useToggleOpen({
+  const { isOpen: isSidebarOpen } = useToggleOpen({
     id: "workspace-sidebar-rnd",
   });
   // ==========================================================================
   //                               Menu States
   // ==========================================================================
   const [isCommandOpen, setIsCommandOpen] = useState<boolean | null>(null);
-  const [isWhatsNewMenuOpen, setIsWhatsNewMenuOpen] = useState<boolean | null>(
-    null
-  );
-  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState<boolean | null>(
-    null
-  );
-  const { parentRef } = useWorkspaceContext();
 
   const saveWidth = useCallback((width: string) => {
     if (typeof window !== "undefined" && window.localStorage) {
@@ -105,14 +155,7 @@ export const WorkspaceSidebar = observer(() => {
             <div className="flex justify-start items-center gap-2">
               <Popover onOpenChange={(open) => setIsCommandOpen(open)}>
                 <PopoverTrigger asChild>
-                  <div
-                    className={cn(
-                      "w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-tiny",
-                      isCommandOpen
-                        ? "border border-surface-indigo-border-active bg-surface-indigo-bg-active!"
-                        : ""
-                    )}
-                  >
+                  <div className="w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-tiny data-[state=open]:border border-surface-indigo-border-active data-[state=open]:bg-surface-indigo-bg-active!">
                     <FxFavIcon customSize={15} variant="theme" />
                   </div>
                 </PopoverTrigger>
@@ -141,62 +184,21 @@ export const WorkspaceSidebar = observer(() => {
                                          Bottom Sidebar
           ========================================================================== */}
         <div className="w-full h-[56px] fx-flex-between-ic px-2 gap-1">
-          <Popover onOpenChange={(open) => setIsWhatsNewMenuOpen(open)}>
-            <PopoverTrigger asChild>
-              <div
-                className={cn(
-                  "rounded-circle shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C transition-colors cursor-pointer",
-                  isWhatsNewMenuOpen
-                    ? "bg-background-color_800C text-text-color_1"
-                    : ""
-                )}
-              >
+          <FxPopover
+            align="start"
+            InteractChild={
+              <div className="rounded-circle shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C transition-colors cursor-pointer data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1">
                 <CircleHelp size={LUCIDE_WORKSPACE_ICON_SIZE} />
               </div>
-            </PopoverTrigger>
-            <PopoverContent align="start" side="top">
-              <div className="bg-background-color_850C border border-border-color_2 rounded  w-[200px]">
-                <ul className="text-workspace_2 font-medium leading-7">
-                  <div className="p-1">
-                    {FIND_HELP_ITEMS.map((item, index) => (
-                      <Link href={item.slug} key={index}>
-                        <li className="fx-flex-cl gap-2  group transition-colors hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
-                          <div className="text-text-svg_default group-hover:text-text-color_1 transition-colors">
-                            {item.icon}
-                          </div>
-                          <span>{item.label}</span>
-                        </li>
-                      </Link>
-                    ))}
-                  </div>
+            }
+            items={HELPS_MENU_ITEMS}
+          />
 
-                  <div className="p-1 border-t border-border-color_2">
-                    <p className="text-workspace_3 font-medium text-text-color_3 px-2">
-                      Whats New?
-                    </p>
-                    {WHATS_NEW_ITEMS.map((item, index) => (
-                      <Link href={item.slug} key={index}>
-                        <li className="fx-flex-cl gap-2  group transition-colors hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
-                          <div className="text-text-svg_default transition-colors group-hover:text-text-color_1">
-                            {item.icon}
-                          </div>
-                          <span>{item.label}</span>
-                        </li>
-                      </Link>
-                    ))}
-                  </div>
-                </ul>
-              </div>
-            </PopoverContent>
-          </Popover>
-          <Popover onOpenChange={(open) => setIsAccountMenuOpen(open)}>
-            <PopoverTrigger asChild>
-              <div
-                className={cn(
-                  "fx-flex-cl w-full rounded hover:bg-background-color_900C gap-2 transition-colors cursor-pointer p-1",
-                  isAccountMenuOpen ? "bg-background-color_800C" : ""
-                )}
-              >
+          <FxPopover
+            align="end"
+            side="top"
+            InteractChild={
+              <div className="fx-flex-cl w-full rounded hover:bg-background-color_900C gap-2 transition-colors cursor-pointer p-1 data-[state=open]:bg-background-color_800C">
                 <Image
                   src={"/placeholder_img.png"}
                   width={500}
@@ -213,35 +215,9 @@ export const WorkspaceSidebar = observer(() => {
                   </div>
                 </div>
               </div>
-            </PopoverTrigger>
-            <PopoverContent align="end" side="right">
-              <div className="w-[200px] bg-background-color_850C border border-border-color_2 rounded">
-                <ul className="text-workspace_2 font-medium leading-7">
-                  <div className="p-1 ">
-                    {ACCOUNT_MENU_ITEMS.map((item, index) => (
-                      <Link href={item.slug} key={index}>
-                        <li className="fx-flex-cl gap-2  group transition-colors hover:bg-background-color_750C rounded-tiny px-2 text-text-color_4 hover:text-text-color_1">
-                          <div className="text-text-svg_default transition-colors group-hover:text-text-color_1">
-                            {item.icon}
-                          </div>
-                          <span>{item.label}</span>
-                        </li>
-                      </Link>
-                    ))}
-                  </div>
-
-                  <div className="p-1 border-t border-border-color_2">
-                    <li className="fx-flex-cl w-full cursor-pointer group gap-2 hover:bg-background-color_750C transition-colors rounded-tiny px-2 text-text-color_4 hover:text-red-500">
-                      <div className="text-text-svg_default group-hover:text-red-500 transition-colors">
-                        <LogOut size={LUCIDE_WORKSPACE_ICON_SIZE} />
-                      </div>
-                      <span>Log out</span>
-                    </li>
-                  </div>
-                </ul>
-              </div>
-            </PopoverContent>
-          </Popover>
+            }
+            items={ACCOUNT_MENU}
+          />
         </div>
       </div>
     </Rnd>
