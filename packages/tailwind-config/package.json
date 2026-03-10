@@ -16,6 +16,8 @@
     "./postcss.config.js": "./postcss.config.js"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
+    "@tailwindcss/typography": "^0.5.16",
     "tailwindcss": "^4.2.1",
     "postcss": "^8.5.6",
     "tailwindcss-animate": "^1.0.7"

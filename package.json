@@ -56,8 +56,6 @@
     "@fluctux/eslint-config": "workspace:*",
     "@fluctux/types": "workspace:*",
     "@fluctux/typescript-config": "workspace:*",
-    "@tailwindcss/postcss": "^4.2.1",
-    "@tailwindcss/typography": "^0.5.16",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.14.0",
     "commitlint-plugin-tense": "^1.0.9",

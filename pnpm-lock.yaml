@@ -102,12 +102,6 @@ importers:
       '@fluctux/typescript-config':
         specifier: workspace:*
         version: link:packages/typescript-config
-      '@tailwindcss/postcss':
-        specifier: ^4.2.1
-        version: 4.2.1
-      '@tailwindcss/typography':
-        specifier: ^0.5.16
-        version: 0.5.16
       '@types/jest':
         specifier: ^30.0.0
         version: 30.0.0
@@ -791,6 +785,12 @@ importers:
 
   packages/tailwind-config:
     devDependencies:
+      '@tailwindcss/postcss':
+        specifier: ^4.2.1
+        version: 4.2.1
+      '@tailwindcss/typography':
+        specifier: ^0.5.16
+        version: 0.5.16(tailwindcss@4.2.1)
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -14243,12 +14243,13 @@ snapshots:
       postcss: 8.5.6
       tailwindcss: 4.2.1
 
-  '@tailwindcss/typography@0.5.16':
+  '@tailwindcss/typography@0.5.16(tailwindcss@4.2.1)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
+      tailwindcss: 4.2.1
 
   '@tanstack/react-virtual@3.13.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
@@ -17249,7 +17250,7 @@ snapshots:
 
   fix-dts-default-cjs-exports@1.0.1:
     dependencies:
-      magic-string: 0.30.17
+      magic-string: 0.30.21
       mlly: 1.7.4
       rollup: 4.44.1
 
