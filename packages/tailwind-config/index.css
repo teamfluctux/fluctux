@@ -107,12 +107,61 @@
   --outline-border-color: var(--color-zinc-600);
 
   /* other colors */
+
+  /* Radix Foreground Colors */
+  --radix-indigo-fg: #9eb1ff;
+  --radix-indigo-fg-2: #d6e1ff;
+
+  --radix-red-fg: #ff9592;
+  --radix-red-fg-2: #ffd1d9;
+
+  --radix-yellow-fg: #d6e1ff;
+  --radix-yellow-fg-2: #d6e1ff;
+
+  --radix-green-fg: #3ad389;
+  --radix-green-fg-2: #b1f1cb;
+
+  --radix-sky-fg: #7cd3ffef;
+  --radix-sky-fg-2: #c2f3ff;
+
+  --radix-yellow-fg: #fee949f5;
+  --radix-yellow-fg-2: #f6eeb4;
+
+  /* Surface */
   --surface-indigo-bg: #171d3b80;
   --surface-indigo-bg-active: #2f62ff3c;
   --surface-indigo-border: #5a7fff90;
   --surface-indigo-border-active: #5b81feac;
   --surface-indigo-fg: #9eb1ff;
   --surface-indigo-fg-2: #d6e1ff;
+
+  --suface-red-bg: #2f151780;
+  --surface-red-border: #ff536184;
+  --suface-red-bg-active: #ff173f2d;
+  --surface-red-border-active: #ff5d61b0;
+
+  --surface-green-bg: #15251d80;
+  --surface-green-bg-active: #22ff991e;
+  --surface-green-border: #50fdac5e;
+  --surface-green-border-active: #54ffad73;
+
+  --surface-yellow-bg: #231f1380;
+  --surface-yellow-bg-active: #ffaa001e;
+  --surface-yellow-border: #fdcb225c;
+  --surface-yellow-border-active: #fdca327b;
+
+  /* Soft */
+  --soft-red-bg: #ff173f2d;
+  --soft-red-bg-active: #ff204756;
+
+  --soft-green-bg: #041e12;
+  --soft-green-bg-active: #2bffa23c;
+
+  --soft-sky-bg: #1184fc33;
+  --soft-sky-bg-active: #1c9dfd5d;
+
+  --soft-yellow-bg: #ffaa001e;
+  --soft-yellow-bg-active: #febb0036;
 
   /* shiki */
   --twoslash-border-color: #8888;
@@ -267,13 +316,57 @@
 }
 
 @theme {
+  /* Foregrounds */
+  --color-rdx-indigo-fg: var(--radix-indigo-fg);
+  --color-rdx-indigo-fg-2: var(--radix-indigo-fg-2);
+
+  --color-rdx-red-fg: var(--radix-red-fg);
+  --color-rdx-red-fg-2: var(--radix-red-fg-2);
+
+  --color-rdx-yellow-fg: var(--radix-yellow-fg);
+  --color-rdx-yellow-fg-2: var(--radix-yellow-fg-2);
+
+  --color-rdx-green-fg: var(--radix-green-fg);
+  --color-rdx-green-fg-2: var(--radix-green-fg-2);
+
+  --color-rdx-sky-fg: var(--radix-sky-fg);
+  --color-rdx-sky-fg-2: var(--radix-sky-fg-2);
+
+  /* Surface */
   --color-surface-indigo-bg: var(--surface-indigo-bg);
   --color-surface-indigo-bg-active: var(--surface-indigo-bg-active);
-
   --color-surface-indigo-border: var(--surface-indigo-border);
   --color-surface-indigo-border-active: var(--surface-indigo-border-active);
-
   --color-surface-indigo-fg: var(--surface-indigo-fg);
+  --color-surface-indigo-fg-2: var(--surface-indigo-fg-2);
+
+  --color-surface-red-bg: var(--suface-red-bg);
+  --color-surface-red-bg-active: var(--suface-red-bg-active);
+  --color-surface-red-border: var(--surface-red-border);
+  --color-surface-red-border-active: var(--surface-red-border-active);
+
+  --color-surface-green-bg: var(--surface-green-bg);
+  --color-surface-green-bg-active: var(--surface-green-bg-active);
+  --color-surface-green-border: var(--surface-green-border);
+  --color-surface-green-border-active: var(--surface-green-border-active);
+
+  --color-surface-yellow-bg: var(--surface-yellow-bg);
+  --color-surface-yellow-bg-active: var(--surface-yellow-bg-active);
+  --color-surface-yellow-border: var(--surface-yellow-border);
+  --color-surface-yellow-border-active: var(--surface-yellow-border-active);
+
+  /* Soft */
+  --color-soft-red-bg: var(--soft-red-bg);
+  --color-soft-red-bg-active: var(--soft-red-bg-active);
+
+  --color-soft-green-bg: var(--soft-green-bg);
+  --color-soft-green-bg-active: var(--soft-green-bg-active);
+
+  --color-soft-sky-bg: var(--soft-sky-bg);
+  --color-soft-sky-bg-active: var(--soft-sky-bg-active);
+
+  --color-soft-yellow-bg: var(--soft-yellow-bg);
+  --color-soft-yellow-bg-active: var(--soft-yellow-bg-active);
 
   --color-fx_zinc-50: var(--color-zinc-50);
   --color-fx_zinc-75: var(--color-zinc-75);
@@ -576,8 +669,6 @@
 @utility workspace-exclude-header {
   @apply pt-[64px];
 }
-
-
 
 html {
   scroll-behavior: smooth;

@@ -1,7 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 
 class WorkspaceStore {
-  isLoadingWorkspace: boolean = false;
+  isLoadingWorkspace: boolean = true;
   isTopLoading: boolean = false;
 
   constructor() {

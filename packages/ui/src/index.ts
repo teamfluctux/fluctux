@@ -37,7 +37,6 @@ export * from "./alert-dialog";
 export * from "./inline-loading";
 export * from "./fade-fav-loading";
 export * from "./switch";
-export * from "./fxonelist";
 export * from "./dropdown-menu";
 export * from "./navigation-menu";
 export * from "./toggle";
@@ -51,6 +50,8 @@ export * from "./card";
 export * from "./label";
 export * from "./object-list-array";
 export * from "./workspace-link-list";
+export * from "./workspace-list";
+export * from "./fx-popover";
 
 // utilities & libs
 export * from "./lib/utils";
