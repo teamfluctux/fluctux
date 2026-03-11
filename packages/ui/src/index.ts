@@ -53,6 +53,9 @@ export * from "./workspace-link-list";
 export * from "./workspace-list";
 export * from "./fx-popover";
 export * from "./external-link";
+export * from "./kbd";
+export * from "./button-group";
+export * from "./separator";
 
 // utilities & libs
 export * from "./lib/utils";

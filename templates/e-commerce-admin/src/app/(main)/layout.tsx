@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components";
+import { Sidebar, WorkSpaceHeader } from "@/components";
 import React from "react";
 
 type LayoutPropsType = {
@@ -6,10 +6,13 @@ type LayoutPropsType = {
 };
 
 export default function Layout({ children }: LayoutPropsType) {
-  return <div className="flex justify-start items-start">
+  return <div className="flex justify-start items-start w-full h-screen overflow-hidden">
     <Sidebar/>
-    <div>
+    <div className="px-3 w-full h-screen overflow-hidden bg-background-color_925C">
+      <WorkSpaceHeader/>
+      <div className="w-full h-[calc(100%-60px)] border border-border-color_1 rounded-t-rounded_15C p-1 bg-background-color_950C">
     {children}
+      </div>
     </div>
     </div>;
 }
