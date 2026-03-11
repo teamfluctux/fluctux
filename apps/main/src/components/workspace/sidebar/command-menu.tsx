@@ -25,7 +25,7 @@ export const CommandMenu = () => {
           )}
         >
           <ul className="p-2" onMouseLeave={() => setIsOrgItemHover(false)}>
-            <p className="text-workspace_3 text-text-color_3 px-2 font-medium ">
+            <p className="text-workspace_3 text-text-color_3 px-2 font-medium mb-0.5">
               Organizations
             </p>
             <li
@@ -52,7 +52,7 @@ export const CommandMenu = () => {
               </li>
             </Link>
             <li className="text-workspace_2 group text-text-color_4 hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium fx-flex-cl gap-2">
-              <div className="text-text-color_2 group-hover:text-text-indigo-color_1">
+              <div className="text-text-color_2 group-hover:text-text-color_1">
                 <Telescope size={LUCIDE_WORKSPACE_ICON_SIZE} />
               </div>
               <span>Explore</span>
