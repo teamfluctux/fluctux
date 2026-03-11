@@ -7,8 +7,10 @@ import {
   LUCIDE_WORKSPACE_ICON_SIZE,
 } from "@fluctux/ui";
 import { Bell, Search, Settings } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export const WorkSpaceHeader = () => {
+  const router = useRouter()
   return (
     <header className="w-full h-[60px] flex justify-between items-center ">
       <div className="w-full flex justify-start items-center">
@@ -34,7 +36,7 @@ export const WorkSpaceHeader = () => {
           <Button variant={"secondary"}>
             <Bell />
           </Button>
-          <Button variant={"secondary"}>
+          <Button onClick={() => router.push("/settings")} variant={"secondary"}>
             <Settings />
           </Button>
         </ButtonGroup>

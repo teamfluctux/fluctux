@@ -56,6 +56,7 @@ export * from "./external-link";
 export * from "./kbd";
 export * from "./button-group";
 export * from "./separator";
+export * from "./scroll-area";
 
 // utilities & libs
 export * from "./lib/utils";

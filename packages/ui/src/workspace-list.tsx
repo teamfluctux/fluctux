@@ -1,18 +1,18 @@
 import React from "react";
 import type { LucideIcon } from "lucide-react";
 
-type WorkSpaceListProps = {
+export type WorkSpaceListProps = {
   icon?: LucideIcon;
   active?: boolean;
   children?: React.ReactNode;
   disabled?: boolean;
-  slug?: string;
+  value?: string;
   order?: number;
   label?: string;
   onClickDo?: (
     active: boolean,
     disabled: boolean,
-    slug: string,
+    value: string,
     label: string
   ) => void;
 };
@@ -25,7 +25,7 @@ export const WorkSpaceList = ({
   children,
   active = false,
   disabled,
-  slug,
+  value,
   order,
   label,
   onClickDo,
@@ -38,7 +38,7 @@ export const WorkSpaceList = ({
         onClickDo?.(
           active || false,
           disabled || false,
-          slug ?? "",
+          value ?? "",
           label ?? "Undefined"
         )
       }
