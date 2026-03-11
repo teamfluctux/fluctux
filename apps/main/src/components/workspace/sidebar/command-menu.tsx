@@ -1,5 +1,5 @@
 "use client";
-import { cn, FxButton, FxSeparator, LUCIDE_WORKSPACE_ICON_SIZE, WorkSpaceList } from "@fluctux/ui";
+import { cn, FxSeparator, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { ArrowLeftRight, CirclePlus, Telescope } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -28,11 +28,18 @@ export const CommandMenu = () => {
             <p className="text-workspace_3 text-text-color_3 px-2 font-medium ">
               Organizations
             </p>
-            <ul>
-            <WorkSpaceList >
+            <li
+              onMouseEnter={() => handleMouseEnterOrgItem("Mahin org")}
+              className="text-workspace_2  text-text-color_4 hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium "
+            >
               Mahin Org
-            </WorkSpaceList>
-            </ul>
+            </li>
+              <li
+              onMouseEnter={() => handleMouseEnterOrgItem("tata org")}
+              className="text-workspace_2  text-text-color_4 hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium "
+            >
+              Tata Org
+            </li>
           </ul>
           <FxSeparator orientation="horizontal" />
           <ul className="p-2">

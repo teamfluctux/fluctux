@@ -6,7 +6,6 @@ import type {
 } from "@radix-ui/react-popover";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
-import { LUCIDE_WORKSPACE_ICON_SIZE } from "./constant";
 
 type PopoverItemStatusType = "DANGER" | "WARNING" | "SAFE" | "NEUTRAL";
 type PopoverItemStatusEffectType = "SURFACE" | "SOFT";
@@ -118,14 +117,12 @@ export const FxPopover = ({
                                 key={`${(item.value || item.slug)?.toString().toLowerCase()}-${j}`}
                               >
                                 <li
-                                  className={`fx-flex-cl gap-2 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-tiny px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
+                                  className={`fx-flex-cl gap-1.5 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-tiny px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
                                 >
                                   <div
                                     className={`${item.status ? "text-inherit" : "text-text-svg_default"} transition-colors group-hover:text-inherit ${item.iconClassname}`}
                                   >
-                                    {Icon && (
-                                      <Icon size={LUCIDE_WORKSPACE_ICON_SIZE} />
-                                    )}
+                                    {Icon && <Icon size={17} />}
                                   </div>
                                   <span>{item.label}</span>
                                 </li>
@@ -135,14 +132,12 @@ export const FxPopover = ({
                                 onClick={() =>
                                   item.onItemClick?.(item.value as string)
                                 }
-                                className={`fx-flex-cl gap-2 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-tiny px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
+                                className={`fx-flex-cl gap-1.5 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-tiny px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
                               >
                                 <div
                                   className={` ${item.status ? "text-inherit" : "text-text-svg_default"} transition-colors group-hover:text-inherit ${item.iconClassname}`}
                                 >
-                                  {Icon && (
-                                    <Icon size={LUCIDE_WORKSPACE_ICON_SIZE} />
-                                  )}
+                                  {Icon && <Icon size={17} />}
                                 </div>
                                 <span>{item.label}</span>
                               </li>
