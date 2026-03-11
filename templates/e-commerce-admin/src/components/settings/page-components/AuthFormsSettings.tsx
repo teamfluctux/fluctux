@@ -1,3 +1,3 @@
 export const AuthFormsSettings = () => {
-  return <div>AuthFormsSettings</div>
-}
+  return <div>AuthFormsSettings</div>;
+};

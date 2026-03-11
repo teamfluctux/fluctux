@@ -4,7 +4,7 @@ type ExternalLinkPropsType = {
   linkLabel: string;
   slug?: string;
   className?: string;
-  showExternalIcon?: boolean
+  showExternalIcon?: boolean;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const ExternalLink = ({
@@ -24,12 +24,12 @@ export const ExternalLink = ({
     >
       {linkLabel}
 
-{showExternalIcon ?
-      <ExternalLinkIcon
-      size={14}
-      className="pl-0.5 group-hover:text-blue-600!"
-      />: null
-    }
+      {showExternalIcon ? (
+        <ExternalLinkIcon
+          size={14}
+          className="pl-0.5 group-hover:text-blue-600!"
+        />
+      ) : null}
     </a>
   );
 };

@@ -15,5 +15,3 @@
 //         this.title = value
 //     }
 // }
-
-

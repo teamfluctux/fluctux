@@ -1,3 +1,3 @@
 export const CustomCodeSettings = () => {
-  return <div>CustomCodeSettings</div>
-}
+  return <div>CustomCodeSettings</div>;
+};

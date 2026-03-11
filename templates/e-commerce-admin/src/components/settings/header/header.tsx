@@ -2,20 +2,19 @@
 import { Button, ButtonGroup } from "@fluctux/ui";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useSettingsStore } from "../SettingsWrapper";
-import { usePathname } from "next/navigation";
-import { SETTINGS_TITLE_DESC } from "@/constants";
+import { usePathname, useRouter } from "next/navigation";
+import { SETTINGS_TITLE_DESC, type SettingsSlugType } from "@/constants";
 import { useEffect } from "react";
 
 export const Settingsheader = () => {
   const path_name = usePathname();
-  const { setMetaData, metaData } = useSettingsStore();
+  const router = useRouter();
+  const { setMetaData, metaData, pagination, setPagination } =
+    useSettingsStore();
   useEffect(() => {
-    const getPathArray = path_name.split("/");
-    const data =
-      SETTINGS_TITLE_DESC[
-        getPathArray[getPathArray.length - 1]?.toString() ?? ""
-      ];
+    const data = SETTINGS_TITLE_DESC[path_name as SettingsSlugType];
     setMetaData({ title: data?.title, desc: data?.desc });
+    setPagination(path_name);
   }, [path_name, setMetaData]);
 
   return (
@@ -24,10 +23,24 @@ export const Settingsheader = () => {
         <h1 className="text-read_18 font-medium">{metaData.title}</h1>
         <div>
           <ButtonGroup>
-            <Button variant={"secondary"}>
+            <Button
+              showClickOutlineEffect
+              disabled={!pagination.prev}
+              onClick={() =>
+                pagination.prev && router.push(pagination.prev?.slug)
+              }
+              variant={"secondary"}
+            >
               <ChevronLeft />
             </Button>
-            <Button variant={"secondary"}>
+            <Button
+              showClickOutlineEffect
+              disabled={!pagination.next}
+              onClick={() =>
+                pagination.next && router.push(pagination.next?.slug)
+              }
+              variant={"secondary"}
+            >
               <ChevronRight />
             </Button>
           </ButtonGroup>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Spinner } from "@fluctux/ui";
 import { useEffect, useState } from "react";
 
 export const ChildLoading = ({ children }: { children: React.ReactNode }) => {
@@ -8,9 +9,11 @@ export const ChildLoading = ({ children }: { children: React.ReactNode }) => {
     setMounted(true);
   }, []);
   if (!mounted) {
-    return <div className="w-full h-full flex justify-center items-center">
-        
-    </div>
+    return (
+      <div className="w-full h-full flex justify-center items-center">
+        <Spinner />
+      </div>
+    );
   }
   return <>{children}</>;
 };

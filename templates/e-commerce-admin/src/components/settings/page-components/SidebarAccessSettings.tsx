@@ -1,3 +1,3 @@
 export const SidebarAccessSettings = () => {
-  return <div>SidebarAccessSettings</div>
-}
+  return <div>SidebarAccessSettings</div>;
+};

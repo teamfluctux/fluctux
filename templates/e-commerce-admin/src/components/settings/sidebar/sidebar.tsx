@@ -1,105 +1,19 @@
 "use client";
-import type { SidebarMenuListType } from "@/types";
+import { ADMIN_SETTINGS_SIDEBAR } from "@/constants";
 import {
+  FxButton,
   ScrollArea,
   WorkSpaceLinkList,
   WorkSpaceList,
   type WorkSpaceListProps,
 } from "@fluctux/ui";
-import {
-  SettingsIcon,
-  ActivityIcon,
-  ServerIcon,
-  PaletteIcon,
-  LayoutDashboardIcon,
-  Code2Icon,
-  LogInIcon,
-  UserPlusIcon,
-  ShieldIcon,
-  StoreIcon,
-  UserCircleIcon,
-  LogOutIcon,
-  ShieldCheckIcon,
-  ReceiptIcon,
-  KeyRoundIcon,
-} from "lucide-react";
-import { usePathname } from "next/navigation";
+import { ArrowLeft, Plus, Settings } from "lucide-react";
+
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
-const ADMIN_SETTINGS_SIDEBAR: SidebarMenuListType = {
-  General: {
-    label: "General",
-    items: [
-      {
-        label: "General Settings",
-        icon: SettingsIcon,
-        slug: "/settings",
-      },
-      {
-        label: "Site Status & Performance",
-        icon: ActivityIcon,
-        slug: "/settings/site-status",
-      },
-      {
-        label: "Website Details",
-        icon: ServerIcon,
-        slug: "/settings/website-details",
-      },
-    ],
-  },
-  Workspace: {
-    label: "Workspace",
-    items: [
-      { label: "Appearance", icon: PaletteIcon, slug: "/settings/appearance" },
-      {
-        label: "Sidebar Access Control",
-        icon: LayoutDashboardIcon,
-        slug: "/settings/sidebar-access",
-      },
-      {
-        label: "Header & Footer Code",
-        icon: Code2Icon,
-        slug: "/settings/custom-code",
-      },
-    ],
-  },
-  Access: {
-    label: "Access & Auth",
-    items: [
-      {
-        label: "Authentication Forms",
-        icon: ShieldCheckIcon,
-        slug: "/settings/auth-forms",
-      },
-      { label: "Team", icon: ShieldIcon, slug: "/settings/team" },
-      { label: "Sellers", icon: StoreIcon, slug: "/settings/sellers" },
-    ],
-  },
-  Fluctux: {
-    label: "Fluctux",
-    items: [
-      {
-        label: "Billing & Plans",
-        icon: ReceiptIcon,
-        slug: "/settings/billing",
-      },
-      { label: "API Keys", icon: KeyRoundIcon, slug: "/settings/api" },
-    ],
-  },
-  Account: {
-    label: "Account",
-    items: [
-      {
-        label: "Account Settings",
-        icon: UserCircleIcon,
-        slug: "/settings/account",
-      },
-      { label: "Log Out", icon: LogOutIcon, value: "logout" },
-    ],
-  },
-};
-
 export const SettingsSidebar = () => {
+  const router = useRouter();
   const path_name = usePathname();
   const handleLogOut = () => {
     alert("Logged out!");
@@ -124,22 +38,32 @@ export const SettingsSidebar = () => {
         </p>
       </div>
 
-      <ScrollArea className="w-full h-[calc(100%-95px)] p-3">
+      <div className="w-full h-[50px] flex justify-start items-center px-3">
+        <FxButton
+          onClick={() => router.push("/dashboard")}
+          variant="secondary"
+          size="sm"
+          icon={ArrowLeft}
+        >
+          <span>Back to dashboard</span>
+        </FxButton>
+      </div>
+
+      <ScrollArea className="w-full h-[calc(100%-145px)] p-3">
         {Object.entries(ADMIN_SETTINGS_SIDEBAR).map(([Key, data], i) => {
           return (
             <div key={`${Key}-${i}`} className=" mb-4">
               <p className="text-workspace_3 font-medium text-text-color_3 px-2 mb-1">
                 {data.label}
               </p>
-              <ul>
+              <ul className="flex flex-col gap-0.5">
                 {data.items.map((item, j) => {
                   return (
-                    <React.Fragment       key={`${item.slug ?? item.value}-${j}`}>
+                    <React.Fragment key={`${item.slug ?? item.value}-${j}`}>
                       {item.slug ? (
                         <WorkSpaceLinkList
-                          active={path_name.endsWith(item.slug)}
+                          active={path_name === item.slug}
                           href={item.slug}
-                    
                           icon={item.icon}
                         >
                           {item.label}
@@ -148,13 +72,12 @@ export const SettingsSidebar = () => {
                         <WorkSpaceList
                           onClickDo={handleWorkspaceListClick}
                           value={item.value}
-                        
                           icon={item.icon}
                         >
                           {item.label}
                         </WorkSpaceList>
                       )}
-                    </React.Fragment >
+                    </React.Fragment>
                   );
                 })}
               </ul>

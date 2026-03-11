@@ -1,1 +1,1 @@
-export * from "./getSidebarVisibility"
+export * from "./getSidebarVisibility";

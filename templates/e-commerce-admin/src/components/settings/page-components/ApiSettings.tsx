@@ -1,3 +1,3 @@
 export const ApiSettings = () => {
-  return <div>ApiSettings</div>
-}
+  return <div>ApiSettings</div>;
+};

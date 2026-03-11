@@ -1,4 +1,3 @@
-
 export const BillingSettings = () => {
-  return <div>BillingSettings</div>
-}
+  return <div>BillingSettings</div>;
+};

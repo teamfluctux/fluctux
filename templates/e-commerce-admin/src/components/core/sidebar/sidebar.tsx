@@ -31,10 +31,8 @@ import {
   Users,
 } from "lucide-react";
 import { getSidebarVisibility } from "@/utils";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import type { SidebarMenuListType } from "@/types";
-
-
 
 const sidebarVisibility = getSidebarVisibility();
 const hiddenLookUp = Object.fromEntries(sidebarVisibility ?? []);
@@ -46,7 +44,7 @@ const SIDEBAR_ADMIN_MENU_LIST: SidebarMenuListType = {
       { label: "Orders", icon: ShoppingCartIcon, slug: "/orders" },
       { label: "Products", icon: PackageIcon, slug: "/products" },
       { label: "Customers", icon: UsersIcon, slug: "/customers" },
-      { label: "Analytics", icon: BarChart2Icon, slug: "analytics" },
+      { label: "Analytics", icon: BarChart2Icon, slug: "/analytics" },
       { label: "Discounts", icon: TagIcon, slug: "/discounts" },
       { label: "Blogs", icon: FileTextIcon, slug: "/blogs" },
     ],
@@ -85,6 +83,7 @@ const SIDEBAR_ADMIN_MENU_LIST: SidebarMenuListType = {
 
 export const Sidebar = () => {
   const router = useRouter();
+  const path_name = usePathname();
   return (
     <div className="w-[250px] h-screen border-r border-border-color_1 overflow-hidden shrink-0">
       <div className="w-full h-[60px] border-b border-border-color_1 flex justify-start items-center gap-3 p-2">
@@ -114,10 +113,11 @@ export const Sidebar = () => {
                 <p className="text-workspace_3 font-medium text-text-color_3 px-2 mb-1">
                   {data.label}
                 </p>
-                <ul>
+                <ul className="flex flex-col gap-0.5">
                   {visibleItems.map((item, j) => {
                     return (
                       <WorkSpaceLinkList
+                        active={path_name === item.slug}
                         href={item.slug}
                         key={`${item.slug ?? item.value}-${j}`}
                         icon={item.icon}
