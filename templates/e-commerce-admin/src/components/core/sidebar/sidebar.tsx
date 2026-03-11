@@ -11,75 +11,13 @@ import {
   WorkSpaceLinkList,
 } from "@fluctux/ui";
 import {
-  HomeIcon,
-  ShoppingCartIcon,
-  PackageIcon,
-  UsersIcon,
-  FileTextIcon,
-  BarChart2Icon,
-  TagIcon,
-  PaletteIcon,
-  LayoutIcon,
-  PenToolIcon,
-  TruckIcon,
-  CreditCardIcon,
-  ShieldIcon,
-  StoreIcon,
-  type LucideIcon,
-  LogOut,
   Settings,
-  Users,
 } from "lucide-react";
-import { getSidebarVisibility } from "@/utils";
+import { getSidebarHiddenItemsPostions } from "@/utils";
 import { usePathname, useRouter } from "next/navigation";
-import type { SidebarMenuListType } from "@/types";
+import { SIDEBAR_ADMIN_MENU_LIST } from "@/constants";
 
-const sidebarVisibility = getSidebarVisibility();
-const hiddenLookUp = Object.fromEntries(sidebarVisibility ?? []);
-
-const SIDEBAR_ADMIN_MENU_LIST: SidebarMenuListType = {
-  Primary: {
-    items: [
-      { label: "Dashboard", icon: HomeIcon, slug: "/dashboard" },
-      { label: "Orders", icon: ShoppingCartIcon, slug: "/orders" },
-      { label: "Products", icon: PackageIcon, slug: "/products" },
-      { label: "Customers", icon: UsersIcon, slug: "/customers" },
-      { label: "Analytics", icon: BarChart2Icon, slug: "/analytics" },
-      { label: "Discounts", icon: TagIcon, slug: "/discounts" },
-      { label: "Blogs", icon: FileTextIcon, slug: "/blogs" },
-    ],
-  },
-  Appearance: {
-    label: "Appearance",
-
-    items: [
-      { label: "Menus", icon: LayoutIcon, slug: "/menus" },
-      { label: "Themes", icon: PaletteIcon, slug: "/themes" },
-      { label: "Theme Builder", icon: PenToolIcon, slug: "/theme-builder" },
-    ],
-  },
-  Store: {
-    label: "Store",
-
-    items: [
-      { label: "Shipping", icon: TruckIcon, slug: "/shipping" },
-      {
-        label: "Payment Methods",
-        icon: CreditCardIcon,
-        slug: "/payment-methods",
-      },
-    ],
-  },
-  Admin: {
-    label: "Admin",
-
-    items: [
-      { label: "Users", icon: Users, slug: "/users" },
-      { label: "Team Management", icon: ShieldIcon, slug: "/team-management" },
-      { label: "Sellers", icon: StoreIcon, slug: "/sellers" },
-    ],
-  },
-};
+const hiddenLookUp = getSidebarHiddenItemsPostions("")
 
 export const Sidebar = () => {
   const router = useRouter();
