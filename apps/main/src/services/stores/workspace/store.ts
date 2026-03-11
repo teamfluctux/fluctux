@@ -1,20 +1,20 @@
 import { action, makeObservable, observable } from "mobx";
 
 class WorkspaceStore {
-  isLoadingWorkspace: boolean = true;
+  isMoutedWorkspace: boolean = false;
   isTopLoading: boolean = false;
 
   constructor() {
     makeObservable(this, {
-      isLoadingWorkspace: observable,
+      isMoutedWorkspace: observable,
       isTopLoading: observable,
-      setLoadingWorkspace: action,
+      setMountedWorkspace: action,
       setIsTopLoading: action,
     });
   }
 
-  setLoadingWorkspace(value: boolean) {
-    this.isLoadingWorkspace = value;
+  setMountedWorkspace(value: boolean) {
+    this.isMoutedWorkspace = value;
   }
 
   setIsTopLoading(value: boolean) {

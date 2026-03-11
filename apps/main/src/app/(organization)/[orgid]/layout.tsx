@@ -63,13 +63,10 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
   // // simulating data seeding =========================
   // const [data, setData] = useState<string | null>(null);
   useEffect(() => {
-    workspaceStore.setLoadingWorkspace(true);
-    setTimeout(() => {
-      workspaceStore.setLoadingWorkspace(false);
-    }, 1000);
+    workspaceStore.setMountedWorkspace(true);
   }, []);
 
-  if (workspaceStore.isLoadingWorkspace) {
+  if (!workspaceStore.isMoutedWorkspace) {
     return (
       <>
         <div className="w-full h-screen fx-flex-center bg-background-color_950C">

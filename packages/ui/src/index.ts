@@ -57,6 +57,7 @@ export * from "./kbd";
 export * from "./button-group";
 export * from "./separator";
 export * from "./scroll-area";
+export * from "./spinner";
 
 // utilities & libs
 export * from "./lib/utils";

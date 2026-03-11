@@ -24,6 +24,7 @@ import {
   KeyRoundIcon,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import React from "react";
 
 const ADMIN_SETTINGS_SIDEBAR: SidebarMenuListType = {
   General: {
@@ -133,12 +134,12 @@ export const SettingsSidebar = () => {
               <ul>
                 {data.items.map((item, j) => {
                   return (
-                    <>
+                    <React.Fragment       key={`${item.slug ?? item.value}-${j}`}>
                       {item.slug ? (
                         <WorkSpaceLinkList
                           active={path_name.endsWith(item.slug)}
                           href={item.slug}
-                          key={`${item.slug ?? item.value}-${j}`}
+                    
                           icon={item.icon}
                         >
                           {item.label}
@@ -147,13 +148,13 @@ export const SettingsSidebar = () => {
                         <WorkSpaceList
                           onClickDo={handleWorkspaceListClick}
                           value={item.value}
-                          key={`${item.slug ?? item.value}-${j}`}
+                        
                           icon={item.icon}
                         >
                           {item.label}
                         </WorkSpaceList>
                       )}
-                    </>
+                    </React.Fragment >
                   );
                 })}
               </ul>

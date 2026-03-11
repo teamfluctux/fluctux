@@ -1,14 +1,15 @@
-"use client"
+import React from "react";
 import { GeneralSettings } from "@/components";
-import { useSettingsStore } from "@/components/settings/SettingsWrapper";
-import React, { useEffect } from "react";
+import { SETTINGS_TITLE_DESC } from "@/constants";
 
-
+export async function generateMetadata() {
+  const metaData = SETTINGS_TITLE_DESC["settings"];
+  return {
+    title: metaData?.title,
+    desc: metaData?.desc,
+  };
+}
 
 export default function GeneralSettingsPage() {
-       const {setTitle} = useSettingsStore()
-        useEffect(() => {
-            setTitle("General Settings")
-        }, [])
-  return <GeneralSettings/>;
+  return <GeneralSettings />;
 }
