@@ -6,6 +6,7 @@ export type ButtonVariant =
   | "ghost_zinc"
   | "ghost_zinc_2"
   | "surface_indigo_2"
+  | "surface"
   | "surface_indigo";
 
 export interface ButtonStylingType {
@@ -32,16 +33,14 @@ export const iconSizes: { [key in SizeType]: number } = {
 
 export const buttonStyling: ButtonStylingType = {
   primary: {
-    default:
-      "bg-background-indigo_primary  border-none text-text-color_default_white active:bg-fx_indigo-500 active:text-text-color_default_white!",
+    default: "bg-primary-color  border-none text-primary-text-color ",
     hover:
-      "hover:bg-fx_indigo-700 dark:hover:text-text-color_4 hover:text-text-color_default_white",
-    disabled:
-      "text-text-color_2 cursor-not-allowed! bg-fx_indigo-800 border border-border-color_1",
+      "hover:bg-primary-color-hover hover:text-primary-text-color active:bg-primary-color-active active:text-text-color_4",
+    disabled: "text-text-color_2 cursor-not-allowed! bg-primary-color-disabled",
   },
   secondary: {
     default:
-      "border border-border-color_1 bg-background-color_900C   text-text-color_2",
+      "border border-border-color_1 bg-background-color_900C text-text-color_2",
     hover: "hover:bg-background-color_800C hover:text-text-color_1",
     disabled:
       "text-text-color_3 cursor-not-allowed! bg-background-color_900C border border-background-color_900C",
@@ -58,14 +57,23 @@ export const buttonStyling: ButtonStylingType = {
   },
   surface_indigo: {
     default:
-      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active  text-surface-indigo-fg",
-    hover: "hover:inset-ring-surface-indigo-border-active",
+      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border text-rdx-indigo-fg",
+    hover:
+      "hover:inset-ring-surface-indigo-border-active active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active ",
+    disabled: "opacity-50 cursor-not-allowed!",
+  },
+  surface: {
+    default:
+      "bg-surface-bg inset-ring inset-ring-surface-border text-surface-fg",
+    hover:
+      "hover:inset-ring-surface-border-active active:bg-surface-bg-active active:inset-ring-surface-border-active",
     disabled: "opacity-50 cursor-not-allowed!",
   },
   surface_indigo_2: {
     default:
-      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active  text-surface-indigo-fg-2",
-    hover: "hover:inset-ring-surface-indigo-border-active",
+      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border  text-rdx-indigo-fg",
+    hover:
+      "hover:inset-ring-surface-indigo-border-active  active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active",
     disabled: "opacity-50 cursor-not-allowed!",
   },
 };

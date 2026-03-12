@@ -46,12 +46,10 @@ export const WorkSpaceList = ({
       }
       className={`text-workspace_2 select-none cursor-default border border-transparent font-medium text-text-color_4 group flex justify-start items-center gap-2 px-2 h-7.5 rounded-tiny ${
         active
-          ? "text-surface-indigo-fg! bg-surface-indigo-bg-active"
+          ? "text-surface-fg! bg-surface-bg-active"
           : "hover:text-text-color_1 hover:bg-background-color_900C "
       } ${
-        disabled
-          ? "cursor-not-allowed"
-          : "active:border-surface-indigo-border-active!"
+        disabled ? "cursor-not-allowed" : "active:border-surface-border-active!"
       } ${className}`}
       {...props}
     >
@@ -59,7 +57,7 @@ export const WorkSpaceList = ({
         <div className="text-text-svg_default group-hover:text-text-color_1">
           <Icon
             size={16}
-            className={`${active ? "text-surface-indigo-fg" : "text-text-svg_default"}`}
+            className={`${active ? "text-surface-fg" : "text-text-svg_default"}`}
           />
         </div>
       )}

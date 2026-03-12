@@ -10,14 +10,12 @@ import {
   ScrollArea,
   WorkSpaceLinkList,
 } from "@fluctux/ui";
-import {
-  Settings,
-} from "lucide-react";
+import { Settings } from "lucide-react";
 import { getSidebarHiddenItemsPostions } from "@/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { SIDEBAR_ADMIN_MENU_LIST } from "@/constants";
 
-const hiddenLookUp = getSidebarHiddenItemsPostions("")
+const hiddenLookUp = getSidebarHiddenItemsPostions("");
 
 export const Sidebar = () => {
   const router = useRouter();

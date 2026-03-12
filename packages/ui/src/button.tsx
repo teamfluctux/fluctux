@@ -63,7 +63,7 @@ function Button({
       className={cn(
         buttonVariants({ variant, size, className }),
         showClickOutlineEffect
-          ? "active:ring-1 active:ring-surface-indigo-border-active"
+          ? "active:ring-1 active:ring-surface-border-active"
           : ""
       )}
       {...props}

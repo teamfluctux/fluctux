@@ -76,8 +76,7 @@
   }
 }
 
-
-.company_logo_marquee_wrapper::before{
+.company_logo_marquee_wrapper::before {
   content: "";
   position: absolute;
   left: 0;
@@ -88,7 +87,7 @@
   z-index: 11;
 }
 
-.company_logo_marquee_wrapper::after{
+.company_logo_marquee_wrapper::after {
   content: "";
   position: absolute;
   right: 0;

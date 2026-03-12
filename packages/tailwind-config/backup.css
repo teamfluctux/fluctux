@@ -9,6 +9,10 @@
       "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-orange-500: oklch(70.5% 0.213 47.604);
+    --color-orange-600: oklch(64.6% 0.222 41.116);
+    --color-orange-700: oklch(55.3% 0.195 38.402);
+    --color-orange-800: oklch(47% 0.157 37.304);
     --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-yellow-500: oklch(79.5% 0.184 86.047);
     --color-emerald-400: oklch(76.5% 0.177 163.223);
@@ -68,15 +72,19 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --radius: 8px;
+    --color-rdx-indigo-fg: var(--radix-indigo-fg);
     --color-rdx-red-fg: var(--radix-red-fg);
     --color-rdx-yellow-fg: var(--radix-yellow-fg);
     --color-rdx-green-fg: var(--radix-green-fg);
+    --color-surface-bg: var(--surface-bg);
+    --color-surface-bg-active: var(--surface-bg-active);
+    --color-surface-border: var(--surface-border);
+    --color-surface-border-active: var(--surface-border-active);
+    --color-surface-fg: var(--surface-fg);
     --color-surface-indigo-bg: var(--surface-indigo-bg);
     --color-surface-indigo-bg-active: var(--surface-indigo-bg-active);
     --color-surface-indigo-border: var(--surface-indigo-border);
     --color-surface-indigo-border-active: var(--surface-indigo-border-active);
-    --color-surface-indigo-fg: var(--surface-indigo-fg);
-    --color-surface-indigo-fg-2: var(--surface-indigo-fg-2);
     --color-surface-red-bg-active: var(--suface-red-bg-active);
     --color-surface-red-border-active: var(--surface-red-border-active);
     --color-surface-green-bg-active: var(--surface-green-bg-active);
@@ -90,7 +98,11 @@
     --color-fx_indigo-700: var(--color-indigo-700);
     --color-fx_indigo-800: var(--color-indigo-800);
     --color-fx_indigo-primary: var(--color-indigo-600);
-    --color-background-indigo_primary: var(--primary-color);
+    --color-background-indigo_primary: var(--color-indigo-600);
+    --color-primary-color: var(--primary-color);
+    --color-primary-color-hover: var(--primary-color-hover);
+    --color-primary-color-active: var(--primary-color-active);
+    --color-primary-color-disabled: var(--primary-color-disabled);
     --color-background-color_950C: var(--background);
     --color-background-color_925C: var(--background-color-925C);
     --color-background-color_900C: var(--background-color-900C);
@@ -99,6 +111,7 @@
     --color-background-color_750C: var(--background-color-750C);
     --color-border-color_1: var(--border-color-1);
     --color-border-color_2: var(--border-color-2);
+    --color-primary-text-color: var(--primary-text-color);
     --color-text-color_1: var(--foreground);
     --color-text-color_2: var(--foreground-color-2);
     --color-text-color_3: var(--foreground-color-3);
@@ -650,9 +663,6 @@
   .w-52 {
     width: calc(var(--spacing) * 52);
   }
-  .w-56 {
-    width: calc(var(--spacing) * 56);
-  }
   .w-64 {
     width: calc(var(--spacing) * 64);
   }
@@ -1096,9 +1106,6 @@
       background-color: color-mix(in oklab, var(--color-destructive) 10%, transparent);
     }
   }
-  .bg-fx_indigo-800 {
-    background-color: var(--color-fx_indigo-800);
-  }
   .bg-input {
     background-color: var(--color-input);
   }
@@ -1111,17 +1118,26 @@
   .bg-primary {
     background-color: var(--color-primary);
   }
+  .bg-primary-color {
+    background-color: var(--color-primary-color);
+  }
+  .bg-primary-color-disabled {
+    background-color: var(--color-primary-color-disabled);
+  }
   .bg-red-600 {
     background-color: var(--color-red-600);
   }
   .bg-secondary {
     background-color: var(--color-secondary);
   }
+  .bg-surface-bg {
+    background-color: var(--color-surface-bg);
+  }
+  .bg-surface-bg-active {
+    background-color: var(--color-surface-bg-active);
+  }
   .bg-surface-indigo-bg {
     background-color: var(--color-surface-indigo-bg);
-  }
-  .bg-surface-indigo-bg-active {
-    background-color: var(--color-surface-indigo-bg-active);
   }
   .bg-transparent {
     background-color: transparent;
@@ -1421,8 +1437,14 @@
   .text-primary-foreground {
     color: var(--color-primary-foreground);
   }
+  .text-primary-text-color {
+    color: var(--color-primary-text-color);
+  }
   .text-rdx-green-fg {
     color: var(--color-rdx-green-fg);
+  }
+  .text-rdx-indigo-fg {
+    color: var(--color-rdx-indigo-fg);
   }
   .text-rdx-red-fg {
     color: var(--color-rdx-red-fg);
@@ -1439,14 +1461,11 @@
   .text-secondary-foreground {
     color: var(--color-secondary-foreground);
   }
-  .text-surface-indigo-fg {
-    color: var(--color-surface-indigo-fg);
+  .text-surface-fg {
+    color: var(--color-surface-fg);
   }
-  .text-surface-indigo-fg\! {
-    color: var(--color-surface-indigo-fg) !important;
-  }
-  .text-surface-indigo-fg-2 {
-    color: var(--color-surface-indigo-fg-2);
+  .text-surface-fg\! {
+    color: var(--color-surface-fg) !important;
   }
   .text-text-color_1 {
     color: var(--color-text-color_1);
@@ -1462,9 +1481,6 @@
   }
   .text-text-color_4 {
     color: var(--color-text-color_4);
-  }
-  .text-text-color_default_white {
-    color: var(--color-text-color_default_white);
   }
   .text-text-svg_default {
     color: var(--color-text-svg_default);
@@ -1560,6 +1576,9 @@
   }
   .ring-red-500\! {
     --tw-ring-color: var(--color-red-500) !important;
+  }
+  .inset-ring-surface-border {
+    --tw-inset-ring-color: var(--color-surface-border);
   }
   .inset-ring-surface-indigo-border {
     --tw-inset-ring-color: var(--color-surface-indigo-border);
@@ -1890,17 +1909,17 @@
       }
     }
   }
-  .hover\:bg-fx_indigo-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-fx_indigo-700);
-      }
-    }
-  }
   .hover\:bg-muted {
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-muted);
+      }
+    }
+  }
+  .hover\:bg-primary-color-hover {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-primary-color-hover);
       }
     }
   }
@@ -1977,6 +1996,13 @@
       }
     }
   }
+  .hover\:text-primary-text-color {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-primary-text-color);
+      }
+    }
+  }
   .hover\:text-rdx-green-fg {
     &:hover {
       @media (hover: hover) {
@@ -2026,13 +2052,6 @@
       }
     }
   }
-  .hover\:text-text-color_default_white {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-text-color_default_white);
-      }
-    }
-  }
   .hover\:text-yellow-400 {
     &:hover {
       @media (hover: hover) {
@@ -2066,6 +2085,13 @@
       @media (hover: hover) {
         --tw-inset-ring-shadow: inset 0 0 0 1px var(--tw-inset-ring-color, currentcolor);
         box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
+  .hover\:inset-ring-surface-border-active {
+    &:hover {
+      @media (hover: hover) {
+        --tw-inset-ring-color: var(--color-surface-border-active);
       }
     }
   }
@@ -2261,14 +2287,19 @@
       }
     }
   }
-  .active\:border-surface-indigo-border-active\! {
+  .active\:border-surface-border-active\! {
     &:active {
-      border-color: var(--color-surface-indigo-border-active) !important;
+      border-color: var(--color-surface-border-active) !important;
     }
   }
-  .active\:bg-fx_indigo-500 {
+  .active\:bg-primary-color-active {
     &:active {
-      background-color: var(--color-fx_indigo-500);
+      background-color: var(--color-primary-color-active);
+    }
+  }
+  .active\:bg-surface-bg-active {
+    &:active {
+      background-color: var(--color-surface-bg-active);
     }
   }
   .active\:bg-surface-indigo-bg-active {
@@ -2276,9 +2307,9 @@
       background-color: var(--color-surface-indigo-bg-active);
     }
   }
-  .active\:text-text-color_default_white\! {
+  .active\:text-text-color_4 {
     &:active {
-      color: var(--color-text-color_default_white) !important;
+      color: var(--color-text-color_4);
     }
   }
   .active\:ring-1 {
@@ -2287,9 +2318,14 @@
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
-  .active\:ring-surface-indigo-border-active {
+  .active\:ring-surface-border-active {
     &:active {
-      --tw-ring-color: var(--color-surface-indigo-border-active);
+      --tw-ring-color: var(--color-surface-border-active);
+    }
+  }
+  .active\:inset-ring-surface-border-active {
+    &:active {
+      --tw-inset-ring-color: var(--color-surface-border-active);
     }
   }
   .active\:inset-ring-surface-indigo-border-active {
@@ -2864,11 +2900,6 @@
       background-color: var(--color-surface-indigo-bg-active);
     }
   }
-  .data-\[state\=on\]\:text-surface-indigo-fg {
-    &[data-state="on"] {
-      color: var(--color-surface-indigo-fg);
-    }
-  }
   .data-\[state\=open\]\:bg-accent {
     &[data-state="open"] {
       background-color: var(--color-accent);
@@ -3141,15 +3172,6 @@
           @supports (color: color-mix(in lab, red, red)) {
             background-color: color-mix(in oklab, var(--color-muted) 50%, transparent);
           }
-        }
-      }
-    }
-  }
-  .dark\:hover\:text-text-color_4 {
-    &:is(.dark *) {
-      &:hover {
-        @media (hover: hover) {
-          color: var(--color-text-color_4);
         }
       }
     }
@@ -3694,18 +3716,17 @@
   --color-indigo-200: #c7d2fe;
   --color-indigo-100: #e0e7ff;
   --color-indigo-50: #eef2ff;
-  --primary-color: var(--color-indigo-600);
-  --background: var(--color-zinc-50);
-  --background-color-925C: var(--color-zinc-75);
-  --background-color-900C: var(--color-zinc-100);
-  --background-color-800C: var(--color-zinc-200);
-  --background-color-850C: var(--color-zinc-250);
-  --background-color-750C: var(--color-zinc-350);
-  --background-color-700C: var(--color-zinc-700);
-  --foreground: var(--color-zinc-950);
-  --foreground-color-2: var(--color-zinc-600);
-  --foreground-color-3: var(--color-zinc-500);
-  --foreground-color-4: var(--color-zinc-700);
+  --color-orange-950: #431407;
+  --color-orange-900: #7c2d12;
+  --color-orange-800: #9a3412;
+  --color-orange-700: #c2410c;
+  --color-orange-600: #ea580c;
+  --color-orange-500: #f97316;
+  --color-orange-400: #fb923c;
+  --color-orange-300: #fdba74;
+  --color-orange-200: #fed7aa;
+  --color-orange-100: #ffedd5;
+  --color-orange-50: #fff7ed;
   --primary-radius: 8px;
   --link-color: #3b82f6;
   --badge-green-border: #6aeeae79;
@@ -3720,8 +3741,6 @@
   --badge-primary-purple-border: #5865f28e;
   --badge-primary-purple-bg: #5865f223;
   --badge-primary-purple-fg: #5865f2;
-  --border-color-1: var(--color-zinc-300);
-  --border-color-2: var(--color-zinc-400);
   --overlay-bg-dialog: #09090ba6;
   --scrollbar-color: var(--color-zinc-200);
   --skeleton-base-color: var(--color-zinc-200);
@@ -3731,44 +3750,6 @@
   --text-color-gradient-t: #4a4a4a;
   --outline-offset-color: var(--color-zinc-300);
   --outline-border-color: var(--color-zinc-600);
-  --radix-indigo-fg: #9eb1ff;
-  --radix-indigo-fg-2: #d6e1ff;
-  --radix-red-fg: #ff9592;
-  --radix-red-fg-2: #ffd1d9;
-  --radix-yellow-fg: #d6e1ff;
-  --radix-yellow-fg-2: #d6e1ff;
-  --radix-green-fg: #3ad389;
-  --radix-green-fg-2: #b1f1cb;
-  --radix-sky-fg: #7cd3ffef;
-  --radix-sky-fg-2: #c2f3ff;
-  --radix-yellow-fg: #fee949f5;
-  --radix-yellow-fg-2: #f6eeb4;
-  --surface-indigo-bg: #171d3b80;
-  --surface-indigo-bg-active: #2f62ff3c;
-  --surface-indigo-border: #5a7fff90;
-  --surface-indigo-border-active: #5b81feac;
-  --surface-indigo-fg: #9eb1ff;
-  --surface-indigo-fg-2: #d6e1ff;
-  --suface-red-bg: #2f151780;
-  --surface-red-border: #ff536184;
-  --suface-red-bg-active: #ff173f2d;
-  --surface-red-border-active: #ff5d61b0;
-  --surface-green-bg: #15251d80;
-  --surface-green-bg-active: #22ff991e;
-  --surface-green-border: #50fdac5e;
-  --surface-green-border-active: #54ffad73;
-  --surface-yellow-bg: #231f1380;
-  --surface-yellow-bg-active: #ffaa001e;
-  --surface-yellow-border: #fdcb225c;
-  --surface-yellow-border-active: #fdca327b;
-  --soft-red-bg: #ff173f2d;
-  --soft-red-bg-active: #ff204756;
-  --soft-green-bg: #041e12;
-  --soft-green-bg-active: #2bffa23c;
-  --soft-sky-bg: #1184fc33;
-  --soft-sky-bg-active: #1c9dfd5d;
-  --soft-yellow-bg: #ffaa001e;
-  --soft-yellow-bg-active: #febb0036;
   --twoslash-border-color: #8888;
   --twoslash-underline-color: currentColor;
   --twoslash-highlighted-border: #c37d0d50;
@@ -3830,6 +3811,74 @@
   --sidebar-accent-foreground: var(--color-zinc-900);
   --sidebar-border: var(--color-zinc-200);
   --sidebar-ring: var(--color-zinc-400);
+  --radix-indigo-fg: #9eb1ff;
+  --radix-indigo-fg-2: #d6e1ff;
+  --radix-red-fg: #ff9592;
+  --radix-red-fg-2: #ffd1d9;
+  --radix-yellow-fg: #d6e1ff;
+  --radix-yellow-fg-2: #d6e1ff;
+  --radix-green-fg: #3ad389;
+  --radix-green-fg-2: #b1f1cb;
+  --radix-sky-fg: #7cd3ffef;
+  --radix-sky-fg-2: #c2f3ff;
+  --radix-yellow-fg: #fee949f5;
+  --radix-yellow-fg-2: #f6eeb4;
+  --radix-orange-fg: #ffa057;
+  --radix-orange-fg-2: #ffe0c2;
+  --surface-indigo-bg: #171d3b80;
+  --surface-indigo-bg-active: #2f62ff3c;
+  --surface-indigo-border: #5a7fff90;
+  --surface-indigo-border-active: #5b81feac;
+  --surface-indigo-fg: #9eb1ff;
+  --surface-indigo-fg-2: #d6e1ff;
+  --suface-red-bg: #2f151780;
+  --surface-red-border: #ff536184;
+  --suface-red-bg-active: #ff173f2d;
+  --surface-red-border-active: #ff5d61b0;
+  --surface-green-bg: #15251d80;
+  --surface-green-bg-active: #22ff991e;
+  --surface-green-border: #50fdac5e;
+  --surface-green-border-active: #54ffad73;
+  --surface-yellow-bg: #231f1380;
+  --surface-yellow-bg-active: #ffaa001e;
+  --surface-yellow-border: #fdcb225c;
+  --surface-yellow-border-active: #fdca327b;
+  --surface-orange-bg: #271d1380;
+  --surface-orange-bg-active: #fb6a0025;
+  --surface-orange-border: #ff832c75;
+  --surface-orange-border-active: #fe84389d;
+  --soft-red-bg: #ff173f2d;
+  --soft-red-bg-active: #ff204756;
+  --soft-green-bg: #041e12;
+  --soft-green-bg-active: #2bffa23c;
+  --soft-sky-bg: #1184fc33;
+  --soft-sky-bg-active: #1c9dfd5d;
+  --soft-yellow-bg: #ffaa001e;
+  --soft-yellow-bg-active: #febb0036;
+  --primary-color: var(--color-indigo-600);
+  --primary-color-hover: var(--color-indigo-500);
+  --primary-color-active: var(--color-indigo-700);
+  --primary-color-disabled: var(--color-indigo-800);
+  --primary-text-color: var(--color-zinc-50);
+  --background: var(--color-zinc-50);
+  --background-color-925C: var(--color-zinc-75);
+  --background-color-900C: var(--color-zinc-100);
+  --background-color-800C: var(--color-zinc-200);
+  --background-color-850C: var(--color-zinc-250);
+  --background-color-750C: var(--color-zinc-350);
+  --background-color-700C: var(--color-zinc-700);
+  --foreground: var(--color-zinc-950);
+  --foreground-color-2: var(--color-zinc-600);
+  --foreground-color-3: var(--color-zinc-500);
+  --foreground-color-4: var(--color-zinc-700);
+  --border-color-1: var(--color-zinc-300);
+  --border-color-2: var(--color-zinc-400);
+  --surface-bg: var(--surface-indigo-bg);
+  --surface-bg-active: var(--surface-indigo-bg-active);
+  --surface-border: var(--surface-indigo-border);
+  --surface-border-active: var(--surface-indigo-border-active);
+  --surface-fg: var(--radix-indigo-fg);
+  --surface-fg-2: var(--radix-indigo-fg-2);
 }
 .dark {
   --background: var(--color-zinc-950);
@@ -3841,11 +3890,80 @@
   --background-color-700C: var(--color-zinc-700);
   --border-color-1: var(--color-zinc-800);
   --border-color-2: var(--color-zinc-700);
-  --overlay-bg-dialog: #09090bc3;
   --foreground: var(--color-zinc-50);
   --foreground-color-2: var(--color-zinc-400);
   --foreground-color-3: var(--color-zinc-500);
   --foreground-color-4: var(--color-zinc-300);
+  --overlay-bg-dialog: #09090bc3;
+  --skeleton-base-color: var(--color-zinc-900);
+  --skeleton-highlightColor: var(--color-zinc-700);
+  --svg-default-color: var(--color-zinc-400);
+  --scrollbar-color: var(--color-zinc-800);
+  --text-color-gradient-b: var(--color-zinc-600);
+  --text-color-gradient-t: var(--color-zinc-50);
+  --outline-offset-color: var(--color-zinc-600);
+  --outline-border-color: var(--color-zinc-300);
+  --code-error-border: #dc2626;
+  --code-error-background: #dc262648;
+  --code-add-color: #10b981;
+  --code-remove-color: #ef4444;
+  --code-add-bg-color: #10b9812a;
+  --code-remove-bg-color: #dc26262f;
+  --card: var(--color-zinc-900);
+  --card-foreground: var(--color-zinc-50);
+  --popover: var(--color-zinc-900);
+  --popover-foreground: var(--color-zinc-50);
+  --primary: var(--color-zinc-200);
+  --primary-foreground: var(--color-zinc-900);
+  --secondary: var(--color-zinc-800);
+  --secondary-foreground: var(--color-zinc-50);
+  --muted: var(--color-zinc-800);
+  --muted-foreground: var(--color-zinc-400);
+  --accent: var(--color-zinc-800);
+  --accent-foreground: var(--color-zinc-50);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: var(--color-zinc-800);
+  --input: var(--color-zinc-750);
+  --ring: var(--color-zinc-600);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: var(--color-zinc-925);
+  --sidebar-foreground: var(--color-zinc-50);
+  --sidebar-primary: var(--color-indigo-500);
+  --sidebar-primary-foreground: var(--color-zinc-50);
+  --sidebar-accent: var(--color-zinc-800);
+  --sidebar-accent-foreground: var(--color-zinc-50);
+  --sidebar-border: var(--color-zinc-800);
+  --sidebar-ring: var(--color-zinc-600);
+}
+.dark-orange {
+  --primary-color: var(--color-orange-600);
+  --primary-color-hover: var(--color-orange-500);
+  --primary-color-active: var(--color-orange-700);
+  --primary-color-disabled: var(--color-orange-800);
+  --background: var(--color-zinc-950);
+  --background-color-925C: var(--color-zinc-925);
+  --background-color-900C: var(--color-zinc-900);
+  --background-color-800C: var(--color-zinc-800);
+  --background-color-850C: var(--color-zinc-850);
+  --background-color-750C: var(--color-zinc-750);
+  --background-color-700C: var(--color-zinc-700);
+  --border-color-1: var(--color-zinc-800);
+  --border-color-2: var(--color-zinc-700);
+  --foreground: var(--color-zinc-50);
+  --foreground-color-2: var(--color-zinc-400);
+  --foreground-color-3: var(--color-zinc-500);
+  --foreground-color-4: var(--color-zinc-300);
+  --surface-bg: var(--surface-orange-bg);
+  --surface-bg-active: var(--surface-orange-bg-active);
+  --surface-border: var(--surface-orange-border);
+  --surface-border-active: var(--surface-orange-border-active);
+  --surface-fg: var(--radix-orange-fg);
+  --surface-fg-2: var(--radix-orange-fg-2);
+  --overlay-bg-dialog: #09090bc3;
   --skeleton-base-color: var(--color-zinc-900);
   --skeleton-highlightColor: var(--color-zinc-700);
   --svg-default-color: var(--color-zinc-400);

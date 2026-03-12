@@ -41,7 +41,7 @@ export const SettingsSidebar = () => {
       <div className="w-full h-[50px] flex justify-start items-center px-3">
         <FxButton
           onClick={() => router.push("/dashboard")}
-          variant="secondary"
+          variant="primary"
           size="sm"
           icon={ArrowLeft}
         >

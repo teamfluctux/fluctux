@@ -7,7 +7,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --concurrency=30",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,json}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,json,css}\"",
     "check-types": "turbo run check-types",
     "clean": "turbo run clean && rm -rf node_modules dist .turbo && echo 'Root Cleanup complete!'",
     "commit": "git-cz",

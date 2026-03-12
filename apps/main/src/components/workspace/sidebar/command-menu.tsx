@@ -34,7 +34,7 @@ export const CommandMenu = () => {
             >
               Mahin Org
             </li>
-              <li
+            <li
               onMouseEnter={() => handleMouseEnterOrgItem("tata org")}
               className="text-workspace_2  text-text-color_4 hover:bg-background-color_750C hover:text-text-color_1 px-2 py-1 rounded-tiny cursor-pointer font-medium "
             >

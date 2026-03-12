@@ -174,7 +174,6 @@ export const SidebarBottom = () => {
             <p className="text-workspace_3 pt-2 pb-1 font-weight_450 text-text-color_3 px-2">
               Workspace + Team
             </p>
-       
 
             <ul className="flex flex-col gap-0.5">
               {WORKSPACELISTS.map((item, index) => {

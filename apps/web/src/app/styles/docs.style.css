@@ -1,9 +1,9 @@
 .doc-hide-scrollbar {
   scrollbar-color: transparent transparent !important;
-  transition: .5s ease all;
+  transition: 0.5s ease all;
 }
 
-.doc-hide-scrollbar:hover{
+.doc-hide-scrollbar:hover {
   scrollbar-color: var(--scrollbar-color) transparent !important;
 }
 
@@ -67,8 +67,6 @@
   .mobile-doc-search {
     display: flex;
   }
-
-
 
   .docs-header {
     justify-content: right;

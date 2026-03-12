@@ -1,7 +1,7 @@
 import axios, {
- type AxiosInstance,
- type AxiosRequestConfig,
- type AxiosRequestHeaders,
+  type AxiosInstance,
+  type AxiosRequestConfig,
+  type AxiosRequestHeaders,
 } from "axios";
 
 export abstract class ApiService {

@@ -1,8 +1,5 @@
+import { BackendApiService } from "../backend-api.service";
 
-import { BackendApiService } from "../backend-api.service"
+class DashboardService extends BackendApiService {}
 
-class DashboardService extends BackendApiService {
-    
-}
-
-export const dashboardService = new DashboardService()
+export const dashboardService = new DashboardService();
