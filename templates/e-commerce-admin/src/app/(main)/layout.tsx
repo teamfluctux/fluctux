@@ -1,4 +1,5 @@
 import { Sidebar, WorkSpaceHeader } from "@/components";
+import { ScrollArea } from "@fluctux/ui";
 import React from "react";
 
 type LayoutPropsType = {
@@ -11,9 +12,9 @@ export default function Layout({ children }: LayoutPropsType) {
       <Sidebar />
       <div className="px-3 w-full h-screen overflow-hidden bg-background-color_925C">
         <WorkSpaceHeader />
-        <div className="w-full h-[calc(100%-60px)] border border-border-color_1 rounded-t-rounded_15C p-1 bg-background-color_950C">
+        <ScrollArea className="w-full h-[calc(100%-60px)] border border-border-color_1 rounded-t-rounded_15C bg-background-color_950C">
           {children}
-        </div>
+        </ScrollArea>
       </div>
     </div>
   );
