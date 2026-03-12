@@ -7,7 +7,7 @@ import {
   WorkSpaceList,
   type WorkSpaceListProps,
 } from "@fluctux/ui";
-import { ArrowLeft, Plus, Settings } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -20,10 +20,10 @@ export const SettingsSidebar = () => {
   };
 
   const handleWorkspaceListClick: WorkSpaceListProps["onClickDo"] = (
-    active,
-    disabled,
+    _active,
+    _disabled,
     value,
-    label
+    _label
   ) => {
     if (value === "logout") handleLogOut();
   };

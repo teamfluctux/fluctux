@@ -22,7 +22,7 @@ type InputVariantType =
   | "primary"
   | "secondary"
   | "outlineLabel"
-  | "outline-solid";
+  | "outline";
 
 const inputVariants: { [key in InputVariantType]: string } = {
   primary:

@@ -4,14 +4,13 @@ import {
   AuthFormsSettings,
   BillingSettings,
   CustomCodeSettings,
-  GeneralSettings,
   SellersSettings,
   SidebarAccessSettings,
   SiteStatusSettings,
   TeamSettings,
   WebsiteDetailsSettings,
 } from "@/components";
-import { SETTINGS_TITLE_DESC } from "@/constants";
+import { SETTINGS_TITLE_DESC, type SettingsSlugType } from "@/constants";
 
 type SettingsChildPagePropsType = {
   params: Promise<{ slug: string }>;
@@ -25,7 +24,7 @@ export async function generateMetadata({
   params,
 }: SettingsChildPageMetaDataPropsType) {
   const { slug } = await params;
-  const metaData = SETTINGS_TITLE_DESC[slug];
+  const metaData = SETTINGS_TITLE_DESC[`/${slug}` as SettingsSlugType];
   return {
     title: metaData?.title,
     description: metaData?.desc,

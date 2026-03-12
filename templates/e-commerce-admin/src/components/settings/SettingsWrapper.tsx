@@ -1,5 +1,5 @@
 "use client";
-import { ADMIN_SETTINGS_SIDEBAR, SETTINGS_TITLE_DESC } from "@/constants";
+import { ADMIN_SETTINGS_SIDEBAR } from "@/constants";
 import { createContext, useContext, useState } from "react";
 type PaginationItemType = { label: string; slug: string };
 type SettingsStoreContextType = {

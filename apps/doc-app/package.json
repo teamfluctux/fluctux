@@ -1,5 +1,5 @@
 {
-  "name": "doc",
+  "name": "doc-app",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,6 +7,7 @@
     "dev": "next dev --port 3080",
     "build": "next build",
     "start": "next start",
+      "gen:docs": "typedoc --out docs",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
     "clean": "rm -rf node_modules .turbo .next && echo 'Cleanup complete!'"

@@ -6,8 +6,6 @@ import {
   PaletteIcon,
   LayoutDashboardIcon,
   Code2Icon,
-  LogInIcon,
-  UserPlusIcon,
   ShieldIcon,
   StoreIcon,
   UserCircleIcon,

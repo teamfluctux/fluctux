@@ -1,8 +1,6 @@
-import Image from "next/image";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import type {
   PopoverContentProps,
-  PopoverProps,
 } from "@radix-ui/react-popover";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
