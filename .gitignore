@@ -45,4 +45,7 @@ yarn-error.log*
 .idea
 test.sql
 
-**/docs
+/docs
+packages/*/docs
+apps/*/docs
+templates/*/docs
