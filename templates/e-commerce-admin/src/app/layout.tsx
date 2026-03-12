@@ -8,6 +8,7 @@ import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { TooltipProvider } from "@fluctux/ui";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,11 +41,14 @@ export default function RootLayout({
       >
         <Suspense>
           <ThemeProvider attribute={"class"}>
+
             <SkeletonTheme
               baseColor="var(--skeleton-base-color)"
               highlightColor="var(--skeleton-highlightColor)"
             >
+              <TooltipProvider>
               {children}
+              </TooltipProvider>
             </SkeletonTheme>
           </ThemeProvider>
         </Suspense>

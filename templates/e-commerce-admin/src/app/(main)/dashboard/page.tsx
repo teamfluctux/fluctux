@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from "@fluctux/ui";
 import { ArrowUp, PlusIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
-import { OverViewHeaderDataBox } from "./OverViewComp";
+import { OverViewMetricsBox } from "./OverViewMetricsBox";
 
 const OVER_VIEW_PERIOD_TIMESTAMP: { label: string; value: string }[] = [
   {
@@ -34,7 +34,7 @@ type DashboardOverviewDatatype = {
     currentValue: number;
     previousValue?: number | null;
     newValue?: number | null;
-    colorClass?: string
+    colorClass?: string;
   };
 };
 
@@ -43,49 +43,49 @@ const DASHBOARD_OVERVIEW_VALUES: DashboardOverviewDatatype = {
     itemKey: "total-sales",
     currentValue: 47500000,
     previousValue: 44811000,
-    colorClass: ""
+    colorClass: "",
   },
   "Total Orders": {
     itemKey: "total-orders",
     currentValue: 3490,
     previousValue: 3201,
-    colorClass: ""
+    colorClass: "",
   },
   "Low Stock Items": {
     itemKey: "low-stock-items",
     currentValue: 24,
     previousValue: 18,
-    colorClass: ""
+    colorClass: "",
   },
   "Active Products": {
     itemKey: "active-products",
     currentValue: 1284,
     previousValue: 1200,
-    colorClass: ""
+    colorClass: "",
   },
   "Net Revenue": {
     itemKey: "net-revenue",
     currentValue: 38200000,
     previousValue: 36100000,
-    colorClass: ""
+    colorClass: "",
   },
   "Discount Amount": {
     itemKey: "discount-amount",
     currentValue: 4300000,
     previousValue: 3900000,
-    colorClass: ""
+    colorClass: "",
   },
   "Taxes Collected": {
     itemKey: "taxes-collected",
     currentValue: 2100000,
     previousValue: 1980000,
-    colorClass: ""
+    colorClass: "",
   },
   "Refund Amount": {
     itemKey: "refund-amount",
     currentValue: 870000,
     previousValue: 920000,
-    colorClass: ""
+    colorClass: "",
   },
 };
 
@@ -114,20 +114,19 @@ export default function DashboardPage() {
           })}
         </ButtonGroup>
       </div>
-      <div >
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-[150px] w-full">
-          {Object.entries(DASHBOARD_OVERVIEW_VALUES).map(([Key, value], i) => {
-            return (
-              <OverViewHeaderDataBox
-                key={value.itemKey}
-                title={Key}
-                currentValue={value.currentValue}
-                previousValue={value.previousValue as number}
-                date="last month"
-              />
-            );
-          })}
-        </div>
+{/* Metrics Header */}
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-[150px] w-full">
+        {Object.entries(DASHBOARD_OVERVIEW_VALUES).map(([Key, value], i) => {
+          return (
+            <OverViewMetricsBox
+              key={value.itemKey}
+              title={Key}
+              currentValue={value.currentValue}
+              previousValue={value.previousValue as number}
+              date="last month"
+            />
+          );
+        })}
       </div>
     </div>
   );

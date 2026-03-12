@@ -47,16 +47,17 @@ const IconUpOrDown = ({ isScaleDown, value }: IconUpOrDownPropsType) => {
  *
  * @example
  * ```tsx
- * <OverViewHeaderDataBox
+ * <OverViewMetricsBox
  *   title="Total Sales"
  *   itemKey="total-sales"
  *   currentValue={47500000}
  *   previousValue={44811000}
+ *   colorClass="text-rdx-red-fg"
  *   date="24 Feb, 2026 - 23 Mar, 2026"
  * />
  * ```
  */
-export const OverViewHeaderDataBox = ({
+export const OverViewMetricsBox = ({
   title,
   currentValue,
   previousValue,

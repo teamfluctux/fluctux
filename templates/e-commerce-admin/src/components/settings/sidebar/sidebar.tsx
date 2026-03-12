@@ -1,5 +1,6 @@
 "use client";
 import { ADMIN_SETTINGS_SIDEBAR } from "@/constants";
+import { getSidebarHiddenItemsPostions } from "@/utils";
 import {
   FxButton,
   ScrollArea,
@@ -11,6 +12,8 @@ import { ArrowLeft } from "lucide-react";
 
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+
+const hiddenLookUp = getSidebarHiddenItemsPostions("")
 
 export const SettingsSidebar = () => {
   const router = useRouter();
@@ -51,13 +54,18 @@ export const SettingsSidebar = () => {
 
       <ScrollArea className="w-full h-[calc(100%-145px)] p-3">
         {Object.entries(ADMIN_SETTINGS_SIDEBAR).map(([Key, data], i) => {
+          const hiddenItems = hiddenLookUp[i] ?? [];
+            const visibleItems = data.items.filter(
+              (_, j) => !hiddenItems.includes(j)
+            );
+            if (visibleItems.length === 0) return null;
           return (
             <div key={`${Key}-${i}`} className=" mb-4">
               <p className="text-workspace_3 font-medium text-text-color_3 px-2 mb-1">
                 {data.label}
               </p>
               <ul className="flex flex-col gap-0.5">
-                {data.items.map((item, j) => {
+                {visibleItems.map((item, j) => {
                   return (
                     <React.Fragment key={`${item.slug ?? item.value}-${j}`}>
                       {item.slug ? (
