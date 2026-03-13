@@ -180,7 +180,7 @@ export const AppearanceSettings = () => {
             <Tooltip key={item.value}>
               <TooltipTrigger>
                 <label
-                  className={`w-[30px] h-[30px] rounded-full hover:scale-[1.1] cursor-pointer border border-border-color_2 transition-all has-[:checked]:ring-2 has-[:checked]:ring-offset-2 flex justify-center items-center  ring-offset-background-color_950C ${item.bgColorClass}`}
+                  className={`w-[30px] h-[30px] rounded-full hover:scale-[1.1] cursor-pointer transition-all has-[:checked]:ring-2 has-[:checked]:ring-offset-2 flex justify-center items-center  ring-offset-background-color_950C ${item.bgColorClass}`}
                 >
                   <input
                     type="radio"

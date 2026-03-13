@@ -27,7 +27,7 @@
   --color-zinc-50: #fafafa;
 
   /* INDIGO */
-  --color-indigo-1000:#0b091d;
+  --color-indigo-1000: #0b091d;
   --color-indigo-950: #1e1b4b;
   --color-indigo-925: #272563;
   --color-indigo-900: #312e81;
@@ -240,7 +240,6 @@
   --primary-color-hover: var(--color-indigo-500);
   --primary-color-active: var(--color-indigo-700);
   --primary-color-disabled: var(--color-indigo-800);
-  --primary-text-color: var(--color-zinc-50);
 
   /* backgrounds */
   --background: var(--color-zinc-50);
@@ -268,6 +267,15 @@
   --surface-border-active: var(--surface-indigo-border-active);
   --surface-fg: var(--radix-indigo-fg);
   --surface-fg-2: var(--radix-indigo-fg-2);
+
+  /* Recharts colors */
+  --chart-color-1: var(--color-indigo-500);
+  --chart-color-2: var(--color-yellow-500);
+  --chart-color-3: var(--color-green-500);
+  --chart-color-4: var(--color-pink-500);
+  --chart-color-5: var(--color-blue-500);
+  --chart-color-6: var(--color-orange-500);
+
 }
 
 .dark {
@@ -446,6 +454,7 @@
   --sidebar-ring: var(--color-zinc-600);
 }
 
+/* Accent colors are now in testing mode */
 .accent-orange {
   /* Primary */
   --primary-color: var(--color-orange-500);
@@ -743,7 +752,6 @@
   --color-text-surface-indigo_1: var(--surface-indigo-fg);
   --color-text-surface-indigo_2: var(--surface-indigo-fg-2);
 
-  --color-primary-text-color: var(--primary-text-color);
   --color-text-color_1: var(--foreground);
   --color-text-color_2: var(--foreground-color-2);
   --color-text-color_3: var(--foreground-color-3);

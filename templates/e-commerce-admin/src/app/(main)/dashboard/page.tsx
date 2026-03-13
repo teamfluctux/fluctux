@@ -4,6 +4,7 @@ import { ArrowUp, PlusIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { OverViewMetricsBox } from "./OverViewMetricsBox";
+import { OverViewChart } from "./OverViewChart";
 
 const OVER_VIEW_PERIOD_TIMESTAMP: { label: string; value: string }[] = [
   {
@@ -128,6 +129,10 @@ export default function DashboardPage() {
           );
         })}
       </div>
+        <div className="p-2">
+
+      <OverViewChart/>
+        </div>
     </div>
   );
 }
