@@ -73,9 +73,9 @@ export const FxPopover = ({
   return (
     <Popover>
       <PopoverTrigger asChild>{InteractChild}</PopoverTrigger>
-      <PopoverContent {...props}>
-        <div className="w-[200px] bg-background-color_850C border border-border-color_2 rounded">
-          <ul className="text-workspace_2 font-medium leading-7">
+      <PopoverContent {...props} className="bg-background-color_850C border border-border-color_2 rounded-xl">
+        <div className="w-[240px] ">
+          <ul className="text-workspace_2 font-medium ">
             {Object.entries(items).map(([Key, data], i) => {
               return (
                 <div
@@ -115,7 +115,7 @@ export const FxPopover = ({
                                 key={`${(item.value || item.slug)?.toString().toLowerCase()}-${j}`}
                               >
                                 <li
-                                  className={`fx-flex-cl gap-1.5 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-tiny px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
+                                  className={`flex justify-start items-center gap-1.5 h-8 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-lg px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
                                 >
                                   <div
                                     className={`${item.status ? "text-inherit" : "text-text-svg_default"} transition-colors group-hover:text-inherit ${item.iconClassname}`}
@@ -130,7 +130,7 @@ export const FxPopover = ({
                                 onClick={() =>
                                   item.onItemClick?.(item.value as string)
                                 }
-                                className={`fx-flex-cl gap-1.5 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-tiny px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
+                                className={`flex justify-start items-center  h-8 gap-1.5 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-lg px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
                               >
                                 <div
                                   className={` ${item.status ? "text-inherit" : "text-text-svg_default"} transition-colors group-hover:text-inherit ${item.iconClassname}`}

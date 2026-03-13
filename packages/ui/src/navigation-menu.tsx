@@ -41,7 +41,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex w-max items-center justify-center transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-accent-foreground data-[state=open]:bg-accent/50 data-[state=open]:hover:bg-accent data-[state=open]:focus:bg-accent"
+  "group inline-flex w-max items-center justify-center transition-colors focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 px-2  hover:bg-background-color_850C data-[state=open]:bg-background-color_800C font-medium py-1 rounded-sm "
 );
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -50,12 +50,12 @@ const NavigationMenuTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <NavigationMenuPrimitive.Trigger
     ref={ref}
-    className={cn(navigationMenuTriggerStyle(), "group", className)}
+    className={cn(navigationMenuTriggerStyle(), "group [&]:text-text-color_2 [&>*]:text-text-color_2 text-workspace_2 data-[state=open]:text-text-color_1!", className)}
     {...props}
   >
     {children}{" "}
     <ChevronDown
-      className="relative top-px ml-1 h-3 w-3 transition text-text-svg_default duration-300 group-data-[state=open]:text-text-color_1 group-data-[state=open]:rotate-180"
+      className="relative top-px ml-1 h-3 w-3 transition text-text-svg_default  duration-300 group-data-[state=open]:text-text-color_1 group-data-[state=open]:rotate-180"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
@@ -77,7 +77,18 @@ const NavigationMenuContent = React.forwardRef<
 ));
 NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName;
 
-const NavigationMenuLink = NavigationMenuPrimitive.Link;
+const NavigationMenuLink = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Link>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link>
+>(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.Link
+    ref={ref}
+    className={cn("[&]:text-text-color_2 [&>*]:text-text-color_2 transition-colors flex items-center justify-center hover:text-text-color_1 text-workspace_2 px-2 hover:bg-background-color_850C disabled:opacity-50 font-medium py-1 rounded-sm ", className)}
+    {...props}
+  />
+))
+NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName
+
 
 const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
@@ -90,7 +101,7 @@ const NavigationMenuViewport = React.forwardRef<
   >
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative  mt-1.5 bg-background-color_950C transition-all duration-300  h-(--radix-navigation-menu-viewport-height) rounded-[12px] w-full overflow-hidden border border-border-color_1 outline-hidden shadow-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-(--radix-navigation-menu-viewport-width)",
+        "origin-top-center relative  mt-1.5 bg-background-color_950C transition-all duration-300  h-(--radix-navigation-menu-viewport-height) rounded-xl w-full overflow-hidden border border-border-color_1 outline-hidden shadow-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-(--radix-navigation-menu-viewport-width)",
         className
       )}
       ref={ref}

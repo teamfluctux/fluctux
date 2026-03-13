@@ -155,7 +155,7 @@ export const WorkspaceSidebar = observer(() => {
             <div className="flex justify-start items-center gap-2">
               <Popover onOpenChange={(open) => setIsCommandOpen(open)}>
                 <PopoverTrigger asChild>
-                  <div className="w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-tiny data-[state=open]:border border-surface-indigo-border-active data-[state=open]:bg-surface-indigo-bg-active!">
+                  <div className="w-[30px] h-[30px] hover:bg-background-color_900C cursor-pointer fx-flex-center rounded-sm data-[state=open]:border border-surface-indigo-border-active data-[state=open]:bg-surface-indigo-bg-active!">
                     <FxFavIcon customSize={15} variant="theme" />
                   </div>
                 </PopoverTrigger>
@@ -187,7 +187,7 @@ export const WorkspaceSidebar = observer(() => {
           <FxPopover
             align="start"
             InteractChild={
-              <div className="rounded-circle shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C transition-colors cursor-pointer data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1">
+              <div className="rounded-full shrink-0 p-2 text-text-svg_default hover:bg-background-color_900C transition-colors cursor-pointer data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1">
                 <CircleHelp size={LUCIDE_WORKSPACE_ICON_SIZE} />
               </div>
             }
@@ -195,15 +195,15 @@ export const WorkspaceSidebar = observer(() => {
           />
 
           <FxPopover
-            align="end"
+            align="start"
             side="top"
             InteractChild={
-              <div className="fx-flex-cl w-full rounded hover:bg-background-color_900C gap-2 transition-colors cursor-pointer p-1 data-[state=open]:bg-background-color_800C">
+              <div className="fx-flex-cl w-full rounded-lg hover:bg-background-color_900C gap-2 transition-colors cursor-pointer p-1 data-[state=open]:bg-background-color_800C">
                 <Image
                   src={"/placeholder_img.png"}
                   width={500}
                   height={500}
-                  className="w-[35px] shrink-0 overflow-hidden cursor-pointer h-[35px]  rounded-tiny object-cover object-center border border-border-color_1 "
+                  className="w-[35px] shrink-0 overflow-hidden cursor-pointer h-[35px]  rounded-lg object-cover object-center border border-border-color_1 "
                   alt="profile-image"
                 />
                 <div className="fx-flex-between-ic w-full">

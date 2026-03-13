@@ -23,7 +23,7 @@ export const WorkSpaceHeader = () => {
         </div>
       </div>
       <div className="flex justify-end items-center shrink-0 gap-3">
-        <FxButton variant="secondary" size="sm" className="px-2!">
+        <FxButton variant="secondary" size="sm" className="px-2! rounded-lg! h-8!">
           <Search
             size={LUCIDE_WORKSPACE_ICON_SIZE}
             className="text-text-svg_default group-hover:text-text-color_1"

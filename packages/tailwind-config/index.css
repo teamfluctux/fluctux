@@ -584,18 +584,6 @@
   --font-geist_mono: var(--font-geist-mono);
   --font-jetbrains_mono: var(--font-jetbrains-mono);
 
-  --radius: 8px;
-  --radius-tiny: 5px;
-  --radius-circle: 50%;
-  --radius-tablet: 50px;
-  --radius-rounded_10C: 10px;
-  --radius-rounded_15C: 15px;
-  --radius-rounded_20C: 20px;
-  --radius-rounded_30C: 30px;
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
   /* shadcn */
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);

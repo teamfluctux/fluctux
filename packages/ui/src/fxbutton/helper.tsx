@@ -18,9 +18,9 @@ export interface ButtonStylingType {
 }
 
 export const buttonSizes: { [key in SizeType]: string } = {
-  sm: "h-7.5 px-3 text-workspace_3 rounded-[7px]",
-  md: "h-10 px-4 text-workspace_1 rounded",
-  lg: "h-12 px-5 text-read_16 rounded-rounded_10C",
+  sm: "h-7.5 px-3 text-workspace_3 rounded-lg",
+  md: "h-10 px-4 text-workspace_1 rounded-lg",
+  lg: "h-12 px-5 text-read_16 rounded-xl",
   xl: "h-14 px-6 text-read_18 rounded-xl",
 };
 

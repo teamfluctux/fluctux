@@ -13,7 +13,7 @@ export default function Layout({ children }: SettingsLayoutPropsType) {
   return (
     <SettingsWrapperProvider>
       <div className="w-full h-screen overflow-hidden p-2 bg-background-color_900C">
-        <div className="rounded-rounded_10C bg-background-color_950C border-border-color_2 overflow-hidden border w-full h-full flex justify-start items-start">
+        <div className="rounded-2xl bg-background-color_950C border-border-color_2 overflow-hidden border w-full h-full flex justify-start items-start">
           <SettingsSidebar />
           <ScrollArea className="w-full h-full flex justify-center items-center">
             <ChildLoading>

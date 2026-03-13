@@ -12,7 +12,7 @@ export default function Layout({ children }: LayoutPropsType) {
       <Sidebar />
       <div className="px-3 w-full h-screen overflow-hidden bg-background-color_925C">
         <WorkSpaceHeader />
-        <ScrollArea className="w-full h-[calc(100%-60px)] border border-border-color_1 rounded-t-rounded_15C bg-background-color_950C">
+        <ScrollArea className="w-full h-[calc(100%-60px)] border border-border-color_1 rounded-t-2xl bg-background-color_950C">
           {children}
         </ScrollArea>
       </div>
