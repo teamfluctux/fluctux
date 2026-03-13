@@ -1,6 +1,6 @@
 {
   "entryPoints": ["packages/*", "apps/*", "templates/*"],
-  
+
   "name": "Fluctux Code Examples",
   "entryPointStrategy": "packages",
   "includeVersion": false,
@@ -13,5 +13,5 @@
   ],
   "externalPattern": ["**/node_modules/**", "apps/storybook"],
   "excludeExternals": true,
-    "skipErrorChecking": true
+  "skipErrorChecking": true
 }

@@ -28,4 +28,4 @@ export type TabsStateType = {
   [key in TaskbarCategoriesType]: {
     tabs: TabsRndType[];
   };
-}
+};

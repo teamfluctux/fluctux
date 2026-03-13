@@ -1,5 +1,5 @@
 {
-    "extends": ["../../typedoc.base.jsonc"],
-    "entryPoints": ["src/index.d.ts"],
-       "skipErrorChecking": true
+  "extends": ["../../typedoc.base.jsonc"],
+  "entryPoints": ["src/index.d.ts"],
+  "skipErrorChecking": true
 }

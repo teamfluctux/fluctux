@@ -37,11 +37,23 @@ export type ObjectListArrayType = {
   }[];
 };
 
-
-
 type AppearanceThemeColorValueType =
-  | "dark" | "white"
-  | "red" | "orange" | "amber" | "yellow"
-  | "lime" | "green" | "emerald" | "teal"
-  | "cyan" | "sky" | "blue" | "indigo"
-  | "violet" | "purple" | "fuchsia" | "pink" | "rose"
+  | "dark"
+  | "white"
+  | "red"
+  | "orange"
+  | "amber"
+  | "yellow"
+  | "lime"
+  | "green"
+  | "emerald"
+  | "teal"
+  | "cyan"
+  | "sky"
+  | "blue"
+  | "indigo"
+  | "violet"
+  | "purple"
+  | "fuchsia"
+  | "pink"
+  | "rose";

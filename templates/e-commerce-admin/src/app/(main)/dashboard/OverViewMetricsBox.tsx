@@ -7,7 +7,7 @@ type OverViewHeaderDataBoxPropsType = {
   previousValue?: number;
   newValue?: string;
   date: string;
-  colorClass?: string
+  colorClass?: string;
 };
 
 type IconUpOrDownPropsType = {
@@ -74,7 +74,9 @@ export const OverViewMetricsBox = ({
   return (
     <div className="w-full h-full border border-border-color_1 p-3 relative ">
       <div className="flex justify-start items-center gap-1.5 ">
-        <div className={`w-[5px] h-[16px] ${colorClass ?? "bg-background-color_700C"} rounded-full `}></div>
+        <div
+          className={`w-[5px] h-[16px] ${colorClass ?? "bg-background-color_700C"} rounded-full `}
+        ></div>
         <span className="text-text-color_2 text-workspace_2 font-medium">
           {title}
         </span>
@@ -90,7 +92,10 @@ export const OverViewMetricsBox = ({
         </span>
       </div>
       <div className="h-[55px] border-t absolute bottom-0 left-0 w-full  px-3 border-border-color_1 flex  flex-col justify-center gap-0.5">
-        <IconUpOrDown  isScaleDown={isScaleDown} value={previous_value as string}/>
+        <IconUpOrDown
+          isScaleDown={isScaleDown}
+          value={previous_value as string}
+        />
         <div className="text-workspace_2 font-medium flex justify-start items-center gap-2">
           <p className="text-text-color_3">
             Date: {start_date ? start_date.trim() : "last month"}{" "}

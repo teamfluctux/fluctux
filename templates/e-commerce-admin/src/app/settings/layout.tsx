@@ -17,9 +17,12 @@ export default function Layout({ children }: SettingsLayoutPropsType) {
           <SettingsSidebar />
           <ScrollArea className="w-full h-full flex justify-center items-center">
             <ChildLoading>
-              <div className="max-w-[800px] w-full h-full px-3">
+              <div className="w-full h-full">
                 <Settingsheader />
-                {children}
+
+                <div className="max-w-[800px] w-full h-full px-3 mx-auto">
+                  {children}
+                </div>
               </div>
             </ChildLoading>
           </ScrollArea>

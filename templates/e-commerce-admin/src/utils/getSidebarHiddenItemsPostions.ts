@@ -23,4 +23,3 @@ export const getSidebarHiddenItemsPostions = (data?: string) => {
   });
   return Object.fromEntries(result);
 };
-

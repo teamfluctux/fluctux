@@ -1,7 +1,5 @@
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
-import type {
-  PopoverContentProps,
-} from "@radix-ui/react-popover";
+import type { PopoverContentProps } from "@radix-ui/react-popover";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -73,7 +71,10 @@ export const FxPopover = ({
   return (
     <Popover>
       <PopoverTrigger asChild>{InteractChild}</PopoverTrigger>
-      <PopoverContent {...props} className="bg-background-color_850C border border-border-color_2 rounded-xl">
+      <PopoverContent
+        {...props}
+        className="bg-background-color_850C border border-border-color_2 rounded-xl"
+      >
         <div className="w-[240px] ">
           <ul className="text-workspace_2 font-medium ">
             {Object.entries(items).map(([Key, data], i) => {

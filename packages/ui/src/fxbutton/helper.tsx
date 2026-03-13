@@ -36,7 +36,8 @@ export const buttonStyling: ButtonStylingType = {
     default: "bg-primary-color  border-none text-text-color_default_white ",
     hover:
       "hover:bg-primary-color-hover active:bg-primary-color-active active:text-text-color_default_white-active",
-    disabled: "text-text-color_default_white-2 cursor-not-allowed! bg-primary-color-disabled",
+    disabled:
+      "text-text-color_default_white-2 cursor-not-allowed! bg-primary-color-disabled",
   },
   secondary: {
     default:

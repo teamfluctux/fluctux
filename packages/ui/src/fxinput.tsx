@@ -18,11 +18,7 @@ interface FxInputProps
   errorMsg?: string | string[];
 }
 
-type InputVariantType =
-  | "primary"
-  | "secondary"
-  | "outlineLabel"
-  | "outline";
+type InputVariantType = "primary" | "secondary" | "outlineLabel" | "outline";
 
 const inputVariants: { [key in InputVariantType]: string } = {
   primary:

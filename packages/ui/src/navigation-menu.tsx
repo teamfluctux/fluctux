@@ -50,7 +50,11 @@ const NavigationMenuTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <NavigationMenuPrimitive.Trigger
     ref={ref}
-    className={cn(navigationMenuTriggerStyle(), "group [&]:text-text-color_2 [&>*]:text-text-color_2 text-workspace_2 data-[state=open]:text-text-color_1!", className)}
+    className={cn(
+      navigationMenuTriggerStyle(),
+      "group [&]:text-text-color_2 [&>*]:text-text-color_2 text-workspace_2 data-[state=open]:text-text-color_1!",
+      className
+    )}
     {...props}
   >
     {children}{" "}
@@ -83,12 +87,14 @@ const NavigationMenuLink = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.Link
     ref={ref}
-    className={cn("[&]:text-text-color_2 [&>*]:text-text-color_2 transition-colors flex items-center justify-center hover:text-text-color_1 text-workspace_2 px-2 hover:bg-background-color_850C disabled:opacity-50 font-medium py-1 rounded-sm ", className)}
+    className={cn(
+      "[&]:text-text-color_2 [&>*]:text-text-color_2 transition-colors flex items-center justify-center hover:text-text-color_1 text-workspace_2 px-2 hover:bg-background-color_850C disabled:opacity-50 font-medium py-1 rounded-sm ",
+      className
+    )}
     {...props}
   />
-))
-NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName
-
+));
+NavigationMenuLink.displayName = NavigationMenuPrimitive.Link.displayName;
 
 const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,

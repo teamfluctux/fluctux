@@ -40,15 +40,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} overflow-hidden`}
       >
         <Suspense>
-          <ThemeProvider attribute={"class"}>
-
+          <ThemeProvider
+            attribute={"class"}
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
             <SkeletonTheme
               baseColor="var(--skeleton-base-color)"
               highlightColor="var(--skeleton-highlightColor)"
             >
-              <TooltipProvider>
-              {children}
-              </TooltipProvider>
+              <TooltipProvider>{children}</TooltipProvider>
             </SkeletonTheme>
           </ThemeProvider>
         </Suspense>

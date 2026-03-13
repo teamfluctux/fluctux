@@ -13,7 +13,7 @@ import { ArrowLeft } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
-const hiddenLookUp = getSidebarHiddenItemsPostions("")
+const hiddenLookUp = getSidebarHiddenItemsPostions("");
 
 export const SettingsSidebar = () => {
   const router = useRouter();
@@ -55,10 +55,10 @@ export const SettingsSidebar = () => {
       <ScrollArea className="w-full h-[calc(100%-145px)] p-3">
         {Object.entries(ADMIN_SETTINGS_SIDEBAR).map(([Key, data], i) => {
           const hiddenItems = hiddenLookUp[i] ?? [];
-            const visibleItems = data.items.filter(
-              (_, j) => !hiddenItems.includes(j)
-            );
-            if (visibleItems.length === 0) return null;
+          const visibleItems = data.items.filter(
+            (_, j) => !hiddenItems.includes(j)
+          );
+          if (visibleItems.length === 0) return null;
           return (
             <div key={`${Key}-${i}`} className=" mb-4">
               <p className="text-workspace_3 font-medium text-text-color_3 px-2 mb-1">

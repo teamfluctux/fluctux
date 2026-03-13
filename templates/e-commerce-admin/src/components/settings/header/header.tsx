@@ -18,37 +18,39 @@ export const Settingsheader = () => {
   }, [path_name, setMetaData]);
 
   return (
-    <header className="w-full py-4 mb-8 mt-10 sticky top-0 left-0 gap-10">
-      <div className="flex justify-between items-center">
-        <h1 className="text-read_18 font-medium">{metaData.title}</h1>
-        <div>
-          <ButtonGroup>
-            <Button
-              showClickOutlineEffect
-              disabled={!pagination.prev}
-              onClick={() =>
-                pagination.prev && router.push(pagination.prev?.slug)
-              }
-              variant={"secondary"}
-            >
-              <ChevronLeft />
-            </Button>
-            <Button
-              showClickOutlineEffect
-              disabled={!pagination.next}
-              onClick={() =>
-                pagination.next && router.push(pagination.next?.slug)
-              }
-              variant={"secondary"}
-            >
-              <ChevronRight />
-            </Button>
-          </ButtonGroup>
+    <header className="w-full py-4 mb-8 mt-10 sticky top-0 left-0 gap-10 backdrop-blur-3xl">
+      <div className="max-w-[800px] w-full mx-auto px-3">
+        <div className="flex justify-between items-center ">
+          <h1 className="text-read_18 font-medium">{metaData.title}</h1>
+          <div>
+            <ButtonGroup>
+              <Button
+                showClickOutlineEffect
+                disabled={!pagination.prev}
+                onClick={() =>
+                  pagination.prev && router.push(pagination.prev?.slug)
+                }
+                variant={"secondary"}
+              >
+                <ChevronLeft />
+              </Button>
+              <Button
+                showClickOutlineEffect
+                disabled={!pagination.next}
+                onClick={() =>
+                  pagination.next && router.push(pagination.next?.slug)
+                }
+                variant={"secondary"}
+              >
+                <ChevronRight />
+              </Button>
+            </ButtonGroup>
+          </div>
         </div>
+        <p className="text-workspace_2 font-medium text-text-color_3">
+          {metaData.desc}
+        </p>
       </div>
-      <p className="text-workspace_2 font-medium text-text-color_3">
-        {metaData.desc}
-      </p>
     </header>
   );
 };
