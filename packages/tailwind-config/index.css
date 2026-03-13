@@ -559,6 +559,8 @@
   --color-text-color_4: var(--foreground-color-4);
   --color-text-svg_default: var(--svg-default-color);
   --color-text-color_default_white: var(--color-zinc-50);
+  --color-text-color_default_white-2: var(--color-zinc-400);
+  --color-text-color_default_white-active: var(--color-zinc-300);
 
   --animate-fadeLogoLoading: fadeLogoLoading 2s infinite;
   --animate-scaleUp: scaleUp 0.3s ease-out forwards;

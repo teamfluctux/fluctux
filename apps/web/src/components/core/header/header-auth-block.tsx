@@ -25,7 +25,6 @@ export const HeaderAuthBlock = () => {
             <FxButton className=" h-full px-1! rounded-tl-none rounded-bl-none">
               <ChevronDown
                 size={LUCIDE_WORKSPACE_ICON_SIZE}
-                className="text-text-color_default_white"
               />
             </FxButton>
           </PopoverTrigger>

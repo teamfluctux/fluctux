@@ -18,7 +18,7 @@ export interface ButtonStylingType {
 }
 
 export const buttonSizes: { [key in SizeType]: string } = {
-  sm: "h-7.5 px-3 text-workspace_3 rounded-tiny",
+  sm: "h-7.5 px-3 text-workspace_3 rounded-[7px]",
   md: "h-10 px-4 text-workspace_1 rounded",
   lg: "h-12 px-5 text-read_16 rounded-rounded_10C",
   xl: "h-14 px-6 text-read_18 rounded-xl",
@@ -33,10 +33,10 @@ export const iconSizes: { [key in SizeType]: number } = {
 
 export const buttonStyling: ButtonStylingType = {
   primary: {
-    default: "bg-primary-color  border-none text-primary-text-color ",
+    default: "bg-primary-color  border-none text-text-color_default_white ",
     hover:
-      "hover:bg-primary-color-hover hover:text-primary-text-color active:bg-primary-color-active active:text-text-color_4",
-    disabled: "text-text-color_2 cursor-not-allowed! bg-primary-color-disabled",
+      "hover:bg-primary-color-hover active:bg-primary-color-active active:text-text-color_default_white-active",
+    disabled: "text-text-color_default_white-2 cursor-not-allowed! bg-primary-color-disabled",
   },
   secondary: {
     default:
