@@ -8,6 +8,7 @@ import {
   Tag as TagIcon,
   Receipt as ReceiptIcon,
   RefreshCcw as RefreshCcwIcon,
+  type LucideIcon,
 } from "lucide-react";
 import {
   BarChart,
@@ -19,17 +20,12 @@ import {
   Legend,
   ResponsiveContainer,
   type TooltipContentProps,
-  type LegendProps,
   type DefaultLegendContentProps,
 } from "recharts";
 import { formatScaleValue } from "@/utils";
-import { type LegendPayload } from "recharts/types/component/DefaultLegendContent";
-import type {
-  TooltipActionPayload,
-  TooltipPayload,
-  TooltipPayloadEntry,
-} from "recharts/types/state/tooltipSlice";
+import type { TooltipPayloadEntry } from "recharts/types/state/tooltipSlice";
 import type { TooltipEventType } from "recharts/types/util/types";
+import { CustomBarChart } from "./CustomBarChart";
 
 export const DASHBOARD_OVERVIEW_CHART = [
   {
@@ -172,28 +168,69 @@ const CustomTooltip = (props: TooltipContentProps<number, string>) => {
   );
 };
 
-const CustomLegend = (props: DefaultLegendContentProps) => {
-  const { payload } = props;
+type ItemColorIndicatorShapeType = "square" | "circle" | "rect";
+type IndicatorType = "icon" | "shape" | "none";
+
+export const ItemColorIndicatorShapeStyles: {
+  [key in ItemColorIndicatorShapeType]: string;
+} = {
+  rect: "w-[5px] h-[2px] rounded-[50px]",
+  square: "w-[2px] h-[2px] rounded-sm",
+  circle: "w-[2px] h-[2px] rounded-full",
+};
+
+type CustomLegendPropstype = {
+  icons?: Record<string, LucideIcon>;
+  iconSize?: number;
+  itemColorIndicatorShape?: ItemColorIndicatorShapeType;
+  IndicatorType?: IndicatorType;
+  className?: string;
+} & DefaultLegendContentProps;
+
+const icons: Record<string, LucideIcon> = {
+  sales: ShoppingBagIcon,
+  revenue: TrendingUpIcon,
+  orders: PackageIcon,
+  discounts: TagIcon,
+  taxes: ReceiptIcon,
+  refunds: RefreshCcwIcon,
+};
+
+const CustomLegend = ({
+  payload,
+  icons,
+  iconSize = 14,
+  itemColorIndicatorShape = "square",
+  IndicatorType = "shape",
+  className,
+}: CustomLegendPropstype) => {
   if (!payload?.length) return null;
-  const icons: Record<string, React.ReactNode> = {
-    sales: <ShoppingBagIcon size={14} />,
-    revenue: <TrendingUpIcon size={14} />,
-    orders: <PackageIcon size={14} />,
-    discounts: <TagIcon size={14} />,
-    taxes: <ReceiptIcon size={14} />,
-    refunds: <RefreshCcwIcon size={14} />,
-  };
+  const tempItemColorIndicatorShape =
+    ItemColorIndicatorShapeStyles[itemColorIndicatorShape];
   return (
-    <div className="w-fit p-5 flex justify-center items-center gap-5">
+    <div
+      className={`w-fit flex justify-center items-center gap-5 ${className}`}
+    >
       {payload.map((entry) => {
+        const Icon = icons && icons[entry.dataKey as string];
         return (
           <div
             key={entry.dataKey as string}
             className="flex justify-center items-center gap-1"
           >
-            <div style={{ color: entry.color }}>
-              {icons[entry.dataKey as string]}
-            </div>
+            {IndicatorType == "icon" && (
+              <>
+                {Icon && (
+                  <Icon size={iconSize} style={{ color: entry.color }} />
+                )}
+              </>
+            )}
+
+            {IndicatorType == "shape" && (
+              <div className={`${tempItemColorIndicatorShape}`}></div>
+            )}
+
+            <div className=""></div>
             <span className="text-workspace_2 font-medium text-text-color_4">
               {entry.value}
             </span>
@@ -217,79 +254,33 @@ export const OverViewChart = () => {
           </p>
         </div>
       </div>
-      <div className="h-[350px] ">
-        <ResponsiveContainer width={"100%"}>
-          <BarChart
-            onMouseMove={(state) => {
-              if (state.isTooltipActive)
-                setActiveIndex(Number(state.activeTooltipIndex) ?? null);
-              else setActiveIndex(null);
-            }}
-            onMouseLeave={() => setActiveIndex(null)}
-            className="p-3"
-            data={DASHBOARD_OVERVIEW_CHART}
-            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
-          >
-            <CartesianGrid
-              strokeDasharray="0"
-              vertical={false}
-              stroke="var(--border-color-1)"
-            />
-            <XAxis
-              dataKey="name"
-              stroke="var(--border-color-2)"
-              tick={(props) => {
-                const { x, y, payload, index } = props;
-                const isActive = activeIndex === index;
-                return (
-                  <text
-                    x={x}
-                    y={y}
-                    dy={16}
-                    textAnchor="middle"
-                    fill={
-                      isActive
-                        ? "var(--foreground)"
-                        : "var(--foreground-color-4)"
-                    }
-                    fontSize={13}
-                    fontWeight={500}
-                  >
-                    {payload.value}
-                  </text>
-                );
-              }}
-              tickMargin={5}
-            />
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              width={60}
-              tick={{
-                fill: "var(--foreground-color-4)",
-                fontSize: 13,
-                fontWeight: 500,
-              }}
-              tickFormatter={(value) => formatScaleValue(value)}
-              label={{
-                value: "Amount (USD)",
-                angle: -90,
-                position: "insideLeft",
-                dx: -17,
-                dy: 50,
-                textAnchor: "middle",
-                style: { fill: "var(--foreground-color-3)", fontSize: 13 },
-              }}
-            />
-            <Tooltip
-              cursor={{
-                fill: "var(--background-color-800C)",
-                opacity: 0.5,
-                color: "red",
-              }}
-              content={CustomTooltip}
-            />
-            <Legend content={CustomLegend} />
+      <CustomBarChart
+      height="350px"
+        barChartClassName="p-3"
+        isEnableLegend
+        isKeepYAxis
+       YAxisCustomSettings={{
+        textformatter: formatScaleValue,
+        style :{
+          wrapperWdith: 60
+        },
+        label: {
+          value: "Amount (USD)"
+        }
+       }}
+        CustomLegendProps={{
+          icons: icons,
+          IndicatorType: "icon",
+          className: "p-5",
+        }}
+        CustomTooltipProps={{
+          indicatorShape: "circle",
+          IndicatorType: "shape",
+
+          valueFormatter: formatScaleValue,
+        }}
+        Bars={
+          <>
             <Bar
               barSize={30}
               dataKey="sales"
@@ -327,9 +318,12 @@ export const OverViewChart = () => {
               fill="var(--chart-color-6)"
               name={"Refunds"}
             />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+          </>
+        }
+        XAxisDataKey="name"
+        data={DASHBOARD_OVERVIEW_CHART}
+      />
+   
     </div>
   );
 };

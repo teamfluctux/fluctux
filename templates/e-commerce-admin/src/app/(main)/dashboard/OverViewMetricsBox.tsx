@@ -7,6 +7,16 @@ type IconUpOrDownPropsType = {
   value: string;
 };
 
+type OverViewMetricsBoxGroupPropsType = {
+  children: React.ReactNode
+}
+
+export const OverViewMetricsBoxGroup = ({children}: OverViewMetricsBoxGroupPropsType) => {
+  return <div className="grid grid-cols-3 auto-rows-[150px] w-full gap-4">
+    {children}
+  </div>
+}
+
 const IconUpOrDown = ({ isScaleDown, value }: IconUpOrDownPropsType) => {
   const Icon = isScaleDown ? ArrowDown : ArrowUp;
   return (

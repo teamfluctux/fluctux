@@ -15,33 +15,14 @@ import {
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
-import { OverViewMetricsBox } from "./OverViewMetricsBox";
+import {
+  OverViewMetricsBox,
+  OverViewMetricsBoxGroup,
+} from "./OverViewMetricsBox";
 import { OverViewChart } from "./OverViewChart";
 import type { DashboardOverviewDatatype } from "@/types/dashboard";
-import { DashSingleCard } from "./DashSingleCard";
-
-const OVER_VIEW_PERIOD_TIMESTAMP: { label: string; value: string }[] = [
-  {
-    label: "All",
-    value: "all",
-  },
-  {
-    label: "Today",
-    value: "today",
-  },
-  {
-    label: "Week",
-    value: "week",
-  },
-  {
-    label: "Month",
-    value: "month",
-  },
-  {
-    label: "Years",
-    value: "years",
-  },
-];
+import { DashSingleCard, DashSingleCardGroup } from "./DashCard";
+import { OverViewMetricsHeader } from "./OverViewMetricsHeader";
 
 const DASHBOARD_OVERVIEW_VALUES: DashboardOverviewDatatype = {
   "Total Sales": {
@@ -102,63 +83,43 @@ const DASHBOARD_OVERVIEW_VALUES: DashboardOverviewDatatype = {
   },
 };
 export default function DashboardPage() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const period = searchParams.get("period");
-
   return (
     <div>
       <section className="mb-4">
-        <div className="w-full h-fit mb-4 flex justify-between items-center sticky top-0 left-0">
-          <ButtonGroup className="*:text-workspace_2">
-            {OVER_VIEW_PERIOD_TIMESTAMP.map((item, i) => {
-              return (
-                <Button
-                  variant={"secondary"}
-                  className={`text-text-color_2 bg-background-color_850C hover:bg-background-color_800C  ${period === item.value && "text-surface-fg-2 bg-surface-bg-active hover:bg-surface-bg-active"}`}
-                  onClick={() => {
-                    router.replace(`?period=${item.value}`);
-                  }}
-                  key={i}
-                >
-                  {item.label}
-                </Button>
-              );
-            })}
-          </ButtonGroup>
-        </div>
-        {/* Metrics Header */}
-        <div className="w-full ">
-          <div className="grid grid-cols-3 auto-rows-[150px] w-full gap-4">
-            {Object.entries(DASHBOARD_OVERVIEW_VALUES).map(
-              ([Key, value], i) => {
-                return (
-                  <OverViewMetricsBox
-                    key={value.itemKey}
-                    title={Key}
-                    icon={value.icon}
-                    currentValue={value.currentValue}
-                    previousValue={value.previousValue as number}
-                    date="vs last month"
-                  />
-                );
-              }
-            )}
-          </div>
-        </div>
+        <OverViewMetricsHeader />
+        <OverViewMetricsBoxGroup>
+          {Object.entries(DASHBOARD_OVERVIEW_VALUES).map(([Key, value], i) => {
+            return (
+              <OverViewMetricsBox
+                key={value.itemKey}
+                title={Key}
+                icon={value.icon}
+                currentValue={value.currentValue}
+                previousValue={value.previousValue as number}
+                date="vs last month"
+              />
+            );
+          })}
+        </OverViewMetricsBoxGroup>
       </section>
       <section className="mb-4">
         <OverViewChart />
       </section>
       <section className="mb-4">
-        <div className="w-full flex justify-center items-start">
+        <DashSingleCardGroup>
           <DashSingleCard>
-              <div></div>
+            <div></div>
           </DashSingleCard>
-              <DashSingleCard>
-              <div></div>
+          <DashSingleCard>
+            <div></div>
           </DashSingleCard>
-        </div>
+            <DashSingleCard>
+            <div></div>
+          </DashSingleCard>
+            <DashSingleCard>
+            <div></div>
+          </DashSingleCard>
+        </DashSingleCardGroup>
       </section>
     </div>
   );
