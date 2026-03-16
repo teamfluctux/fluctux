@@ -18,6 +18,7 @@ import React from "react";
 import { OverViewMetricsBox } from "./OverViewMetricsBox";
 import { OverViewChart } from "./OverViewChart";
 import type { DashboardOverviewDatatype } from "@/types/dashboard";
+import { DashSingleCard } from "./DashSingleCard";
 
 const OVER_VIEW_PERIOD_TIMESTAMP: { label: string; value: string }[] = [
   {
@@ -150,9 +151,13 @@ export default function DashboardPage() {
         <OverViewChart />
       </section>
       <section className="mb-4">
-        <div className="w-full flex justify-center items-start h-[500px] ">
-          <div className="w-full h-full "></div>
-          <div className="w-full h-full "></div>
+        <div className="w-full flex justify-center items-start">
+          <DashSingleCard>
+              <div></div>
+          </DashSingleCard>
+              <DashSingleCard>
+              <div></div>
+          </DashSingleCard>
         </div>
       </section>
     </div>
