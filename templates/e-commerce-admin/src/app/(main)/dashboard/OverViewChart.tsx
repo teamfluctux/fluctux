@@ -1,7 +1,14 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { STACKED_BAR_CHART } from "@/constants/chart.constant";
-import { ShoppingBag as ShoppingBagIcon, TrendingUp as TrendingUpIcon, Package as PackageIcon, Tag as TagIcon, Receipt as ReceiptIcon, RefreshCcw as RefreshCcwIcon } from "lucide-react"
+import {
+  ShoppingBag as ShoppingBagIcon,
+  TrendingUp as TrendingUpIcon,
+  Package as PackageIcon,
+  Tag as TagIcon,
+  Receipt as ReceiptIcon,
+  RefreshCcw as RefreshCcwIcon,
+} from "lucide-react";
 import {
   BarChart,
   Bar,
@@ -11,13 +18,18 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  type TooltipContentProps,
+  type LegendProps,
+  type DefaultLegendContentProps,
 } from "recharts";
 import { formatScaleValue } from "@/utils";
 import { type LegendPayload } from "recharts/types/component/DefaultLegendContent";
-
-type CustomLegendProps = {
-  payload?: LegendPayload[];
-};
+import type {
+  TooltipActionPayload,
+  TooltipPayload,
+  TooltipPayloadEntry,
+} from "recharts/types/state/tooltipSlice";
+import type { TooltipEventType } from "recharts/types/util/types";
 
 export const DASHBOARD_OVERVIEW_CHART = [
   {
@@ -130,25 +142,29 @@ export const DASHBOARD_OVERVIEW_CHART = [
   },
 ];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = (props: TooltipContentProps<number, string>) => {
+  const { active, label, payload } = props;
   if (!active || !payload?.length) return null;
 
   return (
     <div className="bg-background-color_900C border border-border-color_1 rounded-lg p-3 w-[180px]">
-      <p className="text-text-color_4 text-workspace_2 font-medium mb-2">
+      <p className="text-surface-fg text-workspace_2 font-medium mb-2">
         {label}
       </p>
-      {payload.map((entry: any) => (
-        <div key={entry.dataKey} className="flex items-center gap-2 py-0.5">
+      {payload.map((entry: TooltipPayloadEntry) => (
+        <div
+          key={`${entry.dataKey}`}
+          className="flex items-center gap-2 py-0.5"
+        >
           <div
-            className="w-2.5 h-2.5 rounded-full shrink-0"
+            className="w-2 h-2 rounded-full shrink-0"
             style={{ backgroundColor: entry.fill }}
           />
-          <span className="text-text-color_3 text-workspace_3">
+          <span className="text-text-color_4 text-workspace_3">
             {entry.name}
           </span>
           <span className="text-text-color_1 text-workspace_3 font-medium ml-auto">
-            {formatScaleValue(entry.value)}
+            {formatScaleValue(Number(entry.value))}
           </span>
         </div>
       ))}
@@ -156,18 +172,19 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   );
 };
 
-const CustomLegend = ({ payload }: CustomLegendProps) => {
+const CustomLegend = (props: DefaultLegendContentProps) => {
+  const { payload } = props;
   if (!payload?.length) return null;
-    const icons: Record<string, React.ReactNode> = {
-    sales:     <ShoppingBagIcon size={14} />,
-    revenue:   <TrendingUpIcon size={14} />,
-    orders:    <PackageIcon size={14} />,
+  const icons: Record<string, React.ReactNode> = {
+    sales: <ShoppingBagIcon size={14} />,
+    revenue: <TrendingUpIcon size={14} />,
+    orders: <PackageIcon size={14} />,
     discounts: <TagIcon size={14} />,
-    taxes:     <ReceiptIcon size={14} />,
-    refunds:   <RefreshCcwIcon size={14} />,
-  }
+    taxes: <ReceiptIcon size={14} />,
+    refunds: <RefreshCcwIcon size={14} />,
+  };
   return (
-    <div className="w-fit pl-9 pt-5 pb-4 flex justify-center items-center gap-5">
+    <div className="w-fit p-5 flex justify-center items-center gap-5">
       {payload.map((entry) => {
         return (
           <div
@@ -175,8 +192,8 @@ const CustomLegend = ({ payload }: CustomLegendProps) => {
             className="flex justify-center items-center gap-1"
           >
             <div style={{ color: entry.color }}>
-            {icons[entry.dataKey as string]}
-          </div>
+              {icons[entry.dataKey as string]}
+            </div>
             <span className="text-workspace_2 font-medium text-text-color_4">
               {entry.value}
             </span>
@@ -188,104 +205,131 @@ const CustomLegend = ({ payload }: CustomLegendProps) => {
 };
 
 export const OverViewChart = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   return (
-    <div className="w-full h-fit bg-background-color_925C p-3 rounded-xl border-1 border-border-color_1">
-    <div className="flex justify-between items-center px-3 pb-10">
+    <div className="w-full h-fit bg-background-color_925C rounded-xl border-1 border-border-color_1">
+      <div className="flex justify-between items-center p-5">
         <div>
-        <p className="text-read_20 font-medium ">Overview Analytics</p>
-        <p className="text-workspace_2 font-medium text-text-color_3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatib</p>
+          <p className="text-read_20 font-medium ">Overview Analytics</p>
+          <p className="text-workspace_2 font-medium text-text-color_3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Necessitatib
+          </p>
         </div>
-    </div>
-    <div className="h-[450px] ">
-
-
-      <ResponsiveContainer  width={"100%"}>
-        <BarChart
-          className="p-3"
-          data={DASHBOARD_OVERVIEW_CHART}
-          margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
-        >
-            
-          <CartesianGrid
-            strokeDasharray="0"
-            vertical={false}
-            stroke="var(--border-color-1)"
-          />
-          <XAxis
-            dataKey="name"
-            stroke="var(--border-color-2)"
-            tick={{
-              fill: "var(--foreground-color-4)",
-              fontSize: 15,
-              fontWeight: 500,
+      </div>
+      <div className="h-[350px] ">
+        <ResponsiveContainer width={"100%"}>
+          <BarChart
+            onMouseMove={(state) => {
+              if (state.isTooltipActive)
+                setActiveIndex(Number(state.activeTooltipIndex) ?? null);
+              else setActiveIndex(null);
             }}
-            tickMargin={5}
-          />
-          <YAxis
-            axisLine={false}
-            tickLine={false}
-            width={60}
-            tick={{
-              fill: "var(--foreground-color-4)",
-              fontSize: 15,
-              fontWeight: 500,
-            }}
-            tickFormatter={(value) => formatScaleValue(value)}
-            label={{
-              value: "Amount (USD)",
-              angle: -90,
-              position: "insideLeft",
-              dx: -17,
-              dy: 50,
-              textAnchor: "middle",
-              style: { fill: "var(--foreground-color-3)", fontSize: 13 },
-            }}
-          />
-          <Tooltip
-            cursor={{ fill: "var(--background-color-800C)", opacity: 0.5 }}
-            content={<CustomTooltip />}
-          />
-          <Legend content={<CustomLegend />} />
-          <Bar
-            barSize={40}
-            dataKey="sales"
-            stackId="a"
-            fill="var(--chart-color-1)"
-            name={"Sales"}
-          />
-          <Bar
-            dataKey="orders"
-            stackId="a"
-            fill="var(--chart-color-2)"
-            name={"Orders"}
-          />
-          <Bar
-            dataKey="revenue"
-            stackId="a"
-            fill="var(--chart-color-3)"
-            name={"Revenue"}
-          />
-          <Bar
-            dataKey="discounts"
-            stackId="a"
-            fill="var(--chart-color-4)"
-            name={"Discounts"}
-          />
-          <Bar
-            dataKey="taxes"
-            stackId="a"
-            fill="var(--chart-color-5)"
-            name={"Taxes"}
-          />
-          <Bar
-            dataKey="refunds"
-            stackId="a"
-            fill="var(--chart-color-6)"
-            name={"Refunds"}
-          />
-        </BarChart>
-      </ResponsiveContainer>
-          </div>
+            onMouseLeave={() => setActiveIndex(null)}
+            className="p-3"
+            data={DASHBOARD_OVERVIEW_CHART}
+            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+          >
+            <CartesianGrid
+              strokeDasharray="0"
+              vertical={false}
+              stroke="var(--border-color-1)"
+            />
+            <XAxis
+              dataKey="name"
+              stroke="var(--border-color-2)"
+              tick={(props) => {
+                const { x, y, payload, index } = props;
+                const isActive = activeIndex === index;
+                return (
+                  <text
+                    x={x}
+                    y={y}
+                    dy={16}
+                    textAnchor="middle"
+                    fill={
+                      isActive
+                        ? "var(--foreground)"
+                        : "var(--foreground-color-4)"
+                    }
+                    fontSize={13}
+                    fontWeight={500}
+                  >
+                    {payload.value}
+                  </text>
+                );
+              }}
+              tickMargin={5}
+            />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              width={60}
+              tick={{
+                fill: "var(--foreground-color-4)",
+                fontSize: 13,
+                fontWeight: 500,
+              }}
+              tickFormatter={(value) => formatScaleValue(value)}
+              label={{
+                value: "Amount (USD)",
+                angle: -90,
+                position: "insideLeft",
+                dx: -17,
+                dy: 50,
+                textAnchor: "middle",
+                style: { fill: "var(--foreground-color-3)", fontSize: 13 },
+              }}
+            />
+            <Tooltip
+              cursor={{
+                fill: "var(--background-color-800C)",
+                opacity: 0.5,
+                color: "red",
+              }}
+              content={CustomTooltip}
+            />
+            <Legend content={CustomLegend} />
+            <Bar
+              barSize={30}
+              dataKey="sales"
+              stackId="a"
+              fill="var(--chart-color-1)"
+              name={"Sales"}
+            />
+            <Bar
+              dataKey="orders"
+              stackId="a"
+              fill="var(--chart-color-2)"
+              name={"Orders"}
+            />
+            <Bar
+              dataKey="revenue"
+              stackId="a"
+              fill="var(--chart-color-3)"
+              name={"Revenue"}
+            />
+            <Bar
+              dataKey="discounts"
+              stackId="a"
+              fill="var(--chart-color-4)"
+              name={"Discounts"}
+            />
+            <Bar
+              dataKey="taxes"
+              stackId="a"
+              fill="var(--chart-color-5)"
+              name={"Taxes"}
+            />
+            <Bar
+              dataKey="refunds"
+              stackId="a"
+              fill="var(--chart-color-6)"
+              name={"Refunds"}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };

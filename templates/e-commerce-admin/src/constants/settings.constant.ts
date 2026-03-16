@@ -13,6 +13,8 @@ import {
   ShieldCheckIcon,
   ReceiptIcon,
   KeyRoundIcon,
+  Bell as BellIcon,
+  PanelLeft as PanelLeftIcon,
 } from "lucide-react";
 
 type SettingsTitleDescType = {
@@ -30,11 +32,15 @@ export const SETTINGS_SLUGS = [
   "/settings/auth-forms",
   "/settings/team",
   "/settings/sellers",
+  "/settings/dashboard",
+  "/settings/notifications",
   "/settings/billing",
   "/settings/api",
   "/settings/account",
 ] as const;
 export type SettingsSlugType = (typeof SETTINGS_SLUGS)[number];
+
+// Settings page title and description
 export const SETTINGS_TITLE_DESC: Record<
   SettingsSlugType,
   SettingsTitleDescType
@@ -87,8 +93,17 @@ export const SETTINGS_TITLE_DESC: Record<
     title: "Account Settings",
     desc: "Update your personal profile, email, password and security preferences.",
   },
+  "/settings/dashboard": {
+    title: "Dashboard Settings",
+    desc: "Customize your dashboard layout, widgets and default views.",
+  },
+  "/settings/notifications": {
+    title: "Notifications",
+    desc: "Manage your notification preferences, alerts and communication settings.",
+  },
 };
 
+// Settings page sidebar menus
 export const ADMIN_SETTINGS_SIDEBAR: SettingsSidebarMenuListType = {
   General: {
     label: "General",
@@ -115,9 +130,19 @@ export const ADMIN_SETTINGS_SIDEBAR: SettingsSidebarMenuListType = {
     items: [
       { label: "Appearance", icon: PaletteIcon, slug: "/settings/appearance" },
       {
-        label: "Sidebar Access Control",
+        label: "Dashboard",
         icon: LayoutDashboardIcon,
+        slug: "/settings/dashboard",
+      },
+      {
+        label: "Sidebar Access Control",
+        icon: PanelLeftIcon,
         slug: "/settings/sidebar-access",
+      },
+      {
+        label: "Notifications",
+        icon: BellIcon,
+        slug: "/settings/notifications",
       },
       {
         label: "Header & Footer Code",

@@ -10,11 +10,10 @@ export default function Layout({ children }: LayoutPropsType) {
   return (
     <div className="flex justify-start items-start w-full h-screen overflow-hidden">
       <Sidebar />
-      <div className="px-3 w-full h-screen overflow-hidden bg-background-color_925C">
+      <div className="w-full h-full overflow-y-auto overflow-x-hidden bg-background-color_950C">
         <WorkSpaceHeader />
-        <ScrollArea className="w-full h-[calc(100%-60px)] border border-border-color_1 rounded-t-2xl bg-background-color_950C">
-          {children}
-        </ScrollArea>
+
+        <div className="max-w-[1200px] px-5 w-full mx-auto">{children}</div>
       </div>
     </div>
   );
