@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { STACKED_BAR_CHART } from "@/constants/chart.constant";
+import React from "react";
+
 import {
   ShoppingBag as ShoppingBagIcon,
   TrendingUp as TrendingUpIcon,
@@ -10,24 +10,23 @@ import {
   RefreshCcw as RefreshCcwIcon,
   type LucideIcon,
 } from "lucide-react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  type TooltipContentProps,
-  type DefaultLegendContentProps,
-} from "recharts";
+import { Bar } from "recharts";
 import { formatScaleValue } from "@/utils";
-import type { TooltipPayloadEntry } from "recharts/types/state/tooltipSlice";
-import type { TooltipEventType } from "recharts/types/util/types";
+
 import { CustomBarChart } from "./CustomBarChart";
 
-export const DASHBOARD_OVERVIEW_CHART = [
+// data can be any type
+type DashboardOverviewChartType = {
+  name: string;
+  sales: number;
+  orders: number;
+  revenue: number;
+  discounts: number;
+  taxes: number;
+  refunds: number;
+}
+
+export const DASHBOARD_OVERVIEW_CHART: DashboardOverviewChartType[] = [
   {
     name: "Jan",
     sales: 38200000,
@@ -138,55 +137,6 @@ export const DASHBOARD_OVERVIEW_CHART = [
   },
 ];
 
-const CustomTooltip = (props: TooltipContentProps<number, string>) => {
-  const { active, label, payload } = props;
-  if (!active || !payload?.length) return null;
-
-  return (
-    <div className="bg-background-color_900C border border-border-color_1 rounded-lg p-3 w-[180px]">
-      <p className="text-surface-fg text-workspace_2 font-medium mb-2">
-        {label}
-      </p>
-      {payload.map((entry: TooltipPayloadEntry) => (
-        <div
-          key={`${entry.dataKey}`}
-          className="flex items-center gap-2 py-0.5"
-        >
-          <div
-            className="w-2 h-2 rounded-full shrink-0"
-            style={{ backgroundColor: entry.fill }}
-          />
-          <span className="text-text-color_4 text-workspace_3">
-            {entry.name}
-          </span>
-          <span className="text-text-color_1 text-workspace_3 font-medium ml-auto">
-            {formatScaleValue(Number(entry.value))}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-type ItemColorIndicatorShapeType = "square" | "circle" | "rect";
-type IndicatorType = "icon" | "shape" | "none";
-
-export const ItemColorIndicatorShapeStyles: {
-  [key in ItemColorIndicatorShapeType]: string;
-} = {
-  rect: "w-[5px] h-[2px] rounded-[50px]",
-  square: "w-[2px] h-[2px] rounded-sm",
-  circle: "w-[2px] h-[2px] rounded-full",
-};
-
-type CustomLegendPropstype = {
-  icons?: Record<string, LucideIcon>;
-  iconSize?: number;
-  itemColorIndicatorShape?: ItemColorIndicatorShapeType;
-  IndicatorType?: IndicatorType;
-  className?: string;
-} & DefaultLegendContentProps;
-
 const icons: Record<string, LucideIcon> = {
   sales: ShoppingBagIcon,
   revenue: TrendingUpIcon,
@@ -196,53 +146,7 @@ const icons: Record<string, LucideIcon> = {
   refunds: RefreshCcwIcon,
 };
 
-const CustomLegend = ({
-  payload,
-  icons,
-  iconSize = 14,
-  itemColorIndicatorShape = "square",
-  IndicatorType = "shape",
-  className,
-}: CustomLegendPropstype) => {
-  if (!payload?.length) return null;
-  const tempItemColorIndicatorShape =
-    ItemColorIndicatorShapeStyles[itemColorIndicatorShape];
-  return (
-    <div
-      className={`w-fit flex justify-center items-center gap-5 ${className}`}
-    >
-      {payload.map((entry) => {
-        const Icon = icons && icons[entry.dataKey as string];
-        return (
-          <div
-            key={entry.dataKey as string}
-            className="flex justify-center items-center gap-1"
-          >
-            {IndicatorType == "icon" && (
-              <>
-                {Icon && (
-                  <Icon size={iconSize} style={{ color: entry.color }} />
-                )}
-              </>
-            )}
-
-            {IndicatorType == "shape" && (
-              <div className={`${tempItemColorIndicatorShape}`}></div>
-            )}
-
-            <div className=""></div>
-            <span className="text-workspace_2 font-medium text-text-color_4">
-              {entry.value}
-            </span>
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
 export const OverViewChart = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   return (
     <div className="w-full h-fit bg-background-color_925C rounded-xl border-1 border-border-color_1">
       <div className="flex justify-between items-center p-5">
@@ -255,19 +159,19 @@ export const OverViewChart = () => {
         </div>
       </div>
       <CustomBarChart
-      height="350px"
+        height="350px"
         barChartClassName="p-3"
         isEnableLegend
         isKeepYAxis
-       YAxisCustomSettings={{
-        textformatter: formatScaleValue,
-        style :{
-          wrapperWdith: 60
-        },
-        label: {
-          value: "Amount (USD)"
-        }
-       }}
+        YAxisCustomSettings={{
+          textformatter: formatScaleValue,
+          style: {
+            wrapperWdith: 60,
+          },
+          label: {
+            value: "Amount (USD)",
+          },
+        }}
         CustomLegendProps={{
           icons: icons,
           IndicatorType: "icon",
@@ -323,7 +227,6 @@ export const OverViewChart = () => {
         XAxisDataKey="name"
         data={DASHBOARD_OVERVIEW_CHART}
       />
-   
     </div>
   );
 };

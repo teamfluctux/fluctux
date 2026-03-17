@@ -35,46 +35,46 @@ export const buttonStyling: ButtonStylingType = {
   primary: {
     default: "bg-primary-color  border-none text-text-color_default_white ",
     hover:
-      "hover:bg-primary-color-hover active:bg-primary-color-active active:text-text-color_default_white-active",
+      "hover:bg-primary-color-hover active:bg-primary-color-active active:text-text-color_default_white-active data-[state=open]:bg-primary-color-hover",
     disabled:
       "text-text-color_default_white-2 cursor-not-allowed! bg-primary-color-disabled",
   },
   secondary: {
     default:
       "border border-border-color_1 bg-background-color_900C text-text-color_2",
-    hover: "hover:bg-background-color_800C hover:text-text-color_1",
+    hover: "hover:bg-background-color_800C hover:text-text-color_1 data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 data-[state=open]:border-border-color_2",
     disabled:
       "text-text-color_3 cursor-not-allowed! bg-background-color_900C border border-background-color_900C",
   },
   ghost_zinc: {
     default: " text-text-color_2",
     hover: "hover:bg-background-color_900C hover:text-text-color_1",
-    disabled: "text-text-color_3 cursor-not-allowed! bg-transparent",
+    disabled: "text-text-color_3 cursor-not-allowed! bg-transparent data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 ",
   },
   ghost_zinc_2: {
     default: " text-text-color_2",
     hover: "hover:bg-background-color_800C hover:text-text-color_1!",
-    disabled: "text-text-color_3 cursor-not-allowed! bg-transparent",
+    disabled: "text-text-color_3 cursor-not-allowed! bg-transparent data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 ",
   },
   surface_indigo: {
     default:
       "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border text-rdx-indigo-fg",
     hover:
-      "hover:inset-ring-surface-indigo-border-active active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active ",
+      "hover:inset-ring-surface-indigo-border-active active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active data-[state=open]:bg-surface-indigo-bg-active data-[state=open]:inset-ring-surface-indigo-border-active data-[state=open]:text-rdx-indigo-fg-2",
     disabled: "opacity-50 cursor-not-allowed!",
   },
   surface: {
     default:
       "bg-surface-bg inset-ring inset-ring-surface-border text-surface-fg",
     hover:
-      "hover:inset-ring-surface-border-active active:bg-surface-bg-active active:inset-ring-surface-border-active",
+      "hover:inset-ring-surface-border-active active:bg-surface-bg-active active:inset-ring-surface-border-active data-[state=open]:bg-surface-bg-active data-[state=open]:inset-ring-surface-border-active data-[state=open]:text-surface-fg-2",
     disabled: "opacity-50 cursor-not-allowed!",
   },
   surface_indigo_2: {
     default:
-      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border  text-rdx-indigo-fg",
+      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border  text-rdx-indigo-fg-2",
     hover:
-      "hover:inset-ring-surface-indigo-border-active  active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active",
+      "hover:inset-ring-surface-indigo-border-active  active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active data-[state=open]:bg-surface-indigo-bg-active data-[state=open]:inset-ring-surface-indigo-border-active data-[state=open]:text-rdx-indigo-fg-2",
     disabled: "opacity-50 cursor-not-allowed!",
   },
 };

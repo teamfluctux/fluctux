@@ -23,6 +23,7 @@ import { OverViewChart } from "./OverViewChart";
 import type { DashboardOverviewDatatype } from "@/types/dashboard";
 import { DashSingleCard, DashSingleCardGroup } from "./DashCard";
 import { OverViewMetricsHeader } from "./OverViewMetricsHeader";
+import { CustomLineChart } from "./CustomLineChart";
 
 const DASHBOARD_OVERVIEW_VALUES: DashboardOverviewDatatype = {
   "Total Sales": {
@@ -107,16 +108,34 @@ export default function DashboardPage() {
       </section>
       <section className="mb-4">
         <DashSingleCardGroup>
-          <DashSingleCard>
+          <DashSingleCard
+            title="Revenue Overview"
+            value="revenue-overview"
+            desc="Monthly sales and revenue breakdown"
+          >
+            <div className="w-full h-full">
+              <CustomLineChart height="300px" XAxisDataKey="name"/>
+            </div>
+          </DashSingleCard>
+          <DashSingleCard
+            title="Order Analytics"
+            value="order-analytics"
+            desc="Track order volume and fulfillment status"
+          >
             <div></div>
           </DashSingleCard>
-          <DashSingleCard>
+          <DashSingleCard
+            title="Top Products"
+            value="top-products"
+            desc="Best performing products by sales volume"
+          >
             <div></div>
           </DashSingleCard>
-            <DashSingleCard>
-            <div></div>
-          </DashSingleCard>
-            <DashSingleCard>
+          <DashSingleCard
+            title="Customer Insights"
+            value="customer-insights"
+            desc="New vs returning customers this period"
+          >
             <div></div>
           </DashSingleCard>
         </DashSingleCardGroup>

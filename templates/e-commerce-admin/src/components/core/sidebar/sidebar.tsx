@@ -15,6 +15,7 @@ import { getSidebarHiddenItemsPostions } from "@/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { SIDEBAR_ADMIN_MENU_LIST } from "@/constants";
 
+// Hide sidebar menus based on index number
 const hiddenLookUp = getSidebarHiddenItemsPostions("");
 
 export const Sidebar = () => {

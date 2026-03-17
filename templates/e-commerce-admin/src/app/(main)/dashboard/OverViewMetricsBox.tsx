@@ -8,14 +8,18 @@ type IconUpOrDownPropsType = {
 };
 
 type OverViewMetricsBoxGroupPropsType = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
-export const OverViewMetricsBoxGroup = ({children}: OverViewMetricsBoxGroupPropsType) => {
-  return <div className="grid grid-cols-3 auto-rows-[150px] w-full gap-4">
-    {children}
-  </div>
-}
+export const OverViewMetricsBoxGroup = ({
+  children,
+}: OverViewMetricsBoxGroupPropsType) => {
+  return (
+    <div className="grid grid-cols-3 auto-rows-[150px] w-full gap-4">
+      {children}
+    </div>
+  );
+};
 
 const IconUpOrDown = ({ isScaleDown, value }: IconUpOrDownPropsType) => {
   const Icon = isScaleDown ? ArrowDown : ArrowUp;
@@ -45,8 +49,6 @@ const IconUpOrDown = ({ isScaleDown, value }: IconUpOrDownPropsType) => {
  * @param previousValue - The previous metric value to calculate percentage change against
  * @param newValue - Recent activity count within 5 minutes to 24 hours range e.g 5 new orders in last hour
  * @param date - The date or time period this metric represents
- * @param colorClass - For giving color to badges
- *
  * @example
  * ```tsx
  * <OverViewMetricsBox
@@ -54,7 +56,6 @@ const IconUpOrDown = ({ isScaleDown, value }: IconUpOrDownPropsType) => {
  *   itemKey="total-sales"
  *   currentValue={47500000}
  *   previousValue={44811000}
- *   colorClass="text-rdx-red-fg"
  *   date="24 Feb, 2026 - 23 Mar, 2026"
  * />
  * ```
@@ -63,9 +64,7 @@ export const OverViewMetricsBox = ({
   title,
   currentValue,
   previousValue,
-  colorClass,
   icon,
-  newValue,
   date,
 }: Omit<DashboardOverviewDatatype[string], "itemKey"> & {
   title: string;

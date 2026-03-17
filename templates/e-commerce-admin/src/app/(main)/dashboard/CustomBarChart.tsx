@@ -1,14 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {
-  ShoppingBag as ShoppingBagIcon,
-  TrendingUp as TrendingUpIcon,
-  Package as PackageIcon,
-  Tag as TagIcon,
-  Receipt as ReceiptIcon,
-  RefreshCcw as RefreshCcwIcon,
-  type LucideIcon,
-} from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 import {
   BarChart,
   XAxis,
@@ -23,12 +15,13 @@ import {
   type XAxisProps,
   type YAxisProps,
   type LabelProps,
-  type DefaultTooltipContentProps,
 } from "recharts";
-import { formatScaleValue } from "@/utils";
 import type { TooltipPayloadEntry } from "recharts/types/state/tooltipSlice";
 import type { TextAnchor } from "recharts/types/component/Text";
 import { FxSeparator } from "@fluctux/ui";
+import { ChartTooltip, type ChartTooltipPropsType } from "./ChartTooltip";
+import { ChartXAxis, type ChartXAxisPropsType } from "./ChartXAxis";
+import { ChartYAxis, type ChartYAxisPropsType } from "./ChartYAxis";
 
 type IndicatorType = "icon" | "shape" | "none";
 type TooltipIndicatorShapeType = "square" | "bot" | "circle";
@@ -50,7 +43,37 @@ type CustomTooltipPropstype = {
   valueFormatter?: (value: number) => string;
 };
 
-const CustomTooltip = ({
+/**
+ * Custom tooltip component for recharts
+ *
+ * Renders a styled tooltip with support for icons, shape indicators and value formatting.
+ * Supports two layouts: default inline and "bot" layout which shows a stacked card style.
+ *
+ * @param active - Whether the tooltip is currently active
+ * @param label - The x-axis label value shown at the top
+ * @param payload - Array of data entries for the hovered bar
+ * @param icons - Optional map of dataKey to LucideIcon for icon indicators
+ * @param iconSize - Size of the icon in pixels (default: 13)
+ * @param className - Additional CSS classes for the tooltip container
+ * @param IndicatorType - Type of indicator to show: "icon", "shape" or "none" (default: "shape")
+ * @param indicatorShape - Shape of the indicator: "square", "bot" or "circle" (default: "circle")
+ * @param valueFormatter - Optional function to format the displayed value
+ *
+ * @example
+ * ```tsx
+ * <Tooltip
+ *   content={(props) => (
+ *     <CustomTooltip
+ *       {...props}
+ *       IndicatorType="shape"
+ *       indicatorShape="bot"
+ *       valueFormatter={formatScaleValue}
+ *     />
+ *   )}
+ * />
+ * ```
+ */
+export const CustomTooltip = ({
   active,
   label,
   payload,
@@ -138,10 +161,10 @@ const CustomTooltip = ({
   );
 };
 
-type ItemColorIndicatorShapeType = "square" | "circle" | "rect";
+type LegendItemColorIndicatorShapeType = "square" | "circle" | "rect";
 
-export const ItemColorIndicatorShapeStyles: {
-  [key in ItemColorIndicatorShapeType]: string;
+export const LegendItemColorIndicatorShapeStyles: {
+  [key in LegendItemColorIndicatorShapeType]: string;
 } = {
   rect: "w-2.5 h-1.5 rounded-[50px]",
   square: "w-2 h-2 rounded-xs",
@@ -151,12 +174,37 @@ export const ItemColorIndicatorShapeStyles: {
 type CustomLegendPropstype = {
   icons?: Record<string, LucideIcon>;
   iconSize?: number;
-  itemColorIndicatorShape?: ItemColorIndicatorShapeType;
+  itemColorIndicatorShape?: LegendItemColorIndicatorShapeType;
   IndicatorType?: IndicatorType;
   className?: string;
 };
 
-const CustomLegend = ({
+/**
+ * Custom legend component for recharts
+ *
+ * Renders a styled legend with support for icons or shape color indicators.
+ *
+ * @param payload - Array of legend entries provided by recharts
+ * @param icons - Optional map of dataKey to LucideIcon for icon indicators
+ * @param iconSize - Size of the icon in pixels (default: 14)
+ * @param itemColorIndicatorShape - Shape of the color indicator: "square", "circle" or "rect" (default: "square")
+ * @param IndicatorType - Type of indicator: "icon", "shape" or "none" (default: "shape")
+ * @param className - Additional CSS classes for the legend container
+ *
+ * @example
+ * ```tsx
+ * <Legend
+ *   content={(props) => (
+ *     <CustomLegend
+ *       {...props}
+ *       IndicatorType="icon"
+ *       icons={{ sales: ShoppingBagIcon }}
+ *     />
+ *   )}
+ * />
+ * ```
+ */
+export const CustomLegend = ({
   payload,
   icons,
   iconSize = 14,
@@ -166,7 +214,7 @@ const CustomLegend = ({
 }: CustomLegendPropstype & DefaultLegendContentProps) => {
   if (!payload?.length) return null;
   const tempItemColorIndicatorShape =
-    ItemColorIndicatorShapeStyles[itemColorIndicatorShape];
+    LegendItemColorIndicatorShapeStyles[itemColorIndicatorShape];
   return (
     <div
       className={`w-fit flex justify-center items-center gap-5 ${className}`}
@@ -204,98 +252,86 @@ const CustomLegend = ({
   );
 };
 
+/**
+ * Reusable customizable bar chart component
+ *
+ * Wraps recharts BarChart with sensible defaults, active cursor highlighting,
+ * custom tooltip, custom legend, and deep-merged configuration props.
+ *
+ * @param height - CSS height of the chart container (default: "400px")
+ * @param data - Array of data objects to render
+ * @param Bars - Bar elements to render inside the chart
+ * @param XAxisDataKey - The data key used for the X axis
+ * @param isEnableActiveCursorStyle - Highlights the active bar column on hover (default: true)
+ * @param isKeepYAxis - Whether to render the Y axis (default: false)
+ * @param isEnableTooltip - Whether to render the tooltip (default: true)
+ * @param isEnableLegend - Whether to render the legend (default: false)
+ * @param chartMargin - Margin around the chart area
+ * @param barChartClassName - Additional CSS classes for the BarChart element
+ * @param XAxisCustomSettings - Deep merged X axis style overrides
+ * @param YAxisCustomSettings - Deep merged Y axis style, label and formatter overrides
+ * @param CartesianGridProps - Deep merged CartesianGrid props
+ * @param tooltip - Tooltip cursor style overrides
+ * @param XAxisProps - Additional recharts XAxis props
+ * @param YAxisProps - Additional recharts YAxis props
+ * @param CustomTooltipProps - Props forwarded to CustomTooltip
+ * @param CustomLegendProps - Props forwarded to CustomLegend
+ *
+ * @example
+ * ```tsx
+ * <CustomBarChart
+ *   height="350px"
+ *   data={DASHBOARD_OVERVIEW_CHART}
+ *   XAxisDataKey="name"
+ *   isKeepYAxis
+ *   isEnableLegend
+ *   YAxisCustomSettings={{
+ *     textformatter: formatScaleValue,
+ *     label: { value: "Amount (USD)" }
+ *   }}
+ *   Bars={
+ *     <>
+ *       <Bar dataKey="sales" stackId="a" fill="#6366f1" name="Sales" />
+ *       <Bar dataKey="revenue" stackId="a" fill="#818cf8" name="Revenue" />
+ *     </>
+ *   }
+ * />
+ * ```
+ */
 type CustomBarChartProps = {
   height?: string;
-  isEnableActiveCursorStyle?: boolean;
   data?: unknown[] | undefined;
   Bars: React.ReactNode;
   chartMargin?: { top: number; right: number; left: number; bottom: number };
   barChartClassName?: string;
   CartesianGridProps?: CartesianGridProps;
-  XAxisDataKey: string;
-  XAxisProps?: XAxisProps;
   YAxisProps?: YAxisProps;
-  XAxisCustomSettings?: {
-    style?: {
-      margin?: number;
-      initialTextColor?: string;
-      activeTextColor?: string;
-      fontSize?: number;
-      fontWeight?: number;
-      textAnchor?: TextAnchor;
-      rotate?: number;
-      verticalOffset?: number;
-    };
-  };
-  YAxisCustomSettings?: {
-    style?: {
-      axisLine?: boolean;
-      tickLine?: boolean;
-      wrapperWdith?: number;
-      initialTextColor?: string;
-      fontSize?: number;
-      fontWeight?: number;
-    };
-    label?: LabelProps;
-    isUseAxisLabel?: boolean;
-    textformatter?: (value: number) => string;
-  };
-  isEnableTooltip?: boolean;
   isEnableLegend?: boolean;
-  isKeepYAxis?: boolean;
-  tooltip?: {
-    style?: {
-      cursorFill?: string;
-      cursorOpacity?: number;
-    };
-  };
   CustomLegendProps?: CustomLegendPropstype;
-  CustomTooltipProps?: CustomTooltipPropstype;
-};
+  XAxisProps?: XAxisProps;
+} & ChartXAxisPropsType &
+  ChartYAxisPropsType &
+  ChartTooltipPropsType;
 
 export const CustomBarChart = ({
   height = "400px",
   data,
-  isEnableActiveCursorStyle = true,
   chartMargin = { top: 0, right: 0, left: 0, bottom: 0 },
   barChartClassName,
   Bars,
   XAxisDataKey,
   XAxisProps,
-  XAxisCustomSettings: XAxisCustomSettingsProps,
+  XAxisCustomSettings,
   isEnableTooltip = true,
   isEnableLegend = false,
-  isKeepYAxis = false,
-  YAxisCustomSettings: YAxisCustomSettingsProps,
-  tooltip: tooltipProps,
+  tooltip,
   CartesianGridProps: CartesianGridPropsInput,
   YAxisProps,
+  isKeepYAxis,
+  YAxisCustomSettings,
   CustomLegendProps,
   CustomTooltipProps,
 }: CustomBarChartProps) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const YAxisCustomSettings = {
-    style: {
-      axisLine: false,
-      tickLine: false,
-      fontSize: 13,
-      fontWeight: 500,
-      wrapperWdith: 30,
-      initialTextColor: "var(--foreground-color-3)",
-      ...YAxisCustomSettingsProps?.style, // merge style
-    },
-    textformatter: YAxisCustomSettingsProps?.textformatter,
-    label: {
-      value: "",
-      angle: -90,
-      position: "insideLeft",
-      dx: -17,
-      dy: 50,
-      textAnchor: "middle",
-      style: { fill: "var(--foreground-color-3)", fontSize: 13 },
-      ...YAxisCustomSettingsProps?.label, // merge label
-    },
-  };
   const CartesianGridProps = {
     strokeDasharray: "0",
     vertical: false,
@@ -303,102 +339,47 @@ export const CustomBarChart = ({
     ...CartesianGridPropsInput,
   };
 
-  const XAxisCustomSettings = {
-    style: {
-      margin: 3,
-      initialTextColor: "var(--foreground-color-4)",
-      activeTextColor: "var(--foreground)",
-      fontSize: 13,
-      fontWeight: 500,
-      textAnchor: "middle" as TextAnchor,
-      verticalOffset: 16,
-      ...XAxisCustomSettingsProps?.style,
-    },
-  };
-
-  const tooltip = {
-    style: {
-      cursorFill: "var(--background-color-800C)",
-      cursorOpacity: 0.5,
-      ...tooltipProps?.style,
-    },
-  };
-
   return (
     <div style={{ height: height }}>
       <ResponsiveContainer width={"100%"}>
         <BarChart
-          onMouseMove={(state) => {
-            if (!isEnableActiveCursorStyle) return;
-            if (state.isTooltipActive)
-              setActiveIndex(Number(state.activeTooltipIndex) ?? null);
-            else setActiveIndex(null);
-          }}
-          onMouseLeave={() => isEnableActiveCursorStyle && setActiveIndex(null)}
           className={`${barChartClassName} [&>svg]:outline-none [&>svg]:ring-0 outline-none ring-0`}
           data={data}
           margin={chartMargin}
         >
           <CartesianGrid {...CartesianGridProps} />
-          <XAxis
-            dataKey={`${XAxisDataKey}`}
-            stroke="var(--border-color-2)"
-            angle={34}
-            tick={(props) => {
-              const { x, y, payload, index } = props;
-              const isActive = activeIndex === index;
-              return (
-                <text
-                  x={x}
-                  y={y}
-                  dy={XAxisCustomSettings.style?.verticalOffset}
-                  transform={`rotate(${XAxisCustomSettings.style?.rotate}, ${x}, ${y})`}
-                  textAnchor={XAxisCustomSettings.style?.textAnchor}
-                  fill={
-                    isActive
-                      ? XAxisCustomSettings.style?.activeTextColor
-                      : XAxisCustomSettings.style?.initialTextColor
-                  }
-                  fontSize={XAxisCustomSettings.style?.fontSize}
-                  fontWeight={XAxisCustomSettings.style?.fontWeight}
-                >
-                  {payload.value}
-                </text>
-              );
-            }}
-            tickMargin={XAxisCustomSettings.style?.margin}
+          <ChartXAxis
+            tickLine={false}
+            axisLine={false}
+            tickMargin={8}
+            minTickGap={32}
+            XAxisDataKey={XAxisDataKey}
+            XAxisCustomSettings={XAxisCustomSettings}
             {...XAxisProps}
           />
-          {isKeepYAxis && (
-            <YAxis
-              axisLine={YAxisCustomSettings.style?.axisLine}
-              tickLine={YAxisCustomSettings.style?.tickLine}
-              width={YAxisCustomSettings.style?.wrapperWdith}
-              tick={{
-                fill: YAxisCustomSettings.style?.initialTextColor,
-                fontSize: YAxisCustomSettings.style?.fontSize,
-                fontWeight: 500,
-              }}
-              tickFormatter={(value) =>
-                YAxisCustomSettings.textformatter
-                  ? YAxisCustomSettings.textformatter(value).toString()
-                  : String(value)
-              }
-              label={YAxisCustomSettings.label}
-              {...YAxisProps}
-            />
-          )}
+          <ChartYAxis
+            isKeepYAxis={isKeepYAxis}
+            YAxisCustomSettings={YAxisCustomSettings}
+            {...YAxisProps}
+          />
+
           {isEnableTooltip && (
             <Tooltip
               cursor={{
-                fill: tooltip.style?.cursorFill,
-                opacity: tooltip.style?.cursorOpacity,
+                fill: tooltip?.style?.cursorFill,
+                opacity: tooltip?.style?.cursorOpacity,
               }}
               content={(props: any) => (
                 <CustomTooltip {...props} {...CustomTooltipProps} />
               )}
             />
           )}
+
+          <ChartTooltip
+            CustomTooltipProps={{ ...CustomTooltipProps }}
+            isEnableTooltip={isEnableTooltip}
+            tooltip={tooltip}
+          />
           {isEnableLegend && (
             <Legend
               content={(props) => (
