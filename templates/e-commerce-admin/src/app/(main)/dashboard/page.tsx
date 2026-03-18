@@ -24,6 +24,7 @@ import type { DashboardOverviewDatatype } from "@/types/dashboard";
 import { DashSingleCard, DashSingleCardGroup } from "./DashCard";
 import { OverViewMetricsHeader } from "./OverViewMetricsHeader";
 import { CustomLineChart } from "./CustomLineChart";
+import { RevenueChart } from "./RevenueChart";
 
 const DASHBOARD_OVERVIEW_VALUES: DashboardOverviewDatatype = {
   "Total Sales": {
@@ -113,9 +114,7 @@ export default function DashboardPage() {
             value="revenue-overview"
             desc="Monthly sales and revenue breakdown"
           >
-            <div className="w-full h-full">
-              <CustomLineChart height="300px" XAxisDataKey="name"/>
-            </div>
+            <RevenueChart />
           </DashSingleCard>
           <DashSingleCard
             title="Order Analytics"

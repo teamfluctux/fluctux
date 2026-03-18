@@ -49,7 +49,6 @@ export const ChartYAxis = ({
     <>
       {isKeepYAxis && (
         <YAxis
-        
           axisLine={YAxisCustomSettings.style?.axisLine}
           tickLine={YAxisCustomSettings.style?.tickLine}
           width={YAxisCustomSettings.style?.wrapperWdith}
@@ -70,3 +69,5 @@ export const ChartYAxis = ({
     </>
   );
 };
+
+ChartYAxis.displayName = "YAxis";

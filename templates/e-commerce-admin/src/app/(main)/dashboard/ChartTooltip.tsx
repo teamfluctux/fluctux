@@ -1,3 +1,4 @@
+"use client";
 import type { IndicatorType } from "@/types";
 import { FxSeparator } from "@fluctux/ui";
 import type { LucideIcon } from "lucide-react";
@@ -80,13 +81,13 @@ export const CustomTooltip = ({
       <div
         className={`${isShapeBot ? "bg-background-color_925C border-t border-border-color_1 rounded-lg" : "p-3 py-2 pt-0"}`}
       >
-        {payload.map((entry: TooltipPayloadEntry) => {
+        {payload.map((entry: TooltipPayloadEntry, i) => {
           const Icon = icons && icons[entry.dataKey as string];
           return (
-            <>
+            <React.Fragment key={`${entry.dataKey}-${i}`}>
               {isShapeBot ? (
                 <>
-                  <div key={`${entry.dataKey}`} className="w-full px-3 py-1">
+                  <div className="w-full px-3 py-1">
                     <div className="flex justify-start items-center gap-1.5">
                       <div
                         className={`${tempIndicatorShape}`}
@@ -107,10 +108,7 @@ export const CustomTooltip = ({
                   <FxSeparator orientation="horizontal" />
                 </>
               ) : (
-                <div
-                  key={`${entry.dataKey}`}
-                  className="flex items-center gap-2 py-0.5 "
-                >
+                <div className="flex items-center gap-2 py-0.5 ">
                   {IndicatorType == "shape" && (
                     <div
                       className={`${tempIndicatorShape}`}
@@ -134,7 +132,7 @@ export const CustomTooltip = ({
                   </span>
                 </div>
               )}
-            </>
+            </React.Fragment>
           );
         })}
       </div>
@@ -166,19 +164,19 @@ export const ChartTooltip = ({
     },
   };
 
+  if (!isEnableTooltip) return null;
+
   return (
-    <>
-      {isEnableTooltip && (
-        <Tooltip
-          cursor={{
-            fill: tooltip.style?.cursorFill,
-            opacity: tooltip.style?.cursorOpacity,
-          }}
-          content={(props: any) => (
-            <CustomTooltip {...CustomTooltipProps} {...props} />
-          )}
-        />
+    <Tooltip
+      cursor={{
+        fill: tooltip.style?.cursorFill,
+        opacity: tooltip.style?.cursorOpacity,
+      }}
+      content={(props: TooltipContentProps<number, string>) => (
+        <CustomTooltip {...CustomTooltipProps} {...props} />
       )}
-    </>
+    />
   );
 };
+
+ChartTooltip.displayName = "Tooltip";

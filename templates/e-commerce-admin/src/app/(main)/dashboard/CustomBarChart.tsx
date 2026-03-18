@@ -15,6 +15,7 @@ import {
   type XAxisProps,
   type YAxisProps,
   type LabelProps,
+  type LegendProps,
 } from "recharts";
 import type { TooltipPayloadEntry } from "recharts/types/state/tooltipSlice";
 import type { TextAnchor } from "recharts/types/component/Text";
@@ -22,144 +23,9 @@ import { FxSeparator } from "@fluctux/ui";
 import { ChartTooltip, type ChartTooltipPropsType } from "./ChartTooltip";
 import { ChartXAxis, type ChartXAxisPropsType } from "./ChartXAxis";
 import { ChartYAxis, type ChartYAxisPropsType } from "./ChartYAxis";
+import { ChartLegend, type ChartLegendPropsType } from "./ChartLegend";
 
 type IndicatorType = "icon" | "shape" | "none";
-type TooltipIndicatorShapeType = "square" | "bot" | "circle";
-
-export const TooltipIndicatorShapeStyles: {
-  [key in TooltipIndicatorShapeType]: string;
-} = {
-  bot: "w-1 h-6 rounded-[50px]",
-  square: "w-2 h-2 rounded-xs",
-  circle: "w-2 h-2 rounded-full",
-};
-
-type CustomTooltipPropstype = {
-  icons?: Record<string, LucideIcon>;
-  iconSize?: number;
-  className?: string;
-  IndicatorType?: IndicatorType;
-  indicatorShape?: TooltipIndicatorShapeType;
-  valueFormatter?: (value: number) => string;
-};
-
-/**
- * Custom tooltip component for recharts
- *
- * Renders a styled tooltip with support for icons, shape indicators and value formatting.
- * Supports two layouts: default inline and "bot" layout which shows a stacked card style.
- *
- * @param active - Whether the tooltip is currently active
- * @param label - The x-axis label value shown at the top
- * @param payload - Array of data entries for the hovered bar
- * @param icons - Optional map of dataKey to LucideIcon for icon indicators
- * @param iconSize - Size of the icon in pixels (default: 13)
- * @param className - Additional CSS classes for the tooltip container
- * @param IndicatorType - Type of indicator to show: "icon", "shape" or "none" (default: "shape")
- * @param indicatorShape - Shape of the indicator: "square", "bot" or "circle" (default: "circle")
- * @param valueFormatter - Optional function to format the displayed value
- *
- * @example
- * ```tsx
- * <Tooltip
- *   content={(props) => (
- *     <CustomTooltip
- *       {...props}
- *       IndicatorType="shape"
- *       indicatorShape="bot"
- *       valueFormatter={formatScaleValue}
- *     />
- *   )}
- * />
- * ```
- */
-export const CustomTooltip = ({
-  active,
-  label,
-  payload,
-  icons,
-  iconSize = 13,
-  className,
-  IndicatorType = "shape",
-  indicatorShape = "circle",
-  valueFormatter,
-}: CustomTooltipPropstype & TooltipContentProps<number, string>) => {
-  if (!active || !payload?.length) return null;
-  const tempIndicatorShape = TooltipIndicatorShapeStyles[indicatorShape];
-  const isShapeBot = IndicatorType == "shape" && indicatorShape == "bot";
-  return (
-    <div
-      className={`bg-background-color_900C border border-border-color_1 overflow-hidden rounded-lg  w-[180px] ${className}`}
-    >
-      <p
-        className={`text-text-color_1 text-workspace_2 font-medium  ${isShapeBot ? "px-3 py-2" : "  p-3 pb-2"}`}
-      >
-        {label}
-      </p>
-      <div
-        className={`${isShapeBot ? "bg-background-color_925C border-t border-border-color_1 rounded-lg" : "p-3 py-2 pt-0"}`}
-      >
-        {payload.map((entry: TooltipPayloadEntry) => {
-          const Icon = icons && icons[entry.dataKey as string];
-          return (
-            <>
-              {isShapeBot ? (
-                <>
-                  <div key={`${entry.dataKey}`} className="w-full px-3 py-1">
-                    <div className="flex justify-start items-center gap-1.5">
-                      <div
-                        className={`${tempIndicatorShape}`}
-                        style={{ backgroundColor: entry.fill }}
-                      />
-                      <div className="text-left">
-                        <p className="text-text-color_4 text-workspace_3">
-                          {entry.name}
-                        </p>
-                        <p className="text-text-color_1 text-workspace_3 font-medium ml-auto ">
-                          {valueFormatter
-                            ? valueFormatter?.(Number(entry.value))
-                            : entry.value}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <FxSeparator orientation="horizontal" />
-                </>
-              ) : (
-                <div
-                  key={`${entry.dataKey}`}
-                  className="flex items-center gap-2 py-0.5 "
-                >
-                  {IndicatorType == "shape" && (
-                    <div
-                      className={`${tempIndicatorShape}`}
-                      style={{ backgroundColor: entry.fill }}
-                    />
-                  )}
-                  {IndicatorType == "icon" && (
-                    <>
-                      {Icon && (
-                        <Icon size={iconSize} style={{ color: entry.color }} />
-                      )}
-                    </>
-                  )}
-                  <span className="text-text-color_4 text-workspace_3">
-                    {entry.name}
-                  </span>
-                  <span className="text-text-color_1 text-workspace_3 font-medium ml-auto">
-                    {valueFormatter
-                      ? valueFormatter?.(Number(entry.value))
-                      : entry.value}
-                  </span>
-                </div>
-              )}
-            </>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
 
 type LegendItemColorIndicatorShapeType = "square" | "circle" | "rect";
 
@@ -299,22 +165,21 @@ export const CustomLegend = ({
  * ```
  */
 type CustomBarChartProps = {
-  height?: string;
+  ChartHeight?: string;
   data?: unknown[] | undefined;
   Bars: React.ReactNode;
   chartMargin?: { top: number; right: number; left: number; bottom: number };
   barChartClassName?: string;
   CartesianGridProps?: CartesianGridProps;
   YAxisProps?: YAxisProps;
-  isEnableLegend?: boolean;
-  CustomLegendProps?: CustomLegendPropstype;
   XAxisProps?: XAxisProps;
 } & ChartXAxisPropsType &
   ChartYAxisPropsType &
-  ChartTooltipPropsType;
+  ChartTooltipPropsType &
+  ChartLegendPropsType;
 
 export const CustomBarChart = ({
-  height = "400px",
+  ChartHeight = "400px",
   data,
   chartMargin = { top: 0, right: 0, left: 0, bottom: 0 },
   barChartClassName,
@@ -322,8 +187,8 @@ export const CustomBarChart = ({
   XAxisDataKey,
   XAxisProps,
   XAxisCustomSettings,
-  isEnableTooltip = true,
-  isEnableLegend = false,
+  isEnableTooltip,
+  isEnableLegend,
   tooltip,
   CartesianGridProps: CartesianGridPropsInput,
   YAxisProps,
@@ -340,7 +205,7 @@ export const CustomBarChart = ({
   };
 
   return (
-    <div style={{ height: height }}>
+    <div style={{ height: ChartHeight }}>
       <ResponsiveContainer width={"100%"}>
         <BarChart
           className={`${barChartClassName} [&>svg]:outline-none [&>svg]:ring-0 outline-none ring-0`}
@@ -352,7 +217,6 @@ export const CustomBarChart = ({
             tickLine={false}
             axisLine={false}
             tickMargin={8}
-            minTickGap={32}
             XAxisDataKey={XAxisDataKey}
             XAxisCustomSettings={XAxisCustomSettings}
             {...XAxisProps}
@@ -363,30 +227,15 @@ export const CustomBarChart = ({
             {...YAxisProps}
           />
 
-          {isEnableTooltip && (
-            <Tooltip
-              cursor={{
-                fill: tooltip?.style?.cursorFill,
-                opacity: tooltip?.style?.cursorOpacity,
-              }}
-              content={(props: any) => (
-                <CustomTooltip {...props} {...CustomTooltipProps} />
-              )}
-            />
-          )}
-
           <ChartTooltip
-            CustomTooltipProps={{ ...CustomTooltipProps }}
+            CustomTooltipProps={CustomTooltipProps}
             isEnableTooltip={isEnableTooltip}
             tooltip={tooltip}
           />
-          {isEnableLegend && (
-            <Legend
-              content={(props) => (
-                <CustomLegend {...props} {...CustomLegendProps} />
-              )}
-            />
-          )}
+          <ChartLegend
+            CustomLegendProps={CustomLegendProps}
+            isEnableLegend={isEnableLegend}
+          />
           {Bars}
         </BarChart>
       </ResponsiveContainer>

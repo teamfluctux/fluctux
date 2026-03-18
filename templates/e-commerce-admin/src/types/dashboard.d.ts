@@ -11,8 +11,7 @@ export type DashboardOverviewDatatype = {
   };
 };
 
-
-export type DashboardOverviewDataItemKeyType = 
+export type DashboardOverviewDataItemKeyType =
   | "total-sales"
   | "total-orders"
   | "low-stock-items"
@@ -20,4 +19,4 @@ export type DashboardOverviewDataItemKeyType =
   | "net-revenue"
   | "discount-amount"
   | "taxes-collected"
-  | "refund-amount"
+  | "refund-amount";

@@ -42,19 +42,22 @@ export const buttonStyling: ButtonStylingType = {
   secondary: {
     default:
       "border border-border-color_1 bg-background-color_900C text-text-color_2",
-    hover: "hover:bg-background-color_800C hover:text-text-color_1 data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 data-[state=open]:border-border-color_2",
+    hover:
+      "hover:bg-background-color_800C hover:text-text-color_1 data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 data-[state=open]:border-border-color_2",
     disabled:
       "text-text-color_3 cursor-not-allowed! bg-background-color_900C border border-background-color_900C",
   },
   ghost_zinc: {
     default: " text-text-color_2",
     hover: "hover:bg-background-color_900C hover:text-text-color_1",
-    disabled: "text-text-color_3 cursor-not-allowed! bg-transparent data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 ",
+    disabled:
+      "text-text-color_3 cursor-not-allowed! bg-transparent data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 ",
   },
   ghost_zinc_2: {
     default: " text-text-color_2",
     hover: "hover:bg-background-color_800C hover:text-text-color_1!",
-    disabled: "text-text-color_3 cursor-not-allowed! bg-transparent data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 ",
+    disabled:
+      "text-text-color_3 cursor-not-allowed! bg-transparent data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 ",
   },
   surface_indigo: {
     default:

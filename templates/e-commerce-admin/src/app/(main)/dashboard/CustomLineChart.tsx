@@ -9,127 +9,52 @@ import {
   Legend,
   ResponsiveContainer,
   type XAxisProps,
+  type YAxisProps,
 } from "recharts";
-import { CustomTooltip } from "./CustomBarChart";
+import { ChartTooltip, type ChartTooltipPropsType } from "./ChartTooltip";
 import { formatScaleValue } from "@/utils";
 import { ChartXAxis, type ChartXAxisPropsType } from "./ChartXAxis";
-
-type LineChartDataRevenueType = {
-  name: string; // month name
-  gross: number; // total revenue before deductions
-  net: number; // revenue after refunds and discounts
-  refunds: number; // refunded amount
-  discounts: number; // discounted amount
-};
-const REVENUE_LINE_CHART_DATA: LineChartDataRevenueType[] = [
-  {
-    name: "Jan",
-    gross: 38200000,
-    net: 30500000,
-    refunds: 720000,
-    discounts: 3200000,
-  },
-  {
-    name: "Feb",
-    gross: 41000000,
-    net: 33000000,
-    refunds: 800000,
-    discounts: 3500000,
-  },
-  {
-    name: "Mar",
-    gross: 43500000,
-    net: 35000000,
-    refunds: 830000,
-    discounts: 3700000,
-  },
-  {
-    name: "Apr",
-    gross: 40000000,
-    net: 32000000,
-    refunds: 810000,
-    discounts: 3400000,
-  },
-  {
-    name: "May",
-    gross: 44000000,
-    net: 35500000,
-    refunds: 850000,
-    discounts: 3800000,
-  },
-  {
-    name: "Jun",
-    gross: 46000000,
-    net: 37000000,
-    refunds: 860000,
-    discounts: 4000000,
-  },
-  {
-    name: "Jul",
-    gross: 45000000,
-    net: 36500000,
-    refunds: 855000,
-    discounts: 3900000,
-  },
-  {
-    name: "Aug",
-    gross: 47000000,
-    net: 38000000,
-    refunds: 865000,
-    discounts: 4200000,
-  },
-  {
-    name: "Sep",
-    gross: 46500000,
-    net: 37500000,
-    refunds: 858000,
-    discounts: 4100000,
-  },
-  {
-    name: "Oct",
-    gross: 48000000,
-    net: 38500000,
-    refunds: 868000,
-    discounts: 4250000,
-  },
-  {
-    name: "Nov",
-    gross: 47500000,
-    net: 38200000,
-    refunds: 870000,
-    discounts: 4300000,
-  },
-  {
-    name: "Dec",
-    gross: 50000000,
-    net: 40000000,
-    refunds: 900000,
-    discounts: 4500000,
-  },
-];
+import { ChartLegend, type ChartLegendPropsType } from "./ChartLegend";
+import { ChartYAxis, type ChartYAxisPropsType } from "./ChartYAxis";
 
 type CustomLineChartPropstype = {
-  height?: string;
+  wrapperHeight?: string;
+  ChartClassName?: string;
   XAxisProps?: XAxisProps;
-} & ChartXAxisPropsType;
+  data: any;
+  YAxisProps?: YAxisProps;
+  ChartLines?: React.ReactNode;
+} & ChartXAxisPropsType &
+  ChartLegendPropsType &
+  ChartTooltipPropsType &
+  ChartYAxisPropsType;
 
 export const CustomLineChart = ({
-  height,
+  ChartClassName,
+  wrapperHeight,
   XAxisDataKey,
+  data,
   XAxisProps,
   XAxisCustomSettings,
+  CustomLegendProps,
+  isEnableLegend,
+  CustomTooltipProps,
+  isEnableTooltip,
+  tooltip,
+  ChartLines,
+  isKeepYAxis,
+  YAxisProps,
+  YAxisCustomSettings,
 }: CustomLineChartPropstype) => {
   return (
-    <div style={{ height: height }}>
-      <ResponsiveContainer width={"100%"} aspect={1.83}>
+    <div style={{ height: wrapperHeight }}>
+      <ResponsiveContainer width={"100%"}>
         <LineChart
-          data={REVENUE_LINE_CHART_DATA}
-          className="p-2"
+          data={data}
+          className={`p-2 [&>svg]:outline-none [&>svg]:ring-0 outline-none ring-0 ${ChartClassName}`}
           margin={{
-            top: 10,
-            right: 10, // Reduced margins
-            left: 10,
-            bottom: 0,
+            left: 15,
+            right: 15,
           }}
         >
           <CartesianGrid
@@ -141,44 +66,25 @@ export const CustomLineChart = ({
             tickLine={false}
             tickMargin={8}
             axisLine={false}
-            minTickGap={32}
             XAxisDataKey={XAxisDataKey}
             XAxisCustomSettings={XAxisCustomSettings}
             {...XAxisProps}
           />
+          <ChartYAxis
+            isKeepYAxis={isKeepYAxis}
+            YAxisCustomSettings={YAxisCustomSettings}
+            {...YAxisProps}
+          />
+          {ChartLines}
 
-          <Tooltip
-            content={CustomTooltip}
-            cursor={{ strokeDasharray: "3 3" }}
+          <ChartTooltip
+            CustomTooltipProps={CustomTooltipProps}
+            isEnableTooltip={isEnableTooltip}
+            tooltip={tooltip}
           />
-          <Legend align="right" verticalAlign="top" />
-          <Line
-            type="monotone"
-            dataKey="gross"
-            stroke="var(--color-chart-1)"
-            dot={false}
-            activeDot={{ stroke: "var(--color-surface-base)" }}
-          />
-          <Line
-            type="monotone"
-            dataKey="net"
-            stroke="var(--color-chart-2)"
-            dot={false}
-            activeDot={{ stroke: "var(--color-surface-base)" }}
-          />
-          <Line
-            type="monotone"
-            dataKey="refunds"
-            stroke="var(--color-chart-3)"
-            dot={false}
-            activeDot={{ stroke: "var(--color-surface-base)" }}
-          />
-          <Line
-            type="monotone"
-            dataKey="discounts"
-            stroke="var(--color-chart-4)"
-            dot={false}
-            activeDot={{ stroke: "var(--color-surface-base)" }}
+          <ChartLegend
+            isEnableLegend={isEnableLegend}
+            CustomLegendProps={CustomLegendProps}
           />
         </LineChart>
       </ResponsiveContainer>

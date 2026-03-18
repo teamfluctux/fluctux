@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import {
   ShoppingBag as ShoppingBagIcon,
@@ -10,10 +10,12 @@ import {
   RefreshCcw as RefreshCcwIcon,
   type LucideIcon,
 } from "lucide-react";
-import { Bar } from "recharts";
+import { Bar, type LegendPayload } from "recharts";
 import { formatScaleValue } from "@/utils";
 
 import { CustomBarChart } from "./CustomBarChart";
+import type { DataKey } from "recharts/types/util/types";
+import { useChartLegendActive } from "@/hooks/useChartLegendActive";
 
 // data can be any type
 type DashboardOverviewChartType = {
@@ -24,7 +26,7 @@ type DashboardOverviewChartType = {
   discounts: number;
   taxes: number;
   refunds: number;
-}
+};
 
 export const DASHBOARD_OVERVIEW_CHART: DashboardOverviewChartType[] = [
   {
@@ -137,7 +139,15 @@ export const DASHBOARD_OVERVIEW_CHART: DashboardOverviewChartType[] = [
   },
 ];
 
-const icons: Record<string, LucideIcon> = {
+type ChartDataKeysType =
+  | "sales"
+  | "revenue"
+  | "orders"
+  | "discounts"
+  | "taxes"
+  | "refunds";
+
+const ICONS: Record<ChartDataKeysType, LucideIcon> = {
   sales: ShoppingBagIcon,
   revenue: TrendingUpIcon,
   orders: PackageIcon,
@@ -147,6 +157,16 @@ const icons: Record<string, LucideIcon> = {
 };
 
 export const OverViewChart = () => {
+  const { getOpacity, handleActiveLegend, handleDisableLegend, activeKey } =
+    useChartLegendActive<ChartDataKeysType>([
+      "sales",
+      "revenue",
+      "orders",
+      "discounts",
+      "taxes",
+      "refunds",
+    ]);
+
   return (
     <div className="w-full h-fit bg-background-color_925C rounded-xl border-1 border-border-color_1">
       <div className="flex justify-between items-center p-5">
@@ -159,7 +179,7 @@ export const OverViewChart = () => {
         </div>
       </div>
       <CustomBarChart
-        height="350px"
+        ChartHeight="350px"
         barChartClassName="p-3"
         isEnableLegend
         isKeepYAxis
@@ -173,9 +193,12 @@ export const OverViewChart = () => {
           },
         }}
         CustomLegendProps={{
-          icons: icons,
+          icons: ICONS,
           IndicatorType: "icon",
           className: "p-5",
+          onLegendClick: handleActiveLegend,
+          resetActiveLegend: handleDisableLegend,
+          activeLegendKey: activeKey,
         }}
         CustomTooltipProps={{
           indicatorShape: "circle",
@@ -189,36 +212,42 @@ export const OverViewChart = () => {
               barSize={30}
               dataKey="sales"
               stackId="a"
+              fillOpacity={getOpacity("sales")}
               fill="var(--chart-color-1)"
               name={"Sales"}
             />
             <Bar
               dataKey="orders"
               stackId="a"
+              fillOpacity={getOpacity("orders")}
               fill="var(--chart-color-2)"
               name={"Orders"}
             />
             <Bar
               dataKey="revenue"
               stackId="a"
+              fillOpacity={getOpacity("revenue")}
               fill="var(--chart-color-3)"
               name={"Revenue"}
             />
             <Bar
               dataKey="discounts"
               stackId="a"
+              fillOpacity={getOpacity("discounts")}
               fill="var(--chart-color-4)"
               name={"Discounts"}
             />
             <Bar
               dataKey="taxes"
               stackId="a"
+              fillOpacity={getOpacity("taxes")}
               fill="var(--chart-color-5)"
               name={"Taxes"}
             />
             <Bar
               dataKey="refunds"
               stackId="a"
+              fillOpacity={getOpacity("refunds")}
               fill="var(--chart-color-6)"
               name={"Refunds"}
             />
