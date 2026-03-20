@@ -8,9 +8,9 @@ import {
 import { AgGridCellSelector } from "@/components/workspace/ag-grid/components/selector";
 import { Clock, GitBranch, IdCard, UserRound, UsersRound } from "lucide-react";
 import {
-  ColDef,
-  ICellRendererParams,
-  ITextFilterParams,
+  type ColDef,
+  type ICellRendererParams,
+  type ITextFilterParams,
 } from "ag-grid-community";
 
 import {

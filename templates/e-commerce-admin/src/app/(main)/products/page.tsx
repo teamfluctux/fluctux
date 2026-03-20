@@ -18,6 +18,15 @@ const PRODUCTS_OVERVIEW_DATA: ProductsOverViewData[] = [
   { label: "Low stock", value: 306 },
 ];
 
+
+type ProductManageDataType = {
+  product_name: string;
+  product_price: number
+  categories: {label: string, value: string}
+  created_by: string;
+
+}
+
 export default function ProductPage() {
   useEffect(() => {
     workspaceHeaderStore.setTitle("Manage Products");
@@ -26,7 +35,7 @@ export default function ProductPage() {
     );
   }, []);
 
-  const [rowData, setRowData] = useState([
+  const [rowData, setRowData] = useState<ProductManageDataType[]>([
     { make: "Tesla", model: "Model Y", price: 64950, electric: true },
     { make: "Ford", model: "F-Series", price: 33850, electric: false },
     { make: "Toyota", model: "Corolla", price: 29600, electric: false },
