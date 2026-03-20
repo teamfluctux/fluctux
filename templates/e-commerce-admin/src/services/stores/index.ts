@@ -1,1 +1,2 @@
-export * from "./settings-store/store";
+
+export * from "./workspaceHeader.store"

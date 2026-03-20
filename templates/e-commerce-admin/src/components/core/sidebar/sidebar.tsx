@@ -11,12 +11,12 @@ import {
   WorkSpaceLinkList,
 } from "@fluctux/ui";
 import { Settings } from "lucide-react";
-import { getSidebarHiddenItemsPostions } from "@/utils";
+import { createObjectMenuHiddenItems } from "@fluctux/shared";
 import { usePathname, useRouter } from "next/navigation";
 import { SIDEBAR_ADMIN_MENU_LIST } from "@/constants";
 
 // Hide sidebar menus based on index number
-const hiddenLookUp = getSidebarHiddenItemsPostions("");
+const hiddenLookUp = createObjectMenuHiddenItems("");
 
 export const Sidebar = () => {
   const router = useRouter();

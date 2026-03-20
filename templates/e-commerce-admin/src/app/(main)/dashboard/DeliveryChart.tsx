@@ -2,7 +2,7 @@
 import { useChartLegendActive } from "@/hooks";
 import { Bar } from "recharts";
 import { CustomBarChart } from "./CustomBarChart";
-import { formatScaleValue } from "@/utils";
+import { formatScaleValue } from "@fluctux/shared";
 import { type BaseRechartDataType, type MonthType } from "@fluctux/types";
 
 type DeliveryChatDataKeyType = "delivered" | "reported";

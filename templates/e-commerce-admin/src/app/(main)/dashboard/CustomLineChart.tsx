@@ -12,7 +12,7 @@ import {
   type YAxisProps,
 } from "recharts";
 import { ChartTooltip, type ChartTooltipPropsType } from "./ChartTooltip";
-import { formatScaleValue } from "@/utils";
+import { formatScaleValue } from "@fluctux/shared";
 import { ChartXAxis, type ChartXAxisPropsType } from "./ChartXAxis";
 import { ChartLegend, type ChartLegendPropsType } from "./ChartLegend";
 import { ChartYAxis, type ChartYAxisPropsType } from "./ChartYAxis";

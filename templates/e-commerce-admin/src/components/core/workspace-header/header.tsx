@@ -9,17 +9,20 @@ import {
 } from "@fluctux/ui";
 import { Bell, Search, Settings } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { observer } from "mobx-react";
+import { workspaceHeaderStore } from "@/services/stores";
 
-export const WorkSpaceHeader = () => {
+export const WorkSpaceHeader = observer(() => {
   const router = useRouter();
+
   return (
-    <header className=" w-full h-[60px] sticky top-0 mt-5 mb-5  backdrop-blur-2xl z-[9999] ">
+    <header className=" w-full h-[60px] sticky top-0 mt-5   backdrop-blur-2xl z-[9999] ">
       <div className="max-w-[1200px] w-full px-5  h-full mx-auto items-center flex justify-between">
         <div className="w-full flex justify-start items-center">
           <div className="text-left leading-5">
-            <p className="text-read_18 font-medium">Dashboard</p>
+            <p className="text-read_18 font-medium">{workspaceHeaderStore.title}</p>
             <p className="text-workspace_3 text-text-color_2 font-medium">
-              All analytics view of your online store
+              {workspaceHeaderStore.desc}
             </p>
           </div>
         </div>
@@ -33,7 +36,7 @@ export const WorkSpaceHeader = () => {
               size={LUCIDE_WORKSPACE_ICON_SIZE}
               className="text-text-svg_default group-hover:text-text-color_1"
             />
-            <span className="text-workspace_2">Search here...</span>
+            <span className="text-workspace_2">Search features...</span>
             <div className="pl-8">
               <Kbd>Ctrl+L</Kbd>
             </div>
@@ -53,4 +56,4 @@ export const WorkSpaceHeader = () => {
       </div>
     </header>
   );
-};
+});

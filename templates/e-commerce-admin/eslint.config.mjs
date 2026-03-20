@@ -1,10 +1,16 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import { rules } from "commitlint-plugin-tense";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+ {
+    rules: {
+      "react-hooks/exhaustive-deps": "warn",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

@@ -11,7 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Bar, type LegendPayload } from "recharts";
-import { formatScaleValue } from "@/utils";
+import { formatScaleValue } from "@fluctux/shared";
 
 import { CustomBarChart } from "./CustomBarChart";
 import type { DataKey } from "recharts/types/util/types";

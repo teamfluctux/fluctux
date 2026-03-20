@@ -90,7 +90,7 @@ const DASHBOARD_OVERVIEW_VALUES: DashboardOverviewDatatype = {
 export default function DashboardPage() {
   return (
     <div>
-      <section className="mb-4">
+      <section className="mb-4 mt-5">
         <OverViewMetricsHeader />
         <OverViewMetricsBoxGroup>
           {Object.entries(DASHBOARD_OVERVIEW_VALUES).map(([Key, value], i) => {

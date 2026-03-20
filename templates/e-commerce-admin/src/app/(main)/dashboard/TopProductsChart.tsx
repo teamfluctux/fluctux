@@ -1,7 +1,7 @@
 "use client";
 import { Bar } from "recharts";
 import { CustomBarChart } from "./CustomBarChart";
-import { formatScaleValue } from "@/utils";
+import { formatScaleValue } from "@fluctux/shared";
 
 type TopProductChartDataType = {
   product_name: string;

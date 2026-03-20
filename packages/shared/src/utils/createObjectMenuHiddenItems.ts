@@ -8,14 +8,14 @@
  * @returns A lookup object mapping group indices to arrays of hidden item indices
  *
  * @example
- * getSidebarHiddenItemsPostions("0-1,2|1-0,2")
+ * createObjectMenuHiddenItems("0-1,2|1-0,2")
  * // { 0: [1, 2], 1: [0, 2] }
  *
  * @example
- * getSidebarHiddenItemsPostions(undefined)
+ * createObjectMenuHiddenItems(undefined)
  * // {}
  */
-export const getSidebarHiddenItemsPostions = (data?: string) => {
+export const createObjectMenuHiddenItems = (data?: string) => {
   if (!data) return {};
   const result = data.split("|").map((item) => {
     const [key, rest] = item.split("-");

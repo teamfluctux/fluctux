@@ -252,58 +252,6 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
 
-  apps/doc:
-    dependencies:
-      '@fluctux/hooks':
-        specifier: workspace:*
-        version: link:../../packages/hooks
-      '@fluctux/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
-      '@fluctux/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      gray-matter:
-        specifier: ^4.0.3
-        version: 4.0.3
-      lucide-react:
-        specifier: ^0.471.2
-        version: 0.471.2(react@19.2.4)
-      next:
-        specifier: ^16.1.6
-        version: 16.1.6(@babel/core@7.28.4)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      next-themes:
-        specifier: ^0.4.6
-        version: 0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      react:
-        specifier: ^19.2.4
-        version: 19.2.4
-      react-dom:
-        specifier: ^19.2.4
-        version: 19.2.4(react@19.2.4)
-      react-loading-skeleton:
-        specifier: ^3.5.0
-        version: 3.5.0(react@19.2.4)
-      react-mdxutils:
-        specifier: ^1.3.7
-        version: 1.3.7
-      react-redux:
-        specifier: ^9.2.0
-        version: 9.2.0(@types/react@19.2.14)(react@19.2.4)(redux@5.0.1)
-      sonner:
-        specifier: ^2.0.5
-        version: 2.0.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-    devDependencies:
-      '@fluctux/tailwind-config':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
-      '@types/react':
-        specifier: ^19.2.14
-        version: 19.2.14
-      '@types/react-dom':
-        specifier: ^19.2.3
-        version: 19.2.3(@types/react@19.2.14)
-
   apps/doc-app:
     dependencies:
       '@fluctux/hooks':
@@ -998,9 +946,18 @@ importers:
       '@fluctux/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
+      '@fluctux/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@fluctux/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      ag-grid-community:
+        specifier: ^34.0.2
+        version: 34.0.2
+      ag-grid-react:
+        specifier: ^34.0.2
+        version: 34.0.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       lucide-react:
         specifier: ^0.471.2
         version: 0.471.2(react@19.2.3)
@@ -16495,6 +16452,13 @@ snapshots:
   ag-grid-community@34.0.2:
     dependencies:
       ag-charts-types: 12.0.2
+
+  ag-grid-react@34.0.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      ag-grid-community: 34.0.2
+      prop-types: 15.8.1
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
 
   ag-grid-react@34.0.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:

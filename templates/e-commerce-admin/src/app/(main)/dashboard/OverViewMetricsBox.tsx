@@ -1,5 +1,5 @@
 import type { DashboardOverviewDatatype } from "@/types/dashboard";
-import { formatScaleValue, getPercentageChange } from "@/utils";
+import { formatScaleValue,  getPercentageChange } from "@fluctux/shared";
 import { ArrowDown, ArrowUp, Minus, PlusIcon } from "lucide-react";
 
 type IconUpOrDownPropsType = {
