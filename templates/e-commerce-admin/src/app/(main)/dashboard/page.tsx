@@ -26,6 +26,8 @@ import { OverViewMetricsHeader } from "./OverViewMetricsHeader";
 import { CustomLineChart } from "./CustomLineChart";
 import { RevenueChart } from "./RevenueChart";
 import { DeliveryChart } from "./DeliveryChart";
+import { TopProductsChart } from "./TopProductsChart";
+import { OrdersAnalyticsChart } from "./OrdersAnalyticsChart";
 
 const DASHBOARD_OVERVIEW_VALUES: DashboardOverviewDatatype = {
   "Total Sales": {
@@ -122,14 +124,14 @@ export default function DashboardPage() {
             value="order-analytics"
             desc="Track order volume and fulfillment status"
           >
-            <div></div>
+            <OrdersAnalyticsChart/>
           </DashSingleCard>
           <DashSingleCard
             title="Top Products"
             value="top-products"
             desc="Best performing products by sales volume"
           >
-            <div></div>
+            <TopProductsChart/>
           </DashSingleCard>
           <DashSingleCard
             title="Customer Insights"

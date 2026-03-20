@@ -1,11 +1,11 @@
 import React from "react";
-import { XAxis, type XAxisProps } from "recharts";
+import { XAxis, type LabelProps, type XAxisProps } from "recharts";
 import type { TextAnchor } from "recharts/types/component/Text";
 
 export type ChartXAxisPropsType = {
   XAxisDataKey: string;
-
   XAxisCustomSettings?: {
+    label?: LabelProps;
     style?: {
       margin?: number;
       initialTextColor?: string;
@@ -25,6 +25,14 @@ export const ChartXAxis = ({
   ...props
 }: ChartXAxisPropsType & XAxisProps) => {
   const XAxisCustomSettings = {
+    label: {
+      value: "",
+      position: "insideBottom",
+      dy: 25,
+      textAnchor: "middle",
+      style: { fill: "var(--foreground-color-3)", fontSize: 13 },
+      ...XAxisCustomSettingsProps?.label,
+    },
     style: {
       initialTextColor: "var(--chart-text-color-2)",
       activeTextColor: "var(--chart-text-color-1)",
@@ -58,6 +66,7 @@ export const ChartXAxis = ({
         );
       }}
       tickMargin={XAxisCustomSettings.style?.margin}
+      label={XAxisCustomSettings.label}
       {...props}
     />
   );

@@ -69,6 +69,7 @@ export const CustomTooltip = ({
   if (!active || !payload?.length) return null;
   const tempIndicatorShape = TooltipIndicatorShapeStyles[indicatorShape];
   const isShapeBot = IndicatorType == "shape" && indicatorShape == "bot";
+
   return (
     <div
       className={`bg-background-color_900C border border-border-color_1 overflow-hidden rounded-lg  w-[180px] ${className}`}
@@ -83,6 +84,7 @@ export const CustomTooltip = ({
       >
         {payload.map((entry: TooltipPayloadEntry, i) => {
           if (entry.dataKey == "spacer") return null;
+          {console.log("hello", entry)}
           const Icon = icons && icons[entry.dataKey as string];
           return (
             <React.Fragment key={`${entry.dataKey}-${i}`}>
@@ -111,9 +113,10 @@ export const CustomTooltip = ({
               ) : (
                 <div className="flex items-center gap-2 py-0.5 ">
                   {IndicatorType == "shape" && (
+                    
                     <div
                       className={`${tempIndicatorShape}`}
-                      style={{ backgroundColor: entry.fill }}
+                      style={{ backgroundColor: entry.color }}
                     />
                   )}
                   {IndicatorType == "icon" && (

@@ -123,6 +123,7 @@ export const RevenueChart = () => {
             <Line
               type="natural"
               dataKey="gross"
+                 name="Gross"
               stroke="var(--color-chart-1)"
               strokeOpacity={getOpacity("gross")}
               dot={false}
@@ -132,6 +133,7 @@ export const RevenueChart = () => {
             <Line
               type="natural"
               dataKey="net"
+              name="Net"
               stroke="var(--color-chart-2)"
               strokeOpacity={getOpacity("net")}
               dot={false}
@@ -141,6 +143,7 @@ export const RevenueChart = () => {
             <Line
               type="natural"
               dataKey="refunds"
+                 name="Refunds"
               stroke="var(--color-chart-3)"
               dot={false}
               strokeWidth={2}
@@ -150,6 +153,7 @@ export const RevenueChart = () => {
             <Line
               type="natural"
               dataKey="discounts"
+                 name="Discounts"
               stroke="var(--color-chart-4)"
               strokeOpacity={getOpacity("discounts")}
               dot={false}

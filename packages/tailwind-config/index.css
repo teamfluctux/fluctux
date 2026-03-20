@@ -57,6 +57,9 @@
   --color-orange-100: #ffedd5;
   --color-orange-50: #fff7ed;
 
+  /* RED */
+  --color-red-600: #dc2626;
+
   /* radius */
   --primary-radius: 8px;
 
@@ -281,6 +284,7 @@
   --chart-text-color-2: var(--foreground-color-2);
   --chart-text-color-3: var(--foreground-color-3);
   --chart-text-color-4: var(--foreground-color-4);
+  --chart-text-color-5: var(--color-red-600);
 
   /* --- Chart border colors */
   --chart-border-color-1: var(--border-color-1);
