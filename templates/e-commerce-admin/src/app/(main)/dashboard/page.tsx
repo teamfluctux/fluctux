@@ -25,6 +25,7 @@ import { DashSingleCard, DashSingleCardGroup } from "./DashCard";
 import { OverViewMetricsHeader } from "./OverViewMetricsHeader";
 import { CustomLineChart } from "./CustomLineChart";
 import { RevenueChart } from "./RevenueChart";
+import { DeliveryChart } from "./DeliveryChart";
 
 const DASHBOARD_OVERVIEW_VALUES: DashboardOverviewDatatype = {
   "Total Sales": {
@@ -136,6 +137,13 @@ export default function DashboardPage() {
             desc="New vs returning customers this period"
           >
             <div></div>
+          </DashSingleCard>
+            <DashSingleCard
+            title="Delivery Analytics"
+            value="delivery-analytics"
+            desc="Total deliveries made vs reported issues this period"
+          >
+            <DeliveryChart/>
           </DashSingleCard>
         </DashSingleCardGroup>
       </section>

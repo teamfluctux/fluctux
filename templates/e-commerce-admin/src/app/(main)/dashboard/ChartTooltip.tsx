@@ -74,7 +74,7 @@ export const CustomTooltip = ({
       className={`bg-background-color_900C border border-border-color_1 overflow-hidden rounded-lg  w-[180px] ${className}`}
     >
       <p
-        className={`text-text-color_1 text-workspace_2 font-medium  ${isShapeBot ? "px-3 py-2" : "  p-3 pb-2"}`}
+        className={`text-text-color_1 text-workspace_2 font-medium  ${isShapeBot ? "px-3 py-1" : "  p-3 pb-2"}`}
       >
         {label}
       </p>
@@ -82,6 +82,7 @@ export const CustomTooltip = ({
         className={`${isShapeBot ? "bg-background-color_925C border-t border-border-color_1 rounded-lg" : "p-3 py-2 pt-0"}`}
       >
         {payload.map((entry: TooltipPayloadEntry, i) => {
+          if (entry.dataKey == "spacer") return null;
           const Icon = icons && icons[entry.dataKey as string];
           return (
             <React.Fragment key={`${entry.dataKey}-${i}`}>
@@ -122,7 +123,7 @@ export const CustomTooltip = ({
                       )}
                     </>
                   )}
-                  <span className="text-text-color_4 text-workspace_3">
+                  <span className="text-text-color_4 text-workspace_3 leading-4">
                     {entry.name}
                   </span>
                   <span className="text-text-color_1 text-workspace_3 font-medium ml-auto">

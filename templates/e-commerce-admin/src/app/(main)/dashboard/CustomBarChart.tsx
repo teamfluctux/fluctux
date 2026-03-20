@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, type ComponentProps } from "react";
 import { type LucideIcon } from "lucide-react";
 import {
   BarChart,
@@ -16,6 +16,7 @@ import {
   type YAxisProps,
   type LabelProps,
   type LegendProps,
+  type BarProps,
 } from "recharts";
 import type { TooltipPayloadEntry } from "recharts/types/state/tooltipSlice";
 import type { TextAnchor } from "recharts/types/component/Text";
@@ -173,6 +174,7 @@ type CustomBarChartProps = {
   CartesianGridProps?: CartesianGridProps;
   YAxisProps?: YAxisProps;
   XAxisProps?: XAxisProps;
+  BarChartProps?: ComponentProps<typeof BarChart>
 } & ChartXAxisPropsType &
   ChartYAxisPropsType &
   ChartTooltipPropsType &
@@ -196,6 +198,7 @@ export const CustomBarChart = ({
   YAxisCustomSettings,
   CustomLegendProps,
   CustomTooltipProps,
+  BarChartProps
 }: CustomBarChartProps) => {
   const CartesianGridProps = {
     strokeDasharray: "0",
@@ -211,6 +214,7 @@ export const CustomBarChart = ({
           className={`${barChartClassName} [&>svg]:outline-none [&>svg]:ring-0 outline-none ring-0`}
           data={data}
           margin={chartMargin}
+          {...BarChartProps}
         >
           <CartesianGrid {...CartesianGridProps} />
           <ChartXAxis

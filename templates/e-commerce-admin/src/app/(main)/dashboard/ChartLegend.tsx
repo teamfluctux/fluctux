@@ -86,10 +86,11 @@ export const CustomLegend = ({
     >
       {payload.map((entry, i) => {
         const Icon = icons && icons[entry.dataKey as string];
+        if(entry.dataKey == "spacer") return null
         return (
           <div
             key={entry.dataKey as string}
-            className={`flex justify-center items-center gap-1  px-2 py-1 rounded-sm
+            className={`flex justify-center items-center gap-1.5  px-2 py-1 rounded-sm
                 ${activeLegendKey === entry.dataKey ? "bg-background-color_850C" : "hover:bg-background-color_900C"}`}
             onClick={(e) => onLegendClick?.(entry, payload.indexOf(entry), e)}
             onMouseEnter={(e) =>
@@ -112,7 +113,7 @@ export const CustomLegend = ({
               ></div>
             )}
 
-            <div className=""></div>
+          
             <span
               className={`text-workspace_3 font-medium ${activeLegendKey === entry.dataKey ? "text-text-color_1" : "text-text-color_4 "}`}
             >

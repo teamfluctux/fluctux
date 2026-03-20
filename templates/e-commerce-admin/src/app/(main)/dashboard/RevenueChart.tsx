@@ -4,11 +4,11 @@ import { useChartLegendActive } from "@/hooks/useChartLegendActive";
 import { Line } from "recharts";
 
 type LineChartDataRevenueType = {
-  name: string; // month name
-  gross: number; // total revenue before deductions
-  net: number; // revenue after refunds and discounts
-  refunds: number; // refunded amount
-  discounts: number; // discounted amount
+  name: string; 
+  gross: number;
+  net: number; 
+  refunds: number; 
+  discounts: number; 
 };
 const REVENUE_LINE_CHART_DATA: LineChartDataRevenueType[] = [
   {
