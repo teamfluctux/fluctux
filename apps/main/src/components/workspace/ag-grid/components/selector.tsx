@@ -5,7 +5,10 @@ import React, {
   useRef,
   forwardRef,
 } from "react";
-import { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
+import {
+  type ICellRendererComp,
+  type ICellRendererParams,
+} from "ag-grid-community";
 
 import {
   Select,
@@ -63,7 +66,7 @@ export const AgGridCellSelector = forwardRef<
     props.setValue?.(newItemValue);
   };
 
-  const shiftsOptions: string[] = props.availableValues || [];
+  const data: string[] = props.availableValues || [];
 
   return (
     <Select value={selectedValue || ""} onValueChange={handleValueChange}>
@@ -72,13 +75,13 @@ export const AgGridCellSelector = forwardRef<
       </SelectTrigger>
       <SelectContent className="!bg-background-color_900C">
         <SelectGroup>
-          {shiftsOptions.map((shift) => (
+          {data.map((d, i) => (
             <SelectItem
-              key={shift}
-              value={shift}
+              key={`${d}${i}`}
+              value={d}
               className="text-text-color_4!"
             >
-              {shift.replace(/^\w/, (c) => c.toUpperCase())}
+              {d.replace(/^\w/, (c) => c.toUpperCase())}
             </SelectItem>
           ))}
         </SelectGroup>

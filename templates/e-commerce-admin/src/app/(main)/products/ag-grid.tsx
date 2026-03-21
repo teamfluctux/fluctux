@@ -32,7 +32,7 @@ type AgGridComponentPropsType = {
   };
   rowStyle?: {
     oddRowBackgroundColor?: string;
-    rowHoverColor?: string
+    rowHoverColor?: string;
   };
   columnStyle?: {
     border?: {
@@ -42,6 +42,48 @@ type AgGridComponentPropsType = {
   };
 };
 
+/**
+ * A themed AG Grid wrapper component built on top of `AgGridReact`.
+ *
+ * Applies a consistent design system theme using `themeQuartz` with customizable
+ * header, row, grid, and column styles via props. Falls back to sensible
+ * CSS variable-based defaults when style props are not provided.
+ *
+ * @param props - Component props
+ * @param props.rowData - The row data array to display in the grid
+ * @param props.colDefs - Column definitions including field, renderer, and style config
+ * @param props.headerStyle - Optional overrides for header appearance
+ * @param props.headerStyle.forground - Header text color (default: `--foreground-color-4`)
+ * @param props.headerStyle.background - Header background color (default: `--background-color-850C`)
+ * @param props.headerStyle.columnResizeHandleColor - Color of the column resize handle (default: `--background-color-700C`)
+ * @param props.gridStyle - Optional overrides for overall grid appearance
+ * @param props.gridStyle.border - Whether to show the outer grid border (default: `false`)
+ * @param props.gridStyle.radius - Grid wrapper border radius (default: `0`)
+ * @param props.gridStyle.fontSize - Grid font size in px (default: `14`)
+ * @param props.gridStyle.borderColor - Grid border color (default: `--border-color-1`)
+ * @param props.gridStyle.fontFamily - Grid font family (default: `--font-geist_sans`)
+ * @param props.rowStyle - Optional overrides for row appearance
+ * @param props.rowStyle.oddRowBackgroundColor - Background color for odd rows (default: `transparent`)
+ * @param props.rowStyle.rowHoverColor - Row hover background color (default: `--background-color-900C`)
+ * @param props.columnStyle - Optional overrides for column appearance
+ * @param props.columnStyle.border - Column border style config (default: solid `--border-color-1`)
+ *
+ * @example
+ * ```tsx
+ * <AgGridComponent
+ *   rowData={products}
+ *   colDefs={colDefs}
+ *   headerStyle={{ background: "var(--background-color-900C)" }}
+ *   gridStyle={{ fontSize: 13, border: true }}
+ * />
+ * ```
+ *
+ * @remarks
+ * - Uses `ClientSideRowModelModule` for client-side row handling
+ * - Uses `CsvExportModule` for CSV export support
+ * - Custom filters are enabled via `enableFilterHandlers`
+ * - Icons use `iconSetMaterial` from AG Grid
+ */
 export const AgGridComponent = ({
   rowData,
   colDefs,
@@ -119,7 +161,6 @@ export const AgGridComponent = ({
       className="custom-scrollbar-color"
       theme={customTheme}
       rowData={rowData}
-      
       columnDefs={colDefs}
       // to enable custom filter
       enableFilterHandlers={true}
