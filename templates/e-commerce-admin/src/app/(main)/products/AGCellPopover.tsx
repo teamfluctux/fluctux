@@ -41,7 +41,7 @@ export const AgCellPopover = (
       </PopoverTrigger>
       <PopoverContent
         align="start"
-        className="w-[250px]! h-[300px] overflow-hidden  text-workspace_2! bg-background-color_850C"
+        className="w-[250px]! h-[300px] overflow-hidden  text-workspace_2! bg-background-color_850C rounded-md "
       >
         <ScrollArea className="w-full h-full p-1!">
           <ul className="w-full h-fit">
