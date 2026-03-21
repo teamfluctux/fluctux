@@ -29,20 +29,20 @@ export const FxButton = ({
   size,
   icon,
   iconPosition = "LEFT",
-  radius,
+ 
   disabled = false,
   loading = false,
   ...props
 }: FxButtonProps) => {
   const buttonStyling = getButtonStyling(variant, size, disabled || loading);
-  const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
+
   const Icon = icon;
   const iconSize = (size && iconSizes[size]) || iconSizes.md;
   return (
     <button
       disabled={disabled || loading}
       className={`
-        transition-colors *:transition-colors flex justify-center items-center group cursor-default font-medium gap-1.5 ${buttonStyling} ${roundedVariant}! ${className}`}
+        transition-colors *:transition-colors flex justify-center items-center group cursor-default font-medium gap-1.5 ${buttonStyling} ${className}`}
       {...props}
     >
       {iconPosition == "LEFT" && Icon && <Icon size={iconSize} />}

@@ -150,10 +150,10 @@ export const AgCellSelector = <TLevel extends string>(
   return (
     <Select value={selectedValue?.value} onValueChange={handleValueChange}>
       <SelectTrigger
-        className={`w-full! bg-transparent! border-none! h-full! group px-4! hover:!bg-background-color_850C ring-0! outline-hidden!  rounded-none! `}
+        className={`w-full! bg-transparent! border-none!  h-full! group px-4! hover:!bg-background-color_850C ring-0! outline-hidden!  rounded-none! `}
       >
         <div
-          className={`w-fit   ${LevelConstants && LevelConstants[String(selectedValue?.level).toUpperCase() as TLevel]}`}
+          className={`w-fit  ${LevelConstants && LevelConstants[String(selectedValue?.level).toUpperCase() as TLevel]}`}
         >
           <SelectValue placeholder={selectedValue?.value} />
         </div>

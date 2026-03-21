@@ -7,6 +7,7 @@ export type ButtonVariant =
   | "ghost_zinc_2"
   | "surface_indigo_2"
   | "surface"
+  | "destructive"
   | "surface_indigo";
 
 export interface ButtonStylingType {
@@ -78,6 +79,13 @@ export const buttonStyling: ButtonStylingType = {
       "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border  text-rdx-indigo-fg-2",
     hover:
       "hover:inset-ring-surface-indigo-border-active  active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active data-[state=open]:bg-surface-indigo-bg-active data-[state=open]:inset-ring-surface-indigo-border-active data-[state=open]:text-rdx-indigo-fg-2",
+    disabled: "opacity-50 cursor-not-allowed!",
+  },
+  destructive: {
+    default:
+      "bg-surface-red-bg inset-ring inset-ring-surface-red-border  text-rdx-red-fg",
+    hover:
+      "hover:inset-ring-surface-red-border-active  active:bg-surface-red-bg-active active:inset-ring-surface-red-border-active data-[state=open]:bg-surface-red-bg-active data-[state=open]:inset-ring-surface-red-border-active data-[state=open]:text-rdx-red-fg-2",
     disabled: "opacity-50 cursor-not-allowed!",
   },
 };

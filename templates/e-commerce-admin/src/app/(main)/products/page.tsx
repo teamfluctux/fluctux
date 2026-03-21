@@ -6,7 +6,6 @@ import { PlusIcon, Upload } from "lucide-react";
 import { workspaceHeaderStore } from "@/services/stores";
 import { formatScaleValue } from "@fluctux/shared";
 import type { ColDef } from "ag-grid-community";
-import { ProductStatusCellRenderer } from "./ProductStatusCellRenderer";
 import {
   AgCellSelector,
   TAgCellSelectorRendererParams,
