@@ -262,6 +262,8 @@
   /* border color */
   --border-color-1: var(--color-zinc-300);
   --border-color-2: var(--color-zinc-400);
+  --border-color-3: var(--color-zinc-350);
+
 
   /* Surface */
   --surface-bg: var(--surface-indigo-bg);
@@ -304,6 +306,7 @@
   /* border */
   --border-color-1: var(--color-zinc-800);
   --border-color-2: var(--color-zinc-700);
+  --border-color-3: var(--color-zinc-750);
 
   /* text & labels */
   --foreground: var(--color-zinc-50);
@@ -756,6 +759,7 @@
 
   --color-border-color_1: var(--border-color-1);
   --color-border-color_2: var(--border-color-2);
+  --color-border-color_3: var(--border-color-3);
   --color-border-primary_indigo: var(--color-indigo-600);
 
   --color-border-surface-indigo: var(--surface-indigo-border);

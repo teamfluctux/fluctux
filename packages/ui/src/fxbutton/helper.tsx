@@ -10,26 +10,32 @@ export type ButtonVariant =
   | "destructive"
   | "surface_indigo";
 
-export interface ButtonStylingType {
-  [key: string]: {
+export type ButtonStylingType = {
+  [key in ButtonVariant]: {
     default: string;
     hover: string;
     disabled: string;
   };
 }
 
-export const buttonSizes: { [key in SizeType]: string } = {
+type ButtonSizeType = "rounded_sm" | "rounded_md" | SizeType 
+
+export const buttonSizes: { [key in ButtonSizeType]: string } = {
   sm: "h-7.5 px-3 text-workspace_3 rounded-lg",
   md: "h-10 px-4 text-workspace_1 rounded-lg",
   lg: "h-12 px-5 text-read_16 rounded-xl",
   xl: "h-14 px-6 text-read_18 rounded-xl",
+  rounded_sm: "w-7.5 h-7.5 shrink-0  rounded-full",
+  rounded_md: "w-10 h-10 shrink-0  rounded-full"
 };
 
-export const iconSizes: { [key in SizeType]: number } = {
+export const iconSizes: { [key in ButtonSizeType]: number } = {
   sm: 15, // 13px text
   md: 17, // 15px text
   lg: 19, // 16px text
   xl: 21, // 18px text
+  rounded_sm: 15,
+  rounded_md: 17
 };
 
 export const buttonStyling: ButtonStylingType = {
@@ -92,7 +98,7 @@ export const buttonStyling: ButtonStylingType = {
 
 export const getButtonStyling = (
   variant?: ButtonVariant,
-  size?: SizeType,
+  size?: ButtonSizeType,
   disabled: boolean = false
 ) => {
   const tempVariant =

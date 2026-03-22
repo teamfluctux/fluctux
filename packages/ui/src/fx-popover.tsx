@@ -26,6 +26,7 @@ export type PopoverMenuDataType = {
 type FxPopoverPropsType = {
   InteractChild: React.ReactNode;
   items: PopoverMenuDataType;
+  className?: string
 } & PopoverContentProps;
 
 const itemHoverStatusText: { [key in PopoverItemStatusType]: string } = {
@@ -49,14 +50,14 @@ const itemStatusHoverEffect: {
 } = {
   SOFT: {
     DANGER: "hover:bg-soft-red-bg-active hover:text-rdx-red-fg",
-    NEUTRAL: "hover:bg-background-color_750C",
+    NEUTRAL: "hover:bg-background-color_800C",
     SAFE: "hover:bg-soft-green-bg-active hover:text-rdx-green-fg",
     WARNING: "hover:bg-soft-yellow-bg-active hover:text-rdx-yellow-fg",
   },
   SURFACE: {
     DANGER:
       "hover:bg-surface-red-bg-active hover:inset-ring hover:inset-ring-surface-red-border-active hover:text-rdx-red-fg",
-    NEUTRAL: "hover:bg-background-color_750C",
+    NEUTRAL: "hover:bg-background-color_800C",
     SAFE: "hover:bg-surface-green-bg-active hover:inset-ring hover:inset-ring-surface-green-border-active hover:text-rdx-green-fg",
     WARNING:
       "hover:bg-surface-yellow-bg-active hover:inset-ring hover:inset-ring-surface-yellow-border-active hover:text-rdx-yellow-fg",
@@ -66,25 +67,26 @@ const itemStatusHoverEffect: {
 export const FxPopover = ({
   InteractChild,
   items,
+  className,
   ...props
 }: FxPopoverPropsType) => {
   return (
     <Popover>
       <PopoverTrigger asChild>{InteractChild}</PopoverTrigger>
       <PopoverContent
+        className={`bg-background-color_850C w-[238px] border border-border-color_3 rounded-xl ${className}`}
         {...props}
-        className="bg-background-color_850C border border-border-color_2 rounded-xl"
       >
-        <div className="w-[240px] ">
-          <ul className="text-workspace_2 font-medium ">
+      
+          <ul className="text-workspace_3 font-medium ">
             {Object.entries(items).map(([Key, data], i) => {
               return (
                 <div
                   key={`${Key}-${i}`}
-                  className={`p-1  border-border-color_2 ${i < Object.entries(items).length - 1 ? "border-b" : ""}`}
+                  className={`p-1  border-border-color_3 ${i < Object.entries(items).length - 1 ? "border-b" : ""}`}
                 >
                   {data && data.label ? (
-                    <p className="text-workspace_3 font-medium text-text-color_3 px-2">
+                    <p className="text-[12px] font-[450] text-text-color_3 px-2 pt-1">
                       {data.label}
                     </p>
                   ) : null}
@@ -121,7 +123,7 @@ export const FxPopover = ({
                                   <div
                                     className={`${item.status ? "text-inherit" : "text-text-svg_default"} transition-colors group-hover:text-inherit ${item.iconClassname}`}
                                   >
-                                    {Icon && <Icon size={17} />}
+                                    {Icon && <Icon size={16} />}
                                   </div>
                                   <span>{item.label}</span>
                                 </li>
@@ -136,7 +138,7 @@ export const FxPopover = ({
                                 <div
                                   className={` ${item.status ? "text-inherit" : "text-text-svg_default"} transition-colors group-hover:text-inherit ${item.iconClassname}`}
                                 >
-                                  {Icon && <Icon size={17} />}
+                                  {Icon && <Icon size={16} />}
                                 </div>
                                 <span>{item.label}</span>
                               </li>
@@ -149,7 +151,7 @@ export const FxPopover = ({
               );
             })}
           </ul>
-        </div>
+  
       </PopoverContent>
     </Popover>
   );

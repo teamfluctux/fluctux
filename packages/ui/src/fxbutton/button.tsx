@@ -1,7 +1,7 @@
 import React from "react";
-import { ROUNDED_VARIANTS } from "../constant";
+import { type ROUNDED_VARIANTS } from "../constant";
 import {
-  buttonSizes,
+  type buttonSizes,
   type ButtonVariant,
   getButtonStyling,
   iconSizes,
@@ -18,6 +18,7 @@ interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: keyof typeof buttonSizes;
   disabled?: boolean;
   icon?: LucideIcon;
+  iconSize?: number
   iconPosition?: IconPostionType;
   loading?: boolean;
 }
@@ -29,15 +30,15 @@ export const FxButton = ({
   size,
   icon,
   iconPosition = "LEFT",
- 
   disabled = false,
   loading = false,
+  iconSize,
   ...props
 }: FxButtonProps) => {
   const buttonStyling = getButtonStyling(variant, size, disabled || loading);
 
   const Icon = icon;
-  const iconSize = (size && iconSizes[size]) || iconSizes.md;
+  const buttonIconSize = iconSize ? iconSize : (size && iconSizes[size]) || iconSizes.md;
   return (
     <button
       disabled={disabled || loading}
@@ -45,9 +46,9 @@ export const FxButton = ({
         transition-colors *:transition-colors flex justify-center items-center group cursor-default font-medium gap-1.5 ${buttonStyling} ${className}`}
       {...props}
     >
-      {iconPosition == "LEFT" && Icon && <Icon size={iconSize} />}
+      {iconPosition == "LEFT" && Icon && <Icon size={buttonIconSize} />}
       {children}
-      {iconPosition == "RIGHT" && Icon && <Icon size={iconSize} />}
+      {iconPosition == "RIGHT" && Icon && <Icon size={buttonIconSize} />}
     </button>
   );
 };
