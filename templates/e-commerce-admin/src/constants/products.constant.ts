@@ -3,7 +3,7 @@ import type { CellSelectorValuesType } from "@/components/ag-grid";
 
 import type { ProductManageDataType, ProductsOverViewData, StatusLevelType } from "@/types";
 import type { PopoverMenuDataType } from "@fluctux/ui";
-import { FileIcon, UploadIcon } from "lucide-react";
+import { FileIcon, SlidersHorizontal, UploadIcon } from "lucide-react";
 
 import {
   ShoppingBagIcon,
@@ -19,16 +19,24 @@ import {
 } from "lucide-react";
 
 
-export const PRODUCT_PAGE_MENU_OPTIONS: PopoverMenuDataType = {
-  Export: {
+export const PRODUCT_PAGE_MENU_OPTIONS = {
+  product: {
+    data: [
+      {label:"Product Options", value: "product-options", icon: SlidersHorizontal, isAsQueryParam: true}
+    ]
+  },
+  export: {
     label: "Export",
     data: [
-      { label: "Export CSV", icon: UploadIcon },
-      { label: "Export PDF", icon: FileIcon },
+      { label: "Export CSV", value: "export-csv" , icon: UploadIcon },
+      { label: "Export PDF", value: "export-pdf" , icon: FileIcon },
     ],
   },
-};
+  
+} as const satisfies PopoverMenuDataType;;
 
+export type ProductMenuOptionsValuesType =  NonNullable<typeof PRODUCT_PAGE_MENU_OPTIONS[keyof typeof PRODUCT_PAGE_MENU_OPTIONS]['data']
+>[number]['value'];
 
 
 export const PRODUCTS_OVERVIEW_DATA: ProductsOverViewData[] = [
@@ -56,8 +64,8 @@ export const DUMMY_STATUS_LEVEL: Record<StatusLevelType, string> = {
 
 export const DUMMY_ROW_DATA: ProductManageDataType[] = [
     {
-      product_name: "Wireless Noise-Cancelling Headphones",
-      product_price: 129.99,
+      name: "Wireless Noise-Cancelling Headphones",
+      price: 129.99,
       categories: [
         {
           label: "Electronics",
@@ -77,8 +85,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Slim Fit Denim Jacket",
-      product_price: 59.95,
+      name: "Slim Fit Denim Jacket",
+      price: 59.95,
       categories: [
         {
           label: "Clothing",
@@ -98,8 +106,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Stainless Steel Water Bottle",
-      product_price: 24.99,
+      name: "Stainless Steel Water Bottle",
+      price: 24.99,
       categories: [
         {
           label: "Home",
@@ -119,8 +127,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Mechanical Gaming Keyboard",
-      product_price: 89.0,
+      name: "Mechanical Gaming Keyboard",
+      price: 89.0,
       categories: [
         {
           label: "Electronics",
@@ -140,8 +148,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Yoga Mat Anti-Slip",
-      product_price: 34.5,
+      name: "Yoga Mat Anti-Slip",
+      price: 34.5,
       categories: [
         {
           label: "Sports",
@@ -156,8 +164,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Ceramic Coffee Mug Set",
-      product_price: 19.99,
+      name: "Ceramic Coffee Mug Set",
+      price: 19.99,
       categories: [
         {
           label: "Home",
@@ -172,8 +180,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "TRASHED", label: "Trashed", level: "DESTRUCTIVE" },
     },
     {
-      product_name: "Portable Bluetooth Speaker",
-      product_price: 49.99,
+      name: "Portable Bluetooth Speaker",
+      price: 49.99,
       categories: [
         {
           label: "Electronics",
@@ -188,8 +196,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Running Shoes Ultra Boost",
-      product_price: 110.0,
+      name: "Running Shoes Ultra Boost",
+      price: 110.0,
       categories: [
         {
           label: "Sports",
@@ -204,8 +212,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Smart Watch Series X",
-      product_price: 249.99,
+      name: "Smart Watch Series X",
+      price: 249.99,
       categories: [
         {
           label: "Electronics",
@@ -220,8 +228,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Leather Wallet Slim",
-      product_price: 39.99,
+      name: "Leather Wallet Slim",
+      price: 39.99,
       categories: [
         {
           label: "Shopping",
@@ -241,8 +249,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Organic Green Tea Pack",
-      product_price: 14.99,
+      name: "Organic Green Tea Pack",
+      price: 14.99,
       categories: [
         {
           label: "Food",
@@ -257,8 +265,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Mountain Bike Pro 21",
-      product_price: 499.0,
+      name: "Mountain Bike Pro 21",
+      price: 499.0,
       categories: [
         {
           label: "Sports",
@@ -278,8 +286,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Wooden Bookshelf 5-Tier",
-      product_price: 149.0,
+      name: "Wooden Bookshelf 5-Tier",
+      price: 149.0,
       categories: [
         {
           label: "Home",
@@ -294,8 +302,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Vitamin C Supplement 1000mg",
-      product_price: 22.5,
+      name: "Vitamin C Supplement 1000mg",
+      price: 22.5,
       categories: [
         {
           label: "Health",
@@ -315,8 +323,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Travel Backpack 40L",
-      product_price: 79.99,
+      name: "Travel Backpack 40L",
+      price: 79.99,
       categories: [
         {
           label: "Travel",
@@ -336,8 +344,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Non-Stick Frying Pan Set",
-      product_price: 54.99,
+      name: "Non-Stick Frying Pan Set",
+      price: 54.99,
       categories: [
         {
           label: "Home",
@@ -352,8 +360,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "JavaScript: The Good Parts",
-      product_price: 29.99,
+      name: "JavaScript: The Good Parts",
+      price: 29.99,
       categories: [
         {
           label: "Books",
@@ -373,8 +381,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Car Dash Cam 4K",
-      product_price: 89.99,
+      name: "Car Dash Cam 4K",
+      price: 89.99,
       categories: [
         {
           label: "Automotive",
@@ -394,8 +402,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Resistance Bands Set",
-      product_price: 18.99,
+      name: "Resistance Bands Set",
+      price: 18.99,
       categories: [
         {
           label: "Sports",
@@ -410,8 +418,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Wool Blend Overcoat",
-      product_price: 189.0,
+      name: "Wool Blend Overcoat",
+      price: 189.0,
       categories: [
         {
           label: "Clothing",
@@ -431,8 +439,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Espresso Machine Deluxe",
-      product_price: 299.99,
+      name: "Espresso Machine Deluxe",
+      price: 299.99,
       categories: [
         {
           label: "Home",
@@ -447,8 +455,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "USB-C Hub 7-in-1",
-      product_price: 44.99,
+      name: "USB-C Hub 7-in-1",
+      price: 44.99,
       categories: [
         {
           label: "Electronics",
@@ -468,8 +476,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Protein Powder Chocolate",
-      product_price: 49.99,
+      name: "Protein Powder Chocolate",
+      price: 49.99,
       categories: [
         {
           label: "Health",
@@ -489,8 +497,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Linen Bedsheet Set King",
-      product_price: 89.0,
+      name: "Linen Bedsheet Set King",
+      price: 89.0,
       categories: [
         {
           label: "Home",
@@ -510,8 +518,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "TRASHED", label: "Trashed", level: "DESTRUCTIVE" },
     },
     {
-      product_name: "Passport Holder RFID",
-      product_price: 16.99,
+      name: "Passport Holder RFID",
+      price: 16.99,
       categories: [
         {
           label: "Travel",
@@ -531,8 +539,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Noise Isolating Earbuds",
-      product_price: 39.99,
+      name: "Noise Isolating Earbuds",
+      price: 39.99,
       categories: [
         {
           label: "Electronics",
@@ -547,8 +555,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Cast Iron Skillet 12in",
-      product_price: 34.99,
+      name: "Cast Iron Skillet 12in",
+      price: 34.99,
       categories: [
         {
           label: "Home",
@@ -563,8 +571,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Car Seat Cushion Memory Foam",
-      product_price: 29.99,
+      name: "Car Seat Cushion Memory Foam",
+      price: 29.99,
       categories: [
         {
           label: "Automotive",
@@ -579,8 +587,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Graphic Novel Collection Vol 1",
-      product_price: 24.99,
+      name: "Graphic Novel Collection Vol 1",
+      price: 24.99,
       categories: [
         {
           label: "Books",
@@ -600,8 +608,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Swimming Goggles Pro",
-      product_price: 22.99,
+      name: "Swimming Goggles Pro",
+      price: 22.99,
       categories: [
         {
           label: "Sports",
@@ -616,8 +624,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Wireless Charging Pad 15W",
-      product_price: 27.99,
+      name: "Wireless Charging Pad 15W",
+      price: 27.99,
       categories: [
         {
           label: "Electronics",
@@ -637,8 +645,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Floral Maxi Dress",
-      product_price: 44.95,
+      name: "Floral Maxi Dress",
+      price: 44.95,
       categories: [
         {
           label: "Clothing",
@@ -658,8 +666,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Kombucha Starter Kit",
-      product_price: 32.99,
+      name: "Kombucha Starter Kit",
+      price: 32.99,
       categories: [
         {
           label: "Food",
@@ -674,8 +682,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Foam Roller Deep Tissue",
-      product_price: 19.99,
+      name: "Foam Roller Deep Tissue",
+      price: 19.99,
       categories: [
         {
           label: "Sports",
@@ -690,8 +698,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Luggage Set 3-Piece",
-      product_price: 199.0,
+      name: "Luggage Set 3-Piece",
+      price: 199.0,
       categories: [
         {
           label: "Travel",
@@ -711,8 +719,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Car Phone Mount Magnetic",
-      product_price: 14.99,
+      name: "Car Phone Mount Magnetic",
+      price: 14.99,
       categories: [
         {
           label: "Automotive",
@@ -732,8 +740,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Meditation & Mindfulness Book",
-      product_price: 17.99,
+      name: "Meditation & Mindfulness Book",
+      price: 17.99,
       categories: [
         {
           label: "Books",
@@ -748,8 +756,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Air Fryer 5.8Qt",
-      product_price: 119.99,
+      name: "Air Fryer 5.8Qt",
+      price: 119.99,
       categories: [
         {
           label: "Home",
@@ -764,8 +772,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Merino Wool Socks 6-Pack",
-      product_price: 32.0,
+      name: "Merino Wool Socks 6-Pack",
+      price: 32.0,
       categories: [
         {
           label: "Clothing",
@@ -785,8 +793,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Portable Power Bank 20000mAh",
-      product_price: 39.99,
+      name: "Portable Power Bank 20000mAh",
+      price: 39.99,
       categories: [
         {
           label: "Electronics",
@@ -801,8 +809,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Adjustable Dumbbell Set",
-      product_price: 159.0,
+      name: "Adjustable Dumbbell Set",
+      price: 159.0,
       categories: [
         {
           label: "Sports",
@@ -817,8 +825,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Bamboo Cutting Board Set",
-      product_price: 27.99,
+      name: "Bamboo Cutting Board Set",
+      price: 27.99,
       categories: [
         {
           label: "Home",
@@ -833,8 +841,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Sunscreen SPF 50 Travel Size",
-      product_price: 9.99,
+      name: "Sunscreen SPF 50 Travel Size",
+      price: 9.99,
       categories: [
         {
           label: "Health",
@@ -849,8 +857,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Electric Toothbrush Sonic",
-      product_price: 69.99,
+      name: "Electric Toothbrush Sonic",
+      price: 69.99,
       categories: [
         {
           label: "Health",
@@ -870,8 +878,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Canvas Tote Bag Large",
-      product_price: 12.99,
+      name: "Canvas Tote Bag Large",
+      price: 12.99,
       categories: [
         {
           label: "Shopping",
@@ -886,8 +894,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "TRASHED", label: "Trashed", level: "DESTRUCTIVE" },
     },
     {
-      product_name: "4K Action Camera Waterproof",
-      product_price: 149.99,
+      name: "4K Action Camera Waterproof",
+      price: 149.99,
       categories: [
         {
           label: "Electronics",
@@ -902,8 +910,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Vegan Protein Bar Box",
-      product_price: 28.0,
+      name: "Vegan Protein Bar Box",
+      price: 28.0,
       categories: [
         {
           label: "Food",
@@ -918,8 +926,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Car Floor Mats All Weather",
-      product_price: 45.99,
+      name: "Car Floor Mats All Weather",
+      price: 45.99,
       categories: [
         {
           label: "Automotive",
@@ -934,8 +942,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Self-Help Productivity Book",
-      product_price: 15.99,
+      name: "Self-Help Productivity Book",
+      price: 15.99,
       categories: [
         {
           label: "Books",
@@ -955,8 +963,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Titanium Chef Knife 8in",
-      product_price: 64.99,
+      name: "Titanium Chef Knife 8in",
+      price: 64.99,
       categories: [
         {
           label: "Home",
@@ -971,8 +979,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Compression Running Tights",
-      product_price: 42.0,
+      name: "Compression Running Tights",
+      price: 42.0,
       categories: [
         {
           label: "Sports",
@@ -992,8 +1000,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Smart LED Bulb 4-Pack",
-      product_price: 34.99,
+      name: "Smart LED Bulb 4-Pack",
+      price: 34.99,
       categories: [
         {
           label: "Electronics",
@@ -1008,8 +1016,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Neck Pillow Travel Memory Foam",
-      product_price: 23.99,
+      name: "Neck Pillow Travel Memory Foam",
+      price: 23.99,
       categories: [
         {
           label: "Travel",
@@ -1024,8 +1032,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Collagen Peptides Powder",
-      product_price: 36.99,
+      name: "Collagen Peptides Powder",
+      price: 36.99,
       categories: [
         {
           label: "Health",
@@ -1040,8 +1048,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Windshield Snow Cover",
-      product_price: 19.99,
+      name: "Windshield Snow Cover",
+      price: 19.99,
       categories: [
         {
           label: "Automotive",
@@ -1056,8 +1064,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Fantasy Novel Trilogy Box Set",
-      product_price: 44.99,
+      name: "Fantasy Novel Trilogy Box Set",
+      price: 44.99,
       categories: [
         {
           label: "Books",
@@ -1077,8 +1085,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Scented Soy Candle Set",
-      product_price: 26.99,
+      name: "Scented Soy Candle Set",
+      price: 26.99,
       categories: [
         {
           label: "Home",
@@ -1098,8 +1106,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Tennis Racket Pro Series",
-      product_price: 79.99,
+      name: "Tennis Racket Pro Series",
+      price: 79.99,
       categories: [
         {
           label: "Sports",
@@ -1119,8 +1127,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "TRASHED", label: "Trashed", level: "DESTRUCTIVE" },
     },
     {
-      product_name: "Insulated Lunch Box",
-      product_price: 21.99,
+      name: "Insulated Lunch Box",
+      price: 21.99,
       categories: [
         {
           label: "Food",
@@ -1135,8 +1143,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Mechanical Pencil Set",
-      product_price: 11.99,
+      name: "Mechanical Pencil Set",
+      price: 11.99,
       categories: [
         {
           label: "Shopping",
@@ -1151,8 +1159,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Hoodie Pullover Fleece",
-      product_price: 49.95,
+      name: "Hoodie Pullover Fleece",
+      price: 49.95,
       categories: [
         {
           label: "Clothing",
@@ -1172,8 +1180,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Smart Doorbell Camera HD",
-      product_price: 129.99,
+      name: "Smart Doorbell Camera HD",
+      price: 129.99,
       categories: [
         {
           label: "Electronics",
@@ -1188,8 +1196,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Omega 3 Fish Oil Capsules",
-      product_price: 18.99,
+      name: "Omega 3 Fish Oil Capsules",
+      price: 18.99,
       categories: [
         {
           label: "Health",
@@ -1204,8 +1212,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Car Jump Starter Portable",
-      product_price: 59.99,
+      name: "Car Jump Starter Portable",
+      price: 59.99,
       categories: [
         {
           label: "Automotive",
@@ -1225,8 +1233,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "World Atlas Hardcover",
-      product_price: 34.99,
+      name: "World Atlas Hardcover",
+      price: 34.99,
       categories: [
         {
           label: "Books",
@@ -1241,8 +1249,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Meal Prep Container 10-Pack",
-      product_price: 24.99,
+      name: "Meal Prep Container 10-Pack",
+      price: 24.99,
       categories: [
         {
           label: "Food",
@@ -1257,8 +1265,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Knee Support Brace",
-      product_price: 17.99,
+      name: "Knee Support Brace",
+      price: 17.99,
       categories: [
         {
           label: "Health",
@@ -1278,8 +1286,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Packing Cubes Travel Set",
-      product_price: 22.99,
+      name: "Packing Cubes Travel Set",
+      price: 22.99,
       categories: [
         {
           label: "Travel",
@@ -1299,8 +1307,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Mechanical Keyboard TKL",
-      product_price: 109.0,
+      name: "Mechanical Keyboard TKL",
+      price: 109.0,
       categories: [
         {
           label: "Electronics",
@@ -1320,8 +1328,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Linen Summer Pants",
-      product_price: 38.95,
+      name: "Linen Summer Pants",
+      price: 38.95,
       categories: [
         {
           label: "Clothing",
@@ -1336,8 +1344,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Whey Protein Isolate Vanilla",
-      product_price: 54.99,
+      name: "Whey Protein Isolate Vanilla",
+      price: 54.99,
       categories: [
         {
           label: "Health",
@@ -1357,8 +1365,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "TRASHED", label: "Trashed", level: "DESTRUCTIVE" },
     },
     {
-      product_name: "Plant Stand Wooden 3-Tier",
-      product_price: 42.99,
+      name: "Plant Stand Wooden 3-Tier",
+      price: 42.99,
       categories: [
         {
           label: "Home",
@@ -1378,8 +1386,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Car Wax Polish Kit",
-      product_price: 24.99,
+      name: "Car Wax Polish Kit",
+      price: 24.99,
       categories: [
         {
           label: "Automotive",
@@ -1399,8 +1407,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Design Thinking Handbook",
-      product_price: 21.99,
+      name: "Design Thinking Handbook",
+      price: 21.99,
       categories: [
         {
           label: "Books",
@@ -1420,8 +1428,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Cold Brew Coffee Maker",
-      product_price: 37.99,
+      name: "Cold Brew Coffee Maker",
+      price: 37.99,
       categories: [
         {
           label: "Food",
@@ -1436,8 +1444,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Jump Rope Speed Cable",
-      product_price: 12.99,
+      name: "Jump Rope Speed Cable",
+      price: 12.99,
       categories: [
         {
           label: "Sports",
@@ -1452,8 +1460,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Polarized Sunglasses UV400",
-      product_price: 29.99,
+      name: "Polarized Sunglasses UV400",
+      price: 29.99,
       categories: [
         {
           label: "Shopping",
@@ -1468,8 +1476,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Standing Desk Converter",
-      product_price: 89.99,
+      name: "Standing Desk Converter",
+      price: 89.99,
       categories: [
         {
           label: "Home",
@@ -1484,8 +1492,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Tire Pressure Gauge Digital",
-      product_price: 13.99,
+      name: "Tire Pressure Gauge Digital",
+      price: 13.99,
       categories: [
         {
           label: "Automotive",
@@ -1505,8 +1513,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Classic Literature Box Set",
-      product_price: 59.99,
+      name: "Classic Literature Box Set",
+      price: 59.99,
       categories: [
         {
           label: "Books",
@@ -1526,8 +1534,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Smoothie Blender Personal",
-      product_price: 44.99,
+      name: "Smoothie Blender Personal",
+      price: 44.99,
       categories: [
         {
           label: "Food",
@@ -1542,8 +1550,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Winter Puffer Jacket",
-      product_price: 119.0,
+      name: "Winter Puffer Jacket",
+      price: 119.0,
       categories: [
         {
           label: "Clothing",
@@ -1558,8 +1566,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Gaming Mouse RGB 16000 DPI",
-      product_price: 59.99,
+      name: "Gaming Mouse RGB 16000 DPI",
+      price: 59.99,
       categories: [
         {
           label: "Electronics",
@@ -1579,8 +1587,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Multivitamin Daily Pack",
-      product_price: 24.99,
+      name: "Multivitamin Daily Pack",
+      price: 24.99,
       categories: [
         {
           label: "Health",
@@ -1600,8 +1608,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Hotel Pillow Top Mattress Pad",
-      product_price: 74.99,
+      name: "Hotel Pillow Top Mattress Pad",
+      price: 74.99,
       categories: [
         {
           label: "Home",
@@ -1616,8 +1624,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Car Vacuum Cleaner Cordless",
-      product_price: 38.99,
+      name: "Car Vacuum Cleaner Cordless",
+      price: 38.99,
       categories: [
         {
           label: "Automotive",
@@ -1632,8 +1640,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Sci-Fi Anthology 2025",
-      product_price: 19.99,
+      name: "Sci-Fi Anthology 2025",
+      price: 19.99,
       categories: [
         {
           label: "Books",
@@ -1653,8 +1661,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "TRASHED", label: "Trashed", level: "DESTRUCTIVE" },
     },
     {
-      product_name: "Sourdough Bread Making Kit",
-      product_price: 31.99,
+      name: "Sourdough Bread Making Kit",
+      price: 31.99,
       categories: [
         {
           label: "Food",
@@ -1669,8 +1677,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Trail Running Shoes V2",
-      product_price: 94.99,
+      name: "Trail Running Shoes V2",
+      price: 94.99,
       categories: [
         {
           label: "Sports",
@@ -1685,8 +1693,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Webcam 4K Auto Focus",
-      product_price: 79.99,
+      name: "Webcam 4K Auto Focus",
+      price: 79.99,
       categories: [
         {
           label: "Electronics",
@@ -1701,8 +1709,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Linen Blazer Unisex",
-      product_price: 85.0,
+      name: "Linen Blazer Unisex",
+      price: 85.0,
       categories: [
         {
           label: "Clothing",
@@ -1722,8 +1730,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Probiotic Capsules 60ct",
-      product_price: 27.99,
+      name: "Probiotic Capsules 60ct",
+      price: 27.99,
       categories: [
         {
           label: "Health",
@@ -1738,8 +1746,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Throw Blanket Chunky Knit",
-      product_price: 46.99,
+      name: "Throw Blanket Chunky Knit",
+      price: 46.99,
       categories: [
         {
           label: "Home",
@@ -1759,8 +1767,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Steering Wheel Cover Leather",
-      product_price: 18.99,
+      name: "Steering Wheel Cover Leather",
+      price: 18.99,
       categories: [
         {
           label: "Automotive",
@@ -1780,8 +1788,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Python Programming Guide",
-      product_price: 39.99,
+      name: "Python Programming Guide",
+      price: 39.99,
       categories: [
         {
           label: "Books",
@@ -1801,8 +1809,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Acai Berry Powder Organic",
-      product_price: 22.99,
+      name: "Acai Berry Powder Organic",
+      price: 22.99,
       categories: [
         {
           label: "Food",
@@ -1817,8 +1825,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "DRAFT", label: "Draft", level: "WARNING" },
     },
     {
-      product_name: "Boxing Gloves Training 14oz",
-      product_price: 36.99,
+      name: "Boxing Gloves Training 14oz",
+      price: 36.99,
       categories: [
         {
           label: "Sports",
@@ -1833,8 +1841,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Travel Adapter Universal",
-      product_price: 16.99,
+      name: "Travel Adapter Universal",
+      price: 16.99,
       categories: [
         {
           label: "Travel",
@@ -1854,8 +1862,8 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
       status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
     },
     {
-      product_name: "Monitor 27in 144Hz IPS",
-      product_price: 329.0,
+      name: "Monitor 27in 144Hz IPS",
+      price: 329.0,
       categories: [
         {
           label: "Electronics",

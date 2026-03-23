@@ -26,6 +26,7 @@ export * from "./ViewLabelsWithOverlap";
 export * from "./emoji-popover";
 export * from "./toploading";
 export * from "./button";
+export * from "./sheet";
 export * from "./fxsuggestion-input";
 export * from "./get-issues-iconset";
 export * from "./ComboBoxCheckbox";
