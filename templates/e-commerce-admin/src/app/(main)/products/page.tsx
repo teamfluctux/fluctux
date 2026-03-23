@@ -21,10 +21,11 @@ import { ProductActions } from "./ProductActions";
 
 export default function ProductPage() {
   useEffect(() => {
-    workspaceHeaderStore.setTitle("Manage Products");
-    workspaceHeaderStore.setDesc(
-      "View, edit, and organize your entire product catalog"
-    );
+    workspaceHeaderStore.setMetaData({
+      title: "Manage Products",
+      desc: "View, edit, and organize your entire product catalog",
+    });
+    return () => workspaceHeaderStore.clearMetaData()
   }, []);
 
   const [rowData, setRowData] = useState(DUMMY_ROW_DATA);

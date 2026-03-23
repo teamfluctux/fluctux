@@ -4,48 +4,50 @@ import {
   type ProductMenuOptionsValuesType,
 } from "@/constants";
 import { Button, ButtonGroup, FxButton, FxPopover } from "@fluctux/ui";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./sheet";
+import { Sheet, SheetContent } from "./sheet";
 import { Ellipsis, PlusIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import type { MenuDataType } from "@fluctux/types";
 import { useUrlQueryParams } from "@fluctux/hooks";
 
+// -- Query params type
+type ProductQueryParams = "options" | "opt-menu";
+
+// -- Constants
 const PRODUCT_OPTIONS_HEADER_MENUS: MenuDataType[] = [
   { label: "Attributes", value: "attributes" },
   { label: "Variations", value: "variations" },
 ];
 
 export const ProductActions = () => {
-  const [sheetOpen, setSheetOpen] = useState(false);
-  const { handlePushParams, removeQueryParam } = useUrlQueryParams();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const getOptionsParam = searchParams.get(
+  // -- UI states
+  const [isProductOptionsOpen, setIsProductOptionsOpen] =
+    useState<boolean>(false);
+
+  // -- Handle query params
+  const { handlePushQueryParam, removeMultipleQueryParams, getQueryParam } =
+    useUrlQueryParams<ProductQueryParams>();
+
+  // -- Get query params
+  const getOptionsParam = getQueryParam(
     "options"
   ) as ProductMenuOptionsValuesType;
-  const getOptionsMenu = searchParams.get("opt-menu");
+  const getOptionsMenu = getQueryParam("opt-menu");
+
+  //   -- UI click events
   const handleProductMenuItemClick = (
     value: string,
     isAsQueryParam?: boolean
   ) => {
     if (isAsQueryParam) {
-      handlePushParams("options", value);
+      handlePushQueryParam("options", value);
     }
   };
 
+  //   -- Effect UI on query changes
   useEffect(() => {
     if (getOptionsParam == "product-options") {
-      setSheetOpen(true);
+      setIsProductOptionsOpen(true);
     }
   }, [getOptionsParam]);
 
@@ -70,10 +72,12 @@ export const ProductActions = () => {
         />
       </div>
       <Sheet
-        open={sheetOpen}
+        open={isProductOptionsOpen}
         onOpenChange={(value) =>
-          setSheetOpen(() => {
-            router.push("?");
+          setIsProductOptionsOpen(() => {
+            if (!value) {
+              removeMultipleQueryParams("opt-menu", "options");
+            }
             return value;
           })
         }
@@ -88,7 +92,7 @@ export const ProductActions = () => {
                       variant={"secondary"}
                       className={`text-text-color_2 bg-background-color_850C hover:bg-background-color_800C  ${getOptionsMenu === item.value && "text-surface-fg-2 bg-surface-bg-active hover:bg-surface-bg-active"}`}
                       onClick={() => {
-                        router.push(`?opt-menu=${item.value}`);
+                        handlePushQueryParam("opt-menu", item.value);
                       }}
                       key={i}
                     >

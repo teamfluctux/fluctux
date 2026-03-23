@@ -21,10 +21,10 @@ export const WorkSpaceHeader = observer(() => {
         <div className="w-full flex justify-start items-center">
           <div className="text-left leading-5">
             <p className="text-read_18 font-medium">
-              {workspaceHeaderStore.title}
+              {workspaceHeaderStore.metaData?.title}
             </p>
             <p className="text-workspace_3 text-text-color_2 font-medium mt-0.5">
-              {workspaceHeaderStore.desc}
+              {workspaceHeaderStore.metaData?.desc}
             </p>
           </div>
         </div>

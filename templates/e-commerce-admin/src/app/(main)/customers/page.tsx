@@ -46,14 +46,16 @@ export type CustomerDataType = {
   account_created_at: string;
   account_deleted_at: string;
 };
-
 export default function CustomerPage() {
   useEffect(() => {
-    workspaceHeaderStore.setTitle("Manage Customers");
-    workspaceHeaderStore.setDesc(
-      "View, edit, and organize your entire product catalog"
-    );
+    workspaceHeaderStore.setMetaData({
+      title: "Manage Customers",
+      desc: "View, edit, and organize your entire product catalog",
+    });
+    return () => workspaceHeaderStore.clearMetaData();
   }, []);
+
+  
 
   const [rowData, setRowData] = useState(DUMMY_ROW_DATA);
   // Column Definitions: Defines the columns to be displayed.

@@ -1,24 +1,28 @@
 import { action, makeObservable, observable } from "mobx";
 
+type MetaDataType = {
+  title: string
+  desc?: string
+}
+
 class WorkspaceHeaderStore {
-  title: string = "";
-  desc: string = "";
+  metaData: MetaDataType | null = null
   constructor() {
     makeObservable(this, {
-      title: observable,
-      desc: observable,
-      setTitle: action,
-      setDesc: action,
+      metaData: observable,
+      setMetaData: action,
+      clearMetaData: action
     });
   }
 
-  setTitle(value: string) {
-    this.title = value;
+  setMetaData(data: MetaDataType) {
+    this.metaData = data
   }
 
-  setDesc(value: string) {
-    this.desc = value;
+  clearMetaData() {
+    this.metaData = null
   }
+
 }
 
 export const workspaceHeaderStore = new WorkspaceHeaderStore();
