@@ -1,1 +1,1 @@
-export * from "./useChartLegendActive"
+export * from "./useChartLegendActive";

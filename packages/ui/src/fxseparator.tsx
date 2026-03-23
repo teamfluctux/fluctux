@@ -6,7 +6,7 @@ type OrientationType = "vertical" | "horizontal";
 interface FxSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   orientation: keyof typeof sepOrnAttributes;
-  separatorClassName?: string
+  separatorClassName?: string;
   color?: string;
   gap?: keyof typeof GapAttributes;
   size?: string;

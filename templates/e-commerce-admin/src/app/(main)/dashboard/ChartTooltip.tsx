@@ -84,7 +84,9 @@ export const CustomTooltip = ({
       >
         {payload.map((entry: TooltipPayloadEntry, i) => {
           if (entry.dataKey == "spacer") return null;
-          {console.log("hello", entry)}
+          {
+            console.log("hello", entry);
+          }
           const Icon = icons && icons[entry.dataKey as string];
           return (
             <React.Fragment key={`${entry.dataKey}-${i}`}>
@@ -113,7 +115,6 @@ export const CustomTooltip = ({
               ) : (
                 <div className="flex items-center gap-2 py-0.5 ">
                   {IndicatorType == "shape" && (
-                    
                     <div
                       className={`${tempIndicatorShape}`}
                       style={{ backgroundColor: entry.color }}

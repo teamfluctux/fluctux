@@ -174,7 +174,7 @@ type CustomBarChartProps = {
   CartesianGridProps?: CartesianGridProps;
   YAxisProps?: YAxisProps;
   XAxisProps?: XAxisProps;
-  BarChartProps?: ComponentProps<typeof BarChart>
+  BarChartProps?: ComponentProps<typeof BarChart>;
 } & ChartXAxisPropsType &
   ChartYAxisPropsType &
   ChartTooltipPropsType &
@@ -198,7 +198,7 @@ export const CustomBarChart = ({
   YAxisCustomSettings,
   CustomLegendProps,
   CustomTooltipProps,
-  BarChartProps
+  BarChartProps,
 }: CustomBarChartProps) => {
   const CartesianGridProps = {
     strokeDasharray: "0",

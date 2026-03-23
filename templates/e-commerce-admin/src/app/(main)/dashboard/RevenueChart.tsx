@@ -4,11 +4,11 @@ import { useChartLegendActive } from "@/hooks/useChartLegendActive";
 import { Line } from "recharts";
 
 type LineChartDataRevenueType = {
-  name: string; 
+  name: string;
   gross: number;
-  net: number; 
-  refunds: number; 
-  discounts: number; 
+  net: number;
+  refunds: number;
+  discounts: number;
 };
 const REVENUE_LINE_CHART_DATA: LineChartDataRevenueType[] = [
   {
@@ -123,7 +123,7 @@ export const RevenueChart = () => {
             <Line
               type="natural"
               dataKey="gross"
-                 name="Gross"
+              name="Gross"
               stroke="var(--color-chart-1)"
               strokeOpacity={getOpacity("gross")}
               dot={false}
@@ -143,7 +143,7 @@ export const RevenueChart = () => {
             <Line
               type="natural"
               dataKey="refunds"
-                 name="Refunds"
+              name="Refunds"
               stroke="var(--color-chart-3)"
               dot={false}
               strokeWidth={2}
@@ -153,7 +153,7 @@ export const RevenueChart = () => {
             <Line
               type="natural"
               dataKey="discounts"
-                 name="Discounts"
+              name="Discounts"
               stroke="var(--color-chart-4)"
               strokeOpacity={getOpacity("discounts")}
               dot={false}

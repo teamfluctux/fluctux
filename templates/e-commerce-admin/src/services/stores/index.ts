@@ -1,2 +1,1 @@
-
-export * from "./workspaceHeader.store"
+export * from "./workspaceHeader.store";

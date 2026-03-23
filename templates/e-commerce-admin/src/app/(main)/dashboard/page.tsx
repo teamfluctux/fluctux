@@ -124,14 +124,14 @@ export default function DashboardPage() {
             value="order-analytics"
             desc="Track order volume and fulfillment status"
           >
-            <OrdersAnalyticsChart/>
+            <OrdersAnalyticsChart />
           </DashSingleCard>
           <DashSingleCard
             title="Top Products"
             value="top-products"
             desc="Best performing products by sales volume"
           >
-            <TopProductsChart/>
+            <TopProductsChart />
           </DashSingleCard>
           <DashSingleCard
             title="Customer Insights"
@@ -140,12 +140,12 @@ export default function DashboardPage() {
           >
             <div></div>
           </DashSingleCard>
-            <DashSingleCard
+          <DashSingleCard
             title="Delivery Analytics"
             value="delivery-analytics"
             desc="Total deliveries made vs reported issues this period"
           >
-            <DeliveryChart/>
+            <DeliveryChart />
           </DashSingleCard>
         </DashSingleCardGroup>
       </section>

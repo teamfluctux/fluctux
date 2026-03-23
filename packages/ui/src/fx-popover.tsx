@@ -19,7 +19,7 @@ export type PopoverMenuDataType = {
       showStatusHoverEffect?: boolean;
       effectType?: PopoverItemStatusEffectType;
       slug?: string;
-      isAsQueryParam?: boolean
+      isAsQueryParam?: boolean;
     }[];
   };
 };
@@ -175,12 +175,11 @@ export const FxPopover = <T extends PopoverMenuDataType>({
                         : getTextColor.NEUTRAL;
 
                       return (
-                        <React.Fragment key={`${(item.value || item.slug)?.toString().toLowerCase()}-${j}`}>
+                        <React.Fragment
+                          key={`${(item.value || item.slug)?.toString().toLowerCase()}-${j}`}
+                        >
                           {item.slug ? (
-                            <Link
-                              href={item.slug}
-                             
-                            >
+                            <Link href={item.slug}>
                               <li
                                 className={`flex justify-start items-center gap-1.5 h-8 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-lg px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
                               >
@@ -194,7 +193,9 @@ export const FxPopover = <T extends PopoverMenuDataType>({
                             </Link>
                           ) : (
                             <li
-                              onClick={() => onItemClick?.(item.value, item.isAsQueryParam)}
+                              onClick={() =>
+                                onItemClick?.(item.value, item.isAsQueryParam)
+                              }
                               className={`flex justify-start items-center  h-8 gap-1.5 cursor-default group transition-colors ${hoverItemStatusEffect} rounded-lg px-2 ${textColor} ${!item.showStatusHoverEffect ? hoverStatusTextColor : ""}`}
                             >
                               <div

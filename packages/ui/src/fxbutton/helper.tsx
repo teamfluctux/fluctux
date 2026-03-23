@@ -16,9 +16,9 @@ export type ButtonStylingType = {
     hover: string;
     disabled: string;
   };
-}
+};
 
-type ButtonSizeType = "rounded_sm" | "rounded_md" | SizeType 
+type ButtonSizeType = "rounded_sm" | "rounded_md" | SizeType;
 
 export const buttonSizes: { [key in ButtonSizeType]: string } = {
   sm: "h-7.5 px-3 text-workspace_3 rounded-lg",
@@ -26,7 +26,7 @@ export const buttonSizes: { [key in ButtonSizeType]: string } = {
   lg: "h-12 px-5 text-read_16 rounded-xl",
   xl: "h-14 px-6 text-read_18 rounded-xl",
   rounded_sm: "w-7.5 h-7.5 shrink-0  rounded-full",
-  rounded_md: "w-10 h-10 shrink-0  rounded-full"
+  rounded_md: "w-10 h-10 shrink-0  rounded-full",
 };
 
 export const iconSizes: { [key in ButtonSizeType]: number } = {
@@ -35,7 +35,7 @@ export const iconSizes: { [key in ButtonSizeType]: number } = {
   lg: 19, // 16px text
   xl: 21, // 18px text
   rounded_sm: 15,
-  rounded_md: 17
+  rounded_md: 17,
 };
 
 export const buttonStyling: ButtonStylingType = {

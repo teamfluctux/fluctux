@@ -70,10 +70,9 @@ function SheetContent({
         {showCloseButton && (
           <SheetPrimitive.Close data-slot="sheet-close" asChild>
             <FxButton
-            icon={XIcon}
+              icon={XIcon}
               variant="ghost_zinc_2"
               className="absolute border-0! top-3 right-3 rounded-full"
-              
               size="rounded_sm"
             >
               <span className="sr-only">Close</span>

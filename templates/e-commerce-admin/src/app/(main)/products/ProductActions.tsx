@@ -18,7 +18,7 @@ import { Ellipsis, PlusIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { MenuDataType } from "@fluctux/types";
-import {useUrlQueryParams} from "@fluctux/hooks"
+import { useUrlQueryParams } from "@fluctux/hooks";
 
 const PRODUCT_OPTIONS_HEADER_MENUS: MenuDataType[] = [
   { label: "Attributes", value: "attributes" },
@@ -27,7 +27,7 @@ const PRODUCT_OPTIONS_HEADER_MENUS: MenuDataType[] = [
 
 export const ProductActions = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
-  const {handlePushParams, removeQueryParam} = useUrlQueryParams()
+  const { handlePushParams, removeQueryParam } = useUrlQueryParams();
   const router = useRouter();
   const searchParams = useSearchParams();
   const getOptionsParam = searchParams.get(
@@ -39,7 +39,7 @@ export const ProductActions = () => {
     isAsQueryParam?: boolean
   ) => {
     if (isAsQueryParam) {
-      handlePushParams("options", value)
+      handlePushParams("options", value);
     }
   };
 

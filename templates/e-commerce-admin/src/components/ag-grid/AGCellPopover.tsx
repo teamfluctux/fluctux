@@ -71,9 +71,10 @@ export const AgCellPopover = (props: AgCellPopoverPropsType) => {
         <div className="w-full h-full ">
           {popoverTriggerNode
             ? popoverTriggerNode
-            : value &&
-              value.find((d: AgCellPopoverDataType) => d.isPrimary == true)
-                ?.label || value[0]?.label }
+            : (value &&
+                value.find((d: AgCellPopoverDataType) => d.isPrimary == true)
+                  ?.label) ||
+              value[0]?.label}
           {value && value?.length > 1 && "..."}
         </div>
       </PopoverTrigger>

@@ -20,7 +20,9 @@ export const WorkSpaceHeader = observer(() => {
       <div className="max-w-[1200px] w-full px-5  h-full mx-auto items-center flex justify-between">
         <div className="w-full flex justify-start items-center">
           <div className="text-left leading-5">
-            <p className="text-read_18 font-medium">{workspaceHeaderStore.title}</p>
+            <p className="text-read_18 font-medium">
+              {workspaceHeaderStore.title}
+            </p>
             <p className="text-workspace_3 text-text-color_2 font-medium mt-0.5">
               {workspaceHeaderStore.desc}
             </p>

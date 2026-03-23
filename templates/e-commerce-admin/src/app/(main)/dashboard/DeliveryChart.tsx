@@ -32,14 +32,14 @@ export const DeliveryChart = () => {
   return (
     <div className="w-full h-full">
       <CustomBarChart
-         ChartHeight="315px"
+        ChartHeight="315px"
         XAxisDataKey="x_axis"
         barChartClassName="p-3"
         isEnableLegend
         CustomLegendProps={{
           IndicatorType: "shape",
           itemColorIndicatorShape: "square",
-            className:"px-5",
+          className: "px-5",
           onLegendClick: handleActiveLegend,
           resetActiveLegend: handleDisableLegend,
           activeLegendKey: activeKey,

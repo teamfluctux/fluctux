@@ -66,7 +66,6 @@ export function TAgCellSelectorRendererParams<TLevel extends string>(
   return params;
 }
 
-
 /**
  * A generic AG Grid cell renderer that renders a dropdown selector with optional level-based styling.
  *

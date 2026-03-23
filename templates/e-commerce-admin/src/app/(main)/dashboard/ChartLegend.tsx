@@ -86,7 +86,7 @@ export const CustomLegend = ({
     >
       {payload.map((entry, i) => {
         const Icon = icons && icons[entry.dataKey as string];
-        if(entry.dataKey == "spacer") return null
+        if (entry.dataKey == "spacer") return null;
         return (
           <div
             key={entry.dataKey as string}
@@ -113,7 +113,6 @@ export const CustomLegend = ({
               ></div>
             )}
 
-          
             <span
               className={`text-workspace_3 font-medium ${activeLegendKey === entry.dataKey ? "text-text-color_1" : "text-text-color_4 "}`}
             >

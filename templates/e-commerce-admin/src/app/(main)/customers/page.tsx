@@ -13,29 +13,39 @@ import {
   PRODUCT_PAGE_MENU_OPTIONS,
   PRODUCTS_OVERVIEW_DATA,
 } from "@/constants";
-import type { AgSelectCellDataType, PaymentMethodType, ProductManageDataType, StatusLevelType } from "@/types";
-import { AgCellPopover, AgCellSelector, AgGridComponent, TAgCellPopoverRendererParams, TAgCellSelectorRendererParams } from "@/components/ag-grid";
-
+import type {
+  AgSelectCellDataType,
+  PaymentMethodType,
+  ProductManageDataType,
+  StatusLevelType,
+} from "@/types";
+import {
+  AgCellPopover,
+  AgCellSelector,
+  AgGridComponent,
+  TAgCellPopoverRendererParams,
+  TAgCellSelectorRendererParams,
+} from "@/components/ag-grid";
 
 export type CustomerDataType = {
   _id: string;
   info: {
     image: string;
     name: string;
-  }
-  email: string
+  };
+  email: string;
   phone_number: string;
   address: string;
-  city: string
-  payment_method: PaymentMethodType
-  no_of_order: number
-  total_order_revenue: number
-  avg_order_revenue: number
-  status: AgSelectCellDataType
-  last_ordered_at: string
-  account_created_at: string
-  account_deleted_at: string
-}
+  city: string;
+  payment_method: PaymentMethodType;
+  no_of_order: number;
+  total_order_revenue: number;
+  avg_order_revenue: number;
+  status: AgSelectCellDataType;
+  last_ordered_at: string;
+  account_created_at: string;
+  account_deleted_at: string;
+};
 
 export default function CustomerPage() {
   useEffect(() => {

@@ -18,7 +18,7 @@ interface FxButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: keyof typeof buttonSizes;
   disabled?: boolean;
   icon?: LucideIcon;
-  iconSize?: number
+  iconSize?: number;
   iconPosition?: IconPostionType;
   loading?: boolean;
 }
@@ -38,7 +38,9 @@ export const FxButton = ({
   const buttonStyling = getButtonStyling(variant, size, disabled || loading);
 
   const Icon = icon;
-  const buttonIconSize = iconSize ? iconSize : (size && iconSizes[size]) || iconSizes.md;
+  const buttonIconSize = iconSize
+    ? iconSize
+    : (size && iconSizes[size]) || iconSizes.md;
   return (
     <button
       disabled={disabled || loading}

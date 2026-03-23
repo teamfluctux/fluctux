@@ -28,8 +28,8 @@ export type AgSelectCellDataType = {
 type ProductManageDataAttributesType = {
   label: string;
   value: string;
-  type: "COLOR" | "IMAGE" | "RADIO" | "BUTTON"
-}
+  type: "COLOR" | "IMAGE" | "RADIO" | "BUTTON";
+};
 
 type IdentifierType = "GTIN" | "UPC" | "EAN" | "ISBN";
 
@@ -38,41 +38,52 @@ type ProductIdentifiers = {
   value: string;
 };
 
-
 export type ProductManageDataType = {
-  id: string
+  id: string;
   name: string;
   slug: string;
-  desc?: string
-  identifiers?: ProductIdentifiers[]
-  sku: string
+  desc?: string;
+  identifiers?: ProductIdentifiers[];
+  sku: string;
   images?: {
     label?: string;
-    src: string
-    isThumbnail?: boolean
+    src: string;
+    isThumbnail?: boolean;
   }[];
   regular_price?: number;
-  sale_price?: number
-  discount?: number
+  sale_price?: number;
+  discount?: number;
   categories?: AgCellPopoverDataType[];
   created_by: string;
   status?: AgSelectCellDataType;
-  stock_status: "IN_STOCK" | "OUT_OF_STOCK" | "ON_BACK_ORDER"
-  weigth?: number
+  stock_status: "IN_STOCK" | "OUT_OF_STOCK" | "ON_BACK_ORDER";
+  weigth?: number;
   dimensions?: {
-    length?: number
-    width?: number
-    height?: number
-  }
-  created_at: string
-  updated_at?: string
-  tags?: AgCellPopoverDataType[]
-  attributes?: ProductManageDataAttributesType[]
+    length?: number;
+    width?: number;
+    height?: number;
+  };
+  created_at: string;
+  updated_at?: string;
+  tags?: AgCellPopoverDataType[];
+  attributes?: ProductManageDataAttributesType[];
   variations?: {
     id?: string;
-    data: Pick<ProductManageDataType, "sku" | "weigth" | "dimensions" | "identifiers" | "regular_price" | "sale_price" | "discount" | "stock_status" | "desc" | "images">
-    attribute?: ProductManageDataAttributesType
-  }[]
+    data: Pick<
+      ProductManageDataType,
+      | "sku"
+      | "weigth"
+      | "dimensions"
+      | "identifiers"
+      | "regular_price"
+      | "sale_price"
+      | "discount"
+      | "stock_status"
+      | "desc"
+      | "images"
+    >;
+    attribute?: ProductManageDataAttributesType;
+  }[];
 };
 
 export type ProductsOverViewData = {

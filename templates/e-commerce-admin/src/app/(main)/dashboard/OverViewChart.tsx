@@ -208,7 +208,6 @@ export const OverViewChart = () => {
         }}
         Bars={
           <>
-  
             <Bar
               barSize={30}
               dataKey="sales"
@@ -216,7 +215,6 @@ export const OverViewChart = () => {
               fillOpacity={getOpacity("sales")}
               fill="var(--chart-color-1)"
               name={"Sales"}
-              
             />
             <Bar
               dataKey="orders"
@@ -253,7 +251,6 @@ export const OverViewChart = () => {
               fill="var(--chart-color-6)"
               name={"Refunds"}
             />
-      
           </>
         }
         XAxisDataKey="name"
