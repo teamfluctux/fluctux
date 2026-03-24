@@ -1,3 +1,4 @@
+// move to ui package
 "use client";
 import type { IndicatorType } from "@/types";
 import { FxSeparator } from "@fluctux/ui";

@@ -9,9 +9,10 @@ import { Ellipsis, PlusIcon } from "lucide-react";
 import { useEffect } from "react";
 
 import { useUrlQueryParams } from "@fluctux/hooks";
-import { ProductOptions } from "./ProductOptions";
+
 import { productStore } from "@/services/stores";
 import type { ProductQueryParams } from "@/types";
+import { ProductOptions } from "../action-menu-comps/ProductOptions";
 
 
 

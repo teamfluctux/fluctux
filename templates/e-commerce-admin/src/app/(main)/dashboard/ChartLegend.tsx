@@ -1,3 +1,4 @@
+// move to ui package
 import type { IndicatorType } from "@/types";
 import { FxButton, Tooltip, TooltipContent, TooltipTrigger } from "@fluctux/ui";
 import { RotateCcw, type LucideIcon } from "lucide-react";

@@ -16,8 +16,7 @@ import {
   TAgCellPopoverRendererParams,
   TAgCellSelectorRendererParams,
 } from "@/components/ag-grid";
-import { ProductOverview } from "./ProductsOverview";
-import { ProductActions } from "./ProductActions";
+import { ProductActions, ProductOverview } from "@/components/workspace/products";
 
 
 
