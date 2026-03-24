@@ -24,7 +24,7 @@ type AgCellSelectorPropsType<TLevel extends string> = {
   LevelConstants: Record<TLevel, string>;
   // pass available options as a prop if they are dynamic
   initialData?: CellSelectorValuesType<TLevel>[];
-  onSelectionChange?: (value: string) => void;
+  onSelectionChange?: (value: string, params: ICellRendererParams ) => void;
 } & ICellRendererParams;
 
 /**
@@ -111,13 +111,9 @@ export const AgCellSelector = <TLevel extends string>(
 ) => {
   // State to manage the selected value within the component
   // AG Grid provides 'value' directly from the 'field' specified in colDefs
-  const { value, initialData, LevelConstants, onSelectionChange } = props;
+  const { value, initialData, LevelConstants, onSelectionChange, data, node } = props;
   const [selectedValue, setSelectedValue] =
     useState<CellSelectorValuesType<TLevel>>(value);
-
-  useEffect(() => {
-    setSelectedValue(value);
-  }, [value]);
 
   // Expose AG Grid's required cell renderer methods
   useImperativeHandle(ref, () => {
@@ -129,25 +125,30 @@ export const AgCellSelector = <TLevel extends string>(
       },
       // return the value to AG Grid when it asks for it
       getValue: () => {
-        return selectedValue.value;
+        return selectedValue;
       },
     };
   });
 
   const handleValueChange = (value: string) => {
-    const getValue = initialData?.find((t) => t.value == value);
-    if (!getValue) return;
-    setSelectedValue(getValue);
+    const getChangedData = initialData?.find((t) => t.value == value);
+    if (!getChangedData) return;
+    setSelectedValue(getChangedData);
     // Notify AG Grid of the change
     // This will update the underlying row data
-    props.setValue?.(getValue);
-    onSelectionChange?.(value);
+    props.setValue?.(getChangedData);
+    // -- Pass the value
+    onSelectionChange?.(value, props);
+
+    // testing
+    const getData = node.data.data
+    node.setDataValue("data", [...getData])
   };
 
-  const data: CellSelectorValuesType<TLevel>[] = initialData || [];
+  const getInitialData: CellSelectorValuesType<TLevel>[] = initialData || [];
 
   return (
-    <Select value={selectedValue?.value} onValueChange={handleValueChange}>
+    <Select key={data.id} value={selectedValue?.value} onValueChange={handleValueChange}>
       <SelectTrigger
         className={`w-full! bg-transparent! border-none!  h-full! group px-4! hover:!bg-background-color_850C ring-0! outline-hidden!  rounded-none! `}
       >
@@ -157,13 +158,13 @@ export const AgCellSelector = <TLevel extends string>(
           <SelectValue placeholder={selectedValue?.value} />
         </div>
       </SelectTrigger>
-      <SelectContent className="!bg-background-color_850C">
+      <SelectContent className="bg-background-color_850C! z-[999999]!">
         <SelectGroup>
-          {data.map((d, i) => (
+          {getInitialData.map((d, i) => (
             <SelectItem
               key={`${d.value}${i}`}
               value={d.value}
-              className={`text-text-color_4 `}
+              className={`text-text-color_4`}
             >
               {d.label}
             </SelectItem>

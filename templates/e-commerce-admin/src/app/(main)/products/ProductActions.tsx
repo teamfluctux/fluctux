@@ -3,36 +3,27 @@ import {
   PRODUCT_PAGE_MENU_OPTIONS,
   type ProductMenuOptionsValuesType,
 } from "@/constants";
-import { Button, ButtonGroup, FxButton, FxPopover } from "@fluctux/ui";
-import { Sheet, SheetContent } from "./sheet";
+import { FxButton, FxPopover } from "@fluctux/ui";
+
 import { Ellipsis, PlusIcon } from "lucide-react";
-import { useEffect, useState } from "react";
-import type { MenuDataType } from "@fluctux/types";
+import { useEffect } from "react";
+
 import { useUrlQueryParams } from "@fluctux/hooks";
+import { ProductOptions } from "./ProductOptions";
+import { productStore } from "@/services/stores";
+import type { ProductQueryParams } from "@/types";
 
-// -- Query params type
-type ProductQueryParams = "options" | "opt-menu";
 
-// -- Constants
-const PRODUCT_OPTIONS_HEADER_MENUS: MenuDataType[] = [
-  { label: "Attributes", value: "attributes" },
-  { label: "Variations", value: "variations" },
-];
 
 export const ProductActions = () => {
-  // -- UI states
-  const [isProductOptionsOpen, setIsProductOptionsOpen] =
-    useState<boolean>(false);
-
   // -- Handle query params
-  const { handlePushQueryParam, removeMultipleQueryParams, getQueryParam } =
+  const { handlePushQueryParam, getQueryParam } =
     useUrlQueryParams<ProductQueryParams>();
 
   // -- Get query params
   const getOptionsParam = getQueryParam(
     "options"
   ) as ProductMenuOptionsValuesType;
-  const getOptionsMenu = getQueryParam("opt-menu");
 
   //   -- UI click events
   const handleProductMenuItemClick = (
@@ -47,7 +38,7 @@ export const ProductActions = () => {
   //   -- Effect UI on query changes
   useEffect(() => {
     if (getOptionsParam == "product-options") {
-      setIsProductOptionsOpen(true);
+      productStore.setIsProductOptionsOpen(true);
     }
   }, [getOptionsParam]);
 
@@ -71,40 +62,7 @@ export const ProductActions = () => {
           items={PRODUCT_PAGE_MENU_OPTIONS}
         />
       </div>
-      <Sheet
-        open={isProductOptionsOpen}
-        onOpenChange={(value) =>
-          setIsProductOptionsOpen(() => {
-            if (!value) {
-              removeMultipleQueryParams("opt-menu", "options");
-            }
-            return value;
-          })
-        }
-      >
-        <SheetContent className="max-w-[1200px] w-full p-2">
-          <div className="w-full h-full bg-background-color_900C border border-border-color_1 rounded-xl">
-            <div className="w-full h-[50px] border-b border-border-color_1">
-              <ButtonGroup className="*:text-workspace_2">
-                {PRODUCT_OPTIONS_HEADER_MENUS.map((item, i) => {
-                  return (
-                    <Button
-                      variant={"secondary"}
-                      className={`text-text-color_2 bg-background-color_850C hover:bg-background-color_800C  ${getOptionsMenu === item.value && "text-surface-fg-2 bg-surface-bg-active hover:bg-surface-bg-active"}`}
-                      onClick={() => {
-                        handlePushQueryParam("opt-menu", item.value);
-                      }}
-                      key={i}
-                    >
-                      {item.label}
-                    </Button>
-                  );
-                })}
-              </ButtonGroup>
-            </div>
-          </div>
-        </SheetContent>
-      </Sheet>
+      <ProductOptions />
     </>
   );
 };

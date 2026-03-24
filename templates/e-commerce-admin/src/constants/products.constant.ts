@@ -1882,3 +1882,9 @@ export const DUMMY_ROW_DATA: ProductManageDataType[] = [
     status: { value: "PUBLISHED", label: "Published", level: "SAFE" },
   },
 ];
+
+export const ATTR_TYPE_OPTIONS: (Omit<CellSelectorValuesType<string>, "value"> & { value: "COLOR" | "TEXT" })[] = [
+  { value: "COLOR", label: "Color", },
+  { value: "TEXT", label: "Text", }
+
+]

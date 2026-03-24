@@ -31,6 +31,7 @@ export * from "./fxsuggestion-input";
 export * from "./get-issues-iconset";
 export * from "./ComboBoxCheckbox";
 export * from "./type";
+export * from "./badge";
 export * from "./fxbutton";
 export * from "./combobox";
 export * from "./tooltip";

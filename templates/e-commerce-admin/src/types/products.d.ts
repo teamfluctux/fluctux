@@ -1,10 +1,11 @@
-export type StatusLevelType = "SAFE" | "WARNING" | "DESTRUCTIVE";
+import type { AgSelectCellDataType } from "./ag-grid";
 
-export type AgSelectCellDataType = {
-  label: string;
-  value: string;
-  level?: StatusLevelType;
-};
+
+// -- Query params type
+export type ProductQueryParams = "options" | "opt-menu";
+
+
+
 
 // export type ShippingMethod = {
 //   name: string

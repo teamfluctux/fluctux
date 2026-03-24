@@ -19,6 +19,8 @@ import {
 import { ProductOverview } from "./ProductsOverview";
 import { ProductActions } from "./ProductActions";
 
+
+
 export default function ProductPage() {
   useEffect(() => {
     workspaceHeaderStore.setMetaData({
@@ -42,6 +44,7 @@ export default function ProductPage() {
         LevelConstants: DUMMY_STATUS_LEVEL,
       }),
     },
+    
     {
       field: "categories",
       cellRenderer: AgCellPopover,
