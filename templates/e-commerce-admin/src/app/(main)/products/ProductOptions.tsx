@@ -37,6 +37,8 @@ type AttrDataType = {
 const PRODUCT_OPTIONS_HEADER_MENUS: MenuDataType[] = [
   { label: "Attributes", value: "attributes" },
   { label: "Variations", value: "variations" },
+  { label: "Status Labels", value: "status-labels" },
+  { label: "Stock Labels", value: "stocks-labels" },
 ];
 
 export const ProductOptions = observer(() => {
@@ -83,6 +85,7 @@ export const ProductOptions = observer(() => {
     },
   ]);
 
+  //   -- Remove specific row by id
   const removeAttrById = useCallback((id: string) => {
     const rowData = gridRef.current!.api.getRowNode(id);
     const result = gridRef.current!.api.applyTransaction({
@@ -97,6 +100,32 @@ export const ProductOptions = observer(() => {
     );
   }, []);
 
+  /**
+   * Updates the `data` column cell whenever the `type` column value changes.
+   * This forces AG Grid to re-render the `data` cell renderer with the latest row data,
+   * reflecting the new type. Also intended as the hook point for persisting the change to the database.
+   *
+   * @param value - The newly selected type value (e.g. `"COLOR"` or `"TEXT"`)
+   * @param params - The full `ICellRendererParams` from the `type` cell renderer,
+   * used to access the row node and grid API
+   *
+   * @example
+   * ```ts
+   * cellRendererParams: TAgCellSelectorRendererParams({
+   *   initialData: ATTR_TYPE_OPTIONS,
+   *   LevelConstants: {},
+   *   onSelectionChange: handleUpdateDataOnTypeChange,
+   * }),
+   * ```
+   *
+   * @remarks
+   * - Uses `params.node.setDataValue("data", [...getDataNodeValues])` to trigger
+   *   a cell value change event on the `data` column, which causes AG Grid to
+   *   call `refresh()` on the `AGCellBadge` renderer
+   * - The spread `[...getDataNodeValues]` creates a new array reference,
+   *   ensuring AG Grid detects the change even if the contents are the same
+   * - Database persistence logic should be added inside this function
+   */
   const handleUpdateDataOnTypeChange = (
     value: string,
     params: ICellRendererParams
@@ -140,25 +169,24 @@ export const ProductOptions = observer(() => {
   // -- Get query params
   const getOptionsMenuParam = getQueryParam("opt-menu");
 
+  //   -- Remove multiple rows via transaction
   const removeSelected = useCallback(() => {
     const selectedRows =
       gridRef.current!.api.getSelectedRows() as AttrDataType[];
     const selectedData = selectedRows.map((row) => row);
-    gridRef.current!.api.applyTransactionAsync(
+    const result = gridRef.current!.api.applyTransaction(
       {
         remove: selectedData,
-      },
-      (res) => {
-        setAttrRowData(
+      }
+    );
+    setAttrRowData(
           (prev) =>
-            res?.remove?.reduce(
+            result?.remove?.reduce(
               (acc, rowNode) =>
                 acc.filter((item) => item.id !== rowNode.data.id),
               prev
             ) ?? prev
         );
-      }
-    );
   }, []);
 
   return (
@@ -174,7 +202,7 @@ export const ProductOptions = observer(() => {
         }}
       >
         <SheetContent
-        overlayBackground
+          overlayBackground
           className="max-w-[1200px] w-full p-2 "
           //   disable pointer event propagation. so that on select click sheet dont turn off
           onPointerDownOutside={(e) => e.preventDefault()}

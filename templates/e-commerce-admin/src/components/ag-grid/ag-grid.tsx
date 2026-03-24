@@ -227,7 +227,7 @@ export const AgGridComponent = forwardRef<
         getRowId={getRowId} // use id as the row key to avoid key conflicts:
         // to enable custom filter
         enableFilterHandlers={true} 
-        
+        asyncTransactionWaitMillis={2000} // wait duration for async badge update
         modules={[
           ClientSideRowModelModule,
           ClientSideRowModelApiModule,

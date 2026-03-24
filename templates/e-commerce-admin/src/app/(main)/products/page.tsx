@@ -33,8 +33,11 @@ export default function ProductPage() {
   const [rowData, setRowData] = useState(DUMMY_ROW_DATA);
   // Column Definitions: Defines the columns to be displayed.
   const [colDefs, setColDefs] = useState<ColDef<ProductManageDataType>[]>([
-    { field: "name" },
-    { field: "price" },
+    { field: "name", pinned: true, width: 400 },
+     { field: "slug" },
+    { field: "regular_price" },
+    { field: "sale_price" },
+    { field: "discount" },
     {
       field: "status",
       cellRenderer: AgCellSelector,

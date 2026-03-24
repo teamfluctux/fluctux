@@ -3,7 +3,7 @@ import type { IndicatorType } from "@/types";
 import { FxSeparator } from "@fluctux/ui";
 import type { LucideIcon } from "lucide-react";
 import React from "react";
-import { Tooltip, type TooltipContentProps, type TooltipProps } from "recharts";
+import { Tooltip, type TooltipContentProps } from "recharts";
 import type { TooltipPayloadEntry } from "recharts/types/state/tooltipSlice";
 
 type TooltipIndicatorShapeType = "square" | "bot" | "circle";

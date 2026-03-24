@@ -5,7 +5,6 @@ import {
   Legend,
   type DefaultLegendContentProps,
   type LegendPayload,
-  type LegendProps,
 } from "recharts";
 
 type LegendItemColorIndicatorShapeType = "square" | "circle" | "rect";
@@ -84,7 +83,7 @@ export const CustomLegend = ({
     <div
       className={`w-fit flex justify-center items-center gap-2 ${className}`}
     >
-      {payload.map((entry, i) => {
+      {payload.map((entry) => {
         const Icon = icons && icons[entry.dataKey as string];
         if (entry.dataKey == "spacer") return null;
         return (
