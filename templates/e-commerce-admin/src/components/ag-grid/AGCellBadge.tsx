@@ -27,13 +27,13 @@ export function TAgCellBadgeRendererParams(
 
 export const AGCellBadge = forwardRef(
   (
-    props: Omit<AGCellBadgePropsType, "data"> & {
+    params: Omit<AGCellBadgePropsType, "data"> & {
       data: { type: { label: string; value: string } };
     },
 
     ref: React.Ref<Omit<ICellRendererComp, "getGui">>
   ) => {
-    const { value, node, onRemoveRow } = props;
+    const { value, node, onRemoveRow } = params;
     const [storedValue, setStoredValue] = useState<CellBadgeDataType[]>(value);
 
     useImperativeHandle(ref, () => {

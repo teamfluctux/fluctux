@@ -51,7 +51,7 @@ export function TAgCellPopoverRendererParams(
   return params;
 }
 
-export const AgCellPopover = (props: AgCellPopoverPropsType) => {
+export const AgCellPopover = (params: AgCellPopoverPropsType) => {
   const {
     popoverTriggerNode,
     value,
@@ -60,7 +60,7 @@ export const AgCellPopover = (props: AgCellPopoverPropsType) => {
     onDeleteClick,
     isIcon,
     isImage,
-  } = props;
+  } = params;
 
   return (
     <Popover>

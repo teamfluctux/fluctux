@@ -88,10 +88,22 @@ export const ProductOptions = observer(() => {
     const result = gridRef.current!.api.applyTransaction({
       remove: [rowData],
     });
-    console.log("hello", result)
     // remove after successfull remove from grid
-    setAttrRowData((prev) => prev.filter(item => item.id !== result?.remove.map((item) => item.data.id).toString()))
+    setAttrRowData((prev) =>
+      prev.filter(
+        (item) =>
+          item.id !== result?.remove.map((item) => item.data.id).toString()
+      )
+    );
   }, []);
+
+  const handleUpdateDataOnTypeChange = (
+    value: string,
+    params: ICellRendererParams
+  ) => {
+    const getDataNodeValues = params.node.data.data;
+    params.node.setDataValue("data", [...getDataNodeValues]);
+  };
 
   const [attrColDefs] = useState<ColDef<AttrDataType>[]>([
     {
@@ -107,6 +119,7 @@ export const ProductOptions = observer(() => {
       cellRenderer: AgCellSelector,
       cellRendererParams: TAgCellSelectorRendererParams({
         initialData: ATTR_TYPE_OPTIONS,
+        onSelectionChange: handleUpdateDataOnTypeChange,
       }),
     },
     {
@@ -131,10 +144,21 @@ export const ProductOptions = observer(() => {
     const selectedRows =
       gridRef.current!.api.getSelectedRows() as AttrDataType[];
     const selectedData = selectedRows.map((row) => row);
-    gridRef.current!.api.applyTransaction({
-      remove: selectedData,
-    });
-
+    gridRef.current!.api.applyTransactionAsync(
+      {
+        remove: selectedData,
+      },
+      (res) => {
+        setAttrRowData(
+          (prev) =>
+            res?.remove?.reduce(
+              (acc, rowNode) =>
+                acc.filter((item) => item.id !== rowNode.data.id),
+              prev
+            ) ?? prev
+        );
+      }
+    );
   }, []);
 
   return (
@@ -150,6 +174,7 @@ export const ProductOptions = observer(() => {
         }}
       >
         <SheetContent
+        overlayBackground
           className="max-w-[1200px] w-full p-2 "
           //   disable pointer event propagation. so that on select click sheet dont turn off
           onPointerDownOutside={(e) => e.preventDefault()}

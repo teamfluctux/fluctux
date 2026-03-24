@@ -24,7 +24,7 @@ type AgCellSelectorPropsType<TLevel extends string> = {
   LevelConstants: Record<TLevel, string>;
   // pass available options as a prop if they are dynamic
   initialData?: CellSelectorValuesType<TLevel>[];
-  onSelectionChange?: (value: string, params: ICellRendererParams ) => void;
+  onSelectionChange?: (value: string, params: ICellRendererParams) => void;
 } & ICellRendererParams;
 
 /**
@@ -106,12 +106,13 @@ export function TAgCellSelectorRendererParams<TLevel extends string>(
  */
 // In cellrenderer we can access params directly from props
 export const AgCellSelector = <TLevel extends string>(
-  props: AgCellSelectorPropsType<TLevel>,
+  params: AgCellSelectorPropsType<TLevel>,
   ref: React.Ref<Omit<ICellRendererComp, "getGui">>
 ) => {
   // State to manage the selected value within the component
   // AG Grid provides 'value' directly from the 'field' specified in colDefs
-  const { value, initialData, LevelConstants, onSelectionChange, data, node } = props;
+  const { value, initialData, LevelConstants, onSelectionChange, data, node } =
+    params;
   const [selectedValue, setSelectedValue] =
     useState<CellSelectorValuesType<TLevel>>(value);
 
@@ -136,19 +137,15 @@ export const AgCellSelector = <TLevel extends string>(
     setSelectedValue(getChangedData);
     // Notify AG Grid of the change
     // This will update the underlying row data
-    props.setValue?.(getChangedData);
-    // -- Pass the value
-    onSelectionChange?.(value, props);
-
-    // testing
-    const getData = node.data.data
-    node.setDataValue("data", [...getData])
+    params.setValue?.(getChangedData);
+    // -- Pass the value and params
+    onSelectionChange?.(value, params);
   };
 
   const getInitialData: CellSelectorValuesType<TLevel>[] = initialData || [];
 
   return (
-    <Select key={data.id} value={selectedValue?.value} onValueChange={handleValueChange}>
+    <Select value={selectedValue?.value} onValueChange={handleValueChange}>
       <SelectTrigger
         className={`w-full! bg-transparent! border-none!  h-full! group px-4! hover:!bg-background-color_850C ring-0! outline-hidden!  rounded-none! `}
       >
