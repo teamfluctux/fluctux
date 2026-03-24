@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { workspaceHeaderStore } from "@/services/stores";
+import { productStore, workspaceHeaderStore } from "@/services/stores";
 import type { ColDef } from "ag-grid-community";
 
 import {
@@ -13,12 +13,16 @@ import {
   AgCellPopover,
   AgCellSelector,
   AgGridComponent,
+  AgViewAsPopup,
   TAgCellPopoverRendererParams,
   TAgCellSelectorRendererParams,
+  TAgViewAsPopupRendererParams,
 } from "@/components/ag-grid";
-import { ProductActions, ProductOverview } from "@/components/workspace/products";
-
-
+import {
+  ProductActions,
+  ProductOverview,
+  ProductPopupView,
+} from "@/components/workspace/products";
 
 export default function ProductPage() {
   useEffect(() => {
@@ -26,14 +30,21 @@ export default function ProductPage() {
       title: "Manage Products",
       desc: "View, edit, and organize your entire product catalog",
     });
-    return () => workspaceHeaderStore.clearMetaData()
+    return () => workspaceHeaderStore.clearMetaData();
   }, []);
 
   const [rowData, setRowData] = useState(DUMMY_ROW_DATA);
+
+  const handleViewAsPopupClick = (id: string) => {
+    productStore.setProductPopupView({open: true, id})
+  }
+
   // Column Definitions: Defines the columns to be displayed.
   const [colDefs, setColDefs] = useState<ColDef<ProductManageDataType>[]>([
-    { field: "name", pinned: true, width: 400 },
-     { field: "slug" },
+    { field: "name", pinned: true, width: 400, cellRenderer: AgViewAsPopup, cellRendererParams: TAgViewAsPopupRendererParams({
+      onViewAsClick: handleViewAsPopupClick
+    }) },
+    { field: "slug" },
     { field: "regular_price" },
     { field: "sale_price" },
     { field: "discount" },
@@ -46,7 +57,7 @@ export default function ProductPage() {
         LevelConstants: DUMMY_STATUS_LEVEL,
       }),
     },
-    
+
     {
       field: "categories",
       cellRenderer: AgCellPopover,
@@ -60,6 +71,7 @@ export default function ProductPage() {
   ]);
 
   return (
+    <>
     <div className="w-full h-[calc(100vh-80px)] overflow-hidden">
       <section className="h-[55px] w-full flex flex-col justify-center">
         <div className="flex justify-between items-center">
@@ -75,5 +87,7 @@ export default function ProductPage() {
         />
       </section>
     </div>
+    <ProductPopupView/>
+    </>
   );
 }

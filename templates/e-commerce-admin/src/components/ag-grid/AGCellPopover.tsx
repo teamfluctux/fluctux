@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import type React from "react";
 import type { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
 import {
@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { forwardRef } from "react";
 
 export type AgCellPopoverDataType = {
   label?: string;
@@ -27,7 +28,7 @@ export type AgCellPopoverDataType = {
   slug?: string;
 };
 
-type AgCellPopoverPropsType = {
+type AgCellPopoverParamsType = {
   popoverTriggerNode?: React.ReactNode;
   isIcon?: boolean;
   isImage?: boolean;
@@ -39,7 +40,7 @@ type AgCellPopoverPropsType = {
 export function TAgCellPopoverRendererParams(
   params: Partial<
     Pick<
-      AgCellPopoverPropsType,
+      AgCellPopoverParamsType,
       | "popoverTriggerNode"
       | "isIcon"
       | "isImage"
@@ -113,7 +114,7 @@ export function TAgCellPopoverRendererParams(
  * - Items with a `slug` field can use `isOpenNewTabButton` to render a navigation link
  * - This component does not use `forwardRef` — it is display-only and does not expose `refresh` or `getValue`
  */
-export const AgCellPopover = (params: AgCellPopoverPropsType) => {
+export const AgCellPopover = (params: AgCellPopoverParamsType, ref: Omit<ICellRendererComp, "getGui">) => {
   const {
     popoverTriggerNode,
     value,

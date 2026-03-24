@@ -16,7 +16,7 @@ export const WorkSpaceHeader = observer(() => {
   const router = useRouter();
 
   return (
-    <header className=" w-full h-[60px] sticky top-0 mt-5   backdrop-blur-2xl z-[9999] ">
+    <header className=" w-full h-[60px] sticky top-0 mt-5   backdrop-blur-2xl z-[999] ">
       <div className="max-w-[1200px] w-full px-5  h-full mx-auto items-center flex justify-between">
         <div className="w-full flex justify-start items-center">
           <div className="text-left leading-5">

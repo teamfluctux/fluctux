@@ -5,7 +5,7 @@ import {
 } from "@/constants";
 import { FxButton, FxPopover } from "@fluctux/ui";
 
-import { Ellipsis, PlusIcon } from "lucide-react";
+import { CirclePlus, Ellipsis, PlusIcon } from "lucide-react";
 import { useEffect } from "react";
 
 import { useUrlQueryParams } from "@fluctux/hooks";
@@ -46,7 +46,7 @@ export const ProductActions = () => {
   return (
     <>
       <div className="flex justify-center items-center w-fit shrink-0 gap-3">
-        <FxButton icon={PlusIcon} variant="primary" size="sm">
+        <FxButton icon={CirclePlus} variant="primary" size="sm" >
           Add Products
         </FxButton>
         <FxPopover<typeof PRODUCT_PAGE_MENU_OPTIONS>

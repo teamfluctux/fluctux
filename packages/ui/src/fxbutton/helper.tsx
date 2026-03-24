@@ -18,24 +18,30 @@ export type ButtonStylingType = {
   };
 };
 
-type ButtonSizeType = "rounded_sm" | "rounded_md" | SizeType;
+type ButtonSizeType = "rounded_sm" | "rounded_md" | "square_sm" | "square_xs" | "xs" | SizeType;
 
 export const buttonSizes: { [key in ButtonSizeType]: string } = {
-  sm: "h-7.5 px-3 text-workspace_3 rounded-lg",
+  xs: "h-6 px-2 text-workspace_3 rounded-sm",
+  sm: "h-7.5 px-3 text-workspace_2 rounded-md",
   md: "h-10 px-4 text-workspace_1 rounded-lg",
   lg: "h-12 px-5 text-read_16 rounded-xl",
   xl: "h-14 px-6 text-read_18 rounded-xl",
   rounded_sm: "w-7.5 h-7.5 shrink-0  rounded-full",
   rounded_md: "w-10 h-10 shrink-0  rounded-full",
+  square_xs: "w-6 h-6 shrink-0 rounded-md",
+  square_sm: "w-7.5 h-7.5 shrink-0 rounded-md",
 };
 
 export const iconSizes: { [key in ButtonSizeType]: number } = {
+  xs: 14,
   sm: 15, // 13px text
-  md: 17, // 15px text
-  lg: 19, // 16px text
-  xl: 21, // 18px text
+  md: 16, // 15px text
+  lg: 17, // 16px text
+  xl: 19, // 18px text
   rounded_sm: 15,
   rounded_md: 17,
+  square_sm: 15,
+  square_xs: 14
 };
 
 export const buttonStyling: ButtonStylingType = {

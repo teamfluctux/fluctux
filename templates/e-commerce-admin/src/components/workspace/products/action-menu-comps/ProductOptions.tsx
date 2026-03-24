@@ -194,7 +194,7 @@ export const ProductOptions = observer(() => {
         modal={false} // prevent intercepting pointer events
         open={productStore.isProductOptionsOpen}
         onOpenChange={(value) => {
-          productStore.setIsProductOptionsOpen(value);
+          productStore.setIsProductOptionsOpen();
           if (!value) {
             removeMultipleQueryParams("opt-menu", "options");
           }

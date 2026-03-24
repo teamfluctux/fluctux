@@ -10,69 +10,66 @@ import React, {
   useState,
 } from "react";
 
-type AGCellBadgePropsType = {
+type AGCellBadgeParamsType = {
   onRemoveRow?: (id: string) => void;
 } & ICellRendererParams;
 
 export function TAgCellBadgeRendererParams(
-  params: Partial<Pick<AGCellBadgePropsType, "onRemoveRow">>
+  params: Partial<Pick<AGCellBadgeParamsType, "onRemoveRow">>
 ) {
   return params;
 }
 
-export const AGCellBadge = forwardRef(
-  (
-    params: Omit<AGCellBadgePropsType, "data"> & {
-      data: { type: { label: string; value: string } };
-    },
+export const AGCellBadge = (
+  params: Omit<AGCellBadgeParamsType, "data"> & {
+    data: { type: { label: string; value: string } };
+  },
+  ref: React.Ref<Omit<ICellRendererComp, "getGui">>
+) => {
+  const { value, node, onRemoveRow } = params;
+  const [storedValue, setStoredValue] = useState<CellBadgeDataType[]>(value);
 
-    ref: React.Ref<Omit<ICellRendererComp, "getGui">>
-  ) => {
-    const { value, node, onRemoveRow } = params;
-    const [storedValue, setStoredValue] = useState<CellBadgeDataType[]>(value);
+  useImperativeHandle(ref, () => {
+    return {
+      refresh: (params: ICellRendererParams) => {
+        return false;
+      },
 
-    useImperativeHandle(ref, () => {
-      return {
-        refresh: (params: ICellRendererParams) => {
-          return false;
-        },
+      getValue: () => {
+        return storedValue;
+      },
+    };
+  });
 
-        getValue: () => {
-          return storedValue;
-        },
-      };
-    });
-
-    return (
-      <div className="w-full h-full flex justify-between items-center">
-        <div className="w-full h-full flex justify-start items-center gap-2">
-          {storedValue.map((item, i) => {
-            return (
-              <Badge
-                key={i}
-                className="bg-background-color_850C border border-border-color_1 text-text-color_4 text-workspace_2 group"
-              >
-                {item.label ?? item.values}
-              </Badge>
-            );
-          })}
-        </div>
-        <div className="w-fit flex justify-center items-center shrink-0 gap-2">
-          <FxButton
-            icon={Edit}
-            variant="secondary"
-            size="sm"
-            className="px-1.5!"
-          ></FxButton>
-          <FxButton
-            onClick={() => onRemoveRow?.(node.data.id as string)}
-            icon={Trash}
-            variant="secondary"
-            size="sm"
-            className="px-1.5!"
-          ></FxButton>
-        </div>
+  return (
+    <div className="w-full h-full flex justify-between items-center">
+      <div className="w-full h-full flex justify-start items-center gap-2">
+        {storedValue.map((item, i) => {
+          return (
+            <Badge
+              key={i}
+              className="bg-background-color_850C border border-border-color_1 text-text-color_4 text-workspace_2 group"
+            >
+              {item.label ?? item.values}
+            </Badge>
+          );
+        })}
       </div>
-    );
-  }
-);
+      <div className="w-fit flex justify-center items-center shrink-0 gap-2">
+        <FxButton
+          icon={Edit}
+          variant="secondary"
+              size="square_xs"
+         
+        ></FxButton>
+        <FxButton
+          onClick={() => onRemoveRow?.(node.data.id as string)}
+          icon={Trash}
+          variant="secondary"
+     size="square_xs"
+       
+        ></FxButton>
+      </div>
+    </div>
+  );
+};

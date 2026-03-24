@@ -1,5 +1,10 @@
-"use client"
-import React, { useState, useEffect, useImperativeHandle } from "react";
+"use client";
+import React, {
+  useState,
+  useEffect,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
 import {
   type ICellRendererComp,
   type ICellRendererParams,
@@ -21,7 +26,7 @@ export type CellSelectorValuesType<TLevel extends string> = {
 };
 
 // Define props for Cell Renderer
-type AgCellSelectorPropsType<TLevel extends string> = {
+type AgCellSelectorParamsType<TLevel extends string> = {
   LevelConstants: Record<TLevel, string>;
   // pass available options as a prop if they are dynamic
   initialData?: CellSelectorValuesType<TLevel>[];
@@ -63,7 +68,7 @@ type AgCellSelectorPropsType<TLevel extends string> = {
 export function TAgCellSelectorRendererParams<TLevel extends string>(
   params: Partial<
     Pick<
-      AgCellSelectorPropsType<TLevel>,
+      AgCellSelectorParamsType<TLevel>,
       "initialData" | "LevelConstants" | "onSelectionChange"
     >
   >
@@ -136,13 +141,12 @@ export function TAgCellSelectorRendererParams<TLevel extends string>(
  */
 // In cellrenderer we can access params directly from params
 export const AgCellSelector = <TLevel extends string>(
-  params: AgCellSelectorPropsType<TLevel>,
+  params: AgCellSelectorParamsType<TLevel>,
   ref: React.Ref<Omit<ICellRendererComp, "getGui">>
 ) => {
   // State to manage the selected value within the component
   // AG Grid provides 'value' directly from the 'field' specified in colDefs
-  const { value, initialData, LevelConstants, onSelectionChange } =
-    params;
+  const { value, initialData, LevelConstants, onSelectionChange } = params;
   const [selectedValue, setSelectedValue] =
     useState<CellSelectorValuesType<TLevel>>(value);
 

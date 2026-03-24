@@ -206,6 +206,7 @@ export const AgGridComponent = forwardRef<
         checkboxCheckedBackgroundColor: "var(--primary-color)",
         checkboxCheckedShapeColor: "#ffffff",
         valueChangeValueHighlightBackgroundColor: "var(--soft-green-bg-active)",
+        pinnedRowBackgroundColor: "red",
         buttonActiveBorder: {
           style: "solid",
           color: "var(--surface-bg-active)",

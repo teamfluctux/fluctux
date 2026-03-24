@@ -83,11 +83,13 @@ export const Sidebar = () => {
             </p>
           </div>
           <FxButton
+          icon={Settings}
+          iconSize={17}
             onClick={() => router.push("/settings/account")}
-            className="w-[30px]! h-[30px]! p-0!  flex justify-center items-center "
+            size="square_sm"
             variant="secondary"
           >
-            <Settings size={LUCIDE_WORKSPACE_ICON_SIZE} />
+            
           </FxButton>
         </div>
       </div>
