@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import type { CellBadgeDataType } from "@/types";
 import { Badge, FxButton } from "@fluctux/ui";
 import type { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
@@ -15,12 +15,7 @@ type AGCellBadgePropsType = {
 } & ICellRendererParams;
 
 export function TAgCellBadgeRendererParams(
-  params: Partial<
-    Pick<
-      AGCellBadgePropsType,
-      "onRemoveRow"
-    >
-  >
+  params: Partial<Pick<AGCellBadgePropsType, "onRemoveRow">>
 ) {
   return params;
 }
@@ -62,7 +57,6 @@ export const AGCellBadge = forwardRef(
             );
           })}
         </div>
-        {node.data.type.value}
         <div className="w-fit flex justify-center items-center shrink-0 gap-2">
           <FxButton
             icon={Edit}

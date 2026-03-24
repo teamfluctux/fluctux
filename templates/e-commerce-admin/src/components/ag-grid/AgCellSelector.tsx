@@ -28,7 +28,7 @@ type AgCellSelectorPropsType<TLevel extends string> = {
 } & ICellRendererParams;
 
 /**
- * A type-safe helper for passing `cellRendererParams` to AG Grid's `AgGridCellSelector` renderer.
+ * A type-safe helper for passing `cellRendererParams` to AG Grid's `AgCellSelector` renderer.
  *
  * Since AG Grid types `cellRendererParams` as `any`, this function enforces
  * type validation on the params you pass, giving you autocomplete and compile-time errors.
@@ -38,20 +38,24 @@ type AgCellSelectorPropsType<TLevel extends string> = {
  * @param params - The renderer params to pass
  * @param params.initialData - The list of selectable options for the cell dropdown
  * @param params.LevelConstants - A record mapping each level key to a Tailwind/CSS className string
- * @param params.onSelectionChange - Optional callback fired when the user selects a new value
+ * @param params.onSelectionChange - Optional callback fired when the user selects a new value.
+ * Receives the selected `value` string and the full `ICellRendererParams` instance.
  *
  * @returns The same params object, but with full type checking applied
  *
  * @example
  * ```ts
  * cellRendererParams: TAgCellSelectorRendererParams<StatusLevelType>({
- *   initialData: statusOptions,          // CellValuesType<StatusLevelType>[]
+ *   initialData: statusOptions,
  *   LevelConstants: {
  *     SAFE: "text-green-500",
  *     WARNING: "text-yellow-600",
  *     DESTRUCTIVE: "text-red-600",
  *   },
- *   onSelectionChange: (value) => console.log(value),
+ *   onSelectionChange: (value, params) => {
+ *     console.log("selected:", value);
+ *     params.api.refreshCells({ rowNodes: [params.node], columns: ["data"], force: true });
+ *   },
  * }),
  * ```
  */
@@ -77,41 +81,66 @@ export function TAgCellSelectorRendererParams<TLevel extends string>(
  * @param props - Component props extending AG Grid's `ICellRendererParams`
  * @param props.value - The current cell value as a `CellSelectorValuesType<TLevel>` object
  * @param props.initialData - The list of selectable options rendered in the dropdown
- * @param props.LevelConstants - A record mapping each `TLevel` key to a Tailwind/CSS className string for styling
- * @param props.onSelectionChange - Optional callback fired with the selected `value` string when the user changes selection
+ * @param props.LevelConstants - A record mapping each `TLevel` key to a Tailwind/CSS className string for styling.
+ * Pass an empty object `{}` if no level-based styling is needed.
+ * @param props.onSelectionChange - Optional callback fired when the user selects a new value.
+ * Receives the selected `value` string and the full `ICellRendererParams` for accessing the grid API.
  * @param ref - Forwarded ref exposing AG Grid's `refresh` and `getValue` cell renderer methods
  *
  * @example
  * ```tsx
- * // in colDefs
+ * // Basic usage
+ * {
+ *   field: "type",
+ *   cellRenderer: AgCellSelector,
+ *   cellStyle: { padding: "0px 0px" },
+ *   cellRendererParams: TAgCellSelectorRendererParams({
+ *     initialData: ATTR_TYPE_OPTIONS,
+ *     LevelConstants: {},
+ *   }),
+ * }
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // With level-based styling and selection callback
  * {
  *   field: "status",
  *   cellRenderer: AgCellSelector,
+ *   cellStyle: { padding: "0px 0px" },
  *   cellRendererParams: TAgCellSelectorRendererParams<StatusLevelType>({
- *     initialData: statusOptions,
+ *     initialData: DUMMY_STATUS_OPTIONS,
  *     LevelConstants: {
  *       SAFE: "text-green-500",
  *       WARNING: "text-yellow-600",
  *       DESTRUCTIVE: "text-red-600",
  *     },
- *     onSelectionChange: (value) => console.log("selected:", value),
+ *     onSelectionChange: (value, params) => {
+ *       params.api.refreshCells({
+ *         rowNodes: [params.node],
+ *         columns: ["data"],
+ *         force: true,
+ *       });
+ *     },
  *   }),
  * }
  * ```
  *
  * @remarks
- * - `getValue()` returns the current `value` string to AG Grid when it reads the cell
- * - `refresh()` always returns `false` — AG Grid will not force re-render on data changes
- * - Use `TAgCellSelectorRendererParams` helper to get type safety on `cellRendererParams`
+ * - `getValue()` returns the full `CellSelectorValuesType` object to AG Grid when it reads the cell
+ * - `refresh()` always returns `false` — AG Grid will not force re-render on external data changes
+ * - `params.setValue` is called internally to update the underlying row node data on selection
+ * - Use `TAgCellSelectorRendererParams` helper to get full type safety on `cellRendererParams`
+ * - Pass `LevelConstants: {}` when no conditional styling is needed
  */
-// In cellrenderer we can access params directly from props
+// In cellrenderer we can access params directly from params
 export const AgCellSelector = <TLevel extends string>(
   params: AgCellSelectorPropsType<TLevel>,
   ref: React.Ref<Omit<ICellRendererComp, "getGui">>
 ) => {
   // State to manage the selected value within the component
   // AG Grid provides 'value' directly from the 'field' specified in colDefs
-  const { value, initialData, LevelConstants, onSelectionChange, data, node } =
+  const { value, initialData, LevelConstants, onSelectionChange } =
     params;
   const [selectedValue, setSelectedValue] =
     useState<CellSelectorValuesType<TLevel>>(value);
