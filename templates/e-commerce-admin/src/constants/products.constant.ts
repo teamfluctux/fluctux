@@ -897,3 +897,45 @@ export const ATTR_TYPE_OPTIONS: (Omit<CellSelectorValuesType<string>, "value"> &
   { value: "TEXT", label: "Text", }
 
 ]
+
+
+export const DUMMY_PRODUCT_CATEGORIES = [
+  { label: "Electronics", value: "electronics" },
+  { label: "Home & Garden", value: "home-garden" },
+  { label: "Beauty & Health", value: "beauty-health" },
+  { label: "Toys & Hobbies", value: "toys-hobbies" },
+  { label: "Automotive", value: "automotive" },
+];
+
+export const DUMMY_PRODUCT_TAGS = [
+  { label: "New Arrival", value: "new-arrival" },
+  { label: "Best Seller", value: "best-seller" },
+  { label: "Limited Edition", value: "limited-edition" },
+  { label: "Discounted", value: "discounted" },
+  { label: "Eco-Friendly", value: "eco-friendly" },
+  { label: "Free Shipping", value: "free-shipping" },
+  { label: "Handmade", value: "handmade" },
+  { label: "Refurbished", value: "refurbished" },
+  { label: "Trending", value: "trending" },
+  { label: "Seasonal", value: "seasonal" },
+  { label: "Clearance", value: "clearance" },
+  { label: "Premium", value: "premium" },
+];
+
+export const DUMMY_PRODUCT_BRANDS = [
+  { label: "Apple", value: "apple" },
+  { label: "Samsung", value: "samsung" },
+  { label: "Sony", value: "sony" },
+  { label: "Nike", value: "nike" },
+  { label: "Adidas", value: "adidas" },
+  { label: "Logitech", value: "logitech" },
+  { label: "Dell", value: "dell" },
+  { label: "HP", value: "hp" },
+  { label: "Asus", value: "asus" },
+  { label: "Microsoft", value: "microsoft" },
+  { label: "Bosch", value: "bosch" },
+  { label: "L'Oréal", value: "loreal" },
+  { label: "Xiaomi", value: "xiaomi" },
+  { label: "Razer", value: "razer" },
+  { label: "Corsair", value: "corsair" },
+];

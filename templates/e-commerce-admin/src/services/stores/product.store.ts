@@ -1,16 +1,22 @@
+import type { ProductManageDataType } from "@/types";
 import { action, makeObservable, observable } from "mobx";
 
-type ProductPopupViewType = { open: boolean, id: string }
+type ProductPopupViewType = { open?: boolean, id?: string }
 
 class ProductStore {
     isProductOptionsOpen: boolean = false
-    productPopupView: ProductPopupViewType = { open: false, id: "" }
+    productPopupView: ProductPopupViewType | null = null
+    createProduct: ProductManageDataType | null = null
     constructor() {
         makeObservable(this, {
             isProductOptionsOpen: observable,
             setIsProductOptionsOpen: action,
             productPopupView: observable,
-            setProductPopupView: action
+            setProductPopupView: action,
+            clearProductPopupView: action,
+            createProduct: observable,
+            setCreateProduct: action,
+            clearCreateProduct: action
         })
     }
 
@@ -19,10 +25,24 @@ class ProductStore {
     }
     setProductPopupView(data: Partial<ProductPopupViewType>) {
         // set value seperately so that mobx dont trigger state unnecessarily
-        Object.entries(data).map(([Key, value]) => {
-            (this.productPopupView as any)[Key] = value
+        this.productPopupView = data
+    }
+
+    clearProductPopupView() {
+        this.productPopupView = null
+    }
+
+    setCreateProduct(data: Partial<ProductManageDataType>) {
+        Object.entries(data).map(([objectKey, value]) => {
+            (this.createProduct as any)[objectKey] = value
         })
     }
+
+    clearCreateProduct() {
+        this.createProduct = null
+    }
+
+
 }
 
 

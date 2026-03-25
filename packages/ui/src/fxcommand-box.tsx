@@ -6,6 +6,8 @@ interface FxCommandBoxProps {
   open?: boolean;
   className?: string;
   containerClasses?: string;
+   overlayBackground?: boolean;
+   modal?: boolean
 }
 
 export function FxCommandBox({
@@ -13,11 +15,16 @@ export function FxCommandBox({
   open,
   className,
   containerClasses,
+  overlayBackground = true,
+  modal = false
 }: FxCommandBoxProps) {
+  
   return (
     <CommandDialog
       open={open ?? false}
-      className={`bg-transparent ring-0! border-none p-0 z-9991 ${className}`}
+      modal={modal}
+      overlayBackground={overlayBackground}
+      className={`bg-transparent ring-0! border-none p-0 z-[9999] ${className}`}
     >
       <div
         className={`border border-border-color_1 rounded-xl bg-background-color_925C h-full w-full relative overflow-hidden ${containerClasses}`}
