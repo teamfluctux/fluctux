@@ -1,5 +1,5 @@
 "use client";
-import { KanbanColumnType, KanbanTaskType } from "@/types";
+import type { KanbanColumnType, KanbanTaskType } from "@/types";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { FxButton, IssueIcon, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
