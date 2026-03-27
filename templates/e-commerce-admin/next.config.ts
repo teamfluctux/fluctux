@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
    typescript: {
     ignoreBuildErrors: true, // ✅ optional: disables TS errors during build
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

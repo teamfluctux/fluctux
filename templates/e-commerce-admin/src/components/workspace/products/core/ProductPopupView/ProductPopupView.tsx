@@ -70,6 +70,7 @@ export const ProductPopupView = observer(() => {
 
   return (
     <FxCommandBox
+      modal={false}
       open={true}
       // to enable macos window open close animation pass classname here
       className="max-w-[1100px] w-full max-h-[650px] h-full "

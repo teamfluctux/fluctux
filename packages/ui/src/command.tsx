@@ -30,7 +30,7 @@ const CommandDialog = ({
 }: DialogProps & { overlayBackground?: boolean }) => {
   return (
     <Dialog {...props}>
-      {overlayBackground && (
+      {overlayBackground && props.open && (
         <div className="bg-black/10 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 z-[9999] duration-100 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
       )}
       <DialogOverlay />

@@ -14,7 +14,7 @@ export const CompWrapper = ({
   return (
     <>
       {fullWidth ? (
-        <div className="w-full p-10">
+        <div className="w-full p-10 h-full">
           <h1 className="text-text-color_1 text-read_20 font-semibold mb-5">
             {title}
           </h1>

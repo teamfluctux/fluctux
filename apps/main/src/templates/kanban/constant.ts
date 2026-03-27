@@ -1,4 +1,4 @@
-import { KanbanColumnType, KanbanTaskType } from "@/types";
+import type { KanbanColumnType, KanbanTaskType } from "@/types";
 
 export const COLUMN_DATA: KanbanColumnType[] = [
   { id: "col-1", title: "To Do", type: "todo" },

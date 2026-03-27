@@ -15,15 +15,15 @@ export function FxCommandBox({
   open,
   className,
   containerClasses,
-  overlayBackground = true,
-  modal = false
+  overlayBackground,
+  modal
 }: FxCommandBoxProps) {
   
   return (
     <CommandDialog
       open={open ?? false}
-      modal={modal}
-      overlayBackground={overlayBackground}
+      modal={modal && !overlayBackground}
+      overlayBackground={overlayBackground && !modal}
       className={`bg-transparent ring-0! border-none p-0 z-[9999] ${className}`}
     >
       <div
