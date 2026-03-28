@@ -33,9 +33,7 @@ class ProductStore {
     }
 
     setCreateProduct(data: Partial<ProductManageDataType>) {
-        Object.entries(data).map(([objectKey, value]) => {
-            (this.createProduct as any)[objectKey] = value
-        })
+        Object.assign(this.createProduct!, data)
     }
 
     clearCreateProduct() {

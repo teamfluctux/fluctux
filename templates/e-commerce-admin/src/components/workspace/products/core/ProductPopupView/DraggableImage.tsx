@@ -48,7 +48,7 @@ export const DraggableImage = ({
 
   if (isOverlay) {
     return (
-      <div className="w-[200px] h-[200px]">
+      <div className="w-full h-[200px]">
         <ProductImage item={item} />
       </div>
     );
@@ -59,13 +59,13 @@ export const DraggableImage = ({
     return (
       <div
         ref={ref}
-        className="w-[200px] h-[200px] flex justify-center items-center text-surface-bg-active rounded-lg border border-dashed border-surface-border bg-surface-bg overflow-hidden"
+        className="w-full h-[200px] flex justify-center items-center text-surface-bg-active rounded-lg border border-dashed border-surface-border bg-surface-bg overflow-hidden"
       ><ImageIcon size={90} strokeWidth={1.2} /></div>
     );
   }
 
   return (
-    <div ref={ref} className="w-[200px] h-[200px] relative">
+    <div ref={ref} className="w-full h-[200px] relative">
       {index == 0 && <Badge className="absolute top-2 left-2 ">Thumbnail Image</Badge>}
       <ProductImage item={item} />
     </div>

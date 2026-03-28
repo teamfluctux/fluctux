@@ -45,7 +45,7 @@ export const FxButton = ({
     <button
       disabled={disabled || loading}
       className={`
-        transition-colors *:transition-colors flex justify-center items-center group cursor-default font-medium gap-1.5 ${buttonStyling} ${className}`}
+        transition-colors *:transition-colors flex justify-center items-center group cursor-default font-medium gap-1 ${buttonStyling} ${className}`}
       {...props}
     >
       {iconPosition == "LEFT" && Icon && <Icon size={buttonIconSize} />}

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { CompWrapper } from "./CompWrapper";
+import { CompWrapper, CompWrapperAction } from "./CompWrapper";
 import {
   DragDropManager,
   DragDropProvider,
@@ -14,6 +14,8 @@ import type { ProductManageDataType } from "@/types";
 import { createPortal } from "react-dom";
 import { isSortable } from "@dnd-kit/react/sortable";
 import { RestrictToElement } from "@dnd-kit/dom/modifiers";
+import { FxButton } from "@fluctux/ui";
+import { PlusCircle, PlusIcon } from "lucide-react";
 
 const UPLOADED_IMAGES: ProductManageDataType["images"] = [
   {
@@ -87,7 +89,10 @@ export const ProductImagesEdit = () => {
 
   return (
     <CompWrapper title="Product Images" fullWidth>
-      <div className="w-fit grid grid-cols-3 h-fit gap-5">
+      <CompWrapperAction>
+      <FxButton size="xs" icon={PlusIcon} >Add Images</FxButton>
+      </CompWrapperAction>
+      <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] h-fit gap-5">
         <DragDropProvider
           modifiers={[
             RestrictToElement.configure({
