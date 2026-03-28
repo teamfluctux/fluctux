@@ -16,15 +16,15 @@ const [selectedBrands, setSelectedBrands] = useState<MenuDataType[]>([]);
       <FieldGroup>
         <Field>
           <FieldLabel>Category</FieldLabel>
-          <ComboboxMultiple onRemoveAllAddedData={() => setSelectedCategories([])} selectedValues={selectedCategories} onValueAdd={value => setSelectedCategories(value as any)} items={DUMMY_PRODUCT_CATEGORIES}  />
+          <ComboboxMultiple classNames={{chipsContainerClassName: "p-2!"}} onRemoveAllAddedData={() => setSelectedCategories([])} selectedValues={selectedCategories} onValueAdd={value => setSelectedCategories(value as any)} items={DUMMY_PRODUCT_CATEGORIES}  />
         </Field>
          <Field>
           <FieldLabel>Tag</FieldLabel>
-          <ComboboxMultiple onRemoveAllAddedData={() => setSelectedTags([])} selectedValues={selectedTags} onValueAdd={value => setSelectedTags(value as any)} items={DUMMY_PRODUCT_TAGS}  />
+          <ComboboxMultiple classNames={{chipsContainerClassName: "p-2!"}} onRemoveAllAddedData={() => setSelectedTags([])} selectedValues={selectedTags} onValueAdd={value => setSelectedTags(value as any)} items={DUMMY_PRODUCT_TAGS}  />
         </Field>
           <Field>
           <FieldLabel>Brand</FieldLabel>
-          <ComboboxMultiple onRemoveAllAddedData={() => setSelectedBrands([])} selectedValues={selectedBrands} onValueAdd={value => setSelectedBrands(value as any)} items={DUMMY_PRODUCT_BRANDS}  />
+          <ComboboxMultiple classNames={{chipsContainerClassName: "p-2!"}} onRemoveAllAddedData={() => setSelectedBrands([])} selectedValues={selectedBrands} onValueAdd={value => setSelectedBrands(value as any)} items={DUMMY_PRODUCT_BRANDS}  />
         </Field>
       </FieldGroup>
     </CompWrapper>

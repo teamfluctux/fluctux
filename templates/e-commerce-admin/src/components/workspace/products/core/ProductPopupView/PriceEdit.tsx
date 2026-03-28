@@ -19,7 +19,7 @@ export const PriceEdit = () => {
       <FieldGroup>
         <Field>
           <FieldLabel>Choose Currency <span className="text-destructive">*</span></FieldLabel>
-          <CurrencySelector />
+          <CurrencySelector classNames={{inputClassName: "h-10! p-1"}}  />
         </Field>
         <Field>
           <FieldLabel htmlFor="regular-price">Regular Price <span className="text-destructive">*</span></FieldLabel>

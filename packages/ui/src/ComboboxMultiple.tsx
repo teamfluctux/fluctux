@@ -21,6 +21,9 @@ type ComboboxMultiplePropsType = {
   selectedValues?: MenuDataType[];
   onValueAdd?: (values: MenuDataType) => void;
   onRemoveAllAddedData?: () => void;
+  classNames?: {
+    chipsContainerClassName?: string
+  }
 };
 
 export function ComboboxMultiple({
@@ -28,6 +31,7 @@ export function ComboboxMultiple({
   onValueAdd,
   selectedValues = [],
   onRemoveAllAddedData,
+  classNames
 }: ComboboxMultiplePropsType) {
   const anchor = useComboboxAnchor();
 
@@ -38,8 +42,9 @@ export function ComboboxMultiple({
       multiple
       autoHighlight
       items={items}
+    
     >
-      <ComboboxChips ref={anchor} className="w-full max-w-xs relative">
+      <ComboboxChips ref={anchor} className={`w-full max-w-xs relative ${classNames?.chipsContainerClassName}`}>
         <ComboboxValue>
           {(data: MenuDataType[]) => (
             <React.Fragment>
