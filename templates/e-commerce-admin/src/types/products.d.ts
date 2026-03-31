@@ -1,3 +1,4 @@
+import type { AgCellPopoverDataType } from "@/components/ag-grid";
 import type { AgSelectCellDataType } from "./ag-grid";
 
 
