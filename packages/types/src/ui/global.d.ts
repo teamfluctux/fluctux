@@ -36,3 +36,24 @@ export type ObjectListArrayType = {
     icon: LucideIcon;
   }[];
 };
+
+type AppearanceThemeColorValueType =
+  | "dark"
+  | "white"
+  | "red"
+  | "orange"
+  | "amber"
+  | "yellow"
+  | "lime"
+  | "green"
+  | "emerald"
+  | "teal"
+  | "cyan"
+  | "sky"
+  | "blue"
+  | "indigo"
+  | "violet"
+  | "purple"
+  | "fuchsia"
+  | "pink"
+  | "rose";

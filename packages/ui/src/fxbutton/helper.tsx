@@ -6,66 +6,105 @@ export type ButtonVariant =
   | "ghost_zinc"
   | "ghost_zinc_2"
   | "surface_indigo_2"
+  | "surface"
+  | "destructive"
   | "surface_indigo";
 
-export interface ButtonStylingType {
-  [key: string]: {
+export type ButtonStylingType = {
+  [key in ButtonVariant]: {
     default: string;
     hover: string;
     disabled: string;
   };
-}
+};
 
-export const buttonSizes: { [key in SizeType]: string } = {
-  sm: "py-1 px-3 text-workspace_3",
-  md: "py-2 px-4 text-workspace_1",
-  lg: "py-3 px-5 text-read_16",
-  xl: "py-3.5 px-6 text-read_18",
+type ButtonSizeType = "rounded_sm" | "rounded_md" | "square_sm" | "square_xs" | "xs" | SizeType;
+
+export const buttonSizes: { [key in ButtonSizeType]: string } = {
+  xs: "h-6 px-2 text-workspace_3 rounded-sm",
+  sm: "h-7.5 px-3 text-workspace_2 rounded-md",
+  md: "h-10 px-4 text-workspace_1 rounded-lg",
+  lg: "h-12 px-5 text-read_16 rounded-xl",
+  xl: "h-14 px-6 text-read_18 rounded-xl",
+  rounded_sm: "w-7.5 h-7.5 shrink-0  rounded-full",
+  rounded_md: "w-10 h-10 shrink-0  rounded-full",
+  square_xs: "w-6 h-6 shrink-0 rounded-md",
+  square_sm: "w-7.5 h-7.5 shrink-0 rounded-md",
+};
+
+export const iconSizes: { [key in ButtonSizeType]: number } = {
+  xs: 14,
+  sm: 15, // 13px text
+  md: 16, // 15px text
+  lg: 17, // 16px text
+  xl: 19, // 18px text
+  rounded_sm: 15,
+  rounded_md: 17,
+  square_sm: 15,
+  square_xs: 14
 };
 
 export const buttonStyling: ButtonStylingType = {
   primary: {
-    default:
-      "bg-background-indigo_primary cursor-pointer border-none text-text-color_default_white active:bg-fx_indigo-500 active:text-text-color_default_white!",
+    default: "bg-primary-color  border-none text-text-color_default_white ",
     hover:
-      "hover:bg-fx_indigo-700 dark:hover:text-text-color_4 hover:text-text-color_default_white",
+      "hover:bg-primary-color-hover active:bg-primary-color-active active:text-text-color_default_white-active data-[state=open]:bg-primary-color-hover",
     disabled:
-      "text-text-color_2 cursor-not-allowed! bg-fx_indigo-800 border border-border-color_1",
+      "text-text-color_default_white-2 cursor-not-allowed! bg-primary-color-disabled",
   },
   secondary: {
     default:
-      "border border-border-color_1 bg-background-color_900C  cursor-pointer text-text-color_2",
-    hover: "hover:bg-background-color_800C hover:text-text-color_1",
+      "border border-border-color_1 bg-background-color_900C text-text-color_2",
+    hover:
+      "hover:bg-background-color_800C hover:text-text-color_1 data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 data-[state=open]:border-border-color_2",
     disabled:
       "text-text-color_3 cursor-not-allowed! bg-background-color_900C border border-background-color_900C",
   },
   ghost_zinc: {
-    default: "cursor-pointer text-text-color_2",
+    default: " text-text-color_2",
     hover: "hover:bg-background-color_900C hover:text-text-color_1",
-    disabled: "text-text-color_3 cursor-not-allowed! bg-transparent",
+    disabled:
+      "text-text-color_3 cursor-not-allowed! bg-transparent data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 ",
   },
   ghost_zinc_2: {
-    default: "cursor-pointer text-text-color_2",
+    default: " text-text-color_2",
     hover: "hover:bg-background-color_800C hover:text-text-color_1!",
-    disabled: "text-text-color_3 cursor-not-allowed! bg-transparent",
+    disabled:
+      "text-text-color_3 cursor-not-allowed! bg-transparent data-[state=open]:bg-background-color_800C data-[state=open]:text-text-color_1 ",
   },
   surface_indigo: {
     default:
-      "bg-(--surface-indigo-bg) border border-(--surface-indigo-border) text-(--surface-indigo-fg) active:bg-(--surface-indigo-bg-active) active:border-(--surface-indigo-border-active) cursor-pointer",
-    hover: "hover:border-(--surface-indigo-border-active)",
+      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border text-rdx-indigo-fg",
+    hover:
+      "hover:inset-ring-surface-indigo-border-active active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active data-[state=open]:bg-surface-indigo-bg-active data-[state=open]:inset-ring-surface-indigo-border-active data-[state=open]:text-rdx-indigo-fg-2",
+    disabled: "opacity-50 cursor-not-allowed!",
+  },
+  surface: {
+    default:
+      "bg-surface-bg inset-ring inset-ring-surface-border text-surface-fg",
+    hover:
+      "hover:inset-ring-surface-border-active active:bg-surface-bg-active active:inset-ring-surface-border-active data-[state=open]:bg-surface-bg-active data-[state=open]:inset-ring-surface-border-active data-[state=open]:text-surface-fg-2",
     disabled: "opacity-50 cursor-not-allowed!",
   },
   surface_indigo_2: {
     default:
-      "bg-(--surface-indigo-bg) border border-(--surface-indigo-border) text-(--surface-indigo-fg-2) active:bg-(--surface-indigo-bg-active) active:border-(--surface-indigo-border-active) cursor-pointer",
-    hover: "hover:border-(--surface-indigo-border-active)",
+      "bg-surface-indigo-bg inset-ring inset-ring-surface-indigo-border  text-rdx-indigo-fg-2",
+    hover:
+      "hover:inset-ring-surface-indigo-border-active  active:bg-surface-indigo-bg-active active:inset-ring-surface-indigo-border-active data-[state=open]:bg-surface-indigo-bg-active data-[state=open]:inset-ring-surface-indigo-border-active data-[state=open]:text-rdx-indigo-fg-2",
+    disabled: "opacity-50 cursor-not-allowed!",
+  },
+  destructive: {
+    default:
+      "bg-surface-red-bg inset-ring inset-ring-surface-red-border  text-rdx-red-fg",
+    hover:
+      "hover:inset-ring-surface-red-border-active  active:bg-surface-red-bg-active active:inset-ring-surface-red-border-active data-[state=open]:bg-surface-red-bg-active data-[state=open]:inset-ring-surface-red-border-active data-[state=open]:text-rdx-red-fg-2",
     disabled: "opacity-50 cursor-not-allowed!",
   },
 };
 
 export const getButtonStyling = (
   variant?: ButtonVariant,
-  size?: SizeType,
+  size?: ButtonSizeType,
   disabled: boolean = false
 ) => {
   const tempVariant =

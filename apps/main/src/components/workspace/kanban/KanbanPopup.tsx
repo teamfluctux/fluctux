@@ -1,6 +1,7 @@
 "use client";
 import {
-  ComboBox,
+  // -- Uncomment this combobox
+  // ComboBox,
   FxButton,
   FxCommandBox,
   IssueIcon,
@@ -8,7 +9,7 @@ import {
   AvatarFallback,
   AvatarImage,
   Avatar,
-  ButtonVariant,
+  // ButtonVariant,
   ViewLabelsWithOverlap,
   ComboBoxCheckbox,
   Popover,
@@ -26,13 +27,13 @@ import { LuLayoutPanelTop } from "react-icons/lu";
 import { LuOctagonAlert } from "react-icons/lu";
 import { CgBorderStyleDashed } from "react-icons/cg";
 import { CiCalendarDate } from "react-icons/ci";
-import { ComboboxDataType } from "@fluctux/ui";
+import { type ComboboxDataType } from "@fluctux/ui";
 import { ChevronDown, ChevronsUpDownIcon, X } from "lucide-react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { TbAlertHexagonFilled, TbAlertOctagonFilled } from "react-icons/tb";
 import { TbCalendarDue } from "react-icons/tb";
 import { FaCircle } from "react-icons/fa6";
-import { IconBase, IconBaseProps } from "react-icons/lib";
+import { IconBase, type IconBaseProps } from "react-icons/lib";
 import { MdLabelOutline } from "react-icons/md";
 import { Calendar } from "./calender";
 import { KanbanCalender } from "./kanban-calender";
@@ -313,7 +314,7 @@ export const KanbanPopup = () => {
       <div className="w-full h-[40px] border-b border-border-color_1 px-1 ">
         <div className="flex justify-between items-center w-full h-full">
           <div className="flex justify-start items-center gap-2 w-fit shrink-0">
-            <ComboBox
+            {/* <ComboBox
               onComboDataSelect={handleSelectTaskId}
               currentValue={kanbanTemplateMetaInfo.value}
               data={EXISTED_KBN_TEMPLATES_METAINFO}
@@ -335,7 +336,7 @@ export const KanbanPopup = () => {
                   />
                 </FxButton>
               }
-            />
+            /> */}
 
             <span className="text-text-color_2">/</span>
             <div className="shrink-0">
@@ -373,7 +374,7 @@ export const KanbanPopup = () => {
 
       <div className="w-full px-3 py-3 flex justify-center items-end h-[95px]">
         <div className="flex justify-start gap-2 items-center w-full flex-wrap">
-          <ComboBox
+          {/* <ComboBox
             onComboDataSelect={handleSelectTaskStatus}
             currentValue={taskStatus.value}
             data={EXISTED_TASK_STATUS}
@@ -396,7 +397,7 @@ export const KanbanPopup = () => {
                 />
               </FxButton>
             }
-          />
+          /> */}
 
           <ComboBoxCheckbox
             data={EXISTED_TASK_LABELS}
@@ -459,7 +460,7 @@ export const KanbanPopup = () => {
             isCloseOnCheckItemForSingleData={true}
           />
 
-          <ComboBox
+          {/* <ComboBox
             onComboDataSelect={handleSelectTaskPriority}
             currentValue={priority.value}
             data={PRIORITY_DATA}
@@ -485,7 +486,7 @@ export const KanbanPopup = () => {
                 />
               </FxButton>
             }
-          />
+          /> */}
 
           <Popover>
             <PopoverTrigger asChild className="outline-hidden">

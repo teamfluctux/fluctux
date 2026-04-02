@@ -6,6 +6,7 @@ type OrientationType = "vertical" | "horizontal";
 interface FxSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   orientation: keyof typeof sepOrnAttributes;
+  separatorClassName?: string;
   color?: string;
   gap?: keyof typeof GapAttributes;
   size?: string;
@@ -31,6 +32,7 @@ export function FxSeparator({
   color,
   gap,
   size,
+  separatorClassName,
   children,
 }: FxSeparatorProps) {
   const selectedOrientation = orientation
@@ -48,7 +50,7 @@ export function FxSeparator({
       }}
     >
       <hr
-        className={`${selectedOrientation} absolute`}
+        className={`${selectedOrientation} ${separatorClassName} absolute`}
         style={{
           borderColor: color || "var(--border-color-1)",
           width: size && `${size}`,

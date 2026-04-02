@@ -9,7 +9,7 @@
   z-index: -1;
   padding: 1px;
   transform: translate(-50%, -50%);
-  border-radius: 26px;
+  border-radius: 33px;
   background-image: conic-gradient(
     from 99deg,
     transparent 145deg,
@@ -31,7 +31,7 @@
   z-index: -1;
   padding: 1px;
   transform: translate(-50%, -50%);
-  border-radius: 26px;
+  border-radius: 33px;
   background-image: conic-gradient(
     from 224deg,
     transparent 145deg,
@@ -76,8 +76,7 @@
   }
 }
 
-
-.company_logo_marquee_wrapper::before{
+.company_logo_marquee_wrapper::before {
   content: "";
   position: absolute;
   left: 0;
@@ -88,7 +87,7 @@
   z-index: 11;
 }
 
-.company_logo_marquee_wrapper::after{
+.company_logo_marquee_wrapper::after {
   content: "";
   position: absolute;
   right: 0;

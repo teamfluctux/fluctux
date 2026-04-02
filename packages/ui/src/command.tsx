@@ -22,9 +22,17 @@ const Command = React.forwardRef<
 ));
 Command.displayName = CommandPrimitive.displayName;
 
-const CommandDialog = ({ children, className, ...props }: DialogProps) => {
+const CommandDialog = ({
+  children,
+  className,
+  overlayBackground,
+  ...props
+}: DialogProps & { overlayBackground?: boolean }) => {
   return (
     <Dialog {...props}>
+      {overlayBackground && props.open && (
+        <div className="bg-black/10 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 z-[9999] duration-100 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
+      )}
       <DialogOverlay />
       <DialogContent className={` outline-hidden! ring-0! ${className}`}>
         <Command className="**:[[cmdk-group-heading]]:px-2 outline-hidden! ring-0! bg-transparent **:[[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 **:[[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 **:[[cmdk-input]]:h-12 **:[[cmdk-item]]:px-2 **:[[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">

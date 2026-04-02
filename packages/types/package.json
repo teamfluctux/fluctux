@@ -9,6 +9,9 @@
       "types": "./src/index.d.ts"
     }
   },
+  "scripts": {
+    "gen:docs": "typedoc --out docs"
+  },
   "devDependencies": {
     "@fluctux/constants": "workspace:*",
     "@types/react": "^19.2.14",

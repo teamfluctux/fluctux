@@ -1,18 +1,19 @@
 import React from "react";
 import type { LucideIcon } from "lucide-react";
 
-type WorkSpaceListProps = {
+export type WorkSpaceListProps = {
   icon?: LucideIcon;
   active?: boolean;
   children?: React.ReactNode;
   disabled?: boolean;
-  slug?: string;
+  className?: string;
+  value?: string;
   order?: number;
   label?: string;
   onClickDo?: (
     active: boolean,
     disabled: boolean,
-    slug: string,
+    value: string,
     label: string
   ) => void;
 };
@@ -25,7 +26,8 @@ export const WorkSpaceList = ({
   children,
   active = false,
   disabled,
-  slug,
+  value,
+  className,
   order,
   label,
   onClickDo,
@@ -38,26 +40,24 @@ export const WorkSpaceList = ({
         onClickDo?.(
           active || false,
           disabled || false,
-          slug ?? "",
+          value ?? "",
           label ?? "Undefined"
         )
       }
-      className={`text-workspace_2 select-none cursor-pointer border border-transparent font-medium text-text-color_4 group flex justify-start items-center gap-2 px-2 py-1 rounded-tiny ${
+      className={`text-workspace_2 select-none cursor-default border border-transparent font-medium text-text-color_4 group flex justify-start items-center gap-2 px-2 h-7.5 rounded-md ${
         active
-          ? "text-surface-indigo-fg! bg-surface-indigo-bg-active"
+          ? "text-surface-fg! bg-surface-bg-active"
           : "hover:text-text-color_1 hover:bg-background-color_900C "
       } ${
-        disabled
-          ? "cursor-not-allowed"
-          : "active:border-surface-indigo-border-active!"
-      }`}
+        disabled ? "cursor-not-allowed" : "active:border-surface-border-active!"
+      } ${className}`}
       {...props}
     >
       {Icon && (
         <div className="text-text-svg_default group-hover:text-text-color_1">
           <Icon
             size={16}
-            className={`${active ? "text-surface-indigo-fg" : "text-text-svg_default"}`}
+            className={`${active ? "text-surface-fg" : "text-text-svg_default"}`}
           />
         </div>
       )}

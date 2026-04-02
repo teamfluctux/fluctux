@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -167,13 +167,13 @@
 /* Light Mode (Default) */
 :root {
   --background: 255, 255%, 100%; /* White */
-  --foreground: 0, 0%, 0%;       /* Black */
+  --foreground: 0, 0%, 0%; /* Black */
 }
 
 /* Dark Mode (When prefers-color-scheme is 'dark') */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: 0, 0%, 0%;       /* Black */
+    --background: 0, 0%, 0%; /* Black */
     --foreground: 255, 255%, 100%; /* White */
   }
 }
@@ -182,5 +182,5 @@
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  transition: background-color 0.
+  transition: background-color 0;
 }

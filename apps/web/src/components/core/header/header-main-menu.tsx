@@ -3,34 +3,15 @@ import React from "react";
 import {
   DiscordIcon,
   FxButton,
-  LUCIDE_WORKSPACE_ICON_SIZE,
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@fluctux/ui";
 import Link from "next/link";
 import Image from "next/image";
-import { Logs } from "lucide-react";
-
-const ListItem = ({
-  children,
-  href,
-}: {
-  children: React.ReactNode;
-  href: string;
-}) => {
-  return (
-    <NavigationMenuItem className="">
-      <Link href={`${href}`}>
-        <li className="text-workspace_2 text-text-color_2 hover:text-text-color_default_white px-2 hover:bg-background-color_850C font-medium py-1 rounded list-none">
-          {children}
-        </li>
-      </Link>
-    </NavigationMenuItem>
-  );
-};
 
 const ResourcesListItem = ({
   href,
@@ -43,7 +24,7 @@ const ResourcesListItem = ({
 }) => {
   return (
     <Link href={`${href}`}>
-      <div className="py-2 px-3 rounded hover:bg-background-color_850C w-full transition-colors">
+      <div className="py-2 px-3 rounded-lg hover:bg-background-color_850C w-full transition-colors">
         <h4 className="text-workspace_2 font-medium text-text-color_1">
           {label}
         </h4>
@@ -77,7 +58,7 @@ const ResourcesListItemWithImage = ({
         </div>
 
         <div className="w-[200px] h-[180px] bg-background-color_900C pt-1 pl-1 z-10 absolute bottom-0 right-0 border-t border-l rounded-tl-lg border-border-color_1">
-          <div className="w-full h-full bg-background-color_925C rounded-tl-tiny overflow-hidden">
+          <div className="w-full h-full bg-background-color_925C rounded-tl-sm overflow-hidden">
             <Image
               src={`${image}`}
               width={500}
@@ -98,26 +79,18 @@ export const HeaderMainMenu = () => {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className=" px-2 hover:bg-background-color_850C data-[state=open]:bg-background-color_850C font-medium py-1 rounded">
-              <span className="text-workspace_2 text-text-color_2 group-data-[state=open]:text-text-color_1">
-                Products
-              </span>
-            </NavigationMenuTrigger>
+            <NavigationMenuTrigger>Products</NavigationMenuTrigger>
 
-            <NavigationMenuContent className="">
+            <NavigationMenuContent>
               <div className="w-[900px] h-[300px]"></div>
             </NavigationMenuContent>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="px-2 hover:bg-background-color_850C data-[state=open]:bg-background-color_850C font-medium py-1 rounded">
-              <span className="text-workspace_2 text-text-color_2 group-data-[state=open]:text-text-color_1">
-                Resources
-              </span>
-            </NavigationMenuTrigger>
+            <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="w-[900px] h-fit p-2">
-                <div className="w-full h-[280px] bg-background-color_925C rounded overflow-hidden flex justify-center items-center">
+                <div className="w-full h-[280px] bg-background-color_925C rounded-lg overflow-hidden flex justify-center items-center">
                   <div className="flex justify-start items-center h-full shrink-0">
                     <ResourcesListItemWithImage
                       href="#"
@@ -190,7 +163,7 @@ export const HeaderMainMenu = () => {
             </NavigationMenuContent>
           </NavigationMenuItem>
 
-          <ListItem href={""}>Pricing</ListItem>
+          <NavigationMenuLink href={""}>Pricing</NavigationMenuLink>
         </NavigationMenuList>
       </NavigationMenu>
     </div>

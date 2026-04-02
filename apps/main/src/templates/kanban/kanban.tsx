@@ -1,10 +1,10 @@
 "use client";
 import {
   DndContext,
-  DragEndEvent,
-  DragOverEvent,
+  type DragEndEvent,
+  type DragOverEvent,
   DragOverlay,
-  DragStartEvent,
+  type DragStartEvent,
   PointerSensor,
   useSensor,
   useSensors,
@@ -14,7 +14,7 @@ import { FxButton, LUCIDE_WORKSPACE_ICON_SIZE } from "@fluctux/ui";
 import { Ellipsis, GripVertical, PlusIcon } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import { KanbanColumn } from "./Column";
-import { KanbanColumnType, KanbanTaskType } from "@/types";
+import type {  KanbanColumnType, KanbanTaskType } from "@/types";
 import { COLUMN_DATA, TASKS_DATA } from "./constant";
 import { setColumnsPinned } from "node_modules/ag-grid-community/dist/types/src/columns/columnApi";
 import { createPortal } from "react-dom";
@@ -23,8 +23,6 @@ import { observer } from "mobx-react";
 import { kanbanStore } from "@/services/stores/template";
 
 export const KanbanTemplate = observer(() => {
-  // TODO: use mobx
-
   useEffect(() => {
     if (kanbanStore.activeColumn || kanbanStore.activeTask) return;
     kanbanStore.setColumns(COLUMN_DATA);

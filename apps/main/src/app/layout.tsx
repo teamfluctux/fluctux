@@ -37,8 +37,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <ThemeProvider attribute="class">
-          <Suspense>
+        <Suspense>
+          <ThemeProvider attribute="class">
             <GlobalProviders>
               <SkeletonTheme
                 baseColor="var(--skeleton-base-color)"
@@ -47,8 +47,8 @@ export default function RootLayout({
                 {children}
               </SkeletonTheme>
             </GlobalProviders>
-          </Suspense>
-        </ThemeProvider>
+          </ThemeProvider>
+        </Suspense>
       </body>
     </html>
   );

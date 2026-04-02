@@ -88,7 +88,7 @@ export const SidebarBottom = () => {
     <>
       <div className="h-[calc(100%-107px)] w-full overflow-y-auto hide-scrollbar">
         <div className="pb-24">
-          <ul className="p-2 ">
+          <ul className="p-2 flex flex-col gap-0.5">
             <WorkSpaceLinkList icon={House}>Home</WorkSpaceLinkList>
             <WorkSpaceLinkList icon={LayoutDashboard}>
               Dashboard
@@ -105,7 +105,7 @@ export const SidebarBottom = () => {
             </p>
 
             <ul>
-              <WorkSpaceLinkList>
+              <WorkSpaceLinkList className="h-12">
                 <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 data-[slot=avatar]:*:ring-2 data-[slot=avatar]:*:grayscale">
                   <Avatar className="w-[25px] h-[25px]">
                     <AvatarImage
@@ -136,7 +136,7 @@ export const SidebarBottom = () => {
                   </p>
                 </div>
               </WorkSpaceLinkList>
-              <WorkSpaceLinkList>
+              <WorkSpaceLinkList className="h-12">
                 <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 data-[slot=avatar]:*:ring-2 data-[slot=avatar]:*:grayscale">
                   <Avatar className="w-[25px] h-[25px]">
                     <AvatarImage
@@ -174,9 +174,8 @@ export const SidebarBottom = () => {
             <p className="text-workspace_3 pt-2 pb-1 font-weight_450 text-text-color_3 px-2">
               Workspace + Team
             </p>
-            <WorkSpaceList>Hello</WorkSpaceList>
 
-            <ul>
+            <ul className="flex flex-col gap-0.5">
               {WORKSPACELISTS.map((item, index) => {
                 return (
                   <WorkSpaceLinkList key={index} icon={item.icon}>

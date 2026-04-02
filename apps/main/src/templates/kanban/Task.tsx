@@ -1,10 +1,10 @@
 "use client";
 
-import { UniqueIdentifier } from "@dnd-kit/core";
+import { type UniqueIdentifier } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 import { observer } from "mobx-react";
 import { CSS } from "@dnd-kit/utilities";
-import { KanbanTaskType } from "@/types";
+import { type KanbanTaskType } from "@/types";
 import { kanbanStore } from "@/services/stores/template";
 import { IssueIcon, EmojiPickerPopover } from "@fluctux/ui";
 import { useState } from "react";

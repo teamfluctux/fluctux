@@ -24,8 +24,8 @@ export interface TabsRndType {
   isMaximizedMd?: boolean;
 }
 
-export interface TabsStateType {
-  [key: keyof typeof TaskbarCategoriesType]: {
+export type TabsStateType = {
+  [key in TaskbarCategoriesType]: {
     tabs: TabsRndType[];
   };
-}
+};

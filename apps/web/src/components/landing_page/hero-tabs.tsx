@@ -57,7 +57,7 @@ export const HeroTabs = () => {
           {/* chrome tab */}
           <div
             ref={chromeTabRef}
-            className="w-[100px] left-0 h-full transition-all duration-500 absolute bg-linear-to-t dark:from-fx_indigo-900 from-fx_indigo-400 dark:via-fx_indigo-900 via-fx_indigo-400 dark:to-fx_indigo-600 to-fx_indigo-300 backdrop-blur-3xl bottom-0 -z-10 rounded-t-rounded_10C chrome_tab "
+            className="w-[100px] left-0 h-full transition-all duration-500 absolute bg-linear-to-t dark:from-fx_indigo-900 from-fx_indigo-400 dark:via-fx_indigo-900 via-fx_indigo-400 dark:to-fx_indigo-600 to-fx_indigo-300 backdrop-blur-3xl bottom-0 -z-10 rounded-t-xl chrome_tab "
           ></div>
 
           {HERO_WORKSPACE_SLIDER_TYPE.map((item, i) => {
@@ -67,7 +67,7 @@ export const HeroTabs = () => {
                 key={i}
                 ref={(el) => void (tabRefs.current[i] = el)}
                 onClick={() => swiperRef.current?.slideTo(i)}
-                className={`transition-colors group select-none fx-flex-center gap-1  rounded h-full px-3 text-workspace_2 font-medium  ${slideIndex === i ? "text-text-color_default_white bg-transparent drop-shadow-md" : "text-text-color_2 hover:text-text-color_1"}`}
+                className={`transition-colors group select-none fx-flex-center gap-1  h-full px-3 text-workspace_2 font-medium  ${slideIndex === i ? "text-text-color_default_white bg-transparent drop-shadow-md" : "text-text-color_2 hover:text-text-color_1"}`}
               >
                 <div className="text-text-color_1">
                   <Icon
@@ -84,10 +84,10 @@ export const HeroTabs = () => {
         </div>
       </div>
 
-      <div className="w-full h-[650px] p-2 rounded-[25px] bg-linear-to-t from-background-color_850C via-background-color_850C dark:to-fx_indigo-950 to-fx_indigo-300 hero_workspace_box relative">
+      <div className="w-full h-[650px] p-2 rounded-4xl bg-linear-to-t from-background-color_850C via-background-color_850C dark:to-fx_indigo-950 to-fx_indigo-300 hero_workspace_box relative">
         <div className="absolute w-full h-[8px] bg-linear-to-r from-transparent via-background-color_850C  to-transparent top-0 left-0"></div>
-        <div className=" w-[600px] absolute -z-10 left-[50%] -translate-x-1/2 -top-[110px] h-[600px] rounded-t-circle bg-background-indigo_primary  blur-[150px] opacity-35"></div>
-        <div className="w-full h-full bg-background-color_925C overflow-hidden rounded-rounded_20C border border-border-color_1">
+        <div className=" w-[600px] absolute -z-10 left-[50%] -translate-x-1/2 -top-[110px] h-[600px] rounded-t-full bg-background-indigo_primary  blur-[150px] opacity-35"></div>
+        <div className="w-full h-full bg-background-color_925C overflow-hidden rounded-3xl border border-border-color_1">
           <Swiper
             onSwiper={(swiper) => {
               swiperRef.current = swiper;

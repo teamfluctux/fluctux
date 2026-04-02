@@ -1,3 +1,4 @@
+// -- Remove this package
 import React from "react";
 
 interface FxBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {

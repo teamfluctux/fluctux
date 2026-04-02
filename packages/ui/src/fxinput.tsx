@@ -1,7 +1,5 @@
 import type { SizeType } from "./type";
 import React, { forwardRef } from "react";
-import { ROUNDED_VARIANTS } from "./constant";
-
 type FxInputClassNames = {
   labelClassName?: string;
 };
@@ -10,7 +8,6 @@ interface FxInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   className?: string;
   variant?: keyof typeof inputVariants;
-  radius?: keyof typeof ROUNDED_VARIANTS;
   size?: keyof typeof inputSizes;
   label?: string;
   isError?: boolean;
@@ -18,25 +15,22 @@ interface FxInputProps
   errorMsg?: string | string[];
 }
 
-type InputVariantType =
-  | "primary"
-  | "secondary"
-  | "outlineLabel"
-  | "outline-solid";
+type InputVariantType = "primary" | "secondary" | "outlineLabel" | "outline" | "blackPrimary";
 
 const inputVariants: { [key in InputVariantType]: string } = {
   primary:
-    "border border-border-color_1 bg-background-color_900C focus:fx-input-outline transition-colors",
-  secondary: "border border-border-color_1 bg-transparent transition-colors",
+    "border border-border-color_1 bg-background-color_900C outline-0! focus:ring-4 focus:ring-surface-bg focus:border-primary-color transition-colors rounded-md",
+    blackPrimary: "border border-border-color_1 bg-background-color_900C outline-0! focus:ring-4 focus:ring-background-color_750C focus:border-text-color_4 transition-colors rounded-md",
+  secondary: "border border-border-color_1 bg-transparent transition-colors rounded-md",
   outlineLabel:
-    "rounded-tiny pb-2 text-workspace_2 font-medium px-3 pt-4 bg-transparent border border-border-color_1  w-full focus:outline-fxInput hover:border-border-color_2 focus:border-transparent transition-colors",
+    "rounded-md pb-2 font-medium px-3 pt-4 bg-transparent border border-border-color_1  w-full  hover:border-border-color_2 focus:border-primary-color! transition-colors outline-0!",
   outline:
-    "focus:ring-[1.5px] transition-colors bg-transparent focus:ring-fx_indigo-primary border border-border-color_1 outline-hidden rounded-tiny  text-workspace_2 font-medium  hover:border-border-color_2 disabled:text-text-color_3! disabled:!border-background-color_900C disabled:hover:!border-background-color_900C disabled:cursor-not-allowed focus:border-transparent",
+    "focus:ring-[1.5px] transition-colors bg-transparent focus:ring-fx_indigo-primary border border-border-color_1 outline-hidden rounded-md  font-medium  hover:border-border-color_2 disabled:text-text-color_3! disabled:!border-background-color_900C disabled:hover:!border-background-color_900C disabled:cursor-not-allowed focus:border-transparent",
 };
 
 const inputSizes: { [key in SizeType]: string } = {
   sm: "p-0.5 px-2",
-  md: "p-2 ",
+  md: "p-2 px-3 ",
   lg: "p-3 ",
   xl: "p-4 ",
 };
@@ -46,7 +40,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
     {
       className,
       variant,
-      radius,
+   
       size,
       label = "Label",
       classNames,
@@ -58,7 +52,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
   ) => {
     const inputVariant = variant ? inputVariants[variant] : "";
     const inputSize = size ? inputSizes[size] : "";
-    const roundedVariant = radius ? ROUNDED_VARIANTS[radius] : "";
+
     const { labelClassName } = classNames ?? {};
 
     return (
@@ -67,7 +61,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
           <div className="w-full relative group">
             <input
               ref={ref}
-              className={`peer placeholder:text-text-color_3! ${inputVariant} ${inputSize} ${roundedVariant} ${className} `}
+              className={`peer placeholder:text-text-color_3! text-workspace_2  ${inputVariant} ${inputSize} ${className} `}
               {...props}
               id={`${label.replace(" ", "-")}`}
             />
@@ -81,7 +75,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
         ) : (
           <input
             ref={ref}
-            className={`transition-colors ${inputVariant} ${inputSize} ${roundedVariant} ${className} ${isError && "ring-4 ring-red-500! !ring-opacity-45 border border-red-600!"}`}
+            className={`transition-colors text-workspace_2 ${inputVariant} ${inputSize} ${className} ${isError && "ring-4 ring-red-500! !ring-opacity-45 border border-red-600!"}`}
             {...props}
           />
         )}

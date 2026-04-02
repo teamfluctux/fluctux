@@ -6,9 +6,12 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --concurrency=30",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,json}\"",
-    "check-types": "turbo run check-types",
+    "check:lint": "turbo run check:lint",
+    "fix:lint": "turbo run fix:lint",
+    "format": "prettier --write \"**/*.{ts,tsx,json,css}\"",
+    "check:types": "turbo run check:types",
+    "gen:docs": "typedoc",
+    "gen:docs-all": "npm run docs --workspaces --if-present",
     "clean": "turbo run clean && rm -rf node_modules dist .turbo && echo 'Root Cleanup complete!'",
     "commit": "git-cz",
     "prepare": "husky"
@@ -31,6 +34,7 @@
     "@escape.tech/graphql-armor-max-tokens": "2.5.0",
     "@fluctux/constants": "workspace:*",
     "@fluctux/logger": "workspace:*",
+    "@fluctux/service": "workspace:*",
     "@fluctux/zod": "workspace:*",
     "@graphiql/toolkit": "^0.11.3",
     "@graphql-yoga/plugin-disable-introspection": "^2.14.5",
@@ -56,8 +60,6 @@
     "@fluctux/eslint-config": "workspace:*",
     "@fluctux/types": "workspace:*",
     "@fluctux/typescript-config": "workspace:*",
-    "@tailwindcss/postcss": "^4.2.1",
-    "@tailwindcss/typography": "^0.5.16",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.14.0",
     "commitlint-plugin-tense": "^1.0.9",
@@ -72,7 +74,9 @@
     "ts-jest": "^29.4.0",
     "tsdown": "^0.20.3",
     "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
     "turbo": "^2.5.4",
+    "typedoc": "^0.28.17",
     "typescript": "^5.8.3"
   }
 }
