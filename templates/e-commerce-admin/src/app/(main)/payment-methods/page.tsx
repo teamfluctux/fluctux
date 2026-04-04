@@ -5,6 +5,7 @@ import { CountrySelector } from "./CountrySelector";
 import { FxButton } from "@fluctux/ui";
 import { PlusCircle } from "lucide-react";
 import { PaymentMethodCard } from "./PaymentMethodCard";
+import { PaymentAddPopover } from "./PaymentAddPopover";
 
 type MethodStatusCount = {
   active: number;
@@ -67,12 +68,11 @@ export default function PaymentMethodPage() {
       </div>
 
       <div className="grid grid-cols-4 gap-3 mt-5">
-        {
-          Array.from({length: 4}).map((_, i) => {
-return <PaymentMethodCard/>
-          })
-        }
+        {Array.from({ length: 4 }).map((_, i) => {
+          return <PaymentMethodCard />;
+        })}
       </div>
+      <PaymentAddPopover/>
     </>
   );
 }
