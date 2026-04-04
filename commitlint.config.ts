@@ -1,5 +1,5 @@
-import type { LintOptions, UserConfig } from "@commitlint/types";
-import { RuleConfigSeverity, RuleField } from "@commitlint/types";
+import type { UserConfig } from "@commitlint/types";
+import { RuleConfigSeverity } from "@commitlint/types";
 
 const hasBreakingWord = (value: string): boolean => {
   return /break(ing)?/i.test(value);
@@ -21,7 +21,6 @@ const Configuration: UserConfig = {
     {
       rules: {
         "check-breaking-change": ({ subject, body, footer, type, header }) => {
-          // Custom rule implementation
 
           const has_break_word_footer = hasBreakingWord(footer || "");
           const has_break_word_subject = hasBreakingWord(subject || "");
@@ -67,7 +66,9 @@ const Configuration: UserConfig = {
     "commitlint-plugin-tense",
   ],
   rules: {
+    // -- Throw error when emoji detects
     "subject-check-noemoji": [2, "always"],
+    // -- Throw error if breaking change but not specified properly
     "check-breaking-change": [2, "always"],
     "tense/subject-tense": [2, "always"],
     "type-enum": [

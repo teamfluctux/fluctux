@@ -991,6 +991,9 @@ importers:
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
+      countries-list:
+        specifier: ^3.3.0
+        version: 3.3.0
       lucide-react:
         specifier: ^0.471.2
         version: 0.471.2(react@19.2.3)
@@ -1012,6 +1015,9 @@ importers:
       react:
         specifier: 19.2.3
         version: 19.2.3
+      react-country-flag:
+        specifier: ^3.1.0
+        version: 3.1.0(react@19.2.3)
       react-dom:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
@@ -6153,6 +6159,9 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  countries-list@3.3.0:
+    resolution: {integrity: sha512-XRUjS+dcZuNh/fg3+mka3bXgcg4TbQZ1gaK5IJqO6qulerBANl1bmrd20P2dgmPkBpP+5FnejiSF1gd7bgAg+g==}
 
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
@@ -18137,6 +18146,8 @@ snapshots:
     optionalDependencies:
       typescript: 5.8.3
 
+  countries-list@3.3.0: {}
+
   create-require@1.1.1: {}
 
   crelt@1.0.6: {}
@@ -22777,6 +22788,10 @@ snapshots:
   react-compiler-runtime@19.1.0-rc.1(react@19.2.4):
     dependencies:
       react: 19.2.4
+
+  react-country-flag@3.1.0(react@19.2.3):
+    dependencies:
+      react: 19.2.3
 
   react-country-flag@3.1.0(react@19.2.4):
     dependencies:
