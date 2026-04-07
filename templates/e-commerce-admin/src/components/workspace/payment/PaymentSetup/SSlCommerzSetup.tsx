@@ -1,7 +1,20 @@
-import { Field, FieldGroup, FieldLabel, FxInput } from "@fluctux/ui";
+"use client"
+import { useShowPassword } from "@fluctux/hooks";
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+  FxButton,
+  FxInput,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@fluctux/ui";
+import { EyeClosed, EyeIcon } from "lucide-react";
 import React from "react";
 
 export const SSlCommerzSetup = () => {
+    const {showPass, handleStateFullTogglePasswdShow: handleToggleShowStorePass} = useShowPassword()
   return (
     <div className="w-full">
       <FieldGroup>
@@ -14,7 +27,7 @@ export const SSlCommerzSetup = () => {
             id="store_id"
             variant="blackPrimary"
             placeholder="demoa69cfc35281082"
-            className="w-full"
+            className="w-full placeholder:text-text-color_3!"
             size="md"
           />
         </Field>
@@ -23,13 +36,24 @@ export const SSlCommerzSetup = () => {
           <FieldLabel htmlFor="store_passwd">
             Store Password <span className="text-destructive">*</span>
           </FieldLabel>
-          <FxInput
-            id="store_passwd"
-            variant="blackPrimary"
-            placeholder="demoa69cfc35281082@ssl"
-            className="w-full"
-            size="md"
-          />
+          <InputGroup className="py-4.5!">
+            <InputGroupInput
+          
+              id="store_passwd"
+              placeholder="demoa69cfc35281082@ssl"
+              className="w-full"
+              type={showPass ? "text": "password"}
+              inputSize="md"
+            />
+            <InputGroupAddon align="inline-end">
+              <FxButton
+              onClick={handleToggleShowStorePass}
+                icon={ showPass ?EyeIcon : EyeClosed}
+                variant="ghost_zinc_2"
+                size="square_sm"
+              />
+            </InputGroupAddon>
+          </InputGroup>
         </Field>
 
         {/* Success URL */}
@@ -41,7 +65,7 @@ export const SSlCommerzSetup = () => {
             id="success_url"
             variant="blackPrimary"
             placeholder="https://yourstore.com/payment/success"
-            className="w-full"
+            className="w-full placeholder:text-text-color_3!"
             size="md"
             required
           />

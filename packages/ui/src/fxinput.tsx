@@ -61,7 +61,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
           <div className="w-full relative group">
             <input
               ref={ref}
-              className={`peer placeholder:text-text-color_3! text-workspace_2  ${inputVariant} ${inputSize} ${className} `}
+              className={`peer placeholder:text-text-color_3! text-workspace_2   ${inputVariant} ${inputSize} ${className} `}
               {...props}
               id={`${label.replace(" ", "-")}`}
             />
@@ -75,7 +75,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
         ) : (
           <input
             ref={ref}
-            className={`transition-colors text-workspace_2 ${inputVariant} ${inputSize} ${className} ${isError && "ring-4 ring-red-500! !ring-opacity-45 border border-red-600!"}`}
+            className={`transition-colors text-workspace_2 placeholder:text-text-color_3! ${inputVariant} ${inputSize} ${className} ${isError && "ring-4 ring-red-500! !ring-opacity-45 border border-red-600!"}`}
             {...props}
           />
         )}

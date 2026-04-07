@@ -1,6 +1,7 @@
-import type { ThemeType, SizeType } from "@fluctux/types";
+import type { ThemeType } from "@fluctux/types";
 type FxLogoCategoryType = "default" | "blackAnWhite";
 import Image from "next/image";
+import type { SizeType } from "./type";
 
 type FxLogoAppearanceType = {
   [key in FxLogoCategoryType]: {
