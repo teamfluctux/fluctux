@@ -1,0 +1,1 @@
+export type PaymentProviderType = "sslcommerz" | "paypal" | "bkash" | "nagad"

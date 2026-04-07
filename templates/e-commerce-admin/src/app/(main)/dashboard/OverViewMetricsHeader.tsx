@@ -35,8 +35,9 @@ export const OverViewMetricsHeader = () => {
         {OVER_VIEW_PERIOD_TIMESTAMP.map((item, i) => {
           return (
             <Button
-              variant={"secondary"}
-              className={`text-text-color_2 bg-background-color_850C hover:bg-background-color_800C  ${period === item.value && "text-surface-fg-2 bg-surface-bg-active hover:bg-surface-bg-active"}`}
+              variant={"outline"}
+              size={"default"}
+              className={`text-text-color_4 ${period === item.value && "text-surface-fg bg-surface-bg-active! ring-1 ring-surface-border rounded-md! hover:bg-surface-bg-active"}`}
               onClick={() => {
                 router.replace(`?period=${item.value}`);
               }}

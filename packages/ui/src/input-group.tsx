@@ -2,8 +2,11 @@
 
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn, Button, Input, Textarea } from "@fluctux/ui"
+import { cn } from "./lib/utils"
+import { Button } from "./button"
+import { Input } from "./input"
+import { Textarea } from "./textarea"
+import type { SizeType } from "./type"
 
 function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -108,14 +111,23 @@ function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
   )
 }
 
+const inputSizes: { [key in SizeType]: string } = {
+  sm: "p-0.5 px-2",
+  md: "p-2 px-3 ",
+  lg: "p-3 ",
+  xl: "p-4 ",
+};
+
 function InputGroupInput({
   className,
+  inputSize,
   ...props
-}: React.ComponentProps<"input">) {
+}: React.ComponentProps<"input"> & {  inputSize?: keyof typeof inputSizes;}) {
+      const tempInputSize = inputSize ? inputSizes[inputSize] : "";
   return (
     <Input
       data-slot="input-group-control"
-      className={cn("rounded-none border-0 placeholder:text-text-color_3 bg-transparent shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent flex-1", className)}
+      className={cn("rounded-none border-0 placeholder:text-text-color_3 bg-transparent shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent flex-1", tempInputSize, className)}
       {...props}
     />
   )

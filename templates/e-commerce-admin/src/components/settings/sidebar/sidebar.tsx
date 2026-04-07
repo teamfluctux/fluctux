@@ -13,7 +13,7 @@ import { ArrowLeft } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
-const hiddenLookUp = createObjectMenuHiddenItems("3-0,1");
+const hiddenLookUp = createObjectMenuHiddenItems("");
 
 export const SettingsSidebar = () => {
   const router = useRouter();

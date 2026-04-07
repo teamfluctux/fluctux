@@ -67,7 +67,7 @@ export const CompWrapper = ({
           {children}
         </div>
       ) : (
-        <div className="max-w-[400px] w-full ml-10 mt-10">
+        <div className="max-w-[400px] w-full ml-10 mt-10 ">
           <CompWrapperHeader title={title} />
 
           {children}
