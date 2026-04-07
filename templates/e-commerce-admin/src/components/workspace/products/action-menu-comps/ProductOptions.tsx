@@ -1,5 +1,11 @@
 "use client";
-import { Button, ButtonGroup, ScrollArea , Sheet, SheetContent} from "@fluctux/ui";
+import {
+  Button,
+  ButtonGroup,
+  ScrollArea,
+  Sheet,
+  SheetContent,
+} from "@fluctux/ui";
 
 import type { MenuDataType } from "@fluctux/types";
 import { useUrlQueryParams } from "@fluctux/hooks";
@@ -173,19 +179,16 @@ export const ProductOptions = observer(() => {
     const selectedRows =
       gridRef.current!.api.getSelectedRows() as AttrDataType[];
     const selectedData = selectedRows.map((row) => row);
-    const result = gridRef.current!.api.applyTransaction(
-      {
-        remove: selectedData,
-      }
-    );
+    const result = gridRef.current!.api.applyTransaction({
+      remove: selectedData,
+    });
     setAttrRowData(
-          (prev) =>
-            result?.remove?.reduce(
-              (acc, rowNode) =>
-                acc.filter((item) => item.id !== rowNode.data.id),
-              prev
-            ) ?? prev
-        );
+      (prev) =>
+        result?.remove?.reduce(
+          (acc, rowNode) => acc.filter((item) => item.id !== rowNode.data.id),
+          prev
+        ) ?? prev
+    );
   }, []);
 
   return (

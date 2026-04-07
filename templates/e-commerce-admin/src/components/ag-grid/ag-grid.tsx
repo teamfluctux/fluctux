@@ -144,7 +144,7 @@ export const AgGridComponent = forwardRef<
       rowStyle: rowStyleProps,
       columnStyle: columnStyleProps,
       enableRowSelection = false,
-      getRowId = (params) => params.data.id
+      getRowId = (params) => params.data.id,
     },
     ref
   ) => {
@@ -227,7 +227,7 @@ export const AgGridComponent = forwardRef<
         rowSelection={enableRowSelection ? rowSelection : undefined}
         getRowId={getRowId} // use id as the row key to avoid key conflicts:
         // to enable custom filter
-        enableFilterHandlers={true} 
+        enableFilterHandlers={true}
         asyncTransactionWaitMillis={2000} // wait duration for async badge update
         modules={[
           ClientSideRowModelModule,

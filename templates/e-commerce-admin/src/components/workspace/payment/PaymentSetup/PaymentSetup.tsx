@@ -53,17 +53,11 @@ export const PaymentSetup = forwardRef<PaymentSetupRefType>(({}, ref) => {
             <FxButton
               onClick={() => handleOpenChange()}
               variant="secondary"
-          
               size="xs"
             >
               Cancel
             </FxButton>
-            <FxButton
-              onClick={() => handleOpenChange()}
-              
-    
-              size="xs"
-            >
+            <FxButton onClick={() => handleOpenChange()} size="xs">
               Save
             </FxButton>
           </div>

@@ -18,7 +18,13 @@ export type ButtonStylingType = {
   };
 };
 
-type ButtonSizeType = "rounded_sm" | "rounded_md" | "square_sm" | "square_xs" | "xs" | SizeType;
+type ButtonSizeType =
+  | "rounded_sm"
+  | "rounded_md"
+  | "square_sm"
+  | "square_xs"
+  | "xs"
+  | SizeType;
 
 export const buttonSizes: { [key in ButtonSizeType]: string } = {
   xs: "h-6 px-2 text-workspace_3 rounded-sm",
@@ -41,7 +47,7 @@ export const iconSizes: { [key in ButtonSizeType]: number } = {
   rounded_sm: 15,
   rounded_md: 17,
   square_sm: 15,
-  square_xs: 14
+  square_xs: 14,
 };
 
 export const buttonStyling: ButtonStylingType = {

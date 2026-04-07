@@ -36,14 +36,20 @@ export default function ProductPage() {
   const [rowData, setRowData] = useState(DUMMY_ROW_DATA);
 
   const handleViewAsPopupClick = (id: string) => {
-    productStore.setProductPopupView({open: true, id})
-  }
+    productStore.setProductPopupView({ open: true, id });
+  };
 
   // Column Definitions: Defines the columns to be displayed.
   const [colDefs, setColDefs] = useState<ColDef<ProductManageDataType>[]>([
-    { field: "name", pinned: true, width: 400, cellRenderer: AgViewAsPopup, cellRendererParams: TAgViewAsPopupRendererParams({
-      onViewAsClick: handleViewAsPopupClick
-    }) },
+    {
+      field: "name",
+      pinned: true,
+      width: 400,
+      cellRenderer: AgViewAsPopup,
+      cellRendererParams: TAgViewAsPopupRendererParams({
+        onViewAsClick: handleViewAsPopupClick,
+      }),
+    },
     { field: "slug" },
     { field: "regular_price" },
     { field: "sale_price" },
@@ -72,22 +78,22 @@ export default function ProductPage() {
 
   return (
     <>
-    <div className="w-full h-[calc(100vh-80px)] overflow-hidden">
-      <section className="h-[55px] w-full flex flex-col justify-center">
-        <div className="flex justify-between items-center">
-          <ProductOverview />
-          <ProductActions />
-        </div>
-      </section>
-      <section className="w-full h-[calc(100%-55px)] pb-2">
-        <AgGridComponent
-          rowData={rowData}
-          colDefs={colDefs}
-          gridStyle={{ radius: 12 }}
-        />
-      </section>
-    </div>
-    <ProductPopupView/>
+      <div className="w-full h-[calc(100vh-80px)] overflow-hidden">
+        <section className="h-[55px] w-full flex flex-col justify-center">
+          <div className="flex justify-between items-center">
+            <ProductOverview />
+            <ProductActions />
+          </div>
+        </section>
+        <section className="w-full h-[calc(100%-55px)] pb-2">
+          <AgGridComponent
+            rowData={rowData}
+            colDefs={colDefs}
+            gridStyle={{ radius: 12 }}
+          />
+        </section>
+      </div>
+      <ProductPopupView />
     </>
   );
 }

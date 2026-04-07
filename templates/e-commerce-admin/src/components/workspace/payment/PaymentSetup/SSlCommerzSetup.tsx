@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useShowPassword } from "@fluctux/hooks";
 import {
   Field,
@@ -14,7 +14,10 @@ import { EyeClosed, EyeIcon } from "lucide-react";
 import React from "react";
 
 export const SSlCommerzSetup = () => {
-    const {showPass, handleStateFullTogglePasswdShow: handleToggleShowStorePass} = useShowPassword()
+  const {
+    showPass,
+    handleStateFullTogglePasswdShow: handleToggleShowStorePass,
+  } = useShowPassword();
   return (
     <div className="w-full">
       <FieldGroup>
@@ -38,17 +41,16 @@ export const SSlCommerzSetup = () => {
           </FieldLabel>
           <InputGroup className="py-4.5!">
             <InputGroupInput
-          
               id="store_passwd"
               placeholder="demoa69cfc35281082@ssl"
               className="w-full"
-              type={showPass ? "text": "password"}
+              type={showPass ? "text" : "password"}
               inputSize="md"
             />
             <InputGroupAddon align="inline-end">
               <FxButton
-              onClick={handleToggleShowStorePass}
-                icon={ showPass ?EyeIcon : EyeClosed}
+                onClick={handleToggleShowStorePass}
+                icon={showPass ? EyeIcon : EyeClosed}
                 variant="ghost_zinc_2"
                 size="square_sm"
               />

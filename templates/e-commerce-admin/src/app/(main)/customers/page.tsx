@@ -5,18 +5,8 @@ import { Ellipsis, PlusIcon } from "lucide-react";
 import { workspaceHeaderStore } from "@/services/stores";
 import { formatScaleValue } from "@fluctux/shared";
 
-
-import {
-
-  PRODUCT_PAGE_MENU_OPTIONS,
-  PRODUCTS_OVERVIEW_DATA,
-} from "@/constants";
-import type {
-  AgSelectCellDataType,
-  PaymentMethodType,
-
-
-} from "@/types";
+import { PRODUCT_PAGE_MENU_OPTIONS, PRODUCTS_OVERVIEW_DATA } from "@/constants";
+import type { AgSelectCellDataType, PaymentMethodType } from "@/types";
 
 export type CustomerDataType = {
   _id: string;
@@ -46,9 +36,6 @@ export default function CustomerPage() {
     return () => workspaceHeaderStore.clearMetaData();
   }, []);
 
-  
-
- 
   return (
     <div className="w-full h-[calc(100vh-80px)] overflow-hidden">
       <section className="h-[55px] w-full flex flex-col justify-center">

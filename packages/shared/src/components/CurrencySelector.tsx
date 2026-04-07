@@ -14,20 +14,24 @@ import {
 type CurrencySelectorPropsType = {
   onCurrencySelect?: (value: string) => void;
   classNames?: {
-    inputClassName?: string
-  }
+    inputClassName?: string;
+  };
 };
 
 export const CurrencySelector = ({
   onCurrencySelect,
-  classNames
+  classNames,
 }: CurrencySelectorPropsType) => {
   return (
     <Combobox
       items={data}
       onValueChange={(value) => onCurrencySelect?.(String(value))}
     >
-      <ComboboxInput placeholder="Select currency." showClear className={classNames?.inputClassName} />
+      <ComboboxInput
+        placeholder="Select currency."
+        showClear
+        className={classNames?.inputClassName}
+      />
       <ComboboxContent>
         <ComboboxEmpty>No Currency found.</ComboboxEmpty>
         <ComboboxList>

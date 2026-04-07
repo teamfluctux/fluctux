@@ -5,9 +5,8 @@ export type AgSelectCellDataType = {
   level?: StatusLevelType;
 };
 
-
 export type CellBadgeDataType = {
-    type: "text" | "color"
-    label?: string;
-    values: string;
+  type: "text" | "color";
+  label?: string;
+  values: string;
 };

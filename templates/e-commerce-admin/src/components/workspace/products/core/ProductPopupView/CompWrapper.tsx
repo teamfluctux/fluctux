@@ -28,7 +28,7 @@ export const CompWrapperAction = ({
     setActionSlot(children);
     return () => setActionSlot(null);
   }, []);
-  return null
+  return null;
 };
 
 type CompWrapperHeaderType = {

@@ -1,1 +1,1 @@
-export * from "./payment-method.context"
+export * from "./payment-method.context";
