@@ -4,13 +4,24 @@ import {
   productStore,
   workspaceHeaderStore,
 } from "@/services/stores";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { CountrySelector, type CountryListType } from "./CountrySelector";
 import { Button, ButtonGroup, FxButton, Kbd, Separator } from "@fluctux/ui";
-import { PlusCircle } from "lucide-react";
+import { CreditCard, PackageOpen, PlusCircle } from "lucide-react";
 import { PaymentMethodCard } from "./PaymentMethodCard";
-import { PaymentAddPopover } from "@/components/workspace/payment";
+import {
+  PaymentAddPopover,
+  PaymentSetup,
+  type PaymentSetupRefType,
+} from "@/components/workspace/payment";
 import { observer } from "mobx-react";
+import {
+  Empty,
+  EmptyActions,
+  EmptyDesc,
+  EmptyTitle,
+} from "@/components/EmptyItems";
+import { PaymentMethodContext } from "@/context";
 
 type MethodStatusCount = {
   active: number;
@@ -21,6 +32,8 @@ const PaymentMethodPage = () => {
   // -- The number of active payment methods and inactive payment methods
   const [methodStatusCount, setMethodStatusCount] =
     useState<MethodStatusCount>();
+
+  const paymentSetupRef = useRef<PaymentSetupRefType>(null);
 
   // -- Handling open/close state of the Payment Providers Popup View
   const [openPaymentProviderPopup, setOpenPaymentProviderPopup] =
@@ -56,7 +69,7 @@ const PaymentMethodPage = () => {
   }, []);
 
   return (
-    <>
+    <PaymentMethodContext.Provider value={{ paymentSetupRef }}>
       <div className="w-full  h-[50px] mt-5 flex justify-between items-center ">
         <div className="flex justify-start items-center gap-3 ">
           <ButtonGroup>
@@ -92,16 +105,39 @@ const PaymentMethodPage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-3 mt-5 pb-10">
-        {paymentStore.selectedPaymentProviders.map((item, i) => {
-          return <PaymentMethodCard data={item} />;
-        })}
-      </div>
+      {paymentStore.selectedPaymentProviders.length > 0 ? (
+        <div className="grid grid-cols-4 gap-3 mt-5 pb-10 w-full">
+          {paymentStore.selectedPaymentProviders.map((item, i) => {
+            return <PaymentMethodCard data={item} />;
+          })}
+        </div>
+      ) : (
+        <div className="w-full h-[calc(100vh-150px)] flex justify-center items-center">
+          <Empty icon={CreditCard}>
+            <EmptyTitle>No payment methods</EmptyTitle>
+            <EmptyDesc>
+              You haven't added any payment methods yet. Add a card to make
+              faster checkouts and manage your billing in one place.
+            </EmptyDesc>
+            <EmptyActions>
+              <FxButton
+                onClick={() => setOpenPaymentProviderPopup(true)}
+                size="xs"
+              >
+                Add payment method
+              </FxButton>
+            </EmptyActions>
+          </Empty>
+        </div>
+      )}
+
       <PaymentAddPopover
         open={openPaymentProviderPopup}
         onClose={() => setOpenPaymentProviderPopup(false)}
       />
-    </>
+
+      <PaymentSetup ref={paymentSetupRef} />
+    </PaymentMethodContext.Provider>
   );
 };
 

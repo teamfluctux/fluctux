@@ -12,6 +12,7 @@ import { Circle, CircleCheck } from "lucide-react";
 import { observer } from "mobx-react";
 import Image from "next/image";
 import React from "react";
+import { SupportedCardListItem } from "./SupportedCardListItem";
 
 type PaymentAddPopoverPropsType = {
   open: boolean;
@@ -23,8 +24,8 @@ export const PaymentAddPopover = observer(
   ({ open = false, onClose, onSave }: PaymentAddPopoverPropsType) => {
     return (
       <FxCommandBox
-         overlayBackground
-      modal={false}
+        overlayBackground
+        modal={false}
         open={open}
         className="max-w-[800px] w-full max-h-[550px] h-full"
       >
@@ -39,12 +40,13 @@ export const PaymentAddPopover = observer(
             )}
           </div>
           <div className="flex justify-end items-center gap-2">
-            <FxInput
+            {/* -- Later add search feature */}
+            {/* <FxInput
               placeholder="Search payment provider..."
               variant="blackPrimary"
               size="sm"
-            />
-        
+            /> */}
+
             <FxButton onClick={() => onClose?.()} size="xs" variant="secondary">
               Cancel
             </FxButton>
@@ -91,9 +93,7 @@ export const PaymentAddPopover = observer(
                         <div className="w-full h-[40px] flex justify-between items-center px-2">
                           <div className="flex justify-start items-center gap-1 w-full">
                             {Array.from({ length: 3 }).map((_, i) => {
-                              return (
-                                <div className="w-[40px] h-[25px] border border-border-color_1 rounded-sm bg-background-color_900C"></div>
-                              );
+                              return <SupportedCardListItem key={i} />;
                             })}
                           </div>
                           <div className="shrink-0 w-fit">
@@ -106,6 +106,7 @@ export const PaymentAddPopover = observer(
                               }}
                               type="checkbox"
                               className="hidden peer"
+                              checked={paymentStore.selectedPaymentProviders.some((sp) => sp.value == item.value)}
                               value={item.value}
                               name="payment-providers"
                             />

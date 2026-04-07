@@ -1,3 +1,4 @@
+import type { PaymentProviderType } from "@fluctux/types";
 import { action, makeObservable, observable } from "mobx";
 
 export type SelectedPaymentProvidersType = {
@@ -5,7 +6,7 @@ export type SelectedPaymentProvidersType = {
     image: string;
     title: string;
     desc: string;
-    value: string;
+    value: PaymentProviderType;
 };
 
 class PaymentStore {

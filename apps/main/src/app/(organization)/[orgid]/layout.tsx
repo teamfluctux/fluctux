@@ -60,7 +60,7 @@ const Layout = ({ children }: WorkspaceLayoutProps) => {
   const parentRef = useRef<HTMLDivElement | null>(null);
   const masterRef = useRef<HTMLDivElement | null>(null);
 
-  // // simulating data seeding =========================
+  // simulating data seeding =========================
   // const [data, setData] = useState<string | null>(null);
   useEffect(() => {
     workspaceStore.setMountedWorkspace(true);

@@ -7,14 +7,14 @@ import React from "react";
 type PopoverItemStatusType = "DANGER" | "WARNING" | "SAFE" | "NEUTRAL";
 type PopoverItemStatusEffectType = "SURFACE" | "SOFT";
 
-export type PopoverMenuDataType = {
+export type PopoverMenuDataType<Value extends string = string> = {
   [key: string]: {
     label?: string;
     data?: {
       icon?: LucideIcon;
       iconClassname?: string;
       label: string;
-      value?: string;
+      value?: Value;
       status?: PopoverItemStatusType;
       showStatusHoverEffect?: boolean;
       effectType?: PopoverItemStatusEffectType;
