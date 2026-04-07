@@ -1,1 +1,1 @@
-export * from "./ProductPopupView"
+export * from "./ProductPopupView";

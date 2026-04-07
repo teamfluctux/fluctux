@@ -13,7 +13,6 @@ export function TAgViewAsPopupRendererParams(
   return params;
 }
 
-
 export const AgViewAsPopup = (
   params: AgViewAsPopupParamsType,
   ref: React.Ref<Omit<ICellRendererComp, "getGui">>

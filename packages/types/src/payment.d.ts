@@ -1,1 +1,1 @@
-export type PaymentProviderType = "sslcommerz" | "paypal" | "bkash" | "nagad"
+export type PaymentProviderType = "sslcommerz" | "paypal" | "bkash" | "nagad";

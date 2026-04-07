@@ -106,7 +106,9 @@ export const PaymentAddPopover = observer(
                               }}
                               type="checkbox"
                               className="hidden peer"
-                              checked={paymentStore.selectedPaymentProviders.some((sp) => sp.value == item.value)}
+                              checked={paymentStore.selectedPaymentProviders.some(
+                                (sp) => sp.value == item.value
+                              )}
                               value={item.value}
                               name="payment-providers"
                             />

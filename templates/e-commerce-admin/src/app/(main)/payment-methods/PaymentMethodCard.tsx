@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { FxButton, FxPopover, type PopoverMenuDataType } from "@fluctux/ui";
 import { Ellipsis } from "lucide-react";
 import Image from "next/image";
@@ -21,13 +21,12 @@ const PaymentEllipsisMenu: PopoverMenuDataType = {
   },
 };
 
-
 export const PaymentMethodCard = ({
   data,
 }: {
   data: SelectedPaymentProvidersType;
 }) => {
-  const {paymentSetupRef} = usePaymentMethodContext()
+  const { paymentSetupRef } = usePaymentMethodContext();
   return (
     <>
       <div className="w-full h-fit border border-border-color_1 rounded-lg bg-background-color_925C overflow-hidden">
@@ -58,9 +57,15 @@ export const PaymentMethodCard = ({
               })}
             </div>
             <div className="flex justify-center shrink-0 w-fit items-center gap-2">
-              <FxButton size="xs" onClick={() => {paymentSetupRef.current?.handleOpenChange();
-                paymentSetupRef.current?.handleSetPaymentProvider(data.value)
-              }}>Setup</FxButton>
+              <FxButton
+                size="xs"
+                onClick={() => {
+                  paymentSetupRef.current?.handleOpenChange();
+                  paymentSetupRef.current?.handleSetPaymentProvider(data.value);
+                }}
+              >
+                Setup
+              </FxButton>
 
               <FxPopover
                 align="end"

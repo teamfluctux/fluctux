@@ -15,13 +15,20 @@ interface FxInputProps
   errorMsg?: string | string[];
 }
 
-type InputVariantType = "primary" | "secondary" | "outlineLabel" | "outline" | "blackPrimary";
+type InputVariantType =
+  | "primary"
+  | "secondary"
+  | "outlineLabel"
+  | "outline"
+  | "blackPrimary";
 
 const inputVariants: { [key in InputVariantType]: string } = {
   primary:
     "border border-border-color_1 bg-background-color_900C outline-0! focus:ring-4 focus:ring-surface-bg focus:border-primary-color transition-colors rounded-md",
-    blackPrimary: "border border-border-color_1 bg-background-color_900C outline-0! focus:ring-4 focus:ring-background-color_750C focus:border-text-color_4 transition-colors rounded-md",
-  secondary: "border border-border-color_1 bg-transparent transition-colors rounded-md",
+  blackPrimary:
+    "border border-border-color_1 bg-background-color_900C outline-0! focus:ring-4 focus:ring-background-color_750C focus:border-text-color_4 transition-colors rounded-md",
+  secondary:
+    "border border-border-color_1 bg-transparent transition-colors rounded-md",
   outlineLabel:
     "rounded-md pb-2 font-medium px-3 pt-4 bg-transparent border border-border-color_1  w-full  hover:border-border-color_2 focus:border-primary-color! transition-colors outline-0!",
   outline:
@@ -40,7 +47,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
     {
       className,
       variant,
-   
+
       size,
       label = "Label",
       classNames,

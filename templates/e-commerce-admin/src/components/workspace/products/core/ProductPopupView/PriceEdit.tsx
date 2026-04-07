@@ -1,28 +1,36 @@
-
 import React from "react";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-  Field, FieldDescription, FieldGroup, FieldLabel, FxInput, Label, Switch, ComboboxMultiple
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FxInput,
+  Label,
+  Switch,
+  ComboboxMultiple,
 } from "@fluctux/ui";
 import { CurrencySelector } from "@fluctux/shared";
 import type { MenuDataType } from "@fluctux/types";
 import { CompWrapper } from "./CompWrapper";
 
-
 export const PriceEdit = () => {
   return (
     <CompWrapper title="Price & Discounts">
-
       <FieldGroup>
         <Field>
-          <FieldLabel>Choose Currency <span className="text-destructive">*</span></FieldLabel>
-          <CurrencySelector classNames={{inputClassName: "h-10! p-1"}}  />
+          <FieldLabel>
+            Choose Currency <span className="text-destructive">*</span>
+          </FieldLabel>
+          <CurrencySelector classNames={{ inputClassName: "h-10! p-1" }} />
         </Field>
         <Field>
-          <FieldLabel htmlFor="regular-price">Regular Price <span className="text-destructive">*</span></FieldLabel>
+          <FieldLabel htmlFor="regular-price">
+            Regular Price <span className="text-destructive">*</span>
+          </FieldLabel>
 
           <FxInput
             id="regular-price"
@@ -71,7 +79,6 @@ export const PriceEdit = () => {
           </FieldDescription>
         </Field>
       </FieldGroup>
-  
-   </CompWrapper>
+    </CompWrapper>
   );
 };

@@ -90,7 +90,9 @@ export const ProductImagesEdit = () => {
   return (
     <CompWrapper title="Product Images" fullWidth>
       <CompWrapperAction>
-      <FxButton size="xs" icon={PlusIcon} >Add Images</FxButton>
+        <FxButton size="xs" icon={PlusIcon}>
+          Add Images
+        </FxButton>
       </CompWrapperAction>
       <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] h-fit gap-5">
         <DragDropProvider

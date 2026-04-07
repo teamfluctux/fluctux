@@ -114,7 +114,10 @@ export function TAgCellPopoverRendererParams(
  * - Items with a `slug` field can use `isOpenNewTabButton` to render a navigation link
  * - This component does not use `forwardRef` — it is display-only and does not expose `refresh` or `getValue`
  */
-export const AgCellPopover = (params: AgCellPopoverParamsType, ref: Omit<ICellRendererComp, "getGui">) => {
+export const AgCellPopover = (
+  params: AgCellPopoverParamsType,
+  ref: Omit<ICellRendererComp, "getGui">
+) => {
   const {
     popoverTriggerNode,
     value,

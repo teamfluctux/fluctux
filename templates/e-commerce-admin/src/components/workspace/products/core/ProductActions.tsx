@@ -14,8 +14,6 @@ import { productStore } from "@/services/stores";
 import type { ProductQueryParams } from "@/types";
 import { ProductOptions } from "../action-menu-comps/ProductOptions";
 
-
-
 export const ProductActions = () => {
   // -- Handle query params
   const { handlePushQueryParam, getQueryParam } =
@@ -46,7 +44,7 @@ export const ProductActions = () => {
   return (
     <>
       <div className="flex justify-center items-center w-fit shrink-0 gap-3">
-        <FxButton icon={CirclePlus} variant="primary" size="sm" >
+        <FxButton icon={CirclePlus} variant="primary" size="sm">
           Add Products
         </FxButton>
         <FxPopover<typeof PRODUCT_PAGE_MENU_OPTIONS>

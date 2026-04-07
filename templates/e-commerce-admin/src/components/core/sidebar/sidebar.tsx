@@ -83,14 +83,12 @@ export const Sidebar = () => {
             </p>
           </div>
           <FxButton
-          icon={Settings}
-          iconSize={17}
+            icon={Settings}
+            iconSize={17}
             onClick={() => router.push("/settings/account")}
             size="square_sm"
             variant="secondary"
-          >
-            
-          </FxButton>
+          ></FxButton>
         </div>
       </div>
     </div>

@@ -56,18 +56,12 @@ export const AGCellBadge = (
         })}
       </div>
       <div className="w-fit flex justify-center items-center shrink-0 gap-2">
-        <FxButton
-          icon={Edit}
-          variant="secondary"
-              size="square_xs"
-         
-        ></FxButton>
+        <FxButton icon={Edit} variant="secondary" size="square_xs"></FxButton>
         <FxButton
           onClick={() => onRemoveRow?.(node.data.id as string)}
           icon={Trash}
           variant="secondary"
-     size="square_xs"
-       
+          size="square_xs"
         ></FxButton>
       </div>
     </div>

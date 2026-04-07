@@ -6,8 +6,8 @@ interface FxCommandBoxProps {
   open?: boolean;
   className?: string;
   containerClasses?: string;
-   overlayBackground?: boolean;
-   modal?: boolean
+  overlayBackground?: boolean;
+  modal?: boolean;
 }
 
 export function FxCommandBox({
@@ -16,9 +16,8 @@ export function FxCommandBox({
   className,
   containerClasses,
   overlayBackground,
-  modal
+  modal,
 }: FxCommandBoxProps) {
-  
   return (
     <CommandDialog
       open={open ?? false}

@@ -1,3 +1,3 @@
-export * from "./ProductActions"
-export * from "./ProductsOverview"
-export * from "./ProductPopupView"
+export * from "./ProductActions";
+export * from "./ProductsOverview";
+export * from "./ProductPopupView";

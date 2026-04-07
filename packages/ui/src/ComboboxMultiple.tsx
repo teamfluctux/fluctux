@@ -10,9 +10,8 @@ import {
   ComboboxList,
   ComboboxValue,
   useComboboxAnchor,
-
 } from "./combobox";
-import {  FxButton} from "./fxbutton"
+import { FxButton } from "./fxbutton";
 import type { MenuDataType } from "@fluctux/types";
 import { X } from "lucide-react";
 
@@ -22,8 +21,8 @@ type ComboboxMultiplePropsType = {
   onValueAdd?: (values: MenuDataType) => void;
   onRemoveAllAddedData?: () => void;
   classNames?: {
-    chipsContainerClassName?: string
-  }
+    chipsContainerClassName?: string;
+  };
 };
 
 export function ComboboxMultiple({
@@ -31,7 +30,7 @@ export function ComboboxMultiple({
   onValueAdd,
   selectedValues = [],
   onRemoveAllAddedData,
-  classNames
+  classNames,
 }: ComboboxMultiplePropsType) {
   const anchor = useComboboxAnchor();
 
@@ -42,9 +41,11 @@ export function ComboboxMultiple({
       multiple
       autoHighlight
       items={items}
-    
     >
-      <ComboboxChips ref={anchor} className={`w-full max-w-xs relative ${classNames?.chipsContainerClassName}`}>
+      <ComboboxChips
+        ref={anchor}
+        className={`w-full max-w-xs relative ${classNames?.chipsContainerClassName}`}
+      >
         <ComboboxValue>
           {(data: MenuDataType[]) => (
             <React.Fragment>

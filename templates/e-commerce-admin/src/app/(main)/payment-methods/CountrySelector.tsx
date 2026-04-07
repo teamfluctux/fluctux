@@ -21,7 +21,7 @@ export type CountryListType = { code: TCountryCode } & ICountry;
 
 type CountrySelectorPropsType = {
   onCountrySelect?: (data: CountryListType) => void;
-  loading?: boolean
+  loading?: boolean;
   classNames?: {
     inputClassName?: string;
   };
@@ -87,14 +87,13 @@ export const CountrySelector = ({
         placeholder="Select your business location"
         className={`w-[300px] ${classNames?.inputClassName}`}
       >
-          {
-            loading&& 
-        <InputGroupAddon align="inline-end">
-          <InputGroupButton size="icon-xs">
-            <Spinner />
-          </InputGroupButton>
-        </InputGroupAddon>
-          }
+        {loading && (
+          <InputGroupAddon align="inline-end">
+            <InputGroupButton size="icon-xs">
+              <Spinner />
+            </InputGroupButton>
+          </InputGroupAddon>
+        )}
       </ComboboxInput>
 
       <ComboboxContent>

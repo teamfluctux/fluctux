@@ -1,1 +1,1 @@
-export * from "./CurrencySelector"
+export * from "./CurrencySelector";

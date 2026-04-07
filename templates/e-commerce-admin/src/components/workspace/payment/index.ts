@@ -1,2 +1,2 @@
-export * from "./PaymentAddPopover"
-export * from "./PaymentSetup"
+export * from "./PaymentAddPopover";
+export * from "./PaymentSetup";
