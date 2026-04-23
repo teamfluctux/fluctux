@@ -16,6 +16,9 @@ type SingleFileClassNameTypes = {
   mainWrapper: { [key in FileViewModeType]: string };
 };
 
+/**
+ * Tailwind CSS class mapping for different file view modes.
+ */
 const SingleFileClassName: SingleFileClassNameTypes = {
   mainWrapper: {
     small_icons:
@@ -23,6 +26,9 @@ const SingleFileClassName: SingleFileClassNameTypes = {
   },
 };
 
+/**
+ * Configuration for the file action popover menu.
+ */
 const FileMoreOptions: PopoverMenuDataType = {
   "More Options": {
     data: [
@@ -44,13 +50,23 @@ const FileMoreOptions: PopoverMenuDataType = {
   },
 };
 
+/**
+ * Component for rendering a single image file item in the file manager.
+ * 
+ * @param createdAt - The creation date of the file.
+ * @param name - The name of the file.
+ * @param meta_desc - Optional metadata description.
+ * @param size - The file size as a string.
+ * @param updatedAt - Optional last updated date.
+ * @param viewMode - The display mode (defaults to "small_icons").
+ */
 const SingleImageFileComponent = ({
   createdAt,
   name,
   meta_desc,
   size,
   updatedAt,
-  viewMode = "grid",
+  viewMode = "small_icons",
 }: SingleFileComponentPropsType) => {
   return (
     <div
@@ -82,6 +98,11 @@ const SingleImageFileComponent = ({
   );
 };
 
+/**
+ * Main content area for the Files Manager.
+ * 
+ * Renders file components based on the current view mode and filters.
+ */
 export const FileContent = () => {
   return (
     <main className="w-full py-20">

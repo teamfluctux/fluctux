@@ -23,6 +23,12 @@ const FILES_MANAGER_HEADER_MENUS: FilesManagerHeaderMenusType[] = [
   { label: "CSV", value: "csv", icon: Table, type: "csv" },
 ];
 
+/**
+ * Header component for the Files Manager.
+ * 
+ * Provides navigation filters for different file types (Images, Videos, etc.)
+ * using URL query parameters.
+ */
 export const FileHeader = () => {
   const router = useRouter();
   const queryParams = useSearchParams();
