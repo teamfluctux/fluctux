@@ -6,7 +6,7 @@ import {
   Sheet,
   SheetContent,
 } from "@fluctux/ui";
-
+import { v4 as uuidv4 } from "uuid";
 import type { MenuDataType } from "@fluctux/types";
 import { useUrlQueryParams } from "@fluctux/hooks";
 import { observer } from "mobx-react";
@@ -52,7 +52,7 @@ export const ProductOptions = observer(() => {
   // -- UI states
   const [attrRowData, setAttrRowData] = useState<AttrDataType[]>([
     {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       title: "Color",
       type: { label: "Color", value: "COLOR" },
       data: [
@@ -62,7 +62,7 @@ export const ProductOptions = observer(() => {
       ],
     },
     {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       title: "Size",
       type: { label: "Text", value: "TEXT" },
       data: [
@@ -74,7 +74,7 @@ export const ProductOptions = observer(() => {
       ],
     },
     {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       title: "Material",
       type: { label: "Text", value: "TEXT" },
       data: [
@@ -83,7 +83,7 @@ export const ProductOptions = observer(() => {
       ],
     },
     {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       title: "Weight",
       type: { label: "Text", value: "TEXT" },
       data: [{ values: "Light" }, { values: "Medium" }, { values: "Heavy" }],

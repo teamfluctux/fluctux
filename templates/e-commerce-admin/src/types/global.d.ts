@@ -11,3 +11,5 @@ export type SettingsSidebarMenuListType = {
     items: SettingsMenuItem[];
   };
 };
+
+export type ViewModeType = "list" | "grid";

@@ -15,6 +15,7 @@ import {
   ShieldIcon,
   StoreIcon,
   Users,
+  FolderOpenIcon,
 } from "lucide-react";
 
 export const SIDEBAR_ADMIN_MENU_LIST: MenuListType = {
@@ -27,6 +28,7 @@ export const SIDEBAR_ADMIN_MENU_LIST: MenuListType = {
       { label: "Analytics", icon: BarChart2Icon, slug: "/analytics" },
       { label: "Discounts", icon: TagIcon, slug: "/discounts" },
       { label: "Blogs", icon: FileTextIcon, slug: "/blogs" },
+      { label: "Files Manager", icon: FolderOpenIcon, slug: "/files-manager" },
     ],
   },
   Appearance: {
