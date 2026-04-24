@@ -8,6 +8,12 @@ import { observer } from "mobx-react";
 import React from "react";
 import { fileStore } from "stores";
 
+/**
+ * Component that renders contextual action buttons in the Files Manager header.
+ * 
+ * The buttons change dynamically based on the current navigation type 
+ * (e.g., "Import Images" for images, "New Folder" for folders).
+ */
 export const FileHeaderActions = observer(() => {
   return (
     <>

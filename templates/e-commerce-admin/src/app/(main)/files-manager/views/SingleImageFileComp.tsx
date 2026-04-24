@@ -1,5 +1,9 @@
-"use client"
-import type { FileCompQueryParamsType, FileViewModeType, SingleFileComponentPropsType } from "@/types";
+"use client";
+import type {
+  FileCompQueryParamsType,
+  FileViewModeType,
+  SingleFileComponentPropsType,
+} from "@/types";
 import { useUrlQueryParams } from "@fluctux/hooks";
 import { FxButton, FxPopover, type PopoverMenuDataType } from "@fluctux/ui";
 import { Ellipsis, Trash } from "lucide-react";
@@ -83,9 +87,16 @@ const FileSmallIconsView = ({
 };
 
 type SingleImageFileCompPropsType = ImageFileDataPropsType;
+
+/**
+ * Main component for rendering a single image file.
+ * 
+ * It determines which view to render based on the "view" URL query parameter.
+ */
 export const SingleImageFileComp = (props: SingleImageFileCompPropsType) => {
-    const {getQueryParam} = useUrlQueryParams<FileCompQueryParamsType>()
-    const viewMode = getQueryParam("view") as FileViewModeType;
+  const { getQueryParam } = useUrlQueryParams<FileCompQueryParamsType>();
+  // -- Defaults to small_icons as fallback
+  const viewMode = getQueryParam("view") ?? ("small_icons" as FileViewModeType);
   if (viewMode == "small_icons") return <FileSmallIconsView {...props} />;
-    return null;
+  return null;
 };

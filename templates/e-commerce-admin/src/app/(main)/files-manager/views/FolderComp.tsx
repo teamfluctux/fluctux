@@ -8,7 +8,7 @@ import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "./context-menu";
+} from "@fluctux/ui";
 
 type FolderContextMenuProspType = {
   children: React.ReactNode;
@@ -33,6 +33,12 @@ const FOLDER_CONTEXT_MENU_LIST: FolderContextMenuListType[] = [
   },
 ];
 
+/**
+ * A wrapper component that provides a context menu for folder items.
+ * 
+ * @param props - Component properties.
+ * @param props.children - The trigger element for the context menu.
+ */
 const FolderContextMenu = ({ children }: FolderContextMenuProspType) => {
   return (
     <ContextMenu>
@@ -72,9 +78,15 @@ export const FolderSmallIconsView = () => {
   );
 };
 
+/**
+ * Main component for rendering a folder item.
+ * 
+ * It determines which view to render based on the "view" URL query parameter.
+ */
 export const FolderComp = () => {
   const { getQueryParam } = useUrlQueryParams<FileCompQueryParamsType>();
-  const viewMode = getQueryParam("view") as FileViewModeType;
+  // -- Defaults to small_icons as fallback
+  const viewMode = getQueryParam("view") ?? "small_icons" as FileViewModeType ;
   if (viewMode == "small_icons") return <FolderSmallIconsView />;
   return null;
 };

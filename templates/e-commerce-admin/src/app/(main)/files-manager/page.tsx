@@ -15,9 +15,14 @@ type ViewCompsPropsType = {
   fileType: FilesManagerHeaderMenusType["type"];
 };
 
+/**
+ * Component that switches between different file view types.
+ *
+ * @param props - Component properties.
+ * @param props.fileType - The type of files to display (e.g., 'folder', 'image').
+ */
 const ViewComps = ({ fileType }: ViewCompsPropsType) => {
   if (fileType == "folder")
-    throw new Error("Error fetching folders")
     return (
       <>
         {Array.from({ length: 30 }).map((item, i) => {
@@ -46,16 +51,16 @@ export default function FileContent() {
   const fileType = getQueryParam("type") as FilesManagerHeaderMenusType["type"];
 
   useEffect(() => {
+    // -- Save navigation file type from FileHeader Menu list for updating FileActions buttons
     fileStore.setFileNavType(fileType as FilesManagerHeaderMenusType["type"]);
   }, [fileType]);
 
   return (
     <main className="w-full pt-10 pb-20">
       <ErrorFallback title="Error rendering component!">
-
-      <div className="w-full h-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4">
-        <ViewComps fileType={fileType} />
-      </div>
+        <div className="w-full h-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4">
+          <ViewComps fileType={fileType} />
+        </div>
       </ErrorFallback>
     </main>
   );

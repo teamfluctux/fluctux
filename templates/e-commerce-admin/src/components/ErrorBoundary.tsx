@@ -1,12 +1,22 @@
+// -- Move it to shared package
+// MSG_WARNING: ErrorBoundary only works from Nextjs v16.2.4
 "use client";
 
 import {
   FxButton,
 } from "@fluctux/ui";
 import { AlertCircleIcon, Bug, Wrench } from "lucide-react";
-// @ts-ignore
+// @ts-ignore // -- Stop throwing unnecessary type error
 import { unstable_catchError as catchError, type ErrorInfo } from "next/error";
 
+/**
+ * A fallback component rendered when an error is caught by the error boundary.
+ * 
+ * @param props - Component properties.
+ * @param props.title - The title to display in the error alert.
+ * @param errorInfo - Error information provided by the error boundary.
+ * @returns A React component displaying the error message and action buttons.
+ */
 function ErrorFallback(
   props: { title: string },
   { error, unstable_retry }: ErrorInfo
