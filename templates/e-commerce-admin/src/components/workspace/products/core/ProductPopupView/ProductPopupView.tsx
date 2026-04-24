@@ -1,5 +1,5 @@
 "use client";
-import { productStore } from "@/services/stores";
+import { productStore } from "stores";
 import type { MenuDataType } from "@fluctux/types";
 import {
   FxButton,
@@ -72,7 +72,7 @@ export const ProductPopupView = observer(() => {
     <FxCommandBox
       overlayBackground
       modal={false}
-      open={true}
+      open={false}
       // to enable macos window open close animation pass classname here
       className="max-w-[1100px] w-full max-h-[650px] h-full "
     >

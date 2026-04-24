@@ -2,6 +2,7 @@
 import type React from "react";
 import type { ICellRendererComp, ICellRendererParams } from "ag-grid-community";
 import {
+  Badge,
   FxButton,
   Popover,
   PopoverContent,
@@ -134,14 +135,14 @@ export const AgCellPopover = (
         asChild
         className="w-full h-full  px-4!  hover:!bg-background-color_850C"
       >
-        <div className="w-full h-full ">
+        <div className="w-full h-full flex justify-between items-center">
           {popoverTriggerNode
             ? popoverTriggerNode
             : (value &&
                 value.find((d: AgCellPopoverDataType) => d.isPrimary == true)
                   ?.label) ||
               value[0]?.label}
-          {value && value?.length > 1 && "..."}
+          {value && value?.length > 1 && <Badge variant={"ghost"}>+ {value.length}</Badge>}
         </div>
       </PopoverTrigger>
       <PopoverContent

@@ -10,7 +10,7 @@ import {
 import { Bell, Search, Settings } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { observer } from "mobx-react";
-import { workspaceHeaderStore } from "@/services/stores";
+import { workspaceHeaderStore } from "stores";
 
 export const WorkSpaceHeader = observer(() => {
   const router = useRouter();

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { productStore, workspaceHeaderStore } from "@/services/stores";
+import { productStore, workspaceHeaderStore } from "stores";
 import type { ColDef } from "ag-grid-community";
 
 import {

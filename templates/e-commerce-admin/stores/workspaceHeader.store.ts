@@ -9,7 +9,9 @@ class WorkspaceHeaderStore {
   metaData: MetaDataType | null = null;
   constructor() {
     makeObservable(this, {
+      // -- States
       metaData: observable,
+      // -- Actions
       setMetaData: action,
       clearMetaData: action,
     });

@@ -13,7 +13,9 @@ class PaymentStore {
   selectedPaymentProviders: SelectedPaymentProvidersType[] = [];
   constructor() {
     makeObservable(this, {
+      // -- States
       selectedPaymentProviders: observable,
+      // -- Actions
       setSelectedPaymentProviders: action,
       clearStates: action,
     });

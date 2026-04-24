@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import type { MenuDataType } from "@fluctux/types";
 import { useUrlQueryParams } from "@fluctux/hooks";
 import { observer } from "mobx-react";
-import { productStore } from "@/services/stores";
+import { productStore } from "stores";
 import type { ProductQueryParams } from "@/types";
 import {
   AGCellBadge,

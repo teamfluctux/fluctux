@@ -1,6 +1,6 @@
 "use client";
 import { ALL_PAYMENT_PROVIDERS } from "@/constants";
-import { paymentStore } from "@/services/stores";
+import { paymentStore } from "stores";
 import {
   Badge,
   FxButton,

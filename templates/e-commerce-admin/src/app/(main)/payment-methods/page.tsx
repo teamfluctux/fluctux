@@ -3,7 +3,7 @@ import {
   paymentStore,
   productStore,
   workspaceHeaderStore,
-} from "@/services/stores";
+} from "stores";
 import React, { useEffect, useRef, useState } from "react";
 import { CountrySelector, type CountryListType } from "./CountrySelector";
 import { Button, ButtonGroup, FxButton, Kbd, Separator } from "@fluctux/ui";

@@ -36,10 +36,10 @@
   "devDependencies": {
     "@types/react": "^19.2.14",
     "@fluctux/ui": "workspace:*",
-    "next": "^16.1.6"
+    "next": ">=16.1.6 <17"
   },
   "peerDependencies": {
-    "next": "^16.1.6",
+    "next": ">=16.1.6 <17",
     "@fluctux/ui": "workspace:*",
     "lucide-react": "^0.471.2",
     "react": "^19.2.4"

@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { FxButton, FxPopover, FxSeparator } from "@fluctux/ui";
 import { Ellipsis, PlusIcon } from "lucide-react";
-import { workspaceHeaderStore } from "@/services/stores";
+import { workspaceHeaderStore } from "stores";
 import { formatScaleValue } from "@fluctux/shared";
 
 import { PRODUCT_PAGE_MENU_OPTIONS, PRODUCTS_OVERVIEW_DATA } from "@/constants";

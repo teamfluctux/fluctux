@@ -9,12 +9,14 @@ class ProductStore {
   createProduct: ProductManageDataType | null = null;
   constructor() {
     makeObservable(this, {
+      // -- States
       isProductOptionsOpen: observable,
-      setIsProductOptionsOpen: action,
       productPopupView: observable,
+      createProduct: observable,
+      // -- Actions
+      setIsProductOptionsOpen: action,
       setProductPopupView: action,
       clearProductPopupView: action,
-      createProduct: observable,
       setCreateProduct: action,
       clearCreateProduct: action,
     });

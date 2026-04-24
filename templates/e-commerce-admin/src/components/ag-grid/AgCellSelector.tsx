@@ -144,21 +144,23 @@ export const AgCellSelector = <TLevel extends string>(
   params: AgCellSelectorParamsType<TLevel>,
   ref: React.Ref<Omit<ICellRendererComp, "getGui">>
 ) => {
-  // State to manage the selected value within the component
-  // AG Grid provides 'value' directly from the 'field' specified in colDefs
+  /**
+   * State to manage the selected value within the component
+   * AG Grid provides 'value' directly from the 'field' specified in colDefs
+   */
   const { value, initialData, LevelConstants, onSelectionChange } = params;
   const [selectedValue, setSelectedValue] =
     useState<CellSelectorValuesType<TLevel>>(value);
 
-  // Expose AG Grid's required cell renderer methods
+  // -- Expose AG Grid's required cell renderer methods
   useImperativeHandle(ref, () => {
     return {
-      // Return true if the renderer should be refreshed, false otherwise
+      // -- Return true if the renderer should be refreshed, false otherwise
       refresh: (params: ICellRendererParams) => {
-        // You can add logic here if you need to re-render based on certain prop changes
+        // -- You can add logic here if you need to re-render based on certain prop changes
         return false; // Returning false tells AG Grid not to re-render this component on data changes
       },
-      // return the value to AG Grid when it asks for it
+      // -- return the value to AG Grid when it asks for it
       getValue: () => {
         return selectedValue;
       },
@@ -169,8 +171,10 @@ export const AgCellSelector = <TLevel extends string>(
     const getChangedData = initialData?.find((t) => t.value == value);
     if (!getChangedData) return;
     setSelectedValue(getChangedData);
-    // Notify AG Grid of the change
-    // This will update the underlying row data
+    /**
+     * Notify AG Grid of the change
+     * This will update the underlying row data
+     */
     params.setValue?.(getChangedData);
     // -- Pass the value and params
     onSelectionChange?.(value, params);

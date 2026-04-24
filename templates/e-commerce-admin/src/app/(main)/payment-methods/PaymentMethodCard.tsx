@@ -4,7 +4,7 @@ import { Ellipsis } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import { DollarSign, Info, FileText, PowerOff } from "lucide-react";
-import type { SelectedPaymentProvidersType } from "@/services/stores";
+import type { SelectedPaymentProvidersType } from "stores";
 import { SupportedCardListItem } from "@/components/workspace/payment/SupportedCardListItem";
 import { usePaymentMethodContext } from "@/context";
 

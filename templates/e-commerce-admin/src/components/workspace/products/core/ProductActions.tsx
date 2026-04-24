@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 import { useUrlQueryParams } from "@fluctux/hooks";
 
-import { productStore } from "@/services/stores";
+import { productStore } from "stores";
 import type { ProductQueryParams } from "@/types";
 import { ProductOptions } from "../action-menu-comps/ProductOptions";
 
@@ -31,6 +31,7 @@ export const ProductActions = () => {
   ) => {
     if (isAsQueryParam) {
       handlePushQueryParam("options", value);
+      
     }
   };
 
