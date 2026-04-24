@@ -15,13 +15,22 @@ import {
   KeyRoundIcon,
   Bell as BellIcon,
   PanelLeft as PanelLeftIcon,
+  ScanSearchIcon,
+  WebhookIcon,
+  PlugIcon,
 } from "lucide-react";
 
+/**
+ * Represents the structure for a settings page header metadata.
+ */
 type SettingsTitleDescType = {
   title: string;
   desc: string;
 };
 
+/**
+ * A list of all valid settings route slugs used for type safety and routing.
+ */
 export const SETTINGS_SLUGS = [
   "/settings",
   "/settings/site-status",
@@ -37,10 +46,17 @@ export const SETTINGS_SLUGS = [
   "/settings/billing",
   "/settings/api",
   "/settings/account",
+  "/settings/scrapers"
 ] as const;
+
+/**
+ * Type representing any valid settings URL path.
+ */
 export type SettingsSlugType = (typeof SETTINGS_SLUGS)[number];
 
-// Settings page title and description
+/**
+ * Mapping of settings slugs to their respective display titles and descriptions.
+ */
 export const SETTINGS_TITLE_DESC: Record<
   SettingsSlugType,
   SettingsTitleDescType
@@ -101,9 +117,15 @@ export const SETTINGS_TITLE_DESC: Record<
     title: "Notifications",
     desc: "Manage your notification preferences, alerts and communication settings.",
   },
+  "/settings/scrapers": {
+    title: "Scraper Apps",
+    desc: "Manage and install scraper applications to import products from external sources.",
+  },
 };
 
-// Settings page sidebar menus
+/**
+ * Configuration for the settings page sidebar navigation, grouped by categories.
+ */
 export const ADMIN_SETTINGS_SIDEBAR: SettingsSidebarMenuListType = {
   General: {
     label: "General",
@@ -172,6 +194,26 @@ export const ADMIN_SETTINGS_SIDEBAR: SettingsSidebarMenuListType = {
         slug: "/settings/billing",
       },
       { label: "API Keys", icon: KeyRoundIcon, slug: "/settings/api" },
+    ],
+  },
+  Integrations: {
+    label: "Integrations",
+    items: [
+      {
+        label: "Scraper Apps",
+        icon: ScanSearchIcon,
+        slug: "/settings/scrapers",
+      },
+      // {
+      //   label: "Webhooks",
+      //   icon: WebhookIcon,
+      //   slug: "/settings/webhooks",
+      // },
+      // {
+      //   label: "Connected Apps",
+      //   icon: PlugIcon,
+      //   slug: "/settings/connected-apps",
+      // },
     ],
   },
   Account: {

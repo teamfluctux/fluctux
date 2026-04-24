@@ -46,7 +46,7 @@ export const ProductActions = () => {
     <>
       <div className="flex justify-center items-center w-fit shrink-0 gap-3">
         <FxButton icon={CirclePlus} variant="primary" size="sm">
-          Add Products
+          Add new
         </FxButton>
         <FxPopover<typeof PRODUCT_PAGE_MENU_OPTIONS>
           align="end"
