@@ -1,9 +1,15 @@
 import type { ScraperAppInfoTypes } from "@/types";
 import { action, computed, makeObservable, observable } from "mobx";
 
+/**
+ * Store for managing scraper applications, their installation status, and selection states.
+ */
 export class ScraperStore {
+    /** Set of scraper API URLs selected for installation */
     selectedScrapers = new Set<string>();
+    /** Map of available scrapers indexed by their API URL */
     availableScrapers = new Map<string, ScraperAppInfoTypes>();
+    /** Set of scraper API URLs selected for uninstallation */
     selectForUninstall = new Set<string>();
 
     constructor() {
@@ -26,6 +32,11 @@ export class ScraperStore {
         })
     }
 
+    /**
+     * Toggles the selection of a scraper. 
+     * If already installed, it toggles for uninstallation.
+     * If not installed, it toggles for installation.
+     */
     setSelectedScrapers(apiURL: string) {
         const installedScraper = this.availableScrapers.get(apiURL)
         /**
@@ -58,12 +69,18 @@ export class ScraperStore {
         this.selectedScrapers.add(apiURL)
     }
 
+    /**
+     * Initializes the available scrapers map.
+     */
     setAvailableScrapers(data: ScraperAppInfoTypes[]) {
         // One time addition
         const newMap = new Map<string, ScraperAppInfoTypes>(data.map((item) => [item.apiURL, item]))
         this.availableScrapers = newMap
     }
 
+    /**
+     * Marks a specific scraper as installed and removes it from the selection set.
+     */
     setInstallScraper(apiURL: string) {
         const existedScraper = this.availableScrapers.get(apiURL)
         if (this.selectedScrapers.has(apiURL)) {
@@ -74,6 +91,9 @@ export class ScraperStore {
         this.availableScrapers.set(apiURL, { ...existedScraper!, isInstalled: true })
     }
 
+    /**
+     * Marks a specific scraper as uninstalled and removes it from the uninstallation set.
+     */
     setUninstallScraper(apiURL: string) {
         const existedScraper = this.availableScrapers.get(apiURL)
         if (this.selectForUninstall.has(apiURL)) {
@@ -83,12 +103,17 @@ export class ScraperStore {
         this.availableScrapers.set(apiURL, { ...existedScraper!, isInstalled: false })
     }
 
+    /**
+     * Clears all current selections for both installation and uninstallation.
+     */
     setClearAllSelections() {
         this.selectedScrapers.clear()
         this.selectForUninstall.clear()
     }
 
-
+    /**
+     * Returns the total number of currently installed scrapers.
+     */
     get installedScrapersCount() {
         let count = 0;
         this.availableScrapers.forEach(item => {
@@ -97,6 +122,9 @@ export class ScraperStore {
         return count;
     }
 
+    /**
+     * Installs all scrapers currently in the `selectedScrapers` set.
+     */
     setInstallMultiScrapers() {
         this.selectedScrapers.forEach(apiURL => {
             this.availableScrapers.set(apiURL, { ...this.availableScrapers.get(apiURL)!, isInstalled: true })
@@ -104,6 +132,9 @@ export class ScraperStore {
         this.selectedScrapers.clear()
     }
 
+    /**
+     * Uninstalls all scrapers currently in the `selectForUninstall` set.
+     */
     setUninstallMultiScrapers() {
         this.selectForUninstall.forEach(apiURL => {
             this.availableScrapers.set(apiURL, { ...this.availableScrapers.get(apiURL)!, isInstalled: false })
@@ -111,6 +142,9 @@ export class ScraperStore {
         this.selectForUninstall.clear()
     }
 
+    /**
+     * Resets the store to its initial state.
+     */
     clearStates() {
         this.selectedScrapers.clear()
         this.availableScrapers.clear()
