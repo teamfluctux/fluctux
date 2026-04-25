@@ -9,6 +9,7 @@ import {
   SiteStatusSettings,
   TeamSettings,
   WebsiteDetailsSettings,
+  ScraperLists,
 } from "@/components";
 import { SETTINGS_TITLE_DESC, type SettingsSlugType } from "@/constants";
 
@@ -42,6 +43,7 @@ const SETTINGS_PAGES: Record<string, React.ReactNode> = {
   sellers: <SellersSettings />,
   billing: <BillingSettings />,
   api: <ApiSettings />,
+  scrapers: <ScraperLists />,
 };
 
 export default async function SettingsChildPage({

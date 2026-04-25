@@ -9,6 +9,7 @@ import { Suspense } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { TooltipProvider } from "@fluctux/ui";
+import { GlobalProviders } from "@/providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,7 +51,9 @@ export default function RootLayout({
               baseColor="var(--skeleton-base-color)"
               highlightColor="var(--skeleton-highlightColor)"
             >
-              <TooltipProvider>{children}</TooltipProvider>
+              <GlobalProviders>
+                <TooltipProvider>{children}</TooltipProvider>
+              </GlobalProviders>
             </SkeletonTheme>
           </ThemeProvider>
         </Suspense>

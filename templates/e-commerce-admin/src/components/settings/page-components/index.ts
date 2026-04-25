@@ -8,4 +8,5 @@ export * from "./SellersSettings";
 export * from "./SidebarAccessSettings";
 export * from "./SiteStatusSettings";
 export * from "./TeamSettings";
+export * from "./scraper-page";
 export * from "./WebsiteDetailsSettings";
