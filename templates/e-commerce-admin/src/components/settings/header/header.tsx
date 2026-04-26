@@ -18,11 +18,16 @@ export const Settingsheader = () => {
   }, [path_name, setMetaData]);
 
   return (
-    <header className="w-full py-4 mb-8 mt-10 sticky top-0 left-0 gap-10 backdrop-blur-3xl z-50">
-      <div className="max-w-[800px] w-full mx-auto px-3">
-        <div className="flex justify-between items-center ">
-          <h1 className="text-read_18 font-medium">{metaData.title}</h1>
-          <div>
+    <header className="w-full flex h-[80px] mb-8 mt-10 sticky top-0 left-0 gap-10 backdrop-blur-3xl z-50">
+      <div className="max-w-[800px] w-full mx-auto px-3 flex justify-between items-center">
+        <div >
+          <h1 className="text-read_18 font-medium one-line-ellipsis">{metaData.title}</h1>
+             <p className="text-workspace_2 font-medium text-text-color_3 one-line-ellipsis">
+          {metaData.desc}
+        </p>
+        </div>
+     
+        <div className="shrink-0">
             <ButtonGroup>
               <Button
                 showClickOutlineEffect
@@ -46,10 +51,6 @@ export const Settingsheader = () => {
               </Button>
             </ButtonGroup>
           </div>
-        </div>
-        <p className="text-workspace_2 font-medium text-text-color_3">
-          {metaData.desc}
-        </p>
       </div>
     </header>
   );

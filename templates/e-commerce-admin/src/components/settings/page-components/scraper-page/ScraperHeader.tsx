@@ -40,7 +40,7 @@ export const ScraperHeader = observer(() => {
   const selected_for_uninstall_length = scraperStore.selectForUninstall.size;
 
   return (
-    <div className="bg-background-color_950C w-full h-fit flex justify-between items-center pb-4">
+    <div className="bg-background-color_950C w-full  flex justify-between items-center h-[60px] sticky top-[80px] ">
       <div className="flex justify-start items-center gap-3">
         <ScraperHeaderInfoList
           label="Total scrapers"
@@ -67,7 +67,12 @@ export const ScraperHeader = observer(() => {
           </FxButton>
         )}
         {selected_for_uninstall_length > 0 && (
-          <FxButton size="xs" className="relative" variant="destructive"  onClick={() => scraperStore.setUninstallMultiScrapers()}>
+          <FxButton
+            size="xs"
+            className="relative"
+            variant="destructive"
+            onClick={() => scraperStore.setUninstallMultiScrapers()}
+          >
             <Badge
               variant={"destructive"}
               className="absolute -top-4.5 -right-2 border-2 border-background-color_950C"

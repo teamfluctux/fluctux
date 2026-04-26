@@ -12,6 +12,37 @@ import { scraperStore } from "stores";
  */
 export const ScraperListItem = (props: ScraperAppInfoTypes) => {
   const { title, meta_desc, category, image, isInstalled, apiURL } = props;
+
+  //   -- Uninstall scraper
+  const handleUnInstallScraper = async (api_url: string) => {
+    const toastId = toast.loading(`Uninstalling ${title} scraper!`);
+    if (!scraperStore.availableScrapers.get(api_url)) {
+      toast.error("Scraper not found");
+      return;
+    }
+    // -- Simulating uninstalling
+    await new Promise((r) => setTimeout(r, 1000));
+    scraperStore.setUninstallScraper(api_url);
+    toast.success(`${title} scraper uninstalled successfully.`, {
+      id: toastId,
+    });
+  };
+
+  //   -- Install scraper
+  const handleInstallScraper = async (api_url: string) => {
+    const toastId = toast.loading(`Installing ${title} scraper.`);
+    if (!scraperStore.availableScrapers.get(api_url)) {
+      toast.error("Scraper not found");
+      return;
+    }
+    // -- Simulating installing
+    await new Promise((r) => setTimeout(r, 1000));
+    scraperStore.setInstallScraper(api_url);
+    toast.success(`${title} scraper installed successfully.`, {
+      id: toastId,
+    });
+  };
+
   return (
     <div className="rounded-xl border border-border-color_1 bg-background-color_900C hover:bg-background-color_800C cursor-default p-1 h-[125px] flex justify-start items-center gap-2.5 peer-checked:border-surface-border-active peer-checked:bg-surface-bg peer-checked:hover:bg-surface-bg-active">
       <div className="rounded-lg border border-border-color_1 overflow-hidden w-[120px] h-full shrink-0">
@@ -38,27 +69,13 @@ export const ScraperListItem = (props: ScraperAppInfoTypes) => {
             <FxButton
               size="xs"
               variant="destructive"
-              onClick={() => {
-                if (!scraperStore.availableScrapers.get(apiURL)) {
-                  toast.error("Scraper not found");
-                  return;
-                }
-                scraperStore.setUninstallScraper(apiURL);
-              }}
+       
+              onClick={() => handleUnInstallScraper(apiURL)}
             >
               Uninstall
             </FxButton>
           ) : (
-            <FxButton
-              size="xs"
-              onClick={() => {
-                if (!scraperStore.availableScrapers.get(apiURL)) {
-                  toast.error("Scraper not found");
-                  return;
-                }
-                scraperStore.setInstallScraper(apiURL);
-              }}
-            >
+            <FxButton size="xs" onClick={() => handleInstallScraper(apiURL)} >
               Install
             </FxButton>
           )}
