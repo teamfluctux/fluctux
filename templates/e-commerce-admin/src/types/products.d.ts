@@ -2,7 +2,7 @@ import type { AgCellPopoverDataType } from "@/components/ag-grid";
 import type { AgSelectCellDataType } from "./ag-grid";
 
 // -- Query params type
-export type ProductQueryParams = "options" | "opt-menu";
+export type ProductMoreOptionsQueryParams = "options" | "opt-menu";
 
 // export type ShippingMethod = {
 //   name: string

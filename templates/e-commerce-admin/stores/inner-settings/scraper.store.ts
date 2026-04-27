@@ -1,4 +1,5 @@
 import type { ScraperAppInfoTypes } from "@/types";
+import type { ScraperConfigType } from "@/zod";
 import { action, computed, makeObservable, observable } from "mobx";
 
 /**
@@ -11,6 +12,15 @@ export class ScraperStore {
     availableScrapers = new Map<string, ScraperAppInfoTypes>();
     /** Set of scraper API URLs selected for uninstallation */
     selectForUninstall = new Set<string>();
+    /** List of installed scrapers fetched from the remote database */
+    installedScrappers: ScraperAppInfoTypes[] = []
+
+    /** Configuration settings for the scraping process */
+    scrapingConfiguration: Partial<ScraperConfigType> = {
+        apiUrl: "",
+        numberOfProducts: 0,
+        whatToDoWithScrapProducts: ""
+    }
 
     constructor() {
         makeObservable(this, {
@@ -18,6 +28,9 @@ export class ScraperStore {
             selectedScrapers: observable,
             availableScrapers: observable,
             selectForUninstall: observable,
+            installedScrappers: observable,
+
+            scrapingConfiguration: observable,
             // -- Computed
             installedScrapersCount: computed,
             // -- Actions
@@ -28,7 +41,10 @@ export class ScraperStore {
             setInstallMultiScrapers: action,
             setUninstallMultiScrapers: action,
             setClearAllSelections: action,
-            clearStates: action,
+            setGetInstalledScrappersFromRemote: action,
+
+            setScrapingConfiguration: action,
+            clearAllStates: action,
         })
     }
 
@@ -142,10 +158,21 @@ export class ScraperStore {
         this.selectForUninstall.clear()
     }
 
+    setGetInstalledScrappersFromRemote(data: ScraperAppInfoTypes[]) {
+        this.installedScrappers = data
+    }
+
+
+    setScrapingConfiguration(data: Partial<ScraperConfigType>) {
+        Object.assign(this.scrapingConfiguration, data)
+    }
+
+
+
     /**
      * Resets the store to its initial state.
      */
-    clearStates() {
+    clearAllStates() {
         this.selectedScrapers.clear()
         this.availableScrapers.clear()
         this.selectForUninstall.clear()

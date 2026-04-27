@@ -11,13 +11,13 @@ import { useEffect } from "react";
 import { useUrlQueryParams } from "@fluctux/hooks";
 
 import { productStore } from "stores";
-import type { ProductQueryParams } from "@/types";
+import type { ProductMoreOptionsQueryParams } from "@/types";
 import { ProductOptions } from "../action-menu-comps/ProductOptions";
 
 export const ProductActions = () => {
   // -- Handle query params
   const { handlePushQueryParam, getQueryParam } =
-    useUrlQueryParams<ProductQueryParams>();
+    useUrlQueryParams<ProductMoreOptionsQueryParams>();
 
   // -- Get query params
   const getOptionsParam = getQueryParam(
@@ -26,19 +26,21 @@ export const ProductActions = () => {
 
   //   -- UI click events
   const handleProductMenuItemClick = (
-    value: string,
+    value: ProductMenuOptionsValuesType,
     isAsQueryParam?: boolean
   ) => {
     if (isAsQueryParam) {
       handlePushQueryParam("options", value);
-      
+    }
+    if(value === "scrape-products") {
+      productStore.setProductMoreOptionsMenu({isScrapProductsPopupOpen: true})
     }
   };
 
   //   -- Effect UI on query changes
   useEffect(() => {
     if (getOptionsParam == "product-options") {
-      productStore.setIsProductOptionsOpen(true);
+      productStore.setProductMoreOptionsMenu({ isProductOptionsOpen: true });
     }
   }, [getOptionsParam]);
 

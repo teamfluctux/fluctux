@@ -22,6 +22,7 @@ import {
   ProductActions,
   ProductOverview,
   ProductPopupView,
+  ProductScraperPopUp,
 } from "@/components/workspace/products";
 
 export default function ProductPage() {
@@ -94,6 +95,7 @@ export default function ProductPage() {
         </section>
       </div>
       <ProductPopupView />
+      <ProductScraperPopUp/>
     </>
   );
 }

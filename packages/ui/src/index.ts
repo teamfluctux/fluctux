@@ -21,6 +21,7 @@ export * from "./fxoverlay-images";
 export * from "./fxpopup-radio";
 export * from "./fxseparator";
 export * from "./fxtextarea";
+export * from "./radio-group";
 export * from "./popover";
 export * from "./hover-card";
 export * from "./emoji-picker";
