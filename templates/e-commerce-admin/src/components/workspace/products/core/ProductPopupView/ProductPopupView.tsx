@@ -54,7 +54,7 @@ export const ProductPopupView = observer(() => {
   useEffect(() => {
     // -- Clear product id and popup boolean on component unmount
     return () => {
-      productStore.clearProductPopupView();
+      productStore.clearAllStates();
     };
   }, []);
   useEffect(() => {

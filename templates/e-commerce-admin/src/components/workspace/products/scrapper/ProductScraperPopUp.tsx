@@ -39,7 +39,7 @@ export const ProductScraperPopUp = observer(() => {
     <FxCommandBox
       overlayBackground
       modal={false}
-      open={!productStore.productMoreOptionsMenu.isScrapProductsPopupOpen}
+      open={productStore.productMoreOptionsMenu.isScrapProductsPopupOpen}
       className="max-w-[820px] w-full max-h-[550px] h-full "
     >
       <FxButton

@@ -24,6 +24,8 @@ import {
   ProductPopupView,
   ProductScraperPopUp,
 } from "@/components/workspace/products";
+import { AgCellComboBoxMultiple } from "@/components/ag-grid/AgCellComboBoxMultiple";
+import { AgCellPopoverWithCheckboxNDrag } from "@/components/ag-grid/AgCellPopoverWithCheckboxNDrag";
 
 export default function ProductPage() {
   useEffect(() => {
@@ -62,17 +64,15 @@ export default function ProductPage() {
       cellRendererParams: TAgCellSelectorRendererParams<StatusLevelType>({
         initialData: DUMMY_STATUS_OPTIONS,
         LevelConstants: DUMMY_STATUS_LEVEL,
+        
       }),
     },
 
     {
       field: "categories",
-      cellRenderer: AgCellPopover,
+      cellRenderer: AgCellPopoverWithCheckboxNDrag,
       cellStyle: { padding: "0px 0px" },
-      cellRendererParams: TAgCellPopoverRendererParams({
-        isIcon: true,
-        onEditClick: (value) => alert(`Clicked ${value}`),
-      }),
+
     },
     { field: "created_by" },
   ]);

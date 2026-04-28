@@ -16,6 +16,8 @@ const badgeVariants = cva(
           "bg-red-500  text-text-color_1 focus-visible:ring-destructive/20 dark:bg-red-500 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
         outline:
           "border border-border-color_2 text-text-color_1 [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+                  surface:
+          "border border-surface-border text-surface-fg bg-surface-bg",
         ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
         link: "text-primary underline-offset-4 [a&]:hover:underline",
       },

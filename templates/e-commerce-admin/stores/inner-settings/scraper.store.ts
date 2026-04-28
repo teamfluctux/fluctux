@@ -29,7 +29,6 @@ export class ScraperStore {
             availableScrapers: observable,
             selectForUninstall: observable,
             installedScrappers: observable,
-
             scrapingConfiguration: observable,
             // -- Computed
             installedScrapersCount: computed,
@@ -42,9 +41,11 @@ export class ScraperStore {
             setUninstallMultiScrapers: action,
             setClearAllSelections: action,
             setGetInstalledScrappersFromRemote: action,
-
             setScrapingConfiguration: action,
+            // -- Clearing
+            clearScrapingConfiguration: action,
             clearAllStates: action,
+
         })
     }
 
@@ -167,7 +168,18 @@ export class ScraperStore {
         Object.assign(this.scrapingConfiguration, data)
     }
 
+    // =============================================
+    // Clearing states
+    // =============================================
 
+    // -- Clear scraper configuration settings
+    clearScrapingConfiguration() {
+        this.scrapingConfiguration = {
+            apiUrl: "",
+            numberOfProducts: 0,
+            whatToDoWithScrapProducts: ""
+        }
+    }
 
     /**
      * Resets the store to its initial state.
@@ -176,6 +188,7 @@ export class ScraperStore {
         this.selectedScrapers.clear()
         this.availableScrapers.clear()
         this.selectForUninstall.clear()
+        this.installedScrappers = []
 
     }
 

@@ -1,5 +1,7 @@
 import type { AgCellPopoverDataType } from "@/components/ag-grid";
 import type { AgSelectCellDataType } from "./ag-grid";
+import type { MenuDataType } from "@fluctux/types";
+import type { AgCellPopoverWithCheckboxNDragDataType } from "@/components/ag-grid/AgCellPopoverWithCheckboxNDrag";
 
 // -- Query params type
 export type ProductMoreOptionsQueryParams = "options" | "opt-menu";
@@ -36,6 +38,8 @@ type ProductIdentifiers = {
   value: string;
 };
 
+
+
 export type ProductManageDataType = {
   id: string;
   name: string;
@@ -51,7 +55,7 @@ export type ProductManageDataType = {
   regular_price?: number;
   sale_price?: number;
   discount?: number;
-  categories?: AgCellPopoverDataType[];
+  categories?: AgCellPopoverWithCheckboxNDragDataType[];
   created_by: string;
   status?: AgSelectCellDataType;
   stock_status: "IN_STOCK" | "OUT_OF_STOCK" | "ON_BACK_ORDER";
@@ -63,7 +67,7 @@ export type ProductManageDataType = {
   };
   created_at: string;
   updated_at?: string;
-  tags?: AgCellPopoverDataType[];
+  tags?: AgCellPopoverWithCheckboxNDragDataType[];
   attributes?: ProductManageDataAttributesType[];
   variations?: {
     id?: string;
