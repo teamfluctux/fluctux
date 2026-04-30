@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { productStore, workspaceHeaderStore } from "stores";
 import type { ColDef } from "ag-grid-community";
-
 import {
   DUMMY_ROW_DATA,
   DUMMY_STATUS_LEVEL,
@@ -24,8 +23,6 @@ import {
   ProductPopupView,
   ProductScraperPopUp,
 } from "@/components/workspace/products";
-import { AgCellComboBoxMultiple } from "@/components/ag-grid/AgCellComboBoxMultiple";
-import { AgCellPopoverWithCheckboxNDrag } from "@/components/ag-grid/AgCellPopoverWithCheckboxNDrag";
 
 export default function ProductPage() {
   useEffect(() => {
@@ -70,7 +67,10 @@ export default function ProductPage() {
 
     {
       field: "categories",
-      cellRenderer: AgCellPopoverWithCheckboxNDrag,
+      /**
+       * Here should be DND-kit renderer comp. Use dnd-core for flexibility
+       */
+      // cellRenderer: DndRendererComp,
       cellStyle: { padding: "0px 0px" },
 
     },
