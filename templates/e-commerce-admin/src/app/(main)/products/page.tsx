@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { productStore, workspaceHeaderStore } from "stores";
 import type { ColDef } from "ag-grid-community";
-
 import {
   DUMMY_ROW_DATA,
   DUMMY_STATUS_LEVEL,
@@ -22,6 +21,7 @@ import {
   ProductActions,
   ProductOverview,
   ProductPopupView,
+  ProductScraperPopUp,
 } from "@/components/workspace/products";
 
 export default function ProductPage() {
@@ -61,17 +61,18 @@ export default function ProductPage() {
       cellRendererParams: TAgCellSelectorRendererParams<StatusLevelType>({
         initialData: DUMMY_STATUS_OPTIONS,
         LevelConstants: DUMMY_STATUS_LEVEL,
+        
       }),
     },
 
     {
       field: "categories",
-      cellRenderer: AgCellPopover,
+      /**
+       * Here should be DND-kit renderer comp. Use dnd-core for flexibility
+       */
+      // cellRenderer: DndRendererComp,
       cellStyle: { padding: "0px 0px" },
-      cellRendererParams: TAgCellPopoverRendererParams({
-        isIcon: true,
-        onEditClick: (value) => alert(`Clicked ${value}`),
-      }),
+
     },
     { field: "created_by" },
   ]);
@@ -94,6 +95,7 @@ export default function ProductPage() {
         </section>
       </div>
       <ProductPopupView />
+      <ProductScraperPopUp/>
     </>
   );
 }

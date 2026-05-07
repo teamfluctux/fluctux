@@ -7,6 +7,7 @@ export type ButtonVariant =
   | "ghost_zinc_2"
   | "surface_indigo_2"
   | "surface"
+  | "surface_2"
   | "destructive"
   | "surface_indigo";
 
@@ -23,7 +24,6 @@ type ButtonSizeType =
   | "rounded_md"
   | "square_sm"
   | "square_xs"
-  | "xs"
   | SizeType;
 
 export const buttonSizes: { [key in ButtonSizeType]: string } = {
@@ -88,6 +88,13 @@ export const buttonStyling: ButtonStylingType = {
   surface: {
     default:
       "bg-surface-bg inset-ring inset-ring-surface-border text-surface-fg",
+    hover:
+      "hover:inset-ring-surface-border-active active:bg-surface-bg-active active:inset-ring-surface-border-active data-[state=open]:bg-surface-bg-active data-[state=open]:inset-ring-surface-border-active data-[state=open]:text-surface-fg-2",
+    disabled: "opacity-50 cursor-not-allowed!",
+  },
+  surface_2: {
+    default:
+      "bg-surface-bg inset-ring inset-ring-surface-border text-surface-fg-2",
     hover:
       "hover:inset-ring-surface-border-active active:bg-surface-bg-active active:inset-ring-surface-border-active data-[state=open]:bg-surface-bg-active data-[state=open]:inset-ring-surface-border-active data-[state=open]:text-surface-fg-2",
     disabled: "opacity-50 cursor-not-allowed!",

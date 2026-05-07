@@ -40,6 +40,7 @@ const inputSizes: { [key in SizeType]: string } = {
   md: "p-2 px-3 ",
   lg: "p-3 ",
   xl: "p-4 ",
+  xs: "p-0.5 px-2"
 };
 
 export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
@@ -82,7 +83,7 @@ export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(
         ) : (
           <input
             ref={ref}
-            className={`transition-colors text-workspace_2 placeholder:text-text-color_3! ${inputVariant} ${inputSize} ${className} ${isError && "ring-4 ring-red-500! !ring-opacity-45 border border-red-600!"}`}
+            className={`transition-colors text-workspace_2 placeholder:text-text-color_3! ${inputVariant} ${inputSize} ${className} ${isError && "ring-4 ring-surface-red-bg-active border-surface-red-border-active"}`}
             {...props}
           />
         )}

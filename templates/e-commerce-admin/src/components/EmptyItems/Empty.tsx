@@ -26,6 +26,11 @@ const useEmptyContext = () => {
   return context;
 };
 
+/**
+ * Component to define the title of the Empty state.
+ * Must be used as a child of the `Empty` component.
+ * @param props.children - The title content.
+ */
 export const EmptyTitle = ({ children }: { children: React.ReactNode }) => {
   const { setEmptyTitle } = useEmptyContext();
   useEffect(() => {
@@ -35,6 +40,11 @@ export const EmptyTitle = ({ children }: { children: React.ReactNode }) => {
   return null;
 };
 
+/**
+ * Component to define the description of the Empty state.
+ * Must be used as a child of the `Empty` component.
+ * @param props.children - The description content.
+ */
 export const EmptyDesc = ({ children }: { children: React.ReactNode }) => {
   const { setEmptyDesc } = useEmptyContext();
   useEffect(() => {
@@ -43,6 +53,11 @@ export const EmptyDesc = ({ children }: { children: React.ReactNode }) => {
   }, [children]);
   return null;
 };
+/**
+ * Component to define additional metadata or secondary description.
+ * Must be used as a child of the `Empty` component.
+ * @param props.children - The metadata content.
+ */
 export const EmptyMetaDesc = ({ children }: { children: React.ReactNode }) => {
   const { setMetaDesc } = useEmptyContext();
   useEffect(() => {
@@ -51,6 +66,11 @@ export const EmptyMetaDesc = ({ children }: { children: React.ReactNode }) => {
   }, [children]);
   return null;
 };
+/**
+ * Component to define action buttons or links for the Empty state.
+ * Must be used as a child of the `Empty` component.
+ * @param props.children - The actions content (e.g., Buttons).
+ */
 export const EmptyActions = ({ children }: { children: React.ReactNode }) => {
   const { setEmptyActions } = useEmptyContext();
   useEffect(() => {
@@ -60,6 +80,13 @@ export const EmptyActions = ({ children }: { children: React.ReactNode }) => {
   return null;
 };
 
+/**
+ * The main Empty state container. It uses a slot-based pattern via context
+ * to render its children into specific layout positions.
+ * @param props.icon - Optional Lucide icon to display.
+ * @param props.image - Optional image URL to display.
+ * @param props.children - Slot components (EmptyTitle, EmptyDesc, etc.).
+ */
 export const Empty = ({
   icon,
   image,

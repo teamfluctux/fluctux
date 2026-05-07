@@ -11,7 +11,7 @@ import type { MenuDataType } from "@fluctux/types";
 import { useUrlQueryParams } from "@fluctux/hooks";
 import { observer } from "mobx-react";
 import { productStore } from "stores";
-import type { ProductQueryParams } from "@/types";
+import type { ProductMoreOptionsQueryParams } from "@/types";
 import {
   AGCellBadge,
   AgCellSelector,
@@ -170,7 +170,7 @@ export const ProductOptions = observer(() => {
 
   // -- Handle query params
   const { handlePushQueryParam, removeMultipleQueryParams, getQueryParam } =
-    useUrlQueryParams<ProductQueryParams>();
+    useUrlQueryParams<ProductMoreOptionsQueryParams>();
   // -- Get query params
   const getOptionsMenuParam = getQueryParam("opt-menu");
 
@@ -195,9 +195,11 @@ export const ProductOptions = observer(() => {
     <>
       <Sheet
         modal={false} // prevent intercepting pointer events
-        open={productStore.isProductOptionsOpen}
+        open={productStore.productMoreOptionsMenu.isProductOptionsOpen}
         onOpenChange={(value) => {
-          productStore.setIsProductOptionsOpen();
+          productStore.setProductMoreOptionsMenu({
+            isProductOptionsOpen: value,
+          });
           if (!value) {
             removeMultipleQueryParams("opt-menu", "options");
           }

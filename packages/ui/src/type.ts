@@ -2,7 +2,7 @@
 
 import { IconBase } from "react-icons/lib";
 
-export type SizeType = "sm" | "md" | "lg" | "xl";
+export type SizeType = "sm" | "md" | "lg" | "xl" | "xs";
 export type RadiusType = "primary" | "tablet" | "circle" | "tiny";
 
 export interface DialogProps {
