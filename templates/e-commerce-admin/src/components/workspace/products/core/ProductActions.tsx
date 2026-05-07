@@ -32,8 +32,10 @@ export const ProductActions = () => {
     if (isAsQueryParam) {
       handlePushQueryParam("options", value);
     }
-    if(value === "scrape-products") {
-      productStore.setProductMoreOptionsMenu({isScrapProductsPopupOpen: true})
+    if (value === "scrape-products") {
+      productStore.setProductMoreOptionsMenu({
+        isScrapProductsPopupOpen: true,
+      });
     }
   };
 

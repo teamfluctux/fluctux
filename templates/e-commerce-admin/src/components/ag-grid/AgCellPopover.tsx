@@ -142,7 +142,9 @@ export const AgCellPopover = (
                 value.find((d: AgCellPopoverDataType) => d.isPrimary == true)
                   ?.label) ||
               value[0]?.label}
-          {value && value?.length > 1 && <Badge variant={"ghost"}>+ {value.length}</Badge>}
+          {value && value?.length > 1 && (
+            <Badge variant={"ghost"}>+ {value.length}</Badge>
+          )}
         </div>
       </PopoverTrigger>
       <PopoverContent

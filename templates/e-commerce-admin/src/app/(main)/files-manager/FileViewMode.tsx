@@ -39,7 +39,7 @@ const VIEWS: FileComponentViews[] = [
 
 /**
  * Component for switching between different file view modes (Small icons, Large icons, Details).
- * 
+ *
  * It synchronizes the selected view mode with the URL query parameters
  * and defaults to "small_icons" on initial mount.
  */

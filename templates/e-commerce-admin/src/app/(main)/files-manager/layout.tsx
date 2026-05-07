@@ -9,7 +9,7 @@ export default function Layout({ children }: LayoutPropsType) {
     <div className="w-full">
       <FileHeader />
       {children}
-      <UploadPopupView/>
+      <UploadPopupView />
     </div>
   );
 }

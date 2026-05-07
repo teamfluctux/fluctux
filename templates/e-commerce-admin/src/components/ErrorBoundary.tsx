@@ -2,16 +2,14 @@
 // MSG_WARNING: ErrorBoundary only works from Nextjs v16.2.4
 "use client";
 
-import {
-  FxButton,
-} from "@fluctux/ui";
+import { FxButton } from "@fluctux/ui";
 import { AlertCircleIcon, Bug, Wrench } from "lucide-react";
 // @ts-ignore // -- Stop throwing unnecessary type error
 import { unstable_catchError as catchError, type ErrorInfo } from "next/error";
 
 /**
  * A fallback component rendered when an error is caught by the error boundary.
- * 
+ *
  * @param props - Component properties.
  * @param props.title - The title to display in the error alert.
  * @param errorInfo - Error information provided by the error boundary.
@@ -33,7 +31,7 @@ function ErrorFallback(
         </p>
         <div className="flex justify-start items-center gap-2 shrink-0">
           <FxButton
-          icon={Wrench}
+            icon={Wrench}
             size="xs"
             variant="secondary"
             className="mt-3 "
@@ -41,7 +39,12 @@ function ErrorFallback(
           >
             Try to fix
           </FxButton>
-          <FxButton icon={Bug} size="xs" variant="destructive" className="mt-3 ">
+          <FxButton
+            icon={Bug}
+            size="xs"
+            variant="destructive"
+            className="mt-3 "
+          >
             Report Error
           </FxButton>
         </div>

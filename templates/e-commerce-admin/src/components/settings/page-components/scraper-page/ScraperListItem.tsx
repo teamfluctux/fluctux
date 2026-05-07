@@ -69,13 +69,12 @@ export const ScraperListItem = (props: ScraperAppInfoTypes) => {
             <FxButton
               size="xs"
               variant="destructive"
-       
               onClick={() => handleUnInstallScraper(apiURL)}
             >
               Uninstall
             </FxButton>
           ) : (
-            <FxButton size="xs" onClick={() => handleInstallScraper(apiURL)} >
+            <FxButton size="xs" onClick={() => handleInstallScraper(apiURL)}>
               Install
             </FxButton>
           )}

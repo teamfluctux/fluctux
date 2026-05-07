@@ -38,8 +38,6 @@ type ProductIdentifiers = {
   value: string;
 };
 
-
-
 export type ProductManageDataType = {
   id: string;
   name: string;

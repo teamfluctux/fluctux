@@ -1,4 +1,4 @@
-export * from "./scraper.zod"
+export * from "./scraper.zod";
 
 // Generic ZodError Flatten type
 export type ZodFlattenErrorType<T extends Record<string, unknown>> = {

@@ -1,1 +1,1 @@
-export * from "./ScraperLists"
+export * from "./ScraperLists";

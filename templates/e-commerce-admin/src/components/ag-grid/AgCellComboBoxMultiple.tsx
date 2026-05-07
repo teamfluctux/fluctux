@@ -58,21 +58,18 @@ export const AgCellComboBoxMultiple = (
           multiple
           autoHighlight
           items={value}
-
         >
           <ComboboxChips
             ref={anchor}
-            
             className={`w-full! relative bg-transparent rounded-none! p-0! max-h-[150px]! h-full! overflow-y-auto! overflow-x-hidden px-2! ring-0! outline-none! border-0 h-full! overflow-hidden! `}
           >
-            <ComboboxValue  >
+            <ComboboxValue>
               {(data: AgCellComboBoxMultipleDataType[]) => (
                 <React.Fragment>
                   {(data || selectedData).map((item) => {
                     if (item.label && item.value)
                       return (
                         <ComboboxChip
-                        
                           key={item.value}
                           className={cn(
                             item.isPrimary && "bg-surface-bg text-surface-fg"
@@ -96,7 +93,7 @@ export const AgCellComboBoxMultiple = (
               />
             )}
           </ComboboxChips>
-          <ComboboxContent  anchor={anchor}>
+          <ComboboxContent anchor={anchor}>
             <ComboboxEmpty>No items found.</ComboboxEmpty>
             <ComboboxList>
               {(data) => (

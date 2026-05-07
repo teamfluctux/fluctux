@@ -35,7 +35,7 @@ const FOLDER_CONTEXT_MENU_LIST: FolderContextMenuListType[] = [
 
 /**
  * A wrapper component that provides a context menu for folder items.
- * 
+ *
  * @param props - Component properties.
  * @param props.children - The trigger element for the context menu.
  */
@@ -49,9 +49,7 @@ const FolderContextMenu = ({ children }: FolderContextMenuProspType) => {
           return (
             <ContextMenuItem key={i} className="group">
               {Icon && <Icon size={16} className="text-text-svg_default!" />}
-              <span >
-              {item.label}
-              </span>
+              <span>{item.label}</span>
             </ContextMenuItem>
           );
         })}
@@ -80,13 +78,13 @@ export const FolderSmallIconsView = () => {
 
 /**
  * Main component for rendering a folder item.
- * 
+ *
  * It determines which view to render based on the "view" URL query parameter.
  */
 export const FolderComp = () => {
   const { getQueryParam } = useUrlQueryParams<FileCompQueryParamsType>();
   // -- Defaults to small_icons as fallback
-  const viewMode = getQueryParam("view") ?? "small_icons" as FileViewModeType ;
+  const viewMode = getQueryParam("view") ?? ("small_icons" as FileViewModeType);
   if (viewMode == "small_icons") return <FolderSmallIconsView />;
   return null;
 };

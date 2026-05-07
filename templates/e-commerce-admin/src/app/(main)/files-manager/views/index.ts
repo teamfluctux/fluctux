@@ -1,1 +1,1 @@
-export * from "./SingleImageFileComp"
+export * from "./SingleImageFileComp";

@@ -58,7 +58,7 @@ export const ProductScraperPopUp = observer(() => {
 
         <div className="w-full p-4 ">
           <ErrorBoundary title="Error in scraping">
-            <ScrapingConfiguration/>
+            <ScrapingConfiguration />
           </ErrorBoundary>
         </div>
       </div>

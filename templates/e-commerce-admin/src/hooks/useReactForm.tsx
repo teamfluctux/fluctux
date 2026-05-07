@@ -11,11 +11,7 @@ export const useReactForm = <T extends z.ZodTypeAny>({
 }: UseReactFormPropsType<T>) => {
   type FormData = z.infer<T> extends object ? z.infer<T> : FieldValues;
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-  } = useForm<FormData>();
+  const { register, handleSubmit, setValue } = useForm<FormData>();
 
   return {
     register,

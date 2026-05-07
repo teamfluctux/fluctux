@@ -3,9 +3,9 @@ import { action, makeObservable, observable } from "mobx";
 
 type ProductPopupViewType = { open?: boolean; id?: string };
 type ProductMoreOptionsMenuType = {
-  isProductOptionsOpen: boolean
-  isScrapProductsPopupOpen: boolean
-}
+  isProductOptionsOpen: boolean;
+  isScrapProductsPopupOpen: boolean;
+};
 
 class ProductStore {
   productPopupView: ProductPopupViewType | null = null;
@@ -13,8 +13,8 @@ class ProductStore {
   createProduct: ProductManageDataType | {} = {};
   productMoreOptionsMenu: ProductMoreOptionsMenuType = {
     isProductOptionsOpen: false,
-    isScrapProductsPopupOpen: false
-  }
+    isScrapProductsPopupOpen: false,
+  };
   constructor() {
     makeObservable(this, {
       // -- States
@@ -26,21 +26,18 @@ class ProductStore {
       setCreateProduct: action,
       clearCreateProduct: action,
       clearAllStates: action,
-      setProductMoreOptionsMenu: action
+      setProductMoreOptionsMenu: action,
     });
   }
-
 
   setProductPopupView(data: Partial<ProductPopupViewType>) {
     // set value seperately so that mobx dont trigger state unnecessarily
     this.productPopupView = data;
   }
 
-
   setCreateProduct(data: Partial<ProductManageDataType>) {
-    // -- trigger Update each property separately 
-    Object.assign(this.createProduct, data)
-
+    // -- trigger Update each property separately
+    Object.assign(this.createProduct, data);
   }
 
   clearCreateProduct() {
@@ -53,9 +50,8 @@ class ProductStore {
   }
 
   setProductMoreOptionsMenu(data: Partial<ProductMoreOptionsMenuType>) {
-    Object.assign(this.productMoreOptionsMenu, data)
+    Object.assign(this.productMoreOptionsMenu, data);
   }
 }
 
 export const productStore = new ProductStore();
-

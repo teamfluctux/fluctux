@@ -20,7 +20,7 @@ const SCRAPER_APPS: ScraperAppInfoTypes[] = [
     isInstalled: false,
   },
   // Fashion
- {
+  {
     title: "Zara",
     meta_desc: "Scrape latest fashion collections from Zara.",
     category: "Fashion",
@@ -28,7 +28,7 @@ const SCRAPER_APPS: ScraperAppInfoTypes[] = [
     image: "/scrapers/zara.png",
     isInstalled: false,
   },
- 
+
   {
     title: "Pandamart",
     meta_desc: "Scrape grocery items from Pandamart quick delivery.",
@@ -62,7 +62,6 @@ const SCRAPER_APPS: ScraperAppInfoTypes[] = [
     isInstalled: false,
   },
 
-  
   {
     title: "Lookfantastic",
     meta_desc: "Import luxury beauty and haircare products from Lookfantastic.",
@@ -71,7 +70,6 @@ const SCRAPER_APPS: ScraperAppInfoTypes[] = [
     image: "/scrapers/lookfantastic.png",
     isInstalled: false,
   },
- 
 ];
 
 /**

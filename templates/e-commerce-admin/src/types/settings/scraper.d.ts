@@ -7,5 +7,5 @@ export type ScraperAppInfoTypes = {
   category: string;
   apiURL: string;
   image: string;
-  isInstalled?: boolean
+  isInstalled?: boolean;
 };

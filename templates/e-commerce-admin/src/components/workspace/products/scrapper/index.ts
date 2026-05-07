@@ -1,1 +1,1 @@
-export * from "./ProductScraperPopUp"
+export * from "./ProductScraperPopUp";

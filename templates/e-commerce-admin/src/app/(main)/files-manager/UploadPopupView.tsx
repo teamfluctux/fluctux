@@ -8,8 +8,6 @@ export const UploadPopupView = () => {
       open
       modal={false}
       className="max-w-[900px] w-full max-h-[600px] h-full"
-    >
-
-    </FxCommandBox>
+    ></FxCommandBox>
   );
 };

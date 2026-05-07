@@ -40,7 +40,7 @@ const inputSizes: { [key in SizeType]: string } = {
   md: "p-2 px-3 ",
   lg: "p-3 ",
   xl: "p-4 ",
-  xs: "p-0.5 px-2"
+  xs: "p-0.5 px-2",
 };
 
 export const FxInput = forwardRef<HTMLInputElement, FxInputProps>(

@@ -1,1 +1,1 @@
-export * from "./scraper.store"
+export * from "./scraper.store";

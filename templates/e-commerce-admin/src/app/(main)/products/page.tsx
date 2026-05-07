@@ -61,7 +61,6 @@ export default function ProductPage() {
       cellRendererParams: TAgCellSelectorRendererParams<StatusLevelType>({
         initialData: DUMMY_STATUS_OPTIONS,
         LevelConstants: DUMMY_STATUS_LEVEL,
-        
       }),
     },
 
@@ -72,7 +71,6 @@ export default function ProductPage() {
        */
       // cellRenderer: DndRendererComp,
       cellStyle: { padding: "0px 0px" },
-
     },
     { field: "created_by" },
   ]);
@@ -95,7 +93,7 @@ export default function ProductPage() {
         </section>
       </div>
       <ProductPopupView />
-      <ProductScraperPopUp/>
+      <ProductScraperPopUp />
     </>
   );
 }

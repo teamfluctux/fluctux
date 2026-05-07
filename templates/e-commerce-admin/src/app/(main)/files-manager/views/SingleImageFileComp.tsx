@@ -90,7 +90,7 @@ type SingleImageFileCompPropsType = ImageFileDataPropsType;
 
 /**
  * Main component for rendering a single image file.
- * 
+ *
  * It determines which view to render based on the "view" URL query parameter.
  */
 export const SingleImageFileComp = (props: SingleImageFileCompPropsType) => {

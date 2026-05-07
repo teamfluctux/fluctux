@@ -1,6 +1,5 @@
 import type { SizeType } from "./type";
 
-
 export const LoadingSize: { [key in SizeType]: string } = {
   xs: "[&>.dot]:w-[5px] [&>.dot]:h-[5px] gap-[3px]",
   sm: "[&>.dot]:w-[5px] [&>.dot]:h-[5px] gap-[3px]",

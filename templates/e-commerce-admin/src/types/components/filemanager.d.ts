@@ -10,7 +10,7 @@ export type FileType = Exclude<
 >;
 
 export type FileViewModeType = "list" | "large_icons" | "small_icons";
-export type FileCompQueryParamsType = "view" | "type" 
+export type FileCompQueryParamsType = "view" | "type";
 
 export type SingleFileComponentPropsType = {
   name: string;
@@ -19,5 +19,3 @@ export type SingleFileComponentPropsType = {
   createdAt?: string;
   updatedAt?: string;
 };
-
-;

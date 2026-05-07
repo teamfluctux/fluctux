@@ -46,7 +46,7 @@ export const SETTINGS_SLUGS = [
   "/settings/billing",
   "/settings/api",
   "/settings/account",
-  "/settings/scrapers"
+  "/settings/scrapers",
 ] as const;
 
 /**

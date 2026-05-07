@@ -3,17 +3,17 @@ import { useRouter, useSearchParams } from "next/navigation";
 /**
  * A hook to manage URL query parameters in Next.js applications.
  * Provides methods to get, set, and remove parameters with type safety.
- * 
+ *
  * @template T - A union of string literals representing the allowed parameter names.
- * 
+ *
  * @example
  * ```tsx
  * type Params = 'view' | 'id';
  * const { handlePushQueryParam, getQueryParam } = useUrlQueryParams<Params>();
- * 
+ *
  * // To set ?view=details
  * handlePushQueryParam('view', 'details');
- * 
+ *
  * // To get value
  * const view = getQueryParam('view');
  * ```

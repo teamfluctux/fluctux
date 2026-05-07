@@ -17,7 +17,8 @@
     "next-env.d.ts",
     "next.config.ts",
     ".next/types/**/*.ts",
-    "src"
-, "stores"  ],
+    "src",
+    "stores"
+  ],
   "exclude": ["node_modules", "build", "dist"]
 }
