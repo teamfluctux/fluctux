@@ -9,4 +9,4 @@ class ScraperZodValidation {
 
 export const scraperZodValidation = new ScraperZodValidation()
 
-export type ScraperConfigType = z.infer<ScraperZodValidation["ScraperConfig"]>
+export type ScraperConfigType = z.infer<typeof scraperZodValidation.ScraperConfig>

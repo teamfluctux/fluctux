@@ -17,7 +17,7 @@ import React, { useState } from "react";
 import {
   scraperZodValidation,
   type ScraperConfigType,
-  type ZodErrorType,
+  type ZodFlattenErrorType,
 } from "@/zod";
 import { scraperStore } from "stores";
 import { toast } from "sonner";
@@ -37,7 +37,7 @@ const WHAT_TO_DO_WITH_SCRAPED_PRODUCTS: { label: string; value: string }[] = [
 
 export const ScrapingConfiguration = observer(() => {
   const [payloadError, setPayloadError] =
-    useState<ZodErrorType<ScraperConfigType>>();
+    useState<ZodFlattenErrorType<ScraperConfigType>>();
   const { register, handleSubmit, setValue } = useReactForm({
     ZOD_SCHEMA: scraperZodValidation.ScraperConfig,
   });

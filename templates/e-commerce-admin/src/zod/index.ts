@@ -1,7 +1,7 @@
 export * from "./scraper.zod"
 
-// Generic ZodError type
-export type ZodErrorType<T extends Record<string, unknown>> = {
+// Generic ZodError Flatten type
+export type ZodFlattenErrorType<T extends Record<string, unknown>> = {
   formErrors: string[];
   fieldErrors: Partial<Record<keyof T, string[]>>;
 };
